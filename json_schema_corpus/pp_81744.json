@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "c# documentation schema",
+  "description": "A scema describing the public view of a c# class and user generated documentation",
+  "properties": {
+    "objectType": {
+      "type": "string",
+      "enum": [
+        "class",
+        "enum",
+        "interface",
+        "struct"
+      ]
+    },
+    "version": {
+      "type": "integer"
+    },
+    "userGenerated": {
+      "type": "boolean"
+    },
+    "namespaceName": {
+      "type": "string"
+    },
+    "comment": {
+      "type": "string"
+    },
+    "modifiers": {
+      "type": "array",
+      "items": {
+        "$ref": "Modifier.json"
+      }
+    },
+    "name": {
+      "type": "string"
+    },
+    "extensions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "objectType",
+    "version",
+    "name"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "title": "Score Counter",
+  "definitions": {
+    "oic.r.score_counter": {
+      "type": "object",
+      "properties": {
+        "p1_score": {
+          "type": "integer",
+          "description": "Current score of player 1"
+        },
+        "p1_win": {
+          "type": "boolean",
+          "description": "True if player 1 won the match, False if she lost it or match isn't over."
+        },
+        "p2_score": {
+          "type": "integer",
+          "description": "Current score of player 2"
+        },
+        "p2_win": {
+          "type": "boolean",
+          "description": "True if player 2 won the match, False if she lost it or match isn't over."
+        }
+      }
+    }
+  },
+  "type": "object",
+  "required": [
+    "p1_score",
+    "p2_score",
+    "p1_win",
+    "p2_win"
+  ]
+}

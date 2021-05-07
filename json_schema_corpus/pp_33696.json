@@ -1,0 +1,168 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "Token_EN",
+  "title": "Token_EN",
+  "type": "object",
+  "targetType": "document_surface1d",
+  "schemaType": "token",
+  "description": "PACTE Tokenizer example",
+  "required": [
+    "@context",
+    "@type",
+    "schemaType",
+    "_corpusID",
+    "_documentID",
+    "offsets",
+    "length",
+    "kind",
+    "string"
+  ],
+  "properties": {
+    "@context": {
+      "format": "url",
+      "type": "string",
+      "description": "JSON-LD context",
+      "searchable": false,
+      "locked": true
+    },
+    "@type": {
+      "type": "string",
+      "description": "JSON-LD type",
+      "searchable": false,
+      "locked": true
+    },
+    "schemaType": {
+      "type": "string",
+      "description": "Schema type",
+      "searchable": true,
+      "searchModes": [
+        "noop"
+      ],
+      "locked": true
+    },
+    "_documentID": {
+      "type": "string",
+      "description": "Internal document GUID",
+      "searchable": true,
+      "searchModes": [
+        "noop"
+      ],
+      "locked": true
+    },
+    "_corpusID": {
+      "type": "string",
+      "description": "Internal Corpus GUID",
+      "searchable": true,
+      "searchModes": [
+        "noop"
+      ],
+      "locked": true
+    },
+    "offsets": {
+      "searchable": true,
+      "locked": true,
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "begin": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "end": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "CC",
+        "CD",
+        "DT",
+        "EX",
+        "FW",
+        "IN",
+        "JJ",
+        "JJR",
+        "JJS",
+        "LS",
+        "MD",
+        "NN",
+        "NNS",
+        "NNP",
+        "NNPS",
+        "PDT",
+        "POS",
+        "PRP",
+        "PRP$",
+        "RB",
+        "RBR",
+        "RBS",
+        "RP",
+        "SYM",
+        "TO",
+        "UH",
+        "VB",
+        "VBD",
+        "VBG",
+        "VBN",
+        "VBP",
+        "VBZ",
+        "WDT",
+        "WP",
+        "WP$",
+        "WRB"
+      ],
+      "description": " vers le tagset?",
+      "searchable": true,
+      "searchModes": [
+        "basic"
+      ]
+    },
+    "kind": {
+      "description": "",
+      "type": "string",
+      "searchable": false
+    },
+    "length": {
+      "description": "",
+      "type": "integer",
+      "minimum": 0,
+      "searchable": false
+    },
+    "orth": {
+      "type": "string",
+      "description": "",
+      "enum": [
+        "upperInitial",
+        "allCaps",
+        "lowercase"
+      ],
+      "searchable": false
+    },
+    "string": {
+      "type": "string",
+      "description": "",
+      "searchable": false
+    },
+    "lemma": {
+      "type": "string",
+      "description": "",
+      "searchable": false
+    },
+    "gender": {
+      "type": "string",
+      "description": "",
+      "searchable": false
+    },
+    "number": {
+      "type": "string",
+      "description": "",
+      "searchable": false
+    }
+  }
+}

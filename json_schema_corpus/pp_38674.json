@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://raw.githubusercontent.com/elmatica/Open-Trade-Transfer-Package/master/v1/ottp_schema.json",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "open_trade_transfer_package"
+  ],
+  "properties": {
+    "open_trade_transfer_package": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "type": "number"
+        },
+        "information": {
+          "$ref": "ottp_schema_definitions.json#/definitions/information"
+        },
+        "products": {
+          "$ref": "ottp_schema_definitions.json#/definitions/product"
+        },
+        "profiles": {
+          "$ref": "ottp_schema_definitions.json#/definitions/profile"
+        },
+        "capabilities": {
+          "$ref": "ottp_schema_definitions.json#/definitions/capability"
+        },
+        "custom": {
+          "$ref": "ottp_schema_definitions.json#/definitions/custom"
+        }
+      }
+    }
+  }
+}

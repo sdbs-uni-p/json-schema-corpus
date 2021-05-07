@@ -1,0 +1,110 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Job Listing Schema",
+  "description": "The Job Listing Archetype - Essential properties that define a job listing",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "title, description, company_name"
+  ],
+  "properties": {
+    "_id": {
+      "type": "string",
+      "description": "Unique identifier for this archetype record",
+      "maxLength": 50,
+      "default": ""
+    },
+    "draft": {
+      "type": "boolean",
+      "description": "Indicates this archetype record is a draft and is not published",
+      "default": false
+    },
+    "created": {
+      "type": "string",
+      "description": "Date and time this archetype record was created in ISO 8601 date standard e.g. YYYY-MM-DDThh:mm:ss.sTZD",
+      "format": "date-time",
+      "default": ""
+    },
+    "updated": {
+      "type": "string",
+      "description": "Date and time this archetype record was updated in ISO 8601 date standard e.g. YYYY-MM-DDThh:mm:ss.sTZD",
+      "format": "date-time",
+      "default": ""
+    },
+    "title": {
+      "type": "string",
+      "description": "Title of the job listing",
+      "maxLength": 140,
+      "default": ""
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the job",
+      "maxLength": 10000,
+      "default": ""
+    },
+    "compensation": {
+      "type": "integer",
+      "description": "Compensation in cents as an integer (whole number)",
+      "minimum": 0,
+      "maximum": 999999999999999,
+      "default": 0
+    },
+    "listing_city": {
+      "type": "string",
+      "maxLength": 100,
+      "default": ""
+    },
+    "listing_region": {
+      "type": "string",
+      "description": "The general region where the job listing is located.  Can be a US state, or a province, for instance.",
+      "maxLength": 100,
+      "default": ""
+    },
+    "listing_postal_code": {
+      "type": "string",
+      "maxLength": 30,
+      "default": ""
+    },
+    "company_name": {
+      "type": "string",
+      "description": "Name of the hiring company",
+      "maxLength": 140,
+      "default": ""
+    },
+    "company_info": {
+      "type": "string",
+      "description": "URL to the company's website",
+      "format": "uri",
+      "maxLength": 1000,
+      "default": ""
+    },
+    "company_logo": {
+      "$ref": "image_archetype_schema.json",
+      "description": "Image Archetype ID to use as the company logo of this job listing"
+    },
+    "category": {
+      "type": "string",
+      "description": "General category of the job listing, e.g. Engineering",
+      "maxLength": 40,
+      "default": ""
+    },
+    "subcategory": {
+      "type": "string",
+      "description": "Specific category of the job listing, e.g. Biomedical Engineering",
+      "maxLength": 40,
+      "default": ""
+    },
+    "tags": {
+      "type": "array",
+      "description": "Array of Tag Archetypes that are used to help categorize this Archetype record",
+      "maxItems": 6,
+      "uniqueItems": true,
+      "additionalItems": false,
+      "default": [],
+      "items": {
+        "$ref": "tag_archetype_schema.json"
+      }
+    }
+  }
+}

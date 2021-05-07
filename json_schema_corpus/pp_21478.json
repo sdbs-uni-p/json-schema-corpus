@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "properties": {
+    "idMapping": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "title": "Google Analytics Trending Collector Options",
+  "type": "object",
+  "additionalProperties": false
+}

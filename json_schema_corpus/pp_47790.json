@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "id": "https://inowas.com/schema/",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+    },
+    "layer": {
+      "$ref": "modflow/soilmodel/layer.json"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "layer"
+  ]
+}

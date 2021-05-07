@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Single athlete's performance in a single event",
+  "description": "A single athlete's performance in a single event, which may be a field event or a track event.",
+  "type": "object",
+  "allOf": [
+    {
+      "anyOf": [
+        {
+          "$ref": "file:///json/definitions/field_performance.json#"
+        },
+        {
+          "$ref": "file:///json/definitions/track_performance.json#"
+        }
+      ]
+    },
+    {
+      "properties": {
+        "athlete": {
+          "$ref": "file:///json/athlete.json#"
+        },
+        "iaaf_score": {
+          "description": "IAAF score for the performance",
+          "type": "number",
+          "multipleOf": 1.0,
+          "minimum": 0
+        },
+        "indoors": {
+          "description": "Whether the event was held indoors or not",
+          "type": "boolean"
+        }
+      }
+    }
+  ]
+}

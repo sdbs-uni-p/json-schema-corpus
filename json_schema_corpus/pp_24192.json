@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Collection of data transfer objects for JobExecution entities",
+  "type": "object",
+  "properties": {
+    "jobExecutionDtos": {
+      "description": "List of DTOs for execution jobs",
+      "type": "array",
+      "id": "jobExecutionDtoList",
+      "items": {
+        "type": "object",
+        "$ref": "jobExecutionDto.json"
+      }
+    },
+    "totalRecords": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "jobExecutionDtos",
+    "totalRecords"
+  ]
+}

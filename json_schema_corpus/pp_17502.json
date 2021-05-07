@@ -1,0 +1,7 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "language",
+  "id": "language.json",
+  "type": "string",
+  "description": "Language code. Typically from the IETF BCP 47 standard"
+}

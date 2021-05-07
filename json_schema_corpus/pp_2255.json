@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://localhost:9999/schemas/team.json",
+  "type": "object",
+  "properties": {
+    "patrol": {
+      "id": "patrol",
+      "type": "string"
+    },
+    "group": {
+      "id": "group",
+      "type": "string"
+    },
+    "unit": {
+      "id": "unit",
+      "type": "string"
+    }
+  },
+  "required": [
+    "unit"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "GitHubRepository": "parkbz",
+  "GitHubRepositoryOwner": "tis-innovation-park",
+  "RescanFrequency": "1.00:00:00",
+  "AnalyzationBehavior": "Newest"
+}

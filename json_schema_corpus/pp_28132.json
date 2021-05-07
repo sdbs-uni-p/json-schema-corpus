@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "geographicPoint",
+  "id": "geographicPoint",
+  "description": "Specifies a particular point on earth based upon geo coding information. Provides the means for quantitative description of the spatial characteristics of features, including dimension, position, size, shape, and orientation. Most commonly used for position (location).",
+  "type": "object",
+  "required": [
+    "objectType",
+    "latitude",
+    "longitude"
+  ],
+  "properties": {
+    "objectType": {
+      "type": "string",
+      "enum": [
+        "geographicPoint"
+      ],
+      "description": "The type of the object, geographicPoint."
+    },
+    "latitude": {
+      "type": "string",
+      "description": "Latitude of the point in decimal degrees format.",
+      "maxLength": 10
+    },
+    "longitude": {
+      "type": "string",
+      "description": "Longitude of the point in decimal degrees format.",
+      "maxLength": 10
+    }
+  }
+}

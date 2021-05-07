@@ -1,0 +1,197 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://schema.org/PostalAddress",
+  "required": [],
+  "title": "PostalAddress",
+  "name": "PostalAddress",
+  "description": "The mailing address.",
+  "type": "object",
+  "properties": {
+    "addressCountry": {
+      "id": "http://schema.org/addressCountry",
+      "title": "addressCountry",
+      "description": "The country. For example, USA. You can also provide the two-letter ISO 3166-1 alpha-2 country code.",
+      "type": "object",
+      "properties": {
+        "addressCountry": {
+          "$ref": "Country.json#/properties"
+        }
+      }
+    },
+    "addressLocality": {
+      "id": "http://schema.org/addressLocality",
+      "title": "addressLocality",
+      "description": "The locality. For example, Mountain View.",
+      "type": "string"
+    },
+    "addressRegion": {
+      "id": "http://schema.org/addressRegion",
+      "title": "addressRegion",
+      "description": "The region. For example, CA.",
+      "type": "string"
+    },
+    "postOfficeBoxNumber": {
+      "id": "http://schema.org/postOfficeBoxNumber",
+      "title": "postOfficeBoxNumber",
+      "description": "The post office box number for PO box addresses.",
+      "type": "string"
+    },
+    "postalCode": {
+      "id": "http://schema.org/postalCode",
+      "title": "postalCode",
+      "description": "The postal code. For example, 94043.",
+      "type": "string"
+    },
+    "streetAddress": {
+      "id": "http://schema.org/streetAddress",
+      "title": "streetAddress",
+      "description": "The street address. For example, 1600 Amphitheatre Pkwy.",
+      "type": "string"
+    },
+    "": {
+      "title": "",
+      "description": "",
+      "type": null
+    },
+    "areaServed": {
+      "id": "http://schema.org/areaServed",
+      "title": "areaServed",
+      "description": "The location served by this contact point (e.g., a phone number intended for Europeans vs. North Americans or only within the United States.)",
+      "type": "object",
+      "properties": {
+        "areaServed": {
+          "$ref": "AdministrativeArea.json#/properties"
+        }
+      }
+    },
+    "availableLanguage": {
+      "id": "http://schema.org/availableLanguage",
+      "title": "availableLanguage",
+      "description": "A language someone may use with the item.",
+      "type": "object",
+      "properties": {
+        "availableLanguage": {
+          "$ref": "Language.json#/properties"
+        }
+      }
+    },
+    "contactOption": {
+      "id": "http://schema.org/contactOption",
+      "title": "contactOption",
+      "description": "An option available on this contact point (e.g. a toll-free number or support for hearing-impaired callers.)",
+      "type": "object",
+      "properties": {
+        "contactOption": {
+          "$ref": "ContactPointOption.json#/properties"
+        }
+      }
+    },
+    "contactType": {
+      "id": "http://schema.org/contactType",
+      "title": "contactType",
+      "description": "A person or organization can have different contact points, for different purposes. For example, a sales contact point, a PR contact point and so on. This property is used to specify the kind of contact point.",
+      "type": "string"
+    },
+    "email": {
+      "id": "http://schema.org/email",
+      "title": "email",
+      "description": "Email address.",
+      "type": "string"
+    },
+    "faxNumber": {
+      "id": "http://schema.org/faxNumber",
+      "title": "faxNumber",
+      "description": "The fax number.",
+      "type": "string"
+    },
+    "hoursAvailable": {
+      "id": "http://schema.org/hoursAvailable",
+      "title": "hoursAvailable",
+      "description": "The hours during which this contact point is available.",
+      "type": "object",
+      "properties": {
+        "hoursAvailable": {
+          "$ref": "OpeningHoursSpecification.json#/properties"
+        }
+      }
+    },
+    "productSupported": {
+      "id": "http://schema.org/productSupported",
+      "title": "productSupported",
+      "description": "The product or service this support contact point is related to (such as product support for a particular product line). This can be a specific product or product line (e.g. \"iPhone\") or a general category of products or services (e.g. \"smartphones\").",
+      "type": "object",
+      "properties": {
+        "productSupported": {
+          "$ref": "Product.json#/properties"
+        }
+      }
+    },
+    "telephone": {
+      "id": "http://schema.org/telephone",
+      "title": "telephone",
+      "description": "The telephone number.",
+      "type": "string"
+    },
+    "additionalType": {
+      "id": "http://schema.org/additionalType",
+      "title": "additionalType",
+      "description": "An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.",
+      "type": "string",
+      "format": "uri"
+    },
+    "alternateName": {
+      "id": "http://schema.org/alternateName",
+      "title": "alternateName",
+      "description": "An alias for the item.",
+      "type": "string"
+    },
+    "description": {
+      "id": "http://schema.org/description",
+      "title": "description",
+      "description": "A short description of the item.",
+      "type": "string"
+    },
+    "image": {
+      "id": "http://schema.org/image",
+      "title": "image",
+      "description": "An image of the item. This can be a URL or a fully described ImageObject.",
+      "type": "object",
+      "properties": {
+        "image": {
+          "$ref": "ImageObject.json#/properties"
+        }
+      }
+    },
+    "name": {
+      "id": "http://schema.org/name",
+      "title": "name",
+      "description": "The name of the item.",
+      "type": "string"
+    },
+    "potentialAction": {
+      "id": "http://schema.org/potentialAction",
+      "title": "potentialAction",
+      "description": "Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.",
+      "type": "object",
+      "properties": {
+        "potentialAction": {
+          "$ref": "Action.json#/properties"
+        }
+      }
+    },
+    "sameAs": {
+      "id": "http://schema.org/sameAs",
+      "title": "sameAs",
+      "description": "URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.",
+      "type": "string",
+      "format": "uri"
+    },
+    "url": {
+      "id": "http://schema.org/url",
+      "title": "url",
+      "description": "URL of the item.",
+      "type": "string",
+      "format": "uri"
+    }
+  }
+}

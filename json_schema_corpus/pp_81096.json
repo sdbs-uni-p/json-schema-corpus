@@ -1,0 +1,50 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "name": "carbs",
+  "title": "Carbs",
+  "description": "Carbohydrates eaten",
+  "id": "diabetes/carbs.json",
+  "definitions": {
+    "type": {
+      "enum": [
+        "carbs"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "deviceTime": {
+      "type": "string",
+      "id": "http://jsonschema.net/carbs/deviceTime",
+      "required": true
+    },
+    "id": {
+      "type": "string",
+      "id": "http://jsonschema.net/carbs/id",
+      "required": false
+    },
+    "type": {
+      "$ref": "#/definitions/type",
+      "required": true
+    },
+    "units": {
+      "type": "string",
+      "id": "http://jsonschema.net/carbs/units",
+      "required": false
+    },
+    "value": {
+      "type": [
+        "string",
+        "number"
+      ],
+      "id": "http://jsonschema.net/carbs/value",
+      "required": true
+    },
+    "carbs": {
+      "type": "number",
+      "id": "http://jsonschema.net/carbs/carbs",
+      "required": false
+    }
+  }
+}

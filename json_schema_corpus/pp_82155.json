@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "type": "object",
+  "links": [
+    {
+      "rel": "list-jobs",
+      "href": "/job",
+      "method": "GET",
+      "mediaType": "application/vnd.sh.melt.cdp.if.job-list.v1+json"
+    },
+    {
+      "rel": "create-job",
+      "href": "/job",
+      "method": "POST",
+      "mediaType": "application/vnd.sh.melt.cdp.if.job-create.v1+json",
+      "schema": {
+        "$ref": "/_schema/job-create"
+      }
+    },
+    {
+      "rel": "github-hook",
+      "href": "/hooks/github",
+      "method": "POST",
+      "mediaType": "application/vnd.sh.melt.cdp.if.job-create.v1+json",
+      "schema": {
+        "$ref": "/_schema/github-hook"
+      }
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "DeliveryRound",
+  "description": "A scheduled vaccine delivery to a health facility",
+  "type": "object",
+  "properties": {
+    "doc_type": {
+      "type": "string",
+      "pattern": "^deliveryRound$"
+    },
+    "roundCode": {
+      "type": "string"
+    },
+    "startDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "endDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "completedOn": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "status": {
+      "type": "string"
+    },
+    "lag": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "doc_type"
+  ]
+}

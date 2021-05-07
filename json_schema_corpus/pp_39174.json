@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "properties"
+  ],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "FeatureCollection"
+      ]
+    },
+    "properties": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sensor"
+      ],
+      "properties": {
+        "sensor": {
+          "type": "string",
+          "description": "the name of an existing sensor resource"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "appVersion": {
+          "type": "string"
+        },
+        "obdDevice": {
+          "type": "string"
+        },
+        "touVersion": {
+          "type": "string"
+        },
+        "length": {
+          "type": "number"
+        }
+      }
+    },
+    "features": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "$ref": "measurement.create.json#"
+      }
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "required": [
+    "version",
+    "crypto"
+  ],
+  "properties": {
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "address": {
+      "type": "string",
+      "pattern": "^(0x)?(([0-9]|[a-f]|[A-F]){2}){20}$"
+    },
+    "meta": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "crypto": {
+      "type": "object",
+      "required": [
+        "cipher",
+        "cipherparams",
+        "ciphertext",
+        "kdf",
+        "kdfparams",
+        "mac"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "cipher": {
+          "type": "string"
+        },
+        "cipherparams": {
+          "type": "object"
+        },
+        "ciphertext": {
+          "type": "string"
+        },
+        "kdf": {
+          "type": "string"
+        },
+        "kdfparams": {
+          "type": "object"
+        },
+        "mac": {
+          "type": "string",
+          "pattern": "^(([0-9]|[a-f]){2}){32}$"
+        }
+      }
+    }
+  }
+}

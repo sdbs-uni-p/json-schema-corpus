@@ -1,0 +1,90 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#",
+  "id": "http://thevisualist.org/schemas/myschema.json",
+  "properties": {
+    "dates": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "emails": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "locations": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "names": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "billing_address": {
+            "$ref": "#/definitions/address"
+          },
+          "shipping_address": {
+            "$ref": "#/definitions/address"
+          }
+        }
+      }
+    },
+    "phones": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "socials": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "websites": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  },
+  "definitions": {
+    "name": {
+      "type": [
+        "string",
+        "object"
+      ],
+      "$schema": "",
+      "id": "",
+      "properties": {
+        "prefix": {
+          "type": "string"
+        },
+        "first": {
+          "type": "string"
+        },
+        "middle": {
+          "type": "string"
+        },
+        "last": {
+          "type": "string"
+        },
+        "suffix": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

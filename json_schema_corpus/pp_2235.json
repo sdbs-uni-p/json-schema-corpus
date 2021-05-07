@@ -1,0 +1,158 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "musicJson-structural",
+  "definitions": {
+    "score": {
+      "$id": "score",
+      "oneOf": [
+        {
+          "properties": {
+            "parts": {
+              "type": "array",
+              "items": {
+                "$ref": "#part"
+              }
+            }
+          }
+        },
+        {
+          "$ref": "#part"
+        }
+      ]
+    },
+    "part": {
+      "$id": "part",
+      "anyOf": [
+        {
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "short-name": {
+              "type": "string"
+            },
+            "clef": {
+              "$ref": "./notation.json#clef"
+            },
+            "key": {
+              "$ref": "./notation.json#key"
+            }
+          }
+        },
+        {
+          "oneOf": [
+            {
+              "properties": {
+                "staves": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#stave"
+                  }
+                }
+              }
+            },
+            {
+              "$ref": "#stave"
+            }
+          ]
+        }
+      ]
+    },
+    "stave": {
+      "$id": "stave",
+      "oneOf": [
+        {
+          "properties": {
+            "bars": {
+              "type": "array",
+              "items": {
+                "#ref": "#bar"
+              }
+            }
+          }
+        },
+        {
+          "#ref": "#bar"
+        }
+      ]
+    },
+    "barline-start": {
+      "$id": "barline-start",
+      "type": "string",
+      "enum": [
+        "normal",
+        "repeat-start"
+      ]
+    },
+    "barline-end": {
+      "$id": "barline-end",
+      "type": "string",
+      "enum": [
+        "normal",
+        "repeat-end"
+      ]
+    },
+    "bar": {
+      "$id": "bar",
+      "anyOf": [
+        {
+          "properties": {
+            "signatures": {
+              "$ref": "./notation.json#signatures"
+            },
+            "clef:": {
+              "$ref": "./notation.json#clef"
+            },
+            "barline-start": {
+              "$ref": "#barline-start"
+            },
+            "barline-end": {
+              "$ref": "#barline-end"
+            }
+          }
+        },
+        {
+          "oneOf": [
+            {
+              "properties": {
+                "voices": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#voice"
+                  }
+                }
+              }
+            },
+            {
+              "$ref": "#voice"
+            }
+          ]
+        }
+      ]
+    },
+    "voice-type": {
+      "$id": "voice-type",
+      "type": "string",
+      "enum": [
+        "notes",
+        "harmony",
+        "rythm",
+        "lyrics"
+      ]
+    },
+    "voice": {
+      "$id": "voice",
+      "properties": {
+        "type": {
+          "$ref": "#voice-type"
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "$ref": "./notation.json#note"
+          }
+        }
+      }
+    }
+  }
+}

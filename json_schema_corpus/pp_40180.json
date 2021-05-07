@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "Course",
+  "title": "Course Schema",
+  "type": "object",
+  "properties": {
+    "title": {
+      "description": "Title of this course",
+      "type": "string"
+    },
+    "startDate": {
+      "description": "Date this course commences",
+      "type": "string",
+      "format": "date"
+    },
+    "department": {
+      "description": "Department that offers this course",
+      "type": "string",
+      "maxLength": 25
+    },
+    "prerequisites": {
+      "description": "Courses that must have been completed before this course",
+      "type": "string"
+    },
+    "syllabus": {
+      "description": "Summary of topics to be covered in this course",
+      "type": "string"
+    },
+    "schedule": {
+      "description": "Days of the week and hours that this course will be offered",
+      "type": "string"
+    },
+    "credits": {
+      "description": "Course credit hours",
+      "type": "number"
+    }
+  },
+  "required": [
+    "title",
+    "startDate",
+    "syllabus"
+  ],
+  "additionalProperties": false
+}

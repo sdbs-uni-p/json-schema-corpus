@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "continuePage": {
+      "type": "string",
+      "description": "the URI that your storefront app thinks the user should be redirected to on patch completion, unless some other storefront app gets installed and hence makes that decision"
+    },
+    "bumpSecurityGeneration": {
+      "type": "boolean",
+      "description": "true to request that the tenant's security generation is incremented as the patch is applied"
+    },
+    "patchSet": {
+      "$ref": "patchSet.json"
+    }
+  },
+  "required": [
+    "patchSet",
+    "bumpSecurityGeneration"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "endpoint": "/",
+  "description": "testing if options.headers is applied",
+  "methods": [
+    "get",
+    "post",
+    "put",
+    "delete"
+  ],
+  "type": "object",
+  "properties": {
+    "headers": {
+      "type": "object",
+      "properties": {
+        "x-key": {
+          "type": "string",
+          "enum": [
+            "value"
+          ]
+        }
+      },
+      "required": [
+        "x-key"
+      ]
+    }
+  },
+  "required": [
+    "headers"
+  ]
+}

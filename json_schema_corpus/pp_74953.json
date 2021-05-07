@@ -1,0 +1,60 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "title": "portal-selector schema",
+  "description": "properties required by the portal-selector component",
+  "properties": {
+    "portals": {
+      "type": "object",
+      "description": "list of links to authorized portals",
+      "required": true,
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "title that appears in the header",
+          "required": true
+        },
+        "header": {
+          "type": "boolean",
+          "description": "indicates if the header should be shown",
+          "required": true
+        },
+        "iconLinks": {
+          "type": "boolean",
+          "description": "indicates if the links include icons",
+          "required": true
+        },
+        "itemList": {
+          "type": "array",
+          "description": "list of portal links",
+          "required": true,
+          "minItems": 1,
+          "uniqueItems": true,
+          "additionalItems": true,
+          "items": {
+            "type": "object",
+            "description": "data to construct a single link",
+            "required": true,
+            "properties": {
+              "title": {
+                "type": "string",
+                "description": "link text",
+                "required": true
+              },
+              "icon": {
+                "type": "string",
+                "description": "icon class",
+                "required": true
+              },
+              "target": {
+                "type": "string",
+                "description": "href",
+                "required": true
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

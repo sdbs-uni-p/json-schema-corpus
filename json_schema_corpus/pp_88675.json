@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/request.json",
+  "description": "Shampoo request specification",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "pattern": "request"
+    },
+    "method": {
+      "description": "Method on the endpoint that has to be called.",
+      "type": "string"
+    },
+    "request_data": {
+      "description": "Data to be passed to the method",
+      "type": "object"
+    },
+    "request_id": {
+      "description": "Identifier for the request. The request_id is returned in the response. The client can use this number to match responses to requests.",
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "required": [
+    "type",
+    "method",
+    "request_data",
+    "request_id"
+  ]
+}

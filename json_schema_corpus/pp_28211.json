@@ -1,0 +1,127 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "uniProductOrder",
+  "id": "uniProductOrder",
+  "description": "An orderable representation of a UNI Product.",
+  "type": "object",
+  "required": [
+    "objectType",
+    "productSpecification"
+  ],
+  "properties": {
+    "objectType": {
+      "type": "string",
+      "enum": [
+        "uniProductOrder"
+      ],
+      "description": "The type of the object, uniProduct for an Order."
+    },
+    "sellerUniId": {
+      "type": "string",
+      "description": "The circuit identifier that the seller uses to refer to this UNI.",
+      "maxLength": 45
+    },
+    "buyerUniId": {
+      "type": "string",
+      "description": "The circuit identifier that the buyer uses to refer to this UNI.",
+      "maxLength": 45
+    },
+    "productSpecification": {
+      "$ref": "productSpecRef.json#",
+      "description": "A reference to the Partner/Access Provider (Seller) Product Specification (product catalog item) that the buyer is ordering."
+    },
+    "physicalLayer": {
+      "type": "string",
+      "enum": [
+        "10BASE_T",
+        "100BASE_TX",
+        "100BASE_FX",
+        "1000BASE_T",
+        "1000BASE_SX",
+        "1000BASE_LX",
+        "10GBASE_SR",
+        "10GBASE_SW",
+        "10GBASE_LR",
+        "10GBASE_LW",
+        "10GBASE_ER",
+        "10GBASE_EW"
+      ],
+      "description": "The layer (layer 1) that provides transparent transmission of a bit stream over a circuit built from some physical communications medium."
+    },
+    "synchronousModeEnabled": {
+      "type": "boolean",
+      "description": "Identifies if the synchronous transmissions are to proceed at a constant rate."
+    },
+    "numberOfLinks": {
+      "type": "integer",
+      "description": "The number of links supporting the UNI.",
+      "minimum": 1
+    },
+    "uniResiliency": {
+      "type": "string",
+      "enum": [
+        "NONE",
+        "2_LINK_ACTIVE_STANDBY",
+        "ALL_ACTIVE",
+        "OTHER"
+      ],
+      "description": "Indicates UNI resiliency and corresponding value."
+    },
+    "uniMaximumServiceFrameSize": {
+      "type": "integer",
+      "description": "Indicates the maximum service frame size that can be reliably processed at the UNI level. An integer greater or equal to 1522.",
+      "minimum": 1522
+    },
+    "tokenShareEnabled": {
+      "type": "boolean",
+      "description": "Identifies whether a given UNI is capable of sharing tokens across Bandwidth Profile Flows in an Envelope. MEF valid values are Enabled or Disabled."
+    },
+    "allToOneBundlingEnabled": {
+      "type": "boolean",
+      "description": "All-to-One Bundling can be either Enabled or Disabled.  A value of True would equate to 'Enabled'."
+    },
+    "linkOamEnabled": {
+      "type": "boolean",
+      "description": "Link OAM enables the operator to monitor and troubleshoot a single Ethernet link. For ordering, this is an optional parameter that may be requested."
+    },
+    "uniMegEnabled": {
+      "type": "boolean",
+      "description": "Request for monitoring of a UNI. For ordering, this is an optional parameter that may be requested."
+    },
+    "elmiEnabled": {
+      "type": "boolean",
+      "description": "Indicates the desire for management of the customer interface. For ordering, this is an optional parameter that may be requested."
+    },
+    "uniL2cpAddressSet": {
+      "type": "string",
+      "enum": [
+        "CTA",
+        "CTB",
+        "CTB_2"
+      ],
+      "description": "Identifies the discard/pass action for all non-peered layer two control protocols. Enumeration: 'CTA', 'CTB' or 'CTB-2'."
+    },
+    "uniL2cpPeerings": {
+      "type": "array",
+      "items": {
+        "$ref": "layer2ControlProtocol.json#"
+      },
+      "minItems": 1,
+      "maxitems": 20,
+      "uniqueItems": true,
+      "description": "An array of Layer 2 Control Protocols to peer at the UNI."
+    },
+    "serviceSiteInformation": {
+      "$ref": "serviceSiteInformation.json#",
+      "description": "The service site for the UNI."
+    },
+    "primarySiteContact": {
+      "$ref": "contact.json#",
+      "description": "The primary site contact for the site."
+    },
+    "alternateSiteContact": {
+      "$ref": "contact.json#",
+      "description": "The secondary site contact for the site."
+    }
+  }
+}

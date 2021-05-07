@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "option-type",
+  "type": "object",
+  "properties": {
+    "non-optional": {
+      "type": "string"
+    },
+    "optional": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Callback",
+  "description": "A sort of reminder used in the call centre",
+  "type": "object",
+  "properties": {
+    "doc_type": {
+      "type": "string",
+      "pattern": "^callback$"
+    },
+    "version": {
+      "type": "string"
+    },
+    "callId": {
+      "type": "string"
+    },
+    "reason": {
+      "type": "string"
+    },
+    "author": {
+      "username": {
+        "type": "string"
+      },
+      "fullName": {
+        "type": "string"
+      }
+    },
+    "status": {
+      "enum": [
+        "pending",
+        "rescheduled",
+        "done",
+        "cancelled"
+      ]
+    },
+    "cancelledReason": {
+      "type": "string"
+    },
+    "createdOn": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lock": {
+      "$ref": "https://schema.ehealthafrica.org/1.0/Lock.json#"
+    },
+    "scheduledAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "completedAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "callId",
+    "reason",
+    "author",
+    "status",
+    "createdOn",
+    "version",
+    "scheduledAt"
+  ]
+}

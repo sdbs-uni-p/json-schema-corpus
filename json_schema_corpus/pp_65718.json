@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Capacity plan result",
+  "type": "object",
+  "properties": {
+    "location_id": {
+      "type": "integer"
+    },
+    "sla_status": {
+      "type": "string"
+    },
+    "sla_result": {
+      "$ref": "appsla.json"
+    },
+    "SetConfigs": {
+      "type": "array",
+      "items": [
+        {
+          "$ref": "setconfig.json"
+        }
+      ]
+    }
+  }
+}

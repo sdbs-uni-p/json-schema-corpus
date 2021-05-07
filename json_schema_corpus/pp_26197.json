@@ -1,0 +1,98 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "title": "Fact schema",
+  "type": "object",
+  "definitions": {
+    "basicAddress": {
+      "type": "object",
+      "comment": "This is an address",
+      "properties": {
+        "City": {
+          "type": "string",
+          "comment": "This is a city"
+        },
+        "State": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 2
+        },
+        "Street": {
+          "type": "string"
+        },
+        "ZipCode": {
+          "type": "string"
+        }
+      }
+    },
+    "address": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/basicAddress"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "Latitude": {
+              "type": "number",
+              "minimum": -90,
+              "maximum": 90
+            },
+            "Longitude": {
+              "type": "number",
+              "minimum": -180,
+              "maximum": 180
+            }
+          }
+        }
+      ]
+    },
+    "unum": {
+      "type": "number",
+      "minimum": 0
+    }
+  },
+  "properties": {
+    "Loan": {
+      "type": "object",
+      "description": "Loan information",
+      "properties": {
+        "Amount": {
+          "type": "number"
+        },
+        "SomeSuperLongColumnNameThatDoesntFitInPostgresUnfortunately": {
+          "type": "number"
+        },
+        "AbbreviateThisReallyLongColumn": {
+          "type": "number"
+        }
+      }
+    },
+    "SubjectProperty": {
+      "type": "object",
+      "properties": {
+        "Acreage": {
+          "$ref": "#/definitions/unum"
+        },
+        "Address": {
+          "$ref": "#/definitions/address"
+        }
+      }
+    },
+    "RealEstateOwned": {
+      "type": "object",
+      "patternProperties": {
+        "[0-9]+": {
+          "type": "object",
+          "properties": {
+            "Address": {
+              "$ref": "#/definitions/basicAddress"
+            },
+            "RentalIncome": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    }
+  }
+}

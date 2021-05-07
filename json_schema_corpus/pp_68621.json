@@ -1,0 +1,8 @@
+{
+  "id": "urn:EmailAddress.schema.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "An email address.",
+  "name": "EmailAddress",
+  "type": "string",
+  "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$"
+}

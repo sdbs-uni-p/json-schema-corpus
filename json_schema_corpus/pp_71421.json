@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {},
+  "id": "http://example.com/example.json",
+  "properties": {
+    "dams": {
+      "id": "/properties/dams",
+      "items": {
+        "id": "/properties/dams/items",
+        "type": "integer"
+      },
+      "type": "array"
+    },
+    "formula": {
+      "id": "/properties/formula",
+      "type": "string"
+    },
+    "formulaName": {
+      "id": "/properties/formulaName",
+      "type": "string"
+    },
+    "formulaUid": {
+      "id": "/properties/formulaUid",
+      "type": "integer"
+    }
+  },
+  "type": "object"
+}

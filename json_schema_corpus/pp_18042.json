@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Category",
+  "description": "A category",
+  "type": "object",
+  "properties": {
+    "_id": {
+      "description": "The unique identifier for a category",
+      "type": "string"
+    },
+    "name": {
+      "description": "The name of the category",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "_id",
+    "name"
+  ]
+}

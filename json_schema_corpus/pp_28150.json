@@ -1,0 +1,126 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "serviceabilityResponse",
+  "id": "serviceabilityResponse",
+  "description": "A response provided by an organization (Seller) to a Serviceability Request made by another organization (Buyer). This Serviceability Response is for a single location.",
+  "type": "object",
+  "required": [
+    "objectType",
+    "id",
+    "serviceabilityRequestId",
+    "buyerId",
+    "sellerId",
+    "serviceSiteInformation",
+    "confidence"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The Serviceability Response's unique identifier.",
+      "maxLength": 15
+    },
+    "link": {
+      "$ref": "link.json#",
+      "description": "The Serviceability Response's self link."
+    },
+    "objectType": {
+      "type": "string",
+      "enum": [
+        "serviceabilityResponse"
+      ],
+      "description": "The type of the object, serviceabilityResponse."
+    },
+    "status": {
+      "type": "string",
+      "description": " The states used to convey Serviceability Response Status. Values are: {DRAFT, UNDER_REVIEW, RESPONSE_SUBMITTED, ACCEPTED, COMPLETE, REJECTED}. ",
+      "enum": [
+        "DRAFT",
+        "UNDER_REVIEW",
+        "RESPONSE_SUBMITTED",
+        "ACCEPTED",
+        "COMPLETED",
+        "REJECTED"
+      ]
+    },
+    "mpoeOnly": {
+      "type": "boolean",
+      "description": "Indicates if access to the location is currenly Minimum Point Of Entry (MPOE) only. If mpoeOnly is true, this indicates that full access to the location (e.g. sub-unit or suite) has not yet been established. If mpoeOnly is false or not defined, this indicates that full access to the location has been (or will be) established."
+    },
+    "expirationDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date the Serviceability Response expires, formatted as  YYYY-MM-DD (eg 1997-07-16) or YYYY-MM-DDThh:mmTZD (eg 1997-07-16T19:20+01:00)."
+    },
+    "perfectMatch": {
+      "type": "boolean",
+      "description": "Indicates that this response matches exactly the details on the associated serviceability request. This can be useful in differentiating serviceability responses that are upsell or alternatives to the original request. "
+    },
+    "accepted": {
+      "type": "boolean",
+      "description": "Indicates if Serviceability Request is accepted. If accepted is true, this indicates the Serviceability Request is accepted."
+    },
+    "serviceabilityRequestId": {
+      "type": "string",
+      "description": "The id of the associated Serviceability Request.",
+      "maxLength": 15
+    },
+    "buyerId": {
+      "type": "string",
+      "description": "A Party Role played by an Individual or an Organization that buys products and services from a Seller. Specifically, the ID of the Service Provider (Buyer) organization placing the serviceability request.",
+      "maxLength": 25
+    },
+    "sellerId": {
+      "type": "string",
+      "description": "An organization that provides products and services to a buyer. Specifically, the ID of the Partner/Access Provider (Seller) organization receiving the serviceability request.",
+      "maxLength": 25
+    },
+    "serviceSiteInformation": {
+      "$ref": "serviceSiteInformation.json#",
+      "description": "The service site information for the serviceability request."
+    },
+    "confidence": {
+      "$ref": "serviceabilityConfidence.json#",
+      "description": "Serviceability confidence from seller for this request."
+    },
+    "installationInterval": {
+      "type": "integer",
+      "description": "An estimate of the number of calendar days until the desired service could be activated.",
+      "minimum": 0,
+      "maximum": 999
+    },
+    "buyerProjectId": {
+      "type": "string",
+      "description": "The project's unique identifier for the buyer project.  An identifier that is used to group Orders that represent a unit of functionality that is important to a buyer. A project can be used to relate multiple orders together."
+    },
+    "sellerProjectId": {
+      "type": "string",
+      "description": "The project's unique identifier for a seller project.  An identifier that is used to group Orders that represent a unit of functionality that is important to a buyer. A project can be used to relate multiple orders together."
+    },
+    "siteListId": {
+      "type": "string",
+      "description": "The Projects Site List this SRP belongs to"
+    },
+    "buyerSiteId": {
+      "type": "string",
+      "description": "The Projects Site this SRP belongs to"
+    },
+    "orderDependent": {
+      "type": "boolean",
+      "description": "Indicates if a servie site inventoty update sould be made based on the SRP once an Order has been placed using this SRP."
+    },
+    "serviceDetail": {
+      "$ref": "serviceDetailResponse.json#",
+      "description": " A response to the serviceability request that contains information about one or more Product Specifications that can be ordered to realize the desired service. "
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date object was created formatted as  YYYY-MM-DD (eg 1997-07-16) or YYYY-MM-DDThh:mmTZD (eg 1997-07-16T19:20+01:00)."
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date object was last upldated formatted as  YYYY-MM-DD (eg 1997-07-16) or YYYY-MM-DDThh:mmTZD (eg 1997-07-16T19:20+01:00)."
+    }
+  }
+}

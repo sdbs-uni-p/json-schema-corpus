@@ -1,0 +1,360 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "filter.colorspace",
+  "name": "colorspace",
+  "defaults": {},
+  "groups": [
+    {
+      "class": "standard",
+      "id": "standard",
+      "properties": [
+        {
+          "id": "range",
+          "parameter": "range",
+          "forced": true,
+          "control": {
+            "selectedIndex": 0,
+            "type": "combobox",
+            "items": [
+              {
+                "value": "tv"
+              },
+              {
+                "value": "pc"
+              }
+            ]
+          }
+        },
+        {
+          "id": "space",
+          "parameter": "space",
+          "forced": true,
+          "control": {
+            "selectedIndex": 0,
+            "type": "combobox",
+            "items": [
+              {
+                "value": "bt709"
+              },
+              {
+                "value": "fcc"
+              },
+              {
+                "value": "bt470bg"
+              },
+              {
+                "value": "smpte170m"
+              },
+              {
+                "value": "smpte240m"
+              },
+              {
+                "value": "ycgco"
+              },
+              {
+                "value": "gbr"
+              },
+              {
+                "value": "bt2020nc"
+              },
+              {
+                "value": "bt2020ncl"
+              }
+            ]
+          }
+        },
+        {
+          "id": "primaries",
+          "parameter": "primaries",
+          "forced": true,
+          "control": {
+            "selectedIndex": 0,
+            "type": "combobox",
+            "items": [
+              {
+                "value": "bt709"
+              },
+              {
+                "value": "bt470m"
+              },
+              {
+                "value": "bt470bg"
+              },
+              {
+                "value": "smpte170m"
+              },
+              {
+                "value": "smpte240m"
+              },
+              {
+                "value": "smpte428"
+              },
+              {
+                "value": "film"
+              },
+              {
+                "value": "smpte431"
+              },
+              {
+                "value": "smpte432"
+              },
+              {
+                "value": "bt2020"
+              },
+              {
+                "value": "jedec-p22"
+              }
+            ]
+          }
+        },
+        {
+          "id": "trc",
+          "parameter": "trc",
+          "forced": true,
+          "control": {
+            "selectedIndex": 0,
+            "type": "combobox",
+            "items": [
+              {
+                "value": "bt709"
+              },
+              {
+                "value": "bt470m"
+              },
+              {
+                "value": "gamma22"
+              },
+              {
+                "value": "bt470bg"
+              },
+              {
+                "value": "gamma28"
+              },
+              {
+                "value": "smpte170m"
+              },
+              {
+                "value": "smpte240m"
+              },
+              {
+                "value": "srgb"
+              },
+              {
+                "value": "iec61966-2-1"
+              },
+              {
+                "value": "xvycc"
+              },
+              {
+                "value": "iec61966-2-4"
+              },
+              {
+                "value": "bt2020-10"
+              },
+              {
+                "value": "bt2020-12"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "class": "standard",
+      "id": "input",
+      "properties": [
+        {
+          "id": "range",
+          "parameter": "irange",
+          "control": {
+            "selectedIndex": 0,
+            "type": "combobox",
+            "items": [
+              {
+                "value": "tv"
+              },
+              {
+                "value": "pc"
+              }
+            ]
+          }
+        },
+        {
+          "id": "space",
+          "parameter": "ispace",
+          "control": {
+            "selectedIndex": 0,
+            "type": "combobox",
+            "items": [
+              {
+                "value": "bt709"
+              },
+              {
+                "value": "fcc"
+              },
+              {
+                "value": "bt470bg"
+              },
+              {
+                "value": "smpte170m"
+              },
+              {
+                "value": "smpte240m"
+              },
+              {
+                "value": "ycgco"
+              },
+              {
+                "value": "gbr"
+              },
+              {
+                "value": "bt2020nc"
+              },
+              {
+                "value": "bt2020ncl"
+              }
+            ]
+          }
+        },
+        {
+          "id": "primaries",
+          "parameter": "iprimaries",
+          "control": {
+            "selectedIndex": 0,
+            "type": "combobox",
+            "items": [
+              {
+                "value": "bt709"
+              },
+              {
+                "value": "bt470m"
+              },
+              {
+                "value": "bt470bg"
+              },
+              {
+                "value": "smpte170m"
+              },
+              {
+                "value": "smpte240m"
+              },
+              {
+                "value": "smpte428"
+              },
+              {
+                "value": "film"
+              },
+              {
+                "value": "smpte431"
+              },
+              {
+                "value": "smpte432"
+              },
+              {
+                "value": "bt2020"
+              },
+              {
+                "value": "jedec-p22"
+              }
+            ]
+          }
+        },
+        {
+          "id": "trc",
+          "parameter": "itrc",
+          "control": {
+            "selectedIndex": 0,
+            "type": "combobox",
+            "items": [
+              {
+                "value": "bt709"
+              },
+              {
+                "value": "bt470m"
+              },
+              {
+                "value": "gamma22"
+              },
+              {
+                "value": "bt470bg"
+              },
+              {
+                "value": "gamma28"
+              },
+              {
+                "value": "smpte170m"
+              },
+              {
+                "value": "smpte240m"
+              },
+              {
+                "value": "srgb"
+              },
+              {
+                "value": "iec61966-2-1"
+              },
+              {
+                "value": "xvycc"
+              },
+              {
+                "value": "iec61966-2-4"
+              },
+              {
+                "value": "bt2020-10"
+              },
+              {
+                "value": "bt2020-12"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "class": "advanced",
+      "id": "advanced",
+      "properties": [
+        {
+          "id": "fast",
+          "parameter": "fast",
+          "control": {
+            "type": "boolean",
+            "value": false
+          }
+        },
+        {
+          "id": "dither",
+          "parameter": "dither",
+          "control": {
+            "selectedIndex": 0,
+            "type": "combobox",
+            "items": [
+              {
+                "value": "fsb"
+              }
+            ]
+          }
+        },
+        {
+          "id": "wpadapt",
+          "parameter": "wpadapt",
+          "control": {
+            "selectedIndex": 0,
+            "type": "combobox",
+            "items": [
+              {
+                "value": "bradford"
+              },
+              {
+                "value": "vonkries"
+              },
+              {
+                "value": "identity"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "$id": "https://example.com/schemas/com-example-base-2018-03-01.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$comment": "This keyword is reserved for comments from schema authors to readers or maintainers of the schema.",
+  "title": "Base Schema Version 2018-03-01",
+  "description": "The base schema provides a starting point for all documents, is the default schema for all documents and is the schema used for metadata.",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "type": "string",
+      "description": "Provides the self documentating feature for the resource / representation. Analogous to the 'describedby' relation type from RFC 5988 Web Linking"
+    },
+    "href": {
+      "type": "string",
+      "description": "Identifier and hyperlink to this resource."
+    },
+    "id": {
+      "type": "string",
+      "description": "For relational database systems to save the identifier separate from the URI template. When combined with the `template` key results in the href key value. Suggest URL Encoded UUID4 value (aka GUID)."
+    },
+    "template": {
+      "type": "string",
+      "description": "For relational database systems to save the template separate from the identifier."
+    },
+    "relatedData": {
+      "type": "array",
+      "description": "An array for embedding related data in a parent response."
+    },
+    "relatedDataLinks": {
+      "type": "array",
+      "description": "An array for providing hyperlinks to related data in a parent response.",
+      "items": {
+        "$ref": "https://example.com/schemas/com-example-links-2018-03-01.schema.json"
+      }
+    },
+    "alternates": {
+      "type": "array",
+      "description": "An array for providing hyperlinks to alternative representations for this resource.",
+      "items": {
+        "$ref": "https://example.com/schemas/com-example-operation-2018-03-01.schema.json"
+      }
+    },
+    "operations": {
+      "type": "array",
+      "description": "The hypermedia as the engine of application state (HATEOAS) information.",
+      "items": {
+        "$ref": "https://example.com/schemas/com-example-operation-2018-03-01.schema.json"
+      }
+    },
+    "errors": {
+      "type": "array",
+      "description": "The errors collection for when the response code is 4xx.",
+      "items": {
+        "$ref": "https://example.com/schemas/com-example-error-2018-03-01.schema.json"
+      }
+    }
+  },
+  "required": [
+    "schema"
+  ]
+}

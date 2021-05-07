@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "User",
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "[Output only] Unique ID of user",
+      "type": "string",
+      "minLength": 1
+    },
+    "email": {
+      "description": "E-mail address for the user",
+      "type": "string",
+      "format": "email",
+      "minLength": 1
+    },
+    "firstName": {
+      "description": "First name of user",
+      "type": "string",
+      "minLength": 1
+    },
+    "lastName": {
+      "description": "Last name of user",
+      "type": "string",
+      "minLength": 1
+    },
+    "phone": {
+      "description": "Phone number for the user",
+      "type": "number"
+    },
+    "jobTitle": {
+      "description": "Job title of user",
+      "type": "string",
+      "minLength": 1
+    },
+    "createdAt": {
+      "description": "[Output only] Creation time of the user",
+      "type": "string",
+      "format": "date-time",
+      "minLength": 1
+    },
+    "createdBy": {
+      "description": "[Output only] Creator of the user",
+      "type": "string",
+      "minLength": 1
+    },
+    "updatedAt": {
+      "description": "[Output only] Last modification time of the user",
+      "type": "string",
+      "format": "date-time",
+      "minLength": 1
+    },
+    "updatedBy": {
+      "description": "[Output only] User to last modify the user",
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "email",
+    "firstName",
+    "lastName",
+    "phone",
+    "jobTitle"
+  ]
+}

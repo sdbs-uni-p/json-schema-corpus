@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "name": "Entity",
+  "description": "Represent an Entity in the ER model",
+  "type": "object",
+  "properties": {
+    "name": {
+      "description": "name of the Entity",
+      "type": "string"
+    },
+    "version": {
+      "description": "version",
+      "type": "string"
+    },
+    "author": {
+      "description": "name of the author",
+      "type": "string"
+    },
+    "description": {
+      "description": "human readable description",
+      "type": "string"
+    },
+    "associated-tool": {
+      "description": "name of the associated tool (eg- Docker-Rest-API)",
+      "type": "string"
+    },
+    "properties": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "name of the attribute",
+            "type": "string"
+          },
+          "type": {
+            "description": "data type of the attribute",
+            "type": "string"
+          },
+          "default-value": {
+            "description": "default-value for the attribute",
+            "type": "string"
+          },
+          "required": {
+            "description": "required or not?",
+            "type": "boolean"
+          },
+          "description": {
+            "description": "human readable description for the attribute",
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

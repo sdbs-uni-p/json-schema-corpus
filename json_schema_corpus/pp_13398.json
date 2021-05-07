@@ -1,0 +1,40 @@
+{
+  "title": "API Updater Schema",
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "type": "string",
+      "maxLength": 255,
+      "minLength": 1
+    },
+    "emailAddress": {
+      "type": "string",
+      "pattern": "^[^@^\\s]+@[^@^\\.^\\s]+(\\.[^@^\\.^\\s]+)+$"
+    },
+    "password": {
+      "type": "string",
+      "maxLength": 255,
+      "minLength": 10
+    },
+    "role": {
+      "enum": [
+        "buyer",
+        "supplier",
+        "admin"
+      ]
+    },
+    "supplierId": {
+      "type": "integer"
+    },
+    "hashpw": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "name",
+    "emailAddress",
+    "password"
+  ]
+}

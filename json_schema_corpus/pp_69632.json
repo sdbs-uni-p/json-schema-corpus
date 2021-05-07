@@ -1,0 +1,38 @@
+{
+  "id": "http://schema.org/VideoObject",
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "extends": {
+    "$ref": "MediaObject.json"
+  },
+  "description": "A video file. Schema.org: http://schema.org/VideoObject",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "caption": {
+      "description": "The caption for this object.",
+      "type": "string"
+    },
+    "productionCompany": {
+      "description": "The production company or studio that made the movie, tv/radio series, season, or episode, or media object.",
+      "type": "object",
+      "$ref": "Organization.json"
+    },
+    "thumbnail": {
+      "description": "Thumbnail image for an image or video.",
+      "type": "object",
+      "$ref": "ImageObject.json"
+    },
+    "transcript": {
+      "description": "If this MediaObject is an AudioObject or VideoObject, the transcript of that object.",
+      "type": "string"
+    },
+    "videoFrameSize": {
+      "description": "The frame size of the video.",
+      "type": "string"
+    },
+    "videoQuality": {
+      "description": "The quality of the video.",
+      "type": "string"
+    }
+  }
+}

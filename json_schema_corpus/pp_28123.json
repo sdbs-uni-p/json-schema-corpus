@@ -1,0 +1,99 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "broadbandProductSpecDetail",
+  "id": "broadbandProductSpecDetail",
+  "description": "Details of an Broadband product specification. These details are used for Serviceability Responses.",
+  "type": "object",
+  "required": [
+    "objectType"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the Broadband Product Specification Detail.",
+      "maxLength": 15
+    },
+    "objectType": {
+      "type": "string",
+      "enum": [
+        "broadbandProductSpecDetail"
+      ],
+      "description": "The type of the object, broadbandProductSpecDetail."
+    },
+    "type": {
+      "type": "string",
+      "description": " The specific type of product being detailed.",
+      "enum": [
+        "INTERNET"
+      ]
+    },
+    "uploadSpeed": {
+      "$ref": "informationRateQuantity.json#",
+      "required": true,
+      "description": "The upload speed for the Product Spec (e.g. 10Mbps, 100Mbps, 1Gbps, 10Gbps)."
+    },
+    "downloadSpeed": {
+      "$ref": "informationRateQuantity.json#",
+      "required": true,
+      "description": "The download speed for the Product Spec (e.g. 10Mbps, 100Mbps, 1Gbps, 10Gbps)."
+    },
+    "accessMedium": {
+      "type": "string",
+      "required": true,
+      "description": "The type of medium the product should be delivered over (e.g., FIBER, COAX, TWISTED_PAIR).",
+      "enum": [
+        "FIBER",
+        "COAX",
+        "TWISTED_PAIR"
+      ]
+    },
+    "accessTechnology": {
+      "type": "string",
+      "required": true,
+      "description": "The underlying technology used to transmit data across the Access Medium (e.g., DOCSIS_3.0).",
+      "enum": [
+        "DIRECT_FIBER",
+        "DOCSIS_3.0",
+        "DOCSIS_3.1",
+        "DSL"
+      ]
+    },
+    "cpeMake": {
+      "type": "string",
+      "description": "The brand of Customer Premise Equipment (CPE) provided as part of the product (e.g., Arris)."
+    },
+    "cpeModel": {
+      "type": "string",
+      "description": "The model of Customer Premise Equipment (CPE) provided as part of the product (e.g. Surfboard SB6141)."
+    },
+    "dhcpSupport": {
+      "type": "boolean",
+      "required": true,
+      "description": "An indicator that specifies whether DHCP services are provided as a standard part of the product offer."
+    },
+    "bridgeMode": {
+      "type": "boolean",
+      "required": true,
+      "description": "An indicator that specifies whether routers are configured in bridge mode as part of the product offer."
+    },
+    "staticIpAddresses": {
+      "type": "number",
+      "required": true,
+      "description": "The maximum number of Static IP addresses available as part of the product."
+    },
+    "publicIpV4Addresses": {
+      "type": "number",
+      "required": true,
+      "description": "The number of dynamically assigned public IPv4 addresses available as part of the product."
+    },
+    "publicIpV6Addresses": {
+      "type": "number",
+      "required": true,
+      "description": "The number of dynamically assigned public IPv6 addresses available as part of the product."
+    },
+    "serviceLevelAgreement": {
+      "type": "string",
+      "description": "The standard level of service provided as part of the product."
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://flynn.io/schema/controller/event#",
+  "title": "Event",
+  "description": "",
+  "sortIndex": 16,
+  "type": "object",
+  "examples": [
+    "schema/examples/controller/events_stream#",
+    "schema/examples/controller/events_list#",
+    "schema/examples/controller/event_get#"
+  ],
+  "definitions": {
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "app",
+        "app_deletion",
+        "app_garbage_collection",
+        "app_release",
+        "artifact",
+        "cluster_backup",
+        "deployment",
+        "domain_migration",
+        "job",
+        "key",
+        "key_deletion",
+        "provider",
+        "release",
+        "release_deletion",
+        "resource",
+        "resource_app_deletion",
+        "resource_deletion",
+        "route",
+        "route_deletion",
+        "sink",
+        "sink_deletion",
+        "scale",
+        "scale_request",
+        "volume"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "app": {
+      "$ref": "/schema/controller/common#/definitions/id"
+    },
+    "object_type": {
+      "$ref": "#/definitions/event_type"
+    },
+    "object_id": {
+      "$ref": "/schema/controller/common#/definitions/id"
+    },
+    "data": {
+      "description": "",
+      "type": "object"
+    },
+    "created_at": {
+      "$ref": "/schema/controller/common#/definitions/created_at"
+    }
+  }
+}

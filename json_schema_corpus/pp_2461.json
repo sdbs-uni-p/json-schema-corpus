@@ -1,0 +1,80 @@
+{
+  "id": "https://cdn.brytecore.com/packages/schemas/form.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "A user-submitted data entry form",
+  "type": "object",
+  "properties": {
+    "fromEmail": {
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "email"
+        },
+        {
+          "enum": [
+            ""
+          ]
+        }
+      ]
+    },
+    "fromName": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "fromTelephone": {
+      "oneOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/schemas/telephone.json#"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "message": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "name": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "subject": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "toEmail": {
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "email"
+        },
+        {
+          "enum": [
+            ""
+          ]
+        }
+      ]
+    },
+    "toName": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

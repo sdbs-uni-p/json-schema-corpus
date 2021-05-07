@@ -1,0 +1,85 @@
+{
+  "title": "Assessment",
+  "id": "/profiles/assessment.json",
+  "description": "Schema for storing and using assessments",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "required": [
+    "value"
+  ],
+  "identifyingProperties": [
+    "uuid"
+  ],
+  "additionalProperties": false,
+  "mixinProperties": [
+    {
+      "$ref": "mixins.json#/schema_version"
+    },
+    {
+      "$ref": "mixins.json#/uuid"
+    },
+    {
+      "$ref": "mixins.json#/submitted"
+    }
+  ],
+  "properties": {
+    "schema_version": {
+      "default": "1"
+    },
+    "value": {
+      "title": "Value",
+      "description": "Value of assessment",
+      "type": "string",
+      "enum": [
+        "Not Assessed",
+        "Supports",
+        "Review",
+        "Contradicts"
+      ]
+    },
+    "evidence_type": {
+      "description": "Object type of assessed evidence",
+      "type": "string"
+    },
+    "evidence_id": {
+      "description": "uuidof assessed evidence",
+      "type": "string"
+    },
+    "evidence_gdm": {
+      "description": "uuid of GDM the assessed evidence belonging to",
+      "type": "string"
+    },
+    "active": {
+      "title": "Active",
+      "description": "Boolean switch for activation of the assessment",
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "columns": {
+    "submitted_by.title": {
+      "title": "Owner",
+      "type": "string"
+    },
+    "evidence_type": {
+      "title": "Evidence",
+      "type": "string"
+    },
+    "evidence_gdm": {
+      "title": "GDM",
+      "type": "string"
+    },
+    "value": {
+      "Title": "Value",
+      "type": "string"
+    },
+    "date_created": {
+      "title": "Creation Date",
+      "type": "string"
+    },
+    "last_modified": {
+      "title": "Last Modified",
+      "type": "string"
+    }
+  }
+}

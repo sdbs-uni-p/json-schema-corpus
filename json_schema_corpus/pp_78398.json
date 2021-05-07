@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "films_index",
+  "type": "array",
+  "endpoint": "http://{host}",
+  "items": {
+    "title": "film",
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "uuid"
+      }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "A Notification",
+  "type": "object",
+  "properties": {
+    "id": {
+      "$ref": "definitions-schema.json#/definitions/id"
+    },
+    "date": {
+      "type": "integer",
+      "multipleOf": 1.0
+    },
+    "votes": {
+      "type": "integer",
+      "multipleOf": 1.0
+    },
+    "message": {
+      "type": "string"
+    },
+    "routeId": {
+      "type": "integer",
+      "multipleOf": 1.0
+    },
+    "transport": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "userId": {
+      "type": "integer",
+      "multipleOf": 1.0
+    },
+    "username": {
+      "type": "string"
+    }
+  }
+}

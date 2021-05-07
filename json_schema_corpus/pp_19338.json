@@ -1,0 +1,369 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "description": "Agency object",
+  "properties": {
+    "Agency": {
+      "id": "Agency",
+      "type": "object",
+      "properties": {
+        "AgencyID": {
+          "id": "AgencyID",
+          "type": "string"
+        },
+        "AgencyName": {
+          "id": "AgencyName",
+          "type": "string"
+        },
+        "Description": {
+          "id": "Description",
+          "type": "string"
+        },
+        "AlternateName": {
+          "id": "AlternateName",
+          "type": "object",
+          "properties": {
+            "AlternateName": {
+              "id": "AlternateName",
+              "type": "string"
+            },
+            "Confidential": {
+              "id": "Confidential",
+              "type": "boolean"
+            },
+            "Description": {
+              "id": "Description",
+              "type": "string"
+            }
+          }
+        },
+        "Phone": {
+          "id": "Phone",
+          "type": "object",
+          "properties": {
+            "Phone": {
+              "id": "Phone",
+              "type": "string"
+            },
+            "Confidential": {
+              "id": "Confidential",
+              "type": "boolean"
+            },
+            "ReasonWithheld": {
+              "id": "ReasonWithheld",
+              "type": "string"
+            },
+            "Description": {
+              "id": "Description",
+              "type": "string"
+            },
+            "Type": {
+              "id": "Type",
+              "type": "string"
+            },
+            "Function": {
+              "id": "Function",
+              "type": "string"
+            },
+            "TollFree": {
+              "id": "TollFree",
+              "type": "boolean"
+            },
+            "Department": {
+              "id": "Department",
+              "type": "string"
+            },
+            "CountryPrefix": {
+              "id": "CountryPrefix",
+              "type": "string"
+            }
+          }
+        },
+        "URL": {
+          "id": "URL",
+          "type": "object",
+          "properties": {
+            "Address": {
+              "id": "Address",
+              "type": "string"
+            },
+            "Note": {
+              "id": "Note",
+              "type": "string"
+            }
+          }
+        },
+        "Email": {
+          "id": "Email",
+          "type": "string"
+        },
+        "Contact": {
+          "id": "Contact",
+          "type": "object",
+          "properties": {
+            "ID": {
+              "id": "ID",
+              "type": "string"
+            },
+            "AgencyID": {
+              "id": "AgencyID",
+              "type": "string"
+            },
+            "ServiceID": {
+              "id": "ServiceID",
+              "type": "string"
+            },
+            "Department": {
+              "id": "Department",
+              "type": "string"
+            },
+            "Title": {
+              "id": "Title",
+              "type": "string"
+            },
+            "Name": {
+              "id": "Name",
+              "type": "string"
+            },
+            "Nickname": {
+              "id": "Nickname",
+              "type": "string"
+            },
+            "ContactEmail": {
+              "id": "ContactEmail",
+              "type": "string"
+            },
+            "ContactPhone": {
+              "id": "ContactPhone",
+              "type": "object",
+              "properties": {
+                "Phone": {
+                  "id": "Phone",
+                  "type": "string"
+                },
+                "Confidential": {
+                  "id": "Confidential",
+                  "type": "boolean"
+                },
+                "ReasonWithheld": {
+                  "id": "ReasonWithheld",
+                  "type": "string"
+                },
+                "Description": {
+                  "id": "Description",
+                  "type": "string"
+                },
+                "Type": {
+                  "id": "Type",
+                  "type": "string"
+                },
+                "Function": {
+                  "id": "Function",
+                  "type": "string"
+                },
+                "TollFree": {
+                  "id": "TollFree",
+                  "type": "boolean"
+                },
+                "Department": {
+                  "id": "Department",
+                  "type": "string"
+                },
+                "CountryPrefix": {
+                  "id": "CountryPrefix",
+                  "type": "string"
+                }
+              }
+            },
+            "ContactType": {
+              "id": "ContactType",
+              "type": "string"
+            }
+          }
+        },
+        "LicenseAccreditation": {
+          "id": "LicenseAccreditation",
+          "type": "object",
+          "properties": {
+            "License": {
+              "id": "License",
+              "type": "string"
+            },
+            "LicensedBy": {
+              "id": "LicensedBy",
+              "type": "string"
+            }
+          }
+        },
+        "TaxStatus": {
+          "id": "TaxStatus",
+          "type": "string"
+        },
+        "Funding": {
+          "id": "Funding",
+          "type": "object",
+          "properties": {
+            "FundingID": {
+              "id": "FundingID",
+              "type": "string"
+            },
+            "AgencyID": {
+              "id": "AgencyID",
+              "type": "string"
+            },
+            "ServiceID": {
+              "id": "ServiceID",
+              "type": "string"
+            },
+            "Source": {
+              "id": "Source",
+              "type": "string"
+            },
+            "SourceDescription": {
+              "id": "SourceDescription",
+              "type": "string"
+            }
+          }
+        },
+        "ExcludeFromWebsite": {
+          "id": "ExcludeFromWebsite",
+          "type": "boolean"
+        },
+        "YearIncorporated": {
+          "id": "YearIncorporated",
+          "type": "integer"
+        },
+        "FEIN": {
+          "id": "FEIN",
+          "type": "string"
+        },
+        "AgencyOffersService": {
+          "id": "AgencyOffersService",
+          "type": "string"
+        },
+        "ResourceInfo": {
+          "id": "ResourceInfo",
+          "type": "object",
+          "properties": {
+            "Contact": {
+              "id": "Contact",
+              "type": "object",
+              "properties": {
+                "ID": {
+                  "id": "ID",
+                  "type": "string"
+                },
+                "AgencyID": {
+                  "id": "AgencyID",
+                  "type": "string"
+                },
+                "ServiceID": {
+                  "id": "ServiceID",
+                  "type": "string"
+                },
+                "Department": {
+                  "id": "Department",
+                  "type": "string"
+                },
+                "Title": {
+                  "id": "Title",
+                  "type": "string"
+                },
+                "Name": {
+                  "id": "Name",
+                  "type": "string"
+                },
+                "Nickname": {
+                  "id": "Nickname",
+                  "type": "string"
+                },
+                "ContactEmail": {
+                  "id": "ContactEmail",
+                  "type": "string"
+                },
+                "ContactPhone": {
+                  "id": "ContactPhone",
+                  "type": "object",
+                  "properties": {
+                    "Phone": {
+                      "id": "Phone",
+                      "type": "string"
+                    },
+                    "Confidential": {
+                      "id": "Confidential",
+                      "type": "boolean"
+                    },
+                    "ReasonWithheld": {
+                      "id": "ReasonWithheld",
+                      "type": "string"
+                    },
+                    "Description": {
+                      "id": "Description",
+                      "type": "string"
+                    },
+                    "Type": {
+                      "id": "Type",
+                      "type": "string"
+                    },
+                    "Function": {
+                      "id": "Function",
+                      "type": "string"
+                    },
+                    "TollFree": {
+                      "id": "TollFree",
+                      "type": "boolean"
+                    },
+                    "Department": {
+                      "id": "Department",
+                      "type": "string"
+                    },
+                    "CountryPrefix": {
+                      "id": "CountryPrefix",
+                      "type": "string"
+                    }
+                  }
+                },
+                "ContactType": {
+                  "id": "ContactType",
+                  "type": "string"
+                }
+              }
+            },
+            "ResourceSpecialist": {
+              "id": "ResourceSpecialist",
+              "type": "string"
+            },
+            "AvailableForDirectory": {
+              "id": "AvailableForDirectory",
+              "type": "boolean"
+            },
+            "AvailableForReferral": {
+              "id": "AvailableForReferral",
+              "type": "boolean"
+            },
+            "AvailableForResearch": {
+              "id": "AvailableForResearch",
+              "type": "boolean"
+            },
+            "DateAdded": {
+              "id": "DateAdded",
+              "type": "string"
+            },
+            "DateLastVerified": {
+              "id": "DateLastVerified",
+              "type": "string"
+            },
+            "DateOfLastAction": {
+              "id": "DateOfLastAction",
+              "type": "string"
+            },
+            "LastActionType": {
+              "id": "LastActionType",
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Step",
+  "description": "Description of a single step of the instructions",
+  "type": "object",
+  "properties": {
+    "step_id": {
+      "$ref": "common.json#/step_id"
+    },
+    "title": {
+      "type": "string",
+      "description": "Title for this step"
+    },
+    "description": {
+      "type": "string",
+      "description": "Textual description for this step"
+    },
+    "attention": {
+      "type": "string",
+      "description": "Warnings about critical mistakes that can be made",
+      "default": ""
+    },
+    "duration": {
+      "$ref": "common.json#/timedelta",
+      "description": "Time of activity required in this step"
+    },
+    "waiting": {
+      "$ref": "common.json#/timedelta",
+      "description": "Waiting time required in this step"
+    },
+    "parts": {
+      "$ref": "common.json#/object_namespace",
+      "description": "Local aliases of parts in this step"
+    },
+    "tools": {
+      "$ref": "common.json#/object_namespace",
+      "description": "Local aliases of tools in this step"
+    },
+    "results": {
+      "$ref": "common.json#/object_namespace",
+      "description": "Local aliases of results in this step"
+    },
+    "images": {
+      "$ref": "common.json#/image_namespace",
+      "description": "Local aliases of images in this step"
+    },
+    "files": {
+      "$ref": "common.json#/file_namespace",
+      "description": "Local aliases of images in this step"
+    },
+    "assertions": {
+      "type": "array",
+      "description": "Assertions about the results of the step",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    }
+  },
+  "required": [
+    "step_id",
+    "title",
+    "description"
+  ],
+  "additionalProperties": false
+}

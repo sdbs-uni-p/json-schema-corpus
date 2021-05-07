@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://holi0317.net/schemas",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "baseUrl": {
+      "id": "http://holi0317.net/schemas/baseUrl",
+      "type": "string"
+    },
+    "repo": {
+      "id": "http://holi0317.net/schemas/repo",
+      "type": "string"
+    },
+    "index": {
+      "id": "http://holi0317.net/schemas/index",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "id": "http://holi0317.net/schemas/index/0",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "uid": {
+            "id": "http://holi0317.net/schemas/index/0/uid",
+            "type": "string"
+          },
+          "url": {
+            "id": "http://holi0317.net/schemas/index/0/url",
+            "type": "string"
+          }
+        },
+        "required": [
+          "uid",
+          "url"
+        ]
+      }
+    }
+  },
+  "required": [
+    "repo",
+    "index"
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "type": {
+      "enum": [
+        "TestTypeV1.2"
+      ],
+      "type": "string",
+      "pattern": "^[A-Z]{1}\\w+V\\d+\\.\\d+$",
+      "required": true
+    },
+    "id": {
+      "type": "string",
+      "required": true
+    },
+    "text_field": {
+      "type": "string",
+      "required": true
+    },
+    "date_range": {
+      "type": "object",
+      "properties": {
+        "start_date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "end_date": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "additionalProperties": false,
+      "required": true
+    },
+    "single_date": {
+      "type": "string",
+      "format": "date-time",
+      "required": true
+    },
+    "integers": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 0,
+        "exclusiveMinimum": true
+      }
+    }
+  },
+  "definitions": {
+    "positiveInteger": {
+      "type": "integer",
+      "minimum": 0,
+      "exclusiveMinimum": true
+    }
+  }
+}

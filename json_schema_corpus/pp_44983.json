@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "name": "Evaluation",
+  "properties": {
+    "@id": {
+      "type": "string"
+    },
+    "@type": {
+      "type": "array"
+    },
+    "metrics": {
+      "type": "array",
+      "items": {
+        "$ref": "metric.json"
+      },
+      "default": []
+    },
+    "evaluatesOn": {
+      "description": "Name of the dataset evaluated ",
+      "type": "string"
+    },
+    "evaluates": {
+      "description": "Classifier or plugin evaluated",
+      "type": "string"
+    }
+  },
+  "required": [
+    "@id",
+    "metrics"
+  ]
+}

@@ -1,0 +1,735 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://xray.com/somedomain/course/123/discussionGrading",
+  "title": "Discussion grading report",
+  "description": "X-Ray web service discussionGrading method schema",
+  "oneOf": [
+    {
+      "$ref": "base_schema_ref.json#/definitions/base_response"
+    },
+    {
+      "id": "http://xray.com/somedomain/course/123/discussionGrading/okresponse",
+      "required": [
+        "reportdate",
+        "scheduleid",
+        "forumid",
+        "datapoints_plain",
+        "attachments",
+        "subtype",
+        "courseid",
+        "datecreated",
+        "notifications",
+        "elements",
+        "oldid",
+        "datapoints",
+        "date",
+        "type",
+        "id",
+        "participantid"
+      ],
+      "type": "object",
+      "properties": {
+        "reportdate": {
+          "type": "string"
+        },
+        "scheduleid": {
+          "type": "number"
+        },
+        "forumid": {
+          "type": "number"
+        },
+        "datapoints_plain": {
+          "type": "array"
+        },
+        "attachments": {
+          "type": "array"
+        },
+        "notifications": {
+          "required": [
+            "attributes",
+            "type",
+            "value"
+          ],
+          "type": "object",
+          "properties": {
+            "attributes": {
+              "required": [
+                "class",
+                "names",
+                "row.names"
+              ],
+              "type": "object",
+              "properties": {
+                "row.names": {
+                  "required": [
+                    "attributes",
+                    "type",
+                    "value"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "attributes": {
+                      "type": "object"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "items": {
+                        "type": "number"
+                      },
+                      "type": "array"
+                    }
+                  }
+                },
+                "class": {
+                  "required": [
+                    "attributes",
+                    "type",
+                    "value"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "attributes": {
+                      "type": "object"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    }
+                  }
+                },
+                "names": {
+                  "required": [
+                    "attributes",
+                    "type",
+                    "value"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "attributes": {
+                      "type": "object"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    }
+                  }
+                }
+              }
+            },
+            "type": {
+              "type": "string"
+            },
+            "value": {
+              "items": {
+                "required": [
+                  "attributes",
+                  "type",
+                  "value"
+                ],
+                "type": "object",
+                "properties": {
+                  "attributes": {
+                    "type": "object"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "items": {
+                      "type": [
+                        "number",
+                        "string",
+                        "boolean",
+                        "null"
+                      ]
+                    },
+                    "type": "array"
+                  }
+                }
+              },
+              "type": "array"
+            }
+          }
+        },
+        "courseid": {
+          "type": "number"
+        },
+        "datecreated": {
+          "type": "string"
+        },
+        "subtype": {
+          "type": "string"
+        },
+        "elements": {
+          "required": [
+            "element1",
+            "discussionSuggestedGrades",
+            "studentDiscussionGrades"
+          ],
+          "type": "object",
+          "properties": {
+            "element1": {
+              "required": [
+                "sectionLevel",
+                "elementName",
+                "title",
+                "courseName",
+                "instructors",
+                "date",
+                "elementType"
+              ],
+              "type": "object",
+              "properties": {
+                "sectionLevel": {
+                  "type": "number"
+                },
+                "elementName": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "courseName": {
+                  "type": "string"
+                },
+                "instructors": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "date": {
+                  "type": "string"
+                },
+                "elementType": {
+                  "type": "string"
+                }
+              }
+            },
+            "discussionSuggestedGrades": {
+              "required": [
+                "elementName",
+                "dimensions",
+                "reportId",
+                "title",
+                "contexts",
+                "customData",
+                "mapping",
+                "tooltip",
+                "filename",
+                "plotType",
+                "elementType",
+                "legend",
+                "uuid"
+              ],
+              "type": "object",
+              "properties": {
+                "elementName": {
+                  "type": "string"
+                },
+                "dimensions": {
+                  "required": [
+                    "width",
+                    "height"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "width": {
+                      "type": "number"
+                    },
+                    "height": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "title": {
+                  "type": "string"
+                },
+                "contexts": {
+                  "required": [
+                    "courseContext",
+                    "forumContext",
+                    "timeMachine",
+                    "participantContext"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "courseContext": {
+                      "type": "string"
+                    },
+                    "forumContext": {
+                      "type": "string"
+                    },
+                    "timeMachine": {
+                      "type": "string"
+                    },
+                    "participantContext": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "customData": {
+                  "required": [
+                    "className",
+                    "field",
+                    "class"
+                  ],
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "className": {
+                      "type": "string"
+                    },
+                    "field": {
+                      "type": "string"
+                    },
+                    "class": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "mapping": {
+                  "type": "array"
+                },
+                "tooltip": {
+                  "type": "string"
+                },
+                "filename": {
+                  "type": "string"
+                },
+                "reportId": {
+                  "type": "array"
+                },
+                "uuid": {
+                  "type": "string"
+                },
+                "elementType": {
+                  "type": "string"
+                },
+                "legend": {
+                  "type": "string"
+                },
+                "plotType": {
+                  "type": "string"
+                }
+              }
+            },
+            "studentDiscussionGrades": {
+              "required": [
+                "comment",
+                "elementName",
+                "enableGraph",
+                "uuid",
+                "title",
+                "columnOrder",
+                "legend",
+                "inverted",
+                "dataFormat",
+                "colorCodesSpecs",
+                "elementType",
+                "data",
+                "columnHeaders"
+              ],
+              "type": "object",
+              "properties": {
+                "comment": {
+                  "type": "array"
+                },
+                "elementName": {
+                  "type": "string"
+                },
+                "enableGraph": {
+                  "type": "boolean"
+                },
+                "uuid": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "columnOrder": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "inverted": {
+                  "type": "boolean"
+                },
+                "dataFormat": {
+                  "type": "array"
+                },
+                "colorCodesSpecs": {
+                  "type": "array"
+                },
+                "columnHeaders": {
+                  "required": [
+                    "wc",
+                    "regularityContrib",
+                    "firstname",
+                    "lastname",
+                    "posts",
+                    "letterGrade",
+                    "ctc"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "wc": {
+                      "type": "string"
+                    },
+                    "regularityContrib": {
+                      "type": "string"
+                    },
+                    "firstname": {
+                      "type": "string"
+                    },
+                    "lastname": {
+                      "type": "string"
+                    },
+                    "posts": {
+                      "type": "string"
+                    },
+                    "letterGrade": {
+                      "type": "string"
+                    },
+                    "ctc": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "elementType": {
+                  "type": "string"
+                },
+                "data": {
+                  "items": {
+                    "required": [
+                      "courseId",
+                      "wc",
+                      "participantId",
+                      "regularityContrib",
+                      "firstname",
+                      "posts",
+                      "discussion_posts_last_week",
+                      "lastname",
+                      "inCourse",
+                      "regularityCTC",
+                      "roleId",
+                      "letterGrade",
+                      "ctc",
+                      "contrib",
+                      "numberGrade"
+                    ],
+                    "type": "object",
+                    "properties": {
+                      "wc": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "type": [
+                              "number",
+                              "object",
+                              "null",
+                              "string"
+                            ]
+                          }
+                        }
+                      },
+                      "participantId": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "type": "number"
+                          }
+                        }
+                      },
+                      "firstname": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "courseId": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "type": "number"
+                          }
+                        }
+                      },
+                      "discussion_posts_last_week": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "type": [
+                              "number",
+                              "object",
+                              "string",
+                              "null",
+                              "boolean"
+                            ]
+                          }
+                        }
+                      },
+                      "ctc": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "colorCode": {
+                            "type": [
+                              "string",
+                              "object",
+                              "number",
+                              "null"
+                            ]
+                          },
+                          "value": {
+                            "type": [
+                              "string",
+                              "object",
+                              "number",
+                              "null"
+                            ]
+                          }
+                        }
+                      },
+                      "posts": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "type": [
+                              "string",
+                              "object",
+                              "number",
+                              "null"
+                            ]
+                          }
+                        }
+                      },
+                      "regularityContrib": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "colorCode": {
+                            "type": [
+                              "string",
+                              "object",
+                              "number",
+                              "null"
+                            ]
+                          },
+                          "value": {
+                            "type": [
+                              "string",
+                              "object",
+                              "number",
+                              "null"
+                            ]
+                          }
+                        }
+                      },
+                      "regularityCTC": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "properties": {
+                          "colorCode": {
+                            "type": [
+                              "string",
+                              "object",
+                              "number",
+                              "null"
+                            ]
+                          },
+                          "value": {
+                            "type": [
+                              "object",
+                              "null"
+                            ]
+                          }
+                        }
+                      },
+                      "letterGrade": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "type": [
+                              "string",
+                              "object",
+                              "number",
+                              "null"
+                            ]
+                          }
+                        }
+                      },
+                      "roleId": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "type": "number"
+                          }
+                        }
+                      },
+                      "inCourse": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "type": [
+                              "string",
+                              "object",
+                              "number",
+                              "null"
+                            ]
+                          }
+                        }
+                      },
+                      "lastname": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "contrib": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "colorCode": {
+                            "type": [
+                              "string",
+                              "object",
+                              "number",
+                              "null"
+                            ]
+                          },
+                          "value": {
+                            "type": [
+                              "string",
+                              "object",
+                              "number",
+                              "null"
+                            ]
+                          }
+                        }
+                      },
+                      "numberGrade": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "type": [
+                              "string",
+                              "object",
+                              "number",
+                              "null"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "type": "array"
+                },
+                "legend": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "oldid": {
+          "type": "null"
+        },
+        "datapoints": {
+          "required": [
+            "attributes",
+            "type",
+            "value"
+          ],
+          "type": "object",
+          "properties": {
+            "attributes": {
+              "type": "object"
+            },
+            "type": {
+              "type": "string"
+            },
+            "value": {
+              "type": "array"
+            }
+          }
+        },
+        "date": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "id": {
+          "type": "number"
+        },
+        "participantid": {
+          "type": "number"
+        }
+      }
+    }
+  ]
+}

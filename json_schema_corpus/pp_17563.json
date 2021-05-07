@@ -1,0 +1,61 @@
+{
+  "typeName": "test",
+  "additionalProperties": false,
+  "type": "object",
+  "required": [
+    "test1",
+    "test2",
+    "test3",
+    "test5"
+  ],
+  "properties": {
+    "test1": {
+      "type": "string",
+      "maxLength": 200,
+      "minLength": 10,
+      "pattern": ".+[@].+[.]___"
+    },
+    "test2": {
+      "type": "number",
+      "maximum": 99999999.0,
+      "minimum": 0.0
+    },
+    "test3": {
+      "type": "string",
+      "title": "test3",
+      "description": "Description",
+      "format": "date-time"
+    },
+    "test4": {
+      "type": "object",
+      "title": "Object",
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "lname": {
+          "title": "Last Name",
+          "type": "string"
+        }
+      }
+    },
+    "test5": {
+      "title": "enums",
+      "typeName": "testenum",
+      "type": "integer",
+      "enum": [
+        0,
+        1,
+        2
+      ],
+      "enumNames": [
+        "e1",
+        "e2",
+        "e3"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "test"
+}

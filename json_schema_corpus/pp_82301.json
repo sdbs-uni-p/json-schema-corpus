@@ -1,0 +1,46 @@
+{
+  "id": "http://schemas.triniti.io/json-schema/gdbots/enrichments/mixin/ip-to-geo/1-0-0.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "ctx_ip": {
+      "type": "string",
+      "format": "ipv4",
+      "pbj": {
+        "type": "string",
+        "rule": "single",
+        "format": "ipv4",
+        "overridable": true
+      }
+    },
+    "ctx_ip_geo": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "#/definitions/address"
+        }
+      ],
+      "pbj": {
+        "type": "message",
+        "rule": "single"
+      }
+    }
+  },
+  "definitions": {
+    "address": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "http://schemas.triniti.io/json-schema/gdbots/geo/address/1-0-0.json#"
+        },
+        {
+          "$ref": "http://schemas.triniti.io/json-schema/gdbots/geo/address/1-0-1.json#"
+        },
+        {
+          "$ref": "http://schemas.triniti.io/json-schema/gdbots/geo/address/1-0-2.json#"
+        }
+      ]
+    }
+  },
+  "additionalProperties": true
+}

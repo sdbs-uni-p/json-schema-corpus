@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "opinion",
+  "description": "An opinion about another object",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "../common/core.json"
+    },
+    {
+      "$ref": "../common/describable.json"
+    },
+    {
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "opinion"
+          ]
+        },
+        "object_ref": {
+          "$ref": "../common/id.json",
+          "description": "The id of the object to which this opinion refers"
+        },
+        "agreement": {
+          "type": "array",
+          "description": "The type of opinion being made",
+          "items": {
+            "enum": [
+              "Strongly Agree",
+              "Agree",
+              "Undecided",
+              "Disagree",
+              "Strongly Disagree",
+              "Unknown"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

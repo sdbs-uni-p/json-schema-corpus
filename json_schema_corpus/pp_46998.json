@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "bundle:///test-schema-03.json",
+  "type": "object",
+  "properties": {
+    "invalidReference": {
+      "$ref": "bundle:///invalid.json#"
+    }
+  },
+  "additionalProperties": {
+    "$ref": "bundle:///test-schema-04.json#/definitions/referencedSchema"
+  }
+}

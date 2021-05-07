@@ -1,0 +1,261 @@
+{
+  "title": "Provisional_variant",
+  "id": "/profiles/provisional_variant.json",
+  "description": "Schema for storing provisional classification data for Variant Curation",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "required": [],
+  "identifyingProperties": [
+    "uuid"
+  ],
+  "additionalProperties": false,
+  "mixinProperties": [
+    {
+      "$ref": "mixins.json#/schema_version"
+    },
+    {
+      "$ref": "mixins.json#/uuid"
+    },
+    {
+      "$ref": "mixins.json#/standard_status"
+    },
+    {
+      "$ref": "mixins.json#/submitted"
+    }
+  ],
+  "properties": {
+    "schema_version": {
+      "default": "5"
+    },
+    "autoClassification": {
+      "title": "Classification",
+      "description": "Classification calculated from combinbed criteria.",
+      "type": "string"
+    },
+    "alteredClassification": {
+      "title": "Altered Classification",
+      "description": "Classification altered by user",
+      "type": "string"
+    },
+    "reason": {
+      "title": "Reasons",
+      "description": "Reasons user change the classification.",
+      "type": "string"
+    },
+    "classificationStatus": {
+      "title": "Classification Status",
+      "description": "Flag to mark the classification status",
+      "type": "string",
+      "enum": [
+        "In progress",
+        "Provisional",
+        "Approved"
+      ]
+    },
+    "evidenceSummary": {
+      "title": "Evidence Summary",
+      "description": "Evidence summary for the variant interpretation",
+      "type": "string"
+    },
+    "affiliation": {
+      "title": "Affiliation",
+      "description": "The affiliation this classification is associated with.",
+      "type": "string"
+    },
+    "classificationDate": {
+      "title": "Classification Date",
+      "description": "Date when the classification was last created/saved",
+      "type": "string"
+    },
+    "approvalSubmitter": {
+      "title": "Approval Submitter",
+      "description": "Curator who entered the approved classification",
+      "type": "string"
+    },
+    "classificationApprover": {
+      "title": "Approved By",
+      "description": "Curator who approved the classification",
+      "type": "string"
+    },
+    "approvalDate": {
+      "title": "Approval Date",
+      "description": "Date when the classification was saved as approved",
+      "type": "string"
+    },
+    "approvalReviewDate": {
+      "title": "Approval Review Date",
+      "description": "Date when the classification approval was reviewed",
+      "type": "string"
+    },
+    "approvalComment": {
+      "title": "Review Comments",
+      "description": "Review comments for the classification",
+      "type": "string"
+    },
+    "provisionalSubmitter": {
+      "title": "Provisional Submitter",
+      "description": "Curator who entered the provisional approval",
+      "type": "string"
+    },
+    "provisionalDate": {
+      "title": "Date Provisioned",
+      "description": "Date when the classification was saved as provisional",
+      "type": "string"
+    },
+    "provisionalReviewDate": {
+      "title": "Provisional Review Date",
+      "description": "Date when the provisional classification was reviewed",
+      "type": "string"
+    },
+    "provisionalComment": {
+      "title": "Provisional Comments",
+      "description": "Provisional comments for the classification",
+      "type": "string"
+    },
+    "publishSubmitter": {
+      "title": "Publish Submitter",
+      "description": "Curator who published the classification",
+      "type": "string"
+    },
+    "publishAffiliation": {
+      "title": "Publish Affiliation",
+      "description": "Affiliation that published the classification (if different than the 'associated' one)",
+      "type": "string"
+    },
+    "publishDate": {
+      "title": "Date Published",
+      "description": "Date when the classification was published",
+      "type": "string"
+    },
+    "publishComment": {
+      "title": "Publish Comments",
+      "description": "Publish comments for the classification",
+      "type": "string"
+    },
+    "provisionedClassification": {
+      "title": "Provisioned Classification",
+      "description": "Boolean value for whether the classification has been saved as provisional",
+      "type": "boolean",
+      "default": false
+    },
+    "approvedClassification": {
+      "title": "Approved Classification",
+      "description": "Boolean value for whether the classification has been approved",
+      "type": "boolean",
+      "default": false
+    },
+    "publishClassification": {
+      "title": "Publish Classification",
+      "description": "Boolean value for whether the approved classification has been published to the portal",
+      "type": "boolean",
+      "default": false
+    },
+    "associatedInterpretationSnapshots": {
+      "title": "Associated Snapshots",
+      "description": "List of associated snapshots of this classification",
+      "type": "array",
+      "items": {
+        "title": "Snapshot",
+        "type": "object"
+      }
+    }
+  },
+  "columns": {
+    "uuid": {
+      "title": "Interpretation",
+      "type": "string"
+    },
+    "submitted_by.title": {
+      "title": "Curator",
+      "type": "string"
+    },
+    "autoClassification": {
+      "title": "Calculated Classification",
+      "type": "string"
+    },
+    "alteredClassification_present": {
+      "title": "Altered Classification",
+      "type": "string"
+    },
+    "reason_present": {
+      "title": "Reasons",
+      "type": "string"
+    },
+    "classificationStatus": {
+      "title": "Classification Status",
+      "type": "string"
+    },
+    "affiliation": {
+      "title": "Affiliation",
+      "type": "string"
+    },
+    "classificationDate": {
+      "title": "Classification Date",
+      "type": "string"
+    },
+    "approvalSubmitter": {
+      "title": "Approval Submitter",
+      "type": "string"
+    },
+    "classificationApprover": {
+      "title": "Approved By",
+      "type": "string"
+    },
+    "approvalDate": {
+      "title": "Approval Date",
+      "type": "string"
+    },
+    "approvalReviewDate": {
+      "title": "Approval Review Date",
+      "type": "string"
+    },
+    "approvalComment": {
+      "title": "Review Comments",
+      "type": "string"
+    },
+    "provisionalSubmitter": {
+      "title": "Provisional Submitter",
+      "type": "string"
+    },
+    "provisionalDate": {
+      "title": "Date Provisioned",
+      "type": "string"
+    },
+    "provisionalReviewDate": {
+      "title": "Provisional Review Date",
+      "type": "string"
+    },
+    "provisionalComment": {
+      "title": "Provisional Comments",
+      "type": "string"
+    },
+    "publishSubmitter": {
+      "title": "Publish Submitter",
+      "type": "string"
+    },
+    "publishAffiliation": {
+      "title": "Publish Affiliation",
+      "type": "string"
+    },
+    "publishDate": {
+      "title": "Date Published",
+      "type": "string"
+    },
+    "publishComment": {
+      "title": "Publish Comments",
+      "type": "string"
+    },
+    "provisionedClassification": {
+      "title": "Provisioned Classification",
+      "type": "boolean"
+    },
+    "approvedClassification": {
+      "title": "Approved Classification",
+      "type": "boolean"
+    },
+    "publishClassification": {
+      "title": "Publish Classification",
+      "type": "boolean"
+    }
+  }
+}

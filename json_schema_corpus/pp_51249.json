@@ -1,0 +1,228 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "threat-actor",
+  "description": "An individual or group with malicious intent",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "../common/core.json"
+    },
+    {
+      "$ref": "../common/describeable.json"
+    },
+    {
+      "$ref": "../common/referenceable.json"
+    },
+    {
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "threat-actor"
+          ]
+        },
+        "impact": {
+          "$ref": "../common/impact.json",
+          "description": "The impact that an attack by this threat actor could have on operations."
+        },
+        "kind": {
+          "description": "The type of threat actor",
+          "allOf": [
+            {
+              "$ref": "../common/statement.json"
+            },
+            {
+              "properties": {
+                "value": {
+                  "enum": [
+                    "Cyber Espionage Operations",
+                    "White Hat Hacker",
+                    "Gray Hat Hacker",
+                    "Black Hat Hacker",
+                    "Hacktivist",
+                    "State Sponsored",
+                    "Botnet Operator",
+                    "Malware Developer",
+                    "Money Launderer",
+                    "Organized Crime",
+                    "Spammer",
+                    "Traffic",
+                    "Underground Call",
+                    "Insider Threat",
+                    "Disgruntled User"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "motivation": {
+          "description": "The motivation for why this threat actor carries out malicious attacks.",
+          "allOf": [
+            {
+              "$ref": "../common/statement.json"
+            },
+            {
+              "properties": {
+                "value": {
+                  "enum": [
+                    "Ideological",
+                    "Anti-Corruption",
+                    "Anti-Establishment",
+                    "Environmentalist",
+                    "Ethnic / Nationalist",
+                    "Information Freedom",
+                    "Religious",
+                    "Security Awareness",
+                    "Human Rights",
+                    "Ego",
+                    "Financial or Economic",
+                    "Military",
+                    "Opportunistic",
+                    "Political"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "sophistication": {
+          "description": "The sophistication of this threat actor.",
+          "allOf": [
+            {
+              "$ref": "../common/statement.json"
+            },
+            {
+              "properties": {
+                "value": {
+                  "enum": [
+                    "Innovator",
+                    "Expert",
+                    "Practitioner",
+                    "Novice",
+                    "Aspirant"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "planning_and_operational_support": {
+          "description": "The planning and operational support available to this threat actor.",
+          "allOf": [
+            {
+              "$ref": "../common/statement.json"
+            },
+            {
+              "properties": {
+                "value": {
+                  "enum": [
+                    "Data Exploitation",
+                    "Data Exploitation - Analytic Support",
+                    "Data Exploitation - Translation Support",
+                    "Financial Resources",
+                    "Financial Resources - Academic",
+                    "Financial Resources - Commercial",
+                    "Financial Resources - Government",
+                    "Financial Resources - Hacktivist or Grassroot",
+                    "Financial Resources - Non-Attributable Finance",
+                    "Skill Development / Recruitment",
+                    "Skill Development / Recruitment - Contracting and Hiring",
+                    "Skill Development / Recruitment - Document Exploitation (DOCEX) Training",
+                    "Skill Development / Recruitment - Internal Training",
+                    "Skill Development / Recruitment - Military Programs",
+                    "Skill Development / Recruitment - Security / Hacker Conferences",
+                    "Skill Development / Recruitment - Underground Forums",
+                    "Skill Development / Recruitment - University Programs",
+                    "Planning",
+                    "Planning - Operational Cover Plan",
+                    "Planning - Open-Source Intelligence (OSINT) Gathering",
+                    "Planning - Pre-Operational Surveillance and Reconnaissance",
+                    "Planning - Target Selection"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      },
+      "relationships": {
+        "related": [
+          "asset",
+          "attack-pattern",
+          "campaign",
+          "configuration",
+          "course-of-action",
+          "identity",
+          "incident",
+          "indicator",
+          "kill-chain",
+          "kill-chain-phase",
+          "malicious-infrastructure",
+          "malicious-tool",
+          "malware",
+          "observation",
+          "threat-actor",
+          "tool",
+          "victim-targeting",
+          "vulnerability",
+          "weakness"
+        ],
+        "duplicate-of": [
+          "threat-actor"
+        ],
+        "suggested-update": [
+          "threat-actor"
+        ],
+        "derived-from": [
+          "threat-actor"
+        ],
+        "identity-of": [
+          "identity"
+        ],
+        "persona-of": [
+          "identity"
+        ],
+        "targeted": [
+          "identity"
+        ],
+        "breached": [
+          "identity"
+        ],
+        "administers": [
+          "campaign"
+        ],
+        "operates": [
+          "campaign"
+        ],
+        "plans": [
+          "campaign"
+        ],
+        "uses-malware": [
+          "malware"
+        ],
+        "uses-exploit": [
+          "exploit"
+        ],
+        "evidenced-by": [
+          "observation"
+        ],
+        "compromises": [
+          "asset"
+        ],
+        "controls-malicious-infrastructure": [
+          "malicious-infrastructure"
+        ],
+        "administers-malicious-infrastructure": [
+          "malicious-infrastructure"
+        ],
+        "uses-attack-pattern": [
+          "attack-pattern"
+        ],
+        "target-selection-of": [
+          "victim-targeting"
+        ]
+      }
+    }
+  ]
+}

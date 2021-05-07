@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "https://github.com/dherges/ng-packagr/blob/master/conf/ng-package.schema.json",
+  "title": "NgPackageConfig",
+  "description": "JSON Schema for `ng-package.json` description file",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "src": {
+      "description": "The source folder of an Angular library. This is the folder where a `package.json` is located and defaults to cwd.",
+      "type": "string",
+      "default": "."
+    },
+    "dest": {
+      "description": "The destination folder to output build artifacts and distributables of an Angular library (default: `dist`).",
+      "type": "string",
+      "default": "dist"
+    },
+    "workingDirectory": {
+      "description": "Internal working directory of ng-packagr where intermediate build files are stored (default: `.ng_pkg_build`).",
+      "type": "string",
+      "default": ".ng_build"
+    },
+    "lib": {
+      "description": "Description of the library that is being built.",
+      "type": "object",
+      "properties": {
+        "entryFile": {
+          "description": "Entry file to the public API of the library (default: `src/public_api.ts`).",
+          "type": "string",
+          "default": "src/public_api.ts"
+        },
+        "flatModuleFile": {
+          "description": "Filename of the auto-generated flat module file (if empty, defaults to the package name as given in `package.json`).",
+          "type": "string",
+          "default": ""
+        },
+        "externals": {
+          "description": "A symbol map of external dependencies. The purpose of this map is to correctly bundle a flat module file (with `rollup`). By default, `rxjs` and `@angular/*` dependency symbols are supported.",
+          "type": "object",
+          "additionalProperties": true
+        },
+        "jsx": {
+          "description": "A property to indicate whether your library is going to be bundling jsx/tsx files. This passes through to tsconfig - see https://www.typescriptlang.org/docs/handbook/jsx.html",
+          "type": "string",
+          "enum": [
+            "preserve",
+            "react",
+            "react-native"
+          ],
+          "default": ""
+        }
+      }
+    }
+  },
+  "required": [],
+  "additionalProperties": false
+}

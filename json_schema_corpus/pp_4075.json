@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Message",
+  "description": "Databook protocol message payload",
+  "type": "object",
+  "javaType": "databook.persistence.rule.rdf.ruleset.Message",
+  "properties": {
+    "operation": {
+      "type": "string"
+    },
+    "hasPart": {
+      "type": "array",
+      "items": {
+        "$ref": "DataEntity.json"
+      }
+    }
+  }
+}

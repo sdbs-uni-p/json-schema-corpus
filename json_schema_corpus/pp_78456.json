@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "fw_xml3d",
+  "description": "3D description",
+  "type": "object",
+  "properties": {
+    "model_id": {
+      "description": "ID for XML3D engine",
+      "type": "string"
+    },
+    "model": {
+      "description": "Model for XML3D engine",
+      "type": "string"
+    },
+    "source": {
+      "title": "Source of information",
+      "$ref": "source.json"
+    },
+    "last_update": {
+      "title": "Last update",
+      "description": "DO NOT EDIT! Information to identify the version of the data component.",
+      "$ref": "update_stamp.json"
+    }
+  },
+  "additionalProperties": false
+}

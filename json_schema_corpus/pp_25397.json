@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://raw.githubusercontent.com/bbrotsos/cio-list-schema/master/schema/cio_list.json#",
+  "title": "CIO List",
+  "description": "The metadata format for listing bureau CIOs",
+  "type": "object",
+  "required": [
+    "cio"
+  ],
+  "properties": {
+    "@type": {
+      "title": "Metadata Context",
+      "description": "IRI for the JSON-LD data type. This should be cio_list?",
+      "enum": [
+        "cio"
+      ]
+    },
+    "cio": {
+      "type": "array",
+      "items": {
+        "$ref": "cio.json",
+        "minItems": 1,
+        "uniqueItems": true
+      }
+    }
+  }
+}

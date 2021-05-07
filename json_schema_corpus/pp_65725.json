@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Location",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "latitude": {
+      "type": "number"
+    },
+    "longitude": {
+      "type": "number"
+    },
+    "selector": {
+      "type": "string"
+    },
+    "size_limit": {
+      "type": "string"
+    },
+    "created": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "name",
+    "latitude",
+    "longitude",
+    "selector"
+  ]
+}

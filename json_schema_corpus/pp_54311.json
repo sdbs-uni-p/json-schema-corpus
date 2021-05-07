@@ -1,0 +1,377 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://schema.org/Organization",
+  "required": [],
+  "title": "Organization",
+  "name": "Organization",
+  "description": "An organization such as a school, NGO, corporation, club, etc.",
+  "type": "object",
+  "properties": {
+    "address": {
+      "id": "http://schema.org/address",
+      "title": "address",
+      "description": "Physical address of the item.",
+      "type": "object",
+      "properties": {
+        "address": {
+          "$ref": "PostalAddress.json#/properties"
+        }
+      }
+    },
+    "aggregateRating": {
+      "id": "http://schema.org/aggregateRating",
+      "title": "aggregateRating",
+      "description": "The overall rating, based on a collection of reviews or ratings, of the item.",
+      "type": "object",
+      "properties": {
+        "aggregateRating": {
+          "$ref": "AggregateRating.json#/properties"
+        }
+      }
+    },
+    "brand": {
+      "id": "http://schema.org/brand",
+      "title": "brand",
+      "description": "The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.",
+      "type": "object",
+      "properties": {
+        "brand": {
+          "$ref": "Brand.json#/properties"
+        }
+      }
+    },
+    "contactPoint": {
+      "id": "http://schema.org/contactPoint",
+      "title": "contactPoint",
+      "description": "A contact point for a person or organization. Supersedes contactPoints.",
+      "type": "object",
+      "properties": {
+        "contactPoint": {
+          "$ref": "ContactPoint.json#/properties"
+        }
+      }
+    },
+    "department": {
+      "id": "http://schema.org/department",
+      "title": "department",
+      "description": "A relationship between an organization and a department of that organization, also described as an organization (allowing different urls, logos, opening hours). For example: a store with a pharmacy, or a bakery with a cafe.",
+      "type": "object",
+      "properties": {
+        "department": {
+          "$ref": "Organization.json#/properties"
+        }
+      }
+    },
+    "dissolutionDate": {
+      "id": "http://schema.org/dissolutionDate",
+      "title": "dissolutionDate",
+      "description": "The date that this organization was dissolved.",
+      "type": "object",
+      "properties": {
+        "dissolutionDate": {
+          "$ref": "Date.json#/properties"
+        }
+      }
+    },
+    "duns": {
+      "id": "http://schema.org/duns",
+      "title": "duns",
+      "description": "The Dun & Bradstreet DUNS number for identifying an organization or business person.",
+      "type": "string"
+    },
+    "email": {
+      "id": "http://schema.org/email",
+      "title": "email",
+      "description": "Email address.",
+      "type": "string"
+    },
+    "employee": {
+      "id": "http://schema.org/employee",
+      "title": "employee",
+      "description": "Someone working for this organization. Supersedes employees.",
+      "type": "object",
+      "properties": {
+        "employee": {
+          "$ref": "Person.json#/properties"
+        }
+      }
+    },
+    "event": {
+      "id": "http://schema.org/event",
+      "title": "event",
+      "description": "Upcoming or past event associated with this place, organization, or action. Supersedes events.",
+      "type": "object",
+      "properties": {
+        "event": {
+          "$ref": "Event.json#/properties"
+        }
+      }
+    },
+    "faxNumber": {
+      "id": "http://schema.org/faxNumber",
+      "title": "faxNumber",
+      "description": "The fax number.",
+      "type": "string"
+    },
+    "founder": {
+      "id": "http://schema.org/founder",
+      "title": "founder",
+      "description": "A person who founded this organization. Supersedes founders.",
+      "type": "object",
+      "properties": {
+        "founder": {
+          "$ref": "Person.json#/properties"
+        }
+      }
+    },
+    "foundingDate": {
+      "id": "http://schema.org/foundingDate",
+      "title": "foundingDate",
+      "description": "The date that this organization was founded.",
+      "type": "object",
+      "properties": {
+        "foundingDate": {
+          "$ref": "Date.json#/properties"
+        }
+      }
+    },
+    "foundingLocation": {
+      "id": "http://schema.org/foundingLocation",
+      "title": "foundingLocation",
+      "description": "The place where the Organization was founded.",
+      "type": "object",
+      "properties": {
+        "foundingLocation": {
+          "$ref": "Place.json#/properties"
+        }
+      }
+    },
+    "globalLocationNumber": {
+      "id": "http://schema.org/globalLocationNumber",
+      "title": "globalLocationNumber",
+      "description": "The Global Location Number (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.",
+      "type": "string"
+    },
+    "hasPOS": {
+      "id": "http://schema.org/hasPOS",
+      "title": "hasPOS",
+      "description": "Points-of-Sales operated by the organization or person.",
+      "type": "object",
+      "properties": {
+        "hasPOS": {
+          "$ref": "Place.json#/properties"
+        }
+      }
+    },
+    "interactionCount": {
+      "id": "http://schema.org/interactionCount",
+      "title": "interactionCount",
+      "description": "A count of a specific user interactions with this item\u2014for example, 20 UserLikes, 5 UserComments, or 300 UserDownloads. The user interaction type should be one of the sub types of UserInteraction.",
+      "type": "string"
+    },
+    "isicV4": {
+      "id": "http://schema.org/isicV4",
+      "title": "isicV4",
+      "description": "The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.",
+      "type": "string"
+    },
+    "legalName": {
+      "id": "http://schema.org/legalName",
+      "title": "legalName",
+      "description": "The official name of the organization, e.g. the registered company name.",
+      "type": "string"
+    },
+    "location": {
+      "id": "http://schema.org/location",
+      "title": "location",
+      "description": "The location of the event, organization or action.",
+      "type": "object",
+      "properties": {
+        "location": {
+          "$ref": "PostalAddress.json#/properties"
+        }
+      }
+    },
+    "logo": {
+      "id": "http://schema.org/logo",
+      "title": "logo",
+      "description": "An associated logo.",
+      "type": "string",
+      "format": "uri"
+    },
+    "makesOffer": {
+      "id": "http://schema.org/makesOffer",
+      "title": "makesOffer",
+      "description": "A pointer to products or services offered by the organization or person.",
+      "type": "object",
+      "properties": {
+        "makesOffer": {
+          "$ref": "Offer.json#/properties"
+        }
+      }
+    },
+    "member": {
+      "id": "http://schema.org/member",
+      "title": "member",
+      "description": "A member of an Organization or a ProgramMembership. Organizations can be members of organizations; ProgramMembership is typically for individuals. Supersedes members, musicGroupMember. Inverse property: memberOf.",
+      "type": "object",
+      "properties": {
+        "member": {
+          "$ref": "Person.json#/properties"
+        }
+      }
+    },
+    "memberOf": {
+      "id": "http://schema.org/memberOf",
+      "title": "memberOf",
+      "description": "An Organization (or ProgramMembership) to which this Person or Organization belongs. Inverse property: member.",
+      "type": "object",
+      "properties": {
+        "memberOf": {
+          "$ref": "Organization.json#/properties"
+        }
+      }
+    },
+    "naics": {
+      "id": "http://schema.org/naics",
+      "title": "naics",
+      "description": "The North American Industry Classification System (NAICS) code for a particular organization or business person.",
+      "type": "string"
+    },
+    "owns": {
+      "id": "http://schema.org/owns",
+      "title": "owns",
+      "description": "Products owned by the organization or person.",
+      "type": "object",
+      "properties": {
+        "owns": {
+          "$ref": "Product.json#/properties"
+        }
+      }
+    },
+    "producer": {
+      "id": "http://schema.org/producer",
+      "title": "producer",
+      "description": "The person or organization who produced the work (e.g. music album, movie, tv/radio series etc.).",
+      "type": "object",
+      "properties": {
+        "producer": {
+          "$ref": "Person.json#/properties"
+        }
+      }
+    },
+    "review": {
+      "id": "http://schema.org/review",
+      "title": "review",
+      "description": "A review of the item. Supersedes reviews.",
+      "type": "object",
+      "properties": {
+        "review": {
+          "$ref": "Review.json#/properties"
+        }
+      }
+    },
+    "seeks": {
+      "id": "http://schema.org/seeks",
+      "title": "seeks",
+      "description": "A pointer to products or services sought by the organization or person (demand).",
+      "type": "object",
+      "properties": {
+        "seeks": {
+          "$ref": "Demand.json#/properties"
+        }
+      }
+    },
+    "subOrganization": {
+      "id": "http://schema.org/subOrganization",
+      "title": "subOrganization",
+      "description": "A relationship between two organizations where the first includes the second, e.g., as a subsidiary. See also: the more specific 'department' property.",
+      "type": "object",
+      "properties": {
+        "subOrganization": {
+          "$ref": "Organization.json#/properties"
+        }
+      }
+    },
+    "taxID": {
+      "id": "http://schema.org/taxID",
+      "title": "taxID",
+      "description": "The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.",
+      "type": "string"
+    },
+    "telephone": {
+      "id": "http://schema.org/telephone",
+      "title": "telephone",
+      "description": "The telephone number.",
+      "type": "string"
+    },
+    "vatID": {
+      "id": "http://schema.org/vatID",
+      "title": "vatID",
+      "description": "The Value-added Tax ID of the organization or person.",
+      "type": "string"
+    },
+    "": {
+      "title": "",
+      "description": "",
+      "type": null
+    },
+    "additionalType": {
+      "id": "http://schema.org/additionalType",
+      "title": "additionalType",
+      "description": "An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.",
+      "type": "string",
+      "format": "uri"
+    },
+    "alternateName": {
+      "id": "http://schema.org/alternateName",
+      "title": "alternateName",
+      "description": "An alias for the item.",
+      "type": "string"
+    },
+    "description": {
+      "id": "http://schema.org/description",
+      "title": "description",
+      "description": "A short description of the item.",
+      "type": "string"
+    },
+    "image": {
+      "id": "http://schema.org/image",
+      "title": "image",
+      "description": "An image of the item. This can be a URL or a fully described ImageObject.",
+      "type": "string",
+      "format": "uri"
+    },
+    "name": {
+      "id": "http://schema.org/name",
+      "title": "name",
+      "description": "The name of the item.",
+      "type": "string"
+    },
+    "potentialAction": {
+      "id": "http://schema.org/potentialAction",
+      "title": "potentialAction",
+      "description": "Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.",
+      "type": "object",
+      "properties": {
+        "potentialAction": {
+          "$ref": "Action.json#/properties"
+        }
+      }
+    },
+    "sameAs": {
+      "id": "http://schema.org/sameAs",
+      "title": "sameAs",
+      "description": "URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.",
+      "type": "string",
+      "format": "uri"
+    },
+    "url": {
+      "id": "http://schema.org/url",
+      "title": "url",
+      "description": "URL of the item.",
+      "type": "string",
+      "format": "uri"
+    }
+  }
+}

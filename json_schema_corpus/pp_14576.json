@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "SimulationX/sink",
+  "type": "object",
+  "properties": {
+    "accepts": {
+      "type": "array",
+      "items": [
+        {
+          "resource": {
+            "type": "object"
+          }
+        }
+      ]
+    },
+    "required": [
+      "accepts"
+    ]
+  }
+}

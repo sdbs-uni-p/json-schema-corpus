@@ -1,0 +1,81 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "word",
+  "id": "word.json",
+  "description": "An article about a word, that explains its meaning",
+  "properties": {
+    "name": {
+      "$ref": "name.json"
+    },
+    "description": {
+      "$ref": "description.json"
+    },
+    "context": {
+      "$ref": "word_ref.json",
+      "description": "A reference of a word that describes the category or context the item/object belongs to"
+    },
+    "author": {
+      "$ref": "person.json",
+      "description": "The person that created this word"
+    },
+    "dateCreated": {
+      "$ref": "date_string.json"
+    },
+    "uid": {
+      "$ref": "uid.json"
+    },
+    "subProperties": {
+      "type": "object",
+      "properties": {
+        "opposite": {
+          "$ref": "word_ref.json",
+          "description": "A reference of a word that is opposed to this word."
+        },
+        "related": {
+          "type": "array",
+          "items": {
+            "$ref": "word_ref.json",
+            "description": "A reference of a word related to this one. Maybe it is essential to understand this word."
+          }
+        },
+        "synonyms": {
+          "type": "array",
+          "items": {
+            "$ref": "synonym.json"
+          }
+        },
+        "relatedPeople": {
+          "type": "array",
+          "items": {
+            "$ref": "person.json",
+            "description": "Person that is related to the word. This can be the creator of the word, or someone that is connected with it in any way."
+          }
+        },
+        "contributor": {
+          "$ref": "person.json",
+          "description": "A secondary contributor or author of the word"
+        },
+        "comments": {
+          "type": "array",
+          "items": {
+            "$ref": "comment.json"
+          }
+        },
+        "dateModified": {
+          "$ref": "date_string.json"
+        },
+        "inLanguage": {
+          "$ref": "language.json"
+        }
+      }
+    }
+  },
+  "required": [
+    "name",
+    "description",
+    "context",
+    "author",
+    "dateCreated",
+    "uid"
+  ]
+}

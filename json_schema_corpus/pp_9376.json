@@ -1,0 +1,13 @@
+{
+  "name": "plain-hello-world-widget",
+  "description": "A hello world widget using the plain widget adapter.",
+  "integration": {
+    "technology": "plain",
+    "type": "widget"
+  },
+  "features": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {}
+  }
+}

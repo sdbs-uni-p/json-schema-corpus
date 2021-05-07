@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://test.phpsx.org/schema#",
+  "title": "Song",
+  "description": "A canonical song",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "artist": {
+      "type": "string"
+    },
+    "length": {
+      "type": "integer"
+    },
+    "ratings": {
+      "type": "array",
+      "items": {
+        "$ref": "file:///rating.json#/definition/rating"
+      }
+    }
+  },
+  "required": [
+    "title",
+    "artist"
+  ]
+}

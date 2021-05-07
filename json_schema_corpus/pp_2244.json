@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://localhost:9999/schemas/badgeUser.json",
+  "type": "object",
+  "properties": {
+    "badge": {
+      "$ref": "badge.json"
+    },
+    "clove": {
+      "id": "clove",
+      "type": "integer"
+    },
+    "completed": {
+      "id": "completed",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "badge",
+    "clove",
+    "completed"
+  ]
+}

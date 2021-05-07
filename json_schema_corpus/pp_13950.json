@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "algorithmParams": {
+      "id": "algorithmParams",
+      "type": "object",
+      "properties": {
+        "inflation": {
+          "id": "inflation",
+          "type": "integer"
+        },
+        "power": {
+          "id": "power",
+          "type": "integer"
+        },
+        "prune": {
+          "id": "prune",
+          "type": "integer"
+        },
+        "extraClusters": {
+          "id": "extraClusters",
+          "type": "integer"
+        },
+        "numberOfClusters": {
+          "id": "numberOfClusters",
+          "type": "integer"
+        },
+        "leungM": {
+          "id": "leungM",
+          "type": "number"
+        },
+        "leungDelta": {
+          "id": "leungDelta",
+          "type": "number"
+        }
+      },
+      "additionalProperties": false
+    },
+    "priorities": {
+      "id": "priorities",
+      "type": "object"
+    },
+    "algorithm": {
+      "id": "algorithm",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "algorithmParams",
+    "priorities",
+    "algorithm"
+  ]
+}

@@ -1,0 +1,259 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "id": "/schemata/batch_custom_field_answers",
+  "title": "Batch Custom Field Answers",
+  "description": "Update custom field answers for a set of applicants in a single API request using a batch action.\nA batch action is an asynchronous operation that can be created using a first endpoint and then have its result checked\nusing another endpoint.\nFirst the batch action is created using the __POST__ (create) endpoint by sending in the request body, the JSON describing all the\nchanges to apply. The creation endpoint validates the changes and then schedules the batch to be executed returning a batch\n**id** to check the result later on.\nThen the __GET__ (show) endpoint can be used to check the completion of the scheduled batch, using the **id** returned by the\nprevious __POST__. Once the batch has finished, the result will be included in the batch object.",
+  "links": [
+    {
+      "description": "Retrieve the status of a running/done batch action initiated with a previous POST. The **id** parameter is required. It is the id of the batch\nthat you wish to check the status of. You may continue to issue this call over a reasonable polling interval (10s) until the batch has finished.\nOnce the status of the batch becomes \"Available\", the detailed information of the modification applied will be in the \"result\" property of the\nbatch object in the response.",
+      "href": "/api/v2/user_identities/:user_identity_id/programs/:program_id/batch_custom_field_answers/:id",
+      "method": "GET",
+      "rel": "self",
+      "title": "Show",
+      "http_header": {
+        "x-api-key": "0123456789abcdef0123456789abcdef"
+      },
+      "schema": {
+        "type": "object",
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "/schemata/batch_custom_field_answers/definitions/id"
+          }
+        }
+      }
+    },
+    {
+      "description": "Schedule the update of multiple custom field answers with the given applicant CAS IDs and program ID, by creating a batch.",
+      "href": "/api/v2/user_identities/:user_identity_id/programs/:program_id/batch_custom_field_answers",
+      "method": "POST",
+      "rel": "create",
+      "title": "Create",
+      "http_header": {
+        "x-api-key": "0123456789abcdef0123456789abcdef"
+      },
+      "schema": {
+        "type": "object",
+        "properties": {
+          "custom_field_answers": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "applicant_cas_id",
+                "custom_field_id",
+                "field_type",
+                "value"
+              ],
+              "properties": {
+                "applicant_cas_id": {
+                  "type": "string",
+                  "description": "The CAS unique identifier of the applicant.",
+                  "example": "123456789"
+                },
+                "custom_field_id": {
+                  "type": "integer",
+                  "description": "Unique identifier of the **custom field** that this answers.",
+                  "example": 4
+                },
+                "field_type": {
+                  "type": "string",
+                  "description": "Type of data that the **custom field** stores.",
+                  "enum": [
+                    "boolean",
+                    "number",
+                    "date",
+                    "string",
+                    "select"
+                  ],
+                  "example": "boolean"
+                },
+                "value": {
+                  "type": [
+                    "null",
+                    "[boolean, string, number, date, select]"
+                  ],
+                  "description": "The value to be stored as an answer to the **custom field**.",
+                  "example": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "targetSchema": {
+        "type": "object",
+        "properties": {
+          "href": {
+            "$ref": "/schemata/batch_custom_field_answers/definitions/href"
+          },
+          "batch": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "$ref": "/schemata/batch_custom_field_answers/definitions/id"
+              },
+              "status": {
+                "$ref": "/schemata/batch_custom_field_answers/definitions/status",
+                "example": "Queued"
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "definitions": {
+    "id": {
+      "type": "integer",
+      "example": 74780,
+      "description": "Unique identifier of this batch."
+    },
+    "href": {
+      "type": "string",
+      "description": "Hypertext reference to the batch.",
+      "pattern": "/api/v2/user_identities/\\d+/programs/\\d+/batch_custom_field_answers/\\d+",
+      "example": "/api/v2/user_identities/1/programs/42023191739237/batch_custom_field_answers/74780"
+    },
+    "status": {
+      "type": "string",
+      "description": "Current status of this batch.",
+      "enum": [
+        "Queued",
+        "In Progress",
+        "Available",
+        "Success With Errors",
+        "Failed"
+      ],
+      "example": "Available"
+    }
+  },
+  "properties": {
+    "href": {
+      "$ref": "/schemata/batch_custom_field_answers/definitions/href"
+    },
+    "batch": {
+      "type": "object",
+      "required": [
+        "id",
+        "status"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "/schemata/batch_custom_field_answers/definitions/id"
+        },
+        "status": {
+          "$ref": "/schemata/batch_custom_field_answers/definitions/status"
+        },
+        "results": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "List of the updated custom field answers",
+          "example": [
+            {
+              "custom_field_answer": {
+                "custom_field_id": 99,
+                "label": "Are you a citizen?",
+                "field_type": "boolean",
+                "value": false
+              },
+              "applicant_cas_id": "123456789",
+              "errors": null
+            },
+            {
+              "custom_field_answer": {
+                "custom_field_id": 123,
+                "label": "What is your favorite fruit?",
+                "field_type": "string",
+                "value": "banana"
+              },
+              "applicant_cas_id": "987654321",
+              "errors": {
+                "applicant": "No applicant found for that applicant_cas_id"
+              }
+            }
+          ],
+          "items": {
+            "type": "object",
+            "required": [
+              "custom_field_answer",
+              "applicant_cas_id",
+              "errors"
+            ],
+            "properties": {
+              "custom_field_answer": {
+                "type": "object",
+                "required": [
+                  "custom_field_id",
+                  "label",
+                  "field_type",
+                  "value"
+                ],
+                "description": "Result of the batch",
+                "properties": {
+                  "custom_field_id": {
+                    "type": "integer",
+                    "description": "Unique identifier of the **custom field** that this answers.",
+                    "example": 99
+                  },
+                  "label": {
+                    "type": "string",
+                    "description": "Human-readable label for the custom field..",
+                    "example": "What is your favorite color?"
+                  },
+                  "field_type": {
+                    "type": "string",
+                    "description": "Type of data that the **custom field** stores.",
+                    "example": "boolean"
+                  },
+                  "value": {
+                    "type": "string",
+                    "description": "The value to be stored as an answer to the **custom field**.",
+                    "example": false
+                  }
+                }
+              },
+              "applicant_cas_id": {
+                "type": "string",
+                "description": "The CAS unique identifier of the applicant.",
+                "example": "123456789"
+              },
+              "errors": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "creation_error": {
+                    "type": "string",
+                    "description": "A message explaining why a change could not be completed.",
+                    "example": "A newer update (setting custom_field_answers to {\"field_type\":\"string\",\"value\":\"Boston\"}) is overriding this update"
+                  },
+                  "update_error": {
+                    "type": "string",
+                    "description": "An error message explaining why the update could not be applied.",
+                    "example": "ActiveRecord::ConnectionNotEstablished"
+                  },
+                  "applicant": {
+                    "type": "string",
+                    "description": "An error message indicating that the applicant_cas_id provided was invalid.",
+                    "example": "No applicant found for that applicant_cas_id"
+                  },
+                  "custom_field": {
+                    "type": "string",
+                    "description": "An error message indicating that the custom_field_id provided was invalid.",
+                    "example": "No custom field found for that custom_field_id"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

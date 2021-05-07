@@ -1,0 +1,171 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "geojson",
+  "description": "GeoJSON types as defined by GeoJSON",
+  "definitions": {
+    "point": {
+      "title": "Point",
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [
+            "Point"
+          ]
+        },
+        "coordinates": {
+          "$ref": "#/definitions/position"
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ]
+    },
+    "multipoint": {
+      "title": "MultiPoint",
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [
+            "MultiPoint"
+          ]
+        },
+        "coordinates": {
+          "$ref": "#/definitions/positionArray"
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ]
+    },
+    "linestring": {
+      "title": "LineString",
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [
+            "LineString"
+          ]
+        },
+        "coordinates": {
+          "$ref": "#/definitions/lineString"
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ]
+    },
+    "multilinestring": {
+      "title": "MultiLineString",
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [
+            "MultiLineString"
+          ]
+        },
+        "coordinates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/lineString"
+          }
+        },
+        "required": [
+          "type",
+          "coordinates"
+        ]
+      }
+    },
+    "polygon": {
+      "title": "Polygon",
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [
+            "Polygon"
+          ]
+        },
+        "coordinates": {
+          "$ref": "#/definitions/linearRingArray"
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ]
+    },
+    "multipolygon": {
+      "title": "MultiPolygon",
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [
+            "MultiPolygon"
+          ]
+        },
+        "coordinates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/linearRingArray"
+          }
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ]
+    },
+    "position": {
+      "description": "A single position",
+      "type": "array",
+      "minItems": 2,
+      "items": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        }
+      ],
+      "additionalItems": false
+    },
+    "positionArray": {
+      "description": "An array of positions",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/position"
+      }
+    },
+    "lineString": {
+      "description": "An array of two or more positions",
+      "allOf": [
+        {
+          "$ref": "#/definitions/positionArray"
+        },
+        {
+          "minItems": 2
+        }
+      ]
+    },
+    "linearRing": {
+      "description": "An array of four positions where the first equals the last",
+      "allOf": [
+        {
+          "$ref": "#/definitions/positionArray"
+        },
+        {
+          "minItems": 4
+        }
+      ]
+    },
+    "linearRingArray": {
+      "description": "An array of linear rings",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/linearRing"
+      }
+    }
+  }
+}

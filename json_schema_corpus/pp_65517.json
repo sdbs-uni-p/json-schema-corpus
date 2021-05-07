@@ -1,0 +1,152 @@
+{
+  "id": "https://opendesk.cc/schemata/design.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Winnow Product",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "https://opendesk.cc/schemata/base/value.json#"
+    },
+    {
+      "$ref": "https://opendesk.cc/schemata/base/options.json#"
+    },
+    {
+      "$ref": "https://opendesk.cc/schemata/base/canonical.json#"
+    },
+    {
+      "properties": {
+        "name": {},
+        "description": {},
+        "long_description": {},
+        "schema": {},
+        "images": {},
+        "source": {},
+        "path": {},
+        "aliases": {},
+        "base": {},
+        "version": {},
+        "changes": {},
+        "costs": {},
+        "shortcode": {},
+        "definitions": {},
+        "licenses": {},
+        "designers": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "strap_image": {
+          "properties": {
+            "asset": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "asset"
+          ]
+        },
+        "strap_bg_colour": {
+          "type": "string"
+        },
+        "instructions_template_image": {
+          "properties": {
+            "asset": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "asset"
+          ]
+        },
+        "instructions_doc": {
+          "properties": {
+            "asset": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "asset"
+          ]
+        },
+        "download_price": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number"
+            },
+            "type": {
+              "currency": "string"
+            }
+          },
+          "required": [
+            "value"
+          ]
+        },
+        "estimated_cost": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number"
+            },
+            "type": {
+              "currency": "string"
+            }
+          },
+          "required": [
+            "value"
+          ]
+        },
+        "minimum_quantity": {
+          "type": "number"
+        },
+        "point": {
+          "properties": {
+            "lat": {
+              "type": "number",
+              "max": 90,
+              "min": -90
+            },
+            "lng": {
+              "type": "number",
+              "max": 180,
+              "min": -180
+            }
+          },
+          "required": [
+            "lat",
+            "lng"
+          ]
+        },
+        "type": {
+          "type": "string",
+          "pattern": "design"
+        },
+        "options": {},
+        "errors": {}
+      },
+      "additionalProperties": false,
+      "requiredProperties": [
+        "name",
+        "description",
+        "schema",
+        "type",
+        "images",
+        "source",
+        "path",
+        "version",
+        "changes",
+        "instructions_template_image"
+      ]
+    }
+  ]
+}

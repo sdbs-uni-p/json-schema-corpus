@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Beschreibung fehlt",
+  "properties": {
+    "Info": {
+      "description": "Beschreibung fehlt",
+      "title": "Info (Beschreibung)",
+      "type": "string"
+    },
+    "Kategorie": {
+      "description": "Beschreibung fehlt",
+      "items": {
+        "type": "string"
+      },
+      "title": "Kategorie",
+      "type": "array"
+    },
+    "Link_Text": {
+      "description": "Beschreibung fehlt",
+      "title": "Link Text",
+      "type": "string"
+    },
+    "Veranstalter": {
+      "description": "Beschreibung fehlt",
+      "title": "Veranstalter",
+      "type": "string"
+    },
+    "Zielgruppe": {
+      "description": "Beschreibung fehlt",
+      "title": "Zielgruppe",
+      "type": "string"
+    }
+  },
+  "title": "Root schema.",
+  "type": "object"
+}

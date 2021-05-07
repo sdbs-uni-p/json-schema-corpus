@@ -1,0 +1,93 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Document",
+  "description": "A Document is a UTF8 JSON file, which consists of a collection of Pages. The order of Pages in the collection is significant, and they will be presented to the user in the specified order.",
+  "type": "object",
+  "properties": {
+    "title": {
+      "description": "Title of the document, optional ",
+      "type": "string"
+    },
+    "bc": {
+      "description": "Background color, defalut is `darkGray` ",
+      "type": "string"
+    },
+    "dimension": {
+      "description": "Dimension of the document, default is `[320, 568]` ",
+      "type": "array",
+      "items": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "integer"
+        }
+      ]
+    },
+    "paging": {
+      "description": "Paging direction, `vertical` (default), or `leftToRight` ",
+      "type": "string"
+    },
+    "orientation": {
+      "description": "Document orientation, `portrait` (default) or `landscape` ",
+      "type": "string"
+    },
+    "scene": {
+      "description": "Named _Scenes_ dictionary ",
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false,
+      "required": []
+    },
+    "elements": {
+      "description": "Named _Elements_ dictionary ",
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false,
+      "required": []
+    },
+    "paths": {
+      "description": "Named _Paths_ dictionary ",
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false,
+      "required": []
+    },
+    "markdown": {
+      "description": "Named _Markdown_ style ",
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false,
+      "required": []
+    },
+    "voices": {
+      "description": "Named _Voice_ style ",
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false,
+      "required": []
+    },
+    "pages": {
+      "description": "Collection of _Pages_ ",
+      "type": "array",
+      "items": {
+        "$ref": "http://www.swipe.net/schema/swipe/page.json"
+      }
+    },
+    "resources": {
+      "description": "Resource keys for on-demand resources ",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "viewstate": {
+      "description": "Indicate if we need to save&restore view state. The default is `true`. ",
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "pages"
+  ]
+}

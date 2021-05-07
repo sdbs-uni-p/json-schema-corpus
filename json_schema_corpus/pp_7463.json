@@ -1,0 +1,216 @@
+{
+  "id": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/Element/Element.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "\u0411\u0430\u0437\u043e\u0432\u044b\u0439 \u0442\u0438\u043f \u0434\u043b\u044f \u0432\u0438\u0437\u0443\u0430\u043b\u044c\u043d\u044b\u0445 \u044d\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u0432 \u043f\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u0438\u044f",
+  "type": "object",
+  "properties": {
+    "Name": {
+      "description": "\u041d\u0430\u0438\u043c\u0435\u043d\u043e\u0432\u0430\u043d\u0438\u0435 \u044d\u043b\u0435\u043c\u0435\u043d\u0442\u0430",
+      "type": "string"
+    },
+    "Description": {
+      "description": "\u041f\u043e\u044f\u0441\u043d\u0435\u043d\u0438\u0435 \u043a \u044d\u043b\u0435\u043c\u0435\u043d\u0442\u0443",
+      "type": "string"
+    },
+    "Text": {
+      "description": "\u0422\u0435\u043a\u0441\u0442 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043a\u0430 \u044d\u043b\u0435\u043c\u0435\u043d\u0442\u0430",
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "$ref": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/DataBinding/DataBinding.json"
+        }
+      ]
+    },
+    "Focusable": {
+      "description": "\u0412\u043e\u0437\u043c\u043e\u0436\u0435\u043d \u043b\u0438 \u0443\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u044c \u0444\u043e\u043a\u0443\u0441 \u0432\u0432\u043e\u0434\u0430 \u043d\u0430 \u044d\u043b\u0435\u043c\u0435\u043d\u0442",
+      "oneOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "$ref": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/DataBinding/DataBinding.json"
+        }
+      ],
+      "default": true
+    },
+    "Enabled": {
+      "description": "\u0412\u043e\u0437\u043c\u043e\u0436\u0435\u043d \u043b\u0438 \u0434\u043e\u0441\u0442\u0443\u043f \u043a \u044d\u043b\u0435\u043c\u0435\u043d\u0442\u0443",
+      "oneOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "$ref": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/DataBinding/DataBinding.json"
+        }
+      ],
+      "default": true
+    },
+    "Visible": {
+      "description": "\u041e\u0442\u043e\u0431\u0440\u0430\u0436\u0430\u0435\u0442\u0441\u044f \u043b\u0438 \u044d\u043b\u0435\u043c\u0435\u043d\u0442 \u0432 \u0438\u043d\u0442\u0435\u0440\u0444\u0435\u0439\u0441\u0435",
+      "default": true,
+      "oneOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "$ref": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/DataBinding/DataBinding.json"
+        }
+      ]
+    },
+    "VerticalAlignment": {
+      "description": "\u0412\u0435\u0440\u0442\u0438\u043a\u0430\u043b\u044c\u043d\u043e\u0435 \u0432\u044b\u0440\u0430\u0432\u043d\u0438\u0432\u0430\u043d\u0438\u0435 \u0432 \u0440\u043e\u0434\u0438\u0442\u0435\u043b\u044c\u0441\u043a\u043e\u043c \u044d\u043b\u0435\u043c\u0435\u043d\u0442\u0435",
+      "oneOf": [
+        {
+          "$ref": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/Element/ElementVerticalAlignment.json"
+        },
+        {
+          "$ref": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/DataBinding/DataBinding.json"
+        }
+      ]
+    },
+    "HorizontalAlignment": {
+      "description": "\u0413\u043e\u0440\u0438\u0437\u043e\u043d\u0442\u0430\u043b\u044c\u043d\u043e\u0435 \u0432\u044b\u0440\u0430\u0432\u043d\u0438\u0432\u0430\u043d\u0438\u0435 \u0432 \u0440\u043e\u0434\u0438\u0442\u0435\u043b\u044c\u0441\u043a\u043e\u043c \u044d\u043b\u0435\u043c\u0435\u043d\u0442\u0435",
+      "oneOf": [
+        {
+          "$ref": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/Element/ElementHorizontalAlignment.json"
+        },
+        {
+          "$ref": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/DataBinding/DataBinding.json"
+        }
+      ],
+      "default": "Stretch"
+    },
+    "TextHorizontalAlignment": {
+      "description": "\u0413\u043e\u0440\u0438\u0437\u043e\u043d\u0442\u0430\u043b\u044c\u043d\u043e\u0435 \u0432\u044b\u0440\u0430\u0432\u043d\u0438\u0432\u0430\u043d\u0438\u0435 \u0442\u0435\u043a\u0441\u0442\u0430 \u0432\u043d\u0443\u0442\u0440\u0438 \u044d\u043b\u0435\u043c\u0435\u043d\u0442\u0430",
+      "oneOf": [
+        {
+          "$ref": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/Element/TextHorizontalAlignment.json"
+        },
+        {
+          "$ref": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/DataBinding/DataBinding.json"
+        }
+      ],
+      "default": "Left"
+    },
+    "TextVerticalAlignment": {
+      "description": "\u0412\u0435\u0440\u0442\u0438\u043a\u0430\u043b\u044c\u043d\u043e\u0435 \u0432\u044b\u0440\u0430\u0432\u043d\u0438\u0432\u0430\u043d\u0438\u0435 \u0442\u0435\u043a\u0441\u0442\u0430 \u0432\u043d\u0443\u0442\u0440\u0438 \u044d\u043b\u0435\u043c\u0435\u043d\u0442\u0430",
+      "$ref": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/Element/TextVerticalAlignment.json"
+    },
+    "TextStyle": {
+      "description": "\u0421\u0442\u0438\u043b\u044c \u0442\u0435\u043a\u0441\u0442\u0430 \u044d\u043b\u0435\u043c\u0435\u043d\u0442\u0430",
+      "oneOf": [
+        {
+          "$ref": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/Style/TextStyle.json"
+        },
+        {
+          "$ref": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/DataBinding/DataBinding.json"
+        }
+      ]
+    },
+    "Style": {
+      "description": "\u0418\u043c\u044f \u043a\u0430\u0441\u0442\u043e\u043c\u043d\u043e\u0433\u043e \u0441\u0442\u0438\u043b\u044f",
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "$ref": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/DataBinding/DataBinding.json"
+        }
+      ]
+    },
+    "Foreground": {
+      "description": "\u0426\u0432\u0435\u0442 \u0442\u0435\u043a\u0441\u0442\u0430 \u044d\u043b\u0435\u043c\u0435\u043d\u0442\u0430",
+      "oneOf": [
+        {
+          "$ref": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/Style/ColorStyle.json"
+        },
+        {
+          "$ref": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/DataBinding/DataBinding.json"
+        }
+      ]
+    },
+    "Background": {
+      "description": "\u0426\u0432\u0435\u0442 \u0444\u043e\u043d\u0430 \u044d\u043b\u0435\u043c\u0435\u043d\u0442\u0430",
+      "oneOf": [
+        {
+          "$ref": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/Style/ColorStyle.json"
+        },
+        {
+          "$ref": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/DataBinding/DataBinding.json"
+        }
+      ]
+    },
+    "ToolTip": {
+      "description": "\u041f\u043e\u0434\u0441\u043a\u0430\u0437\u043a\u0430 \u044d\u043b\u0435\u043c\u0435\u043d\u0442\u0430",
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "$ref": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/VisualElement/VisualElement.json"
+        }
+      ]
+    },
+    "Tag": {
+      "description": "\u041f\u0440\u043e\u0438\u0437\u0432\u043e\u043b\u044c\u043d\u043e\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435, \u043a\u043e\u0442\u043e\u0440\u043e\u0435 \u043c\u043e\u0436\u043d\u043e \u043f\u0440\u0438\u0432\u044f\u0437\u0430\u0442\u044c \u043a \u044d\u043b\u0435\u043c\u0435\u043d\u0442\u0443"
+    },
+    "OnLoaded": {
+      "description": "\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u0447\u0438\u043a \u0441\u043e\u0431\u044b\u0442\u0438\u044f \u043e \u0442\u043e\u043c, \u0447\u0442\u043e \u044d\u043b\u0435\u043c\u0435\u043d\u0442 \u0431\u044b\u043b \u0437\u0430\u0433\u0440\u0443\u0436\u0435\u043d",
+      "$ref": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/Script/LinkScript.json"
+    },
+    "OnGotFocus": {
+      "description": "\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u0447\u0438\u043a \u0441\u043e\u0431\u044b\u0442\u0438\u044f \u043e \u0442\u043e\u043c, \u0447\u0442\u043e \u044d\u043b\u0435\u043c\u0435\u043d\u0442 \u043f\u043e\u043b\u0443\u0447\u0438\u043b \u0444\u043e\u043a\u0443\u0441 \u0432\u0432\u043e\u0434\u0430",
+      "$ref": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/Script/LinkScript.json"
+    },
+    "OnLostFocus": {
+      "description": "\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u0447\u0438\u043a \u0441\u043e\u0431\u044b\u0442\u0438\u044f \u043e \u0442\u043e\u043c, \u0447\u0442\u043e \u044d\u043b\u0435\u043c\u0435\u043d\u0442 \u043f\u043e\u0442\u0435\u0440\u044f\u043b \u0444\u043e\u043a\u0443\u0441 \u0432\u0432\u043e\u0434\u0430",
+      "$ref": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/Script/LinkScript.json"
+    },
+    "OnClick": {
+      "description": "\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u0447\u0438\u043a \u0441\u043e\u0431\u044b\u0442\u0438\u044f \u043e \u0442\u043e\u043c, \u0447\u0442\u043e \u043f\u043e \u044d\u043b\u0435\u043c\u0435\u043d\u0442\u0443 \u0441\u0434\u0435\u043b\u0430\u043b\u0438 \u043a\u043b\u0438\u043a \u043c\u044b\u0448\u0438",
+      "$ref": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/Script/LinkScript.json"
+    },
+    "OnDoubleClick": {
+      "description": "\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u0447\u0438\u043a \u0441\u043e\u0431\u044b\u0442\u0438\u044f \u043e \u0442\u043e\u043c, \u0447\u0442\u043e \u043f\u043e \u044d\u043b\u0435\u043c\u0435\u043d\u0442\u0443 \u0441\u0434\u0435\u043b\u0430\u043b\u0438 \u0434\u0432\u043e\u0439\u043d\u043e\u0439 \u043a\u043b\u0438\u043a \u043c\u044b\u0448\u0438",
+      "$ref": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/Script/LinkScript.json"
+    },
+    "OnMouseDown": {
+      "description": "\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u0447\u0438\u043a \u0441\u043e\u0431\u044b\u0442\u0438\u044f \u043e \u0442\u043e\u043c, \u0447\u0442\u043e \u043d\u0430 \u044d\u043b\u0435\u043c\u0435\u043d\u0442\u0435 \u043d\u0430\u0436\u0430\u043b\u0438 \u043a\u043d\u043e\u043f\u043a\u0443 \u043c\u044b\u0448\u0438",
+      "$ref": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/Script/LinkScript.json"
+    },
+    "OnMouseUp": {
+      "description": "\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u0447\u0438\u043a \u0441\u043e\u0431\u044b\u0442\u0438\u044f \u043e \u0442\u043e\u043c, \u0447\u0442\u043e \u043d\u0430 \u044d\u043b\u0435\u043c\u0435\u043d\u0442\u0435 \u043e\u0442\u043f\u0443\u0441\u0442\u0438\u043b\u0438 \u043a\u043d\u043e\u043f\u043a\u0443 \u043c\u044b\u0448\u0438",
+      "$ref": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/Script/LinkScript.json"
+    },
+    "OnMouseWheel": {
+      "description": "\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u0447\u0438\u043a \u0441\u043e\u0431\u044b\u0442\u0438\u044f \u043e \u0442\u043e\u043c, \u0447\u0442\u043e \u043d\u0430 \u044d\u043b\u0435\u043c\u0435\u043d\u0442\u0435 \u043f\u0440\u043e\u043a\u0440\u0443\u0442\u0438\u043b\u0438 \u043a\u043e\u043b\u0435\u0441\u043e \u043c\u044b\u0448\u0438",
+      "$ref": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/Script/LinkScript.json"
+    },
+    "OnMouseEnter": {
+      "description": "\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u0447\u0438\u043a \u0441\u043e\u0431\u044b\u0442\u0438\u044f \u043e \u0442\u043e\u043c, \u0447\u0442\u043e \u0443\u043a\u0430\u0437\u0430\u0442\u0435\u043b\u044c \u043c\u044b\u0448\u0438 \u0432\u043e\u0448\u0435\u043b \u0432 \u0433\u0440\u0430\u043d\u0438\u0446\u044b \u044d\u043b\u0435\u043c\u0435\u043d\u0442\u0430",
+      "$ref": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/Script/LinkScript.json"
+    },
+    "OnMouseLeave": {
+      "description": "\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u0447\u0438\u043a \u0441\u043e\u0431\u044b\u0442\u0438\u044f \u043e \u0442\u043e\u043c, \u0447\u0442\u043e \u0443\u043a\u0430\u0437\u0430\u0442\u0435\u043b\u044c \u043c\u044b\u0448\u0438 \u043f\u043e\u043a\u0438\u043d\u0443\u043b \u0433\u0440\u0430\u043d\u0438\u0446\u044b \u044d\u043b\u0435\u043c\u0435\u043d\u0442\u0430",
+      "$ref": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/Script/LinkScript.json"
+    },
+    "OnMouseMove": {
+      "description": "\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u0447\u0438\u043a \u0441\u043e\u0431\u044b\u0442\u0438\u044f \u043e \u0442\u043e\u043c, \u0447\u0442\u043e \u0443\u043a\u0430\u0437\u0430\u0442\u0435\u043b\u044c \u043c\u044b\u0448\u0438 \u0434\u0432\u0438\u0433\u0430\u043b\u0441\u044f \u0432\u043d\u0443\u0442\u0440\u0438 \u044d\u043b\u0435\u043c\u0435\u043d\u0442\u0430",
+      "$ref": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/Script/LinkScript.json"
+    },
+    "OnKeyDown": {
+      "description": "\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u0447\u0438\u043a \u0441\u043e\u0431\u044b\u0442\u0438\u044f \u043e \u0442\u043e\u043c, \u0447\u0442\u043e \u043d\u0430 \u044d\u043b\u0435\u043c\u0435\u043d\u0442\u0435 \u043d\u0430\u0436\u0430\u043b\u0438 \u043a\u043b\u0430\u0432\u0438\u0448\u0443 \u043a\u043b\u0430\u0432\u0438\u0430\u0442\u0443\u0440\u044b",
+      "$ref": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/Script/LinkScript.json"
+    },
+    "OnKeyUp": {
+      "description": "\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u0447\u0438\u043a \u0441\u043e\u0431\u044b\u0442\u0438\u044f \u043e \u0442\u043e\u043c, \u0447\u0442\u043e \u043d\u0430 \u044d\u043b\u0435\u043c\u0435\u043d\u0442\u0435 \u043e\u0442\u043f\u0443\u0441\u0442\u0438\u043b\u0438 \u043a\u043b\u0430\u0432\u0438\u0448\u0443 \u043a\u043b\u0430\u0432\u0438\u0430\u0442\u0443\u0440\u044b",
+      "$ref": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/Script/LinkScript.json"
+    },
+    "OnPropertyChanged": {
+      "description": "\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u0447\u0438\u043a \u0441\u043e\u0431\u044b\u0442\u0438\u044f \u043e \u0442\u043e\u043c, \u0447\u0442\u043e \u043e\u0434\u043d\u043e \u0438\u0437 \u0441\u0432\u043e\u0439\u0441\u0442\u0432 \u0438\u0437\u043c\u0435\u043d\u0438\u043b\u043e\u0441\u044c",
+      "$ref": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/Script/LinkScript.json"
+    }
+  }
+}

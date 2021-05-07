@@ -1,0 +1,80 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "type": "object",
+  "description": "Product",
+  "properties": {
+    "tags": {
+      "type": "array"
+    },
+    "annotation": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string",
+      "example": "My Product"
+    },
+    "supplier": {
+      "oneOf": [
+        {
+          "type": "string",
+          "required": true
+        },
+        {
+          "type": "object",
+          "required": true
+        }
+      ]
+    },
+    "brand": {
+      "type": "string"
+    },
+    "caseRRP": {
+      "type": "number"
+    },
+    "unitRRP": {
+      "type": "number"
+    },
+    "supplierPrice": {
+      "type": "number"
+    },
+    "supplierCode": {
+      "type": "string"
+    },
+    "supplierKey": {
+      "type": "string"
+    },
+    "unitsPerCase": {
+      "type": "integer"
+    },
+    "unitSize": {
+      "type": "string"
+    },
+    "caseSize": {
+      "type": "string"
+    },
+    "mainImageUrl": {
+      "type": "string"
+    },
+    "thumbImageUrl": {
+      "type": "string"
+    },
+    "externalUrl": {
+      "type": "string"
+    },
+    "VATcode": {
+      "type": "integer"
+    },
+    "FGOSV": {
+      "type": "string"
+    },
+    "unitBarcode": {
+      "type": "integer"
+    },
+    "caseBarcode": {
+      "type": "integer"
+    }
+  }
+}

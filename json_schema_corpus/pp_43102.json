@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "request_post_user_account_0",
+  "type": "object",
+  "properties": {
+    "login": {
+      "type": "string"
+    },
+    "password1": {
+      "type": "string"
+    },
+    "password2": {
+      "type": "string"
+    },
+    "email": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "recaptchaAnswer": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "login",
+    "password1",
+    "password2"
+  ],
+  "additionalProperties": false
+}

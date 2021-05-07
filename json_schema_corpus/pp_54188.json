@@ -1,0 +1,96 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://schema.org/ItemList",
+  "required": [],
+  "title": "ItemList",
+  "name": "ItemList",
+  "description": "A list of items of any sort\u2014for example, Top 10 Movies About Weathermen, or Top 100 Party Songs. Not to be confused with HTML lists, which are often used only for formatting.",
+  "type": "object",
+  "properties": {
+    "itemListElement": {
+      "id": "http://schema.org/itemListElement",
+      "title": "itemListElement",
+      "description": "For itemListElement values, you can use simple strings (e.g. \"Peter\", \"Paul, \"Mary\"), existing entities, or use ListItem.\n    \n    Text values are best if the elements in the list are plain strings. Existing entities are best for a simple, unordered list of existing things in your data. ListItem is used with ordered lists when you want to provide additional context about the element in that list or when the same item might be in different places in different lists.\n    \n    Note: The order of elements in your mark-up is not sufficient for indicating the order or elements.  Use ListItem with a 'position' property in such cases.",
+      "type": "object",
+      "properties": {
+        "itemListElement": {
+          "$ref": "Thing.json#/properties"
+        }
+      }
+    },
+    "itemListOrder": {
+      "id": "http://schema.org/itemListOrder",
+      "title": "itemListOrder",
+      "description": "Type of ordering (e.g. Ascending, Descending, Unordered).",
+      "type": "string"
+    },
+    "numberOfItems": {
+      "id": "http://schema.org/numberOfItems",
+      "title": "numberOfItems",
+      "description": "The number of items in an ItemList. Note that some descriptions might not full describe all items in a list (e.g. multi-page pagination).",
+      "type": "number"
+    },
+    "": {
+      "title": "",
+      "description": "",
+      "type": null
+    },
+    "additionalType": {
+      "id": "http://schema.org/additionalType",
+      "title": "additionalType",
+      "description": "An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.",
+      "type": "string",
+      "format": "uri"
+    },
+    "alternateName": {
+      "id": "http://schema.org/alternateName",
+      "title": "alternateName",
+      "description": "An alias for the item.",
+      "type": "string"
+    },
+    "description": {
+      "id": "http://schema.org/description",
+      "title": "description",
+      "description": "A short description of the item.",
+      "type": "string"
+    },
+    "image": {
+      "id": "http://schema.org/image",
+      "title": "image",
+      "description": "An image of the item. This can be a URL or a fully described ImageObject.",
+      "type": "string",
+      "format": "uri"
+    },
+    "name": {
+      "id": "http://schema.org/name",
+      "title": "name",
+      "description": "The name of the item.",
+      "type": "string"
+    },
+    "potentialAction": {
+      "id": "http://schema.org/potentialAction",
+      "title": "potentialAction",
+      "description": "Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.",
+      "type": "object",
+      "properties": {
+        "potentialAction": {
+          "$ref": "Action.json#/properties"
+        }
+      }
+    },
+    "sameAs": {
+      "id": "http://schema.org/sameAs",
+      "title": "sameAs",
+      "description": "URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.",
+      "type": "string",
+      "format": "uri"
+    },
+    "url": {
+      "id": "http://schema.org/url",
+      "title": "url",
+      "description": "URL of the item.",
+      "type": "string",
+      "format": "uri"
+    }
+  }
+}

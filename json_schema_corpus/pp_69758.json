@@ -1,0 +1,30 @@
+{
+  "_comment": "This Spec is for Phase 1!! Most updated version is at https://github.com/reTHINK-project/specs/tree/master/schemas",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "UserHypertyAccount",
+  "type": "object",
+  "required": [
+    "id",
+    "account",
+    "hyperty"
+  ],
+  "properties": {
+    "id": {
+      "type": "null"
+    },
+    "account": {
+      "type": "string"
+    },
+    "hyperty": {
+      "type": "string"
+    }
+  },
+  "UserHypertyConfigurationData": {
+    "type": "object",
+    "properties": {}
+  },
+  "UserHypertyPolicy": {
+    "type": "object",
+    "properties": {}
+  }
+}

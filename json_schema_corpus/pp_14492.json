@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Event source configuration",
+  "type": "object",
+  "properties": {
+    "source": {
+      "type": "string",
+      "description": "The **generatedIdentifier** given by iFLUX Server. See the API `GET eventSources` or GET `eventSources/:id`"
+    },
+    "properties": {
+      "type": "object",
+      "description": "Free object that contains the configuration sent to the event source remote server",
+      "properties": {
+        "*": {
+          "type": "mixed"
+        }
+      }
+    }
+  },
+  "required": [
+    "source",
+    "properties"
+  ]
+}

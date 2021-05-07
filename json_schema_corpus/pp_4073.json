@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Identifier",
+  "description": "Databook identifier",
+  "type": "object",
+  "javaType": "databook.persistence.rule.rdf.ruleset.Identifier",
+  "extends": {
+    "$ref": "IndividualObject.json"
+  },
+  "properties": {
+    "identifierType": {
+      "type": "string"
+    },
+    "identifierValue": {
+      "type": "string"
+    }
+  }
+}

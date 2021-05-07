@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Additional export data",
+  "description": "Metadata for the exported content",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Title for the exported document"
+    },
+    "author": {
+      "type": "string",
+      "description": "Author of the exported document"
+    }
+  },
+  "required": [
+    "title",
+    "author"
+  ],
+  "additionalProperties": false
+}

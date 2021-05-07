@@ -1,0 +1,34 @@
+{
+  "id": "Connection",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "required": [
+    "ICECandidates",
+    "ConnectionDescription",
+    "RTPTransportParameters"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "ICECandidates": {
+      "type": "null"
+    },
+    "ConnectionDescription": {
+      "type": "null"
+    },
+    "RTPTransportParameters": {
+      "type": "null"
+    },
+    "receiverArray": {
+      "type": "array",
+      "items": {
+        "$ref": "Receiver"
+      }
+    },
+    "senderArray": {
+      "type": "array",
+      "items": {
+        "$ref": "Sender"
+      }
+    }
+  }
+}

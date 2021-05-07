@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://acmepay.local/schema/wallet-summary.json#",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "currency": {
+        "$ref": "http://acmepay.local/schema/currency.json#"
+      },
+      "sum": {
+        "type": "integer"
+      }
+    }
+  },
+  "minItems": 2,
+  "maxItems": 2,
+  "additionalItems": false
+}

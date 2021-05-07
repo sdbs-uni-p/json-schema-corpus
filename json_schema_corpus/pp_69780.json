@@ -1,0 +1,140 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "Identity",
+  "type": "object",
+  "required": [
+    "guid",
+    "identifiers"
+  ],
+  "properties": {
+    "guid": {
+      "type": "string"
+    },
+    "identifiers": {
+      "type": "string"
+    }
+  },
+  "AuthenticationData": {
+    "type": "object",
+    "properties": {}
+  },
+  "AuthorisationData": {
+    "type": "object",
+    "properties": {}
+  },
+  "IdAssertion": {
+    "type": "object",
+    "required": [
+      "assertion",
+      "idp",
+      "scope"
+    ],
+    "properties": {
+      "assertion": {
+        "type": "string"
+      },
+      "idp": {
+        "type": "string"
+      },
+      "scope": {
+        "type": "string"
+      }
+    }
+  },
+  "IdValidation": {
+    "type": "object",
+    "required": [
+      "identity",
+      "contents"
+    ],
+    "properties": {
+      "identity": {
+        "type": "string"
+      },
+      "contents": {
+        "type": "string"
+      }
+    }
+  },
+  "ServiceType": {
+    "type": "object",
+    "required": [
+      "E164_TELEPHONY",
+      "VOIP_SIP",
+      "EMAIL",
+      "W3C_PUSH",
+      "TWITTER"
+    ],
+    "properties": {
+      "E164_TELEPHONY": {
+        "type": "null"
+      },
+      "VOIP_SIP": {
+        "type": "null"
+      },
+      "EMAIL": {
+        "type": "null"
+      },
+      "W3C_PUSH": {
+        "type": "null"
+      },
+      "TWITTER": {
+        "type": "null"
+      }
+    }
+  },
+  "ServiceAddress": {
+    "type": "object",
+    "required": [
+      "address"
+    ],
+    "properties": {
+      "address": {
+        "type": "string"
+      }
+    }
+  },
+  "UserProfile": {
+    "type": "object",
+    "required": [
+      "username",
+      "cn",
+      "avatar",
+      "context"
+    ],
+    "properties": {
+      "username": {
+        "type": "string"
+      },
+      "cn": {
+        "type": "string"
+      },
+      "avatar": {
+        "type": "string"
+      },
+      "context": {
+        "type": "string"
+      }
+    }
+  },
+  "JWT": {
+    "type": "object",
+    "anyOf": [
+      {
+        "$ref": "#/IDToken"
+      },
+      {
+        "$ref": "#/AccessToken"
+      }
+    ],
+    "properties": {}
+  },
+  "IDToken": {
+    "type": "object",
+    "properties": {}
+  },
+  "AccessToken": {
+    "type": "object",
+    "properties": {}
+  }
+}

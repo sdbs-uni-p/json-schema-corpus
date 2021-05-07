@@ -1,0 +1,104 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "title": "VCMI skill format",
+  "description": "Format used to replace bonuses provided by secondary skills in VCMI",
+  "definitions": {
+    "skillBonus": {
+      "type": "object",
+      "description": "Set of bonuses provided by skill at given level",
+      "required": [
+        "description",
+        "effects"
+      ],
+      "properties": {
+        "images": {
+          "type": "object",
+          "description": "skill icons of varying size",
+          "properties": {
+            "small": {
+              "type": "string",
+              "description": "32x32 skill icon",
+              "format": "imageFile"
+            },
+            "medium": {
+              "type": "string",
+              "description": "44x44 skill icon",
+              "format": "imageFile"
+            },
+            "large": {
+              "type": "string",
+              "description": "82x93 skill icon",
+              "format": "imageFile"
+            }
+          }
+        },
+        "description": {
+          "type": "string",
+          "description": "localizable description"
+        },
+        "effects": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "bonus.json"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "name",
+    "basic",
+    "advanced",
+    "expert"
+  ],
+  "properties": {
+    "index": {
+      "type": "number",
+      "description": "numeric id of skill, required for existing skills"
+    },
+    "name": {
+      "type": "string",
+      "description": "localizable skill name"
+    },
+    "gainChance": {
+      "description": "Chance for the skill to be offered on level-up (heroClass may override)",
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "object",
+          "required": [
+            "might",
+            "magic"
+          ],
+          "properties": {
+            "might": {
+              "type": "number",
+              "description": "Chance for hero classes with might affinity"
+            },
+            "magic": {
+              "type": "number",
+              "description": "Chance for hero classes with magic affinity"
+            }
+          }
+        }
+      ]
+    },
+    "base": {
+      "type": "object",
+      "description": "will be merged with all levels",
+      "additionalProperties": true
+    },
+    "basic": {
+      "$ref": "#/definitions/skillBonus"
+    },
+    "advanced": {
+      "$ref": "#/definitions/skillBonus"
+    },
+    "expert": {
+      "$ref": "#/definitions/skillBonus"
+    }
+  }
+}

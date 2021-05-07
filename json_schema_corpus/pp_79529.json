@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "description": "an assessment strip for a single application",
+  "properties": {
+    "application": {
+      "type": "integer",
+      "description": "the application this strip is for"
+    },
+    "strip": {
+      "type": "string",
+      "description": "the strip"
+    }
+  },
+  "required": [
+    "application",
+    "strip"
+  ],
+  "additionalProperties": false
+}

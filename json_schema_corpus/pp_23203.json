@@ -1,0 +1,261 @@
+{
+  "$schema": "http://interagent.github.io/interagent-hyper-schema",
+  "type": [
+    "object"
+  ],
+  "definitions": {
+    "todo": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "Todo",
+      "description": "A todo item",
+      "stability": "prototype",
+      "strictProperties": true,
+      "type": [
+        "object"
+      ],
+      "definitions": {
+        "id": {
+          "description": "unique identifier of todo",
+          "readOnly": true,
+          "format": "uuid",
+          "type": [
+            "string"
+          ]
+        },
+        "name": {
+          "description": "the todo text",
+          "readOnly": false,
+          "type": [
+            "string"
+          ]
+        },
+        "completed": {
+          "description": "whether the todo is complete",
+          "readOnly": false,
+          "type": [
+            "boolean"
+          ]
+        },
+        "identity": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/todo/definitions/id"
+            }
+          ]
+        },
+        "created_at": {
+          "description": "when todo was created",
+          "format": "date-time",
+          "type": [
+            "string"
+          ]
+        },
+        "updated_at": {
+          "description": "when todo was updated",
+          "format": "date-time",
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "links": [
+        {
+          "description": "Create a new todo.",
+          "href": "/todos",
+          "method": "POST",
+          "rel": "create",
+          "schema": {
+            "properties": {
+              "name": {
+                "$ref": "#/definitions/todo/definitions/name"
+              },
+              "completed": {
+                "$ref": "#/definitions/todo/definitions/completed"
+              }
+            },
+            "required": [
+              "name"
+            ],
+            "type": [
+              "object"
+            ]
+          },
+          "title": "Create"
+        },
+        {
+          "description": "Delete an existing todo.",
+          "href": "/todos/{(%23%2Fdefinitions%2Ftodo%2Fdefinitions%2Fidentity)}",
+          "method": "DELETE",
+          "rel": "destroy",
+          "title": "Delete"
+        },
+        {
+          "description": "Info for existing todo.",
+          "href": "/todos/{(%23%2Fdefinitions%2Ftodo%2Fdefinitions%2Fidentity)}",
+          "method": "GET",
+          "rel": "self",
+          "title": "Info",
+          "targetSchema": {
+            "$ref": "#/definitions/todo"
+          }
+        },
+        {
+          "description": "List existing todos.",
+          "href": "/todos",
+          "method": "GET",
+          "rel": "instances",
+          "title": "List",
+          "targetSchema": {
+            "items": {
+              "$ref": "#/definitions/todo"
+            },
+            "type": [
+              "array"
+            ]
+          }
+        },
+        {
+          "description": "Update an existing todo.",
+          "href": "/todos/{(%23%2Fdefinitions%2Ftodo%2Fdefinitions%2Fidentity)}",
+          "method": "PATCH",
+          "rel": "update",
+          "schema": null,
+          "properties": {
+            "name": {
+              "$ref": "#/definitions/todo/definitions/name"
+            },
+            "completed": {
+              "$ref": "#/definitions/todo/definitions/completed"
+            },
+            "type": [
+              "object"
+            ]
+          },
+          "title": "Update"
+        }
+      ],
+      "properties": {
+        "created_at": {
+          "$ref": "#/definitions/todo/definitions/created_at"
+        },
+        "id": {
+          "$ref": "#/definitions/todo/definitions/id"
+        },
+        "name": {
+          "$ref": "#/definitions/todo/definitions/name"
+        },
+        "completed": {
+          "$ref": "#/definitions/todo/definitions/completed"
+        },
+        "updated_at": {
+          "$ref": "#/definitions/todo/definitions/updated_at"
+        },
+        "links": {
+          "description": "associated resources",
+          "type": [
+            "object"
+          ],
+          "properties": {
+            "user": {
+              "$ref": "#/definitions/user/definitions/identity"
+            }
+          }
+        }
+      }
+    },
+    "user": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "User",
+      "description": "A user of the app",
+      "stability": "prototype",
+      "strictProperties": true,
+      "type": [
+        "object"
+      ],
+      "definitions": {
+        "id": {
+          "description": "unique identifier of user",
+          "readOnly": true,
+          "format": "uuid",
+          "type": [
+            "string"
+          ]
+        },
+        "identity": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/user/definitions/id"
+            }
+          ]
+        },
+        "created_at": {
+          "description": "when user was created",
+          "format": "date-time",
+          "type": [
+            "string"
+          ]
+        },
+        "updated_at": {
+          "description": "when user was updated",
+          "format": "date-time",
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "links": [
+        {
+          "description": "Create a new user.",
+          "href": "/users",
+          "method": "POST",
+          "rel": "create",
+          "schema": {
+            "properties": {},
+            "type": [
+              "object"
+            ]
+          },
+          "title": "Create"
+        },
+        {
+          "description": "Info for current user.",
+          "href": "/users/~",
+          "method": "GET",
+          "rel": "self",
+          "targetSchema": {
+            "$ref": "#/definitions/user"
+          },
+          "title": "Info"
+        }
+      ],
+      "properties": {
+        "created_at": {
+          "$ref": "#/definitions/user/definitions/created_at"
+        },
+        "id": {
+          "$ref": "#/definitions/user/definitions/id"
+        },
+        "updated_at": {
+          "$ref": "#/definitions/user/definitions/updated_at"
+        }
+      }
+    }
+  },
+  "properties": {
+    "todo": {
+      "$ref": "#/definitions/todo"
+    },
+    "user": {
+      "$ref": "#/definitions/user"
+    }
+  },
+  "description": "A simple API template provided by the Pliny project.",
+  "id": "pliny-template-api",
+  "links": [
+    {
+      "href": "https://api.example.com",
+      "rel": "self"
+    }
+  ],
+  "title": "Pliny Template API"
+}

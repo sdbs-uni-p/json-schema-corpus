@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://raw.githubusercontent.com/washingtonpost/ans-schema/master/src/main/resources/schema/ans/v0_2/content.json",
+  "title": "A content object.",
+  "description": "Holds common attributes of ANS Content objects.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "trait_copyrighted.json"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://localhost:8080/schemas/systemStatus.json",
+  "type": "object",
+  "properties": {
+    "websocket": {
+      "$ref": "serviceState.json"
+    },
+    "clientsInfo": {
+      "type": "array",
+      "items": {
+        "$ref": "clientInfo.json"
+      }
+    }
+  },
+  "required": [
+    "websocket"
+  ]
+}

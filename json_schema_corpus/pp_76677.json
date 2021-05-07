@@ -1,0 +1,107 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "title": "Unique identifier",
+      "type": "string"
+    },
+    "name": {
+      "title": "Store name",
+      "type": "string"
+    },
+    "short_description": {
+      "title": "Short description of the store",
+      "type": "string"
+    },
+    "followers": {
+      "title": "Number of followers",
+      "type": "number"
+    },
+    "currency": {
+      "title": "Currency of the store as a three-letter code (ISO 4217)",
+      "type": "string"
+    },
+    "vat": {
+      "$ref": "url:vat-schema.json#vat"
+    },
+    "language": {
+      "title": "Language of the store as a two-letter code (ISO 639-1)",
+      "type": "string"
+    },
+    "country": {
+      "title": "Country of the store as two-letter code (ISO 3166-1 alpha-2)",
+      "type": "string"
+    },
+    "logotype": {
+      "title": "List with the logotype",
+      "type": "object"
+    },
+    "wallpapers": {
+      "title": "Map of wallpapers by their categories",
+      "type": "object"
+    },
+    "description": {
+      "title": "Description of the store",
+      "type": "string"
+    },
+    "url": {
+      "title": "URL to store",
+      "type": "string"
+    },
+    "subdomain": {
+      "title": "Store subdomain",
+      "type": "string"
+    },
+    "created_at": {
+      "title": "Timestamp when this store was created",
+      "type": "string"
+    },
+    "modified_at": {
+      "title": "Timestamp when this store was last modified",
+      "type": "string"
+    },
+    "contact_email": {
+      "title": "Contact email for customers",
+      "type": "string"
+    },
+    "storekeeper_email": {
+      "title": "Email to storekeeper",
+      "type": "string"
+    },
+    "sandbox": {
+      "title": "Whether or not this store is a sandbox store",
+      "type": "boolean"
+    },
+    "dashboard_url": {
+      "title": "URL to stores dashboard",
+      "type": "string"
+    },
+    "appstore_currency": {
+      "title": "The currency used for appstore purchases",
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "short_description",
+    "followers",
+    "currency",
+    "vat",
+    "language",
+    "country",
+    "logotype",
+    "wallpapers",
+    "description",
+    "url",
+    "subdomain",
+    "created_at",
+    "modified_at",
+    "contact_email",
+    "storekeeper_email",
+    "sandbox",
+    "dashboard_url",
+    "appstore_currency"
+  ]
+}

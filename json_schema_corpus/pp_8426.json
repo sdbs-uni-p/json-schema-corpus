@@ -1,0 +1,9 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "type": "array",
+  "items": {
+    "$ref": "Email_schema.json"
+  },
+  "minItems": 1,
+  "uniqueItems": true
+}

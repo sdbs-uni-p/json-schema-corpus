@@ -1,0 +1,282 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "oneOf": [
+    {
+      "$ref": "#/definitions/booleanItem"
+    },
+    {
+      "$ref": "#/definitions/stringItem"
+    },
+    {
+      "$ref": "#/definitions/numberItem"
+    },
+    {
+      "$ref": "#/definitions/dateItem"
+    },
+    {
+      "$ref": "#/definitions/fileItem"
+    },
+    {
+      "$ref": "#/definitions/cascadeItem"
+    },
+    {
+      "$ref": "#/definitions/picklistItem"
+    },
+    {
+      "$ref": "#/definitions/tableItem"
+    }
+  ],
+  "definitions": {
+    "picklistItem": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [
+            "picklist"
+          ]
+        },
+        "id": {
+          "type": "integer",
+          "description": "id of the item"
+        },
+        "name": {
+          "$ref": "#/definitions/name"
+        },
+        "value": {
+          "$ref": "#/definitions/pickChoices"
+        },
+        "selectedIds": {
+          "$ref": "#/definitions/selectedIds"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "name",
+        "value"
+      ]
+    },
+    "selectedIds": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/selectedId"
+      }
+    },
+    "pickChoices": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/pickChoice"
+      }
+    },
+    "selectedId": {
+      "type": "integer",
+      "description": "the id of a choice that the user selected"
+    },
+    "pickChoice": {
+      "type": "string",
+      "description": "the name of a choice that the user selected"
+    },
+    "tableItem": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [
+            "table"
+          ]
+        },
+        "name": {
+          "$ref": "#/definitions/name"
+        },
+        "value": {
+          "$ref": "#/definitions/tableRows"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "name",
+        "value"
+      ]
+    },
+    "tableRows": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/tableRow"
+      }
+    },
+    "tableRow": {
+      "type": "array",
+      "items": {
+        "$ref": "#"
+      }
+    },
+    "cascadeItem": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [
+            "cascade"
+          ]
+        },
+        "name": {
+          "$ref": "#/definitions/name"
+        },
+        "value": {
+          "$ref": "#/definitions/cascadeChoices"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "name",
+        "value"
+      ]
+    },
+    "cascadeChoices": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/cascadeChoice"
+      }
+    },
+    "cascadeChoice": {
+      "type": "object",
+      "properties": {
+        "choice": {
+          "type": "string",
+          "description": "the name of a choice that the user selected"
+        },
+        "subItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#"
+          },
+          "description": "items unlocked based on a cascade choice"
+        }
+      },
+      "required": [
+        "choice"
+      ],
+      "additionalProperties": false
+    },
+    "name": {
+      "type": "string",
+      "description": "name of the item"
+    },
+    "booleanItem": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [
+            "boolean"
+          ]
+        },
+        "name": {
+          "$ref": "#/definitions/name"
+        },
+        "value": {
+          "type": "boolean",
+          "description": "json representation of a boolean item's current value"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "name",
+        "value"
+      ]
+    },
+    "stringItem": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [
+            "string"
+          ]
+        },
+        "name": {
+          "$ref": "#/definitions/name"
+        },
+        "value": {
+          "type": "string",
+          "description": "json representation of a string item's current value"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "name",
+        "value"
+      ]
+    },
+    "numberItem": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [
+            "number"
+          ]
+        },
+        "name": {
+          "$ref": "#/definitions/name"
+        },
+        "value": {
+          "type": "number",
+          "description": "json representation of a number item's current value"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "name",
+        "value"
+      ]
+    },
+    "dateItem": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [
+            "date"
+          ]
+        },
+        "name": {
+          "$ref": "#/definitions/name"
+        },
+        "value": {
+          "type": "string",
+          "format": "date-time",
+          "description": "json representation of a date item's current value"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "name",
+        "value"
+      ]
+    },
+    "fileItem": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [
+            "file"
+          ]
+        },
+        "name": {
+          "$ref": "#/definitions/name"
+        },
+        "value": {
+          "$ref": "fileDownload.json"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "name",
+        "value"
+      ]
+    }
+  }
+}

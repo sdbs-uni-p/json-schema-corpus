@@ -1,0 +1,115 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "title": "FIXME - App",
+  "description": "FIXME",
+  "stability": "prototype",
+  "strictProperties": true,
+  "type": [
+    "object"
+  ],
+  "definitions": {
+    "id": {
+      "description": "unique identifier of app",
+      "readOnly": true,
+      "format": "uuid",
+      "type": [
+        "string"
+      ]
+    },
+    "name": {
+      "description": "unique name of app",
+      "readOnly": true,
+      "type": [
+        "string"
+      ]
+    },
+    "identity": {
+      "anyOf": [
+        {
+          "$ref": "/schemata/app#/definitions/id"
+        },
+        {
+          "$ref": "/schemata/app#/definitions/name"
+        }
+      ]
+    },
+    "created_at": {
+      "description": "when app was created",
+      "format": "date-time",
+      "type": [
+        "string"
+      ]
+    },
+    "updated_at": {
+      "description": "when app was updated",
+      "format": "date-time",
+      "type": [
+        "string"
+      ]
+    }
+  },
+  "links": [
+    {
+      "description": "Create a new app.",
+      "href": "/apps",
+      "method": "POST",
+      "rel": "create",
+      "schema": {
+        "properties": {},
+        "type": [
+          "object"
+        ]
+      },
+      "title": "Create"
+    },
+    {
+      "description": "Delete an existing app.",
+      "href": "/apps/{(%2Fschemata%2Fapp%23%2Fdefinitions%2Fidentity)}",
+      "method": "DELETE",
+      "rel": "destroy",
+      "title": "Delete"
+    },
+    {
+      "description": "Info for existing app.",
+      "href": "/apps/{(%2Fschemata%2Fapp%23%2Fdefinitions%2Fidentity)}",
+      "method": "GET",
+      "rel": "self",
+      "title": "Info"
+    },
+    {
+      "description": "List existing apps.",
+      "href": "/apps",
+      "method": "GET",
+      "rel": "instances",
+      "title": "List"
+    },
+    {
+      "description": "Update an existing app.",
+      "href": "/apps/{(%2Fschemata%2Fapp%23%2Fdefinitions%2Fidentity)}",
+      "method": "PATCH",
+      "rel": "update",
+      "schema": {
+        "properties": {},
+        "type": [
+          "object"
+        ]
+      },
+      "title": "Update"
+    }
+  ],
+  "properties": {
+    "created_at": {
+      "$ref": "/schemata/app#/definitions/created_at"
+    },
+    "id": {
+      "$ref": "/schemata/app#/definitions/id"
+    },
+    "name": {
+      "$ref": "/schemata/app#/definitions/name"
+    },
+    "updated_at": {
+      "$ref": "/schemata/app#/definitions/updated_at"
+    }
+  },
+  "id": "schemata/app"
+}

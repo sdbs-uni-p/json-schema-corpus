@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "uri://registries/security#groupmaster",
+  "new": {
+    "table": "groups",
+    "_security": {
+      "$ref": "uri://registries/security#group/_security"
+    },
+    "properties": {
+      "baseData": {
+        "$ref": "uri://registries/security#group/properties/baseData"
+      }
+    }
+  },
+  "view": {
+    "_security": {
+      "$ref": "uri://registries/security#group/_security"
+    },
+    "$ref": "uri://registries/security#groupmaster/new"
+  },
+  "search": {
+    "_security": {
+      "$ref": "uri://registries/security#group/_security"
+    },
+    "$ref": "uri://registries/security#groupmaster/new"
+  }
+}

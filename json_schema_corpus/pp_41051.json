@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/resource"
+      }
+    },
+    "meta": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "jsonapi": {
+      "type": "object"
+    },
+    "links": {
+      "type": "object"
+    },
+    "included": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/includedItems"
+      }
+    }
+  },
+  "required": [
+    "data",
+    "meta"
+  ],
+  "additionalProperties": false,
+  "definitions": {
+    "resource": {
+      "$ref": "../../resources/address.json"
+    },
+    "includedItems": {
+      "oneOf": [
+        {
+          "$ref": "../../resources/customer_account.json"
+        }
+      ]
+    }
+  }
+}

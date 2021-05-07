@@ -1,0 +1,174 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://jsonschema.net",
+  "required": false,
+  "properties": {
+    "feed": {
+      "type": "object",
+      "id": "http://jsonschema.net/feed",
+      "required": true,
+      "properties": {
+        "entry": {
+          "type": "object",
+          "id": "http://jsonschema.net/feed/entry",
+          "required": false,
+          "items": {
+            "type": "object",
+            "id": "http://jsonschema.net/feed/entry/0",
+            "required": false,
+            "properties": {
+              "author": {
+                "type": "object",
+                "id": "http://jsonschema.net/feed/entry/0/author",
+                "required": false,
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/feed/entry/0/author/name",
+                    "required": false
+                  }
+                }
+              },
+              "category": {
+                "type": "array",
+                "id": "http://jsonschema.net/feed/entry/0/category",
+                "required": false,
+                "items": {
+                  "type": "object",
+                  "id": "http://jsonschema.net/feed/entry/0/category/0",
+                  "required": false,
+                  "properties": {
+                    "term": {
+                      "type": "string",
+                      "id": "http://jsonschema.net/feed/entry/0/category/0/term",
+                      "required": false
+                    }
+                  }
+                }
+              },
+              "dc:creator": {
+                "type": "string",
+                "id": "http://jsonschema.net/feed/entry/0/dc:creator",
+                "required": false
+              },
+              "dc:date": {
+                "type": "string",
+                "id": "http://jsonschema.net/feed/entry/0/dc:date",
+                "required": false
+              },
+              "id": {
+                "type": "string",
+                "id": "http://jsonschema.net/feed/entry/0/id",
+                "required": false
+              },
+              "link": {
+                "type": "object",
+                "id": "http://jsonschema.net/feed/entry/0/link",
+                "required": false,
+                "properties": {
+                  "href": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/feed/entry/0/link/href",
+                    "required": false
+                  },
+                  "rel": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/feed/entry/0/link/rel",
+                    "required": false
+                  }
+                }
+              },
+              "published": {
+                "type": "string",
+                "id": "http://jsonschema.net/feed/entry/0/published",
+                "required": false
+              },
+              "slash:comments": {
+                "type": "object",
+                "id": "http://jsonschema.net/feed/entry/0/slash:comments",
+                "required": false,
+                "properties": {
+                  "content": {
+                    "type": "number",
+                    "id": "http://jsonschema.net/feed/entry/0/slash:comments/content",
+                    "required": false
+                  },
+                  "xmlns:slash": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/feed/entry/0/slash:comments/xmlns:slash",
+                    "required": false
+                  }
+                }
+              },
+              "summary": {
+                "type": "object",
+                "id": "http://jsonschema.net/feed/entry/0/summary",
+                "required": false,
+                "properties": {
+                  "content": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/feed/entry/0/summary/content",
+                    "required": false
+                  },
+                  "type": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/feed/entry/0/summary/type",
+                    "required": false
+                  }
+                }
+              },
+              "title": {
+                "type": "string",
+                "id": "http://jsonschema.net/feed/entry/0/title",
+                "required": true
+              },
+              "updated": {
+                "type": "string",
+                "id": "http://jsonschema.net/feed/entry/0/updated",
+                "required": false
+              },
+              "wfw:commentRss": {
+                "type": "object",
+                "id": "http://jsonschema.net/feed/entry/0/wfw:commentRss",
+                "required": false,
+                "properties": {
+                  "content": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/feed/entry/0/wfw:commentRss/content",
+                    "required": false
+                  },
+                  "xmlns:wfw": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/feed/entry/0/wfw:commentRss/xmlns:wfw",
+                    "required": false
+                  }
+                }
+              }
+            }
+          }
+        },
+        "subtitle": {
+          "type": "string",
+          "id": "http://jsonschema.net/feed/subtitle",
+          "required": false
+        },
+        "title": {
+          "type": "string",
+          "id": "http://jsonschema.net/feed/title",
+          "required": true
+        },
+        "xmlns:dc": {
+          "type": "string",
+          "id": "http://jsonschema.net/feed/xmlns:dc",
+          "required": false
+        },
+        "xmlns": {
+          "type": "string",
+          "id": "http://jsonschema.net/feed/xmlns",
+          "required": false
+        }
+      }
+    }
+  }
+}

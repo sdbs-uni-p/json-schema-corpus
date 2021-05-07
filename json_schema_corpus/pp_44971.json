@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "Results": {
+    "$ref": "results.json"
+  },
+  "Context": {
+    "$ref": "context.json"
+  },
+  "Analysis": {
+    "$ref": "analysis.json"
+  },
+  "Entry": {
+    "$ref": "entry.json"
+  },
+  "Sentiment": {
+    "$ref": "sentiment.json"
+  },
+  "EmotionSet": {
+    "$ref": "emotionSet.json"
+  },
+  "Emotion": {
+    "$ref": "emotion.json"
+  },
+  "EmotionModel": {
+    "$ref": "emotionModel.json"
+  },
+  "Entity": {
+    "$ref": "entity.json"
+  },
+  "Topic": {
+    "$ref": "topic.json"
+  },
+  "Suggestion": {
+    "$ref": "suggestion.json"
+  },
+  "Plugins": {
+    "$ref": "plugin.json"
+  },
+  "Plugin": {
+    "$ref": "plugin.json"
+  },
+  "Response": {
+    "$ref": "response.json"
+  },
+  "AggregatedEvaluation": {
+    "$ref": "aggregatedEvaluation.json"
+  },
+  "Evaluation": {
+    "$ref": "evaluation.json"
+  },
+  "Metric": {
+    "$ref": "metric.json"
+  },
+  "Dataset": {
+    "$ref": "dataset.json"
+  },
+  "Datasets": {
+    "$ref": "datasets.json"
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "HypertyDescriptor",
+  "type": "object",
+  "required": [
+    "dataObjects",
+    "hypertyType",
+    "messageSchemaUrl",
+    "constraints"
+  ],
+  "properties": {
+    "dataObjects": {
+      "$ref": "#/HypertyDataObject"
+    },
+    "hypertyType": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "chat",
+          "audio",
+          "video",
+          "av",
+          "screen",
+          "file",
+          "midi",
+          "activity_context",
+          "availability_context",
+          "location_context",
+          "heart_rate_contexst",
+          "user_steps_context",
+          "battery_context",
+          "sleep_context",
+          "light_context",
+          "humidity_context",
+          "power",
+          "user_activity_context",
+          "user_communication_context"
+        ]
+      }
+    },
+    "messageSchemaUrl": {
+      "type": "string"
+    },
+    "configuration": {
+      "$ref": "#/HypertyConfiguration"
+    },
+    "constraints": {
+      "$ref": "RethinkCore.CatalogueDataObject.HypertyRuntimeDescriptor.json#/RuntimeHypertyCapabilities"
+    },
+    "policiesUrl": {
+      "type": "string"
+    }
+  },
+  "HypertyConfiguration": {
+    "type": "object",
+    "properties": {}
+  },
+  "HypertyDataObject": {
+    "type": "object",
+    "properties": {
+      "dataObjectURLs": {
+        "type": "string"
+      },
+      "role": {
+        "enum": [
+          "reporter",
+          "observer",
+          "reporter-observer"
+        ]
+      }
+    }
+  }
+}

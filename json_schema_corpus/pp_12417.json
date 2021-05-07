@@ -1,0 +1,113 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Profile",
+  "x-otm-library": {
+    "LibraryName": "Profile",
+    "LibraryVersion": "0.0.0",
+    "LibraryStatus": "DRAFT",
+    "SourceFile": "/Profile_0_0_0.otm",
+    "CompilerVersion": "4.0-SNAPSHOT",
+    "CompileDate": "2016-05-18T16:11:12.257-0400"
+  },
+  "definitions": {
+    "LoyaltyProgram": {
+      "x-otm-entity": {
+        "EntityType": "ValueWithAttributes",
+        "EntityName": "LoyaltyProgram"
+      },
+      "description": "Identifies a membership or loyalty program offered by the company by name of the program.",
+      "x-otm-annotations": {
+        "documentation": {
+          "implementers": [
+            "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength0to32"
+          ]
+        }
+      },
+      "properties": {
+        "programCode": {
+          "description": "Identification of the loyalty program by code.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to16"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "profile",
+                "value": "ProgramCode"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0_Trim.schema.json#/definitions/String_Tiny"
+        },
+        "loyaltyLevel": {
+          "description": "Indicates special privileges in program assigned to individual.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to16"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "profile",
+                "value": "LoyaltyLevel"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0_Trim.schema.json#/definitions/String_Tiny"
+        },
+        "id": {
+          "description": "A unique reference for a loyalty program within this message.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}RPH_Type"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "profile",
+                "value": "RPH"
+              }
+            ]
+          },
+          "$ref": "built-ins/XMLSchema.schema.json#/definitions/ID"
+        },
+        "codeContext": {
+          "description": "Identifies the source authority for the code.",
+          "$ref": "OTA_SimpleTypes_0_0_0_Trim.schema.json#/definitions/String_Tiny"
+        },
+        "primaryInd": {
+          "description": "When true, indicates this is the primary loyalty program and when absent or false, indicates this is not the primary loyalty program.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}boolean"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "profile",
+                "value": "PrimaryLoyaltyIndicator"
+              }
+            ]
+          },
+          "type": "boolean"
+        },
+        "singleVendorIndGroupInd": {
+          "description": "Present and true Indicates the program is part of an alliance, otherwise it is a single vendor.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "AttributeGroup: SingleVendorIndGroup"
+              ]
+            }
+          },
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

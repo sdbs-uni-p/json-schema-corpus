@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "properties": {
+    "site_id": {
+      "type": "string"
+    },
+    "api_method": {
+      "type": "string"
+    },
+    "frequency": {
+      "type": "string"
+    },
+    "api_method_arguments": {
+      "type": "object",
+      "properties": {
+        "idGoal": {
+          "type": "string"
+        }
+      }
+    },
+    "period": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "site_id"
+  ],
+  "title": "Piwik Core Collector Query",
+  "type": "object",
+  "additionalFields": false
+}

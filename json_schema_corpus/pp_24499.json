@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://mydomain.net/schemas/node.json",
+  "type": "object",
+  "properties": {
+    "health": {
+      "type": "integer"
+    },
+    "address": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "ethernetProductSpecDetail",
+  "id": "ethernetProductSpecDetail",
+  "description": "Details of an ethernet product specification. These details are used for Serviceability Responses.",
+  "type": "object",
+  "required": [
+    "objectType",
+    "bandwidth"
+  ],
+  "properties": {
+    "objectType": {
+      "type": "string",
+      "enum": [
+        "ethernetProductSpecDetail"
+      ],
+      "description": "The type of the object, ethernetProductSpecDetail."
+    },
+    "bandwidth": {
+      "$ref": "informationRateQuantity.json#",
+      "description": "The service's bandwidth (in bits/s)."
+    },
+    "accessMedium": {
+      "type": "string",
+      "description": "The type of media the service  should delivered over (e.g., Fiber, Coax, Twisted Pair).",
+      "maxLength": 25
+    },
+    "accessTechnology": {
+      "type": "string",
+      "enum": [
+        "BONDED_COPPER",
+        "DIRECT_FIBER",
+        "DOCSIS_3.0",
+        "DOCSIS_3.1",
+        "DSL",
+        "PACKET_MICROWAVE",
+        "PON",
+        "SONET_SDH",
+        "TDM",
+        "WDM"
+      ],
+      "description": "The underlying technology used to transmit data across the Access Medium (e.g., DOCSIS 3.0)."
+    },
+    "classOfService": {
+      "type": "string",
+      "enum": [
+        "HIGH",
+        "MEDIUM",
+        "LOW"
+      ],
+      "description": "The desired Class of Service, as defined by MEF 23.1."
+    },
+    "sellerClassOfService": {
+      "type": "string",
+      "description": "An organization's internal name for a Class of Service. For example, a 'High' CoS may be named 'Real-Time' within a specific organization.",
+      "maxLength": 25
+    },
+    "mtuSize": {
+      "type": "integer",
+      "description": "The maximum transmission unit size specifies the maximum length ENNI Frame in bytes allowed at the ENNI. An integer greater or equal to 1526.",
+      "minimum": 1526
+    },
+    "colorForwardingEnabled": {
+      "type": "boolean",
+      "description": "Color Forwarding is an OVC attribute defining the relationship between the color on an egress ENNI frame and the color of the corresponding ingress ENNI Frame or Service Frame.  For ordering, this attribute identifies if the Buyer requests Color Forwarding for this service."
+    },
+    "enniLocation": {
+      "$ref": "enniLocationResponse.json#",
+      "description": "The location of the ENNI."
+    }
+  }
+}

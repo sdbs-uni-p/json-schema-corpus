@@ -1,0 +1,138 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "description": "Settings schema for Mouser.",
+  "properties": {
+    "db": {
+      "type": "object",
+      "properties": {
+        "userCollection": {
+          "type": "string",
+          "description": "Name of the collection to be used to store user data."
+        }
+      },
+      "required": [
+        "userCollection"
+      ]
+    },
+    "token": {
+      "type": "object",
+      "description": "Information about the json web token; how to encrypt it and when it expires.",
+      "properties": {
+        "secret": {
+          "type": "string",
+          "description": "The secret used to encrypt the token."
+        },
+        "expiresIn": {
+          "type": "integer",
+          "minimum": 0,
+          "default": 20160,
+          "description": "Amount of seconds before the token expires."
+        }
+      },
+      "required": [
+        "secret",
+        "expiresIn"
+      ],
+      "default": {}
+    },
+    "session": {
+      "type": "object",
+      "description": "Information about the client session; how to encrypt it and when it expires.",
+      "properties": {
+        "secret": {
+          "type": "string",
+          "description": "The secret used to encrypt the session."
+        },
+        "expiresIn": {
+          "type": "integer",
+          "minimum": 0,
+          "default": 20160,
+          "description": "Amount of seconds before the session expires."
+        },
+        "cookieName": {
+          "type": "string",
+          "description": "The session's cookie name",
+          "default": "mouser"
+        }
+      },
+      "required": [
+        "secret",
+        "expiresIn",
+        "cookieName"
+      ],
+      "default": {}
+    },
+    "paths": {
+      "type": "object",
+      "description": "Paths used.",
+      "properties": {
+        "base": {
+          "type": "string",
+          "format": "uri",
+          "description": "The base URI of the web application (e.g. https://localhost:8080)."
+        },
+        "login": {
+          "type": "string",
+          "description": "The path (relative to the base URI) to the login view.",
+          "default": "login"
+        },
+        "logout": {
+          "type": "string",
+          "description": "The path (relative to the base URI) to the logout view.",
+          "default": "logout"
+        }
+      },
+      "required": [
+        "base",
+        "login",
+        "logout"
+      ],
+      "default": {}
+    },
+    "providers": {
+      "type": "object",
+      "description": "Authentication providers.",
+      "properties": {
+        "facebook": {
+          "type": "object",
+          "properties": {
+            "appId": {
+              "type": "string"
+            },
+            "appSecret": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "appId",
+            "appSecret"
+          ]
+        },
+        "google": {
+          "type": "object",
+          "properties": {
+            "appId": {
+              "type": "string"
+            },
+            "appSecret": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "appId",
+            "appSecret"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "db",
+    "token",
+    "session",
+    "paths",
+    "providers"
+  ]
+}

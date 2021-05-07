@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "endpoint": "/status",
+  "description": "testing the status of the response",
+  "methods": [
+    "get",
+    "post",
+    "put",
+    "delete"
+  ],
+  "params": {
+    "status": 404
+  },
+  "status": 404,
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "integer",
+      "enum": [
+        404
+      ]
+    }
+  },
+  "required": [
+    "status"
+  ]
+}

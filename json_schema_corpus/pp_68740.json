@@ -1,0 +1,482 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "priorityType": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "id": "id",
+          "type": "integer"
+        },
+        "type": {
+          "id": "type",
+          "type": "string"
+        },
+        "priorityTypeName": {
+          "id": "priorityTypeName",
+          "type": "string"
+        }
+      }
+    },
+    "location": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "id": "id",
+          "type": "integer"
+        },
+        "type": {
+          "id": "type",
+          "type": "string"
+        },
+        "address": {
+          "id": "address",
+          "type": "string"
+        },
+        "city": {
+          "id": "city",
+          "type": "string"
+        },
+        "locationName": {
+          "id": "locationName",
+          "type": "string"
+        },
+        "postalCode": {
+          "id": "postalCode",
+          "type": "string"
+        },
+        "state": {
+          "id": "state",
+          "type": "string"
+        },
+        "priorityTypes": {
+          "id": "priorityTypes",
+          "type": "array",
+          "items": []
+        },
+        "defaultPriorityTypeId": {
+          "id": "defaultPriorityTypeId",
+          "type": "integer"
+        }
+      }
+    },
+    "ticketCustomField": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "id": "type",
+          "type": "string"
+        },
+        "definitionId": {
+          "id": "definitionId",
+          "type": "integer"
+        },
+        "restValue": {
+          "id": "restValue",
+          "type": "string"
+        }
+      }
+    },
+    "customField": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "id": "type",
+          "type": "string"
+        },
+        "definitionId": {
+          "id": "definitionId",
+          "type": "integer"
+        },
+        "restValue": {
+          "id": "restValue",
+          "type": "string"
+        }
+      }
+    },
+    "statusType": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "id": "id",
+          "type": "integer"
+        },
+        "type": {
+          "id": "type",
+          "type": "string"
+        },
+        "statusTypeName": {
+          "id": "statusTypeName",
+          "type": "string"
+        }
+      }
+    },
+    "note": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "id": "id",
+          "type": "integer"
+        },
+        "type": {
+          "id": "type",
+          "type": "string"
+        },
+        "date": {
+          "id": "date",
+          "type": "string"
+        },
+        "isSolution": {
+          "id": "isSolution",
+          "type": "boolean"
+        },
+        "prettyUpdatedString": {
+          "id": "prettyUpdatedString",
+          "type": "string"
+        },
+        "mobileNoteText": {
+          "id": "mobileNoteText",
+          "type": "string"
+        },
+        "isTechNote": {
+          "id": "isTechNote",
+          "type": "boolean"
+        },
+        "isHidden": {
+          "id": "isHidden",
+          "type": "boolean"
+        },
+        "attachments": {
+          "id": "attachments",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/attachment"
+          }
+        }
+      },
+      "required": [
+        "type"
+      ]
+    },
+    "attachment": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "id": "type",
+          "type": {
+            "enum": [
+              "jobTicket",
+              "techNote",
+              "clientNote",
+              "faq",
+              "client"
+            ]
+          }
+        },
+        "type": {
+          "id": "type",
+          "type": "string"
+        },
+        "fileName": {
+          "id": "type",
+          "type": "string"
+        },
+        "sizeString": {
+          "id": "type",
+          "type": "string"
+        },
+        "uploadDateUtc": {
+          "id": "type",
+          "type": "string"
+        }
+      }
+    }
+  },
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "id": {
+      "id": "id",
+      "type": "integer"
+    },
+    "type": {
+      "id": "type",
+      "type": "string"
+    },
+    "bccAddresses": {
+      "id": "bccAddresses",
+      "type": "string"
+    },
+    "ccAddressesForTech": {
+      "id": "ccAddressesForTech",
+      "type": "string"
+    },
+    "departmentId": {
+      "id": "departmentId",
+      "type": "integer"
+    },
+    "lastUpdated": {
+      "id": "lastUpdated",
+      "type": "string"
+    },
+    "locationId": {
+      "id": "locationId",
+      "type": "integer"
+    },
+    "priorityTypeId": {
+      "id": "priorityTypeId",
+      "type": "integer"
+    },
+    "room": {
+      "id": "room",
+      "type": "string"
+    },
+    "statusTypeId": {
+      "id": "statusTypeId",
+      "type": "integer"
+    },
+    "subject": {
+      "id": "subject",
+      "type": "string"
+    },
+    "clientReporter": {
+      "id": "clientReporter",
+      "type": "object",
+      "properties": {
+        "id": {
+          "id": "id",
+          "type": "integer"
+        },
+        "type": {
+          "id": "type",
+          "type": "string"
+        },
+        "email": {
+          "id": "email",
+          "type": "string"
+        },
+        "firstName": {
+          "id": "firstName",
+          "type": "string"
+        },
+        "lastName": {
+          "id": "lastName",
+          "type": "string"
+        },
+        "notes": {
+          "id": "notes",
+          "type": "string"
+        },
+        "phone": {
+          "id": "phone",
+          "type": "string"
+        },
+        "phone2": {
+          "id": "phone2",
+          "type": "string"
+        },
+        "department": {
+          "id": "department",
+          "type": "string"
+        },
+        "location": {
+          "id": "location",
+          "$ref": "#/definitions/location"
+        },
+        "room": {
+          "id": "room",
+          "type": "string"
+        },
+        "companyName": {
+          "id": "companyName",
+          "type": "string"
+        },
+        "username": {
+          "id": "username",
+          "type": "string"
+        }
+      }
+    },
+    "clientTech": {
+      "id": "clientTech",
+      "type": "object",
+      "properties": {
+        "id": {
+          "id": "id",
+          "type": "integer"
+        },
+        "type": {
+          "id": "type",
+          "type": "string"
+        },
+        "email": {
+          "id": "email",
+          "type": "string"
+        },
+        "displayName": {
+          "id": "displayName",
+          "type": "string"
+        }
+      }
+    },
+    "location": {
+      "id": "location",
+      "$ref": "#/definitions/location"
+    },
+    "prioritytype": {
+      "id": "prioritytype",
+      "$ref": "#/definitions/priorityType"
+    },
+    "problemtype": {
+      "id": "problemtype",
+      "type": "object",
+      "properties": {
+        "id": {
+          "id": "id",
+          "type": "integer"
+        },
+        "type": {
+          "id": "type",
+          "type": "string"
+        },
+        "detailDisplayName": {
+          "id": "detailDisplayName",
+          "type": "string"
+        }
+      }
+    },
+    "statustype": {
+      "id": "statustype",
+      "$ref": "#/definitions/statusType"
+    },
+    "techGroupLevel": {
+      "id": "techGroupLevel",
+      "type": "object",
+      "properties": {
+        "id": {
+          "id": "id",
+          "type": "integer"
+        },
+        "type": {
+          "id": "type",
+          "type": "string"
+        },
+        "level": {
+          "id": "level",
+          "type": "integer"
+        },
+        "levelName": {
+          "id": "levelName",
+          "type": "string"
+        },
+        "shortLevelName": {
+          "id": "shortLevelName",
+          "type": "string"
+        }
+      }
+    },
+    "detail": {
+      "id": "detail",
+      "type": "string"
+    },
+    "reportDateUtc": {
+      "id": "reportDateUtc",
+      "type": "string"
+    },
+    "displayClient": {
+      "id": "displayClient",
+      "type": "string"
+    },
+    "emailClient": {
+      "id": "emailClient",
+      "type": "boolean"
+    },
+    "emailTech": {
+      "id": "emailTech",
+      "type": "boolean"
+    },
+    "emailTechGroupLevel": {
+      "id": "emailTechGroupLevel",
+      "type": "boolean"
+    },
+    "emailGroupManager": {
+      "id": "emailGroupManager",
+      "type": "boolean"
+    },
+    "emailCc": {
+      "id": "emailCc",
+      "type": "boolean"
+    },
+    "emailBcc": {
+      "id": "emailBcc",
+      "type": "boolean"
+    },
+    "needsApproval": {
+      "id": "needsApproval",
+      "type": "boolean"
+    },
+    "ticketEditable": {
+      "id": "ticketEditable",
+      "type": "boolean"
+    },
+    "techId": {
+      "id": "techId",
+      "type": "integer"
+    },
+    "levelNumber": {
+      "id": "levelNumber",
+      "type": "string"
+    },
+    "clientId": {
+      "id": "clientId",
+      "type": "integer"
+    },
+    "flaggedByTech": {
+      "id": "flaggedByTech",
+      "type": "boolean"
+    },
+    "isPublic": {
+      "id": "isPublic",
+      "type": "boolean"
+    },
+    "canEscalate": {
+      "id": "canEscalate",
+      "type": "boolean"
+    },
+    "notes": {
+      "id": "notes",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/note"
+      }
+    },
+    "ticketCustomFields": {
+      "id": "ticketCustomFields",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ticketCustomField"
+      }
+    },
+    "customFields": {
+      "id": "customFields",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/customField"
+      }
+    },
+    "enabledStatusTypes": {
+      "id": "enabledStatusTypes",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/statusType"
+      }
+    },
+    "attachments": {
+      "id": "attachments",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/attachment"
+      }
+    }
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "title": "Socks",
+  "description": "Where socks go",
+  "stability": "prototype",
+  "strictProperties": true,
+  "type": [
+    "object"
+  ],
+  "definitions": {
+    "id": {
+      "description": "unique identifier of sock",
+      "readOnly": true,
+      "format": "uuid",
+      "type": [
+        "string"
+      ]
+    },
+    "title": {
+      "description": "title of the sock",
+      "readOnly": true,
+      "type": [
+        "string"
+      ]
+    },
+    "body": {
+      "description": "body describing of the sock",
+      "readOnly": true,
+      "type": [
+        "string"
+      ]
+    },
+    "latitude": {
+      "description": "latitude of sock coordinates",
+      "readOnly": true,
+      "type": [
+        "number"
+      ]
+    },
+    "longitude": {
+      "description": "longitude of sock coordinates",
+      "readOnly": true,
+      "type": [
+        "number"
+      ]
+    },
+    "identity": {
+      "allOf": [
+        {
+          "$ref": "/schemata/sock#/definitions/id"
+        }
+      ]
+    }
+  },
+  "links": [
+    {
+      "description": "List existing socks.",
+      "href": "/api/socks",
+      "http_header": {
+        "Accept": "application/vnd.wheresocksgo+json; version=1"
+      },
+      "method": "GET",
+      "rel": "instances",
+      "title": "List"
+    }
+  ],
+  "properties": {
+    "id": {
+      "$ref": "/schemata/sock#/definitions/id"
+    },
+    "title": {
+      "$ref": "/schemata/sock#/definitions/title"
+    },
+    "body": {
+      "$ref": "/schemata/sock#/definitions/body"
+    },
+    "latitude": {
+      "$ref": "/schemata/sock#/definitions/latitude"
+    },
+    "longitude": {
+      "$ref": "/schemata/sock#/definitions/longitude"
+    }
+  },
+  "id": "schemata/sock"
+}

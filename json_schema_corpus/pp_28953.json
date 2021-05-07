@@ -1,0 +1,105 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "OSVR Server Config",
+  "description": "This schema documents and guides creation of a config file for the osvr_server application.",
+  "type": "object",
+  "properties": {
+    "externalDevices": {
+      "title": "External devices object",
+      "description": "Contains entries defining path tree names and device descriptors for external VRPN devices",
+      "type": "object",
+      "additionalProperties": {
+        "title": "External device definition",
+        "description": "Describes an external device. The key associated with this object is the path it will be accessible under.",
+        "type": "object",
+        "properties": {
+          "deviceName": {
+            "title": "Device name",
+            "description": "For example, Tracker0 - the part preceding @ in the full VRPN device name.",
+            "type": "string"
+          },
+          "server": {
+            "title": "Device server",
+            "description": "Server host (IP address or hostname), optionally with port if not the default 3883",
+            "type": "string"
+          },
+          "descriptor": {
+            "title": "Device descriptor",
+            "description": "TODO - can either be an embedded descriptor object, or a reference to an external file with the descriptor."
+          }
+        }
+      }
+    },
+    "server": {
+      "title": "Server options",
+      "type": "object",
+      "properties": {
+        "local": {
+          "description": "Whether the server should be local-only or shared (open to networks)",
+          "type": "boolean",
+          "default": "true"
+        },
+        "interface": {
+          "description": "Network interface (IP address) to listen on - implies a non-local-only server",
+          "type": "string"
+        },
+        "port": {
+          "description": "Port to listen on - note that a non-default port may impair the ability of client applications to contact the server!",
+          "type": "integer",
+          "minimum": 1,
+          "default": 3883
+        },
+        "sleep": {
+          "description": "Mainloop sleep duration, in milliseconds",
+          "type": "number",
+          "minimum": 0,
+          "default": 1
+        }
+      }
+    },
+    "drivers": {
+      "title": "Drivers to manually instantiate",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "plugin": {
+            "id": "plugin",
+            "type": "string"
+          },
+          "driver": {
+            "id": "driver",
+            "type": "string"
+          },
+          "params": {
+            "id": "params",
+            "type": "object",
+            "properties": {}
+          }
+        }
+      }
+    },
+    "routes": {
+      "title": "DEPRECATED - Route specifications",
+      "description": "Deprecated way to specify aliases, or as they were known earlier, routes. Replaced fully by aliases.",
+      "type": "array"
+    },
+    "plugins": {
+      "title": "Plugins to manually load",
+      "description": "Manual-load plugins that should be loaded. Provide plugin name only, not filename.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-zA-Z]+[a-zA-Z0-9_]*$"
+      }
+    },
+    "display": {
+      "title": "Display descriptor - TODO - filename, reference, or object"
+    },
+    "aliases": {
+      "title": "Aliases - TODO",
+      "description": "Aliases to manually add to the path tree, optionally with transforms. These take the same format as automatic aliases, so they should share a schema.",
+      "type": "object"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "type": "object",
+  "properties": {
+    "app": {
+      "type": "string",
+      "description": "the app that produced these actions"
+    },
+    "actions": {
+      "$ref": "actions.json"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "app",
+    "actions"
+  ]
+}

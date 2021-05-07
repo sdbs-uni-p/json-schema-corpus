@@ -1,0 +1,25 @@
+{
+  "id": "Notification job creation",
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "type": "string",
+      "maxLength": 160,
+      "minLength": 5
+    },
+    "filename": {
+      "type": "string",
+      "maxLength": 160,
+      "minLength": 5
+    },
+    "serviceId": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "name",
+    "serviceId"
+  ]
+}

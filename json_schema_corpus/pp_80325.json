@@ -1,0 +1,291 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "List Members",
+  "description": "Individuals who are currently or have been previously suscribed to this list, including members who have bounced or unsubscribed.",
+  "required": [
+    "email_address"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "title": "Email ID",
+      "description": "The MD5 hash of the list member's email address.",
+      "readonly": true,
+      "example": "62eeb292278cc15f5817cb78f7790b08"
+    },
+    "email_address": {
+      "type": "string",
+      "title": "Email Address",
+      "description": "Email address for a subscriber.",
+      "readonly": true,
+      "example": "urist.mcvankab@freddiesjokes.com"
+    },
+    "unique_email_id": {
+      "type": "string",
+      "title": "Unique Email ID",
+      "description": "An identifier for the address across all of MailChimp.",
+      "readonly": true,
+      "example": "5d9a5e3f7b"
+    },
+    "email_type": {
+      "type": "string",
+      "title": "Email Type",
+      "description": "Type of email this member asked to get ('html' or 'text').",
+      "example": "html"
+    },
+    "status": {
+      "type": "string",
+      "title": "Status",
+      "description": "Subscriber's current status ('subscribed', 'unsubscribed', 'cleaned', or 'pending').",
+      "enum": [
+        "subscribed",
+        "unsubscribed",
+        "cleaned",
+        "pending"
+      ],
+      "example": "subscribed"
+    },
+    "status_if_new": {
+      "type": "string",
+      "title": "Default Status",
+      "description": "Subscriber's status ('subscribed', 'unsubscribed', 'cleaned', or 'pending'), to be used only on a PUT request if the email is not already present on the list.",
+      "enum": [
+        "subscribed",
+        "unsubscribed",
+        "cleaned",
+        "pending"
+      ],
+      "example": "subscribed"
+    },
+    "merge_fields": {
+      "$ref": "https://us1.api.mailchimp.com/schema/3.0/Lists/Members/MergeField.json"
+    },
+    "interests": {
+      "type": "object",
+      "title": "Subscriber Interests",
+      "description": "The key of this object's properties is the ID of the interest in question.",
+      "additionalProperties": {
+        "type": "boolean",
+        "title": "Interest Value",
+        "example": true
+      }
+    },
+    "stats": {
+      "type": "object",
+      "title": "Subscriber Stats",
+      "description": "General open rates for this subscriber.",
+      "readonly": true,
+      "properties": {
+        "avg_open_rate": {
+          "type": "number",
+          "title": "Average Open Rate",
+          "description": "A subscriber's average open rate.",
+          "readonly": true,
+          "example": 42
+        },
+        "avg_click_rate": {
+          "type": "number",
+          "title": "Average Click Rate",
+          "description": "A subscriber's average clickthrough rate.",
+          "readonly": true,
+          "example": 42
+        }
+      }
+    },
+    "ip_signup": {
+      "type": "string",
+      "title": "Signup IP",
+      "description": "IP address the subscriber signed up from.",
+      "readonly": true,
+      "example": "8.8.8.8"
+    },
+    "timestamp_signup": {
+      "type": "string",
+      "title": "Signup Timestamp",
+      "description": "Date and time the subscriber signed up for the list.",
+      "readonly": true,
+      "example": "2013-01-18T16:48:09+00:00"
+    },
+    "ip_opt": {
+      "type": "string",
+      "title": "Opt-in IP",
+      "description": "IP address the subscriber confirmed their opt-in status.",
+      "readonly": true,
+      "example": "8.8.8.8"
+    },
+    "timestamp_opt": {
+      "type": "string",
+      "title": "Opt-in Timestamp",
+      "description": "Date and time the subscribe confirmed their opt-in status.",
+      "readonly": true,
+      "example": "2013-01-18T16:48:09+00:00"
+    },
+    "member_rating": {
+      "type": "integer",
+      "title": "Member Rating",
+      "description": "Star rating for this member between 1 and 5.",
+      "readonly": true,
+      "example": 4
+    },
+    "last_changed": {
+      "type": "string",
+      "title": "Last Changed Date",
+      "description": "Date and time the member's info was last changed.",
+      "readonly": true,
+      "example": "2013-01-18T16:48:09+00:00"
+    },
+    "language": {
+      "type": "string",
+      "title": "Language",
+      "description": "If set/detected, the language of the subscriber.",
+      "example": "de"
+    },
+    "vip": {
+      "type": "boolean",
+      "title": "VIP",
+      "description": "VIP status for subscriber.",
+      "example": true
+    },
+    "email_client": {
+      "type": "string",
+      "title": "Email Client",
+      "description": "The email client the address as using.",
+      "readonly": true,
+      "example": "Apple Mail"
+    },
+    "location": {
+      "type": "object",
+      "title": "Location",
+      "description": "Subscriber location information.",
+      "properties": {
+        "latitude": {
+          "type": "number",
+          "title": "Latitude",
+          "example": 33.749249
+        },
+        "longitude": {
+          "type": "number",
+          "title": "Longitude",
+          "example": -84.387314
+        },
+        "gmtoff": {
+          "type": "integer",
+          "title": "GMT Offset",
+          "readonly": true,
+          "example": -5
+        },
+        "dstoff": {
+          "type": "integer",
+          "title": "DST Offset",
+          "readonly": true,
+          "example": -4
+        },
+        "country_code": {
+          "type": "string",
+          "title": "Country Code",
+          "readonly": true,
+          "example": "US"
+        },
+        "timezone": {
+          "type": "string",
+          "title": "Timezone",
+          "readonly": true,
+          "example": "America/Kentucky/Monticello"
+        }
+      }
+    },
+    "last_note": {
+      "type": "object",
+      "title": "Notes",
+      "description": "The most recent Note added about this member.",
+      "readonly": true,
+      "properties": {
+        "note_id": {
+          "type": "integer",
+          "title": "Note ID",
+          "description": "The note's ID.",
+          "example": 42
+        },
+        "created_at": {
+          "type": "string",
+          "title": "Created Time",
+          "description": "The date the note was created.",
+          "example": "2015-07-15 19:28:00"
+        },
+        "created_by": {
+          "type": "string",
+          "title": "Author",
+          "description": "The author of the note.",
+          "example": "2945082"
+        },
+        "note": {
+          "type": "string",
+          "title": "Note",
+          "description": "The content of the note.",
+          "example": "Urist McVankab visited the new records page today, but didn't make a purchase."
+        }
+      }
+    },
+    "list_id": {
+      "type": "string",
+      "title": "List ID",
+      "description": "The id for the list.",
+      "readonly": true,
+      "example": "4ca5becb8d"
+    },
+    "_links": {
+      "$ref": "https://us1.api.mailchimp.com/schema/3.0/Generics/ResourceLinkArray.json"
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://us1.api.mailchimp.com/3.0/lists/{list_id}/members/{id}",
+      "method": "GET",
+      "targetSchema": "https://us1.api.mailchimp.com/schema/3.0/Lists/Members/Instance.json"
+    },
+    {
+      "rel": "parent",
+      "href": "https://us1.api.mailchimp.com/3.0/lists/{list_id}/members",
+      "method": "GET",
+      "targetSchema": "https://us1.api.mailchimp.com/schema/3.0/Lists/Members/Collection.json",
+      "schema": "https://us1.api.mailchimp.com/schema/3.0/CollectionLinks/Lists/Members.json"
+    },
+    {
+      "rel": "update",
+      "href": "https://us1.api.mailchimp.com/3.0/lists/{list_id}/members/{id}",
+      "method": "PATCH",
+      "schema": "https://us1.api.mailchimp.com/schema/3.0/Lists/Members/Instance.json"
+    },
+    {
+      "rel": "upsert",
+      "href": "https://us1.api.mailchimp.com/3.0/lists/{list_id}/members/{id}",
+      "method": "PUT",
+      "schema": "https://us1.api.mailchimp.com/schema/3.0/Lists/Members/Instance.json"
+    },
+    {
+      "rel": "delete",
+      "href": "https://us1.api.mailchimp.com/3.0/lists/{list_id}/members/{id}",
+      "method": "DELETE"
+    },
+    {
+      "rel": "activity",
+      "href": "https://us1.api.mailchimp.com/3.0/lists/{list_id}/members/{id}/activity",
+      "method": "GET",
+      "targetSchema": "https://us1.api.mailchimp.com/schema/3.0/Lists/Members/Activity/Collection.json"
+    },
+    {
+      "rel": "goals",
+      "href": "https://us1.api.mailchimp.com/3.0/lists/{list_id}/members/{id}/goals",
+      "method": "GET",
+      "targetSchema": "https://us1.api.mailchimp.com/schema/3.0/Lists/Members/Goals/Collection.json"
+    },
+    {
+      "rel": "notes",
+      "href": "https://us1.api.mailchimp.com/3.0/lists/{list_id}/members/{id}/notes",
+      "method": "GET",
+      "targetSchema": "https://us1.api.mailchimp.com/schema/3.0/Lists/Members/Notes/Collection.json"
+    }
+  ]
+}

@@ -1,0 +1,156 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "description": "Schema for doc-metrix metric documentation.",
+  "definitions": {
+    "positiveInteger": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "stringArray": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "variable": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "description"
+      ]
+    },
+    "formula": {
+      "type": "object",
+      "properties": {
+        "equation": {
+          "type": "string"
+        },
+        "variables": {
+          "type": "object",
+          "patternProperties": {
+            "^.+$": {
+              "$ref": "#/definitions/variable"
+            }
+          },
+          "minProperties": 1
+        }
+      },
+      "required": [
+        "equation",
+        "variables"
+      ]
+    },
+    "metric": {
+      "type": "object",
+      "properties": {
+        "displayName": {
+          "type": "string"
+        },
+        "units": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "max": {
+          "type": [
+            "string",
+            "number",
+            "null"
+          ]
+        },
+        "min": {
+          "type": [
+            "string",
+            "number",
+            "null"
+          ]
+        },
+        "sigFigs": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/positiveInteger"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "dataType": {
+          "type": "string",
+          "enum": [
+            "count",
+            "percentage",
+            "numeric",
+            "integer",
+            "time"
+          ]
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "raw",
+            "derived"
+          ]
+        },
+        "formula": {
+          "$ref": "#/definitions/formula"
+        },
+        "description": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "platforms": {
+          "type": "object"
+        },
+        "devices": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/stringArray"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "classification": {
+          "type": "string"
+        },
+        "refs": {
+          "$ref": "#/definitions/stringArray"
+        }
+      },
+      "required": [
+        "displayName",
+        "units",
+        "max",
+        "min",
+        "sigFigs",
+        "dataType",
+        "type",
+        "formula",
+        "description",
+        "notes",
+        "platforms",
+        "devices",
+        "classification",
+        "refs"
+      ]
+    }
+  },
+  "type": "object",
+  "patternProperties": {
+    "^.+$": {
+      "$ref": "#/definitions/metric"
+    }
+  },
+  "minProperties": 1
+}

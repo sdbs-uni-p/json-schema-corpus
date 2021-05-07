@@ -1,0 +1,9 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Select2 Auto-complete Data Schema",
+  "description": "",
+  "type": "array",
+  "items": {
+    "type": "string"
+  }
+}

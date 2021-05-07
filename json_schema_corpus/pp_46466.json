@@ -1,0 +1,206 @@
+{
+  "title": "Processed file",
+  "description": "Files produced by raw or processed file processing.",
+  "id": "/profiles/file_processed.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "required": [
+    "file_format",
+    "award",
+    "lab"
+  ],
+  "identifyingProperties": [
+    "uuid",
+    "accession",
+    "aliases"
+  ],
+  "additionalProperties": false,
+  "mixinProperties": [
+    {
+      "$ref": "mixins.json#/schema_version"
+    },
+    {
+      "$ref": "mixins.json#/uuid"
+    },
+    {
+      "$ref": "mixins.json#/submitted"
+    },
+    {
+      "$ref": "mixins.json#/modified"
+    },
+    {
+      "$ref": "mixins.json#/release_dates"
+    },
+    {
+      "$ref": "mixins.json#/aliases"
+    },
+    {
+      "$ref": "mixins.json#/attribution"
+    },
+    {
+      "$ref": "mixins.json#/notes"
+    },
+    {
+      "$ref": "mixins.json#/accession"
+    },
+    {
+      "$ref": "mixins.json#/dbxrefs"
+    },
+    {
+      "$ref": "mixins.json#/tags"
+    },
+    {
+      "$ref": "mixins.json#/static_embeds"
+    },
+    {
+      "$ref": "mixins.json#/higlass_defaults"
+    },
+    {
+      "$ref": "file.json#/properties"
+    }
+  ],
+  "mixinFacets": [
+    {
+      "$ref": "file.json#/facets"
+    }
+  ],
+  "mixinColumns": [
+    {
+      "$ref": "file.json#/columns"
+    }
+  ],
+  "properties": {
+    "schema_version": {
+      "default": "3"
+    },
+    "higlass_uid": {
+      "title": "Higlass UID",
+      "type": "string"
+    },
+    "file_type": {
+      "title": "File Type",
+      "description": "The type of file based on the information in the file.",
+      "suggested_enum": [
+        "alignments",
+        "boundaries",
+        "calibration",
+        "chromatin states",
+        "compartments",
+        "contact list",
+        "contact list-combined",
+        "contact list-replicate",
+        "contact matrix",
+        "normalized contact matrix",
+        "coordinates",
+        "counts",
+        "normalized counts",
+        "directionality index",
+        "domain calls",
+        "dot calls",
+        "gene expression",
+        "image mask",
+        "insulation score-diamond",
+        "insulation score-potential",
+        "intensity values",
+        "intermediate file",
+        "isoform expression",
+        "juicebox norm vector",
+        "LADs",
+        "localizations",
+        "loci distances",
+        "locus distances, submitter format",
+        "long range chromatin interactions",
+        "microscopy summary",
+        "multi-contact read clusters",
+        "other",
+        "peaks",
+        "conservative peaks",
+        "read counts",
+        "read counts (minus)",
+        "read counts (plus)",
+        "read positions",
+        "reads",
+        "reads-combined",
+        "segregation table",
+        "signal fold change",
+        "spt results",
+        "stripe calls"
+      ]
+    },
+    "file_classification": {
+      "title": "General Classification",
+      "type": "string",
+      "default": "processed file",
+      "exclude_from": [
+        "submit4dn",
+        "FFedit-create"
+      ],
+      "enum": [
+        "processed file"
+      ]
+    },
+    "source_experiments": {
+      "title": "Source Experiments",
+      "description": "Experiments that this file is associated with",
+      "type": "array",
+      "lookup": 40,
+      "exclude_from": [
+        "submit4dn"
+      ],
+      "items": {
+        "title": "Source Experiment",
+        "type": "string"
+      }
+    },
+    "genome_assembly": {
+      "title": "Genome Assembly",
+      "description": "The genome assembly associated with the file - for processing or reference",
+      "type": "string",
+      "lookup": 30,
+      "enum": [
+        "GRCh38",
+        "GRCm38",
+        "dm6",
+        "galGal5"
+      ]
+    },
+    "produced_from": {
+      "title": "Produced From",
+      "description": "Files that were input in a software or pipeline to produce this file",
+      "type": "array",
+      "lookup": 35,
+      "items": {
+        "title": "Input File",
+        "type": "string"
+      }
+    },
+    "disable_wfr_inputs": {
+      "title": "Disable wfr inputs field",
+      "description": "Do not compute workflow_run_inputs field for files used as control",
+      "type": "boolean",
+      "exclude_from": [
+        "submit4dn",
+        "FFedit-create"
+      ]
+    },
+    "percent_clipped_sites_with_re_motif": {
+      "title": "Percent of Clipped Sites with RE Motif",
+      "description": "Clipped sites possessing the reported restriction enzyme motif (x.x = x.x%)",
+      "type": "number",
+      "exclude_from": [
+        "submit4dn",
+        "FFedit-create"
+      ],
+      "permission": "import_items",
+      "lookup": 100
+    }
+  },
+  "facets": {
+    "workflow_run_inputs.workflow.title": {
+      "title": "Input of Workflow"
+    },
+    "workflow_run_outputs.workflow.title": {
+      "title": "Output of Workflow"
+    }
+  }
+}

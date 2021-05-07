@@ -1,0 +1,169 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "definitions": {
+    "created_at": {
+      "description": "When this resource was deleted at",
+      "example": null,
+      "format": "date-time",
+      "type": "string"
+    },
+    "deleted_at": {
+      "description": "When this resource was deleted at",
+      "example": null,
+      "format": "date-time",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "file": {
+      "description": "an attachment of album",
+      "example": "... contents of file ...",
+      "readOnly": false,
+      "type": "string"
+    },
+    "filename": {
+      "description": "unique name of album",
+      "example": "example",
+      "pattern": "^[a-z][a-z0-9-]{3,50}$",
+      "readOnly": false,
+      "type": "string"
+    },
+    "id": {
+      "example": "exampleuuid0123456789",
+      "format": "uuid",
+      "readOnly": true,
+      "type": "string"
+    },
+    "liked_user_ids": {
+      "items": {
+        "$ref": "#/definitions/user/definitions/id"
+      },
+      "type": "array"
+    },
+    "name": {
+      "description": "Album name",
+      "example": "my album",
+      "type": "string"
+    },
+    "owner": {
+      "$ref": "#/definitions/user"
+    },
+    "private": {
+      "description": "true if this resource is private use",
+      "example": false,
+      "type": "boolean"
+    },
+    "updated_at": {
+      "description": "When this resource was deleted at",
+      "example": null,
+      "format": "date-time",
+      "type": "string"
+    }
+  },
+  "links": [
+    {
+      "description": "Create a new album.",
+      "href": "/albums",
+      "method": "POST",
+      "rel": "create",
+      "schema": {
+        "properties": {
+          "name": {
+            "$ref": "#/definitions/album/definitions/name"
+          }
+        },
+        "type": [
+          "object"
+        ]
+      },
+      "title": "Create"
+    },
+    {
+      "description": "List existing albums.",
+      "href": "/albums",
+      "method": "GET",
+      "rel": "instances",
+      "title": "List"
+    },
+    {
+      "description": "Info for existing album.",
+      "href": "/albums/{(#/definitions/album/definitions/id)}",
+      "method": "GET",
+      "rel": "self",
+      "title": "Info"
+    },
+    {
+      "description": "Update an existing album.",
+      "href": "/albums/{(#/definitions/album/definitions/id)}",
+      "method": "PATCH",
+      "rel": "update",
+      "schema": {
+        "properties": {
+          "name": {
+            "$ref": "#/definitions/album/definitions/name"
+          }
+        },
+        "type": [
+          "object"
+        ]
+      },
+      "title": "Update"
+    },
+    {
+      "description": "Delete an existing album.",
+      "href": "/albums/{(#/definitions/album/definitions/id)}",
+      "mediaType": "null",
+      "method": "DELETE",
+      "rel": "destroy",
+      "title": "Delete"
+    },
+    {
+      "description": "Upload an attachment file for an album",
+      "encType": "multipart/form-data",
+      "href": "/albums/{(#/definitions/album/definitions/id)}/files",
+      "method": "POST",
+      "rel": "create",
+      "schema": {
+        "properties": {
+          "file": {
+            "$ref": "#/definitions/album/definitions/file"
+          }
+        },
+        "type": "object"
+      },
+      "title": "Create"
+    }
+  ],
+  "properties": {
+    "created_at": {
+      "$ref": "#/definitions/album/definitions/created_at"
+    },
+    "deleted_at": {
+      "$ref": "#/definitions/album/definitions/deleted_at"
+    },
+    "filename": {
+      "$ref": "#/definitions/album/definitions/filename"
+    },
+    "id": {
+      "$ref": "#/definitions/album/definitions/id"
+    },
+    "liked_user_ids": {
+      "$ref": "#/definitions/album/definitions/liked_user_ids"
+    },
+    "name": {
+      "$ref": "#/definitions/album/definitions/name"
+    },
+    "owner": {
+      "$ref": "#/definitions/album/definitions/owner"
+    },
+    "private": {
+      "$ref": "#/definitions/album/definitions/private"
+    },
+    "updated_at": {
+      "$ref": "#/definitions/album/definitions/updated_at"
+    }
+  },
+  "title": "Album",
+  "type": "object"
+}

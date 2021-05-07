@@ -1,0 +1,110 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "array",
+  "minItems": 1,
+  "uniqueItems": false,
+  "additionalItems": true,
+  "items": {
+    "id": "0",
+    "type": "object",
+    "additionalProperties": true,
+    "properties": {
+      "name": {
+        "id": "name",
+        "type": "string",
+        "minLength": 1
+      },
+      "logoLink": {
+        "id": "logoLink",
+        "type": "string",
+        "minLength": 1
+      },
+      "IATA": {
+        "id": "IATA",
+        "type": "string",
+        "minLength": 1
+      },
+      "ICAO": {
+        "id": "ICAO",
+        "type": "string",
+        "minLength": 1
+      },
+      "Callsign": {
+        "id": "Callsign",
+        "type": "string",
+        "minLength": 1
+      },
+      "OperatingBases": {
+        "id": "OperatingBases",
+        "type": "array",
+        "uniqueItems": false,
+        "additionalItems": true,
+        "items": {
+          "id": "1",
+          "type": "object",
+          "additionalProperties": true,
+          "required": [
+            "name",
+            "link"
+          ],
+          "properties": {
+            "name": {
+              "id": "name",
+              "type": "string",
+              "minLength": 1
+            },
+            "link": {
+              "id": "link",
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      },
+      "hubs": {
+        "id": "hubs",
+        "type": "array",
+        "minItems": 1,
+        "uniqueItems": false,
+        "additionalItems": true,
+        "items": {
+          "id": "0",
+          "type": "object",
+          "additionalProperties": true,
+          "required": [
+            "name",
+            "link"
+          ],
+          "properties": {
+            "name": {
+              "id": "name",
+              "type": "string",
+              "minLength": 1
+            },
+            "link": {
+              "id": "link",
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      },
+      "website": {
+        "id": "website",
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "required": [
+      "name",
+      "logoLink",
+      "IATA",
+      "ICAO",
+      "Callsign",
+      "website"
+    ]
+  },
+  "required": [
+    "0"
+  ]
+}

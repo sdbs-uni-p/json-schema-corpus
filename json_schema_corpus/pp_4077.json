@@ -1,0 +1,10 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Post",
+  "description": "Databook post",
+  "type": "object",
+  "javaType": "databook.persistence.rule.rdf.ruleset.Post",
+  "extends": {
+    "$ref": "IndividualObject.json"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "type": "object",
+  "properties": {
+    "self": {
+      "type": "string",
+      "format": "uri",
+      "description": "Pagination link to this page."
+    },
+    "first": {
+      "type": "string",
+      "format": "uri",
+      "description": "Pagination link to first page."
+    },
+    "next": {
+      "type": "string",
+      "format": "uri",
+      "description": "Pagination link to next page."
+    },
+    "prev": {
+      "type": "string",
+      "format": "uri",
+      "description": "Pagination link to previous page."
+    },
+    "last": {
+      "type": "string",
+      "format": "uri",
+      "description": "Pagination link to last page."
+    }
+  },
+  "required": [
+    "self",
+    "first",
+    "last"
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

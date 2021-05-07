@@ -1,0 +1,8 @@
+{
+  "id": "http://www.turnslift.com/<%= props.name %>",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "",
+  "type": "object",
+  "required": [],
+  "properties": {}
+}

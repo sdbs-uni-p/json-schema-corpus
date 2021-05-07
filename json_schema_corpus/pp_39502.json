@@ -1,0 +1,46 @@
+{
+  "id": "https://raw.githubusercontent.com/eviratec/schema/master/v1/customer.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "schema for a customer",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "contact",
+    "accounts",
+    "date_opened",
+    "is_suspended"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "contact": {
+      "$ref": "https://raw.githubusercontent.com/eviratec/schema/master/v1/contact.json#"
+    },
+    "accounts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "https://raw.githubusercontent.com/eviratec/schema/master/v1/customer/account.json#"
+      },
+      "uniqueItems": true
+    },
+    "additional_contacts": {
+      "type": "array",
+      "items": {
+        "$ref": "https://raw.githubusercontent.com/eviratec/schema/master/v1/contact.json#"
+      },
+      "uniqueItems": true
+    },
+    "date_opened": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "is_suspended": {
+      "type": "boolean",
+      "value": false
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "id": "https://raw.githubusercontent.com/eviratec/schema/master/v1/contact.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "schema for a contact",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "person",
+    "date_entered",
+    "is_flagged"
+  ],
+  "properties": {
+    "person": {
+      "$ref": "https://raw.githubusercontent.com/eviratec/schema/master/v1/contact/person.json#"
+    },
+    "unread_messages": {
+      "type": "number",
+      "minValue": 0
+    },
+    "date_entered": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "date_last_seen": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "is_flagged": {
+      "type": "boolean",
+      "value": false
+    }
+  }
+}

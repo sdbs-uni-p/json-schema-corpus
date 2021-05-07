@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://schemas.massisframework.com/massis3/scene/SceneRoom.json",
+  "javaType": "com.massisframework.massis3.scene.SceneRoom",
+  "title": "Scene Room",
+  "description": "Defines the properties of a room in a massis scene",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "points": {
+      "description": "Array of points in 3D defining the room surface. The y component (elevation) is the same for all points",
+      "type": "array",
+      "items": {
+        "$ref": "http://schemas.massisframework.com/jme3/Vector3f.json"
+      }
+    }
+  }
+}

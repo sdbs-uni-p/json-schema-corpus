@@ -1,0 +1,507 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "uri://registries/people#person",
+  "table": "people",
+  "title": "person",
+  "listFields": [
+    {
+      "field": "id",
+      "title": "ID"
+    },
+    {
+      "field": "baseData.name",
+      "title": "Meno"
+    },
+    {
+      "field": "baseData.surName",
+      "title": "Priezvisko"
+    },
+    {
+      "field": "baseData.birthDate",
+      "title": "D\u00e1tum narodenia"
+    },
+    {
+      "field": "contactInfo.city",
+      "title": "Mesto"
+    }
+  ],
+  "properties": {
+    "systemCredentials": {
+      "$ref": "uri://registries/security#systemCredentials"
+    },
+    "baseData": {
+      "title": "Z\u00e1kladn\u00e9 \u00fadaje",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "Identifik\u00e1tor",
+          "type": "string",
+          "required": true
+        },
+        "name": {
+          "title": "Meno",
+          "type": "string",
+          "required": true
+        },
+        "surName": {
+          "title": "Priezvisko",
+          "type": "string",
+          "required": true
+        },
+        "bornName": {
+          "title": "Rodn\u00e9 priezvisko",
+          "type": "string",
+          "required": false
+        },
+        "title": {
+          "title": "Titul",
+          "type": "string",
+          "required": false
+        },
+        "birthDate": {
+          "title": "D\u00e1tum narodenia",
+          "type": "string",
+          "required": true,
+          "render": {
+            "component": "psui-datepicker"
+          }
+        },
+        "gender": {
+          "title": "Pohlavie",
+          "type": " string",
+          "enum": [
+            "Mu\u017e",
+            "\u017dena"
+          ],
+          "required": true
+        },
+        "nationality": {
+          "title": "\u0160tatna prislusnos\u0165",
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    "additionalDataReferee": {
+      "title": "Dodato\u010dn\u00e9 inform\u00e1cie rozhodcu",
+      "type": "object",
+      "properties": {
+        "firstAssociation": {
+          "title": "Prvotn\u00fd zv\u00e4z",
+          "type": "string",
+          "required": false
+        },
+        "association": {
+          "title": "Aktu\u00e1lny zv\u00e4z",
+          "required": false,
+          "$objectLink": {
+            "registry": "organizations",
+            "name": "baseData.name"
+          }
+        },
+        "firstYear": {
+          "title": "Rok za\u010diatku kari\u00e9ry",
+          "type": "string",
+          "required": false
+        },
+        "proffesionalCompetence": {
+          "title": "Odborn\u00e1 sp\u00f4sobilos\u0165 od (rok)",
+          "type": "string",
+          "required": false
+        },
+        "dateOfRegistration": {
+          "title": "D\u00e1tum registr\u00e1cie",
+          "type": "string",
+          "required": false,
+          "render": {
+            "component": "psui-datepicker"
+          }
+        },
+        "refereeLicence": {
+          "title": "Rozhodcovsk\u00e1 licencia",
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    "additionalDataCoach": {
+      "title": "Dodato\u010dn\u00e9 inform\u00e1cie tr\u00e9nera",
+      "type": "object",
+      "properties": {
+        "firstAssociation": {
+          "title": "Prvotn\u00fd zv\u00e4z",
+          "type": "string",
+          "required": false
+        },
+        "association": {
+          "title": "Aktu\u00e1lny zv\u00e4z",
+          "required": false,
+          "$objectLink": {
+            "registry": "organizations",
+            "name": "baseData.name"
+          }
+        },
+        "firstYear": {
+          "title": "Rok za\u010diatku kari\u00e9ry",
+          "type": "string",
+          "required": false
+        },
+        "proffesionalCompetence": {
+          "title": "Odborn\u00e1 sp\u00f4sobilos\u0165 od (rok)",
+          "type": "string",
+          "required": false
+        },
+        "dateOfRegistration": {
+          "title": "D\u00e1tum registr\u00e1cie",
+          "type": "string",
+          "required": false,
+          "render": {
+            "component": "psui-datepicker"
+          }
+        },
+        "coachLicence": {
+          "title": "Tr\u00e9nersk\u00e1 licencia",
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    "additionalDataAgent": {
+      "title": "Dodato\u010dn\u00e9 inform\u00e1cie",
+      "type": "object",
+      "properties": {
+        "firstAssociation": {
+          "title": "Prvotn\u00fd zv\u00e4z",
+          "type": "string",
+          "required": false
+        },
+        "state": {
+          "title": "Stav",
+          "type": "string",
+          "required": false
+        },
+        "association": {
+          "title": "Zv\u00e4zov\u00e1 pr\u00edslu\u0161nos\u0165",
+          "required": false,
+          "$objectLink": {
+            "registry": "organizations",
+            "name": "baseData.name"
+          }
+        },
+        "expirationOfLicense": {
+          "title": "Platnos\u0165 licencie",
+          "type": "string",
+          "required": false,
+          "render": {
+            "component": "psui-datepicker"
+          }
+        },
+        "expirationOfInsurance": {
+          "title": "Platnos\u0165 poistenia",
+          "type": "string",
+          "required": false,
+          "render": {
+            "component": "psui-datepicker"
+          }
+        }
+      }
+    },
+    "additionalDataPlayer": {
+      "title": "Dodato\u010dn\u00e9 inform\u00e1cie hr\u00e1\u010da",
+      "type": "object",
+      "properties": {
+        "typeOfFootball": {
+          "title": "Typ futbalu",
+          "type": "string",
+          "required": true
+        },
+        "clubOfFirstRegistration": {
+          "title": "Klub prvotnej registr\u00e1cie",
+          "type": "string",
+          "required": false
+        },
+        "firstClub": {
+          "title": "Matersk\u00fd klub",
+          "type": "string",
+          "required": false
+        },
+        "hostClub": {
+          "title": "Hos\u0165uj\u00faci klub (do)",
+          "type": "string",
+          "required": false
+        },
+        "stateOfPlayer": {
+          "title": "Stav hr\u00e1\u010da",
+          "type": "string",
+          "required": false
+        },
+        "expirationOfProffesionalContract": {
+          "title": "Platnos\u0165 profesion\u00e1lnej zmluvy",
+          "type": "string",
+          "required": false,
+          "render": {
+            "component": "psui-datepicker"
+          }
+        },
+        "expirationOfAgentContract": {
+          "title": "Platnos\u0165 zmluvy s agentom",
+          "type": "string",
+          "required": false,
+          "render": {
+            "component": "psui-datepicker"
+          }
+        },
+        "expiration": {
+          "title": "Platnos\u0165 do",
+          "type": "string",
+          "required": false,
+          "render": {
+            "component": "psui-datepicker"
+          }
+        },
+        "dateOfRegistration": {
+          "title": "D\u00e1tum registr\u00e1cie",
+          "type": "string",
+          "required": false,
+          "render": {
+            "component": "psui-datepicker"
+          }
+        },
+        "playerLicence": {
+          "title": "Hr\u00e1\u010dska licencia",
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    "additionalDataUserIssf": {
+      "title": "Dodato\u010dn\u00e9 inform\u00e1cie",
+      "type": "object",
+      "properties": {
+        "Club": {
+          "title": "Klub",
+          "required": false,
+          "$objectLink": {
+            "registry": "organizations",
+            "name": "baseData.name"
+          }
+        },
+        "association": {
+          "title": "Zv\u00e4z",
+          "required": false,
+          "$objectLink": {
+            "registry": "organizations",
+            "name": "baseData.name"
+          }
+        }
+      }
+    },
+    "photoInfo": {
+      "title": "Fotografie",
+      "type": "object",
+      "properties": {
+        "photo": {
+          "title": "Fotografia",
+          "type": "string",
+          "required": true,
+          "render": {
+            "component": "psui-uploadable-image",
+            "height": 244,
+            "width": 205
+          }
+        }
+      }
+    },
+    "contactInfo": {
+      "title": "Kontaktn\u00e9 \u00fadaje",
+      "type": "object",
+      "properties": {
+        "street": {
+          "title": "Ulica",
+          "type": "string",
+          "required": true
+        },
+        "houseNumber": {
+          "title": "\u010c\u00edslo domu",
+          "type": "string",
+          "required": true
+        },
+        "city": {
+          "title": "Obec",
+          "type": "string",
+          "required": true
+        },
+        "zipCode": {
+          "title": "PS\u010c",
+          "type": "string",
+          "required": true
+        },
+        "country": {
+          "title": "\u0160t\u00e1t",
+          "type": "string",
+          "required": true
+        },
+        "phoneNumber": {
+          "title": "Telef\u00f3n",
+          "type": "string",
+          "required": false
+        },
+        "mobileNumber": {
+          "title": "Mobil",
+          "type": "string",
+          "required": false
+        },
+        "email": {
+          "title": "E-mail",
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    "bankInfo": {
+      "title": "Bankov\u00e9 spojenie",
+      "type": "object",
+      "properties": {
+        "bankAccount": {
+          "title": "\u010c\u00edslo \u00fa\u010dtu",
+          "type": "string",
+          "required": false
+        },
+        "bankCode": {
+          "title": "K\u00f3d banky",
+          "type": "string",
+          "required": false
+        },
+        "iban": {
+          "title": "IBAN",
+          "type": "string",
+          "required": false
+        },
+        "swift": {
+          "title": "SWIFT",
+          "type": "string",
+          "required": false
+        }
+      }
+    },
+    "otherInfo": {
+      "title": "Ostatn\u00e9 \u00fadaje",
+      "type": "object",
+      "properties": {
+        "isPhotoPublic": {
+          "title": "Je fotka verejn\u00e1",
+          "type": "string",
+          "enum": [
+            "\u00c1no",
+            "Nie"
+          ],
+          "required": false
+        },
+        "idCardNumber": {
+          "title": "\u010c\u00edslo OP",
+          "type": "string",
+          "required": false
+        },
+        "note": {
+          "title": "Pozn\u00e1mka",
+          "type": "string",
+          "required": false,
+          "large": true
+        },
+        "language": {
+          "title": "Jazykov\u00e9 znalosti",
+          "type": "string",
+          "required": false
+        }
+      }
+    },
+    "loginInfo": {
+      "title": "Prihlasovacie inform\u00e1cie",
+      "type": "object",
+      "properties": {
+        "isUserBlocked": {
+          "title": "Zabokovanie u\u017e\u00edvatela",
+          "type": "string",
+          "enum": [
+            "\u00c1no",
+            "Nie"
+          ],
+          "required": false
+        },
+        "hasToChangePassword": {
+          "title": "Mus\u00ed si zmeni\u0165 heslo",
+          "type": "string",
+          "enum": [
+            "\u00c1no",
+            "Nie"
+          ],
+          "required": false
+        },
+        "dateOfLastLogin": {
+          "title": "D\u00e1tum posledn\u00e9ho prihl\u00e1senia",
+          "type": "string",
+          "required": false,
+          "render": {
+            "component": "psui-datepicker"
+          }
+        },
+        "dateOfLastUnsuccesfullLogin": {
+          "title": "D\u00e1tum posledn\u00e9ho NE\u00daSPE\u0160N\u00c9HO prihl\u00e1senia",
+          "type": "string",
+          "required": false,
+          "render": {
+            "component": "psui-datepicker"
+          }
+        }
+      }
+    },
+    "licence": {
+      "title": "Licencie",
+      "type": "object",
+      "properties": {
+        "a": {
+          "title": "A - Pre amat\u00e9rske s\u00fa\u0165a\u017ee",
+          "type": "string",
+          "required": false
+        },
+        "fifa": {
+          "title": "FIFA",
+          "type": "string",
+          "required": false
+        },
+        "p": {
+          "title": "P - Pre profesion\u00e1lne s\u00fa\u0165a\u017ee",
+          "type": "string",
+          "required": false
+        }
+      }
+    },
+    "idInfo": {
+      "title": "Registra\u010dn\u00fd preukaz",
+      "type": "object",
+      "properties": {
+        "currnetId": {
+          "title": "Aktu\u00e1lny preukaz",
+          "type": "string",
+          "required": false
+        },
+        "dateOfExpiration": {
+          "title": "D\u00e1tum platnosti preukazu",
+          "type": "string",
+          "required": false,
+          "render": {
+            "component": "psui-datepicker"
+          }
+        },
+        "dateOfApplicationForId": {
+          "title": "D\u00e1tum \u017eiadosti o preukaz",
+          "type": "string",
+          "required": false,
+          "render": {
+            "component": "psui-datepicker"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "title": "Jenkins Nodedoy Module Config",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "jenkinsHosts": {
+      "title": "Array of configurations for multiple Jenkins hosts",
+      "type": "array",
+      "items": {
+        "title": "Per Jenkins host configuration",
+        "type": "object",
+        "properties": {
+          "url": {
+            "title": "Jenkins host URL",
+            "type": "string"
+          },
+          "period": {
+            "title": "Polling period to the jenkins server",
+            "type": "integer"
+          },
+          "jobs": {
+            "title": "Array of jobs that will be tracked",
+            "type": "array",
+            "items": {
+              "title": "Job",
+              "type": "object",
+              "properties": {
+                "name": {
+                  "title": "Expression matching the job(s) to track",
+                  "type": "string"
+                },
+                "results": {
+                  "$ref": "https://raw.githubusercontent.com/aitorpazos/nodedoy/master/source/config.schema.json#resultActions"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

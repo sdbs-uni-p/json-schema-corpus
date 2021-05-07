@@ -1,0 +1,121 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://jsonschema.net",
+  "type": "object",
+  "properties": {
+    "status": {
+      "id": "http://jsonschema.net/status",
+      "type": "integer"
+    },
+    "message": {
+      "id": "http://jsonschema.net/message",
+      "type": "string"
+    },
+    "detail": {
+      "id": "http://jsonschema.net/detail",
+      "type": "string"
+    },
+    "metada": {
+      "id": "http://jsonschema.net/metada",
+      "type": "array",
+      "items": [
+        {
+          "id": "http://jsonschema.net/metada/0",
+          "type": "object",
+          "properties": {
+            "type": {
+              "id": "http://jsonschema.net/metada/0/type",
+              "type": "string"
+            },
+            "name": {
+              "id": "http://jsonschema.net/metada/0/name",
+              "type": "string"
+            },
+            "value": {
+              "id": "http://jsonschema.net/metada/0/value",
+              "type": "string"
+            }
+          }
+        },
+        {
+          "id": "http://jsonschema.net/metada/1",
+          "type": "object",
+          "properties": {
+            "type": {
+              "id": "http://jsonschema.net/metada/1/type",
+              "type": "string"
+            },
+            "name": {
+              "id": "http://jsonschema.net/metada/1/name",
+              "type": "string"
+            },
+            "value": {
+              "id": "http://jsonschema.net/metada/1/value",
+              "type": "string"
+            }
+          }
+        },
+        {
+          "id": "http://jsonschema.net/metada/2",
+          "type": "object",
+          "properties": {
+            "type": {
+              "id": "http://jsonschema.net/metada/2/type",
+              "type": "string"
+            },
+            "name": {
+              "id": "http://jsonschema.net/metada/2/name",
+              "type": "string"
+            },
+            "value": {
+              "id": "http://jsonschema.net/metada/2/value",
+              "type": "integer"
+            }
+          }
+        }
+      ]
+    },
+    "items": {
+      "id": "http://jsonschema.net/items",
+      "type": "array",
+      "items": {
+        "id": "http://jsonschema.net/items/0",
+        "type": "object",
+        "properties": {
+          "cardNo": {
+            "id": "http://jsonschema.net/items/0/cardNo",
+            "type": "string"
+          },
+          "expires": {
+            "id": "http://jsonschema.net/items/0/expires",
+            "type": "string"
+          },
+          "name": {
+            "id": "http://jsonschema.net/items/0/name",
+            "type": "string"
+          },
+          "amount": {
+            "id": "http://jsonschema.net/items/0/amount",
+            "type": "number"
+          },
+          "_hrefs": {
+            "id": "http://jsonschema.net/items/0/_hrefs",
+            "type": "object",
+            "properties": {
+              "self": {
+                "id": "http://jsonschema.net/items/0/_hrefs/self",
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "status",
+    "message",
+    "detail",
+    "items"
+  ]
+}

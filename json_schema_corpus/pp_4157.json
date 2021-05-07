@@ -1,0 +1,105 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://mcda.drugis.org/problem.json#",
+  "title": "MCDA problem schema",
+  "description": "MCDA problem schema for uploaded JSON, version 1.4.2",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "criteria",
+    "alternatives",
+    "performanceTable"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "description": "The current version of the schema",
+      "type": "string"
+    },
+    "title": {
+      "description": "Title of the problem",
+      "type": "string"
+    },
+    "description": {
+      "description": "Description of the therapeutic context",
+      "type": "string"
+    },
+    "criteria": {
+      "description": "The criteria of the problem",
+      "type": "object",
+      "minProperties": 2,
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "title",
+          "dataSources"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "title": {
+            "description": "Title of the criterion",
+            "type": "string"
+          },
+          "isFavorable": {
+            "description": "Is the criterion favorable or not?",
+            "type": "boolean"
+          },
+          "description": {
+            "description": "Description of the criterion",
+            "type": "string"
+          },
+          "dataSources": {
+            "description": "The source information of the data for the criterion",
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "dataSource.json#"
+            }
+          }
+        }
+      }
+    },
+    "alternatives": {
+      "description": "The alternatives of the problem",
+      "type": "object",
+      "minProperties": 2,
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "title"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "title": {
+            "description": "Title of the alternative",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "performanceTable": {
+      "description": "The data of the effects table",
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "relativeEntry.json#"
+          },
+          {
+            "$ref": "absoluteEntry.json#"
+          }
+        ]
+      }
+    },
+    "preferences": {
+      "description": "The weight preferences on the criteria",
+      "oneOf": [
+        {
+          "type": "array"
+        },
+        {
+          "type": "object"
+        }
+      ]
+    }
+  }
+}

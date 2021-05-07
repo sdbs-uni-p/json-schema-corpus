@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Computed Public Key Expression",
+  "type": "object",
+  "properties": {
+    "computed_pub_key": {
+      "oneOf": [
+        {
+          "$ref": "./vault_contents.schema.json"
+        },
+        {
+          "$ref": "./external_input.schema.json"
+        }
+      ]
+    }
+  },
+  "required": [
+    "computed_pub_key"
+  ],
+  "additionalProperties": false
+}

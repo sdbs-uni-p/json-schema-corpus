@@ -1,0 +1,8 @@
+{
+  "id": "http://speedray.org/collections/folder",
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "root": {
+    "id": "item"
+  }
+}

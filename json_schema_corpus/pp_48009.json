@@ -1,0 +1,84 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "http://inveniosoftware.org/schemas/grants/grant-v1.0.0.json",
+  "type": "object",
+  "properties": {
+    "internal_id": {
+      "type": "string"
+    },
+    "identifiers": {
+      "type": "object",
+      "properties": {
+        "oaf": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "eurepo": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "purl": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "code": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "acronym": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "startdate": {
+      "type": "string"
+    },
+    "enddate": {
+      "type": "string"
+    },
+    "funder": {
+      "type": "object",
+      "properties": {
+        "$ref": {
+          "type": "string"
+        }
+      }
+    },
+    "program": {
+      "type": "string"
+    },
+    "remote_modified": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  }
+}

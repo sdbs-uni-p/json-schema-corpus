@@ -1,0 +1,3355 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Profile",
+  "x-otm-library": {
+    "ProjectName": "project.otp",
+    "LibraryName": "Profile",
+    "LibraryVersion": "0.0.0",
+    "LibraryStatus": "DRAFT",
+    "SourceFile": "/Profile_0_0_0.otm",
+    "CompilerVersion": "4.0-SNAPSHOT",
+    "CompileDate": "2016-05-18T16:11:08.440-0400"
+  },
+  "definitions": {
+    "Access": {
+      "x-otm-entity": {
+        "EntityType": "ValueWithAttributes",
+        "EntityName": "Access"
+      },
+      "description": "Free text comment added by the person accessing the profile record.",
+      "x-otm-annotations": {
+        "documentation": {
+          "implementers": [
+            "Assigned XSD Type: {http://chameleon.anonymous/ns}FreeTextType"
+          ]
+        }
+      },
+      "properties": {
+        "action": {
+          "description": "Type of action taken on the profile.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "LocalAnonymousType: AccessesType_ActionType"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "profile",
+                "value": "ActionType"
+              }
+            ]
+          },
+          "$ref": "Common_0_0_0.schema.json#/definitions/AccessType_CRUD"
+        },
+        "date": {
+          "description": "Month, day, year and optionally in hour, minute, second of day in ISO 8601 format of the action taken on the profile.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}dateTime"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "profile",
+                "value": "ActionDateTime"
+              }
+            ]
+          },
+          "type": "string",
+          "format": "date-time"
+        },
+        "name": {
+          "description": "Name of individual who originated or updated record.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}PersonNameType"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "profile",
+                "value": "AccessPerson"
+              }
+            ],
+            "examples": [
+              {
+                "context": "profile",
+                "value": "Dave"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Short"
+        },
+        "system": {
+          "description": "The identifier of the system that performed the action on the profile record.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "AttributeGroup: ID_Group"
+              ]
+            }
+          },
+          "$ref": "Common_0_0_0.schema.json#/definitions/GUID"
+        }
+      },
+      "required": [
+        "action",
+        "date"
+      ]
+    },
+    "AccessesID": {
+      "x-otm-entity": {
+        "EntityType": "BusinessObject",
+        "EntityName": "Accesses"
+      },
+      "description": "Element to capture creation and last update data.",
+      "properties": {
+        "@type": {
+          "type": "string"
+        },
+        "Identifier": {
+          "description": "Identifier provides the ability to create a globally unique identifier. For the identifier to be globally unique it must have a system provided identifier and the system must be identified using a global naming authority. System identification uses the domain naming system (DNS) to assure they are globally unique and should be an URL. The system provided ID will typically be a primary or surrogate key in a database.\n\nThe URL, system and company attributes can be omitted only when the system context can be implied by a parent or ancestor element.",
+          "$ref": "Common_0_0_0.schema.json#/definitions/Identifier"
+        }
+      },
+      "required": [
+        "@type"
+      ],
+      "discriminator": "@type"
+    },
+    "Accesses": {
+      "x-otm-entity": {
+        "EntityType": "BusinessObject",
+        "EntityName": "Accesses"
+      },
+      "description": "Element to capture creation and last update data.",
+      "allOf": [
+        {
+          "$ref": "#/definitions/AccessesID"
+        },
+        {
+          "properties": {
+            "created": {
+              "description": "Date and time the access group was created: Month, day, year and optionally hour, minute, second of day, in ISO 8601 format.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}dateTime"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "profile",
+                    "value": "CreateDateTime"
+                  }
+                ]
+              },
+              "type": "string",
+              "format": "date-time"
+            },
+            "Access": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Access"
+              },
+              "minItems": 1
+            },
+            "Privacy": {
+              "description": "Allows for control of the sharing of access data between parties.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "AttributeGroup: PrivacyGroup"
+                  ]
+                }
+              },
+              "$ref": "Common_0_0_0.schema.json#/definitions/Privacy"
+            },
+            "ExtensionPoint_Summary": {
+              "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint_Summary"
+            }
+          },
+          "required": [
+            "created",
+            "Access"
+          ]
+        }
+      ]
+    },
+    "AccessesDetail": {
+      "x-otm-entity": {
+        "EntityType": "BusinessObject",
+        "EntityName": "Accesses"
+      },
+      "description": "Element to capture creation and last update data.",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Accesses"
+        },
+        {
+          "properties": {
+            "Company": {
+              "description": "Detailed information about a company.",
+              "$ref": "#/definitions/CompanyID"
+            },
+            "ExtensionPoint_Detail": {
+              "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint_Detail"
+            }
+          },
+          "required": [
+            "Company"
+          ]
+        }
+      ]
+    },
+    "Affiliations": {
+      "x-otm-entity": {
+        "EntityType": "CoreObject",
+        "EntityName": "Affiliations"
+      },
+      "properties": {
+        "@type": {
+          "type": "string"
+        },
+        "Organization": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Organization"
+          }
+        },
+        "Company": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CompanyID"
+          }
+        },
+        "TravelArranger": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TravelArranger"
+          }
+        },
+        "ClubMembership": {
+          "type": "array",
+          "items": {
+            "$ref": "Common_0_0_0.schema.json#/definitions/ClubMembership"
+          }
+        },
+        "Insurance": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Insurance"
+          }
+        },
+        "Privacy": {
+          "description": "Allows for control of the sharing of data between parties.",
+          "$ref": "Common_0_0_0.schema.json#/definitions/Privacy"
+        },
+        "ExtensionPoint": {
+          "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint"
+        }
+      },
+      "required": [
+        "@type",
+        "Privacy"
+      ],
+      "discriminator": "@type"
+    },
+    "Agreements": {
+      "x-otm-entity": {
+        "EntityType": "CoreObject",
+        "EntityName": "Agreements"
+      },
+      "properties": {
+        "@type": {
+          "type": "string"
+        },
+        "Certification": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Certification"
+          }
+        },
+        "Alliance": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Alliance"
+          }
+        },
+        "Commission": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Commission"
+          }
+        },
+        "Text_Paragraph": {
+          "description": "Used to reflect contract details linked to a profile.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}ParagraphType"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "profile",
+                "value": "ContractInformation"
+              }
+            ]
+          },
+          "$ref": "Common_0_0_0.schema.json#/definitions/Text_Paragraph"
+        },
+        "Privacy": {
+          "description": "Allows for control of the sharing of data between parties.",
+          "$ref": "Common_0_0_0.schema.json#/definitions/Privacy"
+        },
+        "ExtensionPoint": {
+          "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint"
+        }
+      },
+      "required": [
+        "@type",
+        "Privacy"
+      ],
+      "discriminator": "@type"
+    },
+    "Alliance": {
+      "x-otm-entity": {
+        "EntityType": "CoreObject",
+        "EntityName": "Alliance"
+      },
+      "properties": {
+        "@type": {
+          "type": "string"
+        },
+        "id": {
+          "description": "Identification of the alliance or partnership.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "AttributeGroup: ID_OptionalGroup"
+              ]
+            },
+            "examples": [
+              {
+                "context": "profile",
+                "value": "ac3455432112345"
+              }
+            ]
+          },
+          "$ref": "built-ins/XMLSchema.schema.json#/definitions/ID"
+        },
+        "Member": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Alliance_Member"
+          }
+        },
+        "EffectiveExpireDate": {
+          "description": "Provides the effective and expiry dates for the alliance partnership.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "AttributeGroup: EffectiveExpireOptionalDateGroup"
+              ]
+            }
+          },
+          "$ref": "Common_0_0_0.schema.json#/definitions/Date_EffectiveExpire"
+        },
+        "Identifier": {
+          "description": "Identifier provides the ability to create a globally unique identifier. For the identifier to be globally unique it must have a system provided identifier and the system must be identified using a global naming authority. System identification uses the domain naming system (DNS) to assure they are globally unique and should be an URL. The system provided ID will typically be a primary or surrogate key in a database.\n\nThe URL, system and company attributes can be omitted only when the system context can be implied by a parent or ancestor element.",
+          "$ref": "Common_0_0_0.schema.json#/definitions/Identifier"
+        },
+        "ExtensionPoint": {
+          "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint"
+        }
+      },
+      "required": [
+        "@type",
+        "Identifier"
+      ],
+      "discriminator": "@type"
+    },
+    "Alliance_Member": {
+      "x-otm-entity": {
+        "EntityType": "ValueWithAttributes",
+        "EntityName": "Alliance_Member"
+      },
+      "properties": {
+        "memberCode": {
+          "description": "Identifies the alliance or consortium member by code.",
+          "x-otm-annotations": {
+            "examples": [
+              {
+                "context": "profile",
+                "value": "co1"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Short"
+        },
+        "companyName": {
+          "description": "Identifies a company by name.",
+          "x-otm-annotations": {
+            "examples": [
+              {
+                "context": "profile",
+                "value": "MemberCompany"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String"
+        },
+        "division": {
+          "description": "The division name or ID with which the contact is associated.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to32"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "Common",
+                "value": "Division"
+              }
+            ],
+            "examples": [
+              {
+                "context": "Common",
+                "value": "Travel Division"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Short"
+        },
+        "department": {
+          "description": "The department name or ID with which the contact is associated.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to32"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "Common",
+                "value": "Department"
+              }
+            ],
+            "examples": [
+              {
+                "context": "Common",
+                "value": "Adventure department"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Short"
+        },
+        "shortName": {
+          "description": "Used to provide the company common name.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to32"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "Common",
+                "value": "CompanyShortName"
+              }
+            ],
+            "examples": [
+              {
+                "context": "Common",
+                "value": "Adventure Inc"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Short"
+        },
+        "code": {
+          "description": "Identifies a company by the company code.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to16"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "Common",
+                "value": "Code"
+              }
+            ],
+            "examples": [
+              {
+                "context": "Common",
+                "value": "AI"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Tiny"
+        },
+        "codeContext": {
+          "description": "Identifies the source authority for the code.",
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Tiny"
+        }
+      }
+    },
+    "Certification": {
+      "x-otm-entity": {
+        "EntityType": "ValueWithAttributes",
+        "EntityName": "Certification"
+      },
+      "description": "Information about certifications or accreditation held by the company.",
+      "x-otm-annotations": {
+        "documentation": {
+          "implementers": [
+            "Assigned XSD Type: {http://chameleon.anonymous/ns}FreeTextType"
+          ]
+        }
+      },
+      "properties": {
+        "certId": {
+          "description": "The Certification Identification number assigned to a business entity by the certifying body. This number would presumably be the ID in the Unique ID.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "AttributeGroup: ID_OptionalGroup"
+              ]
+            },
+            "examples": [
+              {
+                "context": "profile",
+                "value": "cert546473834"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Long"
+        },
+        "freeText": {
+          "description": "Textual information to provide descriptions and/or additional information.",
+          "x-otm-annotations": {
+            "examples": [
+              {
+                "context": "profile",
+                "value": "Certified fun."
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Text"
+        },
+        "language": {
+          "description": "Language of the text.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "AttributeGroup: LanguageGroup"
+              ]
+            },
+            "examples": [
+              {
+                "context": "Common",
+                "value": "en"
+              }
+            ]
+          },
+          "type": "string"
+        },
+        "effective": {
+          "description": "Indicates the starting date.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}date"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "Common",
+                "value": "EffectiveDate"
+              }
+            ]
+          },
+          "type": "string",
+          "format": "date"
+        },
+        "expire": {
+          "description": "Indicates the ending date.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}date"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "Common",
+                "value": "ExpireDate"
+              }
+            ]
+          },
+          "type": "string",
+          "format": "date"
+        },
+        "singleVendorIndGroupInd": {
+          "description": "TODO - what is this? Indicates the alliance status of the company.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "AttributeGroup: SingleVendorIndGroup"
+              ]
+            }
+          },
+          "type": "boolean"
+        },
+        "expireDateExclusiveInd": {
+          "description": "When true, indicates that the ExpireDate is the first day after the applicable period (e.g. when expire date is Oct 15  the last date of the period is Oct 14).",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}boolean"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "Common",
+                "value": "ExpireDateExclusiveInd"
+              }
+            ]
+          },
+          "type": "boolean"
+        }
+      }
+    },
+    "CitizenCountryCode": {
+      "x-otm-entity": {
+        "EntityType": "ValueWithAttributes",
+        "EntityName": "CitizenCountryCode"
+      },
+      "description": "A 2 character country code as defined in ISO3166.",
+      "x-otm-annotations": {
+        "documentation": {
+          "implementers": [
+            "Assigned XSD Type: {http://chameleon.anonymous/ns}ISO3166"
+          ]
+        }
+      },
+      "properties": {
+        "defaultInd": {
+          "description": "When true, indicates a default value should be used.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}boolean"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "profile",
+                "value": "DefaultInd"
+              }
+            ]
+          },
+          "type": "boolean"
+        }
+      }
+    },
+    "Commission": {
+      "x-otm-entity": {
+        "EntityType": "ValueWithAttributes",
+        "EntityName": "Commission"
+      },
+      "description": "Contains information about agreements for commission arrangements with the business entity.",
+      "x-otm-annotations": {
+        "documentation": {
+          "implementers": [
+            "Assigned XSD Type: {http://chameleon.anonymous/ns}FreeTextType"
+          ]
+        }
+      },
+      "properties": {
+        "planCode": {
+          "description": "Identifies a commission plan agreement between trading partners by plan code.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to32"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "profile",
+                "value": "CommissionPlanCode"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Tiny"
+        },
+        "currency_Amount": {
+          "description": "Provides a monetary amount and the currency code to reflect the currency in which this amount is expressed.",
+          "$ref": "Common_0_0_0.schema.json#/definitions/Money"
+        },
+        "codeContext": {
+          "description": "Identifies the source authority for the code.",
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Tiny"
+        },
+        "currencyCode": {
+          "description": "An ISO 4217 (3) alpha character code that specifies a monetary unit.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}AlphaLength3"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "Common",
+                "value": "CurrencyCode"
+              }
+            ],
+            "examples": [
+              {
+                "context": "Common",
+                "value": "USD"
+              }
+            ]
+          },
+          "$ref": "#/definitions/Currency_Code_ISO4217"
+        },
+        "decimalPlaces": {
+          "description": "Implementer: The ISO 4217 standard \"minor unit\" is typically used when the amount provided includes the minor unit of currency without a decimal point (e.g., USD 8500 needs DecimalPlaces=\"2\" to represent $85).",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Changed type from {http://www.w3.org/2001/XMLSchema}nonNegativeInteger.",
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "Common",
+                "value": "DecimalPlaces"
+              }
+            ],
+            "examples": [
+              {
+                "context": "Common",
+                "value": "2"
+              }
+            ]
+          },
+          "type": "integer",
+          "format": "int32"
+        },
+        "shareMarketInd": {
+          "description": "Permission for sharing data for marketing purposes.",
+          "$ref": "#/definitions/YesNoInherit_Enum"
+        },
+        "shareSyncInd": {
+          "description": "Permission for sharing data for synchronization of information held by other travel service providers.",
+          "$ref": "#/definitions/YesNoInherit_Enum"
+        },
+        "optInStatus": {
+          "description": "If present and set to opt out, a customer has explicitly opted out of marketing communication. When set to opt out it overrides the ShareMarketInd.",
+          "$ref": "#/definitions/OptInStatus_Enum"
+        },
+        "optInDate": {
+          "description": "The date and time of opt in.",
+          "type": "string",
+          "format": "date-time"
+        },
+        "optOutDate": {
+          "description": "The date and time of opt out.",
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "Document": {
+      "x-otm-entity": {
+        "EntityType": "CoreObject",
+        "EntityName": "Document"
+      },
+      "properties": {
+        "@type": {
+          "type": "string"
+        },
+        "docIssueAuthority": {
+          "description": "Indicates the group or association that granted the document.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to64"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "profile",
+                "value": "DocIssueAuthority"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Short"
+        },
+        "docIssueLocation": {
+          "description": "Indicates the location where the document was issued.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to64"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "profile",
+                "value": "DocIssueLocation"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Short"
+        },
+        "docID": {
+          "description": "Unique number assigned by authorities to document.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to32"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "profile",
+                "value": "DocID"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Short"
+        },
+        "gender": {
+          "description": "The gender of the document holder.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "AttributeGroup: GenderGroup"
+              ]
+            }
+          },
+          "$ref": "CodeList_0_0_0.schema.json#/definitions/Gender_Enum"
+        },
+        "birthDate": {
+          "description": "The birth date of the document holder.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "AttributeGroup: BirthDateGroup"
+              ]
+            }
+          },
+          "type": "string",
+          "format": "date"
+        },
+        "docIssueStateProv": {
+          "description": "State or Province where the document was issued.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}StateProvCodeType"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "profile",
+                "value": "DocIssueStateProv"
+              }
+            ]
+          },
+          "$ref": "Common_0_0_0.schema.json#/definitions/StateProv_Code"
+        },
+        "docIssueCountry": {
+          "description": "Country where the document was issued.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}ISO3166"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "profile",
+                "value": "DocIssueCountry"
+              }
+            ]
+          },
+          "$ref": "Common_0_0_0.schema.json#/definitions/Country_Code_ISO3166"
+        },
+        "birthCountry": {
+          "description": "Specifies the birth country of the document holder.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}ISO3166"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "profile",
+                "value": "BirthCountry"
+              }
+            ]
+          },
+          "$ref": "Common_0_0_0.schema.json#/definitions/Country_Code_ISO3166"
+        },
+        "birthPlace": {
+          "description": "Specifies the birth place of the document holder (e.g., city, state, county, province), when designating a country of birth, use BirthCountry.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to64"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "profile",
+                "value": "BirthPlace"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Short"
+        },
+        "docHolderNationality": {
+          "description": "The country code of the nationality of the document holder.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}ISO3166"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "profile",
+                "value": "DocHolderNationality"
+              }
+            ]
+          },
+          "$ref": "Common_0_0_0.schema.json#/definitions/Country_Code_ISO3166"
+        },
+        "contactName": {
+          "description": "Provides contact name associated with the document.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to64"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "profile",
+                "value": "ContactName"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Short"
+        },
+        "holderType": {
+          "description": "Provides the type of document holder.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "LocalAnonymousType: DocumentType_HolderType"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "profile",
+                "value": "HolderType"
+              }
+            ]
+          },
+          "$ref": "#/definitions/DocumentHolder_Enum"
+        },
+        "remark": {
+          "description": "A remark associated with the document.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to128"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "profile",
+                "value": "Remark"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Short"
+        },
+        "postalCode": {
+          "description": "Defines the postal code (e.g., ZIP code) on the document.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to16"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "profile",
+                "value": "PostalCode"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Tiny"
+        },
+        "DocLimitations": {
+          "type": "array",
+          "items": {
+            "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Short"
+          },
+          "maxItems": 9
+        },
+        "AdditionalName": {
+          "type": "array",
+          "items": {
+            "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Short"
+          },
+          "maxItems": 100
+        },
+        "EffectiveExpireDate": {
+          "description": "The effective and expiry date of the document.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "AttributeGroup: EffectiveExpireOptionalDateGroup"
+              ]
+            }
+          },
+          "$ref": "Common_0_0_0.schema.json#/definitions/Date_EffectiveExpire"
+        },
+        "Privacy": {
+          "description": "Allows for control of the sharing of document data between parties.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "AttributeGroup: PrivacyGroup"
+              ]
+            }
+          },
+          "$ref": "Common_0_0_0.schema.json#/definitions/Privacy"
+        },
+        "DocType": {
+          "description": "Indicates the type of document (e.g. Passport, Military ID, Drivers License, national ID, Vaccination Certificate). Refer to OpenTravel Code List Document Type (DOC).",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}OTA_CodeType"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "profile",
+                "value": "DocType"
+              }
+            ]
+          },
+          "$ref": "CodeList_0_0_0.schema.json#/definitions/DocumentType_Enum"
+        },
+        "ExtensionPoint": {
+          "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint"
+        }
+      },
+      "required": [
+        "@type"
+      ],
+      "discriminator": "@type"
+    },
+    "Insurance": {
+      "x-otm-entity": {
+        "EntityType": "CoreObject",
+        "EntityName": "Insurance"
+      },
+      "properties": {
+        "@type": {
+          "type": "string"
+        },
+        "insuranceType": {
+          "description": "Type of insurance policy carried by the individual or company.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to32"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "profile",
+                "value": "InsuranceType"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Short"
+        },
+        "policyNumber": {
+          "description": "Identifier assigned by insurance company to the insurance policy.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to32"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "profile",
+                "value": "PolicyNumber"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Short"
+        },
+        "id": {
+          "description": "A unique reference for this insurance policy within this message.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}RPH_Type"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "profile",
+                "value": "RPH"
+              }
+            ]
+          },
+          "$ref": "built-ins/XMLSchema.schema.json#/definitions/ID"
+        },
+        "Person_Name": {
+          "description": "Name of the person insured.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}PersonNameType"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "profile",
+                "value": "InsuredName"
+              }
+            ]
+          },
+          "$ref": "Common_0_0_0.schema.json#/definitions/Person_Name"
+        },
+        "Underwriter": {
+          "description": "Underwriting company providing coverage.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}CompanyNameType"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "profile",
+                "value": "Underwriter"
+              }
+            ]
+          },
+          "$ref": "Common_0_0_0.schema.json#/definitions/CompanyName"
+        },
+        "EffectiveExpireDate": {
+          "description": "Used to identify the effective date and/or expiration date.",
+          "$ref": "Common_0_0_0.schema.json#/definitions/Date_EffectiveExpire"
+        },
+        "Privacy": {
+          "description": "Allows for control of the sharing of data between parties.",
+          "$ref": "Common_0_0_0.schema.json#/definitions/Privacy"
+        },
+        "CompanyName": {
+          "description": "Name of the insurance company.",
+          "$ref": "Common_0_0_0.schema.json#/definitions/CompanyName"
+        },
+        "ExtensionPoint": {
+          "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint"
+        }
+      },
+      "required": [
+        "@type",
+        "policyNumber",
+        "EffectiveExpireDate",
+        "Privacy"
+      ],
+      "discriminator": "@type"
+    },
+    "Organization": {
+      "x-otm-entity": {
+        "EntityType": "CoreObject",
+        "EntityName": "Organization"
+      },
+      "properties": {
+        "@type": {
+          "type": "string"
+        },
+        "officeLocation": {
+          "description": "Specifes the location type of an office (e.g. main, field, division).",
+          "$ref": "CodeList_0_0_0.schema.json#/definitions/OfficeLocation_Enum"
+        },
+        "OrganizationMemberName": {
+          "description": "Name of the member of the organization, as listed among the options of customer names.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}OrgMemberName"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "profile",
+                "value": "OrgMemberName"
+              }
+            ]
+          },
+          "$ref": "#/definitions/OrganizationMemberName"
+        },
+        "Name": {
+          "description": "Name of the organization.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}CompanyNameType"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "profile",
+                "value": "OrgName"
+              }
+            ]
+          },
+          "$ref": "Common_0_0_0.schema.json#/definitions/CompanyName"
+        },
+        "RelatedOranization": {
+          "type": "array",
+          "items": {
+            "$ref": "Common_0_0_0.schema.json#/definitions/CompanyName"
+          }
+        },
+        "TravelArranger": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TravelArranger"
+          }
+        },
+        "EffectiveExpireOptionalDateGroup": {
+          "description": "Used to send the effective date and/or expiration date.",
+          "$ref": "Common_0_0_0.schema.json#/definitions/Date_EffectiveExpire"
+        },
+        "Privacy": {
+          "description": "Allows for control of the sharing of data between parties.",
+          "$ref": "Common_0_0_0.schema.json#/definitions/Privacy"
+        },
+        "defaultInd": {
+          "description": "Indicates whether the organization is the default choice among several.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "AttributeGroup: DefaultIndGroup"
+              ]
+            }
+          },
+          "type": "boolean"
+        },
+        "ExtensionPoint": {
+          "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint"
+        }
+      },
+      "required": [
+        "@type",
+        "EffectiveExpireOptionalDateGroup",
+        "Privacy"
+      ],
+      "discriminator": "@type"
+    },
+    "OrganizationMemberName": {
+      "x-otm-entity": {
+        "EntityType": "CoreObject",
+        "EntityName": "OrganizationMemberName"
+      },
+      "x-otm-annotations": {
+        "documentation": {
+          "implementers": [
+            "Extension: PersonNameType",
+            "Extension: PersonNameType"
+          ]
+        }
+      },
+      "properties": {
+        "@type": {
+          "type": "string"
+        },
+        "ID_LevelTitle": {
+          "description": "Provides employee information.",
+          "$ref": "Common_0_0_0.schema.json#/definitions/Employee"
+        },
+        "Person_Name": {
+          "description": "This provides name information for a person.",
+          "$ref": "Common_0_0_0.schema.json#/definitions/Person_Name"
+        },
+        "ExtensionPoint": {
+          "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint"
+        }
+      },
+      "required": [
+        "@type",
+        "ID_LevelTitle",
+        "Person_Name"
+      ],
+      "discriminator": "@type"
+    },
+    "ProfileID": {
+      "x-otm-entity": {
+        "EntityType": "BusinessObject",
+        "EntityName": "Profile"
+      },
+      "description": "Root element for profile content.",
+      "properties": {
+        "@type": {
+          "type": "string"
+        },
+        "id": {
+          "description": "This is a reference placeholder, used as an index for this guest in this reservation.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}RPH_Type"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "profile",
+                "value": "RPH"
+              }
+            ]
+          },
+          "$ref": "built-ins/XMLSchema.schema.json#/definitions/ID"
+        },
+        "Identifier": {
+          "description": "Globally unique identifier for this profile.",
+          "$ref": "Common_0_0_0.schema.json#/definitions/Identifier"
+        }
+      },
+      "required": [
+        "@type"
+      ],
+      "discriminator": "@type"
+    },
+    "Profile": {
+      "x-otm-entity": {
+        "EntityType": "BusinessObject",
+        "EntityName": "Profile"
+      },
+      "description": "Root element for profile content.",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ProfileID"
+        },
+        {
+          "properties": {
+            "Accesses": {
+              "description": "A collection of actions taken on a record.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://chameleon.anonymous/ns}AccessesType"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "profile",
+                    "value": "Accesses"
+                  }
+                ]
+              },
+              "$ref": "#/definitions/AccessesID"
+            },
+            "Affiliations": {
+              "description": "Affiliation information related to the profile.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://chameleon.anonymous/ns}AffiliationsType"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "profile",
+                    "value": "Affiliations"
+                  }
+                ]
+              },
+              "$ref": "#/definitions/Affiliations"
+            },
+            "Agreements": {
+              "description": "Agreement information related to the profile.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://chameleon.anonymous/ns}AgreementsType"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "profile",
+                    "value": "Agreements"
+                  }
+                ]
+              },
+              "$ref": "#/definitions/Agreements"
+            },
+            "Company": {
+              "description": "Company information related to the profile.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://chameleon.anonymous/ns}CompanyInfoType"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "profile",
+                    "value": "CompanyInfo"
+                  }
+                ]
+              },
+              "$ref": "#/definitions/CompanyID"
+            },
+            "Person": {
+              "description": "Detailed customer information for this profile.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://chameleon.anonymous/ns}CustomerType"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "profile",
+                    "value": "Customer"
+                  }
+                ]
+              },
+              "$ref": "#/definitions/PersonID"
+            },
+            "Text_Paragraph": {
+              "description": "Comments related to the profile.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://chameleon.anonymous/ns}Comments"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "profile",
+                    "value": "Comments"
+                  }
+                ]
+              },
+              "$ref": "Common_0_0_0.schema.json#/definitions/Text_Paragraph"
+            },
+            "ShareAll": {
+              "description": "Used to indicate whether information can be shared.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "AttributeGroup: ShareAllGroup"
+                  ]
+                }
+              },
+              "$ref": "Common_0_0_0.schema.json#/definitions/Privacy"
+            },
+            "Type": {
+              "description": "Used to specify a profile type.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "AttributeGroup: ProfileTypeGroup"
+                  ]
+                }
+              },
+              "$ref": "CodeList_0_0_0.schema.json#/definitions/ProfileType_Enum"
+            },
+            "Status": {
+              "description": "Status of the profile. Refer to OpenTravel Code List Profile Status Code (PST).",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://chameleon.anonymous/ns}ListOfOTA_CodeType"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "profile",
+                    "value": "StatusCode"
+                  }
+                ]
+              },
+              "$ref": "CodeList_0_0_0.schema.json#/definitions/ProfileStatus_Enum"
+            },
+            "DateTimeStamp": {
+              "description": "Creation date time, creator ID, last modification date time and last modifier ID.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "AttributeGroup: DateTimeStampGroup"
+                  ]
+                }
+              },
+              "$ref": "Common_0_0_0.schema.json#/definitions/Date_TimeStamp"
+            },
+            "ExtensionPoint": {
+              "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint"
+            }
+          }
+        }
+      ]
+    },
+    "RelatedTraveler": {
+      "x-otm-entity": {
+        "EntityType": "CoreObject",
+        "EntityName": "RelatedTraveler"
+      },
+      "properties": {
+        "@type": {
+          "type": "string"
+        },
+        "relation": {
+          "description": "Indicates the type of relationship with the person in the profile, such as Spouse, Child, Family, Business Associate, Interest Group, Medical, Security, Other, etc.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to32"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "profile",
+                "value": "Relation"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Tiny"
+        },
+        "Person": {
+          "description": "Person associated with the traveler.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}PersonNameType"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "profile",
+                "value": "PersonName"
+              }
+            ]
+          },
+          "$ref": "#/definitions/PersonID"
+        },
+        "Privacy": {
+          "description": "Allows for control of the sharing of related traveler data between parties.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "AttributeGroup: PrivacyGroup"
+              ]
+            }
+          },
+          "$ref": "Common_0_0_0.schema.json#/definitions/Privacy"
+        },
+        "ExtensionPoint": {
+          "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint"
+        }
+      },
+      "required": [
+        "@type"
+      ],
+      "discriminator": "@type"
+    },
+    "DocumentHolder_Enum": {
+      "x-otm-entity": {
+        "EntityType": "EnumerationClosed",
+        "EntityName": "DocumentHolder_Enum"
+      },
+      "type": "string",
+      "enum": [
+        "Infant",
+        "HeadOfHousehold"
+      ]
+    },
+    "Profiles": {
+      "x-otm-entity": {
+        "EntityType": "CoreObject",
+        "EntityName": "Profiles"
+      },
+      "properties": {
+        "@type": {
+          "type": "string"
+        },
+        "Profile": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProfileID"
+          }
+        },
+        "ExtensionPoint": {
+          "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint"
+        }
+      },
+      "required": [
+        "@type"
+      ],
+      "discriminator": "@type"
+    },
+    "LoyaltyProgram": {
+      "x-otm-entity": {
+        "EntityType": "ValueWithAttributes",
+        "EntityName": "LoyaltyProgram"
+      },
+      "description": "Identifies a membership or loyalty program offered by the company by name of the program.",
+      "x-otm-annotations": {
+        "documentation": {
+          "implementers": [
+            "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength0to32"
+          ]
+        }
+      },
+      "properties": {
+        "programCode": {
+          "description": "Identification of the loyalty program by code.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to16"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "profile",
+                "value": "ProgramCode"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Tiny"
+        },
+        "loyaltyLevel": {
+          "description": "Indicates special privileges in program assigned to individual.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to16"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "profile",
+                "value": "LoyaltyLevel"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Tiny"
+        },
+        "id": {
+          "description": "A unique reference for a loyalty program within this message.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}RPH_Type"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "profile",
+                "value": "RPH"
+              }
+            ]
+          },
+          "$ref": "built-ins/XMLSchema.schema.json#/definitions/ID"
+        },
+        "codeContext": {
+          "description": "Identifies the source authority for the code.",
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Tiny"
+        },
+        "primaryInd": {
+          "description": "When true, indicates this is the primary loyalty program and when absent or false, indicates this is not the primary loyalty program.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}boolean"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "profile",
+                "value": "PrimaryLoyaltyIndicator"
+              }
+            ]
+          },
+          "type": "boolean"
+        },
+        "singleVendorIndGroupInd": {
+          "description": "Present and true Indicates the program is part of an alliance, otherwise it is a single vendor.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "AttributeGroup: SingleVendorIndGroup"
+              ]
+            }
+          },
+          "type": "boolean"
+        }
+      }
+    },
+    "PhysicalChallenge": {
+      "x-otm-entity": {
+        "EntityType": "ValueWithAttributes",
+        "EntityName": "PhysicalChallenge"
+      },
+      "description": "Describes a person's physical challange.",
+      "properties": {
+        "value": {
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Long"
+        },
+        "code": {
+          "description": "A code to identify a person's phyical challenge.",
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Tiny"
+        },
+        "physicallyChallengedInd": {
+          "description": "Set to true when the customer is physically challenged but the type of physical challenge is unknown.  The indicator is not necessary if the challenge is identified.",
+          "type": "boolean"
+        }
+      }
+    },
+    "TravelArranger_Simple": {
+      "description": "A short string  \nMinimum length of 0 and a maximum length of 128",
+      "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Short"
+    },
+    "TravelArranger_Simple_List": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/TravelArranger_Simple"
+      }
+    },
+    "TravelArranger": {
+      "x-otm-entity": {
+        "EntityType": "CoreObject",
+        "EntityName": "TravelArranger"
+      },
+      "x-otm-annotations": {
+        "documentation": {
+          "implementers": [
+            "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to32",
+            "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to32"
+          ]
+        }
+      },
+      "properties": {
+        "@type": {
+          "type": "string"
+        },
+        "type": {
+          "description": "Type of service making travel plans or transactions (e.g., travel agency, etc.).",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to32"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "profile",
+                "value": "TravelArrangerType"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Tiny"
+        },
+        "remark": {
+          "description": "A remark associated with the travel arranger.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to128"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "profile",
+                "value": "Remark"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Short"
+        },
+        "id": {
+          "description": "A unique reference for a travel arranger within this message.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}RPH_Type"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "profile",
+                "value": "RPH"
+              }
+            ]
+          },
+          "$ref": "built-ins/XMLSchema.schema.json#/definitions/ID"
+        },
+        "CompanyName": {
+          "description": "Company name of the travel arranger.",
+          "$ref": "Common_0_0_0.schema.json#/definitions/CompanyName"
+        },
+        "Privacy": {
+          "description": "Allows for control of the sharing of travel arranger data between parties.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "AttributeGroup: PrivacyGroup"
+              ]
+            }
+          },
+          "$ref": "Common_0_0_0.schema.json#/definitions/Privacy"
+        },
+        "defaultInd": {
+          "description": "Indicates that the receiving system should assume the default value if the user specifies no overriding value or action.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "AttributeGroup: DefaultIndGroup"
+              ]
+            }
+          },
+          "type": "boolean"
+        },
+        "ExtensionPoint": {
+          "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint"
+        }
+      },
+      "required": [
+        "@type"
+      ],
+      "discriminator": "@type"
+    },
+    "Trip_Purpose_Simple": {
+      "description": "A short string  \nMinimum length of 0 and a maximum length of 128",
+      "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Short"
+    },
+    "Trip_Purpose_Simple_List": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Trip_Purpose_Simple"
+      }
+    },
+    "Trip_Purpose": {
+      "x-otm-entity": {
+        "EntityType": "CoreObject",
+        "EntityName": "Trip_Purpose"
+      },
+      "x-otm-annotations": {
+        "documentation": {
+          "implementers": [
+            "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to8",
+            "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to8"
+          ]
+        }
+      },
+      "properties": {
+        "@type": {
+          "type": "string"
+        },
+        "code": {
+          "description": "A code identifiying the purpose of the trip.",
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Tiny"
+        },
+        "description": {
+          "description": "A description of the trip purpose.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to128"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "profile",
+                "value": "Description"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Text"
+        },
+        "Company": {
+          "description": "Company that defines the list of purpose codes.",
+          "$ref": "#/definitions/CompanyID"
+        },
+        "ExtensionPoint": {
+          "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint"
+        }
+      },
+      "required": [
+        "@type"
+      ],
+      "discriminator": "@type"
+    },
+    "Trip_Purposes": {
+      "x-otm-entity": {
+        "EntityType": "CoreObject",
+        "EntityName": "Trip_Purposes"
+      },
+      "properties": {
+        "@type": {
+          "type": "string"
+        },
+        "Trip_Purpose": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Trip_Purpose_Simple"
+          },
+          "minItems": 1
+        },
+        "Company": {
+          "description": "Company that defines the list of purpose codes.",
+          "$ref": "#/definitions/CompanyID"
+        },
+        "ExtensionPoint": {
+          "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint"
+        }
+      },
+      "required": [
+        "@type",
+        "Trip_Purpose"
+      ],
+      "discriminator": "@type"
+    },
+    "CompanyID": {
+      "x-otm-entity": {
+        "EntityType": "BusinessObject",
+        "EntityName": "Company"
+      },
+      "properties": {
+        "@type": {
+          "type": "string"
+        },
+        "id": {
+          "$ref": "built-ins/XMLSchema.schema.json#/definitions/ID"
+        },
+        "Identifier": {
+          "description": "Identifier provides the ability to create a globally unique identifier. For the identifier to be globally unique it must have a system provided identifier and the system must be identified using a global naming authority. System identification uses the domain naming system (DNS) to assure they are globally unique and should be an URL. The system provided ID will typically be a primary or surrogate key in a database.\n\nThe URL, system and company attributes can be omitted only when the system context can be implied by a parent or ancestor element.",
+          "$ref": "#/definitions/Identifier"
+        }
+      },
+      "required": [
+        "@type"
+      ],
+      "discriminator": "@type"
+    },
+    "TEST_CompanyAliasID": {
+      "$ref": "#/definitions/CompanyID"
+    },
+    "Company": {
+      "x-otm-entity": {
+        "EntityType": "BusinessObject",
+        "EntityName": "Company"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/CompanyID"
+        },
+        {
+          "properties": {
+            "Name": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/CompanyName"
+              },
+              "maxItems": 20,
+              "minItems": 1
+            },
+            "Address": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Address"
+              },
+              "maxItems": 100
+            },
+            "Telephone": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Telephone"
+              },
+              "maxItems": 100
+            },
+            "Email": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Email"
+              },
+              "maxItems": 100
+            },
+            "URL": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/URL"
+              },
+              "maxItems": 100
+            },
+            "ExtensionPoint_Summary": {
+              "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint_Summary"
+            }
+          },
+          "required": [
+            "Name"
+          ]
+        }
+      ]
+    },
+    "TEST_CompanyAlias": {
+      "$ref": "#/definitions/Company"
+    },
+    "CompanyDetail": {
+      "x-otm-entity": {
+        "EntityType": "BusinessObject",
+        "EntityName": "Company"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Company"
+        },
+        {
+          "properties": {
+            "CurrencyCode": {
+              "description": "The currency used by this company.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "AttributeGroup: CurrencyCodeGroup"
+                  ]
+                }
+              },
+              "$ref": "Common_0_0_0.schema.json#/definitions/Currency_Code"
+            },
+            "Trip_Purposes": {
+              "description": "Trip purpose codes used by this company.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://chameleon.anonymous/ns}TripPurpose"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "profile",
+                    "value": "TripPurpose"
+                  }
+                ]
+              },
+              "$ref": "#/definitions/Trip_Purposes"
+            },
+            "LoyaltyProgram": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/LoyaltyProgram"
+              },
+              "maxItems": 10
+            },
+            "TravelArranger": {
+              "description": "Information on the organization responsible for arranging travel for the company.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://chameleon.anonymous/ns}TravelArrangerType"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "profile",
+                    "value": "TravelArranger"
+                  }
+                ]
+              },
+              "$ref": "#/definitions/TravelArranger"
+            },
+            "RequiredPayment": {
+              "description": "A deposit policy that is associated to this company.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://chameleon.anonymous/ns}RequiredPaymentsType"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "profile",
+                    "value": "DepositPayment"
+                  }
+                ]
+              },
+              "$ref": "CodeList_0_0_0.schema.json#/definitions/RequiredPayments_Enum"
+            },
+            "FormOfPayment": {
+              "description": "Method of providing funds for travel by the company.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://chameleon.anonymous/ns}PaymentForm"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "profile",
+                    "value": "PaymentForm"
+                  }
+                ]
+              },
+              "$ref": "Finance_0_0_0.schema.json#/definitions/FormOfPaymentID"
+            },
+            "RelatedCompany": {
+              "type": "array",
+              "items": {
+                "$ref": "Common_0_0_0.schema.json#/definitions/CompanyName"
+              },
+              "maxItems": 100
+            },
+            "ContactPerson": {
+              "type": "array",
+              "items": {
+                "$ref": "Common_2_0_0.schema.json#/definitions/ContactPerson"
+              },
+              "maxItems": 100
+            },
+            "ExtensionPoint_Detail": {
+              "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint_Detail"
+            }
+          }
+        }
+      ]
+    },
+    "TEST_CompanyAliasDetail": {
+      "$ref": "#/definitions/CompanyDetail"
+    },
+    "CompanyEmployer": {
+      "x-otm-entity": {
+        "EntityType": "BusinessObject",
+        "EntityName": "Company"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Company"
+        },
+        {
+          "properties": {
+            "officeType": {
+              "description": "Designates the office category within an organization.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "AttributeGroup: OfficeTypeGroup"
+                  ]
+                }
+              },
+              "$ref": "CodeList_0_0_0.schema.json#/definitions/OfficeLocation_Enum"
+            },
+            "division": {
+              "description": "The division name or ID with which the contact is associated.",
+              "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Tiny"
+            },
+            "department": {
+              "description": "The department name or ID with which the contact is associated.",
+              "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Tiny"
+            },
+            "EmployeeInfo": {
+              "description": "Information about the employee.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://chameleon.anonymous/ns}EmployeeInfoType"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "profile",
+                    "value": "EmployeeInfo"
+                  }
+                ]
+              },
+              "$ref": "Common_0_0_0.schema.json#/definitions/Employee"
+            },
+            "InternalReferenceNumber": {
+              "description": "Accounting code(s) assigned to travel for employer.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://chameleon.anonymous/ns}FreeTextType"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "profile",
+                    "value": "InternalRefNmbr"
+                  }
+                ]
+              },
+              "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Short"
+            },
+            "TravelArranger": {
+              "description": "The organization responsible for arranging travel for the employer.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://chameleon.anonymous/ns}TravelArrangerType"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "profile",
+                    "value": "TravelArranger"
+                  }
+                ]
+              },
+              "$ref": "#/definitions/TravelArranger"
+            },
+            "LoyaltyProgram": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/LoyaltyProgram"
+              },
+              "maxItems": 10
+            },
+            "EffectiveExpireDate": {
+              "description": "Used to send the effective date and/or expiration date.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "AttributeGroup: EffectiveExpireOptionalDateGroup"
+                  ]
+                }
+              },
+              "$ref": "Common_0_0_0.schema.json#/definitions/Date_EffectiveExpire"
+            },
+            "defaultInd": {
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "AttributeGroup: DefaultIndGroup"
+                  ]
+                }
+              },
+              "type": "boolean"
+            },
+            "ExtensionPoint_Custom": {
+              "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint_Custom"
+            }
+          }
+        }
+      ]
+    },
+    "TEST_CompanyAliasEmployer": {
+      "$ref": "#/definitions/CompanyEmployer"
+    },
+    "PersonID": {
+      "x-otm-entity": {
+        "EntityType": "BusinessObject",
+        "EntityName": "Person"
+      },
+      "properties": {
+        "@type": {
+          "type": "string"
+        },
+        "id": {
+          "description": "Provides a unique reference to this contact person.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}RPH_Type"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "Common",
+                "value": "RPH"
+              }
+            ]
+          },
+          "$ref": "built-ins/XMLSchema.schema.json#/definitions/ID"
+        },
+        "Identifier": {
+          "description": "An identifier used to uniquely reference an object in a system (e.g. an airline reservation reference, customer profile reference, booking confirmation number, or a reference to a previous availability quote).",
+          "$ref": "#/definitions/Identifier"
+        },
+        "OtherID": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Identifier"
+          },
+          "maxItems": 5
+        }
+      },
+      "required": [
+        "@type",
+        "Identifier"
+      ],
+      "discriminator": "@type"
+    },
+    "Person": {
+      "x-otm-entity": {
+        "EntityType": "BusinessObject",
+        "EntityName": "Person"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/PersonID"
+        },
+        {
+          "properties": {
+            "gender": {
+              "description": "The gender of the person.",
+              "$ref": "CodeList_0_0_0.schema.json#/definitions/Gender_Enum"
+            },
+            "maritalStatus_Enum": {
+              "description": "Specifies the marital status of the person.",
+              "$ref": "CodeList_0_0_0.schema.json#/definitions/MaritalStatus_Enum"
+            },
+            "birthDate": {
+              "description": "The birth date of the person.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "AttributeGroup: BirthDateGroup"
+                  ]
+                }
+              },
+              "type": "string",
+              "format": "date"
+            },
+            "Person_Name": {
+              "description": "Name information for a person.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://chameleon.anonymous/ns}PersonNameType"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "Common",
+                    "value": "PersonName"
+                  }
+                ]
+              },
+              "$ref": "#/definitions/Person_Name"
+            },
+            "Address": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Address"
+              },
+              "maxItems": 5
+            },
+            "Telephone": {
+              "description": "Information about a telephone number, including the actual number and its usage.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Example value: p = 555-555-5555"
+                  ]
+                },
+                "examples": [
+                  {
+                    "context": "Common",
+                    "value": "555-555-5555"
+                  }
+                ]
+              },
+              "$ref": "#/definitions/Telephone"
+            },
+            "Email": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Email"
+              },
+              "maxItems": 5
+            },
+            "Privacy": {
+              "description": "Allows for control of the sharing of data between parties.",
+              "$ref": "#/definitions/Privacy"
+            },
+            "Comments": {
+              "description": "Textual information about the person.",
+              "$ref": "#/definitions/Text_Free"
+            },
+            "ExtensionPoint_Summary": {
+              "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint_Summary"
+            }
+          },
+          "required": [
+            "Person_Name"
+          ]
+        }
+      ]
+    },
+    "PersonDetail": {
+      "x-otm-entity": {
+        "EntityType": "BusinessObject",
+        "EntityName": "Person"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Person"
+        },
+        {
+          "properties": {
+            "Company": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/CompanyID"
+              }
+            },
+            "SocialMediaInfo": {
+              "type": "array",
+              "items": {
+                "$ref": "Common_0_0_0.schema.json#/definitions/SocialMedia"
+              }
+            },
+            "URL": {
+              "type": "array",
+              "items": {
+                "$ref": "Common_0_0_0.schema.json#/definitions/URL"
+              },
+              "maxItems": 5
+            },
+            "ExtensionPoint_Detail": {
+              "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint_Detail"
+            }
+          }
+        }
+      ]
+    },
+    "PersonCustomer": {
+      "x-otm-entity": {
+        "EntityType": "BusinessObject",
+        "EntityName": "Person"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Person"
+        },
+        {
+          "properties": {
+            "customerValue": {
+              "description": "The supplier's ranking of the customer (e.g., VIP, numerical ranking).",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to8"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "profile",
+                    "value": "CustomerValue"
+                  }
+                ]
+              },
+              "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Tiny"
+            },
+            "children": {
+              "description": "The number of children of the customer.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://chameleon.anonymous/ns}Numeric1to99"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "profile",
+                    "value": "ChildQuantity"
+                  }
+                ]
+              },
+              "type": "integer",
+              "format": "int32"
+            },
+            "CitizenCountryCode": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/CitizenCountryCode"
+              },
+              "maxItems": 3
+            },
+            "PetInfo": {
+              "type": "array",
+              "items": {
+                "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Short"
+              },
+              "maxItems": 3
+            },
+            "FormOfPayment": {
+              "type": "array",
+              "items": {
+                "$ref": "Finance_0_0_0.schema.json#/definitions/FormOfPaymentID"
+              },
+              "maxItems": 100
+            },
+            "RelatedTraveler": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/RelatedTraveler"
+              },
+              "maxItems": 99
+            },
+            "ContactPerson": {
+              "type": "array",
+              "items": {
+                "$ref": "Common_2_0_0.schema.json#/definitions/ContactPerson"
+              },
+              "maxItems": 5
+            },
+            "Document": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Document"
+              },
+              "maxItems": 99
+            },
+            "CustLoyalty": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/LoyaltyProgram"
+              },
+              "maxItems": 25
+            },
+            "AdditionalLanguages": {
+              "type": "array",
+              "items": {
+                "$ref": "Common_0_0_0.schema.json#/definitions/Languages"
+              },
+              "maxItems": 5
+            },
+            "PhysicalChallenge": {
+              "description": "Describes a person physical challange.",
+              "$ref": "#/definitions/PhysicalChallenge"
+            },
+            "deceasedInd": {
+              "description": "When true the customer is deceased.",
+              "type": "boolean"
+            },
+            "vIP_Ind": {
+              "description": "If true, indicates a very important person.",
+              "type": "boolean"
+            },
+            "previouslyMarriedInd": {
+              "description": "When true, indicates the customer was previously married. When false, indicates the customer was not previously married.",
+              "type": "boolean"
+            },
+            "ExtensionPoint_Custom": {
+              "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint_Custom"
+            }
+          }
+        }
+      ]
+    },
+    "CreateRQ": {
+      "x-otm-entity": {
+        "EntityType": "Operation",
+        "EntityName": "ProfileService_Create"
+      },
+      "allOf": [
+        {
+          "$ref": "built-ins/OTA2_Message_v2.0.0.schema.json#/definitions/OTA2_Request_Payload"
+        },
+        {
+          "properties": {
+            "Profile": {
+              "description": "The profile to be created.",
+              "$ref": "#/definitions/ProfileID"
+            },
+            "POS": {
+              "description": "Point of sale object.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://www.opentravel.org/OTA/2003/05}POS_Type"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "profile",
+                    "value": "POS"
+                  }
+                ]
+              },
+              "$ref": "Common_0_0_0.schema.json#/definitions/POS"
+            },
+            "PayloadStdAttributes": {
+              "description": "The standard attributes that appear on the root element for all OpenTravel messages.",
+              "$ref": "Common_0_0_0.schema.json#/definitions/PayloadStdAttributes"
+            },
+            "ExtensionPoint": {
+              "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint"
+            }
+          },
+          "required": [
+            "PayloadStdAttributes"
+          ]
+        }
+      ]
+    },
+    "CreateRS": {
+      "x-otm-entity": {
+        "EntityType": "Operation",
+        "EntityName": "ProfileService_Create"
+      },
+      "allOf": [
+        {
+          "$ref": "built-ins/OTA2_Message_v2.0.0.schema.json#/definitions/OTA2_Response_Payload"
+        },
+        {
+          "properties": {
+            "Profile": {
+              "description": "The profile created by the request,  may only include the identifier for the profile and not the full profile information.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://www.opentravel.org/OTA/2003/05}UniqueID_Type"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "profile",
+                    "value": "UniqueID"
+                  }
+                ]
+              },
+              "$ref": "#/definitions/ProfileID"
+            },
+            "PayloadStdAttributes": {
+              "description": "The OTA_PayloadStdAttributes defines the standard attributes that appear on the root element for all OpenTravel Messages.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "AttributeGroup: {http://www.opentravel.org/OTA/2003/05}OTA_PayloadStdAttributes"
+                  ]
+                }
+              },
+              "$ref": "Common_0_0_0.schema.json#/definitions/PayloadStdAttributes"
+            },
+            "Result": {
+              "description": "When present indicates that errors or warnings occurred during processing.",
+              "$ref": "Common_0_0_0.schema.json#/definitions/Result"
+            },
+            "ExtensionPoint": {
+              "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint"
+            }
+          },
+          "required": [
+            "Profile"
+          ]
+        }
+      ]
+    },
+    "DeleteRQ": {
+      "x-otm-entity": {
+        "EntityType": "Operation",
+        "EntityName": "ProfileService_Delete"
+      },
+      "allOf": [
+        {
+          "$ref": "built-ins/OTA2_Message_v2.0.0.schema.json#/definitions/OTA2_Request_Payload"
+        },
+        {
+          "properties": {
+            "Profile": {
+              "description": "Identifies the profile to be deleted, may only include the idenfier for the profile to be deleted.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://www.opentravel.org/OTA/2003/05}UniqueID_Type"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "profile",
+                    "value": "UniqueID"
+                  }
+                ]
+              },
+              "$ref": "#/definitions/ProfileID"
+            },
+            "POS": {
+              "description": "Point of sale object.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://www.opentravel.org/OTA/2003/05}POS_Type"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "profile",
+                    "value": "POS"
+                  }
+                ]
+              },
+              "$ref": "Common_0_0_0.schema.json#/definitions/POS"
+            },
+            "OTA_PayloadStdAttributes": {
+              "description": "The OTA_PayloadStdAttributes defines the standard attributes that appear on the root element for all OpenTravel Messages.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "AttributeGroup: {http://www.opentravel.org/OTA/2003/05}OTA_PayloadStdAttributes"
+                  ]
+                }
+              },
+              "$ref": "Common_0_0_0.schema.json#/definitions/PayloadStdAttributes"
+            },
+            "ExtensionPoint": {
+              "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint"
+            }
+          },
+          "required": [
+            "Profile"
+          ]
+        }
+      ]
+    },
+    "DeleteRS": {
+      "x-otm-entity": {
+        "EntityType": "Operation",
+        "EntityName": "ProfileService_Delete"
+      },
+      "allOf": [
+        {
+          "$ref": "built-ins/OTA2_Message_v2.0.0.schema.json#/definitions/OTA2_Response_Payload"
+        },
+        {
+          "properties": {
+            "Profile": {
+              "description": "The profile deleted by the request, may only include the identifier for the profile. and not the full profile information.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://www.opentravel.org/OTA/2003/05}UniqueID_Type"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "profile",
+                    "value": "UniqueID"
+                  }
+                ]
+              },
+              "$ref": "#/definitions/ProfileID"
+            },
+            "OTA_PayloadStdAttributes": {
+              "description": "The OTA_PayloadStdAttributes defines the standard attributes that appear on the root element for all OpenTravel Messages.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "AttributeGroup: {http://www.opentravel.org/OTA/2003/05}OTA_PayloadStdAttributes"
+                  ]
+                }
+              },
+              "$ref": "Common_0_0_0.schema.json#/definitions/PayloadStdAttributes"
+            },
+            "Result": {
+              "description": "When present indicates that errors or warnings occurred during processing.",
+              "$ref": "Common_0_0_0.schema.json#/definitions/Result"
+            },
+            "ExtensionPoint": {
+              "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint"
+            }
+          },
+          "required": [
+            "Profile"
+          ]
+        }
+      ]
+    },
+    "ReadRQ": {
+      "x-otm-entity": {
+        "EntityType": "Operation",
+        "EntityName": "ProfileService_Read"
+      },
+      "allOf": [
+        {
+          "$ref": "built-ins/OTA2_Message_v2.0.0.schema.json#/definitions/OTA2_Request_Payload"
+        },
+        {
+          "properties": {
+            "Profile": {
+              "description": "Identifies the profile to be read,  may only include the identifier for the profile and not the full profile information.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://www.opentravel.org/OTA/2003/05}UniqueID_Type"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "profile",
+                    "value": "UniqueID"
+                  }
+                ]
+              },
+              "$ref": "#/definitions/ProfileID"
+            },
+            "POS": {
+              "description": "Point of sale object.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://www.opentravel.org/OTA/2003/05}POS_Type"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "profile",
+                    "value": "POS"
+                  }
+                ]
+              },
+              "$ref": "Common_0_0_0.schema.json#/definitions/POS"
+            },
+            "OTA_PayloadStdAttributes": {
+              "description": "The OTA_PayloadStdAttributes defines the standard attributes that appear on the root element for all OpenTravel Messages.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "AttributeGroup: {http://www.opentravel.org/OTA/2003/05}OTA_PayloadStdAttributes"
+                  ]
+                }
+              },
+              "$ref": "Common_0_0_0.schema.json#/definitions/PayloadStdAttributes"
+            },
+            "ExtensionPoint": {
+              "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint"
+            }
+          },
+          "required": [
+            "Profile"
+          ]
+        }
+      ]
+    },
+    "ReadRS": {
+      "x-otm-entity": {
+        "EntityType": "Operation",
+        "EntityName": "ProfileService_Read"
+      },
+      "allOf": [
+        {
+          "$ref": "built-ins/OTA2_Message_v2.0.0.schema.json#/definitions/OTA2_Response_Payload"
+        },
+        {
+          "properties": {
+            "Profile": {
+              "description": "The profile returned.",
+              "$ref": "#/definitions/ProfileID"
+            },
+            "PayloadStdAttributes": {
+              "description": "The OTA_PayloadStdAttributes defines the standard attributes that appear on the root element for all OpenTravel Messages.",
+              "$ref": "Common_0_0_0.schema.json#/definitions/PayloadStdAttributes"
+            },
+            "Result": {
+              "description": "When present indicates that errors or warnings occurred during processing.",
+              "$ref": "Common_0_0_0.schema.json#/definitions/Result"
+            },
+            "ExtensionPoint": {
+              "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint"
+            }
+          }
+        }
+      ]
+    },
+    "UpdateRQ": {
+      "x-otm-entity": {
+        "EntityType": "Operation",
+        "EntityName": "ProfileService_Update"
+      },
+      "allOf": [
+        {
+          "$ref": "built-ins/OTA2_Message_v2.0.0.schema.json#/definitions/OTA2_Request_Payload"
+        },
+        {
+          "properties": {
+            "Profile": {
+              "description": "The updated profile.",
+              "$ref": "#/definitions/ProfileID"
+            },
+            "POS": {
+              "description": "Point of sale object.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://www.opentravel.org/OTA/2003/05}POS_Type"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "profile",
+                    "value": "POS"
+                  }
+                ]
+              },
+              "$ref": "Common_0_0_0.schema.json#/definitions/POS"
+            },
+            "OTA_PayloadStdAttributes": {
+              "description": "The OTA_PayloadStdAttributes defines the standard attributes that appear on the root element for all OpenTravel Messages.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "AttributeGroup: {http://www.opentravel.org/OTA/2003/05}OTA_PayloadStdAttributes"
+                  ]
+                }
+              },
+              "$ref": "Common_0_0_0.schema.json#/definitions/PayloadStdAttributes"
+            },
+            "ExtensionPoint": {
+              "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint"
+            }
+          }
+        }
+      ]
+    },
+    "UpdateRS": {
+      "x-otm-entity": {
+        "EntityType": "Operation",
+        "EntityName": "ProfileService_Update"
+      },
+      "allOf": [
+        {
+          "$ref": "built-ins/OTA2_Message_v2.0.0.schema.json#/definitions/OTA2_Response_Payload"
+        },
+        {
+          "properties": {
+            "Profile": {
+              "description": "The updated profile,  may only include the identifier for the profile and not the full profile information.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://www.opentravel.org/OTA/2003/05}UniqueID_Type"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "profile",
+                    "value": "UniqueID"
+                  }
+                ]
+              },
+              "$ref": "#/definitions/ProfileID"
+            },
+            "PayloadStdAttributes": {
+              "description": "The OTA_PayloadStdAttributes defines the standard attributes that appear on the root element for all OpenTravel Messages.",
+              "$ref": "Common_0_0_0.schema.json#/definitions/PayloadStdAttributes"
+            },
+            "Result": {
+              "description": "When present indicates that errors or warnings occurred during processing.",
+              "$ref": "Common_0_0_0.schema.json#/definitions/Result"
+            },
+            "ExtensionPoint": {
+              "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint"
+            }
+          },
+          "required": [
+            "Profile"
+          ]
+        }
+      ]
+    }
+  },
+  "oneOf": [
+    {
+      "properties": {
+        "AccessesIdentifier": {
+          "$ref": "#/definitions/AccessesID"
+        }
+      },
+      "required": [
+        "AccessesIdentifier"
+      ]
+    },
+    {
+      "properties": {
+        "AccessesSummary": {
+          "$ref": "#/definitions/Accesses"
+        }
+      },
+      "required": [
+        "AccessesSummary"
+      ]
+    },
+    {
+      "properties": {
+        "AccessesDetail": {
+          "$ref": "#/definitions/AccessesDetail"
+        }
+      },
+      "required": [
+        "AccessesDetail"
+      ]
+    },
+    {
+      "properties": {
+        "Affiliations": {
+          "$ref": "#/definitions/Affiliations"
+        }
+      },
+      "required": [
+        "Affiliations"
+      ]
+    },
+    {
+      "properties": {
+        "Agreements": {
+          "$ref": "#/definitions/Agreements"
+        }
+      },
+      "required": [
+        "Agreements"
+      ]
+    },
+    {
+      "properties": {
+        "Alliance": {
+          "$ref": "#/definitions/Alliance"
+        }
+      },
+      "required": [
+        "Alliance"
+      ]
+    },
+    {
+      "properties": {
+        "Document": {
+          "$ref": "#/definitions/Document"
+        }
+      },
+      "required": [
+        "Document"
+      ]
+    },
+    {
+      "properties": {
+        "Insurance": {
+          "$ref": "#/definitions/Insurance"
+        }
+      },
+      "required": [
+        "Insurance"
+      ]
+    },
+    {
+      "properties": {
+        "Organization": {
+          "$ref": "#/definitions/Organization"
+        }
+      },
+      "required": [
+        "Organization"
+      ]
+    },
+    {
+      "properties": {
+        "OrganizationMemberName": {
+          "$ref": "#/definitions/OrganizationMemberName"
+        }
+      },
+      "required": [
+        "OrganizationMemberName"
+      ]
+    },
+    {
+      "properties": {
+        "ProfileIdentifier": {
+          "$ref": "#/definitions/ProfileID"
+        }
+      },
+      "required": [
+        "ProfileIdentifier"
+      ]
+    },
+    {
+      "properties": {
+        "ProfileSummary": {
+          "$ref": "#/definitions/Profile"
+        }
+      },
+      "required": [
+        "ProfileSummary"
+      ]
+    },
+    {
+      "properties": {
+        "RelatedTraveler": {
+          "$ref": "#/definitions/RelatedTraveler"
+        }
+      },
+      "required": [
+        "RelatedTraveler"
+      ]
+    },
+    {
+      "properties": {
+        "Profiles": {
+          "$ref": "#/definitions/Profiles"
+        }
+      },
+      "required": [
+        "Profiles"
+      ]
+    },
+    {
+      "properties": {
+        "TravelArranger": {
+          "$ref": "#/definitions/TravelArranger"
+        }
+      },
+      "required": [
+        "TravelArranger"
+      ]
+    },
+    {
+      "properties": {
+        "Trip_Purpose": {
+          "$ref": "#/definitions/Trip_Purpose"
+        }
+      },
+      "required": [
+        "Trip_Purpose"
+      ]
+    },
+    {
+      "properties": {
+        "Trip_Purposes": {
+          "$ref": "#/definitions/Trip_Purposes"
+        }
+      },
+      "required": [
+        "Trip_Purposes"
+      ]
+    },
+    {
+      "properties": {
+        "CompanyIdentifier": {
+          "$ref": "#/definitions/CompanyID"
+        }
+      },
+      "required": [
+        "CompanyIdentifier"
+      ]
+    },
+    {
+      "properties": {
+        "TEST_CompanyAliasIdentifier": {
+          "$ref": "#/definitions/TEST_CompanyAliasID"
+        }
+      },
+      "required": [
+        "TEST_CompanyAliasIdentifier"
+      ]
+    },
+    {
+      "properties": {
+        "CompanySummary": {
+          "$ref": "#/definitions/Company"
+        }
+      },
+      "required": [
+        "CompanySummary"
+      ]
+    },
+    {
+      "properties": {
+        "TEST_CompanyAliasSummary": {
+          "$ref": "#/definitions/TEST_CompanyAlias"
+        }
+      },
+      "required": [
+        "TEST_CompanyAliasSummary"
+      ]
+    },
+    {
+      "properties": {
+        "CompanyDetail": {
+          "$ref": "#/definitions/CompanyDetail"
+        }
+      },
+      "required": [
+        "CompanyDetail"
+      ]
+    },
+    {
+      "properties": {
+        "TEST_CompanyAliasDetail": {
+          "$ref": "#/definitions/TEST_CompanyAliasDetail"
+        }
+      },
+      "required": [
+        "TEST_CompanyAliasDetail"
+      ]
+    },
+    {
+      "properties": {
+        "CompanyEmployer": {
+          "$ref": "#/definitions/CompanyEmployer"
+        }
+      },
+      "required": [
+        "CompanyEmployer"
+      ]
+    },
+    {
+      "properties": {
+        "TEST_CompanyAliasEmployer": {
+          "$ref": "#/definitions/TEST_CompanyAliasEmployer"
+        }
+      },
+      "required": [
+        "TEST_CompanyAliasEmployer"
+      ]
+    },
+    {
+      "properties": {
+        "PersonIdentifier": {
+          "$ref": "#/definitions/PersonID"
+        }
+      },
+      "required": [
+        "PersonIdentifier"
+      ]
+    },
+    {
+      "properties": {
+        "PersonSummary": {
+          "$ref": "#/definitions/Person"
+        }
+      },
+      "required": [
+        "PersonSummary"
+      ]
+    },
+    {
+      "properties": {
+        "PersonDetail": {
+          "$ref": "#/definitions/PersonDetail"
+        }
+      },
+      "required": [
+        "PersonDetail"
+      ]
+    },
+    {
+      "properties": {
+        "PersonCustomer": {
+          "$ref": "#/definitions/PersonCustomer"
+        }
+      },
+      "required": [
+        "PersonCustomer"
+      ]
+    },
+    {
+      "properties": {
+        "CreateRQ": {
+          "$ref": "#/definitions/CreateRQ"
+        }
+      },
+      "required": [
+        "CreateRQ"
+      ]
+    },
+    {
+      "properties": {
+        "CreateRS": {
+          "$ref": "#/definitions/CreateRS"
+        }
+      },
+      "required": [
+        "CreateRS"
+      ]
+    },
+    {
+      "properties": {
+        "DeleteRQ": {
+          "$ref": "#/definitions/DeleteRQ"
+        }
+      },
+      "required": [
+        "DeleteRQ"
+      ]
+    },
+    {
+      "properties": {
+        "DeleteRS": {
+          "$ref": "#/definitions/DeleteRS"
+        }
+      },
+      "required": [
+        "DeleteRS"
+      ]
+    },
+    {
+      "properties": {
+        "ReadRQ": {
+          "$ref": "#/definitions/ReadRQ"
+        }
+      },
+      "required": [
+        "ReadRQ"
+      ]
+    },
+    {
+      "properties": {
+        "ReadRS": {
+          "$ref": "#/definitions/ReadRS"
+        }
+      },
+      "required": [
+        "ReadRS"
+      ]
+    },
+    {
+      "properties": {
+        "UpdateRQ": {
+          "$ref": "#/definitions/UpdateRQ"
+        }
+      },
+      "required": [
+        "UpdateRQ"
+      ]
+    },
+    {
+      "properties": {
+        "UpdateRS": {
+          "$ref": "#/definitions/UpdateRS"
+        }
+      },
+      "required": [
+        "UpdateRS"
+      ]
+    }
+  ]
+}

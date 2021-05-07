@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://jsonschema.net",
+  "type": "object",
+  "properties": {
+    "_id": {
+      "id": "http://jsonschema.net/_id",
+      "type": "string"
+    },
+    "_rev": {
+      "id": "http://jsonschema.net/_rev",
+      "type": "string"
+    },
+    "_revisions": {
+      "id": "http://jsonschema.net/_revisions",
+      "type": "object"
+    },
+    "created_at": {
+      "id": "http://jsonschema.net/created_at",
+      "type": "string"
+    },
+    "message": {
+      "id": "http://jsonschema.net/message",
+      "type": "string"
+    },
+    "room": {
+      "id": "http://jsonschema.net/room",
+      "type": "string"
+    },
+    "type": {
+      "id": "http://jsonschema.net/type",
+      "type": "string",
+      "pattern": "^message$"
+    },
+    "user": {
+      "id": "http://jsonschema.net/user",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "created_at",
+    "message",
+    "room",
+    "type",
+    "user"
+  ]
+}

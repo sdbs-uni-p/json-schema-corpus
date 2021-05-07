@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "comment",
+  "id": "comment.json",
+  "properties": {
+    "uid": {
+      "$ref": "uid.json"
+    },
+    "author": {
+      "$ref": "person.json",
+      "description": "The person that created this comment"
+    },
+    "text": {
+      "type": "string"
+    },
+    "downvoteCount": {
+      "type": "integer",
+      "description": "A counter for downrates/downvotes of a comment"
+    },
+    "upvoteCount": {
+      "type": "integer",
+      "description": "A counter for uprates/upvotes of a comment"
+    }
+  },
+  "required": [
+    "author",
+    "text"
+  ]
+}

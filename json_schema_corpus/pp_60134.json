@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "The value returned by POST /{db}/_missing_revs",
+  "properties": {
+    "missing_revs": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "missing_revs"
+  ],
+  "title": "CouchDB db _missing_revs",
+  "type": "object"
+}

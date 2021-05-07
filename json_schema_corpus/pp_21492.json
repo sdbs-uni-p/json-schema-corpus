@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "properties": {
+    "additionalFields": {
+      "type": "object",
+      "properties": {
+        "timeSpan": {
+          "type": "string"
+        },
+        "eventCategory": {
+          "type": "string"
+        },
+        "eventType": {
+          "type": "string"
+        },
+        "eventDetail": {
+          "type": "string"
+        }
+      }
+    },
+    "row_type_name": {
+      "type": "string"
+    },
+    "mappings": {
+      "type": "object",
+      "properties": {
+        "Visits": {
+          "type": "string"
+        },
+        "Page Views": {
+          "type": "string"
+        },
+        "Visitors": {
+          "type": "string"
+        },
+        "Bounce Rate": {
+          "type": "string"
+        },
+        "Avg. Time on Site": {
+          "type": "string"
+        },
+        "Avg. Visitors per Day": {
+          "type": "string"
+        },
+        "Page Views per Visit": {
+          "type": "string"
+        },
+        "New Visitors": {
+          "type": "string"
+        }
+      }
+    },
+    "idMapping": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "chunk-size": {
+      "type": "number"
+    },
+    "empty-data-set": {
+      "type": "boolean"
+    }
+  },
+  "title": "Webtrends Reports Collector Options",
+  "type": "object",
+  "additionalProperties": false
+}

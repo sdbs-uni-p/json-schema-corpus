@@ -1,0 +1,100 @@
+{
+  "version": "1.0.0",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "id": "TO_REPLACE",
+  "author": "ENA",
+  "required": [
+    "attributes"
+  ],
+  "type": "object",
+  "title": "TEST1 sample checklist",
+  "definitions": {
+    "attribute": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "required": [
+          "value"
+        ],
+        "properties": {
+          "value": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "terms": {
+            "$ref": "#/definitions/terms"
+          },
+          "units": {
+            "minLength": 1,
+            "type": "string"
+          }
+        }
+      }
+    },
+    "terms": {
+      "type": "array",
+      "items": {
+        "required": [
+          "url"
+        ],
+        "type": "object",
+        "properties": {
+          "url": {
+            "format": "uri",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "properties": {
+      "attributes": {
+        "required": [],
+        "type": "object",
+        "description": "Attributes for describing a sample.",
+        "patternProperties": {
+          "^.*$": {
+            "$ref": "#/definitions/attribute"
+          }
+        },
+        "properties": {}
+      }
+    }
+  },
+  "description": "Minimum information required for the sample",
+  "$async": true,
+  "properties": {
+    "attributes": {
+      "required": [],
+      "properties": {
+        "identified_by": {
+          "description": "name of the expert who identified the specimen taxonomically",
+          "items": {}
+        },
+        "collection_date": {
+          "description": "date that the specimen was collected",
+          "items": {}
+        },
+        "environmental_sample": {
+          "description": "identifies sequences derived by direct molecular isolation from a bulk environmental DNA sample (by PCR with or without subsequent cloning of the product, DGGE, or other anonymous methods) with no reliable identification of the source organism",
+          "items": {}
+        },
+        "cell_line": {
+          "description": "cell line from which the sample was obtained",
+          "items": {}
+        },
+        "collected_by": {
+          "description": "name of persons or institute who collected the specimen",
+          "items": {}
+        },
+        "bio_material": {
+          "description": "identifier for the biological material from which the sample was obtained, with optional institution code and collection code for the place where it is currently stored.",
+          "items": {}
+        },
+        "cell_type": {
+          "description": "cell type from which the sample was obtained",
+          "items": {}
+        }
+      }
+    }
+  }
+}

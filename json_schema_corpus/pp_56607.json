@@ -1,0 +1,181 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "title": "Metric",
+  "description": "Working with MMS Metrics",
+  "type": "object",
+  "definitions": {
+    "hostId": {
+      "description": "ID of the host to which this metric pertains.",
+      "example": "680ab316473d6b28f966364b947134fc",
+      "type": "string"
+    },
+    "groupId": {
+      "description": "ID of the group that owns this host.",
+      "example": "2847387cd717dabc348a",
+      "type": "string"
+    },
+    "metricName": {
+      "description": "The name of the metric.",
+      "example": "ASSERT_MSG",
+      "type": "string",
+      "enum": [
+        "ASSERT_MSG",
+        "ASSERT_REGULAR",
+        "ASSERT_USER",
+        "ASSERT_WARNING",
+        "BACKGROUND_FLUSH_AVG",
+        "COMPUTED_MEMORY",
+        "CONNECTIONS",
+        "CONNECTIONS_MAX",
+        "CURSORS_TOTAL_CLIENT_CURSORS_SIZE",
+        "CURSORS_TOTAL_OPEN",
+        "CURSORS_TOTAL_TIMED_OUT",
+        "DB_DATA_SIZE_TOTAL",
+        "DB_LOCK_PERCENTAGE",
+        "DB_ACCESSES_NOT_IN_MEMORY",
+        "DB_PAGE_FAULT_EXCEPTIONS_THROWN",
+        "DB_STORAGE_TOTAL",
+        "EFFECTIVE_LOCK_PERCENTAGE",
+        "EXTRA_INFO_PAGE_FAULTS",
+        "GLOBAL_ACCESSES_NOT_IN_MEMORY",
+        "GLOBAL_LOCK_CURRENT_QUEUE_READERS",
+        "GLOBAL_LOCK_CURRENT_QUEUE_TOTAL",
+        "GLOBAL_LOCK_CURRENT_QUEUE_WRITERS",
+        "GLOBAL_PAGE_FAULT_EXCEPTIONS_THROWN",
+        "INDEX_COUNTERS_BTREE_ACCESSES",
+        "INDEX_COUNTERS_BTREE_HITS",
+        "INDEX_COUNTERS_BTREE_MISSES",
+        "INDEX_COUNTERS_BTREE_MISS_RATIO",
+        "JOURNALING_COMMITS_IN_WRITE_LOCK",
+        "JOURNALING_MB",
+        "JOURNALING_WRITE_DATA_FILES_MB",
+        "MEMORY_MAPPED",
+        "MEMORY_RESIDENT",
+        "MEMORY_VIRTUAL",
+        "MUNIN_CPU_IOWAIT",
+        "MUNIN_CPU_IRQ",
+        "MUNIN_CPU_NICE",
+        "MUNIN_CPU_SOFTIRQ",
+        "MUNIN_CPU_STEAL",
+        "MUNIN_CPU_SYSTEM",
+        "MUNIN_CPU_USER",
+        "MUNIN_IOSTAT_OP_READ",
+        "MUNIN_IOSTAT_OP_WRITE",
+        "MUNIN_IOSTAT_TIME_READ",
+        "MUNIN_IOSTAT_TIME_WRITE",
+        "NETWORK_BYTES_IN",
+        "NETWORK_BYTES_OUT",
+        "NETWORK_NUM_REQUESTS",
+        "OPCOUNTER_CMD",
+        "OPCOUNTER_DELETE",
+        "OPCOUNTER_GETMORE",
+        "OPCOUNTER_INSERT",
+        "OPCOUNTER_QUERY",
+        "OPCOUNTER_REPL_CMD",
+        "OPCOUNTER_REPL_DELETE",
+        "OPCOUNTER_REPL_INSERT",
+        "OPCOUNTER_REPL_UPDATE",
+        "OPCOUNTER_UPDATE",
+        "OPLOG_MASTER_LAG_TIME_DIFF",
+        "OPLOG_MASTER_TIME",
+        "OPLOG_RATE_GB_PER_HOUR",
+        "OPLOG_SLAVE_LAG_MASTER_TIME"
+      ]
+    },
+    "units": {
+      "description": "The units in which the metric values are expressed.",
+      "example": "BYTES",
+      "type": "string",
+      "enum": [
+        "RAW",
+        "BITS",
+        "KILOBITS",
+        "MEGABITS",
+        "GIGABITS",
+        "BYTES",
+        "KILOBYTES",
+        "MEGABYTES",
+        "GIGABYTES",
+        "TERABYTES",
+        "PETABYTES",
+        "MILLISECONDS",
+        "SECONDS",
+        "MINUTES",
+        "HOURS",
+        "DAYS"
+      ]
+    },
+    "granularity": {
+      "description": "The size of the epoch covered by each data point.",
+      "example": "MINUTE",
+      "type": "string",
+      "enum": [
+        "MINUTE",
+        "HOUR",
+        "DAY"
+      ]
+    },
+    "period": {
+      "description": "The ISO-8601 formatted time period that specifies how far back in the past to query.",
+      "example": "P1DT12H",
+      "type": "string"
+    },
+    "deviceName": {
+      "description": "The name of the device. Only present for hardware (ie, Munin) metrics.",
+      "example": "xxx",
+      "type": "string"
+    },
+    "databaseName": {
+      "description": "The name of the database. Only present for database-level metrics.",
+      "example": "mydb",
+      "type": "string"
+    },
+    "dataPoints": {
+      "description": "An array of objects, where each object represents a single metric data point. When there is no data point available for a particular epoch, then it will simply be missing from the array. For example, if you request minute-level data points for 1:30PM through 2:00PM, but MMS does not have a 1:31PM sample, then: dataPoints[0].timestamp = \u2018...T13:30:00Z\u2019; dataPoints[1].timestamp = \u2018...T13:32:00Z\u2019; dataPoints[2].timestamp = \u2018...T13:33:00Z\u2019; etc.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "timestamp": {
+            "description": "The timestamp of the beginning of the epoch represented by this data point.",
+            "example": "2014-08-29T14:00:00Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "value": {
+            "description": "The value of the data point.",
+            "example": 381.2,
+            "type": "number"
+          }
+        }
+      }
+    }
+  },
+  "properties": {
+    "hostId": {
+      "$ref": "/schemata/metric#/definitions/hostId"
+    },
+    "groupId": {
+      "$ref": "/schemata/metric#/definitions/groupId"
+    },
+    "metricName": {
+      "$ref": "/schemata/metric#/definitions/metricName"
+    },
+    "units": {
+      "$ref": "/schemata/metric#/definitions/units"
+    },
+    "granularity": {
+      "$ref": "/schemata/metric#/definitions/granularity"
+    },
+    "deviceName": {
+      "$ref": "/schemata/metric#/definitions/deviceName"
+    },
+    "databaseName": {
+      "$ref": "/schemata/metric#/definitions/databaseName"
+    },
+    "dataPoints": {
+      "$ref": "/schemata/metric#/definitions/dataPoints"
+    }
+  },
+  "id": "schemata/metric"
+}

@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "The value returned by POST /{db}/_revs_diff.  Nothing much we can validate.",
+  "title": "CouchDB db _revs_diff",
+  "type": "object"
+}

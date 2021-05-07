@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Pantries List Response",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "$ref": "__apigModelsEndpoint__/Role"
+      }
+    }
+  },
+  "required": [
+    "items"
+  ]
+}

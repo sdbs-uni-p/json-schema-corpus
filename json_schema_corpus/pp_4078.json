@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "RDFEntity",
+  "description": "Root class for all RDF entities",
+  "type": "object",
+  "javaType": "databook.persistence.rule.rdf.ruleset.RDFEntity",
+  "properties": {
+    "uri": {
+      "description": "The uri of the RDF entity",
+      "type": "string",
+      "format": "uri"
+    },
+    "typeUri": {
+      "description": "The type uri of the RDF entity",
+      "type": "string",
+      "format": "uri"
+    },
+    "label": {
+      "description": "A label of the RDF entity",
+      "type": "string"
+    }
+  }
+}

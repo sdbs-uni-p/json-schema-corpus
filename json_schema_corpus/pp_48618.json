@@ -1,0 +1,166 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://mynet.com/schemas/user.json#",
+  "title": "User",
+  "description": "User profile with connections",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 99999999999
+    },
+    "name": {
+      "type": "string",
+      "maxLength": 128
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "phone": {
+      "type": "string",
+      "pattern": "^[0-9()\\-\\.\\s]+$"
+    },
+    "address": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "properties": {
+        "street": {
+          "type": "string"
+        },
+        "postcode": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        }
+      },
+      "maxProperties": 8,
+      "required": [
+        "street",
+        "postcode",
+        "city",
+        "country"
+      ]
+    },
+    "personal": {
+      "type": "object",
+      "properties": {
+        "DOB": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "age": {
+          "type": "integer",
+          "minimum": 13
+        },
+        "gender": {
+          "enum": [
+            "female",
+            "male"
+          ]
+        }
+      },
+      "required": [
+        "DOB",
+        "age"
+      ],
+      "additionalProperties": false
+    },
+    "connections": {
+      "type": "array",
+      "maxItems": 5,
+      "items": {
+        "title": "Connection",
+        "description": "User connection schema",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 99999999999
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 128
+          },
+          "since": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "connType": {
+            "type": "string"
+          },
+          "relation": {},
+          "close": {}
+        },
+        "oneOf": [
+          {
+            "properties": {
+              "connType": {
+                "enum": [
+                  "relative"
+                ]
+              },
+              "relation": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "properties": {
+              "connType": {
+                "enum": [
+                  "friend",
+                  "colleague",
+                  "other"
+                ]
+              },
+              "relation": {
+                "type": "boolean"
+              },
+              "close": {
+                "type": "boolean"
+              }
+            }
+          }
+        ],
+        "required": [
+          "id",
+          "name",
+          "since",
+          "connType"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "feeds": {
+      "title": "feeds",
+      "description": "Feeds user subscribes to",
+      "type": "object",
+      "minProperties": 6,
+      "additionalProperties": true
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "email",
+    "phone",
+    "address",
+    "personal",
+    "connections",
+    "feeds",
+    "createdAt"
+  ]
+}

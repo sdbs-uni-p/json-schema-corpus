@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "http://comrade.forma-pro.com/schemas/message/GetTimeline.json",
+  "type": "object",
+  "properties": {
+    "jobTemplateId": {
+      "$ref": "../uuid4.json"
+    },
+    "limit": {
+      "type": [
+        "null",
+        "string"
+      ]
+    }
+  }
+}

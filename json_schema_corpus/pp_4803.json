@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://schema.envirocar.org/track.create.json#",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "properties"
+  ],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "FeatureCollection"
+      ]
+    },
+    "properties": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sensor"
+      ],
+      "properties": {
+        "sensor": {
+          "type": "string",
+          "description": "the name of an existing sensor resource"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "appVersion": {
+          "type": "string"
+        },
+        "obdDevice": {
+          "type": "string"
+        },
+        "touVersion": {
+          "type": "string"
+        }
+      }
+    },
+    "features": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "$ref": "http://schema.envirocar.org/measurement.create.json#"
+      }
+    }
+  }
+}

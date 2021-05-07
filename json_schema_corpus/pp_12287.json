@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "cldrrelativetimeoptions",
+  "properties": {
+    "form": {
+      "type": "string",
+      "description": "eg. \"short\" or \"narrow\". Or false for default long form"
+    },
+    "emptyPlaceholder": {
+      "type": "string",
+      "description": "Value use in case of null/undefined value"
+    }
+  }
+}

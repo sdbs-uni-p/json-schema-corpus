@@ -1,0 +1,51 @@
+{
+  "title": "test/addressSchema.xsd",
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "properties": {
+    "Address": {
+      "properties": {
+        "Recipient": {
+          "type": "string"
+        },
+        "House": {
+          "type": "string"
+        },
+        "Street": {
+          "type": "string"
+        },
+        "Town": {
+          "type": "string"
+        },
+        "County": {
+          "type": "string"
+        },
+        "PostCode": {
+          "type": "string"
+        },
+        "Country": {
+          "type": "string",
+          "enum": [
+            "IN",
+            "DE",
+            "ES",
+            "UK",
+            "US"
+          ]
+        }
+      },
+      "required": [
+        "Recipient",
+        "House",
+        "Street",
+        "Town",
+        "PostCode"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "Address"
+  ],
+  "additionalProperties": false
+}

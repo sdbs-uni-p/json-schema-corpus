@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://judkins.house/apis/k2/v1/canalFabricContainers.json",
+  "$$target": "canalFabricContainers.json",
+  "title": "Canal Fabric Containers",
+  "description": "Describes all of the containers necessary to implement a Canal fabric.",
+  "properties": {
+    "kubePolicyController": {
+      "$ref": "canalFabricContainerConfig.json"
+    },
+    "etcd": {
+      "$ref": "canalFabricContainerConfig.json"
+    },
+    "calicoCni": {
+      "$ref": "canalFabricContainerConfig.json"
+    },
+    "calicoNode": {
+      "$ref": "canalFabricContainerConfig.json"
+    },
+    "flannel": {
+      "$ref": "canalFabricContainerConfig.json"
+    }
+  },
+  "required": [
+    "calicoCni",
+    "calicoNode",
+    "flannel"
+  ],
+  "additionalProperties": false,
+  "type": "object"
+}

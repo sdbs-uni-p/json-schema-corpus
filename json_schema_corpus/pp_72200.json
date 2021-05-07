@@ -1,0 +1,127 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Payment Event Fields Schema",
+  "description": "Defines the event fields our system recognizes as a purchase event",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "title": "User ID"
+    },
+    "accountId": {
+      "type": "string",
+      "title": "Account ID"
+    },
+    "programId": {
+      "type": "string",
+      "title": "Program ID"
+    },
+    "type": {
+      "type": "string",
+      "title": "Analytic Type",
+      "enum": [
+        "USER_REFERRAL_PROGRAM_LOADED_EVENT",
+        "USER_REFERRAL_PROGRAM_ENGAGEMENT_EVENT"
+      ]
+    }
+  },
+  "dependencies": {
+    "type": {
+      "oneOf": [
+        {
+          "properties": {
+            "type": {
+              "enum": [
+                "USER_REFERRAL_PROGRAM_LOADED_EVENT"
+              ]
+            },
+            "meta": {
+              "type": "object",
+              "properties": {
+                "engagementMedium": {
+                  "$ref": "#/definitions/engagement"
+                }
+              },
+              "required": [
+                "engagementMedium"
+              ]
+            }
+          },
+          "required": [
+            "meta"
+          ]
+        },
+        {
+          "properties": {
+            "type": {
+              "enum": [
+                "USER_REFERRAL_PROGRAM_ENGAGEMENT_EVENT"
+              ]
+            },
+            "meta": {
+              "type": "object",
+              "properties": {
+                "engagementMedium": {
+                  "$ref": "#/definitions/engagement"
+                },
+                "shareMedium": {
+                  "$ref": "#/definitions/share"
+                }
+              },
+              "required": [
+                "engagementMedium",
+                "shareMedium"
+              ]
+            }
+          },
+          "required": [
+            "meta"
+          ]
+        }
+      ]
+    }
+  },
+  "definitions": {
+    "engagement": {
+      "type": "string",
+      "title": "Engagement Medium",
+      "enum": [
+        "NOCONTENT",
+        "EMBED",
+        "HOSTED",
+        "MOBILE",
+        "POPUP",
+        "DEMO_EMBED",
+        "DEMO",
+        "EMPTY",
+        "EMAIL",
+        "PORTAL",
+        "UNKNOWN"
+      ]
+    },
+    "share": {
+      "type": "string",
+      "title": "Share Medium",
+      "enum": [
+        "FACEBOOK",
+        "TWITTER",
+        "EMAIL",
+        "DIRECT",
+        "LINKEDIN",
+        "SMS",
+        "FBMESSENGER",
+        "WHATSAPP",
+        "LINEMESSENGER",
+        "PINTEREST",
+        "REMINDER",
+        "UNKNOWN"
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "accountId",
+    "programId",
+    "type"
+  ]
+}

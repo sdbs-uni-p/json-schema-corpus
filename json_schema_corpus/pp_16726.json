@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "ogg",
+  "name": "OGG",
+  "extension": "ogg",
+  "encoders": {
+    "video": [],
+    "audio": [
+      "libvorbis"
+    ]
+  },
+  "capabilities": {
+    "faststart": false
+  }
+}

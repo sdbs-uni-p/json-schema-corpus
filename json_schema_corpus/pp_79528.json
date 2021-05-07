@@ -1,0 +1,371 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "accessPoint": {
+      "type": "object",
+      "description": "Link to an external result.",
+      "properties": {
+        "uri": {
+          "title": "URI",
+          "type": "string",
+          "format": "uri"
+        },
+        "typeCode": {
+          "type": "string",
+          "title": "Type",
+          "enum": [
+            "Individual",
+            "Group"
+          ]
+        }
+      }
+    },
+    "scoreNumeric": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "ScoreNumeric"
+          ],
+          "options": {
+            "hidden": true
+          }
+        },
+        "type": {
+          "title": "Type",
+          "type": "string",
+          "enum": [
+            "Percentile",
+            "Raw Score",
+            "Stanine",
+            "Sten",
+            "T-score",
+            "Z-score",
+            "Intelligence Quotient",
+            "Scaled",
+            "Normal Curve",
+            "GPA"
+          ]
+        },
+        "value": {
+          "title": "Value",
+          "type": "number"
+        }
+      }
+    },
+    "scoreText": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "Scoretext"
+          ],
+          "options": {
+            "hidden": true
+          }
+        },
+        "type": {
+          "title": "Type",
+          "type": "string",
+          "enum": [
+            "Grade Letter"
+          ]
+        },
+        "value": {
+          "title": "Value",
+          "type": "string"
+        }
+      }
+    },
+    "score": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "title": "Numeric Score",
+            "$ref": "#/definitions/scoreNumeric"
+          },
+          {
+            "title": "Text Score",
+            "$ref": "#/definitions/scoreText"
+          }
+        ]
+      }
+    },
+    "assessedCompetency": {
+      "title": "Assessed Competency",
+      "type": "object",
+      "description": "A specified competency is a reference to a particular competency at a specified level of proficiency",
+      "properties": {
+        "id": {
+          "title": "Name",
+          "type": "integer"
+        },
+        "proficiencyLevel": {
+          "title": "Proficiency Level",
+          "$ref": "#/definitions/score"
+        }
+      }
+    },
+    "passedFlag": {
+      "title": "Pass?",
+      "type": "boolean"
+    },
+    "result": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "Result Name",
+          "type": "string"
+        },
+        "description": {
+          "title": "Description",
+          "type": "string"
+        },
+        "passedFlag": {
+          "$ref": "#/definitions/passedFlag"
+        },
+        "score": {
+          "title": "Score",
+          "$ref": "#/definitions/score"
+        },
+        "comment": {
+          "title": "Comment",
+          "type": "string"
+        },
+        "bandID": {
+          "title": "Band",
+          "type": "string"
+        },
+        "assessedCompetency": {
+          "title": "Assessed Competency",
+          "$ref": "#/definitions/assessedCompetency"
+        }
+      }
+    },
+    "attachmentType": {
+      "title": "Name",
+      "type": "string",
+      "description": "Only one document with this name can be attached to an assessment result."
+    },
+    "attachmentWrite": {
+      "type": "object",
+      "properties": {
+        "attachmentType": {
+          "$ref": "#/definitions/attachmentType"
+        },
+        "fileUpload": {
+          "$ref": "fileUpload.json"
+        }
+      },
+      "required": [
+        "attachmentType",
+        "fileUpload"
+      ]
+    },
+    "attachmentRead": {
+      "type": "object",
+      "properties": {
+        "attachmentType": {
+          "$ref": "#/definitions/attachmentType"
+        },
+        "fileDownload": {
+          "$ref": "fileDownload.json"
+        }
+      },
+      "required": [
+        "attachmentType",
+        "fileDownload"
+      ]
+    },
+    "assessmentDetailWrite": {
+      "properties": {
+        "assessmentOverallResult": {
+          "title": "Overall Result",
+          "$ref": "#/definitions/result"
+        },
+        "assessmentDetailedResults": {
+          "title": "Result Details",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/result"
+          }
+        },
+        "accessPoints": {
+          "title": "Links",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/accessPoint"
+          }
+        },
+        "attachments": {
+          "title": "Attachments",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/attachmentWrite"
+          }
+        }
+      }
+    },
+    "assessmentDetailRead": {
+      "properties": {
+        "overallResult": {
+          "title": "Overall Result",
+          "$ref": "#/definitions/result"
+        },
+        "detailedResults": {
+          "title": "Result Details",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/result"
+          }
+        },
+        "accessPoints": {
+          "title": "Links",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/accessPoint"
+          }
+        },
+        "attachments": {
+          "title": "Attachments",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/attachmentRead"
+          }
+        }
+      }
+    },
+    "status": {
+      "description": "The current disposition of an assessment",
+      "enum": [
+        "Started",
+        "In progress",
+        "Complete",
+        "Cancelled",
+        "Opted out",
+        "Error"
+      ]
+    },
+    "userInteractionUri": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uri",
+      "description": "when present, a uri of a small, iframe-able web page that the user (e.g. the recruiter) uses to interact with/view the assessment"
+    },
+    "interactionUris": {
+      "type": "object",
+      "properties": {
+        "candidateInteractionUri": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri",
+          "description": "when present, a uri that the candidate must follow to complete some part of the assessment"
+        },
+        "userInteractionUri": {
+          "$ref": "#/definitions/userInteractionUri"
+        },
+        "userAttentionRequired": {
+          "type": "boolean",
+          "description": "Signals that the assessment cannot proceed until the user provides some input. Can only be true when userInteractionUri is non-null."
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "candidateInteractionUri",
+        "userInteractionUri",
+        "userAttentionRequired"
+      ]
+    },
+    "imageUrl": {
+      "description": "url of an image that will be loaded from an  app into the assessment hub to represent an assessment's status or an unstarted assessment type",
+      "type": "string",
+      "format": "url"
+    },
+    "givenName": {
+      "type": "string"
+    },
+    "familyName": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "launchDocument": {
+      "type": "string",
+      "description": "a url-encoded json document containing start paramaters for this assessment, typically captured by the assessment type's launch UI"
+    },
+    "raiser": {
+      "type": "object",
+      "properties": {
+        "givenName": {
+          "$ref": "#/definitions/givenName"
+        },
+        "familyName": {
+          "$ref": "#/definitions/familyName"
+        },
+        "email": {
+          "$ref": "#/definitions/email"
+        }
+      },
+      "additionalProperties": false
+    },
+    "raisers": {
+      "description": "a list of every user who raised this assessment (i.e., via a linkage). Does not include linkages raised by the system, e.g. an assessment started because a candidate dropped into a bucket",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/raiser"
+      }
+    }
+  },
+  "type": "object",
+  "properties": {
+    "meta": {
+      "$ref": "assessmentMeta.json"
+    },
+    "assessmentType": {
+      "type": "integer"
+    },
+    "assessmentTypeKey": {
+      "$ref": "assessmentType.json#/definitions/key"
+    },
+    "status": {
+      "$ref": "#/definitions/status"
+    },
+    "view": {
+      "type": "string",
+      "description": "the key of the view instance that will give more details about the subject of this assessment (name, email address, job ID, etc.)"
+    },
+    "passedFlag": {
+      "$ref": "#/definitions/passedFlag"
+    },
+    "interactionUris": {
+      "$ref": "#/definitions/interactionUris"
+    },
+    "image": {
+      "$ref": "#/definitions/imageUrl"
+    },
+    "launchDocument": {
+      "$ref": "#/definitions/launchDocument"
+    },
+    "raisers": {
+      "$ref": "#/definitions/raisers"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "meta",
+    "assessmentType",
+    "assessmentTypeKey",
+    "status",
+    "view",
+    "interactionUris",
+    "raisers"
+  ]
+}

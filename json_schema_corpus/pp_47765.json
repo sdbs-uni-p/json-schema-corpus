@@ -1,0 +1,8 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://inowas.com/schema/",
+  "type": "array",
+  "items": {
+    "$ref": "modflow/boundary/boundaryListItem.json"
+  }
+}

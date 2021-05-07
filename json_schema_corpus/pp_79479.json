@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "op": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "op",
+        "path",
+        "value"
+      ],
+      "properties": {
+        "op": {
+          "enum": [
+            "add",
+            "remove",
+            "move",
+            "copy",
+            "replace",
+            "test"
+          ]
+        },
+        "path": {
+          "type": "string"
+        },
+        "value": {
+          "oneOf": [
+            {
+              "type": "string",
+              "description": "allow patching any string attribute"
+            },
+            {
+              "type": "number",
+              "description": "allow patching any number attribute"
+            },
+            {
+              "$ref": "tenantExtended.json"
+            },
+            {
+              "$ref": "tenantExtended.json#/definitions/install"
+            },
+            {
+              "$ref": "tenantExtended.json#/definitions/installs"
+            },
+            {
+              "$ref": "tenantExtended.json#/definitions/servers"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "type": "array",
+  "items": {
+    "$ref": "#/definitions/op"
+  }
+}

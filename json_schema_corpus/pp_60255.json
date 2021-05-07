@@ -1,0 +1,97 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "title": "Shared",
+  "description": "Shared data for our schemas",
+  "stability": "prototype",
+  "strictProperties": true,
+  "type": [
+    "object"
+  ],
+  "definitions": {
+    "page": {
+      "description": "page number",
+      "type": "integer",
+      "example": 1
+    },
+    "request_object_lite": {
+      "description": "lite request object",
+      "properties": {
+        "page": {
+          "$ref": "/schemata/shared#/definitions/page"
+        }
+      },
+      "type": "object"
+    },
+    "default_error_string": {
+      "description": "default error wrapper",
+      "type": "object",
+      "required": [
+        "error"
+      ],
+      "properties": {
+        "error": {
+          "type": "string",
+          "example": "Page not found"
+        }
+      }
+    },
+    "default_meta": {
+      "description": "default meta",
+      "type": "object",
+      "properties": {
+        "current_page": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "example": 1
+        },
+        "next_page": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "example": 2
+        },
+        "prev_page": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "example": 1
+        },
+        "total_pages": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "example": 5
+        },
+        "total_count": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "example": 10
+        }
+      }
+    },
+    "default_success_boolean": {
+      "description": "default success wrapper",
+      "type": "object",
+      "required": [
+        "success"
+      ],
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "example": true
+        }
+      }
+    },
+    "identity": {}
+  },
+  "links": [],
+  "properties": {},
+  "id": "/schemata/shared"
+}

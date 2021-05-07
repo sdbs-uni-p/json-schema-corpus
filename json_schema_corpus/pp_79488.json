@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "description": "key of the SAML assertion with the the TAS core SAML database",
+  "additionalProperties": false,
+  "required": [
+    "samlKey"
+  ],
+  "properties": {
+    "samlKey": {
+      "type": "string",
+      "description": "key of the SAML assertion with the the TAS core SAML database"
+    }
+  }
+}

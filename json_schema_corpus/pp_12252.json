@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "id_etablissement": {
+      "type": "string"
+    },
+    "libelle": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "id_etablissement",
+    "id"
+  ]
+}

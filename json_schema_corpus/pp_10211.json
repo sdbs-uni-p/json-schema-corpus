@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "title": "marlincdm_json_initdata_createdecryptunit",
+  "description": "Marlin Content Decryption Module json initData for createDecryptUnit function",
+  "type": "object",
+  "properties": {
+    "version": {
+      "description": "version number of marlin cdm initdata format",
+      "type": "string",
+      "required": false,
+      "enum": [
+        "1.0"
+      ]
+    },
+    "data_type": {
+      "description": "data type of initdata format",
+      "type": "string",
+      "required": true,
+      "enum": [
+        "cenc",
+        "ipmp"
+      ]
+    },
+    "cenc": {
+      "descripion": "information for license load from cenc data. this property is required if data_type is cenc",
+      "type": "object",
+      "properties": {
+        "license_embedded": {
+          "description": "license embedded flag. If it is true, license is embedded in pssh box",
+          "type": "boolean"
+        },
+        "pssh": {
+          "description": "pssh box which is Base64 encoded from the byte array",
+          "type": "string"
+        },
+        "kids": {
+          "description": "kid parameters for explicit mapping case",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "sessionid": {
+          "description": "cdm session id aquired from mediadrm to connect crypto with key",
+          "type": "string"
+        }
+      }
+    },
+    "ipmp": {
+      "descripion": "information for license load from ipmp data. this property is required if data_type is ipmp",
+      "type": "object",
+      "properties": {
+        "sinf": {
+          "description": "sinf box which is Base64-encoded string from the byte array",
+          "type": "string"
+        }
+      }
+    }
+  }
+}

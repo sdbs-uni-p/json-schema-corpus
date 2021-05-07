@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://inowas.com/schema/",
+  "type": "object",
+  "properties": {
+    "start_date_time": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "end_date_time": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "time_unit": {
+      "description": "0: undefined, 1: seconds, 2: minutes, 3: hours, 4: days, 5: years",
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "stress_periods": {
+      "type": "array",
+      "items": {
+        "$ref": "modflow/stressPeriod.json"
+      },
+      "minItems": 1
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "start_date_time",
+    "end_date_time",
+    "time_unit",
+    "stress_periods"
+  ]
+}

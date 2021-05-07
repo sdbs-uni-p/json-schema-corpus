@@ -1,0 +1,294 @@
+{
+  "apiVersion": "1.0.0",
+  "apis": [
+    {
+      "description": "Resource listing (show all APIs + descrpiption path).",
+      "operations": [
+        {
+          "method": "GET",
+          "nickname": "resource_listing",
+          "notes": "Resources are filtered according to the permission system, so querying this resource as different users may bare different results.",
+          "parameters": [],
+          "responseMessages": [
+            {
+              "code": 200,
+              "message": "Ok",
+              "responseModel": "ResourceListingModel"
+            }
+          ],
+          "summary": "Return the list of all available resources on the system.",
+          "type": "ResourceListingModel"
+        }
+      ],
+      "path": "/introspect"
+    },
+    {
+      "description": "API description (show all possible data for each resource).",
+      "operations": [
+        {
+          "method": "GET",
+          "nickname": "api_declaration",
+          "notes": "Resources are filtered according to the permission system, so querying this resource as different users may bare different results.",
+          "parameters": [
+            {
+              "type": "string",
+              "description": "The path for the info on the resource.",
+              "name": "api_path",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "message": "Ok",
+              "responseModel": "ApiDeclarationModel"
+            },
+            {
+              "code": 404,
+              "message": "Not a valid resource.",
+              "responseModel": "void"
+            }
+          ],
+          "summary": "Return the complete specification of a single API.",
+          "type": "ApiDeclarationModel"
+        }
+      ],
+      "path": "/introspect/{api_path}"
+    }
+  ],
+  "basePath": "http://dev37.blocket.bin:24099",
+  "consumes": [
+    "application/json"
+  ],
+  "models": [
+    {
+      "ApiDeclarationModel": {
+        "$schema": "http://json-schema.org/draft-04/schema",
+        "properties": {
+          "apiVersion": {
+            "type": "string"
+          },
+          "apis": {
+            "items": [
+              {
+                "properties": {
+                  "operations": {
+                    "items": [
+                      {
+                        "properties": {
+                          "authorizations": {
+                            "items": {
+                              "type": "string"
+                            },
+                            "type": "array"
+                          },
+                          "method": {
+                            "enum": [
+                              "GET",
+                              "PUT",
+                              "POST",
+                              "DELETE",
+                              "OPTIONS",
+                              "PATCH",
+                              "LINK"
+                            ],
+                            "type": "string"
+                          },
+                          "nickname": {
+                            "type": "string"
+                          },
+                          "notes": {
+                            "type": "string"
+                          },
+                          "parameters": {
+                            "items": {
+                              "properties": {
+                                "allowMultiple": {
+                                  "enum": [
+                                    true,
+                                    false
+                                  ],
+                                  "type": "boolean"
+                                },
+                                "description": {
+                                  "type": "string"
+                                },
+                                "items": {
+                                  "anyOf": [
+                                    {
+                                      "$ref": "#"
+                                    },
+                                    {
+                                      "$ref": "#/definitions/schemaArray"
+                                    }
+                                  ],
+                                  "default": {}
+                                },
+                                "name": {
+                                  "type": "string"
+                                },
+                                "paramType": {
+                                  "enum": [
+                                    "query",
+                                    "path",
+                                    "body",
+                                    "header",
+                                    "form"
+                                  ],
+                                  "type": "string"
+                                },
+                                "required": {
+                                  "enum": [
+                                    true,
+                                    false
+                                  ],
+                                  "type": "boolean"
+                                },
+                                "type": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "paramType",
+                                "required",
+                                "type"
+                              ],
+                              "type": "object"
+                            },
+                            "type": "array"
+                          },
+                          "produces": {
+                            "items": {
+                              "type": "string"
+                            },
+                            "type": "array"
+                          },
+                          "responseMessages": {
+                            "items": {
+                              "properties": {
+                                "code": {
+                                  "type": "number"
+                                },
+                                "message": {
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "type": "array"
+                          },
+                          "summary": {
+                            "type": "string"
+                          },
+                          "type": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "method",
+                          "nickname",
+                          "summary",
+                          "type"
+                        ],
+                        "type": "object"
+                      }
+                    ],
+                    "type": "array"
+                  },
+                  "path": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "path",
+                  "operations"
+                ],
+                "type": "object"
+              }
+            ],
+            "type": "array"
+          },
+          "basePath": {
+            "type": "string"
+          },
+          "consumes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "models": {},
+          "produces": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "resourcePath": {
+            "type": "string"
+          },
+          "swaggerVersion": {
+            "enum": [
+              "1.2"
+            ]
+          }
+        },
+        "required": [
+          "swaggerVersion",
+          "resourcePath",
+          "apis",
+          "basePath"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "ResourceListingModel": {
+        "$schema": "http://json-schema.org/draft-04/schema",
+        "properties": {
+          "apiVersion": {
+            "type": "string"
+          },
+          "apis": {
+            "items": [
+              {
+                "properties": {
+                  "description": {
+                    "type": "string"
+                  },
+                  "path": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "path",
+                  "description"
+                ],
+                "type": "object"
+              }
+            ],
+            "type": "array"
+          },
+          "swaggerVersion": {
+            "enum": [
+              "1.2"
+            ]
+          }
+        },
+        "required": [
+          "swaggerVersion",
+          "apiVersion",
+          "apis"
+        ],
+        "type": "object"
+      }
+    }
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "resourcePath": "/introspect",
+  "swaggerVersion": "1.2"
+}

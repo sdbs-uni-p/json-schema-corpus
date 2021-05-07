@@ -1,0 +1,17 @@
+{
+  "id": "http://baseurl.com/schemas",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "ID": {
+    "id": "#/general/ID",
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "integer",
+        "default": 0
+      }
+    },
+    "required": [
+      "id"
+    ]
+  }
+}

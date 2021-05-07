@@ -1,0 +1,303 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Incident model",
+  "description": "Model describes data that are needed to collect incident states and the task to solve it ",
+  "definitions": {
+    "Incident": {
+      "type": "object",
+      "description": "A detected failure state that needs some actions to solve it",
+      "properties": {
+        "number": {
+          "description": "all the number (technical names) of this object",
+          "type": "object",
+          "properties": {
+            "internal": {
+              "description": "internal number of that event",
+              "type": "string"
+            },
+            "external": {
+              "description": "number in external systems for that event",
+              "type": "string"
+            }
+          }
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid",
+            "__ref": "#/definitions/IncidentTag"
+          }
+        },
+        "type": {
+          "description": "what type has this event",
+          "type": "string",
+          "__ref": "#/definitions/IncidentType"
+        },
+        "urgency": {
+          "description": "some kind of priority",
+          "type": "integer"
+        },
+        "description": {
+          "description": "some more words to describe the problem",
+          "type": "string"
+        },
+        "states": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/IncidentState"
+          }
+        },
+        "rawData": {
+          "description": "container for additional, app-specific content",
+          "type": "object",
+          "properties": {
+            "type": {
+              "description": "to identify the raw data, different versions can be encoded in that string",
+              "type": "string"
+            },
+            "mimeType": {
+              "description": "how are the data encoded",
+              "type": "string"
+            },
+            "data": {
+              "type": "string"
+            }
+          }
+        },
+        "references": {
+          "type": "array",
+          "__tags": [
+            "recursion"
+          ],
+          "items": {
+            "type": "string",
+            "format": "uuid",
+            "__ref": "#/definitions/Incident"
+          }
+        },
+        "innerReferences": {
+          "type": "array",
+          "__tags": [
+            "recursion"
+          ],
+          "items": {
+            "type": "object",
+            "properties": {
+              "startDate": {
+                "description": "when occurs the event that became the incident",
+                "type": "string",
+                "format": "date-time"
+              },
+              "startedBy": {
+                "description": "user name that starts the processing",
+                "type": "string"
+              },
+              "startComment": {
+                "description": "additional information about the state",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "guid": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "__tags": [
+        "rest",
+        "joined",
+        "mongodb"
+      ]
+    },
+    "IncidentState": {
+      "type": "object",
+      "properties": {
+        "startDate": {
+          "description": "when occurs the event that became the incident",
+          "type": "string",
+          "format": "date-time"
+        },
+        "startedBy": {
+          "description": "user name that starts the processing",
+          "type": "string"
+        },
+        "startComment": {
+          "description": "additional information about the state",
+          "type": "string"
+        },
+        "endDate": {
+          "description": "end date of that state",
+          "type": "string",
+          "format": "date-time"
+        },
+        "assignTo": {
+          "description": "user name that ends the",
+          "type": "string"
+        },
+        "endedBy": {
+          "description": "user name that ends the",
+          "type": "string"
+        },
+        "endComment": {
+          "description": "additional information about closing the state",
+          "type": "string"
+        },
+        "stateType": {
+          "description": "name of the state",
+          "type": "string",
+          "__ref": "#/definitions/IncidentStateType"
+        }
+      }
+    },
+    "IncidentStateType": {
+      "type": "object",
+      "description": "occurs, entered, resolved, ...",
+      "properties": {
+        "name": {
+          "description": "a describing name",
+          "type": "string"
+        },
+        "comment": {
+          "description": "some more words to explain",
+          "type": "string"
+        },
+        "guid": {
+          "description": "global identifier",
+          "type": "string",
+          "format": "uuid"
+        },
+        "domain_id": {
+          "description": "what is the related domain",
+          "type": "string",
+          "format": "uuid",
+          "__ref": "./shared/domain.json"
+        },
+        "active": {
+          "description": "is this entry still active",
+          "type": "boolean"
+        },
+        "order": {
+          "description": "order in that the states should follow",
+          "type": "boolean"
+        },
+        "progress": {
+          "description": "order in that the states should follow",
+          "type": "string",
+          "enum": [
+            "new",
+            "doing",
+            "done"
+          ]
+        },
+        "locked": {
+          "description": "entry is needed and should not be deleted",
+          "type": "boolean"
+        },
+        "incidentTypeId": {
+          "description": "what incident types is that state related to (f.e. intersections, INES nets, public transport route, ...)",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid",
+            "__ref": "#/definitions/IncidentType"
+          }
+        }
+      }
+    },
+    "IncidentComment": {
+      "type": "object",
+      "description": "Comment entries to incidents",
+      "allOf": [
+        {
+          "$ref": "./shared/comment.json"
+        },
+        {
+          "properties": {
+            "domain_id": {
+              "description": "what is the related domain",
+              "type": "string",
+              "format": "uuid",
+              "__ref": "./shared/domain.json"
+            },
+            "guid": {
+              "description": "object specific ID of that entry",
+              "type": "string",
+              "format": "uuid",
+              "__tags": [
+                "notDisplayed",
+                "notNull"
+              ]
+            },
+            "incidentId": {
+              "type": "string",
+              "format": "uuid",
+              "__ref": "#/definitions/Incident"
+            }
+          }
+        }
+      ],
+      "__tags": [
+        "rest",
+        "joined",
+        "mongodb"
+      ]
+    },
+    "IncidentType": {
+      "description": "types of incidents",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "a describing name",
+          "type": "string"
+        },
+        "comment": {
+          "description": "some more words to explain",
+          "type": "string"
+        },
+        "guid": {
+          "description": "global identifier",
+          "type": "string",
+          "format": "uuid"
+        },
+        "active": {
+          "description": "is this entry still active",
+          "type": "boolean"
+        },
+        "locked": {
+          "description": "entry is needed and should not be deleted",
+          "type": "boolean"
+        },
+        "objectGroupIds": {
+          "description": "what groups is that object related to (f.e. intersections, INES nets, public transport route, ...)",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "__tags": [
+        "rest",
+        "mongodb",
+        "selList"
+      ]
+    },
+    "IncidentTag": {
+      "type": "object",
+      "description": "key-word for additional incident tagging",
+      "allOf": [
+        {
+          "$ref": "./shared/tag.json"
+        }
+      ],
+      "__tags": [
+        "rest",
+        "mongodb"
+      ]
+    }
+  },
+  "type": "object",
+  "version": 1
+}

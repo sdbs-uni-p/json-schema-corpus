@@ -1,0 +1,194 @@
+{
+  "title": "Static Section",
+  "id": "/profiles/static_section.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "required": [
+    "name"
+  ],
+  "additionalProperties": false,
+  "identifyingProperties": [
+    "uuid",
+    "name",
+    "aliases"
+  ],
+  "mixinProperties": [
+    {
+      "$ref": "mixins.json#/schema_version"
+    },
+    {
+      "$ref": "mixins.json#/uuid"
+    },
+    {
+      "$ref": "mixins.json#/aliases"
+    },
+    {
+      "$ref": "mixins.json#/submitted"
+    },
+    {
+      "$ref": "mixins.json#/modified"
+    },
+    {
+      "$ref": "user_content.json#/properties"
+    }
+  ],
+  "properties": {
+    "schema_version": {
+      "default": "2"
+    },
+    "body": {
+      "title": "Raw Body",
+      "type": "string",
+      "comment": "There should be no 'file' if this is set.",
+      "description": "Plain html or text content of this section.",
+      "formInput": "code",
+      "lookup": 6
+    },
+    "file": {
+      "title": "Source File Location",
+      "type": "string",
+      "comment": "There should be no 'body' if this is set.",
+      "description": "Source file to use for populating content. Is superceded by contents of 'body', if one present.",
+      "lookup": 7
+    },
+    "section_type": {
+      "title": "Section Type",
+      "type": "string",
+      "description": "What this section is used for. Defaults to 'Page Section'.",
+      "permission": "import_items",
+      "default": "Page Section",
+      "enum": [
+        "Page Section",
+        "Announcement",
+        "Search Info Header",
+        "Item Page Header",
+        "Home Page Slide"
+      ],
+      "lookup": 10
+    },
+    "options": {
+      "title": "Options",
+      "type": "object",
+      "description": "Options for section display.",
+      "properties": {
+        "filetype": {
+          "title": "File Type",
+          "description": "What type of file or content is contained. If not set, HTML or format of file (if any) is used.",
+          "type": "string",
+          "lookup": 1,
+          "enum": [
+            "md",
+            "html",
+            "txt",
+            "csv",
+            "jsx"
+          ]
+        },
+        "collapsible": {
+          "title": "Is Collapsible",
+          "type": "boolean",
+          "description": "Whether this StaticSection should be collapsible (wherever collapsibility is an option). This property is ignored in some places, e.g. lists where all sections are explicitly collapsible.",
+          "lookup": 2,
+          "default": false
+        },
+        "default_open": {
+          "title": "Is Expanded by Default",
+          "type": "boolean",
+          "description": "Whether this StaticSection should appear as expanded by default (in places where it may be collapsible). Does not necessarily depend on 'collapsible' being true, e.g. in lists where all sections are explicitly collapsible.",
+          "lookup": 3,
+          "default": true
+        },
+        "title_icon": {
+          "title": "Title Icon",
+          "description": "Icon to be showed next to title in selected places.",
+          "type": "string",
+          "lookup": 5
+        },
+        "link": {
+          "title": "Link/URI",
+          "description": "Another link with which this resource is associated with or should redirect to.",
+          "type": "string",
+          "lookup": 6
+        },
+        "image": {
+          "title": "Preview Image",
+          "description": "Image or screenshot URL for this Item to use as a preview.",
+          "type": "string",
+          "lookup": 7
+        },
+        "startCell": {
+          "type": "array",
+          "title": "(CSV) First Table Cell",
+          "description": "For filetype:csv, from which [row integer, column integer] to start parsing table.",
+          "lookup": 20,
+          "items": {
+            "type": "integer"
+          }
+        },
+        "yaxisCols": {
+          "type": "array",
+          "title": "(CSV) Columns for Y-Axis",
+          "description": "For filetype:csv, which columns (ints) should be used for Y-axis.",
+          "lookup": 21,
+          "items": {
+            "type": "integer"
+          }
+        },
+        "yaxisTitle": {
+          "type": "string",
+          "title": "(CSV) Title for Y-Axis",
+          "lookup": 22
+        },
+        "xaxisRows": {
+          "type": "array",
+          "title": "(CSV) Rows for X-Axis",
+          "description": "For filetype:csv, which rows (ints) should be used for X-Axis.",
+          "lookup": 23,
+          "items": {
+            "type": "integer"
+          }
+        },
+        "xaxisTitle": {
+          "type": "string",
+          "title": "(CSV) Title for X-Axis",
+          "lookup": 24
+        },
+        "titleCell": {
+          "type": "array",
+          "title": "(CSV) Title Cell",
+          "description": "For filetype:csv, which table cell [row int, column int] to use to grab title of section/table.",
+          "lookup": 25,
+          "items": {
+            "type": "integer"
+          }
+        },
+        "skipRows": {
+          "type": "array",
+          "title": "(CSV) Rows Skipped",
+          "description": "For filetype:csv, which table rows (ints) to skip in table (e.g. due to blank rows).",
+          "lookup": 26,
+          "items": {
+            "type": "integer"
+          }
+        }
+      },
+      "lookup": 25
+    }
+  },
+  "facets": {
+    "section_type": {
+      "title": "Type"
+    }
+  },
+  "columns": {
+    "name": {
+      "title": "Name / ID"
+    },
+    "section_type": {
+      "title": "Type"
+    }
+  },
+  "excludedColumns": [
+    "lab.display_title"
+  ]
+}

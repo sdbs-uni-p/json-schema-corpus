@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "http://comrade.forma-pro.com/schemas/message/ExecuteJob.json",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "type": "string",
+      "enum": [
+        "http://comrade.forma-pro.com/schemas/message/ExecuteJob.json"
+      ]
+    },
+    "trigger": {
+      "oneOf": [
+        {
+          "$ref": "../trigger/SimpleTrigger.json"
+        },
+        {
+          "$ref": "../trigger/CronTrigger.json"
+        },
+        {
+          "$ref": "../trigger/NowTrigger.json"
+        },
+        {
+          "$ref": "../trigger/SubJobTrigger.json"
+        },
+        {
+          "$ref": "../trigger/DependentJobTrigger.json"
+        }
+      ]
+    }
+  },
+  "required": [
+    "trigger"
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "title": "Basic FOCUS Object",
+  "id": "http://reference.focusnet.eu/schemas/focus-object/v1.0",
+  "description": "Base FOCUS object: all objects stored in the resource server must at least match this template.",
+  "allOf": [
+    {
+      "$ref": "#/definitions/metadata"
+    }
+  ],
+  "definitions": {
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "Object type (a sub-type of FOCUSObject).",
+          "type": "string",
+          "format": "uri"
+        },
+        "url": {
+          "description": "Canonical resource identifier, without version number. This is automatically set by the backend.",
+          "type": "string",
+          "format": "uri",
+          "overridenByBackend": true
+        },
+        "version": {
+          "description": "Version number of this resource. This is automatically set by the backend.",
+          "type": "integer",
+          "minimum": 0,
+          "exclusiveMinimum": true,
+          "overridenByBackend": true
+        },
+        "owner": {
+          "description": "Identifier of the user or entity that first created this object (first sample). This is automatically set by the backend.",
+          "type": "string",
+          "overridenByBackend": true
+        },
+        "creationDateTime": {
+          "description": "UTC DateTime of the creation of this object (first sample). This is automatically set by the backend.",
+          "type": "string",
+          "format": "date-time",
+          "overridenByBackend": true
+        },
+        "editor": {
+          "description": "Identifier of the user or entity that edited this sample. This is automatically set by the backend.",
+          "type": "string",
+          "overridenByBackend": true
+        },
+        "editionDateTime": {
+          "description": "UTC DateTime of the creation of this sample. This is automatically set by the backend.",
+          "type": "string",
+          "format": "date-time",
+          "overridenByBackend": true
+        },
+        "active": {
+          "description": "Tells whether the object is archived or can be accessed. This is automatically set by the backend.",
+          "type": "boolean",
+          "overridenByBackend": true
+        }
+      },
+      "required": [
+        "type"
+      ]
+    },
+    "types": {
+      "identifier": {
+        "type": "string",
+        "pattern": "^[a-z][a-zA-Z0-9_-]+$"
+      },
+      "any": {
+        "anyOf": [
+          {
+            "$ref": "#/definitions/types/string"
+          },
+          {
+            "$ref": "#/definitions/types/numeric"
+          },
+          {
+            "$ref": "#/definitions/types/array-string"
+          },
+          {
+            "$ref": "#/definitions/types/array-numeric"
+          }
+        ]
+      },
+      "string": {
+        "type": "string"
+      },
+      "numeric": {
+        "type": "number"
+      },
+      "array-string": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "array-numeric": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}

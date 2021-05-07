@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "title": "test json schema",
+  "type": "object",
+  "properties": {
+    "optObj": {
+      "type": "object",
+      "default": {
+        "hello": "world"
+      }
+    },
+    "optArray": {
+      "type": "list",
+      "default": [
+        "my-default-value"
+      ],
+      "items": {
+        "type": "string"
+      }
+    },
+    "optEmpty": {
+      "type": "array",
+      "default": []
+    }
+  },
+  "additionalProperties": false
+}

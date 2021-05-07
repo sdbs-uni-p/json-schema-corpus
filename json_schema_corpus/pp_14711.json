@@ -1,0 +1,179 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Curve Schema",
+  "description": "A Curve represents a series of points on a plot. Typically, interest rates, volatility or forward prices.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "The unique identifier for the curve.",
+      "type": "string"
+    },
+    "date": {
+      "description": "The observation date for the data in this object. Formatted as YYYY-MM-DDTHH:MM:SSZ in accordance with ISO 8601.",
+      "type": "string",
+      "format": "date-time"
+    },
+    "currency_code": {
+      "description": "The currency reference code in accordance with ISO 4217 standards.",
+      "$ref": "https://raw.githubusercontent.com/SuadeLabs/fire/master/v1-dev/common.json#/currency_code"
+    },
+    "name": {
+      "description": "The internal name of the curve.",
+      "type": "string"
+    },
+    "source": {
+      "description": "The source(s) where this data originated. If more than one source needs to be stored for data lineage, it should be separated by a dash. eg. Source1-Source2",
+      "type": "string"
+    },
+    "values": {
+      "description": "The list of values for this curve.",
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "properties": {
+          "reference": {
+            "description": "The reference item for the value. (x-axis)",
+            "type": "string",
+            "enum": [
+              "o_n",
+              "1d",
+              "1m",
+              "2m",
+              "3m",
+              "4m",
+              "5m",
+              "6m",
+              "9m",
+              "12m",
+              "24m",
+              "36m",
+              "60m",
+              "2d",
+              "3d",
+              "4d",
+              "5d",
+              "6d",
+              "7d",
+              "8d",
+              "9d",
+              "10d",
+              "11d",
+              "12d",
+              "13d",
+              "14d",
+              "15d",
+              "16d",
+              "17d",
+              "18d",
+              "19d",
+              "20d",
+              "21d",
+              "22d",
+              "23d",
+              "24d",
+              "25d",
+              "26d",
+              "27d",
+              "28d",
+              "29d",
+              "30d",
+              "31d",
+              "32d",
+              "33d",
+              "34d",
+              "35d",
+              "36d",
+              "37d",
+              "38d",
+              "39d",
+              "40d",
+              "41d",
+              "42d",
+              "43d",
+              "44d",
+              "45d",
+              "46d",
+              "47d",
+              "48d",
+              "49d",
+              "50d",
+              "51d",
+              "52d",
+              "53d",
+              "54d",
+              "55d",
+              "56d",
+              "57d",
+              "58d",
+              "59d",
+              "60d",
+              "61d",
+              "62d",
+              "63d",
+              "64d",
+              "65d",
+              "66d",
+              "67d",
+              "68d",
+              "69d",
+              "70d",
+              "71d",
+              "72d",
+              "73d",
+              "74d",
+              "75d",
+              "76d",
+              "77d",
+              "78d",
+              "79d",
+              "80d",
+              "81d",
+              "82d",
+              "83d",
+              "84d",
+              "85d",
+              "86d",
+              "87d",
+              "88d",
+              "89d",
+              "90d",
+              "91d",
+              "92d",
+              "open_maturity",
+              "initial_stock"
+            ]
+          },
+          "value": {
+            "description": "The reference value for this rate. (y-axis)",
+            "type": "number"
+          }
+        },
+        "required": [
+          "reference",
+          "value"
+        ]
+      }
+    },
+    "version_id": {
+      "description": "The version identifier of the data such as the firm's internal batch identifier.",
+      "type": "string"
+    },
+    "type": {
+      "description": "The curve type.",
+      "type": "string",
+      "enum": [
+        "rate",
+        "volatility",
+        "behavioral"
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "date",
+    "values"
+  ],
+  "additionalProperties": true
+}

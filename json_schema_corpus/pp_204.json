@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://jsonschema.net",
+  "type": "object",
+  "properties": {
+    "count": {
+      "id": "http://jsonschema.net/count",
+      "type": "integer"
+    },
+    "pageLimit": {
+      "id": "http://jsonschema.net/pageLimit",
+      "type": "integer"
+    },
+    "streams": {
+      "id": "http://jsonschema.net/streams",
+      "type": "array",
+      "items": {
+        "id": "http://jsonschema.net/streams/0",
+        "type": "object",
+        "properties": {
+          "streamId": {
+            "id": "http://jsonschema.net/streams/0/streamId",
+            "type": "string"
+          },
+          "streamType": {
+            "id": "http://jsonschema.net/streams/0/streamType",
+            "type": "string"
+          },
+          "streamName": {
+            "id": "http://jsonschema.net/streams/0/streamName",
+            "type": "string"
+          },
+          "streamAge": {
+            "id": "http://jsonschema.net/streams/0/streamAge",
+            "type": "integer"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "count",
+    "pageLimit",
+    "streams"
+  ]
+}

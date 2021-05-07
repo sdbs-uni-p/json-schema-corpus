@@ -1,0 +1,389 @@
+{
+  "copyright": [
+    "Copyright 2013 Red Hat, Inc. and/or its affiliates.",
+    "This file is part of lightblue.",
+    "This program is free software: you can redistribute it and/or modify",
+    "it under the terms of the GNU General Public License as published by",
+    "the Free Software Foundation, either version 3 of the License, or",
+    "(at your option) any later version.",
+    "This program is distributed in the hope that it will be useful,",
+    "but WITHOUT ANY WARRANTY; without even the implied warranty of",
+    "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the",
+    "GNU General Public License for more details.",
+    "You should have received a copy of the GNU General Public License",
+    "along with this program.  If not, see <http://www.gnu.org/licenses/>."
+  ],
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the entity."
+    },
+    "version": {
+      "$ref": "#/definitions/version"
+    },
+    "status": {
+      "$ref": "#/definitions/status"
+    },
+    "access": {
+      "type": "object",
+      "description": "Defines what roles are required for specific operations on this entity.",
+      "properties": {
+        "insert": {
+          "$ref": "common.json#/definitions/roleArray",
+          "description": "Roles that can perform insert on this object."
+        },
+        "find": {
+          "$ref": "common.json#/definitions/roleArray",
+          "description": "Roles that can perform find on this object."
+        },
+        "update": {
+          "$ref": "common.json#/definitions/roleArray",
+          "description": "Roles that can perform update or save on this object."
+        },
+        "delete": {
+          "$ref": "common.json#/definitions/roleArray",
+          "description": "Roles that can perform delete on this object."
+        }
+      }
+    },
+    "fields": {
+      "$ref": "#/definitions/fieldSingle"
+    }
+  },
+  "definitions": {
+    "accessField": {
+      "type": "object",
+      "description": "Defines what roles are required for specific operations on this field.",
+      "properties": {
+        "find": {
+          "$ref": "common.json#/definitions/roleArray",
+          "description": "Roles that can perform find operations on this field."
+        },
+        "update": {
+          "$ref": "common.json#/definitions/roleArray",
+          "description": "Roles that can perform write update/save on this field."
+        }
+      },
+      "additionalProperties": false
+    },
+    "typesSimple": {
+      "enum": [
+        "any",
+        "boolean",
+        "integer",
+        "string",
+        "double",
+        "biginteger",
+        "bigdecimal",
+        "date",
+        "binary",
+        "uid"
+      ]
+    },
+    "typesComplex": {
+      "enum": [
+        "object",
+        "array",
+        "reference"
+      ]
+    },
+    "typesObject": {
+      "enum": [
+        "object"
+      ]
+    },
+    "typesArray": {
+      "enum": [
+        "array"
+      ]
+    },
+    "typesReference": {
+      "enum": [
+        "reference"
+      ]
+    },
+    "typesAny": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/typesComplex"
+        },
+        {
+          "$ref": "#/definitions/typesSimple"
+        }
+      ]
+    },
+    "fieldConstraint": {
+      "properties": {
+        "maximum": {
+          "$ref": "http://json-schema.org/draft-04/schema#/properties/maximum",
+          "description": "Maximum numeric value for fields of numeric type."
+        },
+        "minimum": {
+          "$ref": "http://json-schema.org/draft-04/schema#/properties/minimum",
+          "description": "Minimum numeric value for fields of numeric type."
+        },
+        "maxLength": {
+          "$ref": "http://json-schema.org/draft-04/schema#/properties/maxLength",
+          "description": "Maximum length of a string field."
+        },
+        "minLength": {
+          "$ref": "http://json-schema.org/draft-04/schema#/properties/minLength",
+          "description": "Minimum length of a string field."
+        },
+        "enum": {
+          "type": "string",
+          "description": "Should set type of 'string' when using enum.  Value is a reference to an enum name in entityInfo."
+        },
+        "maxItems": {
+          "$ref": "http://json-schema.org/draft-04/schema#/properties/maxItems",
+          "description": "Maximum number of items in an array field."
+        },
+        "minItems": {
+          "$ref": "http://json-schema.org/draft-04/schema#/properties/minItems",
+          "description": "Minimum number of items in an array field."
+        },
+        "maxProperties": {
+          "$ref": "http://json-schema.org/draft-04/schema#/properties/maxProperties"
+        },
+        "minProperties": {
+          "$ref": "http://json-schema.org/draft-04/schema#/properties/minProperties"
+        },
+        "uniqueItems": {
+          "$ref": "http://json-schema.org/draft-04/schema#/properties/uniqueItems"
+        },
+        "required": {
+          "type": "boolean",
+          "description": "Indicates if the field is required.  Defaults to 'false'."
+        },
+        "reference": {
+          "$ref": "common.json#/definitions/reference"
+        },
+        "matches": {
+          "type": "string",
+          "description": "Requires string field to match regular expression"
+        }
+      }
+    },
+    "fieldSingle": {
+      "description": "Control non-fields objects",
+      "type": "object",
+      "patternProperties": {
+        ".*": {
+          "oneOf": [
+            {
+              "description": "Simple field",
+              "properties": {
+                "type": {
+                  "$ref": "#/definitions/typesSimple"
+                },
+                "constraints": {
+                  "$ref": "#/definitions/fieldConstraint"
+                },
+                "access": {
+                  "$ref": "#/definitions/accessField"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "valueGenerator": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "description": "The type of the value generator."
+                    },
+                    "overwrite": {
+                      "type": "boolean",
+                      "description": "Whether to overwrite field value"
+                    },
+                    "configuration": {
+                      "type": "object",
+                      "description": "Properties for the value generator."
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ]
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "type"
+              ]
+            },
+            {
+              "description": "Object field",
+              "properties": {
+                "type": {
+                  "$ref": "#/definitions/typesObject"
+                },
+                "constraints": {
+                  "$ref": "#/definitions/fieldConstraint"
+                },
+                "access": {
+                  "$ref": "#/definitions/accessField"
+                },
+                "fields": {
+                  "$ref": "#/definitions/fieldSingle"
+                },
+                "description": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "type",
+                "fields"
+              ]
+            },
+            {
+              "description": "Array field",
+              "properties": {
+                "type": {
+                  "$ref": "#/definitions/typesArray"
+                },
+                "constraints": {
+                  "$ref": "#/definitions/fieldConstraint"
+                },
+                "access": {
+                  "$ref": "#/definitions/accessField"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "items": {
+                  "oneOf": [
+                    {
+                      "description": "Array items can be simple types.",
+                      "properties": {
+                        "type": {
+                          "$ref": "#/definitions/typesSimple"
+                        },
+                        "constraints": {
+                          "$ref": "#/definitions/fieldConstraint"
+                        }
+                      },
+                      "additionalProperties": false,
+                      "required": [
+                        "type"
+                      ]
+                    },
+                    {
+                      "properties": {
+                        "type": {
+                          "enum": [
+                            "object"
+                          ]
+                        },
+                        "fields": {
+                          "$ref": "#/definitions/fieldSingle"
+                        }
+                      },
+                      "description": "Support for object items.",
+                      "required": [
+                        "type",
+                        "fields"
+                      ]
+                    }
+                  ]
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "type",
+                "items"
+              ]
+            },
+            {
+              "description": "Reference field",
+              "properties": {
+                "type": {
+                  "$ref": "#/definitions/typesReference"
+                },
+                "constraints": {
+                  "$ref": "#/definitions/fieldConstraint"
+                },
+                "access": {
+                  "$ref": "#/definitions/accessField"
+                },
+                "entity": {
+                  "type": "string",
+                  "description": "The name of the referenced entity"
+                },
+                "versionValue": {
+                  "type": "string",
+                  "description": "The version of the entity"
+                },
+                "projection": {
+                  "$ref": "/json-schema/projection/choice.json#/definitions/projection"
+                },
+                "query": {
+                  "$ref": "/json-schema/query/choice.json#/definitions/query"
+                },
+                "sort": {
+                  "$ref": "/json-schema/sort/choice.json#/definitions/sort"
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "type",
+                "entity",
+                "versionValue"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "version": {
+      "$ref": "common.json#/definitions/version"
+    },
+    "status": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "enum": [
+            "active",
+            "deprecated",
+            "disabled"
+          ],
+          "description": "active=usable and not expected to go away anytime soon, deprecated=can be used but is expected to go away in near future, disabled=cannot be used"
+        },
+        "log": {
+          "type": "array",
+          "description": "History of status changes over time.",
+          "items": {
+            "properties": {
+              "date": {
+                "type": "string"
+              },
+              "value": {
+                "$ref": "#/definitions/status/properties/value"
+              },
+              "comment": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "date",
+              "value",
+              "comment"
+            ]
+          }
+        }
+      },
+      "required": [
+        "value"
+      ]
+    }
+  },
+  "required": [
+    "name",
+    "version",
+    "status",
+    "fields"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,85 @@
+{
+  "description": "Hypercharge MobilePayment request",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "additionalProperties": false,
+  "properties": {
+    "payment": {
+      "type": "object",
+      "required": true,
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "description": "Type of the Payment => static MobilePayment",
+          "type": "string",
+          "required": true,
+          "pattern": "^MobilePayment$"
+        },
+        "amount": {
+          "required": true,
+          "extends": "types.json#/amount"
+        },
+        "currency": {
+          "required": true,
+          "extends": "types.json#/currency"
+        },
+        "transaction_id": {
+          "required": false,
+          "extends": "types.json#/transaction_id"
+        },
+        "usage": {
+          "required": true,
+          "extends": "types.json#/usage"
+        },
+        "card_holder": {
+          "required": false,
+          "extends": "types.json#/card_holder"
+        },
+        "customer_email": {
+          "required": false,
+          "extends": "types.json#/customer_email"
+        },
+        "customer_phone": {
+          "extends": "types.json#/customer_phone"
+        },
+        "notification_url": {
+          "description": "URL at merchant\u2019s site where gateway sends outcome of transaction after the payment has reached a final state. This should be an SSL secured page",
+          "required": true,
+          "extends": "types.json#/url"
+        },
+        "billing_address": {
+          "required": false,
+          "extends": "types.json#/address"
+        },
+        "shipping_address": {
+          "required": false,
+          "extends": "types.json#/address"
+        },
+        "transaction_types": {
+          "required": false,
+          "extends": "types.json#/transaction_types"
+        },
+        "retries": {
+          "required": false,
+          "extends": "types.json#/retries"
+        },
+        "expires_in": {
+          "required": false,
+          "extends": "types.json#/expires_in"
+        },
+        "risk_params": {
+          "required": false,
+          "extends": "types.json#/risk_params"
+        },
+        "meta": {
+          "required": false,
+          "extends": "types.json#/meta"
+        },
+        "recurring_schedule": {
+          "required": false,
+          "extends": "types.json#/recurring_schedule"
+        }
+      }
+    }
+  }
+}

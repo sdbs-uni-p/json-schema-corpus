@@ -1,0 +1,188 @@
+{
+  "title": "Treatment",
+  "id": "/profiles/treatment.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "required": [
+    "treatment_term_name",
+    "treatment_type"
+  ],
+  "identifyingProperties": [
+    "uuid",
+    "aliases"
+  ],
+  "additionalProperties": false,
+  "mixinProperties": [
+    {
+      "$ref": "mixins.json#/schema_version"
+    },
+    {
+      "$ref": "mixins.json#/uuid"
+    },
+    {
+      "$ref": "mixins.json#/aliases"
+    },
+    {
+      "$ref": "mixins.json#/standard_status"
+    },
+    {
+      "$ref": "mixins.json#/submitted"
+    },
+    {
+      "$ref": "mixins.json#/notes"
+    },
+    {
+      "$ref": "mixins.json#/treatment_classification"
+    },
+    {
+      "$ref": "mixins.json#/documents"
+    },
+    {
+      "$ref": "mixins.json#/product_id"
+    },
+    {
+      "$ref": "mixins.json#/source"
+    }
+  ],
+  "dependencies": {
+    "temperature": [
+      "temperature_units"
+    ],
+    "temperature_units": [
+      "temperature"
+    ],
+    "amount": [
+      "amount_units"
+    ],
+    "amount_units": [
+      "amount"
+    ],
+    "duration": [
+      "duration_units"
+    ],
+    "duration_units": [
+      "duration"
+    ]
+  },
+  "properties": {
+    "schema_version": {
+      "default": "11"
+    },
+    "documents": {
+      "description": "Documents that describe the treatment protocol."
+    },
+    "dbxrefs": {
+      "@type": "@id",
+      "rdfs:subPropertyOf": "rdfs:seeAlso",
+      "title": "External resources",
+      "description": "Identifiers from external resources that may have 1-to-1 or 1-to-many relationships with ENCODE objects.",
+      "type": "array",
+      "uniqueItems": true,
+      "default": [],
+      "items": {
+        "title": "External identifier",
+        "description": "Identifier from an external resource that may have 1-to-1 or 1-to-many relationships with ENCODE objects.",
+        "type": "string",
+        "pattern": "^(UCSC-ENCODE-cv:[\\S\\s\\d\\-\\(\\)\\+]+)$"
+      }
+    },
+    "amount": {
+      "title": "Amount",
+      "type": "number"
+    },
+    "amount_units": {
+      "title": "Amount units",
+      "type": "string",
+      "enum": [
+        "M",
+        "mg",
+        "mg/mL",
+        "mM",
+        "ng/mL",
+        "nM",
+        "percent",
+        "pfu",
+        "pM",
+        "rad",
+        "U/mL",
+        "units",
+        "\u03bcg",
+        "\u03bcg/kg",
+        "\u03bcg/mL",
+        "\u03bcM"
+      ]
+    },
+    "duration": {
+      "title": "Duration",
+      "type": "number"
+    },
+    "duration_units": {
+      "title": "Duration units",
+      "type": "string",
+      "enum": [
+        "second",
+        "minute",
+        "hour",
+        "day"
+      ]
+    },
+    "purpose": {
+      "title": "Purpose",
+      "type": "string",
+      "enum": [
+        "activation",
+        "deactivation"
+      ]
+    },
+    "temperature": {
+      "title": "Temperature",
+      "type": "number"
+    },
+    "temperature_units": {
+      "title": "Temperature units",
+      "type": "string",
+      "enum": [
+        "Celsius",
+        "Fahrenheit",
+        "Kelvin"
+      ]
+    },
+    "biosamples_used": {
+      "title": "Biosamples",
+      "description": "Biosamples used in this treatment.",
+      "type": "array",
+      "default": [],
+      "uniqueItems": true,
+      "items": {
+        "title": "Treatment biosample",
+        "description": "Biosample used in this treatment.",
+        "comment": "See biosample.json for available identifiers.",
+        "type": "string",
+        "linkTo": "Biosample"
+      }
+    },
+    "antibodies_used": {
+      "title": "Antibodies used",
+      "description": "Antibodies used in this treatment.",
+      "type": "array",
+      "default": [],
+      "uniqueItems": true,
+      "items": {
+        "title": "Treatment antibody",
+        "description": "Antibody used in this treatment.",
+        "comment": "See antibody_lot.json for available identifiers.",
+        "type": "string",
+        "linkTo": "AntibodyLot"
+      }
+    }
+  },
+  "facets": {
+    "treatment_type": {
+      "title": "Treatment type"
+    },
+    "status": {
+      "title": "Status"
+    }
+  },
+  "changelog": "/profiles/changelogs/treatment.md"
+}

@@ -1,0 +1,112 @@
+{
+  "id": "96334063-16aa-44c6-8b71-c36e1aa956de",
+  "name": "s",
+  "description": "The standard test plan",
+  "metadata": {
+    "instanceGroupConfig": [],
+    "customParameters": {}
+  },
+  "free": false,
+  "schemas": {
+    "service_instance": {
+      "create": {
+        "parameters": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "type": "object",
+          "required": [
+            "test",
+            "test2"
+          ],
+          "properties": {
+            "angle": {
+              "type": "integer",
+              "enum": [
+                0,
+                90,
+                180,
+                270
+              ]
+            },
+            "billing": {
+              "description": "testdescription",
+              "type": "string"
+            },
+            "direction": {
+              "type": "string",
+              "enum": [
+                "N",
+                "E",
+                "S",
+                "W"
+              ]
+            },
+            "morespecials": {
+              "type": "array",
+              "items": [
+                {
+                  "description": "extraspecial_number_description",
+                  "type": "number"
+                },
+                {
+                  "description": "extraspecial_string_description",
+                  "type": "string"
+                }
+              ]
+            },
+            "otherstuff": {
+              "description": "otherdescription",
+              "type": "string"
+            },
+            "someObject": {
+              "type": "object",
+              "properties": {
+                "test": {
+                  "description": "nestedObject",
+                  "type": "string"
+                }
+              }
+            },
+            "specials": {
+              "type": "array",
+              "items": []
+            }
+          }
+        }
+      },
+      "update": {
+        "parameters": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "type": "object",
+          "properties": {
+            "billing": {
+              "description": "testdescription2",
+              "type": "string"
+            },
+            "otherstuff": {
+              "description": "otherdescription2",
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "service_binding": {
+      "create": {
+        "parameters": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "type": "object",
+          "properties": {
+            "billing": {
+              "description": "testdescription3",
+              "type": "string"
+            },
+            "otherstuff": {
+              "description": "otherdescription3",
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

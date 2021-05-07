@@ -1,0 +1,11 @@
+{
+  "id": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/Element/TextHorizontalAlignment.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "\u0413\u043e\u0440\u0438\u0437\u043e\u043d\u0442\u0430\u043b\u044c\u043d\u043e\u0435 \u0432\u044b\u0440\u0430\u0432\u043d\u0438\u0432\u0430\u043d\u0438\u0435 \u0442\u0435\u043a\u0441\u0442\u0430 \u0432 \u044d\u043b\u0435\u043c\u0435\u043d\u0442\u0435",
+  "enum": [
+    "Left",
+    "Right",
+    "Center",
+    "Justify"
+  ]
+}

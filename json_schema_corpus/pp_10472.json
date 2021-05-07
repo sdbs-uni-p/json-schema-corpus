@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "title": "Root schema.",
+  "description": "An explanation about the puropose of this instance described by this schema.",
+  "name": "/",
+  "properties": {
+    "users": {
+      "id": "users",
+      "type": "array",
+      "title": "Users schema.",
+      "description": "An explanation about the puropose of this instance described by this schema.",
+      "name": "users",
+      "items": {
+        "id": "0",
+        "type": "object",
+        "title": "0 schema.",
+        "description": "An explanation about the puropose of this instance described by this schema.",
+        "name": "0",
+        "properties": {
+          "username": {
+            "id": "username",
+            "type": "string",
+            "title": "Username schema.",
+            "description": "An explanation about the puropose of this instance described by this schema.",
+            "name": "username"
+          },
+          "email": {
+            "id": "0",
+            "type": "string",
+            "title": "Email",
+            "description": "An explanation about the puropose of this instance described by this schema.",
+            "format": "email"
+          },
+          "projects": {
+            "id": "projects",
+            "type": "array",
+            "title": "Projects schema.",
+            "description": "An explanation about the puropose of this instance described by this schema.",
+            "name": "projects",
+            "$ref": "/schemas/projects/get.json"
+          }
+        },
+        "required": [
+          "username",
+          "email",
+          "projects"
+        ]
+      },
+      "required": [
+        "0"
+      ]
+    }
+  },
+  "required": [
+    "users"
+  ]
+}

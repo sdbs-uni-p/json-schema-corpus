@@ -1,0 +1,79 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "JSON Schema for the directr directive processor's configuration file",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "#/definitions/directiveProcessorsDefinition"
+    },
+    {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "compilerOptions": {
+              "type": "string",
+              "description": "The path to the tsconfig.json or jsconfig.json file (relative to this config file)."
+            }
+          }
+        },
+        {
+          "type": "boolean",
+          "enum": [
+            false
+          ]
+        },
+        {
+          "$ref": "http://json.schemastore.org/tsconfig#/definitions/compilerOptionsDefinition"
+        }
+      ]
+    }
+  ],
+  "definitions": {
+    "directiveProcessorDefinition": {
+      "type": "object",
+      "required": [
+        "module"
+      ],
+      "properties": {
+        "module": {
+          "type": "string",
+          "description": "The path to the module to load. Relative module names will be loaded relative to this config file."
+        },
+        "context": {
+          "type": "object",
+          "description": "The context to pass to the processor. This will be mixed with the top-level context."
+        }
+      }
+    },
+    "directiveProcessorsDefinition": {
+      "type": "object",
+      "required": [
+        "directiveProcessors"
+      ],
+      "properties": {
+        "context": {
+          "type": "object",
+          "description": "The top-level context that will act as the base for contexts specified for a directive processor."
+        },
+        "directiveProcessors": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "The map of directive processors. All directive names must begin with '@@' and map to a string or { module, context }.",
+          "patternProperties": {
+            "^@@[a-z0-9:$_]+$": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "$ref": "#/definitions/directiveProcessorDefinition"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

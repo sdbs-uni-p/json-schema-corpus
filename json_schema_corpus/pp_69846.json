@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://jsonschema.net",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "title": "Assign value of list-style-type",
+      "enum": [
+        "none"
+      ],
+      "required": true
+    },
+    "list-elements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "title": "Element",
+        "properties": {
+          "value": {
+            "id": "value",
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

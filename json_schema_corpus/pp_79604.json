@@ -1,0 +1,91 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "type": "object",
+  "description": "the status of a previously launched upload",
+  "definitions": {
+    "failureDetail": {
+      "type": "object",
+      "description": "details of why a single object failed the crud operation (create or whatever)",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "A code, e.g. on a job or job ad, that uniquely identifies the object"
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "code",
+        "message"
+      ]
+    },
+    "crudOutcome": {
+      "type": "object",
+      "properties": {
+        "operation": {
+          "enum": [
+            "Created",
+            "Updated",
+            "Closed"
+          ]
+        },
+        "succeeded": {
+          "type": "integer",
+          "description": "how many objects in the set have so far been successfully [operation]"
+        },
+        "failed": {
+          "type": "integer",
+          "description": "how many objects in the set have so far been unsuccessfully [operation]"
+        },
+        "failureDetails": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/failureDetail"
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "operation",
+        "succeeded",
+        "failed"
+      ]
+    },
+    "crudOutcomes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/crudOutcome"
+      }
+    }
+  },
+  "properties": {
+    "id": {
+      "description": "id of the upload operation",
+      "type": "integer"
+    },
+    "started": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "status": {
+      "enum": [
+        "Queued",
+        "Underway",
+        "Complete",
+        "Error"
+      ]
+    },
+    "results": {
+      "$ref": "#/definitions/crudOutcomes"
+    }
+  },
+  "required": [
+    "id",
+    "started",
+    "status",
+    "results"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,121 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "description": "A parcel of shares in a company",
+  "properties": {
+    "number_of_shares": {
+      "description": "Number of shares, if known",
+      "type": "integer"
+    },
+    "percentage_of_shares": {
+      "description": "Percentage of shares, if known",
+      "type": "number",
+      "maximum": 100,
+      "minimum": 0
+    },
+    "percentage_of_shares_min": {
+      "description": "Minimum percentage of shares (if for example a band of percentage is given)",
+      "type": [
+        "number",
+        "null"
+      ],
+      "maximum": 100,
+      "minimum": 0
+    },
+    "percentage_of_shares_max": {
+      "description": "Maximum percentage of shares (if for example a band of percentage is given)",
+      "type": [
+        "number",
+        "null"
+      ],
+      "maximum": 100,
+      "minimum": 0
+    },
+    "voting_percentage": {
+      "description": "Percentage of votes, if known",
+      "type": "number",
+      "maximum": 100,
+      "minimum": 0
+    },
+    "voting_percentage_min": {
+      "description": "Minimum percentage of votes (if for example a band of votes is given)",
+      "type": [
+        "number",
+        "null"
+      ],
+      "maximum": 100,
+      "minimum": 0
+    },
+    "voting_percentage_max": {
+      "description": "Maximum percentage of votes (if for example a band of votes is given)",
+      "type": [
+        "number",
+        "null"
+      ],
+      "maximum": 100,
+      "minimum": 0
+    },
+    "share_class": {
+      "description": "Share class or classes, if known",
+      "type": "string"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "sample_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "shareholders": {
+      "description": "Legal persons who own this share parcel",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "name": "shareholder",
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "description": "Name of natural person or company",
+            "type": "string",
+            "minLength": 1
+          },
+          "jurisdiction": {
+            "description": "Jurisdiction of registration, if company",
+            "type": "string"
+          },
+          "company_number": {
+            "description": "Company number, if company and known",
+            "type": "string"
+          },
+          "identifier": {
+            "description": "Unique identifier of person",
+            "type": "string"
+          },
+          "type": {
+            "description": "Type of person if known (company or natural person)",
+            "enum": [
+              "Company",
+              "Person"
+            ]
+          },
+          "address": {
+            "description": "Address given for shareholder",
+            "$ref": "address.json"
+          },
+          "address_country": {
+            "description": "Country part of owner's address (for example if address not given)",
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

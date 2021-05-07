@@ -1,0 +1,91 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "Resultados devueltos por el m\u00e9todo getPackageList.",
+  "description": "El m\u00e9todo devuelve el una p\u00e1gina del resultado de b\u00fasqueda.",
+  "properties": {
+    "result": {
+      "type": "array",
+      "title": "Paquetes resultantes de la b\u00fasqueda.",
+      "description": "Esta propiedad contiene el conjunto de paquetes pertenecientes la pag\u00edna actual.",
+      "items": {
+        "$ref": "file://%%PATH%%/json/schemas/output/package.schema.json"
+      }
+    },
+    "current_page": {
+      "type": "integer",
+      "title": "P\u00e1gina actual.",
+      "description": "P\u00e1gina que se esta leyendo de los resultados de b\u00fasqueda."
+    },
+    "total_page": {
+      "type": "integer",
+      "title": "Cantidad total de p\u00e1ginas.",
+      "description": "Todas las p\u00e1ginas que devolvi\u00f3 una b\u00fasqueda determinada."
+    },
+    "item_per_page": {
+      "type": "integer",
+      "title": "Paquetes por p\u00e1gina.",
+      "description": "Cantidad de paquetes que se retornan en una p\u00e1gina."
+    },
+    "total_items": {
+      "type": "integer",
+      "title": "Cantidad total de paquetes para esa b\u00fasqueda."
+    },
+    "min_price": {
+      "type": "integer",
+      "title": "Cantidad total de paquetes para esa b\u00fasqueda."
+    },
+    "max_price": {
+      "type": "integer",
+      "title": "Cantidad total de paquetes para esa b\u00fasqueda."
+    },
+    "min_nights": {
+      "type": "integer",
+      "title": "Cantidad total de paquetes para esa b\u00fasqueda."
+    },
+    "max_nights": {
+      "type": "integer",
+      "title": "Cantidad total de paquetes para esa b\u00fasqueda."
+    },
+    "min_star": {
+      "type": "integer",
+      "title": "Cantidad total de paquetes para esa b\u00fasqueda."
+    },
+    "max_star": {
+      "type": "integer",
+      "title": "Cantidad total de paquetes para esa b\u00fasqueda."
+    },
+    "min_date_departure": {
+      "type": "string",
+      "title": "Cantidad total de paquetes para esa b\u00fasqueda."
+    },
+    "max_date_departure": {
+      "type": "string",
+      "title": "Cantidad total de paquetes para esa b\u00fasqueda."
+    },
+    "Company": {
+      "type": "array",
+      "title": "Operadores a los que pertenecen los paquetes resultantes de la b\u00fasqueda.",
+      "items": {
+        "type": "string",
+        "title": "Nombre del Operador."
+      }
+    }
+  },
+  "required": [
+    "result",
+    "current_page",
+    "total_page",
+    "item_per_page",
+    "total_items",
+    "max_price",
+    "min_price",
+    "min_nights",
+    "max_nights",
+    "min_star",
+    "max_star",
+    "min_date_departure",
+    "max_date_departure",
+    "Company"
+  ]
+}

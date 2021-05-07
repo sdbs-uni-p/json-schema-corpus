@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "endpoint": "/setup/2",
+  "description": "perform setup #2",
+  "methods": [
+    "post"
+  ],
+  "type": "object",
+  "properties": {
+    "setup": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "type": "string",
+          "enum": [
+            "setup2"
+          ]
+        }
+      },
+      "required": [
+        "token"
+      ]
+    }
+  },
+  "required": [
+    "setup"
+  ],
+  "export": {
+    "setup2_token": "setup.token"
+  }
+}

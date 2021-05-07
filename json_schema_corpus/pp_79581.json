@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "type": "object",
+  "properties": {
+    "job": {
+      "type": "integer",
+      "description": "id of the job this link is for"
+    },
+    "link": {
+      "type": "string",
+      "format": "uri",
+      "description": "link to the job"
+    }
+  },
+  "required": [
+    "job",
+    "link"
+  ],
+  "additionalProperties": false
+}

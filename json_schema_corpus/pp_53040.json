@@ -1,0 +1,321 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "version": {
+      "type": "number"
+    },
+    "url": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "updated": {
+      "type": "string",
+      "pattern": "^\\d{4}-[01]?[0-9]{1}-[0123]?[0-9]{1}T[012]?[0-9]{1}:[0-5]?[0-9]{1}:[0-5]?[0-9]{1}\\.?\\d+(([+|-]{1}\\d+:\\d+)|Z?)$"
+    },
+    "thingsCount": {
+      "type": "number"
+    },
+    "trackersCount": {
+      "type": "number"
+    },
+    "trackersTraversalDepth": {
+      "type": "number"
+    },
+    "maintainers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "required": true
+          },
+          "url": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "xIdentityMetadata": {
+            "type": "object",
+            "id": "id-42300"
+          }
+        }
+      }
+    },
+    "things": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "required": true
+          },
+          "title": {
+            "type": "string",
+            "required": true
+          },
+          "url": {
+            "type": "string"
+          },
+          "downloadUrl": {
+            "type": "string"
+          },
+          "authors": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "required": true
+                },
+                "url": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                },
+                "xIdentityMetadata": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "licenses": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "thumbnailUrls": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "description": {
+            "type": "string"
+          },
+          "created": {
+            "type": "string",
+            "pattern": "^\\d{4}-[01]?[0-9]{1}-[0123]?[0-9]{1}T[012]?[0-9]{1}:[0-5]?[0-9]{1}:[0-5]?[0-9]{1}\\.?\\d+(([+|-]{1}\\d+:\\d+)|Z?)$"
+          },
+          "updated": {
+            "type": "string",
+            "pattern": "^\\d{4}-[01]?[0-9]{1}-[0123]?[0-9]{1}T[012]?[0-9]{1}:[0-5]?[0-9]{1}:[0-5]?[0-9]{1}\\.?\\d+(([+|-]{1}\\d+:\\d+)|Z?)$"
+          },
+          "metadata": {
+            "type": "object",
+            "properties": {
+              "created": {
+                "type": "string",
+                "pattern": "^\\d{4}-[01]?[0-9]{1}-[0123]?[0-9]{1}T[012]?[0-9]{1}:[0-5]?[0-9]{1}:[0-5]?[0-9]{1}\\.?\\d+(([+|-]{1}\\d+:\\d+)|Z?)$"
+              },
+              "updated": {
+                "type": "string",
+                "pattern": "^\\d{4}-[01]?[0-9]{1}-[0123]?[0-9]{1}T[012]?[0-9]{1}:[0-5]?[0-9]{1}:[0-5]?[0-9]{1}\\.?\\d+(([+|-]{1}\\d+:\\d+)|Z?)$"
+              },
+              "submitter": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "required": true
+                  },
+                  "url": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "xIdentityMetadata": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          },
+          "subject": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "media": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "relationships": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "xRelationshipMetadata": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "billOfMaterials": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "partNumber": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string",
+                  "pattern": "\\bsource\\b|\\bgenerated\\b|\\bbom\\b|\\bimage\\b|\\bthing\\b"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "mimetype": {
+                  "type": "string"
+                },
+                "unit": {
+                  "type": "string"
+                },
+                "quantity": {
+                  "type": "number"
+                },
+                "thumbnailUrl": {
+                  "type": "string"
+                },
+                "xBomMetadata": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "instructions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "step": {
+                  "type": "number"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "imagUurls": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "xInstructionMetadata": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "xThingMetadata": {
+            "type": "object"
+          }
+        }
+      },
+      "required": true
+    },
+    "thingsCache": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "required": true
+        },
+        "thingsCount": {
+          "type": "number"
+        },
+        "updated": {
+          "type": "string",
+          "pattern": "^\\d{4}-[01]?[0-9]{1}-[0123]?[0-9]{1}T[012]?[0-9]{1}:[0-5]?[0-9]{1}:[0-5]?[0-9]{1}\\.?\\d+(([+|-]{1}\\d+:\\d+)|Z?)$"
+        },
+        "xThingsCacheMetadata": {
+          "type": "object"
+        }
+      }
+    },
+    "xTrackerMetadata": {
+      "type": "object"
+    },
+    "trackers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "required": true
+          },
+          "accessed": {
+            "type": "string",
+            "pattern": "^\\d{4}-[01]?[0-9]{1}-[0123]?[0-9]{1}T[012]?[0-9]{1}:[0-5]?[0-9]{1}:[0-5]?[0-9]{1}\\.?\\d+(([+|-]{1}\\d+:\\d+)|Z?)$"
+          },
+          "status": {
+            "type": "string",
+            "pattern": "\\bunknown\\b|\\bok\\b|\\berror\\b"
+          },
+          "thingsCache": {
+            "type": "object",
+            "properties": {
+              "url": {
+                "type": "string",
+                "required": true
+              },
+              "thingsCount": {
+                "type": "number"
+              },
+              "updated": {
+                "type": "string",
+                "pattern": "^\\d{4}-[01]?[0-9]{1}-[0123]?[0-9]{1}T[012]?[0-9]{1}:[0-5]?[0-9]{1}:[0-5]?[0-9]{1}\\.?\\d+(([+|-]{1}\\d+:\\d+)|Z?)$"
+              },
+              "xThingsCacheMetadata": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

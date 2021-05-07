@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "id": "http://localhost:3000/schemas/userinfo-request.json#",
+  "properties": {
+    "Authorization": {
+      "description": "The bearer access token, scoped to retrieve the consented claims for the subject (end-user).",
+      "type": "string"
+    }
+  },
+  "required": [
+    "code",
+    "grant_type"
+  ],
+  "resources": "GET /userinfo",
+  "title": "userinfo",
+  "type": "object"
+}

@@ -1,0 +1,390 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Ludobox Game",
+  "description": "A game for Ludobox's catalog",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "id": "title",
+      "title": "Title",
+      "description": "The title of the game"
+    },
+    "description": {
+      "type": "object",
+      "title": "Description of the game",
+      "properties": {
+        "summary": {
+          "type": "string",
+          "minLength": 1,
+          "id": "summary",
+          "title": "Summary",
+          "description": "Desribe the content of the game"
+        },
+        "tags": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "default": "Game"
+          },
+          "id": "tags",
+          "title": "Tags",
+          "description": "Free-tagging to describe the game content"
+        },
+        "intention": {
+          "type": "string",
+          "minLength": 1,
+          "enum": [
+            "Loisir",
+            "Militant",
+            "P\u00e9dagogique",
+            "Publicitaire",
+            "Institutionel",
+            "Experimental"
+          ],
+          "id": "intention",
+          "title": "Intention",
+          "description": "The intention that created the game"
+        },
+        "type": {
+          "type": "string",
+          "minLength": 1,
+          "enum": [
+            "Indoor game",
+            "Toys",
+            "Outdoor game",
+            "Construction",
+            "Design Kit"
+          ],
+          "id": "type",
+          "title": "Type",
+          "description": "The type of game content"
+        },
+        "gameplay": {
+          "type": "string",
+          "minLength": 1,
+          "enum": [
+            "Individuel",
+            "En \u00e9quipe",
+            "Cooperatif"
+          ],
+          "id": "gameplay",
+          "title": "Gameplay",
+          "description": "The game play"
+        },
+        "mechanics": {
+          "type": "array",
+          "minLength": 1,
+          "maxLength": 3,
+          "items": {
+            "enum": [
+              "Jeux de r\u00f4le",
+              "Identit\u00e9 secrete",
+              "Bluff",
+              "Stop ou encore",
+              "Gestion",
+              "Ench\u00e8res",
+              "Programmation",
+              "Abstrait",
+              "Parcours",
+              "Hasard",
+              "Construction",
+              "Dexterit\u00e9",
+              "Narratif",
+              "Rapidite",
+              "Enquetes",
+              "Enigme",
+              "Traditionel",
+              "Wargame",
+              "Placement"
+            ]
+          },
+          "id": "mechanics",
+          "title": "Mechanics",
+          "description": "The mechanics that organize the way to play this game"
+        }
+      }
+    },
+    "credentials": {
+      "type": "object",
+      "title": "Credentials - who created this game ?",
+      "properties": {
+        "license": {
+          "type": "string",
+          "minLength": 1,
+          "default": "Unknown",
+          "enum": [
+            "Commercial use allowed",
+            "Modifications allowed",
+            "Commercial use & mods allowed",
+            "No known copyright restrictions",
+            "Public Domain",
+            "Copyright",
+            "No License"
+          ],
+          "id": "license",
+          "title": "License",
+          "description": "The license"
+        },
+        "publishers": {
+          "type": "array",
+          "uniqueItems": false,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "id": "publishers",
+          "title": "Publisher(s)",
+          "description": "Who published this game?"
+        },
+        "publication_year": {
+          "type": "integer",
+          "multipleOf": 1,
+          "maximum": 2100,
+          "minimum": 1,
+          "exclusiveMaximum": false,
+          "exclusiveMinimum": false,
+          "default": 1900,
+          "id": "publication_year",
+          "title": "Publication Year",
+          "description": "When was this game published ?"
+        },
+        "authors": {
+          "type": "array",
+          "uniqueItems": false,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "id": "authors",
+          "title": "Authors",
+          "description": "Who are the authors ?"
+        },
+        "illustrators": {
+          "type": "array",
+          "uniqueItems": false,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "id": "illustrators",
+          "title": "Illustrators / Artists",
+          "description": "Who are the illustrators and artists ?"
+        }
+      },
+      "required": [
+        "license"
+      ]
+    },
+    "audience": {
+      "type": "object",
+      "title": "Audience - who should play this game ?",
+      "properties": {
+        "age": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "Children",
+              "Teenagers",
+              "Adults"
+            ]
+          },
+          "id": "age",
+          "uniqueItems": true,
+          "title": "Age Requirements",
+          "description": "Who should play this game ?"
+        },
+        "number_of_players": {
+          "type": "object",
+          "title": "Number of Players",
+          "properties": {
+            "players_min": {
+              "type": "integer",
+              "multipleOf": 1,
+              "maximum": 100,
+              "minimum": 1,
+              "exclusiveMaximum": false,
+              "exclusiveMinimum": false,
+              "default": 3,
+              "id": "players_min",
+              "title": "Max numbers of players",
+              "description": "Maximum number of players"
+            },
+            "players_max": {
+              "type": "integer",
+              "multipleOf": 1,
+              "maximum": 100,
+              "minimum": 1,
+              "exclusiveMaximum": false,
+              "exclusiveMinimum": false,
+              "default": 6,
+              "id": "players_max",
+              "title": "Min numbers of players",
+              "description": "Minimum number of players"
+            }
+          }
+        },
+        "duration": {
+          "type": "integer",
+          "multipleOf": 1,
+          "maximum": 10000,
+          "minimum": 1,
+          "exclusiveMaximum": false,
+          "exclusiveMinimum": false,
+          "default": 60,
+          "id": "duration",
+          "title": "Duration of each game",
+          "description": "How long last a game ? (in minutes)"
+        },
+        "language": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2,
+          "default": "en",
+          "id": "language",
+          "title": "Language",
+          "description": "Language required to play the game / read the instructions"
+        }
+      },
+      "required": [
+        "language"
+      ]
+    },
+    "fabrication": {
+      "type": "object",
+      "title": "Fabrication - who to fabricate this game ?",
+      "required": [
+        "fab_time"
+      ],
+      "properties": {
+        "fab_time": {
+          "type": "integer",
+          "multipleOf": 1,
+          "maximum": 10000,
+          "minimum": 1,
+          "exclusiveMaximum": false,
+          "exclusiveMinimum": false,
+          "default": 120,
+          "id": "fab_time",
+          "title": "Fabrication Time",
+          "description": "How much time does it take to fabricate the game?"
+        },
+        "requirements": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "Nothing",
+              "Printers B&W",
+              "Printers Colour",
+              "Cissors",
+              "Pens",
+              "Stickers",
+              "Ruler",
+              "Paper Glue",
+              "Cutter",
+              "Mechanical saw",
+              "Hand saw",
+              "Wood glue",
+              "Hammer",
+              "All purpose plier",
+              "Welder",
+              "Sewing machine",
+              "Drill",
+              "Other tools",
+              "3D printers",
+              "Laser cutter",
+              "Micro chip computer"
+            ]
+          },
+          "id": "requirements",
+          "title": "Requirements",
+          "description": "What do you need to fabricate this game?"
+        },
+        "components": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "Dice",
+              "Special Dices",
+              "Standard Card Deck",
+              "Other Existing Game",
+              "Game Pieces",
+              "Tokens",
+              "Receptacle",
+              "Stopwatch ",
+              "Exotic Materials",
+              "Balloon"
+            ]
+          },
+          "id": "components",
+          "title": "Components",
+          "description": "Existing game components (dices, card decks, etc.) "
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "title": "Sources - ref and further reading about this game",
+      "properties": {
+        "url": {
+          "type": "string",
+          "minLength": 0,
+          "id": "url",
+          "title": "Homepage / Link",
+          "description": "A link to the game website or page"
+        },
+        "ISBN": {
+          "type": "array",
+          "uniqueItems": false,
+          "items": {},
+          "id": "ISBN",
+          "title": "ISBN",
+          "description": "ISBN (if applicable)"
+        }
+      },
+      "required": [
+        "url"
+      ]
+    },
+    "content_type": {
+      "type": "string",
+      "enum": [
+        "game",
+        "book",
+        "material"
+      ],
+      "enumNames": [
+        "Book",
+        "Game",
+        "Material"
+      ],
+      "default": "game",
+      "id": "content_type",
+      "title": "Content Type",
+      "description": "Is that a game, a book or sth else ?"
+    },
+    "timestamp_add": {
+      "type": "string",
+      "minLength": 1,
+      "default": "10/10/2015 14:52:35",
+      "id": "timestamp_add",
+      "title": "Updated time",
+      "description": "Last time this info has been updated"
+    }
+  },
+  "id": "/",
+  "required": [
+    "title",
+    "content_type",
+    "fabrication",
+    "timestamp_add"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "http://comrade.forma-pro.com/schemas/SubJobTemplate.json",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "JobTemplate.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "parentId": {
+          "$ref": "uuid4.json"
+        }
+      }
+    }
+  ],
+  "required": [
+    "parentId"
+  ]
+}

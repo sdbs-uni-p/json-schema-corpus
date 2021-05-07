@@ -1,0 +1,77 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "get health response",
+  "description": "get health response",
+  "definitions": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "red",
+        "green"
+      ]
+    }
+  },
+  "type": "object",
+  "properties": {
+    "status": {
+      "$ref": "#definitions/status"
+    },
+    "details": {
+      "type": "object",
+      "patternProperties": {
+        "^[a-zA-Z_]+$": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "$ref": "#definitions/status"
+                },
+                "details": {
+                  "type": "object",
+                  "patternProperties": {
+                    "^[a-zA-Z_]+$": {
+                      "$ref": "#definitions/status"
+                    }
+                  }
+                }
+              },
+              "required": [
+                "status",
+                "details"
+              ]
+            },
+            {
+              "$ref": "#definitions/status"
+            }
+          ]
+        }
+      }
+    },
+    "links": {
+      "type": "object",
+      "properties": {
+        "self": {
+          "type": "object",
+          "properties": {
+            "href": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "required": [
+            "href"
+          ]
+        }
+      },
+      "required": [
+        "self"
+      ]
+    }
+  },
+  "required": [
+    "status",
+    "links"
+  ],
+  "additionalProperties": false
+}

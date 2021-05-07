@@ -1,0 +1,21 @@
+{
+  "id": "/types",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Types",
+  "description": "Handy types to DRY things up a little",
+  "type": "object",
+  "definitions": {
+    "uuid": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-4[a-fA-F0-9]{3}-[89abAB][a-fA-F0-9]{3}-[a-fA-F0-9]{12}$",
+      "description": "A UUID",
+      "example": "250c48ca-4d03-45d7-9814-03b18042866f"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "A timestamp",
+      "example": "2016-12-01T05:44:59.223Z"
+    }
+  }
+}

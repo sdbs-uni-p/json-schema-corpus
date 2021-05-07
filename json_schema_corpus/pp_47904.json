@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://inowas.com/schema/",
+  "type": "object",
+  "properties": {
+    "totim_start": {
+      "type": "integer"
+    },
+    "perlen": {
+      "type": "integer"
+    },
+    "nstp": {
+      "type": "integer"
+    },
+    "tsmult": {
+      "type": "integer"
+    },
+    "steady": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "totim_start",
+    "perlen",
+    "nstp",
+    "tsmult",
+    "steady"
+  ]
+}

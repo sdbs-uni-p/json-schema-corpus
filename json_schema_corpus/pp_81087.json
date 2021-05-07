@@ -1,0 +1,33 @@
+{
+  "title": "Diabetes Records",
+  "name": "Diabetes",
+  "description": "Tidepool's data model.  Describes visualization expectations",
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "id": "http://tidepool-org.github.io/data-model/schemas/diabetes.json",
+  "type": "array",
+  "items": {
+    "anyOf": [
+      {
+        "$ref": "diabetes/bolus/index.json"
+      },
+      {
+        "$ref": "diabetes/basal/segment.json"
+      },
+      {
+        "$ref": "diabetes/basal/temp.json"
+      },
+      {
+        "$ref": "diabetes/carbs.json"
+      },
+      {
+        "$ref": "diabetes/cbg.json"
+      },
+      {
+        "$ref": "diabetes/smbg.json"
+      },
+      {
+        "$ref": "message.json"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "description": "Hypercharge get params for GET /v2/scheduler/<UNIQUE_ID>/transactions",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "additionalProperties": false,
+  "properties": {
+    "page": {
+      "extends": "types.json#/page"
+    },
+    "per_page": {
+      "extends": "types.json#/per_page"
+    }
+  }
+}

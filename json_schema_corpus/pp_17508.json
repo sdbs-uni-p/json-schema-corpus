@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "word_ref",
+  "id": "word_ref.json",
+  "description": "A unique reference to a word",
+  "properties": {
+    "name": {
+      "$ref": "primitives.json#/definitions/name"
+    },
+    "uid": {
+      "$ref": "primitives.json#/definitions/uid"
+    },
+    "refUid": {
+      "$ref": "primitives.json#/definitions/uid",
+      "description": "the uid of the word it references"
+    }
+  },
+  "required": [
+    "name",
+    "uid"
+  ]
+}

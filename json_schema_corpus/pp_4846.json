@@ -1,0 +1,397 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "id": "https://www.ebi.ac.uk/biosamples/schemas/core/sample.json",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "domain",
+    "release"
+  ],
+  "type": "object",
+  "description": "BioSamples database sample json schema",
+  "definitions": {
+    "contact": {
+      "title": "Contact",
+      "description": "Object representing a contact reference for the sample",
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "FirstName": {
+          "type": "string"
+        },
+        "LastName": {
+          "type": "string"
+        },
+        "MidInitials": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Role": {
+          "type": "string"
+        },
+        "E-mail": {
+          "type": "string"
+        },
+        "Affiliation": {
+          "type": "string"
+        },
+        "URL": {
+          "type": "string"
+        }
+      }
+    },
+    "external_reference": {
+      "title": "BioSamples external reference",
+      "description": "Object representing a link to a repository or page associated with the sample itself, e.g. a link to an ENA record ",
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "url"
+      ],
+      "properties": {
+        "url": {
+          "type": "string"
+        },
+        "duo": {
+          "description": "Data use ontology terms ",
+          "type": "array",
+          "items": {
+            "description": "Data use condition https://ega-archive.org/data-use-conditions",
+            "type": "string",
+            "pattern": "^DUO:[0-9]{7}$"
+          }
+        }
+      }
+    },
+    "organisation": {
+      "title": "Organisation",
+      "description": "Object representing an organization related to the sample in some way",
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "Name": {
+          "type": "string"
+        },
+        "Role": {
+          "type": "string"
+        },
+        "E-mail": {
+          "type": "string"
+        },
+        "URL": {
+          "type": "string"
+        },
+        "Address": {
+          "type": "string"
+        }
+      }
+    },
+    "publication": {
+      "title": "Publication",
+      "description": "Object representing a publication associated to the sample",
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "doi": {
+          "type": "string"
+        },
+        "pubmed_id": {
+          "type": "string"
+        }
+      }
+    },
+    "relationship": {
+      "title": "BioSamples relationship",
+      "description": "Relationship object connecting two BioSamples accessions",
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "source",
+        "type",
+        "target"
+      ],
+      "properties": {
+        "source": {
+          "description": "The sample accession where the relation starts from",
+          "type": "string",
+          "pattern": "^SAM(D|N|E([AG]?))[0-9]+$"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "derived from",
+            "same as",
+            "has member",
+            "child of"
+          ]
+        },
+        "target": {
+          "description": "The sample accession where the relation targets to",
+          "type": "string",
+          "pattern": "^SAM(D|N|E([AG]?))[0-9]+$"
+        }
+      }
+    },
+    "structured_data": {
+      "title": "BioSamples structured data item",
+      "description": "A structured data item, e.g. an antibiogram table",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "schema",
+        "content"
+      ],
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "The type of structured data this item is",
+          "type": "string",
+          "enum": [
+            "AMR"
+          ]
+        },
+        "schema": {
+          "description": "The URL reference to the schema",
+          "type": "string",
+          "pattern": "(http|https)://www(dev)?.ebi.ac.uk/biosamples/schemas/structured/.*"
+        },
+        "content": {
+          "type": [
+            "array",
+            "object"
+          ]
+        }
+      }
+    },
+    "characteristic": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "text": {
+          "type": "string"
+        },
+        "tag": {
+          "description": "The tag indicating the source of the attribute, not required in submission",
+          "type": "string"
+        },
+        "ontologyTerms": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "unit": {
+          "description": "The unit associated with the attribute value",
+          "type": "string"
+        }
+      }
+    }
+  },
+  "properties": {
+    "name": {
+      "description": "The sample name, or an alias, or another id",
+      "type": "string"
+    },
+    "accession": {
+      "description": "Sample accession",
+      "type": "string",
+      "pattern": "^SAM(D|N|E([AG]?))[0-9]+$"
+    },
+    "domain": {
+      "description": "Sample AAP domain membership",
+      "type": "string"
+    },
+    "release": {
+      "description": "Sample relase date-time in ISO8601 format. Release date in the future means the sample is private",
+      "type": "string",
+      "format": "date-time"
+    },
+    "update": {
+      "description": "Sample last update date-time in ISO8601 format. This is automatically set from the server on submission",
+      "type": "string",
+      "format": "date-time"
+    },
+    "taxId": {
+      "description": "BioSamples generates the taxonID automaticly. Instead of providing the taxId here, users should provide organism information in Field 'characteristics'",
+      "type": "integer"
+    },
+    "characteristics": {
+      "description": "All the characteristics associated to the sample",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/characteristic"
+      }
+    },
+    "relationships": {
+      "description": "Sample relationships with other samples in BioSamples",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/relationship"
+      }
+    },
+    "externalReferences": {
+      "description": "Array of references to external resources, for example a link to ENA data, EGA data, etc.",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/external_reference"
+      }
+    },
+    "organization": {
+      "description": "Organization information associated with the sample",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/organisation"
+      }
+    },
+    "contact": {
+      "description": "Contact information of the people associated with the sample",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/contact"
+      }
+    },
+    "publications": {
+      "description": "Pubblications associated with the sample",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/publication"
+      }
+    },
+    "data": {
+      "description": "Contains the structured data associated with a sample",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/structured_data"
+      }
+    }
+  },
+  "examples": [
+    {
+      "name": "source GSM1038808 1",
+      "accession": "SAMEA1607017",
+      "domain": "self.example",
+      "release": "2012-11-19T00:00:00Z",
+      "update": "2019-07-24T08:11:34.499Z",
+      "taxId": 9606,
+      "characteristics": {
+        "description": [
+          {
+            "text": "MicMa107_PT_180608 Early stage breast cancer patient."
+          }
+        ],
+        "disease state": [
+          {
+            "text": "early-stage breast cancer"
+          }
+        ],
+        "organism": [
+          {
+            "text": "Homo sapiens",
+            "tag": "attribute",
+            "ontologyTerms": [
+              "http://purl.obolibrary.org/obo/NCBITaxon_9606"
+            ]
+          }
+        ],
+        "organism part": [
+          {
+            "text": "breast cancer tumor"
+          }
+        ],
+        "patient identifier": [
+          {
+            "text": "MicMa107"
+          }
+        ],
+        "sample source name": [
+          {
+            "text": "fresh-frozen breast cancer tumor"
+          }
+        ],
+        "sample title": [
+          {
+            "text": "Breast cancer, MicMa107_PT_180608 (244k)"
+          }
+        ],
+        "type of isolated tumor cells": [
+          {
+            "text": "breast cancer tumor"
+          }
+        ]
+      },
+      "relationships": [
+        {
+          "source": "SAMEG118117",
+          "type": "has member",
+          "target": "SAMEA1607017"
+        }
+      ],
+      "organization": [
+        {
+          "Name": "Institute for cancer research Oslo University Hospital Radiumhospitalet",
+          "Role": "submitter "
+        }
+      ],
+      "contact": [
+        {
+          "Name": "Anna Obenauf"
+        },
+        {
+          "Name": "Anne-Lise B\u00f8rresen-Dale"
+        },
+        {
+          "Name": "Bj\u00f8rn Naume"
+        },
+        {
+          "Name": "Eldri Due"
+        },
+        {
+          "Name": "Elin Borgen"
+        },
+        {
+          "Name": "Ida Schneider"
+        },
+        {
+          "Name": "Inga Rye"
+        },
+        {
+          "Name": "Jochen Geigl"
+        },
+        {
+          "Name": "Klaus Pantel"
+        },
+        {
+          "Name": "Knut Liest\u00f8l"
+        },
+        {
+          "Name": "Lars Baumbusch"
+        },
+        {
+          "Name": "Michael Speicher"
+        },
+        {
+          "Name": "Ole Lingj\u00e6rde"
+        },
+        {
+          "Name": "Oliver Mauermann"
+        },
+        {
+          "Name": "Randi Mathiesen"
+        },
+        {
+          "Name": "Renathe Fjelldal"
+        },
+        {
+          "Name": "Sabine Riethdorf"
+        }
+      ],
+      "publications": [
+        {
+          "pubmed_id": "21935921"
+        }
+      ]
+    }
+  ]
+}

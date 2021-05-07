@@ -1,0 +1,100 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "BlackBox 3.0 task meta-info v0.2",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^0\\.2$"
+    },
+    "title_ru": {
+      "type": "string"
+    },
+    "title_en": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "cost": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "desc_ru": {
+      "type": "string",
+      "pattern": "^.*\\.md$"
+    },
+    "desc_en": {
+      "type": "string",
+      "pattern": "^.*\\.md$"
+    },
+    "writeup_ru": {
+      "type": "string",
+      "pattern": "^.*\\.md$"
+    },
+    "writeup_en": {
+      "type": "string",
+      "pattern": "^.*\\.md$"
+    },
+    "flag": {
+      "type": "string"
+    },
+    "flag_comp": {
+      "type": "string"
+    },
+    "images": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "filename": {
+            "type": "string",
+            "pattern": "^.*\\.tar$"
+          },
+          "tcp_ports": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "uniqueItems": true
+          },
+          "udp_ports": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "filename"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "author": {
+      "type": "string"
+    },
+    "upload_timestamp": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "schema_version",
+    "title_ru",
+    "title_en",
+    "category",
+    "cost",
+    "desc_ru",
+    "desc_en",
+    "writeup_ru",
+    "writeup_en",
+    "flag",
+    "flag_comp"
+  ]
+}

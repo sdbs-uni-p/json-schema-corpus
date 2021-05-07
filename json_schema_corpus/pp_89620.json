@@ -1,0 +1,45 @@
+{
+  "name": "article-teaser-widget",
+  "description": "Displays details (description, image) for an article.",
+  "integration": {
+    "technology": "react",
+    "type": "widget"
+  },
+  "features": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "required": [
+      "article"
+    ],
+    "properties": {
+      "article": {
+        "type": "object",
+        "required": [
+          "resource"
+        ],
+        "properties": {
+          "resource": {
+            "type": "string",
+            "format": "topic",
+            "axRole": "inlet",
+            "description": "Name of the data resource representing an article."
+          }
+        }
+      },
+      "confirmation": {
+        "type": "object",
+        "required": [
+          "action"
+        ],
+        "properties": {
+          "action": {
+            "type": "string",
+            "format": "topic",
+            "axRole": "outlet",
+            "description": "Name of the action to request to add the selected article to cart"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "$comment": "object types",
+    "sha2-512/256": {
+      "type": "string",
+      "minLength": 44,
+      "maxLength": 44,
+      "pattern": "^[A-Za-z0-9/+=]+$"
+    },
+    "blake2b": {
+      "type": "string",
+      "minLength": 44,
+      "maxLength": 44,
+      "pattern": "^[A-Za-z0-9/+=]+$"
+    },
+    "size": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "nul": {
+      "type": "boolean"
+    },
+    "nonascii": {
+      "type": "boolean"
+    },
+    "directory": {
+      "type": "object",
+      "required": [
+        "Directory"
+      ],
+      "properties": {
+        "Directory": {
+          "type": "object",
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "$ref": "#/definitions/directory"
+              },
+              {
+                "$ref": "#/definitions/file"
+              }
+            ]
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "file": {
+      "type": "object",
+      "required": [
+        "File"
+      ],
+      "properties": {
+        "File": {
+          "type": "object",
+          "required": [
+            "size"
+          ],
+          "properties": {
+            "sha2-512/256": {
+              "$ref": "#/definitions/sha2-512/256"
+            },
+            "blake2b": {
+              "$ref": "#/definitions/blake2b"
+            },
+            "size": {
+              "$ref": "#/definitions/size"
+            },
+            "nul": {
+              "$ref": "#/definitions/nul"
+            },
+            "nonascii": {
+              "$ref": "#/definitions/nonascii"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "$ref": "#/definitions/directory"
+}

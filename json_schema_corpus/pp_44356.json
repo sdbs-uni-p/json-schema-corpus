@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://schema.envirocar.org/groups.json#",
+  "type": "object",
+  "required": [
+    "groups"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "groups": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "$ref": "http://schema.envirocar.org/group.json#"
+      }
+    }
+  }
+}

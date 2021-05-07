@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Vault Tree Vault Contents Expression",
+  "type": "object",
+  "properties": {
+    "vault_contents": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "vault_contents"
+  ],
+  "additionalProperties": false
+}

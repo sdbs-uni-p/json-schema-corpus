@@ -1,0 +1,33 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://jsonschema.net",
+  "required": false,
+  "properties": {
+    "description": {
+      "type": "string",
+      "id": "http://jsonschema.net/description",
+      "required": false
+    },
+    "exec": {
+      "type": "string",
+      "id": "http://jsonschema.net/exec",
+      "required": false
+    },
+    "logo": {
+      "type": "string",
+      "id": "http://jsonschema.net/logo",
+      "required": false
+    },
+    "name": {
+      "type": "string",
+      "id": "http://jsonschema.net/name",
+      "required": false
+    },
+    "path": {
+      "type": "string",
+      "id": "http://jsonschema.net/path",
+      "required": false
+    }
+  }
+}

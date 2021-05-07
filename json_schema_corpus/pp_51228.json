@@ -1,0 +1,70 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "observation",
+  "description": "A observation of potentially malicious activity",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "../common/core.json"
+    },
+    {
+      "$ref": "characterization.json"
+    },
+    {
+      "$ref": "../common/referenceable.json"
+    },
+    {
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "observation"
+          ]
+        },
+        "observed_at": {
+          "type": "array",
+          "items": {
+            "$ref": "../common/timestamp.json"
+          },
+          "description": "A list of times that this sighting was observed."
+        },
+        "observed_at_precision": {
+          "$ref": "../common/timestamp.json#/definitions/precision"
+        }
+      }
+    }
+  ],
+  "relationships": {
+    "related": [
+      "asset",
+      "attack-pattern",
+      "campaign",
+      "configuration",
+      "course-of-action",
+      "exploit",
+      "identity",
+      "incident",
+      "indicator",
+      "kill-chain",
+      "kill-chain-phase",
+      "malicious-infrastructure",
+      "malicious-tool",
+      "malware",
+      "report",
+      "threat-actor",
+      "tool",
+      "victim-targeting",
+      "vulnerability",
+      "weakness"
+    ],
+    "sighted": [
+      "indicator"
+    ],
+    "duplicate-of": [
+      "observation"
+    ],
+    "characterizes": [
+      "asset"
+    ]
+  }
+}

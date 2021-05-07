@@ -1,0 +1,100 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "author": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "email": {
+          "type": "string",
+          "oneOf": [
+            {
+              "enum": [
+                ""
+              ]
+            },
+            {
+              "format": "email"
+            }
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "email"
+      ]
+    },
+    "lastChangedBy": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 1000
+        },
+        "email": {
+          "type": "string",
+          "oneOf": [
+            {
+              "enum": [
+                ""
+              ]
+            },
+            {
+              "format": "email"
+            }
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "email"
+      ]
+    },
+    "lastChanged": {
+      "type": "integer"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1000
+    },
+    "text": {
+      "type": "string"
+    },
+    "documents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "filetype": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "filetype",
+          "name",
+          "path"
+        ]
+      }
+    }
+  },
+  "required": [
+    "title",
+    "text"
+  ]
+}

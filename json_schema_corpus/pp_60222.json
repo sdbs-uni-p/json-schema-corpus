@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Represents a processor that is active in the cluster.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "startedAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

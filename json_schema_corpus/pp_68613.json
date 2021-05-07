@@ -1,0 +1,25 @@
+{
+  "id": "urn:PersonName.schema.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "A person's name, with semantic components.",
+  "name": "PersonName",
+  "type": "object",
+  "properties": {
+    "family": {
+      "description": "The family name.",
+      "type": "string"
+    },
+    "given": {
+      "description": "The given name.",
+      "type": "string"
+    },
+    "additional": {
+      "description": "Any additional name components.",
+      "type": "array",
+      "items": {
+        "$type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

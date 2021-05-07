@@ -1,0 +1,65 @@
+{
+  "id": "/Journey",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "axes": {
+      "type": "object",
+      "properties": {
+        "x": {
+          "$ref": "#/definitions/axis"
+        },
+        "y": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/axis"
+          }
+        }
+      }
+    },
+    "value-attribute": {
+      "type": "string"
+    },
+    "matching-attribute": {
+      "type": "string"
+    }
+  },
+  "definitions": {
+    "axis": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string",
+          "required": true
+        },
+        "key": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array"
+            }
+          ]
+        },
+        "format": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/draft-03/schema#"
+}

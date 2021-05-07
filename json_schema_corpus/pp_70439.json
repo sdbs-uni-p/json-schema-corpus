@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "description": "Wheresocksgo API",
+  "id": "wheresocksgo-api",
+  "links": [
+    {
+      "href": "https://wheresocksgo.herokuapp.com",
+      "rel": "self"
+    }
+  ],
+  "title": "Wheresocksgo"
+}

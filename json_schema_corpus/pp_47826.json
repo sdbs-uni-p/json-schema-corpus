@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://inowas.com/schema/",
+  "oneOf": [
+    {
+      "type": "number",
+      "description": "One value for all in the layer"
+    },
+    {
+      "type": "array",
+      "description": "Rows",
+      "items": {
+        "type": "array",
+        "description": "Cols",
+        "items": {
+          "type": "number"
+        }
+      }
+    }
+  ]
+}

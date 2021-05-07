@@ -1,0 +1,23 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://jsonschema.net",
+  "required": false,
+  "properties": {
+    "blind": {
+      "type": "number",
+      "id": "http://jsonschema.net/blind",
+      "required": false
+    },
+    "helpers": {
+      "type": "number",
+      "id": "http://jsonschema.net/helpers",
+      "required": false
+    },
+    "no_helped": {
+      "type": "number",
+      "id": "http://jsonschema.net/no_helped",
+      "required": false
+    }
+  }
+}

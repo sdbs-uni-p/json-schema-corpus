@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://jsonschema.net",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "id": "http://www.ortolang.fr/id",
+      "type": "string"
+    },
+    "name": {
+      "id": "http://www.ortolang.fr/name",
+      "type": "string"
+    },
+    "acronym": {
+      "id": "http://jsonschema.net/acronym",
+      "type": "string"
+    },
+    "city": {
+      "id": "http://jsonschema.net/city",
+      "type": "string"
+    },
+    "country": {
+      "id": "http://jsonschema.net/country",
+      "type": "string"
+    },
+    "homepage": {
+      "id": "http://jsonschema.net/homepage",
+      "type": "string"
+    },
+    "img": {
+      "id": "http://jsonschema.net/img",
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "name"
+  ]
+}

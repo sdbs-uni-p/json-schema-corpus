@@ -1,0 +1,91 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "description": "The demo schema for jsone",
+  "instruction": "Select a row to edit",
+  "definitions": {
+    "name": {
+      "placeholder": "enter name",
+      "description": "keep the names short please"
+    },
+    "description": {
+      "type": "string",
+      "description": "a description",
+      "instruction": "enter a description",
+      "placeholder": "enter a description"
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "description": "all \"date\" keys are a date everywhere"
+    },
+    "color": {
+      "$ref": "/demoSchemaAddons.json#/definitions/color"
+    },
+    "element": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/name"
+        },
+        "description": {
+          "$ref": "#/definitions/description"
+        },
+        "date": {
+          "$ref": "#/definitions/date"
+        }
+      }
+    },
+    "items": {
+      "type": "array",
+      "description": "the sub-elements of this node",
+      "items": {
+        "$ref": "#/definitions/element"
+      }
+    }
+  },
+  "type": "object",
+  "properties": {
+    "name": {
+      "$ref": "#/definitions/name"
+    },
+    "description": {
+      "$ref": "#/definitions/description"
+    },
+    "date": {
+      "$ref": "#/definitions/date"
+    },
+    "config": {
+      "type": "object",
+      "properties": {
+        "key1": {
+          "type": "boolean",
+          "description": "Set the config for key1 to true or false"
+        },
+        "key2": {
+          "type": "string",
+          "description": "Set key2 to one of four values"
+        },
+        "key3": {
+          "type": "number",
+          "format": "number",
+          "description": "a number between 0 and 10"
+        },
+        "key4": {
+          "type": "string",
+          "description": "choose one",
+          "enum": [
+            "",
+            "Option 1",
+            "Option 2",
+            "Option 3"
+          ]
+        }
+      }
+    }
+  },
+  "patternProperties": {
+    "items*": {
+      "$ref": "#/definitions/items"
+    }
+  }
+}

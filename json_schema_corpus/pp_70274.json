@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "locationattributetype",
+  "description": "Location Attribute Type",
+  "type": "string",
+  "enum": [
+    "payment_types_accepted",
+    "cuisine",
+    "meals_served"
+  ]
+}

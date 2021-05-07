@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "infrastructure": {
+      "id": "infrastructure",
+      "type": "object",
+      "properties": {
+        "name": {
+          "id": "name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ]
+    }
+  },
+  "required": [
+    "infrastructure"
+  ]
+}

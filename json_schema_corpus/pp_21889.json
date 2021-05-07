@@ -1,0 +1,8 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "id": "base:objectId#",
+  "title": "ObjectId",
+  "description": "ObjectId validation",
+  "type": "string",
+  "pattern": "^[0-9a-fA-F]{24}$"
+}

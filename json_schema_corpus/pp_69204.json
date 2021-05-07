@@ -1,0 +1,49 @@
+{
+  "id": "/modles/user.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "User",
+  "description": "An entity representing a person or identity.",
+  "type": "object",
+  "properties": {
+    "_id": {
+      "type": "string"
+    },
+    "name": {
+      "title": "Full Name",
+      "type": "string"
+    },
+    "email": {
+      "title": "Email Address",
+      "type": "string",
+      "format": "email"
+    },
+    "password": {
+      "title": "Password",
+      "type": "string"
+    },
+    "roles": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "identityProviders": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "name",
+    "email"
+  ]
+}

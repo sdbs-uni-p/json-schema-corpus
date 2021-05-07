@@ -1,0 +1,85 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "title": "Global OpenSidewalks Schema",
+  "description": "GeoJSON schema for Global OpenSidewalks project",
+  "required": true,
+  "properties": {
+    "features": {
+      "type": "array",
+      "required": true,
+      "items": {
+        "type": "object",
+        "required": false,
+        "properties": {
+          "geometry": {
+            "type": "object",
+            "required": true,
+            "properties": {
+              "coordinates": {
+                "type": "array",
+                "required": true,
+                "items": {
+                  "type": "array",
+                  "required": true,
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 2,
+                  "maxItems": 2
+                },
+                "minItems": 2
+              },
+              "type": {
+                "enum": [
+                  "LineString"
+                ],
+                "required": true
+              }
+            }
+          },
+          "properties": {
+            "type": "object",
+            "required": false,
+            "properties": {
+              "incline": {
+                "type": "number",
+                "required": false
+              },
+              "lit": {
+                "type": "boolean",
+                "required": false
+              },
+              "surface": {
+                "enum": [
+                  "paved",
+                  "concrete",
+                  "wood",
+                  "dirt",
+                  "gravel"
+                ],
+                "required": false
+              },
+              "width": {
+                "type": "number",
+                "required": false
+              }
+            }
+          },
+          "type": {
+            "enum": [
+              "Feature"
+            ],
+            "required": true
+          }
+        }
+      }
+    },
+    "type": {
+      "enum": [
+        "FeatureCollection"
+      ],
+      "required": true
+    }
+  }
+}

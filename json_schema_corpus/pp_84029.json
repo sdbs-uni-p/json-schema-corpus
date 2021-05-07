@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "enabled": {
+      "type": "boolean"
+    },
+    "name": {
+      "type": "string"
+    },
+    "text": {
+      "type": "string"
+    },
+    "hideMaps": {
+      "type": "boolean"
+    },
+    "matchEnded": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "enabled",
+    "name",
+    "text"
+  ]
+}

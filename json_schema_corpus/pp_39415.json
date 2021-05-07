@@ -1,0 +1,24 @@
+{
+  "id": "http://baseurl.com/schemas",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "patient": {
+    "id": "#/core/patient",
+    "type": "object",
+    "allof": [
+      {
+        "$ref": "schemas/general/person.json#general/person"
+      },
+      {
+        "properties": {
+          "diagnosis": {
+            "type": "array",
+            "items": "string"
+          }
+        },
+        "required": [
+          "diagnosis"
+        ]
+      }
+    ]
+  }
+}

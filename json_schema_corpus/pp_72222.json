@@ -1,0 +1,152 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "title": "Webhook Schema",
+  "description": "The types of webhooks supported by SaaSquatch with their corresponding structures.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "title": "Webhook Id",
+      "description": "A unique Id associated with this webhook"
+    },
+    "type": {
+      "type": "string",
+      "title": "Webhook Type",
+      "description": "The type of this webhook",
+      "enum": [
+        "user.created",
+        "coupon.created",
+        "reward.created",
+        "referral.started",
+        "referral.converted",
+        "export.created",
+        "export.completed",
+        "user.reward.balance.changed"
+      ]
+    },
+    "tenantAlias": {
+      "type": "string",
+      "title": "Tenant Alias",
+      "description": "The identifier for the tenant that generated this webhook"
+    },
+    "live": {
+      "type": "boolean",
+      "title": "Is Live Tenant",
+      "description": "Indicates whether this is a live or test tenant"
+    },
+    "created": {
+      "type": "integer",
+      "title": "Created",
+      "description": "The date this webhook was created"
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "tenantAlias",
+    "live",
+    "created"
+  ],
+  "dependencies": {
+    "type": {
+      "oneOf": [
+        {
+          "properties": {
+            "type": {
+              "enum": [
+                "user.created"
+              ]
+            },
+            "data": {
+              "$ref": "UserCreatedData.schema.json#"
+            }
+          }
+        },
+        {
+          "properties": {
+            "type": {
+              "enum": [
+                "coupon.created"
+              ]
+            },
+            "data": {
+              "$ref": "CouponCreatedData.schema.json#"
+            }
+          }
+        },
+        {
+          "properties": {
+            "type": {
+              "enum": [
+                "reward.created"
+              ]
+            },
+            "data": {
+              "$ref": "RewardCreatedData.schema.json#"
+            }
+          }
+        },
+        {
+          "properties": {
+            "type": {
+              "enum": [
+                "referral.started"
+              ]
+            },
+            "data": {
+              "$ref": "ReferralData.schema.json#"
+            }
+          }
+        },
+        {
+          "properties": {
+            "type": {
+              "enum": [
+                "referral.converted"
+              ]
+            },
+            "data": {
+              "$ref": "ReferralData.schema.json#"
+            }
+          }
+        },
+        {
+          "properties": {
+            "type": {
+              "enum": [
+                "export.created"
+              ]
+            },
+            "data": {
+              "$ref": "ExportData.schema.json#"
+            }
+          }
+        },
+        {
+          "properties": {
+            "type": {
+              "enum": [
+                "export.completed"
+              ]
+            },
+            "data": {
+              "$ref": "ExportData.schema.json#"
+            }
+          }
+        },
+        {
+          "properties": {
+            "type": {
+              "enum": [
+                "user.reward.balance.changed"
+              ]
+            },
+            "data": {
+              "$ref": "UserRewardBalanceChanged.schema.json#"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

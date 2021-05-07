@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Project definitions",
+  "description": "A list of project definitions for the Buddah site",
+  "type": "array",
+  "items": {
+    "title": "A project definition",
+    "type": "object",
+    "properties": {
+      "name": {
+        "description": "The name of a project",
+        "type": "string"
+      },
+      "keywords": {
+        "description": "A list of keywords for a project",
+        "type": "array",
+        "items": {
+          "id": "A keyword",
+          "type": "string"
+        },
+        "minItems": 1,
+        "uniqueItems": true
+      },
+      "description": {
+        "description": "The short description of a project",
+        "type": "string"
+      },
+      "license": {
+        "description": "The license or licenses under which the project is licensed",
+        "type": [
+          "string",
+          "array"
+        ],
+        "items": {
+          "id": "A SPDX license identifier, or a URL to a license if it has no SPDX identifier",
+          "type": "string"
+        }
+      },
+      "homepage": {
+        "description": "The URL of a project's homepage, for example a website or Nexus Mods file entry URL",
+        "type": "string",
+        "format": "uri"
+      },
+      "repository": {
+        "description": "The URL at which a project's source code can be found, for example a version control repository or source download host",
+        "type": "string",
+        "format": "uri"
+      }
+    },
+    "required": [
+      "name",
+      "keywords"
+    ]
+  },
+  "uniqueItems": true
+}

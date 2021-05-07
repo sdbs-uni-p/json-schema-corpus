@@ -1,0 +1,94 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://luciozambon.altervista.org/egiga2m/schemas/tree_ts.json",
+  "definition": {
+    "node": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "key": {
+          "type": "string"
+        },
+        "lazy": {
+          "type": "boolean"
+        },
+        "folder": {
+          "type": "boolean"
+        },
+        "expanded": {
+          "type": "boolean"
+        },
+        "children": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/node"
+            },
+            {
+              "$ref": "#/definitions/leaf"
+            }
+          ]
+        }
+      },
+      "required": [
+        "title",
+        "key",
+        "lazy",
+        "folder",
+        "expanded",
+        "children"
+      ],
+      "additionalProperties": false
+    },
+    "leaf": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "key": {
+          "type": "string"
+        },
+        "lazy": {
+          "type": "boolean"
+        },
+        "folder": {
+          "type": "boolean"
+        },
+        "isArray": {
+          "type": "boolean"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "tooltip": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "key",
+        "lazy",
+        "folder",
+        "isArray",
+        "icon",
+        "tooltip"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "type": "array",
+  "items": {
+    "node": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/node"
+        },
+        {
+          "$ref": "#/definitions/leaf"
+        }
+      ]
+    }
+  }
+}

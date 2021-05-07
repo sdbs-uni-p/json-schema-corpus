@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "id": "/schemata/decision",
+  "title": "Decision",
+  "stability": "prototype",
+  "description": "An association has a set of valid **decisions** for an applicant.",
+  "links": [
+    {
+      "description": "List valid decisions for the association that this user identity belongs to.",
+      "href": "/api/v1/user_identities/:user_identity_id/decisions",
+      "method": "GET",
+      "rel": "self",
+      "title": "List",
+      "http_header": {
+        "x-api-key": "0123456789abcdef0123456789abcdef"
+      }
+    }
+  ],
+  "type": "object",
+  "strictProperties": true,
+  "properties": {
+    "href": {
+      "type": "string",
+      "description": "Hypertext reference to this resource.",
+      "pattern": "/api/v1/user_identities/\\d+/decisions",
+      "example": "/api/v1/user_identities/1/decisions"
+    },
+    "decisions": {
+      "type": "array",
+      "items": {
+        "required": [
+          "id",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique identifier of this decision.  **NOTE:** This identifier changes between cycles."
+          },
+          "name": {
+            "type": "string",
+            "description": "Human-readable name for this decision.",
+            "example": "Offer Accepted"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "version": "0.3.0",
+  "id": "RDF-JSON",
+  "description": "RDF JSON definition, see https://github.com/iand/rdf-json",
+  "type": "object",
+  "additionalProperties": {
+    "type": "object",
+    "description": "subject (root object)",
+    "additionalProperties": {
+      "type": "array",
+      "description": "predicate (subject object)",
+      "items": {
+        "type": "object",
+        "description": "object (value array)",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "uri",
+              "bnode",
+              "literal"
+            ]
+          },
+          "value": {
+            "type": "string"
+          },
+          "lang": {
+            "description": "See ftp://ftp.isi.edu/in-notes/bcp/bcp47.txt",
+            "type": "string"
+          },
+          "datatype": {
+            "format": "uri",
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

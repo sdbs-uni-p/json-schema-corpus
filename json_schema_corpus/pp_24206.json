@@ -1,0 +1,101 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Job Execution Schema",
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "Unique identifier",
+      "type": "string"
+    },
+    "hrId": {
+      "description": "Human readable id",
+      "type": "string"
+    },
+    "parentJobId": {
+      "description": "Id of the parent JobExecution entity",
+      "type": "string"
+    },
+    "subordinationType": {
+      "description": "Type of subordination to another JobExecution entities",
+      "type": "string",
+      "enum": [
+        "CHILD",
+        "PARENT_SINGLE",
+        "PARENT_MULTIPLE"
+      ]
+    },
+    "jobProfileName": {
+      "description": "Name of the related JobProfile",
+      "type": "string"
+    },
+    "sourcePath": {
+      "description": "Path to the file",
+      "type": "string"
+    },
+    "runBy": {
+      "description": "First and last name of the user that triggered the job execution",
+      "type": "object",
+      "properties": {
+        "firstName": {
+          "description": "First name",
+          "type": "string"
+        },
+        "lastName": {
+          "description": "Last name",
+          "type": "string"
+        }
+      }
+    },
+    "progress": {
+      "description": "Execution progress of the job",
+      "type": "object",
+      "properties": {
+        "current": {
+          "description": "Currently processing record",
+          "type": "integer"
+        },
+        "total": {
+          "description": "Total number of records to be processed",
+          "type": "integer"
+        }
+      }
+    },
+    "startedDate": {
+      "description": "Date and time when the job execution started",
+      "type": "string",
+      "format": "date-time"
+    },
+    "completedDate": {
+      "description": "Date and time when the job execution completed",
+      "type": "string",
+      "format": "date-time"
+    },
+    "status": {
+      "description": "Current status of the job execution",
+      "type": "string",
+      "$ref": "status.json"
+    },
+    "uiStatus": {
+      "description": "Status that is rendered on UI",
+      "type": "string",
+      "$ref": "uiStatus.json"
+    },
+    "errorStatus": {
+      "description": "Status that describe error state of job execution",
+      "type": "string",
+      "$ref": "errorStatus.json"
+    },
+    "userId": {
+      "description": "ID of the user who created the JobExecution",
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "parentJobId",
+    "subordinationType",
+    "status",
+    "uiStatus",
+    "userId"
+  ]
+}

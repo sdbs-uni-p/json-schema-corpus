@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "staticIpTierProductSpecDetail",
+  "id": "staticIpTierProductSpecDetail",
+  "description": "Details of an Static IP Tier product specification. These details are used for Serviceability Responses.",
+  "type": "object",
+  "required": [
+    "objectType"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the Static IP Tier Product Specification Detail.",
+      "maxLength": 15
+    },
+    "objectType": {
+      "type": "string",
+      "enum": [
+        "staticIpTierProductSpecDetail"
+      ],
+      "description": "The type of the object, staticIpTierProductSpecDetail."
+    },
+    "type": {
+      "type": "string",
+      "description": " The specific type of product being detailed.",
+      "enum": [
+        "STATIC_IP_TIER"
+      ]
+    },
+    "minStaticIpAddresses": {
+      "type": "number",
+      "required": true
+    },
+    "maxStaticIpAddresses": {
+      "type": "number",
+      "required": true
+    },
+    "allowableFor": {
+      "type": "string",
+      "enum": [
+        "Broadband"
+      ]
+    }
+  }
+}

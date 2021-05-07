@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "User Code Base",
+  "description": "Provide user code",
+  "type": "object",
+  "properties": {
+    "url": {
+      "title": "URL",
+      "type": "string"
+    },
+    "tag": {
+      "title": "Tag",
+      "type": "string"
+    },
+    "revision_id": {
+      "title": "Revision Identifier",
+      "type": "string"
+    }
+  }
+}

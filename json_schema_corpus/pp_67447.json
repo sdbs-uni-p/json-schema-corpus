@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "keyspace": {
+      "id": "keyspace",
+      "type": "string"
+    },
+    "changeSets": {
+      "id": "changeSets",
+      "type": "array",
+      "items": {
+        "id": "0",
+        "type": "object",
+        "properties": {
+          "id": {
+            "id": "id",
+            "type": "integer"
+          },
+          "author": {
+            "id": "author",
+            "type": "string"
+          },
+          "cql": {
+            "id": "cql",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "additionalItems": false
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "keyspace",
+    "changeSets"
+  ]
+}

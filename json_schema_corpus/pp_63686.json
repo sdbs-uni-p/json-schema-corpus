@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "title": "Schema of Learning Parameters",
+  "type": "object",
+  "required": [
+    "number_of_epochs",
+    "learning_rate"
+  ],
+  "properties": {
+    "number_of_epochs": {
+      "type": "integer"
+    },
+    "learning_rate": {
+      "type": "number"
+    }
+  }
+}

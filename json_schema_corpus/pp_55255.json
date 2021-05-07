@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Test schema.",
+  "type": "object",
+  "definitions": {
+    "port": {
+      "description": "schema for a port",
+      "type": "integer",
+      "minimum": 1024,
+      "maximum": 65536,
+      "requiredMessage": "port is required",
+      "messages": {
+        "type": "invalid type. Must be an integer.",
+        "minimum": "invalid value. Must be an integer greater than or equal to 1024.",
+        "maximum": "invalid value. Must be an integer less than or equal to 65536."
+      }
+    },
+    "address": {
+      "description": "schema for a host address",
+      "type": "string",
+      "format": "hostname",
+      "messages": {
+        "type": "invalid type. Must be a string.",
+        "format": "invalid format. Must be a valid hostname."
+      }
+    }
+  },
+  "properties": {
+    "port": {
+      "$ref": "#/definitions/port"
+    },
+    "address": {
+      "$ref": "#/definitions/address"
+    },
+    "str": {
+      "type": "string",
+      "format": "only-a",
+      "messages": {
+        "type": "invalid type. Must be a string.",
+        "format": "invalid format. Must only contain the letter `a`."
+      }
+    }
+  },
+  "required": [
+    "port"
+  ],
+  "messages": {
+    "type": "invalid data type where an object is expected"
+  }
+}

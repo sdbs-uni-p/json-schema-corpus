@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://localhost:9999/schemas/credentialInfo.json",
+  "type": "object",
+  "properties": {
+    "token": {
+      "id": "token",
+      "type": "string"
+    },
+    "clientId": {
+      "id": "clientId",
+      "type": "string"
+    }
+  },
+  "required": [
+    "token",
+    "clientId"
+  ]
+}

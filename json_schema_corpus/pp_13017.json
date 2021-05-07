@@ -1,0 +1,79 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "definitions": {
+    "test": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "Test",
+      "links": [
+        {
+          "description": "Create a new test.",
+          "href": "/tests",
+          "method": "POST",
+          "rel": "create",
+          "schema": {
+            "required": [
+              "name",
+              "email"
+            ],
+            "properties": {
+              "name": {
+                "$ref": "#/definitions/test/definitions/name"
+              },
+              "email": {
+                "$ref": "#/definitions/test/definitions/email"
+              }
+            },
+            "type": [
+              "object"
+            ]
+          },
+          "title": "Create"
+        }
+      ],
+      "definitions": {
+        "name": {
+          "description": "the name of the test",
+          "type": [
+            "string"
+          ],
+          "example": "Testy test"
+        },
+        "email": {
+          "description": "test email",
+          "type": "string",
+          "format": "email",
+          "example": "bob@example.com"
+        }
+      },
+      "description": "A grand test.  Perhaps the best test?",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/test/definitions/name"
+        },
+        "email": {
+          "$ref": "#/definitions/test/definitions/email"
+        }
+      },
+      "type": [
+        "object"
+      ]
+    }
+  },
+  "properties": {
+    "test": {
+      "$ref": "#/definitions/test"
+    }
+  },
+  "type": [
+    "object"
+  ],
+  "description": "Test of a test.",
+  "id": "json-schema-validator",
+  "links": [
+    {
+      "href": "https://localhost:3000",
+      "rel": "self"
+    }
+  ],
+  "title": "JSON Schema Validator"
+}

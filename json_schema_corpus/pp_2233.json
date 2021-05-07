@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "musicJson",
+  "title": "Music Score  Notation",
+  "description": "A JSON notation for musical scores.",
+  "type": "object",
+  "definitions": {
+    "metadata": {
+      "title": "Information about the music and the file.",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "The name of the composition"
+        },
+        "authors": {
+          "description": "The name(s) of who created this file.",
+          "$ref": "./helpers.json#/definitions/nameOrNames"
+        },
+        "composers": {
+          "$ref": "./helpers.json#/definitions/nameOrNames",
+          "description": "The name(s) of who composed the music."
+        },
+        "composingDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date the music what composed"
+        },
+        "creationDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The data the file was created."
+        }
+      }
+    }
+  },
+  "anyOf": [
+    {
+      "$ref": "./structural.json#/definitions/score"
+    },
+    {
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/metadata"
+        },
+        "signatures": {
+          "$ref": "./notation.json#/definitions/signatures"
+        }
+      }
+    }
+  ]
+}

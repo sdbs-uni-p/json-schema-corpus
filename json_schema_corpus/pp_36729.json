@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://jsonschema.net",
+  "type": "object",
+  "properties": {
+    "first_name": {
+      "id": "http://jsonschema.net/first_name",
+      "type": "string"
+    },
+    "last_name": {
+      "id": "http://jsonschema.net/last_name",
+      "type": "string"
+    },
+    "birthday": {
+      "id": "http://jsonschema.net/birthday",
+      "type": "string"
+    },
+    "address": {
+      "$ref": "address.json"
+    }
+  },
+  "required": [
+    "first_name",
+    "last_name",
+    "birthday",
+    "address"
+  ]
+}

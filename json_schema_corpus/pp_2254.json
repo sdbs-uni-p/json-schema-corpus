@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://localhost:9999/schemas/systemStatus.json",
+  "type": "object",
+  "properties": {
+    "workspace": {
+      "$ref": "serviceState.json"
+    },
+    "fileManager": {
+      "$ref": "serviceState.json"
+    },
+    "externalLogin": {
+      "$ref": "serviceState.json"
+    }
+  },
+  "required": [
+    "workspace",
+    "fileManager",
+    "externalLogin"
+  ]
+}

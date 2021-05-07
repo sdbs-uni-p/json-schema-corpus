@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "$license": [
+    "http://www.apache.org/licenses/LICENSE-2.0"
+  ],
+  "id": "#",
+  "type": "object",
+  "javaType": "probot.TopMentionItem",
+  "title": "TopMentionItem",
+  "properties": {
+    "count": {
+      "type": "integer"
+    },
+    "id": {
+      "$ref": "http://streams.apache.org/streams-contrib/streams-provider-twitter/org/apache/streams/twitter/pojo/User.json#properties/id"
+    },
+    "user": {
+      "$ref": "http://streams.apache.org/streams-contrib/streams-provider-twitter/org/apache/streams/twitter/pojo/User.json"
+    }
+  }
+}

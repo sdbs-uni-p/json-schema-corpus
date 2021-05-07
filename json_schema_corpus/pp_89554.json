@@ -1,0 +1,385 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "definitions": {
+    "base": {
+      "additionalProperties": false,
+      "properties": {
+        "hubX": {
+          "description": "The x coordinate of the hub ID for the Newther Hub from which the base can be accessed",
+          "oneOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "enum": [
+                -0.5,
+                0.5
+              ]
+            }
+          ]
+        },
+        "hubZ": {
+          "description": "The z coordinate of the hub ID for the Newther Hub from which the base can be accessed",
+          "oneOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "enum": [
+                -0.5,
+                0.5
+              ]
+            }
+          ]
+        },
+        "name": {
+          "description": "The base's name",
+          "type": "string"
+        },
+        "tunnel": {
+          "description": "A number specifying which tunnel of the wall leads to the base. -3 for the leftmost tunnel (light blue), 3 for the rightmost tunnel (black)",
+          "oneOf": [
+            {
+              "maximum": -1,
+              "minimum": -3
+            },
+            {
+              "maximum": 3,
+              "minimum": 1
+            }
+          ],
+          "type": "integer"
+        },
+        "tunnelItem": {
+          "$ref": "#/definitions/item_stub",
+          "description": "An object representing the Minecraft item used for the item frame that labels the tunnel from the hub to the base. The format is an item stub representing a specific item. If unspecified, a dye item with the color of the base's tunnel is used as a placeholder."
+        },
+        "wall": {
+          "description": "The tunnel's wall. \"N\" for north (red), \"E\" for east (green), \"S\" for south (yellow), or \"W\" for west (blue).",
+          "enum": [
+            "N",
+            "E",
+            "S",
+            "W"
+          ]
+        }
+      },
+      "type": "object"
+    },
+    "color": {
+      "additionalProperties": false,
+      "definitions": {
+        "colorValue": {
+          "maximum": 255,
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "properties": {
+        "blue": {
+          "$ref": "#/definitions/color/definitions/colorValue"
+        },
+        "green": {
+          "$ref": "#/definitions/color/definitions/colorValue"
+        },
+        "red": {
+          "$ref": "#/definitions/color/definitions/colorValue"
+        }
+      },
+      "required": [
+        "blue",
+        "green",
+        "red"
+      ],
+      "type": "object"
+    },
+    "item_stub": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/item_stub_id"
+        },
+        {
+          "$ref": "#/definitions/item_stub_object"
+        }
+      ]
+    },
+    "item_stub_id": {
+      "description": "The new-style item ID",
+      "pattern": "^[0-9a-z_]+:[0-9a-z_]+$",
+      "type": "string"
+    },
+    "item_stub_object": {
+      "additionalProperties": true,
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "damage": {
+              "description": "The damage value.",
+              "type": "integer"
+            },
+            "id": {}
+          },
+          "required": [
+            "id",
+            "damage"
+          ]
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "effect": {
+              "description": "The new-style status effect ID",
+              "pattern": "^[0-9a-z_]+:[0-9a-z_]+$",
+              "type": "string"
+            },
+            "id": {}
+          },
+          "required": [
+            "id",
+            "effect"
+          ]
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "id": {},
+            "tagValue": {
+              "description": "The value of the required NBT tag (as specified by tagPath in the item info)"
+            }
+          },
+          "required": [
+            "id",
+            "tagValue"
+          ]
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "id": {}
+          }
+        }
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/item_stub_id"
+        }
+      },
+      "type": "object"
+    },
+    "minecraft_account": {
+      "additionalProperties": false,
+      "properties": {
+        "nicks": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "uuid": {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[34][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "url": {
+      "pattern": "^https?://[^\\s/$.?#].[^\\s]*$",
+      "type": "string"
+    }
+  },
+  "description": "A Wurstmineberg people.json person object",
+  "id": "person_schema_v3.json",
+  "properties": {
+    "alt": {
+      "description": "An array of objects formatted like the 'minecraft' object below, representing alternate Minecraft accounts of the user which have access to the main world in Spectator mode.",
+      "items": {
+        "$ref": "#/definitions/minecraft_account"
+      },
+      "type": "array"
+    },
+    "base": {
+      "description": "An array of objects representing bases. Each base object contains any of the following pairs, all optional",
+      "items": {
+        "$ref": "#/definitions/base"
+      },
+      "type": "array"
+    },
+    "description": {
+      "description": "A string containing a characterization of the person. May contain the following HTML tags for formatting: <a href><em><s><span class=\"muted\">",
+      "type": "string"
+    },
+    "favColor": {
+      "$ref": "#/definitions/color",
+      "description": "An object containing three pairs named \"blue\", \"green\" and \"red\", each with an integer value between 0 and 255 inclusive, representing the person's favorite color in RGB format. This color is used to color-code diagrams. The default favorite color is transparent."
+    },
+    "gravatar": {
+      "description": "A string containing an email address. If specified and a Gravatar is associated with the address, it will be used as the person's avatar on the website. Otherwise, the head from their Minecraft skin will be used.",
+      "format": "email",
+      "type": "string"
+    },
+    "minecraft": {
+      "$ref": "#/definitions/minecraft_account",
+      "description": "An object containing Minecraft account information"
+    },
+    "mojira": {
+      "description": "A string containing the person's username on Mojira",
+      "type": "string"
+    },
+    "name": {
+      "description": "A string containing the person's display name. This name will be used when there is no context-specific username (e.g. IRC or Minecraft) to use for the person. For example, the website and this wiki both use display names. The display name defaults to the person's Wurstmineberg ID.",
+      "type": "string"
+    },
+    "options": {
+      "additionalProperties": false,
+      "description": "An object containing the options that are set for the person. Keys consist of ASCII lowercase letters and underscores. Values are boolean. For info on what individual options do, see the !Option command's documentation.",
+      "patternProperties": {
+        "^[a-z_]+$": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "slack": {
+      "additionalProperties": false,
+      "description": "An object containing Slack account information:",
+      "properties": {
+        "id": {
+          "description": "A string containing the ID of the person's Slack account. Unlike the @username, this is expected not to change, and the \"username\" field may be updated automatically using the value of this field.",
+          "type": "string"
+        },
+        "username": {
+          "description": "A string containing the person's current @username on Slack, not including the @ prefix.",
+          "pattern": "^[a-z0-9][a-z0-9._-]*$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "statusHistory": {
+      "description": "A chronologically sorted array of status change objects.",
+      "items": {
+        "additionalProperties": false,
+        "oneOf": [
+          {
+            "properties": {
+              "status": {
+                "enum": [
+                  "former"
+                ]
+              }
+            },
+            "required": [
+              "reason"
+            ]
+          },
+          {
+            "allOf": [
+              {
+                "not": {
+                  "required": [
+                    "reason"
+                  ]
+                }
+              },
+              {
+                "not": {
+                  "properties": {
+                    "status": {
+                      "enum": [
+                        "former"
+                      ]
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "properties": {
+          "by": {
+            "description": "The Wurstmineberg ID of the person who performed the status change, e.g. the person who invited this person, the op who executed the !Whitelist command, or the person who vetoed them. For a whitelisting event of a person who joined before the whitelist freeze, this is the person who introduced them to the server. This field is omitted when it is unknown who performed the status change.",
+            "pattern": "^[a-z][a-z0-9]{1,15}$",
+            "type": "string"
+          },
+          "date": {
+            "description": "A string representing the date and time the status change happened. Formatted as an ISO 8601 date string in UTC. It may or may not include the time of day. The first \"date\" value in a person's status history determines the canonical sorting order for people. If it is missing, the person is sorted after everyone else, ASCIIbetically by Wurstmineberg ID.",
+            "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
+            "type": "string"
+          },
+          "reason": {
+            "description": "Required when \"status\" is \"former\": the reason the person was removed from the whitelist or prevented from being whitelisted.",
+            "enum": [
+              "coc",
+              "guest",
+              "inactivity",
+              "request",
+              "vetoed"
+            ],
+            "type": "string"
+          },
+          "status": {
+            "description": "Required: a string specifying the person's status after the status change",
+            "enum": [
+              "disabled",
+              "former",
+              "founding",
+              "guest",
+              "invited",
+              "later"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "status"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "twitch": {
+      "additionalProperties": true,
+      "description": "A Twitch user info obbect, as returned by the Twitch Helix API's Get Users endpoint.",
+      "properties": {
+        "id": {
+          "description": "User\u2019s ID.",
+          "type": "string"
+        },
+        "login": {
+          "description": "User\u2019s login name.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "twitter": {
+      "additionalProperties": false,
+      "description": "An object containing Twitter account information",
+      "properties": {
+        "id": {
+          "description": "A number containing the ID of the person's Twitter account. Unlike the @username, this is expected not to change, and the \"username\" field may be updated automatically using the value of this field.",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "username": {
+          "description": "A string containing the person's current @username on Twitter, not including the @ prefix.",
+          "pattern": "^[A-Za-z0-9_]{1,15}$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "website": {
+      "$ref": "#definitions/url",
+      "description": "A string containing an http: or https: URL to a personal website"
+    },
+    "wiki": {
+      "description": "A string containing either the person's username on this wiki, including the User: prefix, or the title (not display title) of their article if they don't have an account.",
+      "type": "string"
+    }
+  },
+  "title": "people.json v3 person object",
+  "type": "object"
+}

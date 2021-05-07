@@ -1,0 +1,97 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "key": {
+      "type": "string",
+      "description": "the assessment app's unique (within that app) and immutable key for this assessment type"
+    },
+    "userTitle": {
+      "type": "string",
+      "description": "A user-facing label/title for this assessment type"
+    },
+    "candidateTitle": {
+      "type": "string",
+      "description": "If present, a more specific label/title seen by candidates for this assessment type"
+    },
+    "canReuse": {
+      "type": "boolean",
+      "description": "true if an assessment result on one job application can be reused when the same candidate makes another job application"
+    },
+    "daysToExpire": {
+      "type": "integer",
+      "description": "when canReuse == true, this is the default number of elapsed days before the previous assessment's result becomes no longer valid (as measured from the date that assessment was completed) - pass 0 to never expire"
+    },
+    "daysToExpireIsFixed": {
+      "type": "boolean",
+      "description": "when canReuse == true, this determines whether users are allowed to override daysToExpire when configuring an assessment"
+    },
+    "isPassFail": {
+      "type": "boolean",
+      "description": "whether this assessment results in an unambiguous pass/fail result, as stored in assessmentDetail.overallResult.passedIndicator"
+    },
+    "sortable": {
+      "type": "boolean",
+      "description": "whether assessment results can be sorted - if so, an API on the assessment app is called, passing an array of existing assessment IDs, so the app can return them in sorted order. Defaults to false if not present"
+    },
+    "candidateDescription": {
+      "type": "string",
+      "description": "If present, a more specific label/title seen by the candidate, of the purpose of this assessment. Markdown format. e.g.: Video interview is a short procedure you can complete on your own phone. We like to see who we're hiring."
+    },
+    "userDescription": {
+      "type": "string",
+      "description": "A description, worded for the user, of the purpose of this assessment. Markdown format. e.g.: Video interview captures a short video from the candidate."
+    },
+    "appCommunicatesDirectlyToCandidate": {
+      "type": "boolean",
+      "description": "Deprecated - all apps should communicate directly to candidates"
+    }
+  },
+  "type": "object",
+  "properties": {
+    "key": {
+      "$ref": "#/definitions/key"
+    },
+    "userTitle": {
+      "$ref": "#/definitions/userTitle"
+    },
+    "candidateTitle": {
+      "$ref": "#/definitions/candidateTitle"
+    },
+    "daysToExpire": {
+      "$ref": "#/definitions/daysToExpire"
+    },
+    "daysToExpireIsFixed": {
+      "$ref": "#/definitions/daysToExpireIsFixed"
+    },
+    "canReuse": {
+      "$ref": "#/definitions/canReuse"
+    },
+    "isPassFail": {
+      "$ref": "#/definitions/isPassFail"
+    },
+    "sortable": {
+      "$ref": "#/definitions/sortable"
+    },
+    "candidateDescription": {
+      "$ref": "#/definitions/candidateDescription"
+    },
+    "userDescription": {
+      "$ref": "#/definitions/userDescription"
+    },
+    "appCommunicatesDirectlyToCandidate": {
+      "$ref": "#/definitions/appCommunicatesDirectlyToCandidate"
+    },
+    "image": {
+      "$ref": "assessmentRead.json#/definitions/imageUrl"
+    }
+  },
+  "required": [
+    "key",
+    "userTitle",
+    "daysToExpire",
+    "isPassFail",
+    "canReuse",
+    "userDescription",
+    "image"
+  ]
+}

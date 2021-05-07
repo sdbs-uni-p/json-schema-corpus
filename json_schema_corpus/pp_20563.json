@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "type": "object",
+  "description": "Schema for creating a new database",
+  "required": [],
+  "properties": {
+    "shards": {
+      "type": "number",
+      "description": "Number of Shards to be used for the DB"
+    }
+  }
+}

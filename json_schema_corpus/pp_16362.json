@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Open Key Expression",
+  "type": "object",
+  "properties": {
+    "open_key": {
+      "enum": [
+        "sym_key",
+        "asym_prv_key"
+      ]
+    }
+  },
+  "required": [
+    "open_key"
+  ],
+  "additionalProperties": false
+}

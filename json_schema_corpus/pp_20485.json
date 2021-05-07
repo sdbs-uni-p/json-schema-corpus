@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "content-type": "application/x-www-form-urlencoded",
+  "endpoint": "/token",
+  "id": "http://localhost:3000/schemas/token-jwt-bearer-assertion-grant-request.json#",
+  "method": "POST",
+  "properties": {
+    "assertion": {
+      "description": "The JWT assertion.",
+      "type": "string"
+    },
+    "grant_type": {
+      "description": "Must be set to urn:ietf:params:oauth:grant-type:jwt-bearer.",
+      "enum": [
+        "urn:ietf:params:oauth:grant-type:jwt-bearer"
+      ],
+      "type": "string"
+    },
+    "scope": {
+      "description": "Optional requested scope values for the access token.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "grant_type"
+  ],
+  "title": "Token jwt bearer assertion grant request",
+  "type": "object"
+}

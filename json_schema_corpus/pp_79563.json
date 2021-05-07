@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "details for a previously uploaded file",
+  "definitions": {
+    "via": {
+      "type": "string",
+      "description": "the mechanism via which the file was uploaded - either 'device' or the fqdn of a cloud storage platform (e.g. dropbox.com)"
+    },
+    "fileName": {
+      "type": "string"
+    },
+    "mediaType": {
+      "description": "keep in synch with the trait document_asStream",
+      "enum": [
+        "application/pdf",
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "application/msword",
+        "application/rtf",
+        "text/plain",
+        "image/png",
+        "image/jpeg",
+        "image/gif",
+        "text/html",
+        "audio/x-mpeg-3",
+        "video/x-msvideo",
+        "video/mp4"
+      ]
+    },
+    "data": {
+      "type": "string",
+      "media": {
+        "binaryEncoding": "base64"
+      }
+    }
+  },
+  "type": "object",
+  "properties": {
+    "fileName": {
+      "$ref": "#/definitions/fileName"
+    },
+    "via": {
+      "$ref": "#/definitions/via"
+    },
+    "mediaType": {
+      "$ref": "#/definitions/mediaType"
+    },
+    "size": {
+      "type": "integer"
+    },
+    "md5": {
+      "type": "string",
+      "description": "hash of the file's binary content"
+    },
+    "dateUploaded": {
+      "type": "string",
+      "format": "date-time",
+      "description": "the date and time the file was uploaded"
+    },
+    "preSignedUri": {
+      "type": "string",
+      "format": "uri",
+      "description": "pre-signed link as per http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html to access the raw data. Includes file name as the trailing component so that browsers name the download correctly."
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "fileName",
+    "size",
+    "mediaType",
+    "preSignedUri"
+  ]
+}

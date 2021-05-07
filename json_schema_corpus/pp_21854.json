@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "required": [
+    "RestApiId",
+    "ContentType",
+    "Name",
+    "Schema"
+  ],
+  "properties": {
+    "RestApiId": {
+      "type": "string",
+      "pattern": "^[a-z0-9]{10}$"
+    },
+    "ContentType": {
+      "type": "string",
+      "enum": [
+        "application/json"
+      ]
+    },
+    "Name": {
+      "type": "string"
+    },
+    "Schema": {
+      "anyOf": [
+        {
+          "type": "object"
+        },
+        {
+          "type": "string"
+        }
+      ]
+    },
+    "Description": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

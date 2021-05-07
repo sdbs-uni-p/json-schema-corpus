@@ -1,0 +1,791 @@
+{
+  "$schema": "http://interagent.github.io/interagent-hyper-schema",
+  "type": [
+    "object"
+  ],
+  "definitions": {
+    "admin": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "Admin",
+      "description": "A Ticketfy Admin",
+      "stability": "prototype",
+      "strictProperties": true,
+      "type": [
+        "object"
+      ],
+      "definitions": {
+        "id": {
+          "description": "unique identifier of admin",
+          "readOnly": true,
+          "format": "uuid",
+          "type": [
+            "string"
+          ]
+        },
+        "name": {
+          "description": "unique name of admin",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "email": {
+          "description": "unique email of admin",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "password": {
+          "description": "the admin's password",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "password_confirmation": {
+          "description": "the admin's password confirmation",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "identity": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/admin/definitions/id"
+            }
+          ]
+        },
+        "created_at": {
+          "description": "when admin was created",
+          "format": "date-time",
+          "type": [
+            "string"
+          ]
+        },
+        "updated_at": {
+          "description": "when admin was updated",
+          "format": "date-time",
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "links": [
+        {
+          "description": "Create a new admin.",
+          "href": "/admins",
+          "method": "POST",
+          "rel": "create",
+          "http_header": {
+            "access-token": "the user's access-token",
+            "client": "the user client's identifier",
+            "uid": "the user's identifier"
+          },
+          "schema": {
+            "properties": {
+              "name": {
+                "$ref": "#/definitions/admin/definitions/name"
+              },
+              "email": {
+                "$ref": "#/definitions/admin/definitions/email"
+              },
+              "password": {
+                "$ref": "#/definitions/admin/definitions/password"
+              },
+              "password_confirmation": {
+                "$ref": "#/definitions/admin/definitions/password_confirmation"
+              }
+            },
+            "required": [
+              "name",
+              "email",
+              "password",
+              "password_confirmation"
+            ],
+            "type": [
+              "object"
+            ]
+          },
+          "title": "Create"
+        },
+        {
+          "description": "Delete an existing admin.",
+          "href": "/admins/{(%23%2Fdefinitions%2Fadmin%2Fdefinitions%2Fidentity)}",
+          "method": "DELETE",
+          "rel": "destroy",
+          "http_header": {
+            "access-token": "the user's access-token",
+            "client": "the user client's identifier",
+            "uid": "the user's identifier"
+          },
+          "title": "Delete"
+        },
+        {
+          "description": "Info for existing admin.",
+          "href": "/admins/{(%23%2Fdefinitions%2Fadmin%2Fdefinitions%2Fidentity)}",
+          "method": "GET",
+          "rel": "self",
+          "http_header": {
+            "access-token": "the user's access-token",
+            "client": "the user client's identifier",
+            "uid": "the user's identifier"
+          },
+          "title": "Info"
+        },
+        {
+          "description": "List existing admins.",
+          "href": "/admins",
+          "method": "GET",
+          "rel": "instances",
+          "http_header": {
+            "access-token": "the user's access-token",
+            "client": "the user client's identifier",
+            "uid": "the user's identifier"
+          },
+          "title": "List"
+        },
+        {
+          "description": "Update an existing admin.",
+          "href": "/admins/{(%23%2Fdefinitions%2Fadmin%2Fdefinitions%2Fidentity)}",
+          "method": "PATCH",
+          "rel": "update",
+          "http_header": {
+            "access-token": "the user's access-token",
+            "client": "the user client's identifier",
+            "uid": "the user's identifier"
+          },
+          "schema": {
+            "properties": {
+              "name": {
+                "$ref": "#/definitions/admin/definitions/name"
+              },
+              "email": {
+                "$ref": "#/definitions/admin/definitions/email"
+              },
+              "password": {
+                "$ref": "#/definitions/admin/definitions/password"
+              }
+            },
+            "type": [
+              "object"
+            ]
+          },
+          "title": "Update"
+        }
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/admin/definitions/id"
+        },
+        "name": {
+          "$ref": "#/definitions/admin/definitions/name"
+        },
+        "email": {
+          "$ref": "#/definitions/admin/definitions/email"
+        },
+        "password": {
+          "$ref": "#/definitions/admin/definitions/password"
+        },
+        "password_confirmation": {
+          "$ref": "#/definitions/admin/definitions/password_confirmation"
+        },
+        "created_at": {
+          "$ref": "#/definitions/admin/definitions/created_at"
+        },
+        "updated_at": {
+          "$ref": "#/definitions/admin/definitions/updated_at"
+        }
+      }
+    },
+    "agent": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "Agent",
+      "description": "A Ticketfy Agent",
+      "stability": "prototype",
+      "strictProperties": true,
+      "type": [
+        "object"
+      ],
+      "definitions": {
+        "id": {
+          "description": "unique identifier of agent",
+          "readOnly": true,
+          "format": "uuid",
+          "type": [
+            "string"
+          ]
+        },
+        "name": {
+          "description": "unique name of agent",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "email": {
+          "description": "unique email of agent",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "password": {
+          "description": "the agent's password",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "password_confirmation": {
+          "description": "the agent's password confirmation",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "identity": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/agent/definitions/id"
+            }
+          ]
+        },
+        "created_at": {
+          "description": "when agent was created",
+          "format": "date-time",
+          "type": [
+            "string"
+          ]
+        },
+        "updated_at": {
+          "description": "when agent was updated",
+          "format": "date-time",
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "links": [
+        {
+          "description": "Create a new agent.",
+          "href": "/agents",
+          "method": "POST",
+          "rel": "create",
+          "http_header": {
+            "access-token": "the user's access-token",
+            "client": "the user client's identifier",
+            "uid": "the user's identifier"
+          },
+          "schema": {
+            "properties": {
+              "name": {
+                "$ref": "#/definitions/agent/definitions/name"
+              },
+              "email": {
+                "$ref": "#/definitions/agent/definitions/email"
+              },
+              "password": {
+                "$ref": "#/definitions/agent/definitions/password"
+              },
+              "password_confirmation": {
+                "$ref": "#/definitions/agent/definitions/password_confirmation"
+              }
+            },
+            "required": [
+              "name",
+              "email",
+              "password",
+              "password_confirmation"
+            ],
+            "type": [
+              "object"
+            ]
+          },
+          "title": "Create"
+        },
+        {
+          "description": "Delete an existing agent.",
+          "href": "/agents/{(%23%2Fdefinitions%2Fagent%2Fdefinitions%2Fidentity)}",
+          "method": "DELETE",
+          "rel": "destroy",
+          "http_header": {
+            "access-token": "the user's access-token",
+            "client": "the user client's identifier",
+            "uid": "the user's identifier"
+          },
+          "title": "Delete"
+        },
+        {
+          "description": "Info for existing agent.",
+          "href": "/agents/{(%23%2Fdefinitions%2Fagent%2Fdefinitions%2Fidentity)}",
+          "method": "GET",
+          "rel": "self",
+          "http_header": {
+            "access-token": "the user's access-token",
+            "client": "the user client's identifier",
+            "uid": "the user's identifier"
+          },
+          "title": "Info"
+        },
+        {
+          "description": "List existing agents.",
+          "href": "/agents",
+          "method": "GET",
+          "rel": "instances",
+          "http_header": {
+            "access-token": "the user's access-token",
+            "client": "the user client's identifier",
+            "uid": "the user's identifier"
+          },
+          "title": "List"
+        },
+        {
+          "description": "Update an existing agent.",
+          "href": "/agents/{(%23%2Fdefinitions%2Fagent%2Fdefinitions%2Fidentity)}",
+          "method": "PATCH",
+          "rel": "update",
+          "http_header": {
+            "access-token": "the user's access-token",
+            "client": "the user client's identifier",
+            "uid": "the user's identifier"
+          },
+          "schema": {
+            "properties": {
+              "name": {
+                "$ref": "#/definitions/agent/definitions/name"
+              },
+              "email": {
+                "$ref": "#/definitions/agent/definitions/email"
+              },
+              "password": {
+                "$ref": "#/definitions/agent/definitions/password"
+              }
+            },
+            "type": [
+              "object"
+            ]
+          },
+          "title": "Update"
+        }
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/agent/definitions/id"
+        },
+        "name": {
+          "$ref": "#/definitions/agent/definitions/name"
+        },
+        "email": {
+          "$ref": "#/definitions/agent/definitions/email"
+        },
+        "password": {
+          "$ref": "#/definitions/agent/definitions/password"
+        },
+        "password_confirmation": {
+          "$ref": "#/definitions/agent/definitions/password_confirmation"
+        },
+        "created_at": {
+          "$ref": "#/definitions/agent/definitions/created_at"
+        },
+        "updated_at": {
+          "$ref": "#/definitions/agent/definitions/updated_at"
+        }
+      }
+    },
+    "customer": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "Customer",
+      "description": "A Ticketfy Customer",
+      "stability": "prototype",
+      "strictProperties": true,
+      "type": [
+        "object"
+      ],
+      "definitions": {
+        "id": {
+          "description": "unique identifier of customer",
+          "readOnly": true,
+          "format": "uuid",
+          "type": [
+            "string"
+          ]
+        },
+        "name": {
+          "description": "unique name of customer",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "email": {
+          "description": "unique email of customer",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "password": {
+          "description": "the customer's password",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "password_confirmation": {
+          "description": "the customer's password confirmation",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "identity": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/customer/definitions/id"
+            }
+          ]
+        },
+        "created_at": {
+          "description": "when customer was created",
+          "format": "date-time",
+          "type": [
+            "string"
+          ]
+        },
+        "updated_at": {
+          "description": "when customer was updated",
+          "format": "date-time",
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "links": [
+        {
+          "description": "Create a new customer.",
+          "href": "/customers",
+          "method": "POST",
+          "rel": "create",
+          "http_header": {
+            "access-token": "the user's access-token",
+            "client": "the user client's identifier",
+            "uid": "the user's identifier"
+          },
+          "schema": {
+            "properties": {
+              "name": {
+                "$ref": "#/definitions/customer/definitions/name"
+              },
+              "email": {
+                "$ref": "#/definitions/customer/definitions/email"
+              },
+              "password": {
+                "$ref": "#/definitions/customer/definitions/password"
+              },
+              "password_confirmation": {
+                "$ref": "#/definitions/customer/definitions/password_confirmation"
+              }
+            },
+            "required": [
+              "name",
+              "email",
+              "password",
+              "password_confirmation"
+            ],
+            "type": [
+              "object"
+            ]
+          },
+          "title": "Create"
+        },
+        {
+          "description": "Delete an existing customer.",
+          "href": "/customers/{(%23%2Fdefinitions%2Fcustomer%2Fdefinitions%2Fidentity)}",
+          "method": "DELETE",
+          "rel": "destroy",
+          "http_header": {
+            "access-token": "the user's access-token",
+            "client": "the user client's identifier",
+            "uid": "the user's identifier"
+          },
+          "title": "Delete"
+        },
+        {
+          "description": "Info for existing customer.",
+          "href": "/customers/{(%23%2Fdefinitions%2Fcustomer%2Fdefinitions%2Fidentity)}",
+          "method": "GET",
+          "rel": "self",
+          "http_header": {
+            "access-token": "the user's access-token",
+            "client": "the user client's identifier",
+            "uid": "the user's identifier"
+          },
+          "title": "Info"
+        },
+        {
+          "description": "List existing customers.",
+          "href": "/customers",
+          "method": "GET",
+          "rel": "instances",
+          "http_header": {
+            "access-token": "the user's access-token",
+            "client": "the user client's identifier",
+            "uid": "the user's identifier"
+          },
+          "title": "List"
+        },
+        {
+          "description": "Update an existing customer.",
+          "href": "/customers/{(%23%2Fdefinitions%2Fcustomer%2Fdefinitions%2Fidentity)}",
+          "method": "PATCH",
+          "rel": "update",
+          "http_header": {
+            "access-token": "the user's access-token",
+            "client": "the user client's identifier",
+            "uid": "the user's identifier"
+          },
+          "schema": {
+            "properties": {
+              "name": {
+                "$ref": "#/definitions/customer/definitions/name"
+              },
+              "email": {
+                "$ref": "#/definitions/customer/definitions/email"
+              },
+              "password": {
+                "$ref": "#/definitions/customer/definitions/password"
+              }
+            },
+            "type": [
+              "object"
+            ]
+          },
+          "title": "Update"
+        }
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/customer/definitions/id"
+        },
+        "name": {
+          "$ref": "#/definitions/customer/definitions/name"
+        },
+        "email": {
+          "$ref": "#/definitions/customer/definitions/email"
+        },
+        "password": {
+          "$ref": "#/definitions/customer/definitions/password"
+        },
+        "password_confirmation": {
+          "$ref": "#/definitions/customer/definitions/password_confirmation"
+        },
+        "created_at": {
+          "$ref": "#/definitions/customer/definitions/created_at"
+        },
+        "updated_at": {
+          "$ref": "#/definitions/customer/definitions/updated_at"
+        }
+      }
+    },
+    "ticket": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "Ticket",
+      "description": "A Ticketfy Ticket",
+      "stability": "prototype",
+      "strictProperties": true,
+      "type": [
+        "object"
+      ],
+      "definitions": {
+        "id": {
+          "description": "unique identifier of ticket",
+          "readOnly": true,
+          "format": "uuid",
+          "type": [
+            "string"
+          ]
+        },
+        "identity": {
+          "$ref": "#/definitions/ticket/definitions/id"
+        },
+        "description": {
+          "description": "ticket's description",
+          "type": [
+            "string"
+          ]
+        },
+        "status": {
+          "description": "ticket's status",
+          "type": [
+            "string"
+          ]
+        },
+        "customer_id": {
+          "description": "ticket customers' id",
+          "type": [
+            "string"
+          ]
+        },
+        "agent_id": {
+          "description": "ticket agent' id",
+          "type": [
+            "string"
+          ]
+        },
+        "created_at": {
+          "description": "when ticket was created",
+          "readOnly": true,
+          "format": "date-time",
+          "type": [
+            "string"
+          ]
+        },
+        "updated_at": {
+          "description": "when ticket was updated",
+          "readOnly": true,
+          "format": "date-time",
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "links": [
+        {
+          "description": "Create a new ticket.",
+          "href": "/tickets",
+          "method": "POST",
+          "rel": "create",
+          "http_header": {
+            "access-token": "the user's access-token",
+            "client": "the user client's identifier",
+            "uid": "the user's identifier"
+          },
+          "schema": {
+            "properties": {
+              "description": {
+                "$ref": "#/definitions/ticket/definitions/description"
+              },
+              "status": {
+                "$ref": "#/definitions/ticket/definitions/status"
+              },
+              "customer_id": {
+                "$ref": "#/definitions/ticket/definitions/customer_id"
+              }
+            },
+            "required": [
+              "description",
+              "status",
+              "customer_id"
+            ],
+            "type": [
+              "object"
+            ]
+          },
+          "title": "Create"
+        },
+        {
+          "description": "Delete an existing ticket.",
+          "href": "/tickets/{(%23%2Fdefinitions%2Fticket%2Fdefinitions%2Fidentity)}",
+          "method": "DELETE",
+          "rel": "destroy",
+          "title": "Delete"
+        },
+        {
+          "description": "Info for existing ticket.",
+          "href": "/tickets/{(%23%2Fdefinitions%2Fticket%2Fdefinitions%2Fidentity)}",
+          "method": "GET",
+          "rel": "self",
+          "title": "Info"
+        },
+        {
+          "description": "List existing tickets.",
+          "href": "/tickets",
+          "method": "GET",
+          "rel": "instances",
+          "title": "List"
+        },
+        {
+          "description": "Update an existing ticket.",
+          "href": "/tickets/{(%23%2Fdefinitions%2Fticket%2Fdefinitions%2Fidentity)}",
+          "method": "PATCH",
+          "rel": "update",
+          "http_header": {
+            "access-token": "the user's access-token",
+            "client": "the user client's identifier",
+            "uid": "the user's identifier"
+          },
+          "schema": {
+            "properties": {
+              "description": {
+                "$ref": "#/definitions/ticket/definitions/description"
+              },
+              "status": {
+                "$ref": "#/definitions/ticket/definitions/status"
+              },
+              "customer_id": {
+                "$ref": "#/definitions/ticket/definitions/customer_id"
+              }
+            },
+            "required": [
+              "description",
+              "status",
+              "customer_id"
+            ],
+            "type": [
+              "object"
+            ]
+          },
+          "title": "Update"
+        }
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/ticket/definitions/id"
+        },
+        "description": {
+          "$ref": "#/definitions/ticket/definitions/description"
+        },
+        "status": {
+          "$ref": "#/definitions/ticket/definitions/status"
+        },
+        "customer_id": {
+          "$ref": "#/definitions/ticket/definitions/customer_id"
+        },
+        "agent_id": {
+          "$ref": "#/definitions/ticket/definitions/agent_id"
+        },
+        "created_at": {
+          "$ref": "#/definitions/ticket/definitions/created_at"
+        },
+        "updated_at": {
+          "$ref": "#/definitions/ticket/definitions/updated_at"
+        }
+      }
+    }
+  },
+  "properties": {
+    "admin": {
+      "$ref": "#/definitions/admin"
+    },
+    "agent": {
+      "$ref": "#/definitions/agent"
+    },
+    "customer": {
+      "$ref": "#/definitions/customer"
+    },
+    "ticket": {
+      "$ref": "#/definitions/ticket"
+    }
+  },
+  "description": "A Customer Support Ticket System Rails API",
+  "id": "ticketfy",
+  "links": [
+    {
+      "href": "ticketfy-api.herokuapp.com/api/v1",
+      "rel": "self"
+    }
+  ],
+  "title": "Ticketfy"
+}

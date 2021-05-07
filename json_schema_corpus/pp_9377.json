@@ -1,0 +1,13 @@
+{
+  "name": "react-hello-world-widget",
+  "description": "A hello world widget using the react widget adapter.",
+  "integration": {
+    "technology": "react",
+    "type": "widget"
+  },
+  "features": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {}
+  }
+}

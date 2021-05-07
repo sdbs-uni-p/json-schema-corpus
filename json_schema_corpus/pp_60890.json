@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "definitions": {
+    "email": {
+      "example": "gopher@example.com",
+      "format": "email",
+      "type": "string"
+    },
+    "icon": {
+      "example": "http://example.com/icon.png",
+      "format": "uri",
+      "type": "string"
+    },
+    "id": {
+      "example": 512446121,
+      "readOnly": true,
+      "type": "integer"
+    },
+    "name": {
+      "example": "Gopher",
+      "type": "string"
+    }
+  },
+  "links": [
+    {
+      "description": "Upload an icon file for user",
+      "encType": "multipart/form-data",
+      "href": "/users/{(#/definitions/album/definitions/id)}/icons",
+      "method": "POST",
+      "rel": "create",
+      "schema": {
+        "properties": {
+          "icon": {
+            "$ref": "#/definitions/user/definitions/icon"
+          }
+        },
+        "type": "object"
+      },
+      "title": "Create"
+    }
+  ],
+  "properties": {
+    "email": {
+      "$ref": "#/definitions/user/definitions/email"
+    },
+    "id": {
+      "$ref": "#/definitions/user/definitions/id"
+    },
+    "name": {
+      "$ref": "#/definitions/user/definitions/name"
+    }
+  },
+  "title": "User",
+  "type": "object"
+}

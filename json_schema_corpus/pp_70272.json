@@ -1,0 +1,142 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "location",
+  "description": "Location structure for the data marshaling system",
+  "type": "object",
+  "properties": {
+    "location_id": {
+      "$ref": "/schema/id"
+    },
+    "aliases": {
+      "type": "array",
+      "items": {
+        "$ref": "/schema/name"
+      }
+    },
+    "parent_business": {
+      "type": "object",
+      "properties": {
+        "location_id": {
+          "$ref": "/schema/id"
+        },
+        "name": {
+          "$ref": "/schema/name"
+        }
+      }
+    },
+    "nap": {
+      "$ref": "/schema/nap"
+    },
+    "has_photos": {
+      "type": "integer"
+    },
+    "description": {
+      "anyOf": [
+        {
+          "$ref": "/schema/description"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "business_type": {
+      "$ref": "/schema/businesstype"
+    },
+    "out_of_business": {
+      "type": "boolean"
+    },
+    "is_published": {
+      "type": "boolean"
+    },
+    "published_at": {
+      "$ref": "/schema/timestamp"
+    },
+    "is_owner_verified": {
+      "type": "boolean"
+    },
+    "subscribed": {
+      "type": "boolean"
+    },
+    "status": {
+      "type": "object",
+      "properties": {
+        "step": {
+          "type": "string",
+          "enum": [
+            "done",
+            "start"
+          ]
+        },
+        "class": {
+          "type": "string",
+          "enum": [
+            "new"
+          ]
+        },
+        "publisher": {
+          "type": "boolean"
+        }
+      }
+    },
+    "email": {
+      "$ref": "/schema/email"
+    },
+    "website": {
+      "$ref": "/schema/url"
+    },
+    "timezone": {
+      "$ref": "/schema/timezone"
+    },
+    "created": {
+      "$ref": "/schema/timestamp"
+    },
+    "updated": {
+      "$ref": "/schema/timestamp"
+    },
+    "location_attributes": {
+      "type": "array",
+      "items": {
+        "$ref": "/schema/locationattribute"
+      }
+    },
+    "hours": {
+      "type": "array",
+      "items": {
+        "$ref": "/schema/hours"
+      }
+    },
+    "foreign_ids": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id_type": {
+            "$ref": "/schema/idtype"
+          },
+          "value": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id_type",
+          "value"
+        ]
+      }
+    },
+    "products": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "$ref": "/schema/menu"
+          }
+        ]
+      }
+    }
+  },
+  "required": [
+    "location_id",
+    "nap"
+  ]
+}

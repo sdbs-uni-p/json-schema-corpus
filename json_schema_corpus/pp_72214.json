@@ -1,0 +1,155 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "title": "Classic Referral Webhook Schema",
+  "description": "Sent whenever a classic referral event happens",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "title": "Referral Id",
+      "description": "The unique referral identifier"
+    },
+    "referrer": {
+      "title": "Referrer User",
+      "description": "The referrer user in who initiated this referral",
+      "$ref": "../UserIdentifier.schema.json#"
+    },
+    "referred": {
+      "title": "Referred User",
+      "description": "The referred user who initiated this referral",
+      "$ref": "../UserIdentifier.schema.json#"
+    },
+    "dateReferralStarted": {
+      "type": "integer",
+      "title": "Date Referral Started",
+      "description": "The date this referral was created"
+    },
+    "dateConverted": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "title": "Date Referral Converted",
+      "description": "The date the referral converted"
+    },
+    "dateModified": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "title": "Date Referral Modified",
+      "description": "The date this referral was last modified for any reason (e.g. converted, reward added, etc.)"
+    },
+    "dateUserModified": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "title": "Date User Modified",
+      "description": "The date a user was added to or removed from the referral (e.g. removed as a result of user deletion)"
+    },
+    "programId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Program Id",
+      "description": "The Id of the program this code was created for"
+    },
+    "referrerUser": {
+      "type": "string",
+      "title": "Referrer User",
+      "description": "The userId of the referrer user (Classic-Only)"
+    },
+    "referredUser": {
+      "type": "string",
+      "title": "Referred User",
+      "description": "The userId of the referred user (Classic-Only)"
+    },
+    "fraudSignals": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "title": "Fraud Signals",
+      "description": "A set of fraud flags generated for the classic referral program (Classic-Only)"
+    },
+    "moderationStatus": {
+      "type": "string",
+      "title": "Moderation Status",
+      "description": "The referral fraud moderation status for the classic program (Classic-Only)",
+      "enum": [
+        "PENDING",
+        "ACTIONED"
+      ]
+    },
+    "referrerModerationStatus": {
+      "type": "string",
+      "title": "Referrer Moderation Status",
+      "description": "The referral moderation status for the referrer user classic program (Classic-Only)",
+      "enum": [
+        "PENDING",
+        "APPROVED",
+        "DENIED"
+      ]
+    },
+    "dateReferralPaid": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "title": "Date Referral Paid",
+      "description": "The date the referral was marked as paid (Classic-Only)"
+    },
+    "dateReferralEnded": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "title": "Date Referral Ended",
+      "description": "The date the referral ended (Classic-Only)"
+    },
+    "referredModerationStatus": {
+      "type": "string",
+      "title": "Referred Moderation Status",
+      "description": "The moderation status for the referred user in the classic program (Classic-Only)",
+      "enum": [
+        "PENDING",
+        "APPROVED",
+        "DENIED"
+      ]
+    },
+    "dateModerated": {
+      "type": "integer",
+      "title": "Date Moderated",
+      "description": "The date the referral was moderated (Classic-Only)"
+    },
+    "referredReward": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Referred Reward",
+      "description": "The rewardId of the classic program referred user's reward if available (Classic-Only)"
+    },
+    "referrerReward": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Referrer Reward",
+      "description": "The rewardId of the classic program referrer user's reward if available (Classic-Only)"
+    }
+  },
+  "required": [
+    "id",
+    "referrerUser",
+    "referredUser",
+    "dateReferralStarted",
+    "moderationStatus",
+    "referrerModerationStatus",
+    "referredModerationStatus",
+    "dateModerated"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,135 @@
+{
+  "title": "Mouse donor",
+  "description": "Schema for submitting a mouse donor.",
+  "id": "/profiles/mouse_donor.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "required": [
+    "award",
+    "lab",
+    "organism"
+  ],
+  "identifyingProperties": [
+    "uuid",
+    "accession",
+    "aliases"
+  ],
+  "additionalProperties": false,
+  "mixinProperties": [
+    {
+      "$ref": "mixins.json#/schema_version"
+    },
+    {
+      "$ref": "mixins.json#/uuid"
+    },
+    {
+      "$ref": "donor.json#/properties"
+    },
+    {
+      "$ref": "mixins.json#/accession"
+    },
+    {
+      "$ref": "mixins.json#/aliases"
+    },
+    {
+      "$ref": "mixins.json#/attribution"
+    },
+    {
+      "$ref": "mixins.json#/accessioned_status"
+    },
+    {
+      "$ref": "mixins.json#/source"
+    },
+    {
+      "$ref": "mixins.json#/submitted"
+    },
+    {
+      "$ref": "mixins.json#/references"
+    },
+    {
+      "$ref": "mixins.json#/notes"
+    },
+    {
+      "$ref": "mixins.json#/documents"
+    },
+    {
+      "$ref": "mixins.json#/strains"
+    },
+    {
+      "$ref": "mixins.json#/genetic_modifications"
+    }
+  ],
+  "properties": {
+    "schema_version": {
+      "default": "7"
+    },
+    "littermates": {
+      "title": "Littermates",
+      "description": "Donors comprising the same litter.",
+      "type": "array",
+      "default": [],
+      "uniqueItems": true,
+      "items": {
+        "title": "Littermate",
+        "description": "A donor member of the same litter.",
+        "comment": "See mouse_donor.json for available identifiers.",
+        "type": "string",
+        "linkTo": "MouseDonor"
+      }
+    },
+    "organism": {
+      "default": "5eb4aef8-3832-4c4f-a48f-1b81e91bdda2",
+      "linkEnum": [
+        "5eb4aef8-3832-4c4f-a48f-1b81e91bdda2",
+        "2e5a2453-8f03-45ee-82e4-9b7e6c963f43",
+        "e354514c-8bc0-4891-9db7-8737e59ade65",
+        "2d5232ea-cb63-4520-a6de-a30a6a2f83ec",
+        "bdd6cef3-d9bd-4d90-8057-99ab7d55ffe1"
+      ],
+      "permission": "import_items"
+    },
+    "status": {
+      "enum": [
+        "in progress",
+        "deleted",
+        "replaced",
+        "released",
+        "revoked",
+        "preliminary",
+        "proposed"
+      ]
+    },
+    "parent_strains": {
+      "title": "Parent strains",
+      "description": "Donor IDs of parent strains, if known.",
+      "type": "array",
+      "default": [],
+      "uniqueItems": true,
+      "items": {
+        "title": "Parent strain",
+        "description": "A donor ID of a parent strain, if known.",
+        "comment": "For mouse biosamples, see mouse_donor.json for available identifiers.",
+        "type": "string",
+        "linkTo": "MouseDonor"
+      }
+    },
+    "dbxrefs": {
+      "@type": "@id",
+      "rdfs:subPropertyOf": "rdfs:seeAlso",
+      "title": "External identifiers",
+      "description": "Unique identifiers from external resources.",
+      "type": "array",
+      "default": [],
+      "uniqueItems": true,
+      "items": {
+        "title": "External identifier",
+        "description": "A unique identifier from external resource.",
+        "type": "string",
+        "pattern": "^((GEO:SAMN\\d+)|GEO:SAMEA\\d+|(MGI.D:[A-Z0-9]+))$"
+      }
+    }
+  },
+  "boost_values": {
+    "internal_tags": 1.0
+  }
+}

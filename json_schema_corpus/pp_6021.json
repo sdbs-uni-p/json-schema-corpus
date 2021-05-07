@@ -1,0 +1,16 @@
+{
+  "id": "http://framespaces.com/schema/fs.json",
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 10
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "additionalProperties": false
+}

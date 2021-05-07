@@ -1,0 +1,83 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "id": "/schemata/user_identity",
+  "title": "User Identity",
+  "description": "All permissions in WebAdMIT cascade from the concept of a **user identity**.",
+  "links": [
+    {
+      "description": "Retrieve details on all user identities that are part of a user's WebAdMIT profile and that have the \"API Access\" permission assigned to them.  The `id` associated with each identity will not change, and only becomes something new when a new identity is created \u2013 for example at the start of a new academic cycle.",
+      "href": "/api/v1/user_identities",
+      "method": "GET",
+      "rel": "self",
+      "title": "List",
+      "http_header": {
+        "x-api-key": "0123456789abcdef0123456789abcdef"
+      }
+    }
+  ],
+  "type": "object",
+  "strictProperties": true,
+  "properties": {
+    "href": {
+      "type": "string",
+      "description": "Hypertext reference to this resource.",
+      "pattern": "/api/v1/user_identities",
+      "example": "/api/v1/user_identities"
+    },
+    "user_identities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique identifier for this user identity."
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of access granted by this user identity.",
+            "enum": [
+              "Admissions User",
+              "Association User",
+              "Institution User"
+            ],
+            "example": "Admissions User"
+          },
+          "association": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Human-readable name of the association that this user identity belongs to, or `null` if not applicable.",
+            "example": "SOPHAS"
+          },
+          "institution": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Human-readable name of the institution that this user identity belongs to, or `null` if not applicable.",
+            "example": "Demo University"
+          },
+          "organization": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Human-readable name of the organization that this user identity belongs to, or `null` if not applicable.",
+            "example": "Demo University School of Public Health"
+          },
+          "cycle": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Academic cycle that this user identity can access, or `null` if not applicable.",
+            "pattern": "^\\d{4} - \\d{4}$",
+            "example": "2014 - 2015"
+          }
+        }
+      }
+    }
+  }
+}

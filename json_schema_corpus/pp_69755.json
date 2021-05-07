@@ -1,0 +1,144 @@
+{
+  "_comment": "This Spec is for Phase 1!! Most updated version is at https://github.com/reTHINK-project/specs/tree/master/schemas",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "CatalogueDataObject",
+  "type": "object",
+  "required": [
+    "cguid",
+    "type",
+    "version",
+    "objectName",
+    "description",
+    "language",
+    "sourcePackageURL"
+  ],
+  "anyOf": [
+    {
+      "$ref": "RethinkCore.CatalogueDataObject.HypertyDescriptor.json#/HypertyDescriptor"
+    },
+    {
+      "$ref": "RethinkCore.CatalogueDataObject.ProtoStubDescriptor.json#/ProtoStubDescriptor"
+    },
+    {
+      "$ref": "RethinkCore.CatalogueDataObject.HypertyRuntimeDescriptor.json#/HypertyRuntimeDescriptor"
+    },
+    {
+      "$ref": "RethinkCore.CatalogueDataObject.HypertyInterceptorDescriptor.json#/HypertyInterceptorDescriptor"
+    },
+    {
+      "$ref": "RethinkCore.CatalogueDataObject.DataObjectSchema.json#/DataObjectSchema"
+    }
+  ],
+  "properties": {
+    "cguid": {
+      "type": "string"
+    },
+    "type": {
+      "$ref": "#/CatalogueObjectType"
+    },
+    "version": {
+      "type": "string"
+    },
+    "objectName": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "language": {
+      "$ref": "#/DataObjectSourceLanguage"
+    },
+    "sourcePackageURL": {
+      "type": "string"
+    },
+    "sourcePackage": {
+      "$ref": "#/SourcePackage"
+    },
+    "signature": {
+      "type": "string"
+    }
+  },
+  "CatalogueObjectType": {
+    "type": "object",
+    "required": [
+      "HYPERTY",
+      "PROTOSTUB",
+      "IDP_PROXY",
+      "HYPERTY_RUNTIME",
+      "HYPERTY_INTERCEPTOR",
+      "HYPERTY_DATA_OBJECT"
+    ],
+    "properties": {
+      "HYPERTY": {
+        "type": "null"
+      },
+      "PROTOSTUB": {
+        "type": "null"
+      },
+      "IDP_PROXY": {
+        "type": "null"
+      },
+      "HYPERTY_RUNTIME": {
+        "type": "null"
+      },
+      "HYPERTY_INTERCEPTOR": {
+        "type": "null"
+      },
+      "HYPERTY_DATA_OBJECT": {
+        "type": "null"
+      }
+    }
+  },
+  "DataObjectSourceLanguage": {
+    "type": "object",
+    "required": [
+      "JAVASCRIPT_ECMA6",
+      "JAVASCRIPT_ECMA5",
+      "JSON_SCHEMA_V4",
+      "PYTHON",
+      "TYPE_SCRIPT"
+    ],
+    "properties": {
+      "JAVASCRIPT_ECMA6": {
+        "type": "null"
+      },
+      "JAVASCRIPT_ECMA5": {
+        "type": "null"
+      },
+      "JSON_SCHEMA_V4": {
+        "type": "null"
+      },
+      "PYTHON": {
+        "type": "null"
+      },
+      "TYPE_SCRIPT": {
+        "type": "null"
+      }
+    }
+  },
+  "SourcePackage": {
+    "type": "object",
+    "required": [
+      "sourceCodeClassname",
+      "sourceCode"
+    ],
+    "properties": {
+      "encoding": {
+        "type": "string"
+      },
+      "sourceCodeClassname": {
+        "type": "string"
+      },
+      "sourceCode": {
+        "type": "string"
+      },
+      "signature": {
+        "type": "string"
+      }
+    }
+  },
+  "IdpProxyDescriptor": {
+    "type": "object",
+    "properties": {}
+  }
+}

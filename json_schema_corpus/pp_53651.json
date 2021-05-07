@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Address identifier",
+  "description": "A unique identifier for a specific address in a voting pool",
+  "type": "object",
+  "properties": {
+    "series": {
+      "description": "the series identifier containing the address",
+      "$ref": "https://raw.githubusercontent.com/Open-Transactions/rfc/master/json/schema/seriesid-01.json"
+    },
+    "branch": {
+      "type": "number",
+      "description": "the chain within the series containing the desired address",
+      "minimum": 0,
+      "exclusiveMinimum": false
+    },
+    "index": {
+      "type": "number",
+      "description": "the value used to derive the public keys used to create the multisig script",
+      "minimum": 0,
+      "exclusiveMinimum": false
+    }
+  },
+  "required": [
+    "series",
+    "branch",
+    "index"
+  ]
+}

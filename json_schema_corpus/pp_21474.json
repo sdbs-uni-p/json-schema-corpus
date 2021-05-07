@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "properties": {
+    "plugins": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "filtersets": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "chunk-size": {
+      "type": "number"
+    },
+    "empty-data-set": {
+      "type": "boolean"
+    }
+  },
+  "title": "Google Analytics Content Collector Options",
+  "type": "object",
+  "additionalProperties": false
+}

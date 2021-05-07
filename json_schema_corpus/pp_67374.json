@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "description": "The demo addon schema for jsone",
+  "instruction": "Select a row to edit",
+  "definitions": {
+    "color": {
+      "type": "string",
+      "placeholder": "enter a color",
+      "description": "keep the names short please"
+    }
+  }
+}

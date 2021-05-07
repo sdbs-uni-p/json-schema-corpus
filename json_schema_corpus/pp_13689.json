@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/hyper-schema#",
+  "$id": "",
+  "title": "Response to Scheduling Block list GET request",
+  "type": "object",
+  "definitions": {
+    "scheduling_block_list_instance": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id"
+      ]
+    }
+  },
+  "properties": {
+    "blocks": {
+      "type": "array",
+      "item": {
+        "$ref": "#definitions/scheduling_block_list_instance"
+      }
+    }
+  },
+  "required": [
+    "blocks"
+  ]
+}

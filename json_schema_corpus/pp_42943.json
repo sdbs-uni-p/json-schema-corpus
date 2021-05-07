@@ -1,0 +1,202 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://jsonschema.net",
+  "type": "object",
+  "properties": {
+    "VCAP_SERVICES": {
+      "id": "http://jsonschema.net/VCAP_SERVICES",
+      "type": "object",
+      "properties": {
+        "hbase": {
+          "id": "http://jsonschema.net/VCAP_SERVICES/hbase",
+          "type": "array",
+          "items": [
+            {
+              "id": "http://jsonschema.net/VCAP_SERVICES/hbase/0",
+              "type": "object",
+              "properties": {
+                "credentials": {
+                  "id": "http://jsonschema.net/VCAP_SERVICES/hbase/0/credentials",
+                  "type": "object",
+                  "properties": {
+                    "HADOOP_CONFIG_KEY": {
+                      "id": "http://jsonschema.net/VCAP_SERVICES/hbase/0/credentials/HADOOP_CONFIG_KEY",
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "hbase.namespace": {
+                      "id": "http://jsonschema.net/VCAP_SERVICES/hbase/0/credentials/hbase.namespace",
+                      "type": "string"
+                    },
+                    "kerberos": {
+                      "id": "http://jsonschema.net/VCAP_SERVICES/hbase/0/credentials/kerberos",
+                      "type": "object",
+                      "properties": {
+                        "kdc": {
+                          "id": "http://jsonschema.net/VCAP_SERVICES/hbase/0/credentials/kerberos/kdc",
+                          "type": "string"
+                        },
+                        "krealm": {
+                          "id": "http://jsonschema.net/VCAP_SERVICES/hbase/0/credentials/kerberos/krealm",
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "HADOOP_CONFIG_KEY",
+                    "hbase.namespace",
+                    "kerberos"
+                  ]
+                },
+                "label": {
+                  "id": "http://jsonschema.net/VCAP_SERVICES/hbase/0/label",
+                  "type": "string"
+                },
+                "name": {
+                  "id": "http://jsonschema.net/VCAP_SERVICES/hbase/0/name",
+                  "type": "string"
+                },
+                "plan": {
+                  "id": "http://jsonschema.net/VCAP_SERVICES/hbase/0/plan",
+                  "type": "string"
+                },
+                "tags": {
+                  "id": "http://jsonschema.net/VCAP_SERVICES/hbase/0/tags",
+                  "type": "array",
+                  "items": []
+                }
+              },
+              "required": [
+                "credentials",
+                "label",
+                "name",
+                "plan",
+                "tags"
+              ]
+            },
+            {
+              "id": "http://jsonschema.net/VCAP_SERVICES/hbase/1",
+              "type": "object",
+              "properties": {
+                "credentials": {
+                  "id": "http://jsonschema.net/VCAP_SERVICES/hbase/1/credentials",
+                  "type": "object",
+                  "properties": {
+                    "HADOOP_CONFIG_KEY": {
+                      "id": "http://jsonschema.net/VCAP_SERVICES/hbase/1/credentials/HADOOP_CONFIG_KEY",
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "hbase.namespace": {
+                      "id": "http://jsonschema.net/VCAP_SERVICES/hbase/1/credentials/hbase.namespace",
+                      "type": "string"
+                    },
+                    "kerberos": {
+                      "id": "http://jsonschema.net/VCAP_SERVICES/hbase/1/credentials/kerberos",
+                      "type": "object",
+                      "properties": {
+                        "kdc": {
+                          "id": "http://jsonschema.net/VCAP_SERVICES/hbase/1/credentials/kerberos/kdc",
+                          "type": "string"
+                        },
+                        "krealm": {
+                          "id": "http://jsonschema.net/VCAP_SERVICES/hbase/1/credentials/kerberos/krealm",
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "label": {
+                  "id": "http://jsonschema.net/VCAP_SERVICES/hbase/1/label",
+                  "type": "string"
+                },
+                "name": {
+                  "id": "http://jsonschema.net/VCAP_SERVICES/hbase/1/name",
+                  "type": "string"
+                },
+                "plan": {
+                  "id": "http://jsonschema.net/VCAP_SERVICES/hbase/1/plan",
+                  "type": "string"
+                },
+                "tags": {
+                  "id": "http://jsonschema.net/VCAP_SERVICES/hbase/1/tags",
+                  "type": "array",
+                  "items": []
+                }
+              }
+            }
+          ],
+          "required": [
+            "0",
+            "1"
+          ]
+        },
+        "hdfs": {
+          "id": "http://jsonschema.net/VCAP_SERVICES/hdfs",
+          "type": "array",
+          "items": {
+            "id": "http://jsonschema.net/VCAP_SERVICES/hdfs/0",
+            "type": "object",
+            "properties": {
+              "credentials": {
+                "id": "http://jsonschema.net/VCAP_SERVICES/hdfs/0/credentials",
+                "type": "object",
+                "properties": {
+                  "HADOOP_CONFIG_KEY": {
+                    "id": "http://jsonschema.net/VCAP_SERVICES/hdfs/0/credentials/HADOOP_CONFIG_KEY",
+                    "type": "object",
+                    "properties": {}
+                  },
+                  "fs.defaultFS": {
+                    "id": "http://jsonschema.net/VCAP_SERVICES/hdfs/0/credentials/fs.defaultFS",
+                    "type": "string"
+                  },
+                  "kerberos": {
+                    "id": "http://jsonschema.net/VCAP_SERVICES/hdfs/0/credentials/kerberos",
+                    "type": "object",
+                    "properties": {
+                      "kdc": {
+                        "id": "http://jsonschema.net/VCAP_SERVICES/hdfs/0/credentials/kerberos/kdc",
+                        "type": "string"
+                      },
+                      "krealm": {
+                        "id": "http://jsonschema.net/VCAP_SERVICES/hdfs/0/credentials/kerberos/krealm",
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "uri": {
+                    "id": "http://jsonschema.net/VCAP_SERVICES/hdfs/0/credentials/uri",
+                    "type": "string"
+                  }
+                }
+              },
+              "label": {
+                "id": "http://jsonschema.net/VCAP_SERVICES/hdfs/0/label",
+                "type": "string"
+              },
+              "name": {
+                "id": "http://jsonschema.net/VCAP_SERVICES/hdfs/0/name",
+                "type": "string"
+              },
+              "plan": {
+                "id": "http://jsonschema.net/VCAP_SERVICES/hdfs/0/plan",
+                "type": "string"
+              },
+              "tags": {
+                "id": "http://jsonschema.net/VCAP_SERVICES/hdfs/0/tags",
+                "type": "array",
+                "items": []
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "VCAP_SERVICES"
+  ]
+}

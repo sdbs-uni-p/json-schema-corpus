@@ -1,0 +1,62 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://specsie.org/schema/build",
+  "required": false,
+  "properties": {
+    "build": {
+      "type": "object",
+      "id": "http://specsie.org/schema/build/schema/build/build",
+      "required": true,
+      "properties": {
+        "baseline": {
+          "type": "string",
+          "id": "http://specsie.org/schema/build/build/baseline",
+          "required": false
+        },
+        "datetime": {
+          "type": "number",
+          "id": "http://specsie.org/schema/build/build/datetime",
+          "default": 0,
+          "required": true
+        },
+        "status": {
+          "type": "string",
+          "id": "http://specsie.org/schema/build/build/status",
+          "default": "OK",
+          "required": true
+        }
+      }
+    },
+    "constraints": {
+      "type": "array",
+      "id": "http://specsie.org/schema/build/constraints",
+      "required": true
+    },
+    "inherits": {
+      "type": "array",
+      "id": "http://specsie.org/schema/build/inherits",
+      "required": false,
+      "items": {
+        "type": "object",
+        "id": "http://specsie.org/schema/foundation/inherits0",
+        "required": true,
+        "properties": {
+          "spec": {
+            "type": "string",
+            "id": "http://specsie.org/schema/foundation/inherits0/spec",
+            "required": true
+          },
+          "baseline": {
+            "type": "string",
+            "id": "http://specsie.org/schema/foundation/inherits0/baseline",
+            "required": false
+          },
+          "inherits": {
+            "$ref": "http://specsie.org/schema/build/inherits"
+          }
+        }
+      }
+    }
+  }
+}

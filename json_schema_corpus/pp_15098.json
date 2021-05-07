@@ -1,0 +1,93 @@
+{
+  "id": "http://some.site.somewhere/entry-schema#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "schema for an fstab entry",
+  "type": "object",
+  "required": [
+    "storage"
+  ],
+  "properties": {
+    "teste": {
+      "type": "balance",
+      "name": "balance 1",
+      "propertyOrder": 0,
+      "properties": [
+        {
+          "type": "balance",
+          "name": "teste 123",
+          "properties": {
+            "teste": {
+              "type": "balance",
+              "name": "balance 2",
+              "propertyOrder": 0
+            }
+          }
+        }
+      ],
+      "links": [
+        {
+          "rel": "comments",
+          "href": "/{name}/comments"
+        }
+      ]
+    },
+    "teste2": {
+      "type": "property",
+      "name": "Test 2",
+      "propertyOrder": 1
+    },
+    "teste3": {
+      "type": "side-menu"
+    }
+  },
+  "definitions": {
+    "diskDevice": {},
+    "diskUUID": {},
+    "nfs": {},
+    "tmpfs": {}
+  },
+  "links": [
+    {
+      "rel": "comments",
+      "href": "/{name}/comments"
+    },
+    {
+      "rel": "search",
+      "href": "/{name}/comments",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "searchTerm": {
+            "type": "string"
+          },
+          "itemsPerPage": {
+            "type": "integer",
+            "minimum": 10,
+            "multipleOf": 10,
+            "default": 20
+          }
+        },
+        "required": [
+          "name"
+        ]
+      }
+    },
+    {
+      "title": "Post a comment",
+      "rel": "create",
+      "href": "/{name}/comments",
+      "method": "POST",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "message"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "email": {
+      "description": "Unicode string data. Ex: \"Hello World\"",
+      "type": "string"
+    },
+    "first_name": {
+      "description": "Unicode string data. Ex: \"Hello World\"",
+      "type": "string"
+    },
+    "id": {
+      "description": "Integer data. Ex: 2673",
+      "type": "integer"
+    },
+    "last_name": {
+      "description": "Unicode string data. Ex: \"Hello World\"",
+      "type": "string"
+    },
+    "resource_uri": {
+      "description": "Unicode string data. Ex: \"Hello World\"",
+      "type": "string"
+    },
+    "username": {
+      "description": "Required. 30 characters or fewer. Letters, digits and @/./+/-/_ only.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "username",
+    "first_name",
+    "last_name",
+    "email"
+  ],
+  "title": "Schema for user objects",
+  "type": "object"
+}

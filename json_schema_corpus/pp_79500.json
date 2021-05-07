@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema#",
+  "type": "object",
+  "properties": {
+    "coverLetter": {
+      "type": "object",
+      "format": "tas-fileUpload",
+      "access": "candidateOwned",
+      "options": {
+        "accept": "image/png,text/html"
+      },
+      "description": "Please upload a cover letter. The shorter the better",
+      "properties": {
+        "data": {
+          "type": "string",
+          "media": {
+            "binaryEncoding": "base64"
+          }
+        },
+        "fileName": {
+          "type": "string"
+        },
+        "via": {
+          "type": "string"
+        }
+      }
+    },
+    "favoriteColor": {
+      "type": "string",
+      "access": "eeo",
+      "title": "Favorite color",
+      "description": "Tell us your favorite color. Our advanced hiring algorithm uses it.",
+      "default": "blue"
+    }
+  },
+  "required": [
+    "favoriteColor"
+  ],
+  "additionalProperties": false
+}

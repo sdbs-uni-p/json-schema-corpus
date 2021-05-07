@@ -1,0 +1,160 @@
+{
+  "$schema": "http://interagent.github.io/interagent-hyper-schema",
+  "type": [
+    "object"
+  ],
+  "definitions": {
+    "simple-menu": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "Simple Ice Cream menu",
+      "description": "Place an ice cream order using no $ref keywords",
+      "required": [
+        "ice_man",
+        "cow",
+        "grocer",
+        "hen"
+      ],
+      "type": [
+        "object"
+      ],
+      "properties": {
+        "cow": {
+          "title": "The Cow",
+          "type": [
+            "object"
+          ],
+          "properties": {
+            "milk": {
+              "title": "Milk",
+              "type": [
+                "string"
+              ],
+              "enum": [
+                "Cream",
+                "Whole",
+                "Organic-non-pasteurize-non-homogenized-non-gmo",
+                "Skim",
+                "1%"
+              ]
+            },
+            "quantity": {
+              "title": "Quantity (oz.)",
+              "type": [
+                "number"
+              ],
+              "minimum": 8
+            }
+          }
+        },
+        "ice_man": {
+          "title": "The Ice Man",
+          "type": [
+            "object"
+          ],
+          "properties": {
+            "ice": {
+              "title": "Ice",
+              "type": [
+                "string"
+              ],
+              "enum": [
+                "cube",
+                "sphere",
+                "special square"
+              ]
+            },
+            "count": {
+              "title": "Count",
+              "type": [
+                "number"
+              ],
+              "minimum": 1
+            }
+          }
+        },
+        "grocer": {
+          "title": "The Grocer",
+          "type": [
+            "object"
+          ],
+          "properties": {
+            "ice_cream_essentials": {
+              "title": "Essentials",
+              "type": [
+                "string"
+              ],
+              "enum": [
+                "sugar",
+                "stevia"
+              ]
+            },
+            "mixins": {
+              "title": "Mixins",
+              "type": [
+                "string"
+              ],
+              "enum": [
+                "chocolate chips",
+                "anchovies",
+                "blueberries",
+                "mixed fruit",
+                "jello",
+                "guar gum",
+                "apples",
+                "coffee",
+                "caramel",
+                "sea salt"
+              ]
+            },
+            "custom": {
+              "title": "Custom",
+              "description": "Write your own order",
+              "type": [
+                "string"
+              ]
+            }
+          }
+        },
+        "hen": {
+          "title": "The Hen",
+          "type": [
+            "object"
+          ],
+          "properties": {
+            "egg": {
+              "title": "Egg(s)",
+              "type": [
+                "string"
+              ],
+              "enum": [
+                "brown/yolk only",
+                "scavenged (turkey)/ whole",
+                "stolen (crocodile)/ yolk only"
+              ]
+            },
+            "count": {
+              "title": "Count",
+              "type": [
+                "number"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "properties": {
+    "simple-menu": {
+      "$ref": "#/definitions/simple-menu"
+    }
+  },
+  "description": "Ice cream API",
+  "id": "icecream",
+  "links": [
+    {
+      "href": "http://localhost:4567",
+      "rel": "self"
+    }
+  ],
+  "title": "Ice cream"
+}

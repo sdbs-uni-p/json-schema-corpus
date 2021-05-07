@@ -1,0 +1,147 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Schema for Interra site config object",
+  "title": "Interra Catalog Site Config",
+  "type": "object",
+  "required": [
+    "name",
+    "schema",
+    "identifier",
+    "search",
+    "prodUrl",
+    "devUrl"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "title": "Name",
+      "description": "The name of the site"
+    },
+    "schema": {
+      "type": "string",
+      "title": "Schema",
+      "description": "The schema of the site",
+      "enum": [
+        "pod-full",
+        "pod",
+        "test-schema"
+      ]
+    },
+    "prodUrl": {
+      "type": "string",
+      "title": "Production URL",
+      "description": "A URL for the production instance.",
+      "format": "uri"
+    },
+    "testUrl": {
+      "type": "string",
+      "title": "Test URL",
+      "description": "A URL for the test instance.",
+      "format": "uri"
+    },
+    "devdUrl": {
+      "type": "string",
+      "title": "Development URL",
+      "description": "A URL for the development instance. In most cases use http://localhost:3000",
+      "format": "uri"
+    },
+    "identifier": {
+      "type": "string",
+      "title": "Identifier",
+      "description": "Unique ID of the site",
+      "pattern": "^[a-z0-9-]*$"
+    },
+    "search": {
+      "type": "object",
+      "title": "Search",
+      "description": "Search settings",
+      "required": [
+        "type",
+        "fields"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "simpleSearch",
+            "elasticSearch",
+            "elasticLunr"
+          ],
+          "title": "Search backend",
+          "descprition": "The type of search the site should use."
+        },
+        "fields": {
+          "type": "array",
+          "title": "Fields",
+          "descprition": "List of fields to include in the search index. Only these fields are part of the search."
+        },
+        "endpoint": {
+          "type": "string",
+          "format": "uri",
+          "title": "Endpoint",
+          "description": "The endpoint used for the search. For use with Algolia and ElasticSearch"
+        }
+      }
+    },
+    "private": {
+      "type": "object",
+      "title": "Private settings",
+      "description": "Private settings that should not be exported publicly with the rest of the config. Used for aws or other credentials.",
+      "properties": {
+        "aws": {
+          "type": "object",
+          "title": "AWS settings",
+          "description": "Object to hold AWS settings such as secret key and access id",
+          "properties": {
+            "accessKeyId": {
+              "type": "string"
+            },
+            "secretAccessKey": {
+              "type": "string"
+            },
+            "region": {
+              "type": "string"
+            },
+            "es": {
+              "type": "object",
+              "properties": {
+                "endpoint": {
+                  "title": "Endpoint",
+                  "description": "The endpoint used to push to docs to. Can be the same as the public search endpoint though would recommend using API Gateway.",
+                  "type": "string",
+                  "format": "uri"
+                },
+                "index": {
+                  "type": "string",
+                  "title": "Index",
+                  "description": "Index to push to"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "description": {
+      "description": "Description of the site",
+      "type": "string",
+      "title": "Description"
+    },
+    "front-page-icon-collection": {
+      "type": "string",
+      "description": "The collection to be used for front page icons",
+      "Title": "Front page icon collection",
+      "pattern": "^[a-z]*$"
+    },
+    "front-page-icons": {
+      "type": "array",
+      "description": "The icons to be used for front page icons",
+      "Title": "Front page icons"
+    },
+    "fontConfig": {
+      "type": "object",
+      "description": "Configuration object for fonts",
+      "Title": "Font Config"
+    }
+  }
+}

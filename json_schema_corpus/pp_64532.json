@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Service 001 : POST /users/create",
+  "description": "Create a new user",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "callsign": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "admin": {
+      "type": "boolean"
+    },
+    "password": {
+      "type": "string"
+    },
+    "passwordRepeat": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "callsign",
+    "email",
+    "admin",
+    "password",
+    "passwordRepeat"
+  ]
+}

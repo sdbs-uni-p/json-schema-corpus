@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "description": "result of a call to POST /token",
+  "properties": {
+    "access_token": {
+      "type": "string",
+      "description": "the token (a JWT signed by the core and with the structure described in the schema tokenJwt.json)"
+    },
+    "expires_in": {
+      "type": "integer",
+      "description": "The remaining lifetime of the access token, in seconds"
+    },
+    "token_type": {
+      "enum": [
+        "Bearer"
+      ]
+    },
+    "refresh_token": {
+      "type": "string",
+      "description": "An optional refresh token, when the response was a result of a call to POST /token with scope of offline"
+    }
+  },
+  "required": [
+    "access_token",
+    "expires_in",
+    "token_type"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://inowas.com/schema/",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+    },
+    "stress_periods": {
+      "$ref": "modflow/stressPeriods.json"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "stress_periods"
+  ]
+}

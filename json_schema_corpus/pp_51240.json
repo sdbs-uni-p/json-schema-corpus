@@ -1,0 +1,234 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "indicator",
+  "description": "Technical information that indicates compromise",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "../common/core.json"
+    },
+    {
+      "$ref": "../common/referenceable.json"
+    },
+    {
+      "properties": {
+        "pattern": {
+          "description": "The pattern used to identify the presence of this indicator",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/patterns/twigs"
+            },
+            {
+              "$ref": "#/definitions/patterns/snort"
+            },
+            {
+              "$ref": "#/definitions/patterns/snort_so"
+            },
+            {
+              "$ref": "#/definitions/patterns/yara"
+            }
+          ]
+        },
+        "start_time": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The time at which this indicator should be considered valid. If omitted, unknown."
+        },
+        "end_time": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The time at which this indicator should no longer be considered valid. If omitted, unknown or ongoing."
+        },
+        "impact": {
+          "$ref": "../common/impact.json",
+          "description": "The impact to operations of the TTP(s) that this indicator detects were they to be realized (individually)"
+        }
+      }
+    }
+  ],
+  "required": [
+    "pattern"
+  ],
+  "definitions": {
+    "patterns": {
+      "twigs": {
+        "title": "twigs",
+        "description": "A pattern that leverages native CybOX objects to allow pattern matching",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Type of pattern",
+            "enum": [
+              "twigs"
+            ]
+          },
+          "properties": {
+            "type": "object",
+            "description": "A list of properties that are applied in the condition",
+            "additionalProperties": {
+              "$ref": "#/definitions/patterns/property"
+            }
+          },
+          "conditions": {
+            "type": "string",
+            "description": "The string conditions for when this indicator should match"
+          }
+        }
+      },
+      "property": {
+        "title": "twigs-prop",
+        "properties": {
+          "key": {
+            "type": "string",
+            "description": "The path to a CybOX object property"
+          },
+          "condition": {
+            "type": "string",
+            "description": "The condition by which the property should match the value"
+          },
+          "value": {
+            "type": "string",
+            "description": "The value of the field to be matched against"
+          }
+        }
+      },
+      "snort": {
+        "title": "snort",
+        "description": "A pattern for snort rules",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Type of pattern",
+            "enum": [
+              "snort"
+            ]
+          },
+          "rules": {
+            "type": "array",
+            "description": "The set of snort rules to match this indicator",
+            "items": "string"
+          }
+        }
+      },
+      "snort_so": {
+        "title": "snort-so",
+        "description": "A pattern for snort rules",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Type of pattern",
+            "enum": [
+              "snort-so"
+            ]
+          },
+          "rule_stub": {
+            "type": "string",
+            "description": "The plain text rule stub"
+          },
+          "rule_binary": {
+            "$ref": "../common/external.json"
+          }
+        }
+      },
+      "yara": {
+        "title": "yara",
+        "description": "A pattern for snort rules",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Type of pattern",
+            "enum": [
+              "yara"
+            ]
+          },
+          "rules": {
+            "type": "array",
+            "description": "The set of YARA rules to match this indicator",
+            "items": "string"
+          }
+        }
+      }
+    },
+    "object": {
+      "title": "object",
+      "type": "object",
+      "properties": {
+        "condition": {
+          "type": "string",
+          "enum": [
+            "equals",
+            "pattern_match"
+          ],
+          "description": "Describes the type of match. If 'equals', the object should be matched exactly. If 'pattern_match', each field in the object should have a pattern match applied"
+        },
+        "object_ref": {
+          "type": "string",
+          "description": "Reference to the object that this matches against."
+        }
+      },
+      "required": [
+        "condition",
+        "object_ref"
+      ]
+    },
+    "test_mechanism": {
+      "title": "test-mechanism",
+      "type": "object",
+      "properties": {
+        "_type": {
+          "type": "string",
+          "description": "The type of test mechanism."
+        }
+      }
+    }
+  },
+  "relationships": {
+    "indicated": [
+      "malware",
+      "attack-pattern",
+      "exploit",
+      "victim-targeting",
+      "malicious-tool",
+      "malicious-infrastructure",
+      "persona",
+      "campaign",
+      "threat-actor"
+    ],
+    "suggested": [
+      "course-of-action"
+    ],
+    "kill-chain-phase": [
+      "kill-chain-phase"
+    ],
+    "related": [
+      "asset",
+      "attack-pattern",
+      "campaign",
+      "configuration",
+      "course-of-action",
+      "identity",
+      "incident",
+      "indicator",
+      "kill-chain",
+      "kill-chain-phase",
+      "malicious-infrastructure",
+      "malicious-tool",
+      "malware",
+      "observation",
+      "threat-actor",
+      "tool",
+      "victim-targeting",
+      "vulnerability",
+      "weakness"
+    ],
+    "duplicate-of": [
+      "indicator"
+    ],
+    "suggested-update": [
+      "indicator"
+    ],
+    "derived-from": [
+      "indicator"
+    ]
+  }
+}

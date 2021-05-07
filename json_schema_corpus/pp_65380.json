@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Single athlete's performance in a single throw event",
+  "description": "A single athlete's performance in a single throw event.",
+  "type": "object",
+  "properties": {
+    "event": {
+      "description": "Standard event type short name",
+      "enum": [
+        "DT",
+        "HT",
+        "JT",
+        "SP",
+        "WT"
+      ]
+    },
+    "performance": {
+      "description": "Best distance achieved",
+      "type": [
+        "number",
+        "string"
+      ],
+      "minimum": 0,
+      "minLength": 1
+    },
+    "attempts": {
+      "description": "Ordered list of attempts",
+      "type": "array",
+      "items": {
+        "type": [
+          "number",
+          "string"
+        ]
+      },
+      "minItems": 1,
+      "maxItems": 6
+    }
+  },
+  "required": [
+    "event",
+    "performance"
+  ]
+}

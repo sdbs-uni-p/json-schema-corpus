@@ -1,0 +1,182 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "address": {
+      "type": "object",
+      "properties": {
+        "street_address": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "state": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "street_address",
+        "city",
+        "state"
+      ]
+    },
+    "sibling": {
+      "type": "object",
+      "properties": {
+        "age_difference": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "age_difference"
+      ]
+    },
+    "ancestor": {
+      "type": "object",
+      "properties": {
+        "family_name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "family_name"
+      ]
+    },
+    "fax": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "description": null,
+          "type": [
+            "enum"
+          ],
+          "enum": [
+            "fax"
+          ],
+          "items": null
+        },
+        "num": {
+          "description": null,
+          "type": [
+            "number"
+          ],
+          "items": null
+        }
+      },
+      "required": [
+        "@type",
+        "num"
+      ]
+    },
+    "phone": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "description": null,
+          "type": [
+            "enum"
+          ],
+          "enum": [
+            "phone"
+          ],
+          "items": null
+        },
+        "num": {
+          "description": null,
+          "type": [
+            "number"
+          ],
+          "items": null
+        }
+      },
+      "required": [
+        "@type",
+        "num"
+      ]
+    }
+  },
+  "title": "Company",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "maxLength": 16
+    },
+    "phone_numbers": {
+      "type": "array",
+      "items": [
+        {
+          "$ref": "spec/support/phone_number_schema.json"
+        }
+      ]
+    },
+    "parents_address": {
+      "$ref": "#/definitions/address"
+    },
+    "current_address": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/definitions/address"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "planet": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "planet"
+          ]
+        }
+      ]
+    },
+    "work_contacts": {
+      "description": null,
+      "type": [
+        "array",
+        null
+      ],
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "#/definitions/phone"
+          },
+          {
+            "$ref": "#/definitions/fax"
+          }
+        ]
+      }
+    },
+    "relatives": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "#/definitions/sibling"
+          },
+          {
+            "$ref": "#/definitions/ancestor"
+          }
+        ]
+      }
+    },
+    "old_addresses": {
+      "type": "array",
+      "items": [
+        {
+          "$ref": "#/definitions/address"
+        }
+      ]
+    }
+  }
+}

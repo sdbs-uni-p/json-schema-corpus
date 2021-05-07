@@ -1,0 +1,129 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "rules": {
+      "id": "rules",
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 5000,
+      "uniqueItems": false,
+      "additionalItems": false,
+      "items": {
+        "id": "rule",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "when": {
+            "id": "when",
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 10,
+            "uniqueItems": false,
+            "additionalItems": false,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "trigger": {
+                  "id": "trigger",
+                  "type": "string",
+                  "enum": [
+                    "uri starts with",
+                    "uri does not start with",
+                    "uri ends with",
+                    "uri does not end with",
+                    "uri contains",
+                    "uri does not contain",
+                    "uri matches regex",
+                    "uri does not match regex",
+                    "uri has params",
+                    "uri does not have params",
+                    "tag is",
+                    "tag is not"
+                  ]
+                },
+                "value": {
+                  "id": "value",
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "then": {
+            "id": "then",
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 20,
+            "uniqueItems": false,
+            "additionalItems": false,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "action": {
+                  "id": "action",
+                  "type": "string",
+                  "enum": [
+                    "set authorization",
+                    "set authorization send immediately",
+                    "set authorization bearer",
+                    "set OAuth",
+                    "set OAuth HMAC-SHA1",
+                    "set OAuth body hash",
+                    "set OAuth transport method",
+                    "set SSL client",
+                    "set SSL client PFX",
+                    "set SSL Certificate Authority",
+                    "set SSL security options",
+                    "set SSL secure protocol",
+                    "set AWS",
+                    "set AWS bucket",
+                    "set request parameter",
+                    "set request parameter as integer",
+                    "set request parameter as past date time",
+                    "set request parameter as date time starting of",
+                    "set header parameter",
+                    "set header parameter as integer",
+                    "set header parameter as past date time",
+                    "set header parameter as date time starting of",
+                    "set proxy",
+                    "set encoding",
+                    "set method",
+                    "set JSON",
+                    "set follow redirect",
+                    "set GZIP",
+                    "set jar",
+                    "set strict SSL",
+                    "set time",
+                    "set timeout in ms",
+                    "replace start",
+                    "replace all",
+                    "set custom"
+                  ]
+                },
+                "values": {
+                  "id": "values",
+                  "type": "array",
+                  "minItems": 1,
+                  "maxItems": 10,
+                  "uniqueItems": false,
+                  "additionalItems": false,
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "rules"
+  ]
+}

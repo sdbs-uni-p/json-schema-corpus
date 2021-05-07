@@ -1,0 +1,22 @@
+{
+  "id": "http://schema.myrtana.sk/text/sourcecode.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Source code",
+  "description": "Source code, snippet of source code",
+  "type": "object",
+  "properties": {
+    "body": {
+      "type": "string"
+    },
+    "filename": {
+      "type": "string"
+    },
+    "programmingLanguage": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "body"
+  ]
+}

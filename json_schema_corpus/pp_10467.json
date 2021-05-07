@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "title": "Root schema",
+  "description": "The schema defining a POST request to create a new project",
+  "name": "/",
+  "properties": {
+    "name": {
+      "id": "name",
+      "type": "string",
+      "title": "Name for the project",
+      "name": "name"
+    },
+    "description": {
+      "type": "string",
+      "title": "Description of the project",
+      "name": "description"
+    },
+    "owner": {
+      "type": "string",
+      "title": "The Owner",
+      "description": "The name of the project owner"
+    },
+    "members": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "name",
+    "description"
+  ]
+}

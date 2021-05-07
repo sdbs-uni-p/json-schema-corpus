@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "title": "Referral Data Webhook Schema",
+  "description": "Sent whenever a referral event happens",
+  "type": "object",
+  "oneOf": [
+    {
+      "$ref": "ReferralClassic.schema.json#"
+    },
+    {
+      "$ref": "ReferralClassicDisabled.schema.json#"
+    }
+  ]
+}

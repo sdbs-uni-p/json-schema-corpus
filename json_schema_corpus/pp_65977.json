@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Transaction",
+  "description": "PayPal transaction json schema",
+  "type": "object",
+  "properties": {
+    "amount": {
+      "$ref": "amount.json"
+    },
+    "description": {
+      "description": "Description of transaction. 127 characters max.",
+      "type": "string",
+      "maxLength": 127
+    },
+    "item_list": {
+      "$ref": "item_list.json"
+    },
+    "related_resources": {
+      "description": "Financial transactions related to a payment.",
+      "type": "array"
+    },
+    "invoice_number": {
+      "description": "Invoice number used to track the payment. Only supported when thepayment_method is set to paypal.",
+      "type": "string",
+      "maxLength": 256
+    },
+    "custom": {
+      "description": "Free-form field for the use of clients. Only supported when thepayment_method is set to paypal.",
+      "type": "string",
+      "maxLength": 256
+    },
+    "soft_descriptor": {
+      "description": "Soft descriptor used when charging this funding source. Only supported when thepayment_method is set to paypal.",
+      "type": "string",
+      "maxLength": 22
+    },
+    "payment_options": {
+      "$ref": "payment_options.json"
+    }
+  },
+  "required": [
+    "amount"
+  ]
+}

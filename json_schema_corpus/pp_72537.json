@@ -1,0 +1,110 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "properties": {
+    "baseUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "basePath": {
+      "type": "string",
+      "pattern": "^/"
+    },
+    "dataLayerName": {
+      "type": "string"
+    },
+    "multipleContainers": {
+      "type": "boolean"
+    },
+    "dataLayer": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/dataLayerObject"
+      }
+    },
+    "page": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/pageObject"
+      }
+    }
+  },
+  "required": [
+    "baseUrl",
+    "basePath"
+  ],
+  "definitions": {
+    "dataLayerObject": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "@expect": {
+              "type": "string"
+            },
+            "@json": {
+              "enum": [
+                false
+              ]
+            }
+          }
+        },
+        {
+          "type": "object",
+          "properties": {
+            "@expect": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": {
+            "allOf": [
+              {
+                "$ref": "http://json-schema.org/schema#"
+              },
+              {
+                "$ref": "#/definitions/rootRequired"
+              }
+            ],
+            "not": {
+              "@json": {
+                "enum": [
+                  false
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "pageObject": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^/"
+        },
+        "dataLayer": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/dataLayerObject"
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "dataLayer"
+      ]
+    },
+    "rootRequired": {
+      "type": "object",
+      "properties": {
+        "@rootRequired": {
+          "enum": [
+            false
+          ]
+        }
+      }
+    }
+  }
+}

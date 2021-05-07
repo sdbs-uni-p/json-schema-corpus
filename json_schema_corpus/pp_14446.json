@@ -1,0 +1,16 @@
+{
+  "name": "slack/message",
+  "description": "Send a message to slack.",
+  "public": true,
+  "type": "http://iflux.io/schemas/actionTypes/slackMessageSending",
+  "organizationId": 1,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "message": {
+        "type": "string"
+      }
+    }
+  }
+}

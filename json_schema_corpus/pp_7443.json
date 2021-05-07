@@ -1,0 +1,12 @@
+{
+  "id": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/Components/TextEditorBase/EditMask/DateTimeEditMask.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "\u041c\u0430\u0441\u043a\u0430 \u0432\u0432\u043e\u0434\u0430 \u0434\u0430\u0442\u044b \u0438 \u0432\u0440\u0435\u043c\u0435\u043d\u0438",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/Components/TextEditorBase/EditMask/EditMaskBase.json"
+    }
+  ],
+  "properties": {}
+}

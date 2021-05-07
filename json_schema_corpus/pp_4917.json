@@ -1,0 +1,655 @@
+{
+  "title": "Library",
+  "description": "Schema for submitting a molecular library.",
+  "id": "/profiles/library.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "required": [
+    "award",
+    "lab",
+    "nucleic_acid_term_name"
+  ],
+  "identifyingProperties": [
+    "uuid",
+    "accession",
+    "aliases"
+  ],
+  "additionalProperties": false,
+  "mixinProperties": [
+    {
+      "$ref": "mixins.json#/schema_version"
+    },
+    {
+      "$ref": "mixins.json#/uuid"
+    },
+    {
+      "$ref": "mixins.json#/accession"
+    },
+    {
+      "$ref": "mixins.json#/aliases"
+    },
+    {
+      "$ref": "mixins.json#/attribution"
+    },
+    {
+      "$ref": "mixins.json#/accessioned_status"
+    },
+    {
+      "$ref": "mixins.json#/submitted"
+    },
+    {
+      "$ref": "mixins.json#/source"
+    },
+    {
+      "$ref": "mixins.json#/product_id"
+    },
+    {
+      "$ref": "mixins.json#/lot_id"
+    },
+    {
+      "$ref": "mixins.json#/documents"
+    },
+    {
+      "$ref": "mixins.json#/notes"
+    },
+    {
+      "$ref": "mixins.json#/submitter_comment"
+    }
+  ],
+  "facets": {
+    "status": {
+      "title": "Status"
+    }
+  },
+  "dependencies": {
+    "nucleic_acid_starting_quantity_units": [
+      "nucleic_acid_starting_quantity"
+    ],
+    "nucleic_acid_starting_quantity": [
+      "nucleic_acid_starting_quantity_units"
+    ],
+    "fragmentation_duration_time_units": [
+      "fragmentation_duration_time",
+      "fragmentation_methods"
+    ],
+    "fragmentation_duration_time": [
+      "fragmentation_duration_time_units",
+      "fragmentation_methods"
+    ],
+    "product_id": [
+      "source"
+    ],
+    "lot_id": [
+      "source",
+      "product_id"
+    ],
+    "average_fragment_size": {
+      "not": {
+        "required": [
+          "size_range"
+        ]
+      }
+    },
+    "size_range": {
+      "not": {
+        "required": [
+          "average_fragment_size"
+        ]
+      }
+    },
+    "fragment_length_CV": {
+      "not": {
+        "required": [
+          "fragment_length_SD"
+        ]
+      }
+    },
+    "fragment_length_SD": {
+      "not": {
+        "required": [
+          "fragment_length_CV"
+        ]
+      }
+    },
+    "adapters": {
+      "oneOf": [
+        {
+          "properties": {
+            "adapters": {
+              "items": {
+                "required": [
+                  "file",
+                  "type"
+                ],
+                "not": {
+                  "required": [
+                    "sequence"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "properties": {
+            "adapters": {
+              "items": {
+                "required": [
+                  "sequence",
+                  "type"
+                ],
+                "not": {
+                  "required": [
+                    "file"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "depleted_in_term_name": {
+      "not": {
+        "properties": {
+          "depleted_in_term_name": {
+            "items": {
+              "enum": [
+                "polyadenylated mRNA"
+              ]
+            }
+          },
+          "nucleic_acid_term_name": {
+            "enum": [
+              "polyadenylated mRNA"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "properties": {
+    "schema_version": {
+      "default": "14"
+    },
+    "accession": {
+      "accessionType": "LB"
+    },
+    "alternate_accessions": {
+      "title": "Alternate accessions",
+      "description": "Accessions previously assigned to objects that have been merged with this object.",
+      "comment": "Do not submit. Only admins are allowed to set or update this value.",
+      "type": "array",
+      "default": [],
+      "permission": "import_items",
+      "items": {
+        "title": "Alternate Accession",
+        "description": "An accession previously assigned to an object that has been merged with this object.",
+        "comment": "Only accessions of objects that have status equal replaced will work here.",
+        "type": "string",
+        "format": "accession",
+        "pattern": "^(ENCLB\\d{3}[A-Z]{3})$|^(TSTLB\\d{6})$"
+      }
+    },
+    "spikeins_used": {
+      "title": "Spike-ins datasets used",
+      "description": "The datasets containing the fasta and the concentrations of the library spike-ins.",
+      "type": "array",
+      "default": [],
+      "uniqueItems": true,
+      "items": {
+        "title": "A spike-ins dataset.",
+        "description": "A specific spike-ins type dataset",
+        "comment": "See dataset.json for available identifiers.",
+        "type": "string",
+        "linkTo": "Reference"
+      }
+    },
+    "barcode_details": {
+      "title": "Single cell barcodes information",
+      "description": "For single cell biosamples, the barcodes used to identify the biosamples.",
+      "type": "array",
+      "uniqueItems": true,
+      "default": [],
+      "items": {
+        "title": "Biosample barcode",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "barcode": {
+            "title": "Barcode",
+            "type": "string"
+          },
+          "plate_id": {
+            "title": "Identifier of the plate the single cell sample originated from",
+            "description": "The plate the single cell sample comes from.",
+            "type": "string"
+          },
+          "plate_location": {
+            "title": "Position of the single cell sample on the plate",
+            "description": "The location (such as A1) of the single cell sample on the plate.",
+            "type": "string",
+            "pattern": "^([ABCDEFGH]([1-9]|1[0-2]))$"
+          }
+        }
+      }
+    },
+    "biosample": {
+      "title": "Biosample",
+      "description": "The biosample that nucleic acid was isolated from to generate the library.",
+      "comment": "See biosample.json for available identifiers.",
+      "type": "string",
+      "linkTo": "Biosample"
+    },
+    "product_id": {
+      "description": "The product identifier provided by the vendor, for nucleic acids or proteins purchased directly from a vendor (e.g. total RNA)."
+    },
+    "lot_id": {
+      "description": "The lot identifier provided by the vendor, for nucleic acids or proteins purchased directly from a vendor (e.g. total RNA)."
+    },
+    "mint_mixture_identifier": {
+      "title": "MINT mixture identifier",
+      "description": "Identifier of the chromatin preps mixture.",
+      "comment": "Chromatin preps mixture identifier that is used in MINT-ChIP experiments.",
+      "type": "string",
+      "pattern": "^(MoChrPreps\\s\\d+)$"
+    },
+    "construction_platform": {
+      "title": "Platform",
+      "description": "The device used to construct the library.",
+      "comment": "Use in cases of automated/proprietary library preparation (Fluidigm, 10X, etc.)",
+      "type": "string",
+      "linkTo": "Platform"
+    },
+    "source": {
+      "description": "The vendor, for nucleic acids or proteins purchased directly from a vendor (e.g. total RNA)."
+    },
+    "nucleic_acid_term_name": {
+      "title": "Library material",
+      "description": "SO (Sequence Ontology) term best matching the molecule isolated to generate the library (e.g. 'RNA' for a total RNA library, even if that library is subsequently reverse transcribed for DNA sequencing.)",
+      "type": "string",
+      "enum": [
+        "DNA",
+        "miRNA",
+        "polyadenylated mRNA",
+        "protein",
+        "RNA"
+      ]
+    },
+    "dbxrefs": {
+      "@type": "@id",
+      "rdfs:subPropertyOf": "rdfs:seeAlso",
+      "title": "External resources",
+      "description": "Identifiers from external resources that may have 1-to-1 or 1-to-many relationships with ENCODE objects..",
+      "type": "array",
+      "default": [],
+      "uniqueItems": true,
+      "items": {
+        "title": "External identifier",
+        "description": "Identifier from an external resource that may have 1-to-1 or 1-to-many relationships with ENCODE objects.",
+        "type": "string",
+        "pattern": "^(GEO:GSM\\d+|GEO-obsolete:GSM\\d+)$"
+      }
+    },
+    "nucleic_acid_starting_quantity": {
+      "title": "Nucleic acid starting quantity",
+      "description": "The starting amount of nucleic acid before selection and purification.",
+      "type": "string",
+      "pattern": "[0-9]+"
+    },
+    "nucleic_acid_starting_quantity_units": {
+      "title": "Nucleic acid starting quantity units",
+      "description": "The units used for starting amount of nucleic acid.",
+      "type": "string",
+      "enum": [
+        "cell-equivalent",
+        "cells",
+        "mg",
+        "ng",
+        "pg",
+        "\u00b5g"
+      ]
+    },
+    "extraction_method": {
+      "title": "Extraction method",
+      "description": "A short description or reference of the nucleic acid extraction protocol used in library preparation, if applicable.",
+      "type": "string",
+      "oneOf": [
+        {
+          "enum": [
+            "Ambion mirVana",
+            "Animal tissue kit (Norgen Biotek cat#: 25700)",
+            "ATAC-seq (Greenleaf & Chang Lab protocol)",
+            "C1 fluidigm",
+            "Maxwell 16 LEV simpleRNA Cells Kit (Promega cat#: AS1270)",
+            "miRNeasy Mini kit (QIAGEN cat#:217004)",
+            "NucleoBond Xtra Midi kit (Machery-Nagel cat#: 740410)",
+            "QIAGEN DNeasy Blood & Tissue Kit",
+            "Qiagen RNA extraction",
+            "RNeasy",
+            "RNeasy Lipid Tissue Mini Kit (QIAGEN cat#74804)",
+            "RNeasy Plus Mini Kit Qiagen cat#74134 plus additional on column Dnase treatment",
+            "Trizol",
+            "Zymo Quick-DNA MicroPrep (D3021)"
+          ]
+        },
+        {
+          "comment": "Historical extraction methods, not valid for new submissions.",
+          "permission": "import_items",
+          "enum": [
+            "TruChIP chromatin shearing reagent kit Covaris cat# 520154, sonication Covaris M220, IP (home protocol), DNA isolation with QIAquick PCR Purification Kit cat# 28104.",
+            "SDS",
+            "other"
+          ]
+        }
+      ]
+    },
+    "fragmentation_methods": {
+      "title": "Fragmentation methods",
+      "type": "array",
+      "uniqueItems": true,
+      "description": "A list of nucleic acid fragmentation methods and restriction enzymes used in library preparation.",
+      "items": {
+        "title": "Fragmentation method",
+        "description": "A short description or reference of the nucleic acid fragmentation protocol used in library preparation.",
+        "type": "string",
+        "enum": [
+          "chemical (DNaseI)",
+          "chemical (DpnII restriction)",
+          "chemical (generic)",
+          "chemical (HindIII restriction)",
+          "chemical (Illumina TruSeq)",
+          "chemical (MboI restriction)",
+          "chemical (micrococcal nuclease)",
+          "chemical (NcoI restriction)",
+          "chemical (NEBNext Ultra II Directional)",
+          "chemical (Nextera tagmentation)",
+          "chemical (RNase III)",
+          "chemical (Tn5 transposase)",
+          "chemical (MseI restriction)",
+          "chemical (CviAII restriction)",
+          "chemical (Csp6I restriction)",
+          "n/a",
+          "none",
+          "see document",
+          "shearing (Covaris generic)",
+          "shearing (Covaris LE Series)",
+          "shearing (Covaris S2)",
+          "shearing (generic)",
+          "sonication (Bioruptor generic)",
+          "sonication (Bioruptor Pico)",
+          "sonication (Bioruptor Plus)",
+          "sonication (Bioruptor Twin)",
+          "sonication (Branson Sonifier 250)",
+          "sonication (Branson Sonifier 450)",
+          "sonication (generic microtip)",
+          "sonication (generic)",
+          "sonication (Sonics VCX130)"
+        ]
+      }
+    },
+    "fragmentation_date": {
+      "title": "Fragmentation date",
+      "description": "The date that the nucleic acid was fragmented. The date applies to all fragmentation methods specified.",
+      "comment": "Date can be submitted in as YYYY-MM-DD or YYYY-MM-DDTHH:MM:SSTZD (TZD is the time zone designator; use Z to express time in UTC or for time expressed in local time add a time zone offset from UTC +HH:MM or -HH:MM).",
+      "type": "string",
+      "anyOf": [
+        {
+          "format": "date-time"
+        },
+        {
+          "format": "date"
+        }
+      ]
+    },
+    "fragmentation_duration_time": {
+      "title": "Fragmentation duration time",
+      "description": "The amount of time a library spent undergoing fragmentation.",
+      "type": "number",
+      "minimum": 0
+    },
+    "fragmentation_duration_time_units": {
+      "title": "Fragmentation duration time units",
+      "description": "The units used for time spent undergoing fragmentation.",
+      "type": "string",
+      "enum": [
+        "seconds",
+        "minutes"
+      ]
+    },
+    "library_size_selection_method": {
+      "title": "Size selection method",
+      "description": "A short description or reference of the size selection protocol used in library preparation, if applicable.",
+      "type": "string",
+      "oneOf": [
+        {
+          "enum": [
+            "agarose gel extraction",
+            "AMPure XP bead purification",
+            "BluePippin",
+            "BluePippin 2-10Kb",
+            "dual SPRI",
+            "E-Gel",
+            "gel",
+            "gel followed by Amicon filters",
+            "Invitrogen EGel EX 2% agarose (Cat# G402002)",
+            "Pippin HT",
+            "Sera-mag SpeedBeads",
+            "SPRI beads"
+          ]
+        },
+        {
+          "comment": "Historical size selection methods, not valid for new submissions.",
+          "permission": "import_items",
+          "enum": [
+            "Only RNAs greater than 200 nucleotides. The inserts for the library will vary from ~ 100 - 700 base pairs.",
+            "Only RNAs greater than 200 nucleotides. The insert for the library will vary from ~ 100 - 700 base pairs.",
+            "SPRI beads AMPURE",
+            "other"
+          ]
+        }
+      ]
+    },
+    "lysis_method": {
+      "title": "Lysis method",
+      "description": "A short description or reference of the cell lysis protocol used in library preparation, if applicable.",
+      "type": "string",
+      "oneOf": [
+        {
+          "enum": [
+            "ATAC buffer",
+            "Clontech UltraLow for Illumina sequencing",
+            "RIPA",
+            "SDS"
+          ]
+        },
+        {
+          "comment": "Historical lysis methods, not valid for new submissions.",
+          "permission": "import_items",
+          "enum": [
+            "QIAGEN DNeasy Blood & Tissue Kit",
+            "[NPB (5% BSA (Sigma), 0.2% IGEPAL-CA630 (Sigma), cOmplete (Roche), 1mM DTT in PBS)]",
+            "0.01% digitonin",
+            "72 degrees for 3 minutes in the presence of Triton",
+            "other"
+          ]
+        }
+      ]
+    },
+    "crosslinking_method": {
+      "title": "Crosslinking method",
+      "description": "A short description or reference of the crosslinking protocol used in library preparation, if applicable.",
+      "type": "string",
+      "enum": [
+        "EGS and formaldehyde",
+        "formaldehyde",
+        "ultraviolet irradiation"
+      ]
+    },
+    "size_range": {
+      "title": "Size range",
+      "description": "The measured size range of the purified nucleic acid, in bp.",
+      "type": "string",
+      "pattern": "(^[0-9]+-[0-9]+$|^[<>][0-9]+$)"
+    },
+    "average_fragment_size": {
+      "title": "Average fragment size",
+      "description": "The average size of a fragment in the library, in bp.",
+      "type": "number",
+      "minimum": 0
+    },
+    "fragment_length_CV": {
+      "title": "Coefficient of variation of library fragment length",
+      "description": "The coefficient of variation for the size distribution of library fragments expressed as a percentage.",
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "fragment_length_SD": {
+      "title": "Standard deviation in library fragment size",
+      "description": "The standard deviation for the size distribution of library fragments.",
+      "type": "number",
+      "minimum": 0
+    },
+    "queried_RNP_size_range": {
+      "title": "Queried RNP size range",
+      "description": "The measured size range of queried ribonucleoprotein (RNP), in kD.",
+      "comment": "This size range could be specified for eCLIP experiments and other RNA-binding protein assays.",
+      "type": "string",
+      "pattern": "(^[0-9]+-[0-9]+$)"
+    },
+    "rna_integrity_number": {
+      "title": "RNA integrity number",
+      "description": "The RNA integrity number (RIN) value.",
+      "type": "number",
+      "minimum": 1,
+      "maximum": 10
+    },
+    "strand_specificity": {
+      "title": "Strand specificity",
+      "description": "The forward or reverse strandedness of the library resulting from a strand-specific protocol.",
+      "type": "string",
+      "oneOf": [
+        {
+          "enum": [
+            "forward",
+            "reverse"
+          ]
+        },
+        {
+          "comment": "Libraries that have indicated specificity in the past, not for new submissions.",
+          "permissions": "import_items",
+          "enum": [
+            "strand-specific"
+          ]
+        }
+      ]
+    },
+    "treatments": {
+      "title": "Treatments",
+      "type": "array",
+      "default": [],
+      "uniqueItems": true,
+      "items": {
+        "title": "Treatment",
+        "comment": "See treatment.json for available identifiers.",
+        "type": "string",
+        "linkTo": "Treatment"
+      }
+    },
+    "depleted_in_term_name": {
+      "type": "array",
+      "title": "Depleted in term",
+      "description": "SO (Sequence Ontology) term best matching the nucleic acid that was diminished from the library.",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "capped mRNA",
+          "polyadenylated mRNA",
+          "rRNA"
+        ]
+      }
+    },
+    "adapters": {
+      "type": "array",
+      "title": "Sequencing adapters",
+      "description": "Adapter(s) used during library preparation",
+      "uniqueItems": true,
+      "minItems": 1,
+      "items": {
+        "title": "Sequencing adapter",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "type": {
+            "title": "Adapter type",
+            "description": "Information (type or name) for adapter(s) specified in the adapter file. This info will be used to identify how the adapter file should be fed to a pipeline.",
+            "type": "string",
+            "oneOf": [
+              {
+                "enum": [
+                  "read1 5' adapter",
+                  "read2 5' adapter",
+                  "read1 3' adapter",
+                  "read2 3' adapter"
+                ]
+              },
+              {
+                "comment": "Adapters lacking end and read information, not for new submissions.",
+                "permissions": "import_items",
+                "enum": [
+                  "unspecified adapter"
+                ]
+              }
+            ]
+          },
+          "file": {
+            "title": "Adapter file",
+            "description": "One file with adapter sequence(s).",
+            "type": "string",
+            "linkTo": "File"
+          },
+          "sequence": {
+            "title": "Adapter sequence",
+            "description": "The sequence of an adapter used for library construction",
+            "type": "string",
+            "pattern": "^[ACUNTGacuntg]+$"
+          }
+        }
+      }
+    }
+  },
+  "columns": {
+    "accession": {
+      "title": "Accession"
+    },
+    "award": {
+      "title": "Award"
+    },
+    "lab": {
+      "title": "Lab"
+    },
+    "biosample.biosample_ontology.term_name": {
+      "title": "Biosample term name"
+    },
+    "biosample.donor.organism.scientific_name": {
+      "title": "Organism"
+    },
+    "nucleic_acid_term_name": {
+      "title": "Library material"
+    }
+  },
+  "boost_values": {
+    "accession": 1.0,
+    "alternate_accessions": 1.0,
+    "aliases": 1.0,
+    "biosample.accession": 1.0,
+    "biosample.alternate_accessions": 1.0,
+    "biosample.aliases": 1.0,
+    "biosample.donor.accession": 1.0,
+    "biosample.donor.organism.name": 1.0,
+    "notes": 1.0
+  },
+  "changelog": "/profiles/changelogs/library.md"
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Spectrum Inquiry parameters provided by a CBSD",
+  "type": "object",
+  "required": [
+    "cbsdId",
+    "inquiredSpectrum"
+  ],
+  "properties": {
+    "cbsdId": {
+      "type": "string",
+      "description": "Unique designator for the CBSD as returned from the registration procedure."
+    },
+    "inquiredSpectrum": {
+      "type": "array",
+      "additionalItems": false,
+      "description": "Description of the frequency range(s) the CBSD is inquiring about.",
+      "items": {
+        "$ref": "file:FrequencyRange.schema.json"
+      }
+    },
+    "measReport": {
+      "$ref": "file:MeasReport.schema.json"
+    }
+  }
+}

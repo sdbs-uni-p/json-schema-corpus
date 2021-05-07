@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://flynn.io/schema/controller/process_type#",
+  "title": "Process Type",
+  "description": "",
+  "sortIndex": 9,
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "args": {
+      "$ref": "/schema/controller/common#/definitions/args"
+    },
+    "cmd": {
+      "$ref": "/schema/controller/common#/definitions/cmd"
+    },
+    "env": {
+      "$ref": "/schema/controller/common#/definitions/env"
+    },
+    "entrypoint": {
+      "$ref": "/schema/controller/common#/definitions/entrypoint"
+    },
+    "ports": {
+      "type": "array",
+      "items": {
+        "$ref": "/schema/controller/port"
+      }
+    },
+    "volumes": {
+      "type": "array",
+      "items": {
+        "$ref": "/schema/controller/volume_req"
+      }
+    },
+    "data": {
+      "description": "DEPRECATED (use volumes instead)",
+      "type": "boolean"
+    },
+    "omni": {
+      "type": "boolean"
+    }
+  }
+}

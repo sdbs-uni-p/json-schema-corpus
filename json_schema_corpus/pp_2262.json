@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://localhost:9999/schemas/workspaceSummary.json",
+  "type": "object",
+  "properties": {
+    "id": {
+      "id": "id",
+      "type": "integer"
+    },
+    "key": {
+      "id": "key",
+      "type": "string"
+    },
+    "expire": {
+      "id": "expire",
+      "$ref": "iso8601.json"
+    }
+  },
+  "required": [
+    "id",
+    "key",
+    "expire"
+  ]
+}

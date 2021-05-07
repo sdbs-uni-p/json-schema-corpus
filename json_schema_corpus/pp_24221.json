@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "Loan",
+  "description": "Links the item with the patron and applies certain conditions based on policies",
+  "properties": {
+    "subfield": {
+      "description": "subfield of record tag subfields",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,50 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "/diabetes/bolus/normal.json",
+  "title": "Normal bolus",
+  "additionalProperties": false,
+  "properties": {
+    "deviceTime": {
+      "type": "string",
+      "id": "http://jsonschema.net/deviceTime",
+      "required": true
+    },
+    "id": {
+      "type": "string",
+      "id": "http://jsonschema.net/id",
+      "required": false
+    },
+    "recommended": {
+      "type": "number",
+      "id": "http://jsonschema.net/recommended",
+      "required": false
+    },
+    "programmed": {
+      "type": "number",
+      "id": "http://jsonschema.net/bolus/programmed",
+      "required": false
+    },
+    "type": {
+      "enum": [
+        "bolus",
+        "bolus-dual/normal",
+        "bolus-normal"
+      ],
+      "required": true
+    },
+    "value": {
+      "type": [
+        "string",
+        "number"
+      ],
+      "id": "http://jsonschema.net/bolus/value",
+      "required": true
+    },
+    "bolus": {
+      "type": "number",
+      "id": "http://jsonschema.net/bolus/value/bolus",
+      "required": false
+    }
+  }
+}

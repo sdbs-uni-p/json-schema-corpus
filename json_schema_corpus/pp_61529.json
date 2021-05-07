@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://xray.com/domain",
+  "title": "Domain",
+  "description": "X-Ray web service domain method schema",
+  "oneOf": [
+    {
+      "$ref": "base_schema_ref.json#/definitions/base_response"
+    },
+    {
+      "id": "http://xray.com/domain/okresponse",
+      "type": "object",
+      "properties": {
+        "data": {
+          "required": [
+            "name",
+            "instructors",
+            "courses",
+            "participants",
+            "analysedcourses",
+            "activecourses",
+            "totalreports"
+          ],
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "instructors": {
+              "type": "string"
+            },
+            "courses": {
+              "type": "string"
+            },
+            "participants": {
+              "type": "string"
+            },
+            "analysedcourses": {
+              "type": "string"
+            },
+            "activecourses": {
+              "type": "string"
+            },
+            "totalreports": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  ]
+}

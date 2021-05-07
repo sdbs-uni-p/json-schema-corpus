@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "http://reference.focusnet.eu/schemas/focus-mobile-app-user-preferences/v1.0",
+  "title": "FOCUS Mobile application - User preferences",
+  "description": "The different user-defined preferences of the FOCUS Mobile application.",
+  "allOf": [
+    {
+      "$ref": "http://reference.focusnet.eu/schemas/focus-object/v1.0#/definitions/metadata"
+    },
+    {
+      "$ref": "#/definitions/preferences"
+    }
+  ],
+  "definitions": {
+    "preferences": {
+      "type": "object",
+      "properties": {
+        "bookmarks": {
+          "type": "object",
+          "properties": {
+            "pages": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/bookmark-link"
+              }
+            },
+            "tools": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/bookmark-link"
+              }
+            }
+          }
+        }
+      }
+    },
+    "bookmark-link": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "path"
+      ]
+    }
+  }
+}

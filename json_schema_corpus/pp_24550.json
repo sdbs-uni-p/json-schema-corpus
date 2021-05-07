@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "description": "Chapter of a book.",
+  "$linkedData": {
+    "verses": {
+      "schema": "verse",
+      "type": "collection",
+      "path": [
+        "/bibles",
+        "/{bibleId}",
+        "/books",
+        "/{bookId}",
+        "/chapters",
+        "/{chapterId}",
+        "/verses"
+      ]
+    },
+    "book": {
+      "schema": "book",
+      "type": "single",
+      "path": [
+        "/bibles",
+        "/{bibleId}",
+        "/books",
+        "/{bookId}"
+      ]
+    }
+  },
+  "properties": {
+    "chapterId": {
+      "type": "integer",
+      "required": true
+    },
+    "number": {
+      "type": "string",
+      "required": true
+    },
+    "bookId": {
+      "type": "integer",
+      "required": true
+    }
+  }
+}

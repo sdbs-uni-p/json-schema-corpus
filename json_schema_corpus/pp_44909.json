@@ -1,0 +1,64 @@
+{
+  "title": "Query Log",
+  "description": "log file entry for ingestion by tsd aggregator",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "annotations": {
+      "type": "object",
+      "properties": {
+        "finalTimestamp": {
+          "type": "string"
+        },
+        "initTimestamp": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "initTimestamp",
+        "finalTimestamp"
+      ]
+    },
+    "counters": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      }
+    },
+    "gauges": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      }
+    },
+    "timers": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      }
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^2c$"
+    }
+  },
+  "required": [
+    "annotations",
+    "counters",
+    "timers",
+    "gauges",
+    "version"
+  ]
+}

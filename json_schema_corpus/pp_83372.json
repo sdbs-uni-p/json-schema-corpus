@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "match": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "integer"
+      },
+      "name": {
+        "type": "string"
+      },
+      "player1": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "player2": {
+        "$ref": "player1"
+      }
+    },
+    "required": [
+      "id",
+      "name",
+      "player1",
+      "player2"
+    ]
+  },
+  "matches": {
+    "type": "array",
+    "items": {
+      "$ref": "match"
+    }
+  },
+  "response/create": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "match": {
+        "$ref": "match"
+      },
+      "matches": {
+        "$ref": "matches"
+      }
+    },
+    "required": [
+      "match",
+      "matches"
+    ]
+  }
+}

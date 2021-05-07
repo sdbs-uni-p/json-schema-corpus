@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "timestamp_dt": {
+      "type": "string"
+    },
+    "timestamp_fn": {
+      "type": "string"
+    },
+    "id_eleve": {
+      "type": "string"
+    },
+    "id_motif": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "id_eleve",
+    "timestamp_dt",
+    "timestamp_fn"
+  ]
+}

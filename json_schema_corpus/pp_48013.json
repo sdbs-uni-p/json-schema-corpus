@@ -1,0 +1,180 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "title": "Fractive Project",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "The game title that will be shown to players and in OpenGraph cards"
+    },
+    "author": {
+      "type": "string",
+      "description": "The author name that will be shown to players"
+    },
+    "description": {
+      "type": "string",
+      "description": "The game description (one or two sentences) that will be shown to players and in OpenGraph cards"
+    },
+    "website": {
+      "type": "string",
+      "description": "A web URL that will be shown to players, e.g. your website where players can find more of your work"
+    },
+    "twitter": {
+      "type": "string",
+      "description": "Your Twitter handle that will be shown to players and in OpenGraph cards on Twitter"
+    },
+    "markdown": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "description": "List of glob-style patterns for locating Markdown source files. These are compiled in the order in which they appear."
+    },
+    "javascript": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "description": "List of glob-style patterns for locating Javascript files reside. These are imported in the order in which they appear."
+    },
+    "assets": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "description": "List of glob-style patterns for locating additional asset files. These are imported in the order in which they appear."
+    },
+    "ignore": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "description": "List of glob-style patterns for files to ignore. Ignores are applied when searching for Markdown files, Javascript files, and asset files."
+    },
+    "aliases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "alias": {
+            "type": "string"
+          },
+          "regex": {
+            "type": "string"
+          },
+          "replaceWith": {
+            "type": "string"
+          },
+          "end": {
+            "type": "string"
+          },
+          "debug": {
+            "type": "boolean"
+          }
+        }
+      },
+      "uniqueItems": true,
+      "description": ""
+    },
+    "template": {
+      "type": "string",
+      "description": "The HTML template file to use for the final story output"
+    },
+    "output": {
+      "type": "string",
+      "description": "The folder where the final story files will be saved"
+    },
+    "outputFormat": {
+      "enum": [
+        "prettify",
+        "minify",
+        "default"
+      ],
+      "description": "Options: 'minify' to minify the final story HTML (reduces file size but makes the HTML source much less human-readable), 'prettify' to prettify the final story HTML into human-readable HTML, 'default' for no additional processing"
+    },
+    "linkTooltips": {
+      "type": "boolean",
+      "description": "If true, show a tooltip on macro links indicating the macro destination. (Useful for dev, but you probably want to disable it for release.)"
+    },
+    "linkTags": {
+      "type": "object",
+      "description": "Raw HTML to be inserted at the end of different Fractive link types.",
+      "properties": {
+        "external": {
+          "type": "object",
+          "properties": {
+            "html": {
+              "type": "string",
+              "description": "Tag for external links."
+            },
+            "prepend": {
+              "type": "boolean",
+              "description": "If true, place the tag before the link. If false, place it after the link."
+            }
+          }
+        },
+        "inline": {
+          "type": "object",
+          "properties": {
+            "html": {
+              "type": "string",
+              "description": "Tag for links that expand inline."
+            },
+            "prepend": {
+              "type": "boolean",
+              "description": "If true, place the tag before the link. If false, place it after the link."
+            }
+          }
+        },
+        "section": {
+          "type": "object",
+          "properties": {
+            "html": {
+              "type": "string",
+              "description": "Tag for links between sections."
+            },
+            "prepend": {
+              "type": "boolean",
+              "description": "If true, place the tag before the link. If false, place it after the link."
+            }
+          }
+        },
+        "function": {
+          "type": "object",
+          "properties": {
+            "html": {
+              "type": "string",
+              "description": "Tag for links that execute functions."
+            },
+            "prepend": {
+              "type": "boolean",
+              "description": "If true, place the tag before the link. If false, place it after the link."
+            }
+          }
+        }
+      }
+    },
+    "includeBackButton": {
+      "type": "boolean",
+      "description": "Whether to include a back button in your story."
+    },
+    "backButtonHtml": {
+      "type": "string",
+      "description": "Raw HTML inserted in the place where the back button is defined to be."
+    },
+    "hardLineBreaks": {
+      "type": "boolean",
+      "description": "If true, single line breaks in Markdown source will be replaced with <br/> in the rendered HTML source. If false, they'll be replaced with \\n, unless the line is suffixed by two or more spaces (see Markdown spec)"
+    },
+    "smartPunctuation": {
+      "type": "boolean",
+      "description": "If true, replace straight quotes with smart quotes, -- with en-dash, --- with em-dash, and ... with ellipsis."
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,119 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Image Schema",
+  "description": "The Images Archetype - Essential properties that define an image",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "_id": {
+      "type": "string",
+      "description": "Unique identifier for this archetype record",
+      "maxLength": 50,
+      "default": ""
+    },
+    "_sid": {
+      "type": "string",
+      "description": "Unique short identifier for this archetype record",
+      "maxLength": 50,
+      "default": ""
+    },
+    "servant_id": {
+      "type": "string",
+      "description": "The servant to whom this record belongs",
+      "maxLength": 50,
+      "default": ""
+    },
+    "state": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "public",
+        "private",
+        "deleted"
+      ],
+      "description": "Indicates this archetype record's state",
+      "default": "draft"
+    },
+    "created": {
+      "type": "string",
+      "description": "Date and time this archetype record was created in ISO 8601 date standard e.g. YYYY-MM-DDThh:mm:ss.sTZD",
+      "format": "date-time",
+      "default": ""
+    },
+    "updated": {
+      "type": "string",
+      "description": "Date and time this archetype record was updated in ISO 8601 date standard e.g. YYYY-MM-DDThh:mm:ss.sTZD",
+      "format": "date-time",
+      "default": ""
+    },
+    "key": {
+      "type": "string",
+      "description": "Image file name without file extension (e.g., .png)",
+      "maxLength": 200,
+      "default": ""
+    },
+    "format": {
+      "type": "string",
+      "description": "Image file type ('jpg','png','gif')",
+      "enum": [
+        "jpg",
+        "jpeg",
+        "png",
+        "gif"
+      ]
+    },
+    "bytes": {
+      "type": "integer",
+      "description": "Image size in bytes",
+      "minimum": 0,
+      "maximum": 999999999999999999999999999,
+      "default": 0
+    },
+    "resolution_original": {
+      "type": "string",
+      "description": "URL (as per RFC 3986) to a picture in JPEG, PNG or GIF format at the original resolution it had when it was uploaded",
+      "format": "uri",
+      "maxLength": 1000,
+      "default": ""
+    },
+    "resolution_large": {
+      "type": "string",
+      "description": "URL (as per RFC 3986) to a picture in JPEG, PNG or GIF format at the large resolution it had when it was uploaded",
+      "format": "uri",
+      "maxLength": 1000,
+      "default": ""
+    },
+    "resolution_medium": {
+      "type": "string",
+      "description": "URL (as per RFC 3986) to a picture in JPEG, PNG or GIF format at the medium resolution it had when it was uploaded",
+      "format": "uri",
+      "maxLength": 1000,
+      "default": ""
+    },
+    "resolution_small": {
+      "type": "string",
+      "description": "URL (as per RFC 3986) to a picture in JPEG, PNG or GIF format at the small resolution it had when it was uploaded",
+      "format": "uri",
+      "maxLength": 1000,
+      "default": ""
+    },
+    "resolution_thumbnail": {
+      "type": "string",
+      "description": "URL (as per RFC 3986) to a picture in JPEG, PNG or GIF format at the thumbnail resolution it had when it was uploaded",
+      "format": "uri",
+      "maxLength": 1000,
+      "default": ""
+    },
+    "tags": {
+      "type": "array",
+      "description": "Array of Tag Archetypes that are used to help categorize this Archetype record",
+      "maxItems": 30,
+      "uniqueItems": true,
+      "additionalItems": false,
+      "default": [],
+      "items": {
+        "$ref": "tag_archetype_schema.json"
+      }
+    }
+  }
+}

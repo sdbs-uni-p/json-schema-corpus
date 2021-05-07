@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "The value returned by COPY /{db}/{docid}",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "ok": {
+      "type": "boolean"
+    },
+    "rev": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "ok"
+  ],
+  "title": "CouchDB copy doc",
+  "type": "object"
+}

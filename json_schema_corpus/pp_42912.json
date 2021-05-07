@@ -1,0 +1,163 @@
+{
+  "id": "http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/indexed/1-0-0.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+    },
+    "occurred_at": {
+      "type": "string",
+      "pattern": "^[1-9]{1}[0-9]{12,15}$"
+    },
+    "ctx_tenant_id": {
+      "type": "string",
+      "pattern": "^[\\w\\/\\.:-]+$",
+      "description": "Multi-tenant apps can use this field to track the tenant id."
+    },
+    "ctx_causator_ref": {
+      "type": "object",
+      "properties": {
+        "curie": {
+          "type": "string",
+          "pattern": "^([a-z0-9-]+):([a-z0-9\\.-]+):([a-z0-9-]+)?:([a-z0-9-]+)$",
+          "minLength": 0,
+          "maxLength": 146
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9:_\\-]+$",
+          "minLength": 0,
+          "maxLength": 255
+        },
+        "tag": {
+          "type": "string",
+          "pattern": "^([\\w\\/-]|[\\w-][\\w\\/-]*[\\w-])$",
+          "minLength": 0,
+          "maxLength": 255
+        }
+      },
+      "required": [
+        "curie",
+        "id"
+      ],
+      "additionalProperties": false
+    },
+    "ctx_correlator_ref": {
+      "type": "object",
+      "properties": {
+        "curie": {
+          "type": "string",
+          "pattern": "^([a-z0-9-]+):([a-z0-9\\.-]+):([a-z0-9-]+)?:([a-z0-9-]+)$",
+          "minLength": 0,
+          "maxLength": 146
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9:_\\-]+$",
+          "minLength": 0,
+          "maxLength": 255
+        },
+        "tag": {
+          "type": "string",
+          "pattern": "^([\\w\\/-]|[\\w-][\\w\\/-]*[\\w-])$",
+          "minLength": 0,
+          "maxLength": 255
+        }
+      },
+      "required": [
+        "curie",
+        "id"
+      ],
+      "additionalProperties": false
+    },
+    "ctx_user_ref": {
+      "type": "object",
+      "properties": {
+        "curie": {
+          "type": "string",
+          "pattern": "^([a-z0-9-]+):([a-z0-9\\.-]+):([a-z0-9-]+)?:([a-z0-9-]+)$",
+          "minLength": 0,
+          "maxLength": 146
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9:_\\-]+$",
+          "minLength": 0,
+          "maxLength": 255
+        },
+        "tag": {
+          "type": "string",
+          "pattern": "^([\\w\\/-]|[\\w-][\\w\\/-]*[\\w-])$",
+          "minLength": 0,
+          "maxLength": 255
+        }
+      },
+      "required": [
+        "curie",
+        "id"
+      ],
+      "additionalProperties": false
+    },
+    "ctx_app": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "#/definitions/app"
+        }
+      ],
+      "description": "The \"ctx_app\" refers to the application used to send the command which in turn resulted in this event being published."
+    },
+    "ctx_cloud": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "#/definitions/cloud"
+        }
+      ],
+      "description": "The \"ctx_cloud\" is usually copied from the command that resulted in this event being published. This means the value most likely refers to the cloud that received the command originally, not the machine processing the event."
+    },
+    "ctx_ip": {
+      "type": "string",
+      "format": "ipv4"
+    },
+    "ctx_ipv6": {
+      "type": "string",
+      "format": "ipv6"
+    },
+    "ctx_ua": {
+      "type": "string",
+      "minLength": 0,
+      "maxLength": 65535
+    },
+    "ctx_msg": {
+      "type": "string",
+      "minLength": 0,
+      "maxLength": 65535,
+      "description": "An optional message/reason for the event being created. Consider this like a git commit message."
+    }
+  },
+  "required": [
+    "event_id"
+  ],
+  "definitions": {
+    "app": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "http://schemas.gdbots.io/json-schema/gdbots/contexts/app/1-0-0.json#"
+        }
+      ]
+    },
+    "cloud": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "http://schemas.gdbots.io/json-schema/gdbots/contexts/cloud/1-0-0.json#"
+        }
+      ]
+    }
+  },
+  "additionalProperties": true
+}

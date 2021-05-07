@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "title": "Schema of DB",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "x",
+      "y"
+    ],
+    "properties": {
+      "x": {
+        "type": "array"
+      },
+      "y": {
+        "type": "array"
+      }
+    }
+  }
+}

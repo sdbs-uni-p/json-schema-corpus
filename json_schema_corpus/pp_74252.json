@@ -1,0 +1,70 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "_id": {},
+    "firstname": {
+      "type": "string"
+    },
+    "lastname": {
+      "type": "string"
+    },
+    "age": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "sex": {
+      "enum": [
+        "male",
+        "female",
+        "other",
+        "unknown",
+        null
+      ]
+    },
+    "race": {
+      "enum": [
+        "American Indian or Alaska Native",
+        "Asian",
+        "Native Hawaiian or Other Pacific Islander",
+        "Black or African American",
+        "White",
+        "More Than One Race",
+        "Unknown or Not Reported",
+        null
+      ]
+    },
+    "ethnicity": {
+      "enum": [
+        "Not Hispanic or Latino",
+        "Hispanic or Latino",
+        "Unknown or Not Reported",
+        null
+      ]
+    },
+    "code": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "files": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "file.json"
+      }
+    },
+    "info": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": false
+}

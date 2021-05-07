@@ -1,0 +1,107 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Household",
+  "type": "object",
+  "properties": {
+    "householdId": {
+      "description": "[Output only] Unique ID of Household",
+      "type": "string",
+      "minLength": 1
+    },
+    "pantryId": {
+      "description": "[Output only] Unique ID of food pantry",
+      "type": "string",
+      "minLength": 1
+    },
+    "householdNumber": {
+      "description": "[Output only] Unique Number of Household",
+      "type": "number",
+      "minLength": 1
+    },
+    "physicalAddress": {
+      "$ref": "__apigModelsEndpoint__/Address"
+    },
+    "headOfHousehold": {
+      "$ref": "__apigModelsEndpoint__/HouseholdMember"
+    },
+    "hudCategory": {
+      "description": "HUD category of the household",
+      "type": "string",
+      "enum": [
+        "Extremely Low",
+        "Very Low",
+        "Low",
+        "Moderate"
+      ]
+    },
+    "transportationType": {
+      "description": "Type of transportation for the household",
+      "type": "string",
+      "enum": [
+        "By Bus",
+        "By Car",
+        "On Foot"
+      ]
+    },
+    "validationDate": {
+      "description": "Validation date when household address was verified",
+      "type": "string",
+      "format": "date-time",
+      "minLength": 1
+    },
+    "validationType": {
+      "description": "Validation type presented when household address was verified",
+      "type": "string",
+      "minLength": 1
+    },
+    "isActive": {
+      "description": "Flag to indicate if a household is active",
+      "type": "boolean"
+    },
+    "isArchived": {
+      "description": "Flag to indicate if a household is archived",
+      "type": "boolean"
+    },
+    "isCommoditiesEligible": {
+      "description": "Flag to indicate if a household is eligible for commodities",
+      "type": "boolean"
+    },
+    "isHomeless": {
+      "description": "Flag to indicate if a household is without a home",
+      "type": "boolean"
+    },
+    "isInCityLimits": {
+      "description": "Flag to indicate if a household is within the city limits",
+      "type": "boolean"
+    },
+    "isSingleParentHousehold": {
+      "description": "Flag to indicate if a household has only a single parent",
+      "type": "boolean"
+    },
+    "createdAt": {
+      "description": "[Output only] Creation time of the food pantry",
+      "type": "string",
+      "format": "date-time",
+      "minLength": 1
+    },
+    "createdBy": {
+      "description": "[Output only] Creator of the food pantry",
+      "type": "string",
+      "minLength": 1
+    },
+    "updatedAt": {
+      "description": "[Output only] Last modification time of the food pantry",
+      "type": "string",
+      "format": "date-time",
+      "minLength": 1
+    },
+    "updatedBy": {
+      "description": "[Output only] User to last modify the food pantry",
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "physicalAddress"
+  ]
+}

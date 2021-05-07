@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Message Type",
+  "description": "The type of the marshaling message the payload conforms to",
+  "type": "string",
+  "enum": [
+    "location",
+    "nap",
+    "menu",
+    "menuitem"
+  ]
+}

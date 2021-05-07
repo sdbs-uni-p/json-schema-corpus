@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "immutable id for this career site"
+    },
+    "label": {
+      "type": "string",
+      "description": "label for this career site, e.g. Graduate recruitment site"
+    },
+    "homePage": {
+      "type": "string",
+      "format": "uri",
+      "description": "the homepage for this career site"
+    }
+  },
+  "required": [
+    "id",
+    "label",
+    "homePage"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,28 @@
+{
+  "title": "Referenced File Schema",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://api.npolar.no/_schema/ref/file/1.0",
+  "type": "object",
+  "description": "Object referencing to uploaded file",
+  "properties": {
+    "uri": {
+      "type": "string",
+      "description": "URI to the file location",
+      "format": "uri"
+    },
+    "filename": {
+      "type": "string",
+      "description": "Original file name (and extension if applicable)"
+    },
+    "filesize": {
+      "type": "integer",
+      "description": "File size in bytes"
+    },
+    "mimetype": {
+      "$ref": "https://api.npolar.no/_schema/ref/mimetype"
+    }
+  },
+  "required": [
+    "uri"
+  ]
+}

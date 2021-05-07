@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "organizationList",
+  "id": "organizationList",
+  "type": "object",
+  "properties": {
+    "available": {
+      "type": "number",
+      "description": "The number of items available for this collection."
+    },
+    "returned": {
+      "type": "number",
+      "description": "The number of items returned for this collection."
+    },
+    "link": {
+      "$ref": "link.json#",
+      "description": "A self referencing link to the collection."
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "$ref": "organization.json#"
+      },
+      "description": "An array for Order items."
+    }
+  }
+}

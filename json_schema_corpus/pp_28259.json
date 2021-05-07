@@ -1,0 +1,23 @@
+{
+  "title": "date",
+  "id": "https://rawgit.com/camshaft/shenu/master/schemas/date.json#",
+  "description": "",
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "properties": {
+    "year": {
+      "type": "integer"
+    },
+    "month": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 12
+    },
+    "day": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 31
+    }
+  },
+  "additionalProperties": false
+}

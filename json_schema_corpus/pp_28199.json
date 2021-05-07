@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "orderItem",
+  "id": "orderItem",
+  "description": "An item on an order. The details of the order item are specified in the productSpecOrderDetails.",
+  "type": "object",
+  "required": [
+    "objectType",
+    "orderItemReference",
+    "action",
+    "quantity"
+  ],
+  "properties": {
+    "objectType": {
+      "type": "string",
+      "enum": [
+        "orderItem"
+      ],
+      "description": "The type of the object, orderItem."
+    },
+    "orderItemReference": {
+      "type": "string",
+      "description": "A reference number that can be used to refer to this order item.",
+      "maxLength": 4
+    },
+    "action": {
+      "type": "string",
+      "enum": [
+        "INSTALL",
+        "CHANGE",
+        "NO_CHANGE",
+        "DELETE"
+      ],
+      "description": "The action to be taken for this order item (E.g. Install, Change)."
+    },
+    "quantity": {
+      "type": "integer",
+      "description": "The quantity for the order item.",
+      "minimum": 1
+    },
+    "orderItemStatus": {
+      "type": "string",
+      "enum": [
+        "ACKNOWLEDGED",
+        "IN_PROGRESS",
+        "CANCELLED",
+        "COMPLETED",
+        "REJECTED",
+        "PENDING",
+        "HELD",
+        "FAILED",
+        "PARTIAL"
+      ],
+      "description": "The status of the order."
+    },
+    "orderItemDetail": {
+      "type": "object",
+      "description": "The ordering representation of the product specification being ordered with this order item.",
+      "oneOf": [
+        {
+          "$ref": "accessElineProductOrder.json#"
+        },
+        {
+          "$ref": "uniProductOrder.json#"
+        },
+        {
+          "$ref": "disconnectOrderItemDetail.json#"
+        }
+      ]
+    }
+  }
+}

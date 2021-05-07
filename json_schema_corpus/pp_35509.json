@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "wp_live_blog",
+  "title": "A live blog.",
+  "description": "Holds attributes of an ANS live blog",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "story"
+      ]
+    },
+    "_id": {
+      "$ref": "https://raw.githubusercontent.com/washingtonpost/ans-schema/master/src/main/resources/schema/ans/0.5.5/traits/trait_id.json"
+    },
+    "version": {
+      "$ref": "https://raw.githubusercontent.com/washingtonpost/ans-schema/master/src/main/resources/schema/ans/0.5.5/traits/trait_version.json"
+    },
+    "created_date": {
+      "$ref": "https://raw.githubusercontent.com/washingtonpost/ans-schema/master/src/main/resources/schema/ans/0.5.5/traits/trait_created_date.json"
+    },
+    "last_updated_date": {
+      "$ref": "https://raw.githubusercontent.com/washingtonpost/ans-schema/master/src/main/resources/schema/ans/0.5.5/traits/trait_last_updated_date.json"
+    },
+    "headlines": {
+      "$ref": "https://raw.githubusercontent.com/washingtonpost/ans-schema/master/src/main/resources/schema/ans/0.5.5/traits/trait_headlines.json"
+    },
+    "subheadlines": {
+      "$ref": "https://raw.githubusercontent.com/washingtonpost/ans-schema/master/src/main/resources/schema/ans/0.5.5/traits/trait_subheadlines.json"
+    },
+    "description": {
+      "$ref": "https://raw.githubusercontent.com/washingtonpost/ans-schema/master/src/main/resources/schema/ans/0.5.5/traits/trait_description.json"
+    },
+    "credits": {
+      "$ref": "https://raw.githubusercontent.com/washingtonpost/ans-schema/master/src/main/resources/schema/ans/0.5.5/traits/trait_credits.json"
+    },
+    "taxonomy": {
+      "$ref": "https://raw.githubusercontent.com/washingtonpost/ans-schema/master/src/main/resources/schema/ans/0.5.5/traits/trait_taxonomy.json"
+    },
+    "source": {
+      "$ref": "https://raw.githubusercontent.com/washingtonpost/ans-schema/master/src/main/resources/schema/ans/0.5.5/traits/trait_source.json"
+    },
+    "slug": {
+      "$ref": "https://raw.githubusercontent.com/washingtonpost/ans-schema/master/src/main/resources/schema/ans/0.5.5/traits/trait_slug.json"
+    },
+    "status": {
+      "$ref": "https://raw.githubusercontent.com/washingtonpost/ans-schema/master/src/main/resources/schema/ans/0.5.5/traits/trait_status.json"
+    },
+    "content_elements": {
+      "$ref": "https://raw.githubusercontent.com/washingtonpost/ans-schema/master/src/main/resources/schema/ans/0.5.5/traits/trait_content_elements.json"
+    }
+  },
+  "required": [
+    "type",
+    "version"
+  ]
+}

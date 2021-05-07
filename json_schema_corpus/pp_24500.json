@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://mydomain.net/schemas/zone.json",
+  "type": "object",
+  "properties": {
+    "iID": {
+      "type": "integer",
+      "description": "ID of the zone (Read only)"
+    },
+    "nodes": {
+      "type": "array",
+      "required": true,
+      "items": {
+        "$ref": "http://mydomain.net/schemas/node.json"
+      }
+    }
+  }
+}

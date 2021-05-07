@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "user schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "first": {
+      "type": "string"
+    },
+    "last": {
+      "type": "string"
+    },
+    "username": {
+      "type": "string",
+      "minLength": 3
+    },
+    "password": {
+      "type": "string",
+      "minLength": 8
+    },
+    "verification": {
+      "type": "string"
+    },
+    "verified": {
+      "type": "boolean"
+    },
+    "roles": {
+      "type": "array"
+    }
+  },
+  "required": [
+    "email",
+    "first",
+    "last",
+    "username",
+    "verified",
+    "roles"
+  ]
+}

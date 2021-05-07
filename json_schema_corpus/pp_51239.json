@@ -1,0 +1,95 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "incident",
+  "description": "Occurrence of a cyber attack",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "../common/core.json"
+    },
+    {
+      "$ref": "../common/describable.json"
+    },
+    {
+      "$ref": "../common/referenceable.json"
+    },
+    {
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "incident"
+          ]
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "Investigation",
+            "Incident"
+          ]
+        },
+        "impact": {
+          "description": "The impact of this attack on operations",
+          "$ref": "../common/impact.json"
+        }
+      }
+    }
+  ],
+  "relationships": {
+    "proposed-coa": [
+      "course-of-action"
+    ],
+    "implemented-coa": [
+      "course-of-action"
+    ],
+    "leveraged-ttp": [
+      "malware",
+      "attack-pattern",
+      "exploit",
+      "victim-targeting",
+      "malicious-tool",
+      "malicious-infrastructure",
+      "persona"
+    ],
+    "attribution": [
+      "threat-actor",
+      "campaign"
+    ],
+    "has-victim": [
+      "identity"
+    ],
+    "related": [
+      "asset",
+      "attack-pattern",
+      "campaign",
+      "configuration",
+      "course-of-action",
+      "identity",
+      "incident",
+      "indicator",
+      "kill-chain",
+      "kill-chain-phase",
+      "malicious-infrastructure",
+      "malicious-tool",
+      "malware",
+      "observation",
+      "threat-actor",
+      "tool",
+      "victim-targeting",
+      "vulnerability",
+      "weakness"
+    ],
+    "duplicate-of": [
+      "incident"
+    ],
+    "suggested-update": [
+      "incident"
+    ],
+    "derived-from": [
+      "incident"
+    ],
+    "impacts": [
+      "asset"
+    ]
+  }
+}

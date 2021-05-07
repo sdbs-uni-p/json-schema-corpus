@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "properties": {
+    "options": {
+      "type": "object",
+      "properties": {
+        "nick": {
+          "type": "string"
+        },
+        "plugins": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "shell": {
+          "type": "string"
+        },
+        "ttl": {
+          "type": "number"
+        }
+      }
+    },
+    "strategies": {
+      "patternProperties": {
+        ".*": {
+          "type": "object",
+          "properties": {
+            "jid": {
+              "type": "string"
+            },
+            "password_env": {
+              "type": "string"
+            },
+            "people": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "rooms": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "jid",
+            "password_env"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "options",
+    "strategies"
+  ]
+}

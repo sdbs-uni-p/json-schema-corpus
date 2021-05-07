@@ -1,0 +1,3060 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Finance",
+  "x-otm-library": {
+    "ProjectName": "project.otp",
+    "LibraryName": "Finance",
+    "LibraryVersion": "0.0.0",
+    "LibraryStatus": "DRAFT",
+    "SourceFile": "/Finance_0_0_0.otm",
+    "CompilerVersion": "4.0-SNAPSHOT",
+    "CompileDate": "2016-05-18T16:11:08.462-0400"
+  },
+  "definitions": {
+    "BankAccountType": {
+      "x-otm-entity": {
+        "EntityType": "ValueWithAttributes",
+        "EntityName": "BankAccountType"
+      },
+      "properties": {
+        "listBankAccountType": {
+          "$ref": "#/definitions/Enum_List_BankAccountType_Base_Base"
+        },
+        "listBankAccountTypeExtension": {
+          "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/String_EnumExtension"
+        },
+        "accountCode": {
+          "description": "Code extension definition without dimension information.",
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Short"
+        },
+        "Description": {
+          "description": "Description of who manages this set of codes.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "Common",
+                "value": "Description"
+              }
+            ],
+            "examples": [
+              {
+                "context": "Common",
+                "value": "Visa"
+              }
+            ]
+          },
+          "type": "string"
+        },
+        "name": {
+          "description": "This may be a source authority/ owner name, ID or code.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "Common",
+                "value": "SourceName"
+              }
+            ]
+          },
+          "type": "string"
+        },
+        "uRL": {
+          "description": "Implementer: This is A URL to the code source authority/ owner.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}anyURI"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "Common",
+                "value": "SourceURL"
+              }
+            ]
+          },
+          "type": "string"
+        },
+        "id": {
+          "description": "Implementer: This is used for a database or key ID for the code item (if it is different from the @CodeExtension) in relationship to the obsolete code indicator.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "Common",
+                "value": "UniqueID"
+              }
+            ]
+          },
+          "$ref": "built-ins/XMLSchema.schema.json#/definitions/ID"
+        }
+      }
+    },
+    "BankAcct": {
+      "x-otm-entity": {
+        "EntityType": "CoreObject",
+        "EntityName": "BankAcct"
+      },
+      "properties": {
+        "@type": {
+          "type": "string"
+        },
+        "checkNumber": {
+          "description": "Example: 999",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to32"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "CheckNumber"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Tiny"
+        },
+        "PrivacyGroup": {
+          "description": "Data use and sharing permissions.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "AttributeGroup: PrivacyGroup"
+              ]
+            }
+          },
+          "$ref": "Common_0_0_0.schema.json#/definitions/Privacy"
+        },
+        "BankAcctName": {
+          "description": "Example: Joseph L Smith",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to64"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "BankAcctName"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Short"
+        },
+        "BankAcctNumber": {
+          "description": "Account number.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to64"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "BankAcctName"
+              }
+            ]
+          },
+          "$ref": "#/definitions/BankAcctNumber"
+        },
+        "BankID": {
+          "description": "Bank ID or routing number.",
+          "$ref": "#/definitions/BankID"
+        },
+        "Type": {
+          "description": "Example: Checking",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}List_BankAccountType"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "Type"
+              }
+            ]
+          },
+          "$ref": "#/definitions/BankAccountType"
+        },
+        "checksAcceptedInd": {
+          "description": "Implementer: If true, checks are accepted.",
+          "type": "boolean"
+        },
+        "ExtensionPoint": {
+          "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint"
+        }
+      },
+      "required": [
+        "@type",
+        "BankID"
+      ],
+      "discriminator": "@type"
+    },
+    "EncryptionToken": {
+      "x-otm-entity": {
+        "EntityType": "CoreObject",
+        "EntityName": "EncryptionToken"
+      },
+      "properties": {
+        "@type": {
+          "type": "string"
+        },
+        "encryptionKey": {
+          "description": "Note: This contains a key required to retrieve the full payment instrument details compliant with PCI DSS standards.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string"
+              ]
+            }
+          },
+          "type": "string"
+        },
+        "encryptionKeyMethod": {
+          "description": "Developer: This contains a reference to the key generation method being used - this is NOT the key value.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string"
+              ]
+            }
+          },
+          "type": "string"
+        },
+        "encryptionMethod": {
+          "description": "OpenTravel Best Practice: Encryption Method: When using the OpenTravel Encryption element, it is RECOMMENDED that all trading partners be informed of all encryption methods being used in advance of implementation to ensure message processing compatibility.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string"
+              ]
+            }
+          },
+          "type": "string"
+        },
+        "encryptedValue": {
+          "description": "Example: 5dfc52b51bd35553df8592078de921bc",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string"
+              ]
+            }
+          },
+          "type": "string"
+        },
+        "mask": {
+          "description": "Example: xxxxxxxxxxxx9922",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "LocalAnonymousType: EncryptionTokenType_Mask"
+              ]
+            }
+          },
+          "$ref": "#/definitions/EncryptionToken_Mask"
+        },
+        "token": {
+          "description": "Example: AEGHV234AUD54367",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "LocalAnonymousType: EncryptionTokenType_Token"
+              ]
+            }
+          },
+          "$ref": "#/definitions/EncryptionTokenType_Token"
+        },
+        "tokenProviderID": {
+          "description": "Developer: This contains a provider ID if multiple providers are used for secure information exchange.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string"
+              ]
+            }
+          },
+          "type": "string"
+        },
+        "authenticationMethod": {
+          "description": "Specifies the method that was used to authenticate the card.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "LocalAnonymousType: EncryptionTokenType_AuthenticationMethod"
+              ]
+            }
+          },
+          "$ref": "#/definitions/EncryptionTokenType_AuthenticationMethod"
+        },
+        "PlainText": {
+          "description": "Non-secure (plain text) value.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string"
+              ]
+            }
+          },
+          "type": "string"
+        },
+        "Warning": {
+          "description": "Identifies an error that occurred in the processing of the payment card.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}WarningType"
+              ]
+            }
+          },
+          "$ref": "Common_0_0_0.schema.json#/definitions/ErrorWarning"
+        },
+        "ExtensionPoint": {
+          "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint"
+        }
+      },
+      "required": [
+        "@type"
+      ],
+      "discriminator": "@type"
+    },
+    "BankAcctNumber": {
+      "$ref": "#/definitions/EncryptionToken"
+    },
+    "BankID": {
+      "$ref": "#/definitions/EncryptionToken"
+    },
+    "CardNumber": {
+      "$ref": "#/definitions/EncryptionToken"
+    },
+    "SeriesCode": {
+      "$ref": "#/definitions/EncryptionToken"
+    },
+    "MagneticStripe": {
+      "$ref": "#/definitions/EncryptionToken"
+    },
+    "AuthenticationVerification": {
+      "$ref": "#/definitions/EncryptionToken"
+    },
+    "TransactionPassword": {
+      "$ref": "#/definitions/EncryptionToken"
+    },
+    "CustomerLoyalty": {
+      "x-otm-entity": {
+        "EntityType": "ValueWithAttributes",
+        "EntityName": "CustomerLoyalty"
+      },
+      "description": "Program rewarding frequent use by accumulating credits for services provided by vendors.",
+      "properties": {
+        "id": {
+          "description": "A reference placeholder for this loyalty membership.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}RPH_Type"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "RPH"
+              }
+            ]
+          },
+          "$ref": "built-ins/XMLSchema.schema.json#/definitions/ID"
+        },
+        "programID": {
+          "description": "Identifier to indicate the company owner of the loyalty program.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to16"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "ProgramID"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Short"
+        },
+        "membershipID": {
+          "description": "Unique identifier of the member in the program (membership number, account number, etc.).",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to32"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "MembershipID"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Tiny"
+        },
+        "travelSector": {
+          "description": "Identifies the travel sector. Refer to OpenTravel Code List Travel Sector (TVS).",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}OTA_CodeType"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "TravelSector"
+              }
+            ]
+          },
+          "$ref": "Common_0_0_0.schema.json#/definitions/Code_OTA"
+        },
+        "vendorCode": {
+          "description": "Indicate the partner(s)/vendor(s) for which the customer loyalty number is valid.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}ListOfStringLength1to8"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "VendorCode"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Tiny"
+        },
+        "allianceLoyaltyLevelName": {
+          "description": "Name of the alliance loyalty level (e.g.,OneWorld  uses Emerald, Ruby, etc and SkyTeam uses Elite, etc.)",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to128"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "AllianceLoyaltyLevelName"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Short"
+        },
+        "customerType": {
+          "description": "Original assessment of the customer by the travel agent.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to8"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "CustomerType"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Tiny"
+        },
+        "customerValue": {
+          "description": "The supplier's ranking of the customer (e.g., VIP, numerical ranking).",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to8"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "CustomerValue"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Tiny"
+        },
+        "password": {
+          "description": "The password for the member in the program.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to32"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "Password"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Tiny"
+        },
+        "loyalLevel": {
+          "description": "Indicates special privileges in program assigned to individual.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to16"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "LoyalLevel"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Tiny"
+        },
+        "loyalLevelCode": {
+          "description": "Provides a numeric code assigned to a particular loyalty level.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}Numeric1to3"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "LoyalLevelCode"
+              }
+            ]
+          },
+          "type": "integer",
+          "format": "int32"
+        },
+        "singleVendorInd": {
+          "description": "Indicates if program is affiliated with a group of related offers accumulating credits.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "LocalAnonymousType: CustomerLoyaltyGroup_SingleVendorInd"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "SingleVendorInd"
+              }
+            ]
+          },
+          "$ref": "#/definitions/SingleVendorInd"
+        },
+        "SignupDate": {
+          "description": "Indicates when the member signed up for the loyalty program.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}date"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "SignupDate"
+              }
+            ]
+          },
+          "type": "string",
+          "format": "date"
+        },
+        "EffectiveDate": {
+          "description": "Indicates the starting date.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}date"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "EffectiveDate"
+              }
+            ]
+          },
+          "type": "string",
+          "format": "date"
+        },
+        "ExpireDate": {
+          "description": "Indicates the ending date.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}date"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "ExpireDate"
+              }
+            ]
+          },
+          "type": "string",
+          "format": "date"
+        },
+        "shareMarketInd": {
+          "description": "Permission for sharing data for marketing purposes.",
+          "$ref": "#/definitions/YesNoInherit_Enum"
+        },
+        "shareSyncInd": {
+          "description": "Permission for sharing data for synchronization of information held by other travel service providers.",
+          "$ref": "#/definitions/YesNoInherit_Enum"
+        },
+        "optInStatus": {
+          "description": "If present and set to opt out, a customer has explicitly opted out of marketing communication. When set to opt out it overrides the ShareMarketInd.",
+          "$ref": "#/definitions/OptInStatus_Enum"
+        },
+        "optInDate": {
+          "description": "The date and time of opt in.",
+          "type": "string",
+          "format": "date-time"
+        },
+        "optOutDate": {
+          "description": "The date and time of opt out.",
+          "type": "string",
+          "format": "date-time"
+        },
+        "codeContext": {
+          "description": "Identifies the source authority for the code.",
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Tiny"
+        },
+        "expireDateExclusiveIndicatorInd": {
+          "description": "When true, indicates that the ExpireDate is the first day after the applicable period (e.g. when expire date is Oct 15  the last date of the period is Oct 14).",
+          "type": "boolean"
+        },
+        "primaryLoyaltyIndicatorInd": {
+          "description": "When true, indicates this is the primary customer loyalty program and when false, indicates this is not the primary customer loyalty program.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}boolean"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "PrimaryLoyaltyIndicator"
+              }
+            ]
+          },
+          "type": "boolean"
+        }
+      }
+    },
+    "DirectBill": {
+      "x-otm-entity": {
+        "EntityType": "CoreObject",
+        "EntityName": "DirectBill"
+      },
+      "properties": {
+        "@type": {
+          "type": "string"
+        },
+        "directBill_ID": {
+          "description": "Identifier for the organization to be billed directly for travel services.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to32"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "DirectBill_ID"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String"
+        },
+        "billingAccount": {
+          "description": "The account assigned by the subscriber for billing reconciliation of a corporate account.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength0to64"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "BillingNumber"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Short"
+        },
+        "PrivacyGroup": {
+          "description": "Allows for control of the sharing of direct bill data between parties.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "AttributeGroup: PrivacyGroup"
+              ]
+            }
+          },
+          "$ref": "Common_0_0_0.schema.json#/definitions/Privacy"
+        },
+        "Company": {
+          "description": "Company to which remittance should be sent.",
+          "$ref": "Common_0_0_0.schema.json#/definitions/CompanyID"
+        },
+        "ExtensionPoint": {
+          "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint"
+        }
+      },
+      "required": [
+        "@type"
+      ],
+      "discriminator": "@type"
+    },
+    "FormOfPaymentID": {
+      "x-otm-entity": {
+        "EntityType": "BusinessObject",
+        "EntityName": "FormOfPayment"
+      },
+      "description": "Specifies the form of payment.",
+      "properties": {
+        "@type": {
+          "type": "string"
+        },
+        "id": {
+          "$ref": "built-ins/XMLSchema.schema.json#/definitions/ID"
+        }
+      },
+      "required": [
+        "@type"
+      ],
+      "discriminator": "@type"
+    },
+    "FormOfPayment": {
+      "x-otm-entity": {
+        "EntityType": "BusinessObject",
+        "EntityName": "FormOfPayment"
+      },
+      "description": "Specifies the form of payment.",
+      "allOf": [
+        {
+          "$ref": "#/definitions/FormOfPaymentID"
+        },
+        {
+          "properties": {
+            "costCenterID": {
+              "description": "A reference to identify the billing department for allocating cost of travel to company account.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to32"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "fin",
+                    "value": "CostCenterID"
+                  }
+                ]
+              },
+              "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Tiny"
+            },
+            "paymentTransactionTypeCode": {
+              "description": "This is used to indicate either a charge, reserve (deposit) or refund.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "LocalAnonymousType: PaymentFormType_PaymentTransactionTypeCode"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "fin",
+                    "value": "PaymentTransactionTypeCode"
+                  }
+                ]
+              },
+              "$ref": "#/definitions/PaymentTransactionType_Enum"
+            },
+            "guaranteeTypeCode": {
+              "description": "Used to specify the method of guarantee. Refer to OpenTravel Code List Payment Type (PMT).",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://chameleon.anonymous/ns}OTA_CodeType"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "fin",
+                    "value": "GuaranteeTypeCode"
+                  }
+                ]
+              },
+              "$ref": "Common_0_0_0.schema.json#/definitions/Code_OTA"
+            },
+            "guaranteeID": {
+              "description": "Provides the identifier as specified by the GuaranteeTypeCode (e.g., Corporate ID or IATA number).",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to64"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "fin",
+                    "value": "GuaranteeID"
+                  }
+                ]
+              },
+              "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Short"
+            },
+            "remark": {
+              "description": "A remark associated with the payment form.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to128"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "fin",
+                    "value": "Remark"
+                  }
+                ]
+              },
+              "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Short"
+            },
+            "Privacy": {
+              "description": "Data use and sharing permissions.",
+              "$ref": "Common_0_0_0.schema.json#/definitions/Privacy"
+            },
+            "guaranteeIndicatorInd": {
+              "description": "When true, indicates this represents a guarantee rather than a payment form.",
+              "type": "boolean"
+            },
+            "ExtensionPoint_Summary": {
+              "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint_Summary"
+            }
+          }
+        }
+      ]
+    },
+    "FormOfPaymentCash": {
+      "x-otm-entity": {
+        "EntityType": "BusinessObject",
+        "EntityName": "FormOfPayment"
+      },
+      "description": "Specifies the form of payment.",
+      "allOf": [
+        {
+          "$ref": "#/definitions/FormOfPayment"
+        },
+        {
+          "properties": {
+            "cashInd": {
+              "description": "Indicates that cash is being used as the form of payment.",
+              "type": "boolean"
+            },
+            "ExtensionPoint_Custom": {
+              "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint_Custom"
+            }
+          }
+        }
+      ]
+    },
+    "FormOfPaymentPaymentCard": {
+      "x-otm-entity": {
+        "EntityType": "BusinessObject",
+        "EntityName": "FormOfPayment"
+      },
+      "description": "Specifies the form of payment.",
+      "allOf": [
+        {
+          "$ref": "#/definitions/FormOfPayment"
+        },
+        {
+          "properties": {
+            "PaymentCard": {
+              "description": "Specifies the payment card information.",
+              "$ref": "#/definitions/PaymentCard"
+            },
+            "ExtensionPoint_Custom": {
+              "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint_Custom"
+            }
+          }
+        }
+      ]
+    },
+    "FormOfPaymentBankAccount": {
+      "x-otm-entity": {
+        "EntityType": "BusinessObject",
+        "EntityName": "FormOfPayment"
+      },
+      "description": "Specifies the form of payment.",
+      "allOf": [
+        {
+          "$ref": "#/definitions/FormOfPayment"
+        },
+        {
+          "properties": {
+            "BankAcct": {
+              "description": "Customer bank account definition.",
+              "$ref": "#/definitions/BankAcct"
+            },
+            "ExtensionPoint_Custom": {
+              "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint_Custom"
+            }
+          }
+        }
+      ]
+    },
+    "FormOfPaymentLoyaltyRedemption": {
+      "x-otm-entity": {
+        "EntityType": "BusinessObject",
+        "EntityName": "FormOfPayment"
+      },
+      "description": "Specifies the form of payment.",
+      "allOf": [
+        {
+          "$ref": "#/definitions/FormOfPayment"
+        },
+        {
+          "properties": {
+            "redemptionQuantity": {
+              "description": "The quantity of loyalty units being redeemed.",
+              "type": "integer",
+              "format": "int32"
+            },
+            "PromotionCode": {
+              "description": "Used to provide a promotion code of the loyalty redemption and the list of vendors supporting the promotion (in CodeContext).",
+              "$ref": "Common_0_0_0.schema.json#/definitions/Code"
+            },
+            "LoyaltyCertificate": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/LoyaltyCertificate"
+              },
+              "maxItems": 9
+            },
+            "ExtensionPoint_Custom": {
+              "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint_Custom"
+            }
+          }
+        }
+      ]
+    },
+    "FormOfPaymentDirectBill": {
+      "x-otm-entity": {
+        "EntityType": "BusinessObject",
+        "EntityName": "FormOfPayment"
+      },
+      "description": "Specifies the form of payment.",
+      "allOf": [
+        {
+          "$ref": "#/definitions/FormOfPayment"
+        },
+        {
+          "properties": {
+            "DirectBill": {
+              "description": "Company name and location for sending invoice for remittances for travel services.",
+              "$ref": "#/definitions/DirectBill"
+            },
+            "ExtensionPoint_Custom": {
+              "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint_Custom"
+            }
+          }
+        }
+      ]
+    },
+    "FormOfPaymentVoucher": {
+      "x-otm-entity": {
+        "EntityType": "BusinessObject",
+        "EntityName": "FormOfPayment"
+      },
+      "description": "Specifies the form of payment.",
+      "allOf": [
+        {
+          "$ref": "#/definitions/FormOfPayment"
+        },
+        {
+          "properties": {
+            "Voucher": {
+              "description": "A form of payment using a voucher or coupon.",
+              "$ref": "#/definitions/Voucher"
+            },
+            "BillingAccountName": {
+              "description": "The name of the Billing Account for which the voucher has been issued.",
+              "$ref": "Common_0_0_0.schema.json#/definitions/CompanyName"
+            },
+            "Address": {
+              "description": "The address of the Billing Account for which the voucher has been issued.",
+              "$ref": "Common_0_0_0.schema.json#/definitions/Address"
+            },
+            "ExtensionPoint_Custom": {
+              "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint_Custom"
+            }
+          }
+        }
+      ]
+    },
+    "FormOfPaymentMiscChargeOrder": {
+      "x-otm-entity": {
+        "EntityType": "BusinessObject",
+        "EntityName": "FormOfPayment"
+      },
+      "description": "Specifies the form of payment.",
+      "allOf": [
+        {
+          "$ref": "#/definitions/FormOfPayment"
+        },
+        {
+          "properties": {
+            "ticketNumber": {
+              "description": "The ticket number of the miscellaneous charge order (MCO).",
+              "$ref": "Common_0_0_0.schema.json#/definitions/TicketNumber"
+            },
+            "OriginalIssue": {
+              "description": "Provides information about the original document on which the reissue is based.",
+              "$ref": "#/definitions/OriginalIssueAttributes"
+            },
+            "paperMCO_ExistInd": {
+              "description": "Indicates if a paper or electronic MCO exists.",
+              "type": "boolean"
+            },
+            "ExtensionPoint_Custom": {
+              "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint_Custom"
+            }
+          }
+        }
+      ]
+    },
+    "FormOfPaymentTicket": {
+      "x-otm-entity": {
+        "EntityType": "BusinessObject",
+        "EntityName": "FormOfPayment"
+      },
+      "description": "Specifies the form of payment.",
+      "allOf": [
+        {
+          "$ref": "#/definitions/FormOfPayment"
+        },
+        {
+          "properties": {
+            "ticketNumber": {
+              "description": "The ticket number which is exchanged.",
+              "$ref": "Common_0_0_0.schema.json#/definitions/TicketNumber"
+            },
+            "reasonForReroute": {
+              "description": "Gives more information about the rerouting.",
+              "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Short"
+            },
+            "OriginalIssueAttributes": {
+              "description": "Provides information about the original document on which the reissue is based.",
+              "$ref": "#/definitions/OriginalIssueAttributes"
+            },
+            "Rerouting": {
+              "description": "If present, indicates if the rerouting, which made the exchange necessary was voluntary or involuntary.",
+              "$ref": "#/definitions/Rerouting"
+            },
+            "ConjunctionTicketNbr": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ConjunctionTicketNbr"
+              },
+              "maxItems": 16
+            },
+            "ExtensionPoint_Custom": {
+              "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint_Custom"
+            }
+          }
+        }
+      ]
+    },
+    "Enum_List_BankAccountType_Base": {
+      "x-otm-entity": {
+        "EntityType": "EnumerationOpen",
+        "EntityName": "Enum_List_BankAccountType_Base"
+      },
+      "description": "Source: OpenTravel",
+      "properties": {
+        "value": {
+          "$ref": "#/definitions/Enum_List_BankAccountType_Base_Base"
+        },
+        "extension": {
+          "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/String_EnumExtension"
+        }
+      }
+    },
+    "Enum_List_BankAccountType_Base_Base": {
+      "x-otm-entity": {
+        "EntityType": "EnumerationOpen",
+        "EntityName": "Enum_List_BankAccountType_Base"
+      },
+      "description": "Source: OpenTravel",
+      "type": "string",
+      "enum": [
+        "Savings",
+        "Investment",
+        "Checking",
+        "Other_"
+      ]
+    },
+    "Enum_List_PaymentCardIssuer_Base": {
+      "x-otm-entity": {
+        "EntityType": "EnumerationOpen",
+        "EntityName": "Enum_List_PaymentCardIssuer_Base"
+      },
+      "description": "Source: OpenTravel",
+      "properties": {
+        "value": {
+          "$ref": "#/definitions/Enum_List_PaymentCardIssuer_Base_Base"
+        },
+        "extension": {
+          "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/String_EnumExtension"
+        }
+      }
+    },
+    "Enum_List_PaymentCardIssuer_Base_Base": {
+      "x-otm-entity": {
+        "EntityType": "EnumerationOpen",
+        "EntityName": "Enum_List_PaymentCardIssuer_Base"
+      },
+      "description": "Source: OpenTravel",
+      "type": "string",
+      "enum": [
+        "VISA",
+        "USAirways",
+        "UnitedAirlines",
+        "StarwoodHotels",
+        "SouthwestAirlines",
+        "RitzCarlton",
+        "Mastercard",
+        "Mariott",
+        "Hyatt",
+        "Hilton",
+        "Eurocard",
+        "Disney",
+        "DiscoverCard",
+        "DeltaAirlines",
+        "ContinentalAirlines",
+        "Citibank",
+        "Chase",
+        "CapitalOne",
+        "BritishAirways",
+        "BankOfAmerica",
+        "AmericanExpress",
+        "Other_"
+      ]
+    },
+    "LoyalLevel": {
+      "x-otm-entity": {
+        "EntityType": "ValueWithAttributes",
+        "EntityName": "LoyalLevel"
+      },
+      "description": "Indicates special privileges in program assigned to individual.",
+      "properties": {
+        "value": {
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Tiny"
+        },
+        "loyalLevel": {
+          "description": "Indicates special privileges in program assigned to individual.",
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Tiny"
+        },
+        "loyalLevelCode": {
+          "description": "Provides a numeric code assigned to a particular loyalty level.",
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "LoyaltyCertificate": {
+      "x-otm-entity": {
+        "EntityType": "ValueWithAttributes",
+        "EntityName": "LoyaltyCertificate"
+      },
+      "description": "Identifies the Loyalty Program, membership, form factor used by the certificate and its current status.",
+      "properties": {
+        "iD": {
+          "description": "A unique identifying value assigned by the creating system. The ID attribute may be used to reference a primary-key value within a database or in a particular implementation.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to32"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "ID"
+              }
+            ]
+          },
+          "$ref": "built-ins/XMLSchema.schema.json#/definitions/ID"
+        },
+        "iD_Context": {
+          "description": "Identifies the source of the code that identifies program or promotion within a loyalty scheme.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to32"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "ID_Context"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Tiny"
+        },
+        "certificateNumber": {
+          "description": "The loyalty redemption certificate identifier.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to32"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "CertificateNumber"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Tiny"
+        },
+        "memberNumber": {
+          "description": "Unique identifier of the member in the program.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to32"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "MemberNumber"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Tiny"
+        },
+        "programName": {
+          "description": "This identifies the loyalty program.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to64"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "ProgramName"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Short"
+        },
+        "EffectiveDate": {
+          "description": "Indicates the starting date.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}date"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "EffectiveDate"
+              }
+            ]
+          },
+          "type": "string",
+          "format": "date"
+        },
+        "ExpireDate": {
+          "description": "Indicates the ending date.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}date"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "ExpireDate"
+              }
+            ]
+          },
+          "type": "string",
+          "format": "date"
+        },
+        "numberOfNights": {
+          "description": "The number of accommodation nights that are covered by this certificate.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Changed type from {http://www.w3.org/2001/XMLSchema}nonNegativeInteger.",
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "NmbrOfNights"
+              }
+            ]
+          },
+          "type": "integer",
+          "format": "int32"
+        },
+        "format": {
+          "description": "Indicates what form the certificate is in e.g. Paper or Electronic.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "LocalAnonymousType: LoyaltyCertificateGroup_Format"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "Format"
+              }
+            ]
+          },
+          "$ref": "#/definitions/LoyaltyCertificateFormat_Enum"
+        },
+        "status": {
+          "description": "Used to define the status of the certificate e.g. Available, Voided, Cancelled, Reserved, Used.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to16"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "Status"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Tiny"
+        },
+        "expireDateExclusiveInd": {
+          "description": "When true, indicates that the ExpireDate is the first day after the applicable period (e.g. when expire date is Oct 15  the last date of the period is Oct 14).",
+          "type": "boolean"
+        }
+      }
+    },
+    "OriginalIssueAttributes": {
+      "x-otm-entity": {
+        "EntityType": "ValueWithAttributes",
+        "EntityName": "OriginalIssueAttributes"
+      },
+      "description": "Provides information about the original document on which the reissue is based.",
+      "properties": {
+        "ticketNumber": {
+          "description": "The original ticket number in a series if reissuances.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to32"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "OriginalTicketNumber"
+              }
+            ]
+          },
+          "$ref": "Common_0_0_0.schema.json#/definitions/TicketNumber"
+        },
+        "issuePlace": {
+          "description": "Place where the original ticket was issued.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to8"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "OriginalIssuePlace"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Tiny"
+        },
+        "issueDate": {
+          "description": "Date when the original ticket was issued.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}date"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "OriginalIssueDate"
+              }
+            ]
+          },
+          "type": "string",
+          "format": "date"
+        },
+        "issueIATA": {
+          "description": "IATA office number, which issued original ticket.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to8"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "OriginalIssueIATA"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Tiny"
+        },
+        "paymentForm": {
+          "description": "Payment type for the original ticket.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to64"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "OriginalPaymentForm"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Tiny"
+        },
+        "checkInhibitor": {
+          "description": "When present, indicates that the check digit of the ticket number or the interline agreement do not need to be checked.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "LocalAnonymousType: OriginalIssueAttributes_CheckInhibitorType"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "CheckInhibitorType"
+              }
+            ]
+          },
+          "$ref": "#/definitions/CheckInhibitor_Enum"
+        },
+        "coupons": {
+          "description": "Gives a list of references to coupon numbers of the ticket which will be taken for payment.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}ListOfRPH"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "CouponRPHs"
+              }
+            ]
+          },
+          "$ref": "#/definitions/Coupons"
+        }
+      }
+    },
+    "PaymentCard_Simple": {
+      "description": "The masked payment card number.",
+      "$ref": "#/definitions/PaymentCard_Masked"
+    },
+    "PaymentCard_Simple_List": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/PaymentCard_Simple"
+      }
+    },
+    "PaymentCard": {
+      "x-otm-entity": {
+        "EntityType": "CoreObject",
+        "EntityName": "PaymentCard"
+      },
+      "description": "Specifies the details of the debit or credit card.",
+      "properties": {
+        "@type": {
+          "type": "string"
+        },
+        "id": {
+          "description": "XML ID only for use within the document.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}RPH_Type"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "RPH"
+              }
+            ]
+          },
+          "$ref": "built-ins/XMLSchema.schema.json#/definitions/ID"
+        },
+        "effectiveDate": {
+          "description": "Start date.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "AttributeGroup: PaymentCardDateGroup"
+              ]
+            }
+          },
+          "type": "string",
+          "format": "date"
+        },
+        "expireDate": {
+          "description": "End date.",
+          "type": "string",
+          "format": "date"
+        },
+        "Privacy": {
+          "description": "Data use and sharing permissions.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "AttributeGroup: PrivacyGroup"
+              ]
+            }
+          },
+          "$ref": "Common_0_0_0.schema.json#/definitions/Privacy"
+        },
+        "CardCode": {
+          "description": "Card code association such as VI for Visa, MC for Mastercard or AX for American Express, etc.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}PaymentCardCodeType"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "CardCode"
+              }
+            ]
+          },
+          "$ref": "#/definitions/CardAssociationCode"
+        },
+        "CardType": {
+          "description": "Example: BritishAirwaysVisaSignatureCard",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}Issuer"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "Issuer"
+              }
+            ]
+          },
+          "$ref": "#/definitions/PaymentCardType_Issuer"
+        },
+        "Issuer": {
+          "description": "Example: Mastercard",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}List_PaymentCardIssuer"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "CardType"
+              }
+            ]
+          },
+          "$ref": "Common_0_0_0.schema.json#/definitions/Code_External"
+        },
+        "CardHolderName": {
+          "description": "Card holder name.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to64"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "CardHolderName"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Short"
+        },
+        "CardNumber": {
+          "description": "Credit card number embossed on the card.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}EncryptionTokenType"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "CardNumber"
+              }
+            ]
+          },
+          "$ref": "#/definitions/CardNumber"
+        },
+        "AuthenticationVerification": {
+          "description": "Verification digits.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}EncryptionTokenType"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "SeriesCode"
+              }
+            ]
+          },
+          "$ref": "#/definitions/AuthenticationVerification"
+        },
+        "MagneticStripe": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MagneticStripe"
+          },
+          "maxItems": 3
+        },
+        "secureInd": {
+          "description": "If true, all or a portion of this data is secure, via tokenization, encryption and/or masking.",
+          "type": "boolean"
+        },
+        "ExtensionPoint_Summary": {
+          "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint_Summary"
+        }
+      },
+      "required": [
+        "@type"
+      ],
+      "discriminator": "@type"
+    },
+    "PaymentCardDetail": {
+      "x-otm-entity": {
+        "EntityType": "CoreObject",
+        "EntityName": "PaymentCard"
+      },
+      "description": "Specifies the details of the debit or credit card.",
+      "allOf": [
+        {
+          "$ref": "#/definitions/PaymentCard"
+        },
+        {
+          "properties": {
+            "countryOfIssue": {
+              "description": "Example: US",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://chameleon.anonymous/ns}ISO3166"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "fin",
+                    "value": "CountryOfIssue"
+                  }
+                ]
+              },
+              "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/Code_Country"
+            },
+            "companyCardReference": {
+              "description": "Note: This is a reference for a company sponsor for the card.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://chameleon.anonymous/ns}AlphaNumericStringLength1to19"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "fin",
+                    "value": "CompanyCardReference"
+                  }
+                ]
+              },
+              "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_AlphaNumeric"
+            },
+            "remark": {
+              "description": "Example: Travel rewards card.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to128"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "fin",
+                    "value": "Remark"
+                  }
+                ]
+              },
+              "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Short"
+            },
+            "CardHolderId": {
+              "description": "Card holder reference ID",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://chameleon.anonymous/ns}RPH_Type"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "fin",
+                    "value": "CardHolderRPH"
+                  }
+                ]
+              },
+              "$ref": "Common_0_0_0.schema.json#/definitions/Identifier"
+            },
+            "Person_Name": {
+              "description": "Description: The details of the Card Holder's Name.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://chameleon.anonymous/ns}PersonNameType"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "fin",
+                    "value": "CardHolderNameDetails"
+                  }
+                ]
+              },
+              "$ref": "Common_0_0_0.schema.json#/definitions/Person_Name"
+            },
+            "Address": {
+              "description": "Card holder address.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://chameleon.anonymous/ns}AddressType"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "fin",
+                    "value": "Address"
+                  }
+                ]
+              },
+              "$ref": "Common_0_0_0.schema.json#/definitions/Address"
+            },
+            "Telephone": {
+              "type": "array",
+              "items": {
+                "$ref": "Common_0_0_0.schema.json#/definitions/Telephone"
+              }
+            },
+            "Email": {
+              "type": "array",
+              "items": {
+                "$ref": "Common_0_0_0.schema.json#/definitions/Email"
+              }
+            },
+            "CustomerLoyalty": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/CustomerLoyalty"
+              }
+            },
+            "SignatureOnFile": {
+              "description": "Note: This indicates if the signature is authorized as a form of guarantee. In some countries, the customer can sign the payment card slip as a form of guarantee.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://chameleon.anonymous/ns}SignatureOnFile"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "fin",
+                    "value": "SignatureOnFile"
+                  }
+                ]
+              },
+              "$ref": "#/definitions/SignatureOnFile"
+            },
+            "ThreeDomainSecurity": {
+              "description": "Note: This contains 3-D Secure protocol information for online credit and debit card transactions for programs such as Verified by Visa, MasterCard SecureCode, J/Secure and SafeKey.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://chameleon.anonymous/ns}ThreeDomainSecurity"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "fin",
+                    "value": "ThreeDomainSecurity"
+                  }
+                ]
+              },
+              "$ref": "#/definitions/ThreeDomainSecurity"
+            },
+            "extendedPaymentInd": {
+              "description": "Implementer: If true, the credit card company is requested to delay the date on which the amount of this transaction is applied to the customer's account.",
+              "type": "boolean"
+            },
+            "ExtensionPoint_Detail": {
+              "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint_Detail"
+            }
+          }
+        }
+      ]
+    },
+    "Enum_PaymentCardCode": {
+      "x-otm-entity": {
+        "EntityType": "EnumerationOpen",
+        "EntityName": "Enum_PaymentCardCode"
+      },
+      "description": "The 2 digit code that identifies the credit card.",
+      "properties": {
+        "value": {
+          "$ref": "#/definitions/Enum_PaymentCardCode_Base"
+        },
+        "extension": {
+          "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/String_EnumExtension"
+        }
+      }
+    },
+    "Enum_PaymentCardCode_Base": {
+      "x-otm-entity": {
+        "EntityType": "EnumerationOpen",
+        "EntityName": "Enum_PaymentCardCode"
+      },
+      "description": "The 2 digit code that identifies the credit card.",
+      "type": "string",
+      "enum": [
+        "VI",
+        "UP",
+        "TP",
+        "MC",
+        "MA",
+        "JC",
+        "EC",
+        "DS",
+        "DN",
+        "CB",
+        "BL",
+        "BC",
+        "AX",
+        "Other_"
+      ]
+    },
+    "PaymentCardType_Issuer": {
+      "x-otm-entity": {
+        "EntityType": "ValueWithAttributes",
+        "EntityName": "PaymentCardType_Issuer"
+      },
+      "description": "Code of the payment card issuer.",
+      "x-otm-annotations": {
+        "documentation": {
+          "implementers": [
+            "Extension: List_PaymentCardIssuer"
+          ]
+        }
+      },
+      "properties": {
+        "value": {
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Short"
+        },
+        "issuerCode": {
+          "description": "Code Extension fields to exchange a value that is not in the list and is known to your trading partners.",
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Short"
+        },
+        "Description": {
+          "description": "Description of who manages this set of codes.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "Common",
+                "value": "Description"
+              }
+            ],
+            "examples": [
+              {
+                "context": "Common",
+                "value": "Visa"
+              }
+            ]
+          },
+          "type": "string"
+        },
+        "name": {
+          "description": "This may be a source authority/ owner name, ID or code.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "Common",
+                "value": "SourceName"
+              }
+            ]
+          },
+          "type": "string"
+        },
+        "uRL": {
+          "description": "Implementer: This is A URL to the code source authority/ owner.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}anyURI"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "Common",
+                "value": "SourceURL"
+              }
+            ]
+          },
+          "type": "string"
+        },
+        "id": {
+          "description": "Implementer: This is used for a database or key ID for the code item (if it is different from the @CodeExtension) in relationship to the obsolete code indicator.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "Common",
+                "value": "UniqueID"
+              }
+            ]
+          },
+          "$ref": "built-ins/XMLSchema.schema.json#/definitions/ID"
+        }
+      }
+    },
+    "SignatureOnFile": {
+      "x-otm-entity": {
+        "EntityType": "CoreObject",
+        "EntityName": "SignatureOnFile"
+      },
+      "properties": {
+        "@type": {
+          "type": "string"
+        },
+        "Date_EffectiveExpire": {
+          "description": "Used to identify the effective date and/or expiration date.",
+          "$ref": "Common_0_0_0.schema.json#/definitions/Date_EffectiveExpire"
+        },
+        "signatureOnFileInd": {
+          "description": "When true, indicates a signature has been obtained.",
+          "type": "boolean"
+        },
+        "ExtensionPoint": {
+          "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint"
+        }
+      },
+      "required": [
+        "@type"
+      ],
+      "discriminator": "@type"
+    },
+    "TaxRegistrationDetails": {
+      "x-otm-entity": {
+        "EntityType": "ValueWithAttributes",
+        "EntityName": "TaxRegistrationDetails"
+      },
+      "properties": {
+        "taxID": {
+          "description": "The tax registration identifier e.g., Australian Business Number (ABN).",
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Tiny"
+        },
+        "recipientName": {
+          "description": "The recipient's name.",
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Tiny"
+        },
+        "recipientAddress": {
+          "description": "Free text for the recipient's address.",
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Short"
+        }
+      }
+    },
+    "ThreeDomainSecurity_Gateway": {
+      "x-otm-entity": {
+        "EntityType": "CoreObject",
+        "EntityName": "ThreeDomainSecurity_Gateway"
+      },
+      "properties": {
+        "@type": {
+          "type": "string"
+        },
+        "eCI": {
+          "description": "Note: The ECI indicates the security level associated with an Internet purchase transaction.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}AlphaNumericStringLength1"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "ECI"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Character_One"
+        },
+        "merchantID": {
+          "description": "Example: mycart",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "MerchantID"
+              }
+            ]
+          },
+          "type": "string"
+        },
+        "processorID": {
+          "description": "Example: 201",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "ProcessorID"
+              }
+            ]
+          },
+          "type": "string"
+        },
+        "uRL": {
+          "description": "Transaction URL.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}anyURI"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "URL"
+              }
+            ]
+          },
+          "type": "string"
+        },
+        "AuthenticationVerification": {
+          "description": "Cardholder authentication value information.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}AuthenticationVerificationValue"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "AuthenticationVerificationValue"
+              }
+            ]
+          },
+          "$ref": "#/definitions/AuthenticationVerification"
+        },
+        "TransactionPassword": {
+          "description": "Merchant transaction password information.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}TransactionPassword"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "TransactionPassword"
+              }
+            ]
+          },
+          "$ref": "#/definitions/TransactionPassword"
+        },
+        "ExtensionPoint": {
+          "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint"
+        }
+      },
+      "required": [
+        "@type"
+      ],
+      "discriminator": "@type"
+    },
+    "ThreeDomainSecurity": {
+      "x-otm-entity": {
+        "EntityType": "CoreObject",
+        "EntityName": "ThreeDomainSecurity"
+      },
+      "properties": {
+        "@type": {
+          "type": "string"
+        },
+        "ThreeDomainSecurity_Gateway": {
+          "description": "Merchant gateway information.",
+          "$ref": "#/definitions/ThreeDomainSecurity_Gateway"
+        },
+        "ThreeDomainSecurity_Results": {
+          "description": "Transaction results.",
+          "$ref": "#/definitions/ThreeDomainSecurity_Results"
+        },
+        "ExtensionPoint": {
+          "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint"
+        }
+      },
+      "required": [
+        "@type",
+        "ThreeDomainSecurity_Gateway",
+        "ThreeDomainSecurity_Results"
+      ],
+      "discriminator": "@type"
+    },
+    "ThreeDomainSecurity_Results": {
+      "x-otm-entity": {
+        "EntityType": "CoreObject",
+        "EntityName": "ThreeDomainSecurity_Results"
+      },
+      "properties": {
+        "@type": {
+          "type": "string"
+        },
+        "cAVV": {
+          "description": "Example: AAABAFaQRwAAAAAAEZBHAAAAAAA=ECI05",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "CAVV"
+              }
+            ]
+          },
+          "type": "string"
+        },
+        "pAResStatus": {
+          "description": "Example: Y",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}AlphaNumericStringLength1"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "PAResStatus"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Character_One"
+        },
+        "signatureVerfication": {
+          "description": "Example: Y",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "SignatureVerfication"
+              }
+            ]
+          },
+          "type": "string"
+        },
+        "transactionID": {
+          "description": "Example: 9D920E9-6FCF-4A74-A4E0-D6A591D1108F",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "TransactionID"
+              }
+            ]
+          },
+          "type": "string"
+        },
+        "xID": {
+          "description": "Example: 2bxUs1emK0SCevbivcApzAcAAQk=",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "XID"
+              }
+            ]
+          },
+          "type": "string"
+        },
+        "ExtensionPoint": {
+          "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint"
+        }
+      },
+      "required": [
+        "@type"
+      ],
+      "discriminator": "@type"
+    },
+    "TicketingAccountInformation": {
+      "x-otm-entity": {
+        "EntityType": "CoreObject",
+        "EntityName": "TicketingAccountInformation"
+      },
+      "properties": {
+        "@type": {
+          "type": "string"
+        },
+        "number": {
+          "description": "Ticketing account number.",
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Tiny"
+        },
+        "costCenter": {
+          "description": "Ticketing cost center.",
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Short"
+        },
+        "companyNumber": {
+          "description": "Ticketing company number.",
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Tiny"
+        },
+        "clientReference": {
+          "description": "Ticketing client reference.",
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Short"
+        },
+        "TaxRegistrationDetails": {
+          "description": "Ticketing Goods and Services Tax (GST) details (typically the Australian market).",
+          "$ref": "#/definitions/TaxRegistrationDetails"
+        },
+        "ExtensionPoint": {
+          "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint"
+        }
+      },
+      "required": [
+        "@type"
+      ],
+      "discriminator": "@type"
+    },
+    "Voucher": {
+      "x-otm-entity": {
+        "EntityType": "ValueWithAttributes",
+        "EntityName": "Voucher"
+      },
+      "description": "A form of payment using a voucher or coupon.",
+      "properties": {
+        "seriesCode": {
+          "description": "Identification of a series of coupons or vouchers identified by serial number(s).",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to32"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "SeriesCode"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Tiny"
+        },
+        "EffectiveDate": {
+          "description": "Indicates the starting date.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}date"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "EffectiveDate"
+              }
+            ]
+          },
+          "type": "string",
+          "format": "date"
+        },
+        "ExpireDate": {
+          "description": "Indicates the ending date.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}date"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "ExpireDate"
+              }
+            ]
+          },
+          "type": "string",
+          "format": "date"
+        },
+        "billingNumber": {
+          "description": "Reference of the billing account which handles the payment transaction.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to64"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "BillingNumber"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Short"
+        },
+        "supplierIdentifier": {
+          "description": "Unique identifier of the electronic voucher, created by the supplier.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to64"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "SupplierIdentifier"
+              }
+            ]
+          },
+          "$ref": "Common_0_0_0.schema.json#/definitions/GUID"
+        },
+        "identifier": {
+          "description": "Unique identifier of the electronic voucher.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to64"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "Identifier"
+              }
+            ]
+          },
+          "$ref": "built-ins/XMLSchema.schema.json#/definitions/ID"
+        },
+        "valueType": {
+          "description": "Defines the type of voucher (e.g., full credit or partial credit).",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to32"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "fin",
+                "value": "ValueType"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Tiny"
+        },
+        "url": {
+          "description": "Uri of the creating system. The URI should be an URL and be globally unique. Should only be omitted when the context is clearly implied for the containing document.",
+          "type": "string"
+        },
+        "system": {
+          "description": "Name or identifier for the creating system.",
+          "x-otm-annotations": {
+            "examples": [
+              {
+                "context": "Common",
+                "value": "sysABC3344"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Short"
+        },
+        "company": {
+          "description": "Name of the company that manages the reference system.",
+          "x-otm-annotations": {
+            "examples": [
+              {
+                "context": "Common",
+                "value": "Acme"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Short"
+        },
+        "instance": {
+          "description": "The identification of a record as it exists at a point in time. An instance is used in update messages where the sender must assure the server that the update sent refers to the most recent modification level of the object being updated.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to32"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "Common",
+                "value": "Instance"
+              }
+            ],
+            "examples": [
+              {
+                "context": "Common",
+                "value": "i0987654321"
+              }
+            ]
+          },
+          "$ref": "#/definitions/GUID"
+        },
+        "groupDaysApplyInd": {
+          "description": "When true, specifies the Group Days Apply Value can be used for this Voucher Billing Account.  This indicator is used to allow the usage of a car rental days voucher when part of an inclusive tour.",
+          "type": "boolean"
+        },
+        "electronicIndicatorInd": {
+          "description": "When true, indicates the voucher is electronic. An E-voucher is a value document issued by the Travel Agent for the customer. The e-voucher can be used as a proof of reservation, but more normally, as a full-payment or partial payment.",
+          "type": "boolean"
+        },
+        "expireDateExclusiveInd": {
+          "description": "When true, indicates that the ExpireDate is the first day after the applicable period (e.g. when expire date is Oct 15  the last date of the period is Oct 14).",
+          "type": "boolean"
+        }
+      }
+    },
+    "Card_Enum": {
+      "x-otm-entity": {
+        "EntityType": "EnumerationClosed",
+        "EntityName": "Card_Enum"
+      },
+      "type": "string",
+      "enum": [
+        "credit",
+        "debit",
+        "centralBill"
+      ]
+    },
+    "Coupon": {
+      "x-otm-entity": {
+        "EntityType": "Simple",
+        "EntityName": "Coupon"
+      },
+      "description": "Gives the coupon number of the ticket, which will be taken for payment.",
+      "type": "string",
+      "pattern": "[0-9]{1,8}"
+    },
+    "Coupons": {
+      "x-otm-entity": {
+        "EntityType": "Simple",
+        "EntityName": "Coupons"
+      },
+      "description": "Gives the coupon numbers of the ticket, which will be taken for payment.",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Coupon"
+      }
+    },
+    "CustomerLoyaltyGroup_ShareMarketInd": {
+      "x-otm-entity": {
+        "EntityType": "EnumerationClosed",
+        "EntityName": "CustomerLoyaltyGroup_ShareMarketInd"
+      },
+      "description": "If the value=Inherit, specifies data sharing permissions for marketing purposes.",
+      "type": "string",
+      "enum": [
+        "Yes",
+        "No",
+        "Inherit"
+      ]
+    },
+    "CustomerLoyaltyGroup_SingleVendorInd": {
+      "x-otm-entity": {
+        "EntityType": "EnumerationClosed",
+        "EntityName": "CustomerLoyaltyGroup_SingleVendorInd"
+      },
+      "type": "string",
+      "enum": [
+        "SingleVndr",
+        "Alliance"
+      ]
+    },
+    "EncryptionTokenType_AuthenticationMethod": {
+      "x-otm-entity": {
+        "EntityType": "EnumerationClosed",
+        "EntityName": "EncryptionTokenType_AuthenticationMethod"
+      },
+      "type": "string",
+      "enum": [
+        "SecurityCode",
+        "MagneticStripe"
+      ]
+    },
+    "EncryptionTokenType_Token": {
+      "x-otm-entity": {
+        "EntityType": "Simple",
+        "EntityName": "EncryptionTokenType_Token"
+      },
+      "x-otm-annotations": {
+        "documentation": {
+          "implementers": [
+            "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string"
+          ]
+        },
+        "equivalents": [
+          {
+            "context": "fin",
+            "value": "EncryptionTokenType_Token"
+          }
+        ]
+      },
+      "type": "string",
+      "pattern": "[0-9a-zA-Z]{1,32}"
+    },
+    "LoyaltyCertificateFormat_Enum": {
+      "x-otm-entity": {
+        "EntityType": "EnumerationClosed",
+        "EntityName": "LoyaltyCertificateFormat_Enum"
+      },
+      "type": "string",
+      "enum": [
+        "Paper",
+        "Electronic"
+      ]
+    },
+    "CheckInhibitor_Enum": {
+      "x-otm-entity": {
+        "EntityType": "EnumerationClosed",
+        "EntityName": "CheckInhibitor_Enum"
+      },
+      "type": "string",
+      "enum": [
+        "CheckDigit",
+        "InterlineAgreement",
+        "Both"
+      ]
+    },
+    "PaymentTransactionType_Enum": {
+      "x-otm-entity": {
+        "EntityType": "EnumerationClosed",
+        "EntityName": "PaymentTransactionType_Enum"
+      },
+      "type": "string",
+      "enum": [
+        "charge",
+        "reserve",
+        "refund"
+      ]
+    },
+    "Rerouting_Enum": {
+      "x-otm-entity": {
+        "EntityType": "EnumerationClosed",
+        "EntityName": "Rerouting_Enum"
+      },
+      "description": "Indicates if the rerouting, which made the exchange necessary was voluntary or involuntary.",
+      "type": "string",
+      "enum": [
+        "voluntary",
+        "involuntary"
+      ]
+    },
+    "SingleVendorInd": {
+      "x-otm-entity": {
+        "EntityType": "EnumerationClosed",
+        "EntityName": "SingleVendorInd"
+      },
+      "description": "Indicates if program is affiliated with a group of related offers accumulating credits.",
+      "type": "string",
+      "enum": [
+        "SingleVndr",
+        "Alliance"
+      ]
+    },
+    "PaymentCard_Masked": {
+      "x-otm-entity": {
+        "EntityType": "Simple",
+        "EntityName": "PaymentCard_Masked"
+      },
+      "x-otm-annotations": {
+        "documentation": {
+          "implementers": [
+            "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string"
+          ]
+        },
+        "equivalents": [
+          {
+            "context": "fin",
+            "value": "EncryptionTokenType_Mask"
+          }
+        ]
+      },
+      "type": "string",
+      "pattern": "[0-9a-zA-Z]{1,32}"
+    },
+    "EncryptionToken_Mask": {
+      "x-otm-entity": {
+        "EntityType": "Simple",
+        "EntityName": "EncryptionToken_Mask"
+      },
+      "x-otm-annotations": {
+        "documentation": {
+          "implementers": [
+            "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string"
+          ]
+        },
+        "equivalents": [
+          {
+            "context": "fin",
+            "value": "EncryptionTokenType_Mask"
+          }
+        ]
+      },
+      "type": "string",
+      "pattern": "[0-9a-zA-Z]{1,32}"
+    },
+    "ConjunctionTicketNbr": {
+      "x-otm-entity": {
+        "EntityType": "ValueWithAttributes",
+        "EntityName": "ConjunctionTicketNbr"
+      },
+      "description": "Conjunction ticket number in case a conjunction ticket is exchanged.",
+      "properties": {
+        "coupons": {
+          "description": "Gives the coupon numbers of the ticket, which will be taken for payment.",
+          "$ref": "#/definitions/Coupons"
+        }
+      }
+    },
+    "Rerouting": {
+      "x-otm-entity": {
+        "EntityType": "ValueWithAttributes",
+        "EntityName": "Rerouting"
+      },
+      "description": "Indicates if the rerouting, which made the exchange necessary was voluntary or involuntary.",
+      "properties": {
+        "value": {
+          "$ref": "#/definitions/Rerouting_Enum"
+        },
+        "reason": {
+          "description": "Gives more information about the rerouting.",
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Short"
+        }
+      }
+    },
+    "CardAssociationCode": {
+      "x-otm-entity": {
+        "EntityType": "Simple",
+        "EntityName": "CardAssociationCode"
+      },
+      "description": "A tiny string  \nMinimum length of 0 and a maximum length of 32",
+      "x-otm-annotations": {
+        "examples": [
+          {
+            "context": "fin",
+            "value": "AX"
+          }
+        ]
+      },
+      "allOf": [
+        {
+          "$ref": "OTA_SimpleTypes_0_0_0.schema.json#/definitions/String_Tiny"
+        },
+        {
+          "pattern": "([a-zA-Z]{2})?"
+        }
+      ]
+    }
+  },
+  "oneOf": [
+    {
+      "properties": {
+        "BankAcct": {
+          "$ref": "#/definitions/BankAcct"
+        }
+      },
+      "required": [
+        "BankAcct"
+      ]
+    },
+    {
+      "properties": {
+        "EncryptionToken": {
+          "$ref": "#/definitions/EncryptionToken"
+        }
+      },
+      "required": [
+        "EncryptionToken"
+      ]
+    },
+    {
+      "properties": {
+        "BankAcctNumber": {
+          "$ref": "#/definitions/BankAcctNumber"
+        }
+      },
+      "required": [
+        "BankAcctNumber"
+      ]
+    },
+    {
+      "properties": {
+        "BankID": {
+          "$ref": "#/definitions/BankID"
+        }
+      },
+      "required": [
+        "BankID"
+      ]
+    },
+    {
+      "properties": {
+        "CardNumber": {
+          "$ref": "#/definitions/CardNumber"
+        }
+      },
+      "required": [
+        "CardNumber"
+      ]
+    },
+    {
+      "properties": {
+        "SeriesCode": {
+          "$ref": "#/definitions/SeriesCode"
+        }
+      },
+      "required": [
+        "SeriesCode"
+      ]
+    },
+    {
+      "properties": {
+        "MagneticStripe": {
+          "$ref": "#/definitions/MagneticStripe"
+        }
+      },
+      "required": [
+        "MagneticStripe"
+      ]
+    },
+    {
+      "properties": {
+        "AuthenticationVerification": {
+          "$ref": "#/definitions/AuthenticationVerification"
+        }
+      },
+      "required": [
+        "AuthenticationVerification"
+      ]
+    },
+    {
+      "properties": {
+        "TransactionPassword": {
+          "$ref": "#/definitions/TransactionPassword"
+        }
+      },
+      "required": [
+        "TransactionPassword"
+      ]
+    },
+    {
+      "properties": {
+        "DirectBill": {
+          "$ref": "#/definitions/DirectBill"
+        }
+      },
+      "required": [
+        "DirectBill"
+      ]
+    },
+    {
+      "properties": {
+        "FormOfPaymentIdentifier": {
+          "$ref": "#/definitions/FormOfPaymentID"
+        }
+      },
+      "required": [
+        "FormOfPaymentIdentifier"
+      ]
+    },
+    {
+      "properties": {
+        "FormOfPaymentSummary": {
+          "$ref": "#/definitions/FormOfPayment"
+        }
+      },
+      "required": [
+        "FormOfPaymentSummary"
+      ]
+    },
+    {
+      "properties": {
+        "FormOfPaymentCash": {
+          "$ref": "#/definitions/FormOfPaymentCash"
+        }
+      },
+      "required": [
+        "FormOfPaymentCash"
+      ]
+    },
+    {
+      "properties": {
+        "FormOfPaymentPaymentCard": {
+          "$ref": "#/definitions/FormOfPaymentPaymentCard"
+        }
+      },
+      "required": [
+        "FormOfPaymentPaymentCard"
+      ]
+    },
+    {
+      "properties": {
+        "FormOfPaymentBankAccount": {
+          "$ref": "#/definitions/FormOfPaymentBankAccount"
+        }
+      },
+      "required": [
+        "FormOfPaymentBankAccount"
+      ]
+    },
+    {
+      "properties": {
+        "FormOfPaymentLoyaltyRedemption": {
+          "$ref": "#/definitions/FormOfPaymentLoyaltyRedemption"
+        }
+      },
+      "required": [
+        "FormOfPaymentLoyaltyRedemption"
+      ]
+    },
+    {
+      "properties": {
+        "FormOfPaymentDirectBill": {
+          "$ref": "#/definitions/FormOfPaymentDirectBill"
+        }
+      },
+      "required": [
+        "FormOfPaymentDirectBill"
+      ]
+    },
+    {
+      "properties": {
+        "FormOfPaymentVoucher": {
+          "$ref": "#/definitions/FormOfPaymentVoucher"
+        }
+      },
+      "required": [
+        "FormOfPaymentVoucher"
+      ]
+    },
+    {
+      "properties": {
+        "FormOfPaymentMiscChargeOrder": {
+          "$ref": "#/definitions/FormOfPaymentMiscChargeOrder"
+        }
+      },
+      "required": [
+        "FormOfPaymentMiscChargeOrder"
+      ]
+    },
+    {
+      "properties": {
+        "FormOfPaymentTicket": {
+          "$ref": "#/definitions/FormOfPaymentTicket"
+        }
+      },
+      "required": [
+        "FormOfPaymentTicket"
+      ]
+    },
+    {
+      "properties": {
+        "PaymentCardSummary": {
+          "$ref": "#/definitions/PaymentCard"
+        }
+      },
+      "required": [
+        "PaymentCardSummary"
+      ]
+    },
+    {
+      "properties": {
+        "PaymentCardDetail": {
+          "$ref": "#/definitions/PaymentCardDetail"
+        }
+      },
+      "required": [
+        "PaymentCardDetail"
+      ]
+    },
+    {
+      "properties": {
+        "SignatureOnFile": {
+          "$ref": "#/definitions/SignatureOnFile"
+        }
+      },
+      "required": [
+        "SignatureOnFile"
+      ]
+    },
+    {
+      "properties": {
+        "ThreeDomainSecurity_Gateway": {
+          "$ref": "#/definitions/ThreeDomainSecurity_Gateway"
+        }
+      },
+      "required": [
+        "ThreeDomainSecurity_Gateway"
+      ]
+    },
+    {
+      "properties": {
+        "ThreeDomainSecurity": {
+          "$ref": "#/definitions/ThreeDomainSecurity"
+        }
+      },
+      "required": [
+        "ThreeDomainSecurity"
+      ]
+    },
+    {
+      "properties": {
+        "ThreeDomainSecurity_Results": {
+          "$ref": "#/definitions/ThreeDomainSecurity_Results"
+        }
+      },
+      "required": [
+        "ThreeDomainSecurity_Results"
+      ]
+    },
+    {
+      "properties": {
+        "TicketingAccountInformation": {
+          "$ref": "#/definitions/TicketingAccountInformation"
+        }
+      },
+      "required": [
+        "TicketingAccountInformation"
+      ]
+    }
+  ]
+}

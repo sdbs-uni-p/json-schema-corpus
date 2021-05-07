@@ -1,0 +1,97 @@
+{
+  "id": "https://opendesk.cc/schemata/base/numeric.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Winnow Numeric",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "https://opendesk.cc/schemata/base/option.json#"
+    },
+    {
+      "properties": {
+        "value": {
+          "default": "number"
+        }
+      }
+    },
+    {
+      "oneOf": [
+        {
+          "properties": {
+            "type": {
+              "type": "string",
+              "pattern": "numeric::number"
+            },
+            "value": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "value"
+          ]
+        },
+        {
+          "properties": {
+            "type": {
+              "type": "string",
+              "pattern": "numeric::set"
+            },
+            "value": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            }
+          },
+          "required": [
+            "value"
+          ]
+        },
+        {
+          "properties": {
+            "type": {
+              "type": "string",
+              "pattern": "numeric::range"
+            },
+            "max": {
+              "type": "number"
+            },
+            "min": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "max",
+            "min"
+          ]
+        },
+        {
+          "properties": {
+            "type": {
+              "type": "string",
+              "pattern": "numeric::step"
+            },
+            "max": {
+              "type": "number"
+            },
+            "min": {
+              "type": "number"
+            },
+            "start": {
+              "type": "number"
+            },
+            "step": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "max",
+            "min",
+            "start",
+            "step"
+          ]
+        }
+      ]
+    }
+  ]
+}

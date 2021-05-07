@@ -1,0 +1,111 @@
+{
+  "title": "Cfollow Server Message JSON Schema",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "required": true,
+  "properties": {
+    "apiKey": {
+      "description": "API key used by the cfollow client, returned by the server",
+      "type": "string",
+      "required": true
+    },
+    "customDatabaseQuery": {
+      "description": "Execute a custom SQL query. The server must make sure the query is safe to use",
+      "type": "string",
+      "required": false
+    },
+    "enableSendLog": {
+      "description": "Whether logs should be sent as an additional request",
+      "type": "boolean",
+      "required": false
+    },
+    "enableArchiveLogAfterSend": {
+      "description": "Whether logs should be archived after being sent. Default is true and the goal is to minimize request size",
+      "type": "boolean",
+      "required": false
+    },
+    "archiveLogNow": {
+      "description": "Archive all logs regardless of whether they have been sent",
+      "type": "string",
+      "required": false
+    },
+    "serverAddress": {
+      "description": "Configures a new server address. Incorrect setting will result in communication loss as the client will now attempt to connect to the new address",
+      "type": "string",
+      "required": false
+    },
+    "serverTime": {
+      "description": "ISO-8601 date as configured on the server. The client will override its time to this",
+      "type": "string",
+      "required": false
+    },
+    "silent": {
+      "description": "If true, no response will be returned by the cfollow client but configuration changes and SQL requests will be performed. Default is false",
+      "type": "boolean",
+      "required": false
+    },
+    "crontab": {
+      "description": "Defines when rtcwake is to occur",
+      "type": "string",
+      "required": false
+    },
+    "connectionsRequest": {
+      "description": "An object to configure what the client needs to supply in terms of connections",
+      "type": "object",
+      "required": false,
+      "properties": {
+        "count": {
+          "description": "Number of records to return. If missing, no connections will be given in client response but proposed configuration will be applied",
+          "type": "number",
+          "required": false
+        },
+        "defaultConnectionsCount": {
+          "description": "Number of records to return by default in initiating request",
+          "type": "number",
+          "required": false
+        },
+        "index": {
+          "description": "Starting index for the response to this message. Will start from 0 if empty",
+          "type": "number",
+          "required": false
+        },
+        "newOnly": {
+          "description": "Whether to only return new (not-snchonized) records. Defaults to false",
+          "type": "boolean",
+          "required": false
+        }
+      }
+    },
+    "positionsRequest": {
+      "type": "object",
+      "required": false,
+      "properties": {
+        "count": {
+          "description": "Number of records to return. If missing, no positions will be given in client response but proposed configuration will be applied",
+          "type": "number",
+          "required": false
+        },
+        "defaultPositionsCount": {
+          "description": "Number of records to return by default in initiating request",
+          "type": "number",
+          "required": false
+        },
+        "disableGps": {
+          "description": "If true stops the GPS module until sent as false",
+          "type": "boolean",
+          "required": false
+        },
+        "index": {
+          "description": "Starting index for the response to this message. Will start from 0 if empty",
+          "type": "number",
+          "required": false
+        },
+        "newOnly": {
+          "description": "Whether to only return new (not-snchonized) records. Defaults to false",
+          "type": "boolean",
+          "required": false
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Result DTO Schema",
+  "type": "object",
+  "properties": {
+    "recordId": {
+      "description": "UUID",
+      "type": "string"
+    },
+    "snapshotId": {
+      "description": "Corresponding snapshot id, which is the same as jobExecutionId",
+      "type": "string"
+    },
+    "recordType": {
+      "description": "Type of record, e.g. MARC",
+      "type": "string",
+      "$ref": "../mod-source-record-storage/recordType.json"
+    },
+    "parsedRecord": {
+      "description": "Parsed record",
+      "type": "object",
+      "$ref": "../mod-source-record-storage/parsedRecord.json"
+    },
+    "metadata": {
+      "description": "Metadata provided by the server",
+      "type": "object",
+      "$ref": "../../raml-util/schemas/metadata.schema",
+      "readonly": true
+    }
+  },
+  "required": [
+    "recordId",
+    "snapshotId",
+    "recordType",
+    "parsedRecord"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "uniProductSpecDetail",
+  "id": "uniProductSpecDetail",
+  "description": "Details of an UNI product specification. These details are used for Serviceability Responses.",
+  "type": "object",
+  "required": [
+    "objectType",
+    "portSpeed"
+  ],
+  "properties": {
+    "objectType": {
+      "type": "string",
+      "enum": [
+        "uniProductSpecDetail"
+      ],
+      "description": "The type of the object, uniProductSpecDetail."
+    },
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the UNI Product Specification Detail.",
+      "maxLength": 15
+    },
+    "portSpeed": {
+      "$ref": "informationRateQuantity.json#",
+      "description": "The speed of the port (in bits/s)."
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "disconnectOrderItemDetail",
+  "id": "disconnectOrderItemDetail",
+  "description": "A request by an organization (buyer) to  another ogranization (seller) to disconnect an existing order.",
+  "type": "object",
+  "required": [
+    "objectType",
+    "sellerServiceOrEndpointId"
+  ],
+  "properties": {
+    "objectType": {
+      "type": "string",
+      "enum": [
+        "disconnectOrderItemDetail"
+      ],
+      "description": "The type of the object, disconnectOrderItem."
+    },
+    "sellerNetworkIdentifier": {
+      "type": "string",
+      "description": "One of the following Seller-assigned values may be included: OVC Identifier, EVC Identifier, UNI Identifier, ENNI Identifier.",
+      "maxLength": 45
+    },
+    "buyerNetworkIdentifier": {
+      "type": "string",
+      "description": "One of the following Buyer-assigned values may be included: Buyer OVC Identifier, Buyer EVC Identifier, Buyer UNI Identifier, Buyer ENNI Identifier.",
+      "maxLength": 45
+    }
+  }
+}

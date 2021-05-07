@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Schedule schema",
+  "description": "Description of the data for initialising a Schedule.",
+  "type": "object",
+  "properties": {
+    "sched_id": {
+      "$ref": "common.json#/schedule_id"
+    },
+    "steps": {
+      "type": "array",
+      "items": {
+        "$ref": "references.json#/schedule_step"
+      }
+    }
+  },
+  "required": [
+    "sched_id",
+    "steps"
+  ],
+  "additionalProperties": false
+}

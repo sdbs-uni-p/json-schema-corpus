@@ -1,0 +1,89 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "productSpecResponse",
+  "id": "productSpecResponse",
+  "description": "Details of a Product Specification response. These details are used for Serviceability Responses.",
+  "type": "object",
+  "required": [
+    "objectType",
+    "id",
+    "productType",
+    "productCategory"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the Product Specification.",
+      "maxLength": 25
+    },
+    "objectType": {
+      "type": "string",
+      "enum": [
+        "productSpecResponse"
+      ],
+      "description": "The type of the object, productSpecResponse."
+    },
+    "productName": {
+      "type": "string",
+      "description": "The name a product is known by within an organization (e.g., 5Mb Business Ethernet).",
+      "maxLength": 100
+    },
+    "productCode": {
+      "type": "string",
+      "description": "Code that an organization uses for a product in its internal systems that can refer to one or a set of products (e.g., EVCINTER).",
+      "maxLength": 25
+    },
+    "productType": {
+      "type": "string",
+      "enum": [
+        "ACCESS_EPL",
+        "ACCESS_EVPL",
+        "UNI",
+        "INTERNET",
+        "STATIC_IP_TIER"
+      ],
+      "description": "The specific type of product being detailed (e.g. ACCESS_EPL)."
+    },
+    "productCategory": {
+      "type": "string",
+      "enum": [
+        "ETHERNET",
+        "BROADBAND"
+      ],
+      "description": "A high-level categorization of products such as Ethernet."
+    },
+    "productSpecDetail": {
+      "type": "object",
+      "oneOf": [
+        {
+          "$ref": "ethernetProductSpecDetail.json#"
+        },
+        {
+          "$ref": "uniProductSpecDetail.json#"
+        },
+        {
+          "$ref": "broadbandProductSpecDetail.json#"
+        },
+        {
+          "$ref": "staticIpTierProductSpecDetail.json#"
+        }
+      ],
+      "description": "Additional product spec capability details."
+    },
+    "quote": {
+      "$ref": "quote.json#",
+      "description": "The quote of the productSpec."
+    },
+    "productFeatures": {
+      "type": "array",
+      "items": {
+        "$ref": "productSpecResponse.json#"
+      },
+      "description": "An array of Features of the Prouct Spec."
+    },
+    "constructionCost": {
+      "$ref": "constructionCost.json#",
+      "description": "The estimated cost for construction."
+    }
+  }
+}

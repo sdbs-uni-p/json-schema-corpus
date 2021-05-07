@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://jsonschema.net",
+  "type": "object",
+  "properties": {
+    "cardNo": {
+      "id": "http://jsonschema.net/cardNo",
+      "type": "string"
+    },
+    "expires": {
+      "id": "http://jsonschema.net/expires",
+      "type": "string"
+    },
+    "name": {
+      "id": "http://jsonschema.net/name",
+      "type": "string"
+    },
+    "amount": {
+      "id": "http://jsonschema.net/amount",
+      "type": "number"
+    }
+  },
+  "required": [
+    "cardNo",
+    "expires",
+    "name",
+    "amount"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "type": "object",
+  "properties": {
+    "meta": {
+      "$ref": "_definitions.json#/definitions/metaResponse"
+    },
+    "data": {
+      "type": "array",
+      "items": {
+        "$ref": "_definitions.json#/definitions/responseData"
+      }
+    },
+    "links": {
+      "$ref": "_definitions.json#/definitions/paginationLinks"
+    }
+  },
+  "required": [
+    "meta",
+    "data"
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

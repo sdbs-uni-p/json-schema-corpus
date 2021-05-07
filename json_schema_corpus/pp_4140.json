@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "error",
+  "description": "schema of service's errors",
+  "type": "object",
+  "properties": {
+    "errorMessage": {
+      "type": "string"
+    }
+  }
+}

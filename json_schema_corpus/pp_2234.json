@@ -1,0 +1,224 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "musicJson-notation",
+  "definitions": {
+    "key": {
+      "$id": "key",
+      "type": "string",
+      "enum": [
+        "A",
+        "A#",
+        "Ab",
+        "B",
+        "B#",
+        "Bb",
+        "C",
+        "C#",
+        "Cb",
+        "D",
+        "D#",
+        "Db",
+        "E",
+        "E#",
+        "Eb",
+        "F",
+        "F#",
+        "Fb",
+        "G",
+        "G#",
+        "Gb"
+      ]
+    },
+    "signatures": {
+      "$id": "signatures",
+      "title": "Time, tempo and key signatures.",
+      "properties": {
+        "timeSignature": {
+          "$ref": "timeSignature",
+          "default": "4/4",
+          "description": "The time signature for the current section."
+        },
+        "tempo": {
+          "$ref": "tempo",
+          "description": "The tempo of the current section."
+        },
+        "key": {
+          "$ref": "key",
+          "description": "The key for the current section."
+        }
+      }
+    },
+    "noteDuration": {
+      "$id": "noteDuration",
+      "type": "string",
+      "enum": [
+        "double-whole",
+        "breve",
+        "dw",
+        "whole",
+        "semibreve",
+        "w",
+        "half",
+        "minim",
+        "h",
+        "quarter",
+        "crotchet",
+        "1/4",
+        "eighth",
+        "quaver",
+        "1/8",
+        "sixteenth",
+        "semiquaver",
+        "1/16",
+        "thirty-second",
+        "demisemiquaver",
+        "1/32",
+        "sixty-fourth",
+        "hemidemisemiquaver",
+        "1/64",
+        "hundred-twenty-eighth",
+        "semihemidemisemiquaver",
+        "1/128",
+        "two-hundred fifty-sixth",
+        "demisemihemidemisemiquaver",
+        "1/256"
+      ]
+    },
+    "duration": {
+      "$id": "duration",
+      "oneOf": [
+        {
+          "$ref": "#noteDuration"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "note": {
+              "$ref": "noteDuration"
+            },
+            "dotted": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        }
+      ]
+    },
+    "tempo": {
+      "$id": "tempo",
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "unit": {
+              "$ref": "noteDuration",
+              "default": "1/4"
+            },
+            "value": {
+              "$ref": "./helpers.json#moreThanOneInteger",
+              "default": 120
+            }
+          },
+          "required": [
+            "unit",
+            "value"
+          ]
+        }
+      ]
+    },
+    "timeSignature": {
+      "$id": "timeSignature",
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^([2-9]|(?:(?:1|2)[0-9])|(?:3[0-2]))/(2|4|8|(?:16)|(?:32))$"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "integer",
+              "minimum": 2,
+              "maximum": 32
+            },
+            "beats": {
+              "type": "integer",
+              "enum": [
+                2,
+                4,
+                8,
+                16,
+                32
+              ]
+            }
+          },
+          "required": [
+            "value",
+            "beats"
+          ]
+        }
+      ]
+    },
+    "clefs": {
+      "$id": "clefs",
+      "type": "string",
+      "enum": [
+        "G",
+        "F",
+        "C"
+      ]
+    },
+    "clef": {
+      "$id": "clef",
+      "oneOf": [
+        {
+          "$ref": "clefs"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "note": {
+              "$ref": "clefs"
+            },
+            "line": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 5
+            }
+          }
+        },
+        {
+          "type": "string",
+          "enum": [
+            "G1",
+            "french-violin",
+            "G2",
+            "treble",
+            "C1",
+            "soprano",
+            "C2",
+            "mezzo-soprano",
+            "C3",
+            "alto",
+            "C4",
+            "tenor",
+            "C5",
+            "baritone-c",
+            "F3",
+            "baritone-f",
+            "F4",
+            "bass",
+            "F5",
+            "subbass"
+          ]
+        }
+      ]
+    },
+    "note": {
+      "$id": "note"
+    }
+  }
+}

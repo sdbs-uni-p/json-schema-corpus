@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Payer",
+  "description": "PayPal payer json schema",
+  "type": "object",
+  "properties": {
+    "payment_method": {
+      "description": "Payment method used. Must be either credit_card or paypal.",
+      "type": "string",
+      "enum": [
+        "credit_card",
+        "paypal"
+      ]
+    },
+    "funding_instruments": {
+      "description": "A list of funding instruments for the current payment",
+      "type": "array",
+      "items": {
+        "oneOf": [
+          null,
+          {
+            "$ref": "funding_instruments_credit_card.json"
+          },
+          {
+            "$ref": "funding_instruments_stored_credit_card.json"
+          },
+          {
+            "$ref": "funding_instruments_credit_card_token.json"
+          }
+        ]
+      }
+    },
+    "payer_info": {
+      "$ref": "payer_info.json"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "VERIFIED",
+        "UNVERIFIED"
+      ]
+    }
+  },
+  "required": [
+    "payment_method"
+  ]
+}

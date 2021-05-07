@@ -1,0 +1,285 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "definitions": {
+    "category": {
+      "description": "Category, (loosely) modeled after RFC 4287",
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "icon": {
+          "$ref": "#/definitions/link"
+        },
+        "name": {
+          "type": "string"
+        },
+        "scheme": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "link": {
+      "description": "Link as defined by RFC 5988, extended for S3",
+      "type": "object",
+      "required": [
+        "href"
+      ],
+      "properties": {
+        "bucket": {
+          "type": "string"
+        },
+        "key": {
+          "type": "string"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri"
+        },
+        "hreflang": {
+          "type": "string"
+        },
+        "rel": {
+          "type": "string"
+        },
+        "rev": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "linklist": {
+      "description": "List of links is so common, we define separately.",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/link"
+      }
+    },
+    "person": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "Bio or about me."
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "links": {
+          "$ref": "#/definitions/linklist"
+        },
+        "name": {
+          "type": "string",
+          "description": "for display"
+        },
+        "role": {
+          "type": "string"
+        },
+        "sort": {
+          "type": "string",
+          "description": "for lexical sort"
+        },
+        "thumbnail": {
+          "$ref": "#/definitions/link"
+        }
+      }
+    },
+    "organization": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "links": {
+          "$ref": "#/definitions/linklist"
+        },
+        "name": {
+          "type": "string",
+          "description": "for display"
+        },
+        "role": {
+          "type": "string"
+        },
+        "sort": {
+          "type": "string",
+          "description": "for lexical sort"
+        }
+      }
+    },
+    "Item": {
+      "type": "object",
+      "required": [
+        "archetype",
+        "attributions",
+        "contenttype",
+        "copyright",
+        "guid",
+        "itemtype",
+        "links",
+        "published",
+        "title"
+      ],
+      "properties": {
+        "archetype": {
+          "$ref": "#/definitions/link"
+        },
+        "attributions": {
+          "description": "Byline or author/contributor credits",
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "#/definitions/person"
+              },
+              {
+                "$ref": "#/definitions/organization"
+              }
+            ]
+          }
+        },
+        "category": {
+          "$ref": "#/definitions/category"
+        },
+        "contenttype": {
+          "type": "string"
+        },
+        "copyright": {
+          "type": "string"
+        },
+        "copyright_holder": {
+          "type": "object",
+          "description": "Person or organization who owns the copyright",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/person"
+            },
+            {
+              "$ref": "#/definitions/organization"
+            }
+          ]
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "description": {
+          "type": "string"
+        },
+        "guid": {
+          "type": "string",
+          "format": "uri"
+        },
+        "itemtype": {
+          "type": "string"
+        },
+        "links": {
+          "$ref": "#/definitions/linklist"
+        },
+        "published": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "slug": {
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/definitions/link"
+        },
+        "thumbnail": {
+          "$ref": "#/definitions/link"
+        },
+        "title": {
+          "type": "string"
+        },
+        "updated": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "Page": {
+      "description": "Web page",
+      "properties": {
+        "text": {
+          "type": "string"
+        }
+      }
+    },
+    "Article": {
+      "type": "object",
+      "properties": {
+        "body": {
+          "type": "string"
+        },
+        "headline": {
+          "type": "string"
+        }
+      }
+    },
+    "Catalog": {
+      "type": "object",
+      "properties": {
+        "queries": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Index": {
+      "type": "object",
+      "required": [
+        "Items"
+      ],
+      "properties": {
+        "Items": {
+          "type": "object"
+        },
+        "totalResults": {
+          "type": "integer"
+        }
+      }
+    },
+    "Webquills": {
+      "scribes": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "type": "object",
+  "required": [
+    "Item"
+  ],
+  "properties": {
+    "Item": {
+      "$ref": "#/definitions/Item"
+    },
+    "Page": {
+      "$ref": "#/definitions/Page"
+    },
+    "Article": {
+      "$ref": "#/definitions/Article"
+    }
+  }
+}

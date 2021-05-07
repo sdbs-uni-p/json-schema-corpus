@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Object schema",
+  "description": "Description of a physical object that is involved in a step. This can be a tool, a part or the result of a step.",
+  "type": "object",
+  "properties": {
+    "obj_id": {
+      "$ref": "common.json#/obj_id"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the object"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the object",
+      "default": ""
+    },
+    "images": {
+      "type": "array",
+      "description": "A list of ImageReferences",
+      "items": {
+        "$ref": "references.json#/img_ref"
+      },
+      "default": []
+    }
+  },
+  "required": [
+    "obj_id",
+    "name"
+  ],
+  "additionalProperties": false
+}

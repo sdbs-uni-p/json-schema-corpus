@@ -1,0 +1,8 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "id": "base:email#",
+  "title": "Email",
+  "description": "Email validation",
+  "type": "string",
+  "pattern": "^([a-z0-9_\\.-]+)@([a-z0-9_\\.-]+)\\.([a-z\\.]{2,6})$"
+}

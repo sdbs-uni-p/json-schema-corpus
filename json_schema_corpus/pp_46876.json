@@ -1,0 +1,89 @@
+{
+  "description": "Hypercharge init_recurring_sale Transaction request",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "additionalProperties": false,
+  "properties": {
+    "payment_transaction": {
+      "type": "object",
+      "required": true,
+      "additionalProperties": false,
+      "properties": {
+        "transaction_type": {
+          "description": "Type of the Transaction => static 'init_recurring_sale'",
+          "required": true,
+          "type": "string",
+          "pattern": "^init_recurring_sale$"
+        },
+        "transaction_id": {
+          "required": false,
+          "extends": "types.json#/transaction_id"
+        },
+        "usage": {
+          "required": false,
+          "extends": "types.json#/usage"
+        },
+        "remote_ip": {
+          "required": true,
+          "extends": "types.json#/ipv4"
+        },
+        "amount": {
+          "required": true,
+          "extends": "types.json#/amount"
+        },
+        "currency": {
+          "required": true,
+          "extends": "types.json#/currency"
+        },
+        "card_holder": {
+          "required": true,
+          "extends": "types.json#/card_holder"
+        },
+        "expiration_month": {
+          "required": true,
+          "extends": "types.json#/expiration_month"
+        },
+        "expiration_year": {
+          "required": true,
+          "extends": "types.json#/expiration_year"
+        },
+        "customer_email": {
+          "required": true,
+          "extends": "types.json#/customer_email"
+        },
+        "customer_phone": {
+          "required": false,
+          "extends": "types.json#/customer_phone"
+        },
+        "card_number": {
+          "required": true,
+          "extends": "types.json#/card_number"
+        },
+        "cvv": {
+          "required": false,
+          "extends": "types.json#/cvv"
+        },
+        "billing_address": {
+          "required": true,
+          "extends": "types.json#/address"
+        },
+        "shipping_address": {
+          "required": false,
+          "extends": "types.json#/address"
+        },
+        "risk_params": {
+          "required": false,
+          "extends": "types.json#/risk_params"
+        },
+        "meta": {
+          "required": false,
+          "extends": "types.json#/meta"
+        },
+        "recurring_schedule": {
+          "required": false,
+          "extends": "types.json#/recurring_schedule"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "JobExecution status Enum",
+  "type": "string",
+  "enum": [
+    "PARENT",
+    "NEW",
+    "FILE_UPLOADED",
+    "IMPORT_IN_PROGRESS",
+    "IMPORT_FINISHED",
+    "PARSING_IN_PROGRESS",
+    "PARSING_FINISHED",
+    "PROCESSING_IN_PROGRESS",
+    "PROCESSING_FINISHED",
+    "COMMIT_IN_PROGRESS",
+    "COMMITTED",
+    "ERROR",
+    "DISCARDED"
+  ]
+}

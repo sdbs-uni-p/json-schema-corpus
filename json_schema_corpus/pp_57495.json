@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "vechicle",
+  "title": "Vechicle Schema",
+  "type": "object",
+  "properties": {
+    "reg_number": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "reg_number"
+  ]
+}

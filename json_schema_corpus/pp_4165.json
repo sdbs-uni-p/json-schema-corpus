@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://mcda.drugis.org/valueSEEffect.json#",
+  "title": "MCDA value, standard error effect for the performance table entry of absolute data",
+  "type": "object",
+  "required": [
+    "type",
+    "value",
+    "input"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "exact"
+      ]
+    },
+    "value": {
+      "type": "number"
+    },
+    "input": {
+      "type": "object",
+      "required": [
+        "value",
+        "stdErr"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "type": "number"
+        },
+        "stdErr": {
+          "type": "number"
+        },
+        "scale": {
+          "type": "string",
+          "enum": [
+            "percentage",
+            "decimal"
+          ]
+        }
+      }
+    }
+  }
+}

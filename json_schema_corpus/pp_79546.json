@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "buckets": {
+      "type": "array",
+      "description": "an ordered array of the buckets that are part of this workflow",
+      "items": {
+        "$ref": "bucket.json#/definitions/id"
+      }
+    }
+  },
+  "type": "object",
+  "properties": {
+    "label": {
+      "type": "string"
+    },
+    "id": {
+      "type": "integer"
+    },
+    "buckets": {
+      "$ref": "#/definitions/buckets"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "label",
+    "id",
+    "buckets"
+  ]
+}

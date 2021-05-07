@@ -1,0 +1,10 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "type": "object",
+  "properties": {
+    "setupErrorMessage": {
+      "type": "string",
+      "description": "a string indicating there is a setup error on the board"
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "required": [
+    "email"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255,
+      "faker": "name.findName"
+    },
+    "person_id": {
+      "type": "integer",
+      "minimum": 1,
+      "faker": {
+        "random.number": [
+          {
+            "max": 5,
+            "min": 1
+          }
+        ]
+      }
+    },
+    "hash": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255,
+      "chance": "hash"
+    },
+    "email": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255,
+      "format": "email",
+      "faker": "internet.email"
+    },
+    "phone": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255,
+      "format": "email",
+      "faker": "phone.phoneNumber"
+    },
+    "facebook": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255,
+      "faker": "random.word"
+    }
+  }
+}

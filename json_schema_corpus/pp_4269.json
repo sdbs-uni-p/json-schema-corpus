@@ -1,0 +1,49 @@
+{
+  "type": "array",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "",
+  "minItems": 1,
+  "uniqueItems": true,
+  "items": {
+    "type": "object",
+    "required": [
+      "name",
+      "type",
+      "largeIconImageUrl",
+      "smallIconImageUrl",
+      "isUsableByPlayer",
+      "id",
+      "contentId"
+    ],
+    "properties": {
+      "name": {
+        "type": "string",
+        "minLength": 1
+      },
+      "description": {},
+      "type": {
+        "type": "string",
+        "minLength": 1
+      },
+      "largeIconImageUrl": {
+        "type": "string",
+        "minLength": 1
+      },
+      "smallIconImageUrl": {
+        "type": "string",
+        "minLength": 1
+      },
+      "isUsableByPlayer": {
+        "type": "boolean"
+      },
+      "id": {
+        "type": "string",
+        "minLength": 1
+      },
+      "contentId": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  }
+}

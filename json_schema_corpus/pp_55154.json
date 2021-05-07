@@ -1,0 +1,281 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://www.psibitdev.com/schemas/vagrant/schema.definitions.json",
+  "type": "object",
+  "definitions": {
+    "ssh": {
+      "type": "object",
+      "properties": {
+        "enable_custom": {
+          "type": "boolean",
+          "default": false
+        },
+        "authentication": {
+          "type": "object",
+          "properties": {
+            "username": {
+              "type": "string",
+              "default": ""
+            },
+            "password": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        }
+      },
+      "default": {
+        "enable_custom": false,
+        "authentication": {
+          "username": "",
+          "password": ""
+        }
+      }
+    },
+    "vagrant": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2,
+          "default": 2
+        },
+        "host_locale": {
+          "type": "string",
+          "default": "en_US.UTF-8"
+        },
+        "ssh": {
+          "$ref": "#/definitions/ssh"
+        }
+      },
+      "default": {
+        "version": 2,
+        "host_locale": "en_US.UTF-8",
+        "ssh": {
+          "enable_custom": false,
+          "authentication": {
+            "username": "",
+            "password": ""
+          }
+        }
+      }
+    },
+    "baseObj": {
+      "type": "object",
+      "properties": {
+        "_name": {
+          "type": "string",
+          "default": ""
+        },
+        "_enabled": {
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "default": {
+        "_name": "",
+        "_enabled": true
+      }
+    },
+    "typeObj": {
+      "type": "object",
+      "properties": {
+        "_type": {
+          "type": "string",
+          "default": ""
+        }
+      },
+      "default": {
+        "_type": ""
+      }
+    },
+    "port": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 49151,
+      "default": 80
+    },
+    "port_fwd": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/baseObj"
+        },
+        {
+          "properties": {
+            "auto_correct": {
+              "type": "boolean",
+              "default": true
+            },
+            "ports": {
+              "type": "object",
+              "properties": {
+                "guest": {
+                  "$ref": "#/definitions/port"
+                },
+                "host": {
+                  "$ref": "#/definitions/port"
+                }
+              }
+            }
+          },
+          "default": {
+            "auto_correct": true,
+            "ports": {
+              "guest": 80,
+              "host": 80
+            }
+          }
+        }
+      ],
+      "default": {
+        "_name": "",
+        "_enabled": true,
+        "auto_correct": true,
+        "ports": {
+          "guest": 80,
+          "host": 80
+        }
+      }
+    },
+    "baseString": {
+      "type": "string",
+      "default": ""
+    },
+    "fs_sync": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/defintions/baseObj"
+        },
+        {
+          "properties": {
+            "properties": {
+              "paths": {
+                "type": "object",
+                "properties": {
+                  "guest": {
+                    "$ref": "#/definitions/baseString"
+                  },
+                  "host": {
+                    "$ref": "#/definitions/baseString"
+                  }
+                }
+              }
+            },
+            "default": {
+              "paths": {
+                "guest": ".",
+                "host": "/"
+              }
+            }
+          }
+        }
+      ],
+      "default": {
+        "_name": "",
+        "_enabled": true,
+        "paths": {
+          "host": ".",
+          "guest": "/"
+        }
+      }
+    },
+    "argument": {
+      "type": "object",
+      "allOf": [
+        {
+          "properties": {
+            "_type": {
+              "type": "string",
+              "enum": [
+                "json_path",
+                "value"
+              ],
+              "default": "value"
+            }
+          }
+        },
+        {
+          "$ref": "#/definitions/baseObj"
+        },
+        {
+          "oneOf": [
+            {
+              "properties": {
+                "path": {
+                  "$ref": "#/definitions/baseString"
+                }
+              }
+            },
+            {
+              "properties": {
+                "value": {
+                  "type": [
+                    "boolean",
+                    "integer",
+                    "number",
+                    "string"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "default": {
+        "_type": "value",
+        "_name": "",
+        "_enabled": true,
+        "value": ""
+      }
+    },
+    "arguments": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/argument"
+      },
+      "default": []
+    },
+    "script": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/typeObj"
+        },
+        {
+          "$ref": "#/definitions/baseObj"
+        },
+        {
+          "properties": {
+            "path": {
+              "$ref": "#/definitions/baseString"
+            },
+            "args": {
+              "$ref": "#/definitions/argument"
+            }
+          }
+        }
+      ],
+      "default": {
+        "_type": "shell",
+        "_name": "",
+        "_enabled": true,
+        "path": "",
+        "args": []
+      }
+    },
+    "server": {
+      "type": "object",
+      "properties": {},
+      "default": {
+        "_name": "",
+        "_enabled": true,
+        "vm": {},
+        "scripts": {},
+        "docker": {}
+      }
+    }
+  }
+}

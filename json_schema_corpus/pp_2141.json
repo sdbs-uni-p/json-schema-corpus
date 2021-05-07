@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Verify annotation has 1 or more targets",
+  "type": "object",
+  "properties": {
+    "target": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "object"
+              }
+            ]
+          },
+          "additionalItems": true
+        },
+        {
+          "type": "object"
+        }
+      ]
+    }
+  },
+  "required": [
+    "target"
+  ]
+}

@@ -1,0 +1,278 @@
+{
+  "collection": "reports",
+  "class": "schema",
+  "_id": "reports/schema/postnatal",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Report Postnatal",
+  "type": "object",
+  "properties": {
+    "attendees_within_24_hours": {
+      "line_number": "12a",
+      "sw": "Waliohudhuria Ndani ya saa 24",
+      "en": "Attendees Within 24 hours",
+      "condition": "patient.age < 1 && postnatal.days_postpartum <= 1"
+    },
+    "attendess_between_2_and_7_days": {
+      "line_number": "1b",
+      "sw": "Waliohudhuria kati ya siku ya 2-7",
+      "en": "Attendees between 2-7 days",
+      "condition": "patient.age > 1 && postnatal.days_postpartum >= 2 && postnatal.days_postpartum <= 7"
+    },
+    "total_attendees_within_7_days": {
+      "line_number": "1c",
+      "sw": "Jumla Waliohudhuria ndani ya siku 7 (la+lb)",
+      "en": "Total attendees within 7 days",
+      "condition": "patient.age > 1 && postnatal.days_postpartum <= 7"
+    },
+    "those_who_finished_all_visits_24_hours_days_2_and_7_day_28_day_42": {
+      "line_number": "2a",
+      "sw": "Waliomaliza mahudhurio yote (saa 24, siku 2-7, siku 28, siku 42)",
+      "en": "Those who finished all visits (24 hours, days 2-7, day 28, day 42)",
+      "condition": "FIXME"
+    },
+    "those_with_severe_anema": {
+      "line_number": "3",
+      "sw": "Wenye upungufu mkubwa wa damu (Hb < 8.5 g/dl)",
+      "en": "Those with severe anemia (Hb <8.5 g / dl)",
+      "condition": "postnatal.anemia_severe == '<8.5g/dl'"
+    },
+    "those_with_mental_disorder": {
+      "line_number": "4",
+      "sw": "Waliopata matatizo ya akili",
+      "en": "Those with mental disorder",
+      "condition": "postnatal.maternal_diagnoses == 'mental disorder'"
+    },
+    "those_given_vita": {
+      "line_number": "5",
+      "sw": "Waliopata Vit.A",
+      "en": "Those given Vit.A",
+      "condition": "postnatal.given_vitamina"
+    },
+    "those_with_gaping_or_infected_perineum": {
+      "line_number": "6",
+      "sw": "Wenye msamba ulioambukizwa/Ulioachia",
+      "en": "Those with gaping or infected perineum",
+      "condition": "postnatal.maternal_diagnoses == 'gaping or infected perineum'"
+    },
+    "those_with_fistula": {
+      "line_number": "7",
+      "sw": "Wenyc fistula",
+      "en": "Those with fistula",
+      "condition": "postnatal.maternal_diagnoses == 'fistula'"
+    },
+    "those_who_delivered_outside_the_health_centre_bba_tba_home_etc": {
+      "line_number": "8",
+      "sw": "Waliojifungulia Nje ya kituo cha kutoa huduma za Afya (BBA,TBA, Nyumbani etc)",
+      "en": "Those who delivered outside the Health Centre(BBA, TBA, Home etc)",
+      "condition": "postnatal.delivered_outside"
+    },
+    "number_of_those_who_delivered_at_home": {
+      "line_number": "9",
+      "sw": "Idadi ya waliojifungulia nyumbani",
+      "en": "number of those who delivered at home",
+      "condition": "postnatal.delivered_outside == false"
+    },
+    "family_planning": {
+      "line_number": "10",
+      "sw": "Uzazi wa Mpango",
+      "en": "family planning"
+    },
+    "ones_who_received_counseling": {
+      "line_number": "10a",
+      "sw": "Waliopata ushauri nasaha",
+      "en": "Those who received counseling",
+      "condition": "postnatal.family_planning_counseling"
+    },
+    "those_received_methods_of_family_planning": {
+      "line_number": "10b",
+      "sw": "Waliopata njia za Uzazi wa Mpango",
+      "en": "Those who received methods of family planning",
+      "condition": "postnatal.family_planning_method_after_delivery"
+    },
+    "those_received_family_planning_methods_after_miscarriage": {
+      "line_number": "10c",
+      "sw": "Waliopata njia za Uzazi wa mpango baada ya mimba kuharibika",
+      "en": "Those who received family planning methods after miscarriage",
+      "condition": "postnatal.family_planning_method_after_miscarriage"
+    },
+    "those_who_used_methods_of_contraception_within_40_days_after_delivery": {
+      "line_number": "10d",
+      "sw": "Waliopata njia za uzazi wa mpango kwenye arobaini ya uzazi",
+      "en": "Those who used methods of contraception within 40 days after delivery",
+      "condition": "postnatal.contraception_within_40_days"
+    },
+    "ptmct": {
+      "line_number": "11",
+      "sw": "PTMCT",
+      "en": "PTMCT"
+    },
+    "that_came_as_positive_during_postnatal": {
+      "line_number": "11a",
+      "sw": "Waliokuja postnata wakiwa positive",
+      "en": "That came as positive during postnatal",
+      "condition": "postnatal.postnatal_hiv_positive"
+    },
+    "those_tested_for_hiv_during_postnatal_within_42_days_from_delivery": {
+      "line_number": "11b",
+      "sw": "Waliopima VVU wakati wa postnatal (ndani ya siku 42 tangu kujifungua)",
+      "en": "Those tested for HIV during postnatal (within 42 days from delivery)",
+      "condition": "postnatal.days_postpartum < 42 && postnatal.postnatal_hiv_test"
+    },
+    "those_who_were_found_hiv_positive_during_postnatal_within_42_days_from_delivery": {
+      "line_number": "11c",
+      "sw": "Waliogundulika wana VVU wakati wa postnatal (ndani ya siku 42 tangu kujifungua)",
+      "en": "Those who were found HIV positive during postnatal (within 42 days from delivery)",
+      "condition": "postnatal.days_postpartum < 42 && postnatal.postnatal_hiv_positive"
+    },
+    "people_with_hiv_who_chose_to_breastfeed_exclusively_breastfed_ebf": {
+      "line_number": "11d",
+      "sw": "Wenye VVU waliochagua kunyonyesha maziwa ya mama pekee (EBF)",
+      "en": "People with HIV who chose to breastfeed exclusively breastfed ( EBF )",
+      "condition": "postnatal.postnatal_hiv_positive && postnatal.milk_type == 'Mother's Milk ONLY'"
+    },
+    "people_with_hiv_who_chose_to_use_milk_substitute_rf": {
+      "line_number": "11e",
+      "sw": "Wenye VVU waliochagua kunywesha maziwa mbadala (RF)",
+      "en": "People with HIV who chose to use milk substitute ( RF )",
+      "condition": "postnatal.postnatal_hiv_positive && postnatal.milk_type != 'Mother's Milk ONLY'"
+    },
+    "child": {
+      "line_number": "12",
+      "sw": "MTOTO",
+      "en": "CHILD"
+    },
+    "attendees_between_2_and_7_days": {
+      "line_number": "12b",
+      "sw": "Waliohudhuria kati ya siku ya 2-7",
+      "en": "Attendees between 2-7 days",
+      "condition": "patient.age < 1 && postnatal.days_postpartum >= 2 && postnatal.days_postpartum <= 7"
+    },
+    "attendees_total_within_7_days": {
+      "line_number": "12c",
+      "sw": "Jumla Waliohudhuria ndani ya siku 7 (la+lb)",
+      "en": "Attendees total within 7 days (la + lb )",
+      "condition": "patient.age < 1 && postnatal.days_postpartum <= 7"
+    },
+    "those_who_finished_all_visits": {
+      "line_number": "12d",
+      "sw": "Waliomaliza mahudhurio yote (saa 24, siku 2-7, siku 28, siku 42)",
+      "en": "Those who finished  all visits (24 hours , days 2-7 , day 28, day 42 )",
+      "condition": "FIXME"
+    },
+    "child_services": {
+      "line_number": "13",
+      "sw": "HUDUMA KWA MTOTO",
+      "en": "CHILD SERVICES"
+    },
+    "number_of_children_who_received_bcg": {
+      "line_number": "13a",
+      "sw": "Idadi ya watoto waliopewa BCG",
+      "en": "Number of children who received BCG",
+      "condition": "postnatal.bcg_opv == 'bcg'"
+    },
+    "number_of_children_who_received_opv_0": {
+      "line_number": "13b",
+      "sw": "Idadi ya watoto waliopewa OPV 0",
+      "en": "Number of children who received OPV 0",
+      "condition": "postnatal.bcg_opv == 'opv-0'"
+    },
+    "the_number_of_children_born_with_a_low_weight_were_given_kmc": {
+      "line_number": "13c",
+      "sw": "Idadi ya watoto waliozaliwa na uzito wa < 2.5kg wakapatiwa KMC",
+      "en": "The number of children born with a weight of < 2.5 kg were given KMC",
+      "condition": "FIXME"
+    },
+    "number_of_children_at_home_under_the_born_low_weight": {
+      "line_number": "13d",
+      "sw": "Idadi ya watoto walozaliwa nyumbani chini ya 2.5kg",
+      "en": "Number of children at home under the born 2.5kg",
+      "condition": "postnatal.delivered_outside && postnatal.less_than_2.5kg"
+    },
+    "number_of_babies_born_at_home_were_started_on_kangaroo_care_kmc": {
+      "line_number": "13e",
+      "sw": "Idadi ya watoto waliozaliwa nyumbani walioanzishiwa huduma ya kangaroo (KMC)",
+      "en": "Number of babies born at home were started on kangaroo care ( KMC )",
+      "condition": "postnatal.delivered_outside && postnatal.kangaroo_care"
+    },
+    "with_severe_anemia": {
+      "line_number": "13f",
+      "sw": "Wenye upungufu mkubwa wa damu (Hb < 10 g/dl au viganja vyeupe sana)",
+      "en": "With severe anemia ( Hb < 10 g / dl or very white hands )",
+      "condition": "patient.age < 1 && postnatal.anemia_severe == '<8.5g/dl'"
+    },
+    "infections_of_the_child": {
+      "line_number": "14",
+      "sw": "UAMBUKIZO WA MTOTO",
+      "en": "INFECTIONS OF THE CHILD"
+    },
+    "children_with_severe_infections_septicaemia": {
+      "line_number": "14a",
+      "sw": "Watoto wenye uambukizo mkali (septicaemia)",
+      "en": "Children with severe infections ( septicemia )",
+      "condition": "postnatal.child_diagnoses == 'septicemia'"
+    },
+    "children_with_umbilical_cord_infection": {
+      "line_number": "14b",
+      "sw": "Watoto wenye uambukizo kwenye kitovu",
+      "en": "Children with umbilical cord infection",
+      "condition": "postnatal.child_diagnoses == 'umbilical cord infection'"
+    },
+    "children_with_skin_infection": {
+      "line_number": "14c",
+      "sw": "Watoto wenye uambukizo kwenye ngozi",
+      "en": "Children with skin infection",
+      "condition": "postnatal.child_diagnoses == 'skin infection'"
+    },
+    "deaths_of_infants_born_at_home_prenatal_and_neonatal": {
+      "line_number": "15",
+      "sw": "Vifo vya watoto wachanga waliozaliwa nyumbani (perinatal); neonatal",
+      "en": "Deaths of infants born at home ( perinatal ) , neonatal",
+      "condition": "postnatal.delivered_outside && postnatal.child_diagnoses == 'neonatal death'"
+    },
+    "those_received_methods_of_family_planning_after_miscarriage": {
+      "line_number": "16",
+      "sw": "Waliopata njia za Uzazi wa mpango baada ya mimba kuharibika",
+      "en": "Those received methods of Family Planning after miscarriage",
+      "condition": "postnatal.family_planning_method_after_delivery"
+    },
+    "infant_feeding": {
+      "line_number": "17",
+      "sw": "ULISHAJI WA MTOTO",
+      "en": "INFANT FEEDING"
+    },
+    "infants_who_are_breastfed_exclusively_breastfed_ebf": {
+      "line_number": "17a",
+      "sw": "Watoto wachanga wanaonyonya maziwa ya mama pekee (EBF)",
+      "en": "Infants who are breastfed exclusively breastfed ( EBF )",
+      "condition": "postnatal.milk_type == 'Mother's Milk ONLY'"
+    },
+    "infants_who_drik_milk_substitute_rf": {
+      "line_number": "17b",
+      "sw": "Watoto wachanga wanaonyweshwa maziwa mbadala (RF)",
+      "en": "Infants who drink milk substitute ( RF )",
+      "condition": "postnatal.milk_type != 'Mother's Milk ONLY' && postnatal.milk_type != 'Mother's Milk + Other'"
+    },
+    "infants_who_drink_breast_milk_and_other_food_access_mf": {
+      "line_number": "17c",
+      "sw": "Watoto wachanga wanaonyweshwa maziwa ya mama na kupatiwa chakula kingine (MF)",
+      "en": "Infants who drink breast milk and other food access ( MF )",
+      "condition": "postnatal.milk_type == 'Mother's Milk + Other'"
+    },
+    "definitions": {
+      "columns": {
+        "below20": {
+          "title": "Below 20 years old",
+          "condition": "patient.approxage < 20"
+        },
+        "above20": {
+          "title": "Above 20 years old",
+          "condition": "patient.approxage >= 20"
+        },
+        "total": {
+          "title": "Total",
+          "condition": "true"
+        }
+      }
+    }
+  }
+}

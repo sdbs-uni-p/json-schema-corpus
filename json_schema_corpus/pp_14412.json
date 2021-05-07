@@ -1,0 +1,90 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "LuminositySensor Schema",
+  "type": "object",
+  "required": [
+    "LuminositySensor"
+  ],
+  "properties": {
+    "_id": {
+      "type": "object",
+      "$ref": "#/identificador"
+    },
+    "LuminositySensor": {
+      "type": "string",
+      "$ref": "#/datos"
+    }
+  },
+  "additionalProperties": false,
+  "identificador": {
+    "title": "id",
+    "description": "Id insertado del LuminositySensor",
+    "type": "object",
+    "properties": {
+      "$oid": {
+        "type": "string"
+      }
+    },
+    "additionalProperties": false
+  },
+  "datos": {
+    "title": "datos",
+    "description": "Info LuminositySensor",
+    "type": "object",
+    "required": [
+      "id",
+      "va",
+      "un",
+      "loc"
+    ],
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "timestamp": {
+        "type": "object",
+        "required": [
+          "$date"
+        ],
+        "properties": {
+          "$date": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "va": {
+        "type": "number"
+      },
+      "un": {
+        "type": "string"
+      },
+      "loc": {
+        "$ref": "#/gps"
+      }
+    },
+    "additionalProperties": false
+  },
+  "gps": {
+    "title": "gps",
+    "description": "Gps LuminositySensor",
+    "type": "object",
+    "required": [
+      "la",
+      "lon"
+    ],
+    "properties": {
+      "al": {
+        "type": "number"
+      },
+      "la": {
+        "type": "number"
+      },
+      "lon": {
+        "type": "number"
+      }
+    },
+    "additionalProperties": false
+  }
+}

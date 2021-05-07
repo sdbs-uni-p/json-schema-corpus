@@ -1,0 +1,13 @@
+{
+  "id": "http://schema.hyperrest.com/iso/2108_isbn.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "ISBN",
+  "oneOf": [
+    {
+      "$ref": "http://schema.hyperrest.com/iso/2108_isbn_10.json"
+    },
+    {
+      "$ref": "http://schema.hyperrest.com/iso/2108_isbn_13.json"
+    }
+  ]
+}

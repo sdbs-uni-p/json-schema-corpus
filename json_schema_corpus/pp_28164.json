@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "resourceReference",
+  "id": "resourceReference",
+  "description": "A reference to a resource, including it's ID, type, and a link to retrieve the resource.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The resource's unique identifier.",
+      "title": "Unique Identifier"
+    },
+    "type": {
+      "type": "string",
+      "description": "Specifies the type for the referenced resource."
+    },
+    "link": {
+      "$ref": "link.json#",
+      "description": "A link for accessing the resource.",
+      "title": "URL Link"
+    }
+  }
+}

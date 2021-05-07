@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://github.com/B-Stefan/Sofia/blob/master/common-schemas/RepositoryUrl.json",
+  "type": "object",
+  "properties": {
+    "repositoryUrl": {
+      "type": "string"
+    }
+  },
+  "required": []
+}

@@ -1,0 +1,135 @@
+{
+  "$schema": "http://interagent.github.io/interagent-hyper-schema",
+  "type": [
+    "object"
+  ],
+  "definitions": {
+    "weather": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "Weather",
+      "description": "something",
+      "stability": "prototype",
+      "strictProperties": true,
+      "type": [
+        "object"
+      ],
+      "definitions": {
+        "id": {
+          "description": "unique identifier of weather",
+          "readOnly": true,
+          "format": "uuid",
+          "type": [
+            "string"
+          ]
+        },
+        "identity": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/weather/definitions/id"
+            },
+            {
+              "$ref": "#/definitions/weather/definitions/current"
+            }
+          ]
+        },
+        "created_at": {
+          "description": "when weather was created",
+          "format": "date-time",
+          "type": [
+            "string"
+          ]
+        },
+        "updated_at": {
+          "description": "when weather was updated",
+          "format": "date-time",
+          "type": [
+            "string"
+          ]
+        },
+        "current": {
+          "description": "a jsonb string of current weather",
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "links": [
+        {
+          "description": "Create a new weather.",
+          "href": "/weathers",
+          "method": "POST",
+          "rel": "create",
+          "schema": {
+            "properties": {},
+            "type": [
+              "object"
+            ]
+          },
+          "title": "Create"
+        },
+        {
+          "description": "Delete an existing weather.",
+          "href": "/weathers/{(%23%2Fdefinitions%2Fweather%2Fdefinitions%2Fidentity)}",
+          "method": "DELETE",
+          "rel": "destroy",
+          "title": "Delete"
+        },
+        {
+          "description": "Info for existing weather.",
+          "href": "/weathers/{(%23%2Fdefinitions%2Fweather%2Fdefinitions%2Fidentity)}",
+          "method": "GET",
+          "rel": "self",
+          "title": "Info"
+        },
+        {
+          "description": "List existing weathers.",
+          "href": "/weathers",
+          "method": "GET",
+          "rel": "instances",
+          "title": "List"
+        },
+        {
+          "description": "Update an existing weather.",
+          "href": "/weathers/{(%23%2Fdefinitions%2Fweather%2Fdefinitions%2Fidentity)}",
+          "method": "PATCH",
+          "rel": "update",
+          "schema": {
+            "properties": {},
+            "type": [
+              "object"
+            ]
+          },
+          "title": "Update"
+        }
+      ],
+      "properties": {
+        "created_at": {
+          "$ref": "#/definitions/weather/definitions/created_at"
+        },
+        "id": {
+          "$ref": "#/definitions/weather/definitions/id"
+        },
+        "updated_at": {
+          "$ref": "#/definitions/weather/definitions/updated_at"
+        },
+        "current": {
+          "$ref": "#/definitions/weather/definitions/current"
+        }
+      }
+    }
+  },
+  "properties": {
+    "weather": {
+      "$ref": "#/definitions/weather"
+    }
+  },
+  "description": "A simple API template provided by the Pliny project.",
+  "id": "pliny-template-api",
+  "links": [
+    {
+      "href": "https://api.example.com",
+      "rel": "self"
+    }
+  ],
+  "title": "Pliny Template API"
+}

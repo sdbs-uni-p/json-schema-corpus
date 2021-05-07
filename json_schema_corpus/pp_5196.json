@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/Enfernuz/quik-lua-rpc/json/schema/datasource/CreateDataSource.result.scheme.json",
+  "title": "\u0420\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442 \u043f\u0440\u043e\u0446\u0435\u0434\u0443\u0440\u044b datasource.CreateDataSource",
+  "description": "\u0421\u0445\u0435\u043c\u0430 \u043e\u0431\u044a\u0435\u043a\u0442\u0430 \u0440\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442\u0430 \u0443\u0434\u0430\u043b\u0451\u043d\u043d\u043e\u0433\u043e \u0432\u044b\u0437\u043e\u0432\u0430 \u043f\u0440\u043e\u0446\u0435\u0434\u0443\u0440\u044b datasource.CreateDataSource",
+  "type": "object",
+  "properties": {
+    "datasource_uuid": {
+      "description": "UUID \u0441\u043e\u0437\u0434\u0430\u043d\u043d\u043e\u0433\u043e \u0438\u0441\u0442\u043e\u0447\u043d\u0438\u043a\u0430 \u0434\u0430\u043d\u043d\u044b\u0445",
+      "$ref": "https://github.com/Enfernuz/quik-lua-rpc/json/schema/QluaStructures.scheme.json#/definitions/DatasourceUUID"
+    },
+    "error_desc": {
+      "description": "\u041e\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u043e\u0448\u0438\u0431\u043a\u0438, \u0435\u0441\u043b\u0438 \u0442\u0430\u043a\u043e\u0432\u0430\u044f \u0432\u043e\u0437\u043d\u0438\u043a\u043b\u0430",
+      "type": "string"
+    },
+    "is_error": {
+      "description": "\u0424\u043b\u0430\u0433 \u043d\u0430\u043b\u0438\u0447\u0438\u044f \u043e\u0448\u0438\u0431\u043a\u0438",
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "is_error"
+  ]
+}

@@ -1,0 +1,400 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "title": "Host",
+  "description": "Working with MMS Hosts",
+  "type": "object",
+  "definitions": {
+    "id": {
+      "description": "Unique identifier",
+      "example": "4059580c20c4581872ef24d0b8f5dca0",
+      "type": "string"
+    },
+    "groupId": {
+      "description": "ID of the group that owns this host.",
+      "example": "5196d3628d022db4cbc26d9e",
+      "type": "string"
+    },
+    "hostname": {
+      "description": "Primary hostname. A host typically has several aliases, so the primary is the best available name as decided by MMS.",
+      "example": "localhost",
+      "type": "string"
+    },
+    "port": {
+      "description": "Port that MongoDB process (mongod or mongos) listens on.",
+      "example": 27017,
+      "type": "integer"
+    },
+    "typeName": {
+      "description": "Type for this host.",
+      "example": "STANDALONE",
+      "type": "string",
+      "enum": [
+        "STANDALONE",
+        "REPLICA_PRIMARY",
+        "REPLICA_SECONDARY",
+        "REPLICA_ARBITER",
+        "RECOVERING",
+        "MASTER",
+        "SLAVE",
+        "SHARD_MONGOS",
+        "SHARD_CONFIG",
+        "SHARD_STANDALONE",
+        "SHARD_PRIMARY",
+        "SHARD_SECONDARY"
+      ]
+    },
+    "lastPing": {
+      "description": "When the last ping for this host was received.",
+      "example": "2014-04-22T19:56:50Z",
+      "format": "date-time",
+      "type": "string"
+    },
+    "ipAddress": {
+      "description": "IP address of this host.",
+      "example": "10.10.10.1",
+      "type": "string"
+    },
+    "version": {
+      "description": "Version of MongoDB running on this host.",
+      "example": "2.6.3",
+      "type": "string"
+    },
+    "deactivated": {
+      "description": "Has this host been deactivated by MMS? A host will be marked as deactivated when MMS hasn't received a ping from it in several days.",
+      "example": false,
+      "type": "boolean"
+    },
+    "hasStartupWarnings": {
+      "description": "Are there startup warnings for this host?",
+      "example": false,
+      "type": "boolean"
+    },
+    "sslEnabled": {
+      "description": "Is SSL enabled for this host?",
+      "example": false,
+      "type": "boolean"
+    },
+    "logsEnabled": {
+      "description": "Is MMS collecting logs for this host?",
+      "example": false,
+      "type": "boolean"
+    },
+    "lastReactivated": {
+      "description": "The last time this has was manually reactivated.",
+      "example": "2014-04-22T19:56:50Z",
+      "format": "date-time",
+      "type": "string"
+    },
+    "uptimeMsec": {
+      "description": "Number of milliseconds since this host's last restart.",
+      "example": 1024,
+      "type": "integer"
+    },
+    "lastRestart": {
+      "description": "Date this host was last restarted.",
+      "example": "2014-04-22T19:56:50Z",
+      "format": "date-time",
+      "type": "string"
+    },
+    "shardName": {
+      "description": "Name of the shard this host belongs to. Only present if the host is part of a sharded cluster.",
+      "example": "myShard0",
+      "type": "string"
+    },
+    "replicaSetName": {
+      "description": "Name of the replica set this host belongs to. Only present if this host is part of a replica set.",
+      "example": "rs0",
+      "type": "string"
+    },
+    "replicaStateName": {
+      "description": "Current state of this host within a replica set. Only present if this host is part of a replica set.",
+      "example": "SECONDARY",
+      "type": "string",
+      "enum": [
+        "STARTUP",
+        "PRIMARY",
+        "SECONDARY",
+        "RECOVERING",
+        "FATAL",
+        "STARTUP2",
+        "UNKNOWN",
+        "ARBITER",
+        "DOWN",
+        "ROLLBACK",
+        "REMOVED"
+      ]
+    },
+    "created": {
+      "description": "Date this host was created or first discovered by MMS.",
+      "example": "2013-12-15T09:17:23Z",
+      "format": "date-time",
+      "type": "string"
+    },
+    "hostEnabled": {
+      "description": "Is this host currently enabled? Hosts can be manually disabled in the MMS UI.",
+      "example": true,
+      "type": "boolean"
+    },
+    "journalingEnabled": {
+      "description": "Is journaling enabled for this host?",
+      "example": true,
+      "type": "boolean"
+    },
+    "alertsEnabled": {
+      "description": "Are alerts enabled for this host?",
+      "example": true,
+      "type": "boolean"
+    },
+    "muninEnabled": {
+      "description": "Are Munin stats being collected for this host?",
+      "example": true,
+      "type": "boolean"
+    },
+    "hidden": {
+      "description": "Is this host currently hidden? When MMS deactivates a host, it will also mark it as hidden.",
+      "example": false,
+      "type": "boolean"
+    },
+    "profilerEnabled": {
+      "description": "Is MMS collecting profile information from this host?",
+      "example": true,
+      "type": "boolean"
+    },
+    "lowUlimit": {
+      "description": "Does this host have a low ulimit setting?",
+      "example": false,
+      "type": "boolean"
+    },
+    "muninPort": {
+      "description": "What port should be used to collect Munin stats from this host?",
+      "example": 4949,
+      "type": "integer"
+    },
+    "authMechanismName": {
+      "description": "The authentication mechanism used to connect to this host.",
+      "example": "MONGODB_CR",
+      "type": "string",
+      "enum": [
+        "MONGODB_CR",
+        "GSSAPI",
+        "NONE"
+      ]
+    },
+    "username": {
+      "description": "Username for connecting to this host. Only present when the authMechanismName is MONGODB_CR.",
+      "example": "mongo",
+      "type": "string"
+    },
+    "password": {
+      "description": "Password for connecting to this host. If a host's authMechanismName is MONGODB_CR, then you must include this field when creating the host or updating its credentials. However, it will never be exposed when a host entity is returned.",
+      "example": "myM0NGO0!",
+      "type": "string"
+    }
+  },
+  "links": [
+    {
+      "description": "Create a new host.",
+      "href": "/groups/{(%2Fschemata%2Fgroup%23%2Fdefinitions%2Fid)}/hosts",
+      "method": "POST",
+      "rel": "create",
+      "schema": {
+        "$ref": "/schemata/host"
+      },
+      "targetSchema": {
+        "$ref": "/schemata/host"
+      },
+      "title": "Create"
+    },
+    {
+      "description": "Delete an existing host.",
+      "href": "/groups/{(%2Fschemata%2Fgroup%23%2Fdefinitions%2Fid)}/hosts/{(%2Fschemata%2Fhost%23%2Fdefinitions%2Fid)}",
+      "method": "DELETE",
+      "rel": "destroy",
+      "title": "Delete"
+    },
+    {
+      "description": "Info for existing host.",
+      "href": "/groups/{(%2Fschemata%2Fgroup%23%2Fdefinitions%2Fid)}/hosts/{(%2Fschemata%2Fhost%23%2Fdefinitions%2Fid)}",
+      "method": "GET",
+      "rel": "self",
+      "targetSchema": {
+        "$ref": "/schemata/host"
+      },
+      "title": "Info"
+    },
+    {
+      "description": "List existing hosts.",
+      "href": "/groups/{(%2Fschemata%2Fgroup%23%2Fdefinitions%2Fid)}/hosts",
+      "method": "GET",
+      "rel": "instances",
+      "targetSchema": {
+        "type": "object",
+        "properties": {
+          "totalCount": {
+            "example": 1,
+            "type": "integer"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "/schemata/host"
+            }
+          }
+        }
+      },
+      "title": "List"
+    },
+    {
+      "description": "Update an existing host.",
+      "href": "/groups/{(%2Fschemata%2Fgroup%23%2Fdefinitions%2Fid)}/hosts/{(%2Fschemata%2Fhost%23%2Fdefinitions%2Fid)}",
+      "method": "PATCH",
+      "rel": "update",
+      "schema": {
+        "$ref": "/schemata/host"
+      },
+      "targetSchema": {
+        "$ref": "/schemata/host"
+      },
+      "title": "Update"
+    },
+    {
+      "description": "Available metrics for existing host.",
+      "href": "/groups/{(%2Fschemata%2Fgroup%23%2Fdefinitions%2Fid)}/hosts/{(%2Fschemata%2Fhost%23%2Fdefinitions%2Fid)}/metrics",
+      "method": "GET",
+      "rel": "metrics",
+      "targetSchema": {
+        "type": "object",
+        "properties": {
+          "totalCount": {
+            "example": 1,
+            "type": "integer"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "/schemata/metric"
+            }
+          }
+        }
+      },
+      "title": "Metrics"
+    },
+    {
+      "description": "Get the data points for the specified host and metric.",
+      "href": "/groups/{(%2Fschemata%2Fgroup%23%2Fdefinitions%2Fid)}/hosts/{(%2Fschemata%2Fhost%23%2Fdefinitions%2Fid)}/metrics/{(%2Fschemata%2Fmetric%23%2Fdefinitions%2FmetricName)}",
+      "method": "GET",
+      "rel": "hostMetric",
+      "targetSchema": {
+        "$ref": "/schemata/metric"
+      },
+      "title": "Metric"
+    },
+    {
+      "description": "Get the data points for the specified host, db, and metric.",
+      "href": "/groups/{(%2Fschemata%2Fgroup%23%2Fdefinitions%2Fid)}/hosts/{(%2Fschemata%2Fhost%23%2Fdefinitions%2Fid)}/metrics/{(%2Fschemata%2Fmetric%23%2Fdefinitions%2FmetricName)}/{(%2Fschemata%2Fmetric%23%2Fdefinitions%2FdatabaseName)}",
+      "method": "GET",
+      "rel": "databaseMetric",
+      "targetSchema": {
+        "$ref": "/schemata/metric"
+      },
+      "title": "Database Metric"
+    },
+    {
+      "description": "Get the data points for the specified host, device and metric.",
+      "href": "/groups/{(%2Fschemata%2Fgroup%23%2Fdefinitions%2Fid)}/hosts/{(%2Fschemata%2Fhost%23%2Fdefinitions%2Fid)}/metrics/{(%2Fschemata%2Fmetric%23%2Fdefinitions%2FmetricName)}/{(%2Fschemata%2Fmetric%23%2Fdefinitions%2FdeviceName)}",
+      "method": "GET",
+      "rel": "deviceMetric",
+      "targetSchema": {
+        "$ref": "/schemata/metric"
+      },
+      "title": "Device Metric"
+    }
+  ],
+  "properties": {
+    "id": {
+      "$ref": "/schemata/host#/definitions/id"
+    },
+    "groupId": {
+      "$ref": "/schemata/host#/definitions/groupId"
+    },
+    "hostname": {
+      "$ref": "/schemata/host#/definitions/hostname"
+    },
+    "port": {
+      "$ref": "/schemata/host#/definitions/port"
+    },
+    "lastPing": {
+      "$ref": "/schemata/host#/definitions/lastPing"
+    },
+    "version": {
+      "$ref": "/schemata/host#/definitions/version"
+    },
+    "deactivated": {
+      "$ref": "/schemata/host#/definitions/deactivated"
+    },
+    "hasStartupWarnings": {
+      "$ref": "/schemata/host#/definitions/hasStartupWarnings"
+    },
+    "sslEnabled": {
+      "$ref": "/schemata/host#/definitions/sslEnabled"
+    },
+    "logsEnabled": {
+      "$ref": "/schemata/host#/definitions/logsEnabled"
+    },
+    "lastReactivated": {
+      "$ref": "/schemata/host#/definitions/lastReactivated"
+    },
+    "uptimeMsec": {
+      "$ref": "/schemata/host#/definitions/uptimeMsec"
+    },
+    "lastRestart": {
+      "$ref": "/schemata/host#/definitions/lastRestart"
+    },
+    "shardName": {
+      "$ref": "/schemata/host#/definitions/shardName"
+    },
+    "replicaSetName": {
+      "$ref": "/schemata/host#/definitions/replicaSetName"
+    },
+    "replicaStateName": {
+      "$ref": "/schemata/host#/definitions/replicaStateName"
+    },
+    "created": {
+      "$ref": "/schemata/host#/definitions/created"
+    },
+    "hostEnabled": {
+      "$ref": "/schemata/host#/definitions/hostEnabled"
+    },
+    "journalingEnabled": {
+      "$ref": "/schemata/host#/definitions/journalingEnabled"
+    },
+    "alertsEnabled": {
+      "$ref": "/schemata/host#/definitions/alertsEnabled"
+    },
+    "muninEnabled": {
+      "$ref": "/schemata/host#/definitions/muninEnabled"
+    },
+    "hidden": {
+      "$ref": "/schemata/host#/definitions/hidden"
+    },
+    "profilerEnabled": {
+      "$ref": "/schemata/host#/definitions/profilerEnabled"
+    },
+    "lowUlimit": {
+      "$ref": "/schemata/host#/definitions/lowUlimit"
+    },
+    "muninPort": {
+      "$ref": "/schemata/host#/definitions/muninPort"
+    },
+    "authMechanismName": {
+      "$ref": "/schemata/host#/definitions/authMechanismName"
+    },
+    "username": {
+      "$ref": "/schemata/host#/definitions/username"
+    },
+    "password": {
+      "$ref": "/schemata/host#/definitions/password"
+    }
+  },
+  "id": "schemata/host"
+}

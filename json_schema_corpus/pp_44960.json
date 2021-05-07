@@ -1,0 +1,106 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Schema for describing BER formats",
+  "description": "2015-08-08, Georg Sauthoff <mail@georg.so>",
+  "definitions": {
+    "definition": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "long_name": {
+          "type": "string"
+        },
+        "comment": {
+          "type": "string"
+        },
+        "count": {
+          "type": "integer"
+        },
+        "variables": {
+          "type": "array",
+          "items": {
+            "$ref": "#definitions/variable"
+          },
+          "additionalItems": false
+        },
+        "initial_grammars": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "resulting_grammars": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "resulting_constraints": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "resulting_pp": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "variable": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "comment": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "path"
+      ]
+    }
+  },
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "author": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "comment": {
+      "type": "string"
+    },
+    "definitions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/definition"
+      },
+      "additionalItems": false
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "definitions"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "candidateData": {
+      "$ref": "candidateWrite.json"
+    },
+    "applicationData": {
+      "type": "object",
+      "properties": {
+        "job": {
+          "type": "integer"
+        },
+        "applicationWrite": {
+          "$ref": "applicationWrite.json"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "properties": {
+    "tracker": {
+      "type": "integer"
+    },
+    "candidateData": {
+      "$ref": "#/definitions/candidateData"
+    },
+    "applicationData": {
+      "$ref": "#/definitions/applicationData"
+    }
+  },
+  "additionalProperties": false
+}

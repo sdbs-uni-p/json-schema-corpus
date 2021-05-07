@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://acmepay.local/schema/wallet.json#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "client": {
+      "$ref": "http://acmepay.local/schema/client.json#"
+    },
+    "currency": {
+      "$ref": "http://acmepay.local/schema/currency.json#"
+    },
+    "balance": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "id",
+    "client",
+    "currency",
+    "balance"
+  ],
+  "additionalProperties": false
+}

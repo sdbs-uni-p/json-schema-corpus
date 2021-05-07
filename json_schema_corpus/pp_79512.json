@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "description": "Advertisement details to be sent through to the Job Board",
+  "properties": {
+    "advertisementId": {
+      "type": "string"
+    },
+    "advertisementLink": {
+      "type": "string",
+      "format": "uri"
+    },
+    "status": {
+      "enum": [
+        "open",
+        "expired"
+      ]
+    },
+    "applicationURL": {
+      "type": "string",
+      "format": "uri"
+    },
+    "title": {
+      "type": "string"
+    },
+    "referenceCode": {
+      "type": "string"
+    },
+    "postedBy": {
+      "type": "string"
+    },
+    "datePosted": {
+      "type": "integer"
+    },
+    "expiredBy": {
+      "type": "string"
+    },
+    "dateExpired": {
+      "type": "integer"
+    },
+    "shortSummary": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "recruiterName": {
+      "type": "string"
+    },
+    "recruiterEmail": {
+      "type": "string"
+    },
+    "advertisementFields": {
+      "$ref": "itemPackagesRead.json"
+    }
+  },
+  "additionalProperties": false
+}

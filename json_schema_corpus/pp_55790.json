@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Operational parameters provided for a CBSD",
+  "type": "object",
+  "required": [
+    "maxEirp",
+    "operationFrequencyRange"
+  ],
+  "properties": {
+    "maxEirp": {
+      "type": "number",
+      "description": "The peak operating power in dBm/MHz to be used by the CBSD within this operating parameter set"
+    },
+    "operationFrequencyRange": {
+      "$ref": "file:FrequencyRange.schema.json"
+    }
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "type": "object",
+  "id": "https://ca-uat-exampay-api.cfapps.io/api/paymenttype/bank/$schema",
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "properties": {
+    "name": {
+      "type": "string",
+      "id": "order:005_name",
+      "required": true,
+      "description": "A short name to identify this payment option e.g. in lists",
+      "title": "Payment Option Name",
+      "maxLength": 20,
+      "minLength": 1
+    },
+    "type": {
+      "type": "string",
+      "id": "order:007_type",
+      "readonly": true,
+      "description": "Type of payment",
+      "title": "Type",
+      "enum": [
+        "Online",
+        "Bank",
+        "InPerson"
+      ]
+    },
+    "accountHolderName": {
+      "type": "string",
+      "id": "order:010_accountHolderName",
+      "required": true,
+      "title": "Account Name",
+      "maxLength": 200,
+      "minLength": 1
+    },
+    "iban": {
+      "type": "string",
+      "id": "order:020_iban",
+      "description": "e.g. GB29 NWBK 6016 1331 9268 19. Exact format is country-specific.",
+      "title": "IBAN",
+      "maxLength": 39,
+      "minLength": 12,
+      "pattern": "^[A-Z]{2}[0-9]{2}(?: ?[0-9A-Z]{4}){2,6}? ?[0-9A-Z]{0,4}$"
+    },
+    "sortCode": {
+      "type": "string",
+      "id": "order:030_sortCode",
+      "description": "Also known as Transit Code, IFSC, MFO, Clearing Number",
+      "title": "Bank Code/Sort Code",
+      "maxLength": 10,
+      "minLength": 1
+    },
+    "bankAccount": {
+      "type": "string",
+      "id": "order:040_bankAccount",
+      "title": "Account Number",
+      "maxLength": 20,
+      "minLength": 1
+    },
+    "notes": {
+      "type": "string",
+      "id": "order:999_notes",
+      "description": "If the payee needs any additional information e.g. a payment reference to provide, please mention it here.",
+      "title": "Notes",
+      "format": "textarea"
+    },
+    "currencies": {
+      "items": {
+        "type": [
+          {
+            "type": "string",
+            "title": "$ (US)",
+            "enum": [
+              "USD"
+            ]
+          },
+          {
+            "type": "string",
+            "title": "\u00a3 (Sterling)",
+            "enum": [
+              "GBP"
+            ]
+          }
+        ]
+      },
+      "id": "order:050_currencies",
+      "title": "Permitted currencies",
+      "minItems": 1,
+      "type": "array"
+    }
+  }
+}

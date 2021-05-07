@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "properties": {
+    "meta": {
+      "$ref": "_definitions.json#/definitions/metaInfo"
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "$ref": "_definitions.json#/definitions/error"
+      }
+    }
+  },
+  "required": [
+    "meta",
+    "errors"
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

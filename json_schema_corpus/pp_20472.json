@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "description": "authorization code grant flow response",
+  "id": "http://localhost:3000/schemas/authorize-response-code.json#",
+  "properties": {
+    "code": {
+      "description": "The OAuth 2.0 authorisation code. Required to obtain the ID token and token from the token endpoint.",
+      "type": "string"
+    },
+    "state": {
+      "description": "The state value, if one was passed with the request. Clients must validate the value before proceeding.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "code"
+  ],
+  "title": "OAuth code flow",
+  "type": "object"
+}

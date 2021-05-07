@@ -1,0 +1,9 @@
+{
+  "id": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/LayoutPanel/StackPanel/StackPanelOrientation.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "\u041e\u0440\u0438\u0435\u043d\u0442\u0430\u0446\u0438\u044f StackPanel",
+  "enum": [
+    "Horizontal",
+    "Vertical"
+  ]
+}

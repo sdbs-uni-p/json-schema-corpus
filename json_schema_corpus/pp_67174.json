@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "http://comrade.forma-pro.com/schemas/JobResult.json",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "type": "string",
+      "enum": [
+        "http://comrade.forma-pro.com/schemas/JobResult.json"
+      ]
+    },
+    "status": {
+      "$ref": "JobStatus.json"
+    },
+    "createdAt": {
+      "$ref": "date.json"
+    },
+    "metrics": {
+      "$ref": "JobResultMetrics.json"
+    },
+    "error": {
+      "$ref": "throwable.json"
+    }
+  },
+  "required": [
+    "status",
+    "createdAt"
+  ]
+}

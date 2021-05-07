@@ -1,0 +1,104 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Config",
+  "description": "A Config Object for verbshaker",
+  "type": "object",
+  "properties": {
+    "port": {
+      "description": "The Port the Server is listening to",
+      "type": "int"
+    },
+    "proverbs": {
+      "description": "The Server-Path to the Proverbs",
+      "type": "string"
+    },
+    "show_docs": {
+      "description": "Allow path /docs",
+      "type": "bool"
+    },
+    "default": {
+      "description": "Default Values",
+      "type": "object",
+      "properties": {
+        "backgroundcolor": {
+          "description": "Color of the Background as (HEX)",
+          "type": "string"
+        },
+        "fontcolor": {
+          "description": "Default Color of the Font (HEX)",
+          "type": "string"
+        },
+        "fontsize": {
+          "description": "Default Size of the Font (in vmin)",
+          "type": "int"
+        },
+        "fontfamily": {
+          "description": "Default Family of the Font",
+          "type": "string"
+        },
+        "hiddenNav": {
+          "description": "Is the Navbar Hidden",
+          "type": "bool"
+        },
+        "proverbbutton": {
+          "description": "Is the proverbbutton shown",
+          "type": "bool"
+        },
+        "autoupdate": {
+          "description": "AutoUpdate Value for Proverbs",
+          "type": "int"
+        },
+        "shareButton": {
+          "description": "Is the ShareButton shown",
+          "type": "bool"
+        },
+        "unhideNavButton": {
+          "description": "Is the Button to show the Navbar shown",
+          "type": "bool"
+        },
+        "introjs": {
+          "description": "Use intro.js to show new users around",
+          "type": "bool"
+        }
+      }
+    },
+    "changeable": {
+      "description": "Defines what the user may edit",
+      "type": "object",
+      "properties": {
+        "language": {
+          "description": "Change the language",
+          "type": "bool"
+        },
+        "backgroundcolor": {
+          "description": "Change the Color of the Background",
+          "type": "bool"
+        },
+        "fontcolor": {
+          "description": "Change the Color of the Font",
+          "type": "bool"
+        },
+        "fontsize": {
+          "description": "Change the Size of the Font",
+          "type": "bool"
+        },
+        "fontfamily": {
+          "description": "Change the Family of the Font",
+          "type": "bool"
+        },
+        "hideNav": {
+          "description": "Allow to Hide the Navbar",
+          "type": "bool"
+        },
+        "proverbbutton": {
+          "description": "Toggle proverb-Button",
+          "type": "bool"
+        },
+        "autoupdate": {
+          "description": "Change the Autoupdate Value",
+          "type": "bool"
+        }
+      }
+    }
+  }
+}

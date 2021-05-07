@@ -1,0 +1,1459 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "type": [
+    "object"
+  ],
+  "definitions": {
+    "emergency_contact": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "Emergency Contact",
+      "description": "A Patient's Emergency Contact",
+      "definitions": {
+        "first_name": {
+          "description": "the first name of the contact",
+          "type": [
+            "string",
+            "null"
+          ],
+          "example": "Jane",
+          "maxLength": 255
+        },
+        "last_name": {
+          "description": "the last name of the contact",
+          "type": [
+            "string",
+            "null"
+          ],
+          "example": "Jackson",
+          "maxLength": 255
+        },
+        "relationship": {
+          "description": "The relationship to the patient.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "example": "Partner",
+          "maxLength": 255
+        },
+        "phone": {
+          "description": "An emergency contact's phone number",
+          "type": [
+            "string",
+            "null"
+          ],
+          "example": "617-123-5555",
+          "pattern": "^[0-9]{3}-[0-9]{3}-[0-9]{4}$"
+        },
+        "email": {
+          "description": "An emergency contact's email address",
+          "type": [
+            "string",
+            "null"
+          ],
+          "example": "jane.jackson@partners.com",
+          "format": "email"
+        },
+        "emergency_contact_payload": {
+          "description": "Expected emergency contact content needed to create an emergency contact",
+          "type": [
+            "object"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "first_name": {
+              "$ref": "#/definitions/emergency_contact/definitions/first_name"
+            },
+            "last_name": {
+              "$ref": "#/definitions/emergency_contact/definitions/last_name"
+            },
+            "phone": {
+              "$ref": "#/definitions/emergency_contact/definitions/phone"
+            },
+            "email": {
+              "$ref": "#/definitions/emergency_contact/definitions/email"
+            },
+            "relationship": {
+              "$ref": "#/definitions/emergency_contact/definitions/relationship"
+            }
+          },
+          "required": [
+            "first_name",
+            "last_name",
+            "phone",
+            "relationship"
+          ]
+        },
+        "create_payload": {
+          "description": "Expected payload needed to create an emergency contact",
+          "type": [
+            "object"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "emergency_contact": {
+              "$ref": "#/definitions/emergency_contact/definitions/emergency_contact_payload"
+            }
+          },
+          "required": [
+            "emergency_contact"
+          ]
+        },
+        "emergency_contact_response": {
+          "description": "Response to an emergency contact show request",
+          "type": [
+            "object"
+          ],
+          "optionalProperties": {
+            "emergency_contact": {
+              "$ref": "#/definitions/emergency_contact"
+            },
+            "errors": {
+              "$ref": "#/definitions/patient/definitions/errors"
+            }
+          },
+          "properties": {
+            "reference_id": {
+              "$ref": "#/definitions/patient/definitions/reference_id"
+            },
+            "emergency_contact": {
+              "$ref": "#/definitions/emergency_contact"
+            }
+          },
+          "oneOf": [
+            {
+              "description": "A successful response.",
+              "type": [
+                "object"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "reference_id": {
+                  "$ref": "#/definitions/patient/definitions/reference_id"
+                },
+                "emergency_contact": {
+                  "$ref": "#/definitions/emergency_contact"
+                }
+              },
+              "required": [
+                "reference_id",
+                "emergency_contact"
+              ]
+            },
+            {
+              "description": "A failed response.",
+              "type": [
+                "object"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "reference_id": {
+                  "$ref": "#/definitions/patient/definitions/reference_id"
+                },
+                "errors": {
+                  "$ref": "#/definitions/patient/definitions/errors"
+                }
+              },
+              "required": [
+                "reference_id",
+                "errors"
+              ]
+            }
+          ]
+        },
+        "show_response": {
+          "$ref": "#/definitions/emergency_contact/definitions/emergency_contact_response"
+        },
+        "create_response": {
+          "$ref": "#/definitions/emergency_contact/definitions/emergency_contact_response"
+        }
+      },
+      "type": [
+        "object"
+      ],
+      "additionalProperties": false,
+      "links": [
+        {
+          "description": "Retrieve a patient's emergency contact",
+          "href": "/patients/{(%23%2Fdefinitions%2Fpatient%2Fdefinitions%2Fidentity)}/emergency_contact",
+          "http_header": {
+            "X-API-KEY": "fb0d2f7a-9a15-4cce-8822-0e92d2a9a2a0",
+            "X-API-SECRET": "98ba7951-bd19-4db2-a9c4-b25387f66f31"
+          },
+          "method": "GET",
+          "rel": "instance",
+          "targetSchema": {
+            "$ref": "#/definitions/emergency_contact/definitions/show_response"
+          },
+          "title": "Show"
+        },
+        {
+          "description": "Creates a new Emergency Contact for a patient",
+          "href": "/patients/{(%23%2Fdefinitions%2Fpatient%2Fdefinitions%2Fidentity)}/emergency_contact",
+          "http_header": {
+            "X-API-KEY": "fb0d2f7a-9a15-4cce-8822-0e92d2a9a2a0",
+            "X-API-SECRET": "98ba7951-bd19-4db2-a9c4-b25387f66f31"
+          },
+          "method": "POST",
+          "schema": {
+            "$ref": "#/definitions/emergency_contact/definitions/create_payload"
+          },
+          "rel": "create",
+          "targetSchema": {
+            "$ref": "#/definitions/emergency_contact/definitions/create_response"
+          },
+          "title": "Create"
+        }
+      ],
+      "properties": {
+        "first_name": {
+          "$ref": "#/definitions/emergency_contact/definitions/first_name"
+        },
+        "last_name": {
+          "$ref": "#/definitions/emergency_contact/definitions/last_name"
+        },
+        "phone": {
+          "$ref": "#/definitions/emergency_contact/definitions/phone"
+        },
+        "email": {
+          "$ref": "#/definitions/emergency_contact/definitions/email"
+        },
+        "relationship": {
+          "$ref": "#/definitions/emergency_contact/definitions/relationship"
+        }
+      },
+      "required": [
+        "first_name",
+        "last_name",
+        "phone",
+        "relationship"
+      ]
+    },
+    "location": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "Location",
+      "description": "A Location resource represents a physical location with an address",
+      "definitions": {
+        "reference_id": {
+          "description": "A unique identifer for the request. This can be useful for debuggin and logging.",
+          "example": "517b00b9-a469-87a0-fdb2-65983f733c54",
+          "format": "uuid",
+          "type": [
+            "string"
+          ]
+        },
+        "uid": {
+          "description": "unique identifier of a location",
+          "example": "63268a3fd22b4e1b9d806bbc424b010b",
+          "pattern": "^[0-9a-f]{32}$",
+          "type": [
+            "string"
+          ]
+        },
+        "identity": {
+          "$ref": "#/definitions/location/definitions/uid"
+        },
+        "name": {
+          "description": "the name of the location",
+          "example": "HarkenHealth Wicker Park",
+          "minLength": 3,
+          "maxLength": 255,
+          "type": [
+            "string"
+          ]
+        },
+        "phone": {
+          "description": "A phone number for the location",
+          "type": [
+            "string"
+          ],
+          "example": "617-123-5555",
+          "pattern": "^[0-9]{3}-[0-9]{3}-[0-9]{4}$"
+        },
+        "street_line_1": {
+          "description": "first line of a street address",
+          "example": "33 day st.",
+          "minLength": 1,
+          "maxLength": 255,
+          "type": [
+            "string"
+          ]
+        },
+        "street_line_2": {
+          "description": "second line of a street address",
+          "example": "unit #333",
+          "minLength": 1,
+          "maxLength": 255,
+          "type": [
+            "string"
+          ]
+        },
+        "city": {
+          "description": "the city of a street address",
+          "example": "camden",
+          "minLength": 1,
+          "maxLength": 255,
+          "type": [
+            "string"
+          ]
+        },
+        "state": {
+          "description": "The state of a street address",
+          "example": "MA",
+          "minLength": 2,
+          "maxLength": 2,
+          "type": [
+            "string"
+          ]
+        },
+        "zip": {
+          "description": "The zip of a street address",
+          "example": "01232",
+          "minLength": 5,
+          "maxLength": 10,
+          "type": [
+            "string"
+          ]
+        },
+        "address": {
+          "description": "The location's address",
+          "type": [
+            "object"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "street_line_1": {
+              "$ref": "#/definitions/location/definitions/street_line_1"
+            },
+            "street_line_2": {
+              "$ref": "#/definitions/location/definitions/street_line_2"
+            },
+            "city": {
+              "$ref": "#/definitions/location/definitions/city"
+            },
+            "state": {
+              "$ref": "#/definitions/location/definitions/state"
+            },
+            "zip": {
+              "$ref": "#/definitions/location/definitions/zip"
+            }
+          }
+        },
+        "error": {
+          "description": "An error explaining why an action failed",
+          "example": "Icis::Error(Couldn't find Location with 'id'=99)",
+          "minLength": 1,
+          "type": [
+            "string"
+          ]
+        },
+        "errors": {
+          "description": "A collection of errors",
+          "type": [
+            "array"
+          ],
+          "items": {
+            "$ref": "#/definitions/location/definitions/error"
+          }
+        },
+        "show_response": {
+          "description": "Response to a show request",
+          "type": [
+            "object"
+          ],
+          "properties": {
+            "reference_id": {
+              "$ref": "#/definitions/location/definitions/reference_id"
+            },
+            "location": {
+              "$ref": "#/definitions/location"
+            }
+          },
+          "oneOf": [
+            {
+              "description": "A success response to a show request.",
+              "type": [
+                "object"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "reference_id": {
+                  "$ref": "#/definitions/location/definitions/reference_id"
+                },
+                "location": {
+                  "$ref": "#/definitions/location"
+                }
+              },
+              "required": [
+                "reference_id",
+                "location"
+              ]
+            },
+            {
+              "description": "A failure response to a show request.",
+              "type": [
+                "object"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "reference_id": {
+                  "$ref": "#/definitions/location/definitions/reference_id"
+                },
+                "errors": {
+                  "$ref": "#/definitions/location/definitions/errors"
+                }
+              },
+              "required": [
+                "reference_id",
+                "errors"
+              ]
+            }
+          ]
+        }
+      },
+      "links": [
+        {
+          "description": "Retrieve a location",
+          "href": "/locations/{(%23%2Fdefinitions%2Flocation%2Fdefinitions%2Fidentity)}",
+          "method": "GET",
+          "http_header": {
+            "X-API-KEY": "fb0d2f7a-9a15-4cce-8822-0e92d2a9a2a0",
+            "X-API-SECRET": "98ba7951-bd19-4db2-a9c4-b25387f66f31"
+          },
+          "rel": "instance",
+          "targetSchema": {
+            "$ref": "#/definitions/location/definitions/show_response"
+          },
+          "title": "Show"
+        }
+      ],
+      "additionalProperties": false,
+      "type": [
+        "object"
+      ],
+      "properties": {
+        "uid": {
+          "$ref": "#/definitions/location/definitions/uid"
+        },
+        "name": {
+          "$ref": "#/definitions/location/definitions/name"
+        },
+        "address": {
+          "$ref": "#/definitions/location/definitions/address"
+        },
+        "phone": {
+          "$ref": "#/definitions/location/definitions/phone"
+        }
+      },
+      "required": [
+        "uid",
+        "name"
+      ]
+    },
+    "patient": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "Patient",
+      "description": "A Patient at a practice",
+      "definitions": {
+        "reference_id": {
+          "description": "A unique identifer for the request. This can be useful for debuggin and logging.",
+          "example": "517b00b9-a469-87a0-fdb2-65983f733c54",
+          "format": "uuid",
+          "type": [
+            "string"
+          ]
+        },
+        "guid": {
+          "description": "unique identifier of a patient",
+          "example": "265983f733c54517b00b9a46987a0fdb",
+          "pattern": "^[0-9a-f]{32}$",
+          "type": [
+            "string"
+          ]
+        },
+        "primary_insurance_number": {
+          "description": "The insurance member id",
+          "example": "15004695201",
+          "type": [
+            "string"
+          ]
+        },
+        "identity": {
+          "$ref": "#/definitions/patient/definitions/guid"
+        },
+        "first_name": {
+          "description": "the first name",
+          "example": "Severus",
+          "minLength": 1,
+          "maxLength": 255,
+          "type": [
+            "string"
+          ]
+        },
+        "last_name": {
+          "description": "the last name",
+          "example": "Snape",
+          "minLength": 1,
+          "maxLength": 255,
+          "type": [
+            "string"
+          ]
+        },
+        "dob": {
+          "description": "the patient's date of birth",
+          "example": "1960-01-09",
+          "minLength": 10,
+          "maxLength": 10,
+          "type": [
+            "string"
+          ]
+        },
+        "patient_app_shared": {
+          "description": "Identifies if the patient app will have content if embedded.",
+          "example": true,
+          "type": [
+            "boolean"
+          ]
+        },
+        "practice": {
+          "description": "The Practice to which the patient belongs.",
+          "type": [
+            "object"
+          ],
+          "properties": {
+            "uid": {
+              "$ref": "#/definitions/practice/definitions/uid"
+            }
+          },
+          "required": [
+            "uid"
+          ]
+        },
+        "staff_member": {
+          "description": "A Staff Member at a practice",
+          "type": [
+            "object"
+          ],
+          "properties": {
+            "uid": {
+              "$ref": "#/definitions/staff_member/definitions/uid"
+            }
+          },
+          "required": [
+            "uid"
+          ]
+        },
+        "care_team": {
+          "description": "A collection of staff members that, with the patient, make up the patient's care team",
+          "type": [
+            "array"
+          ],
+          "items": {
+            "$ref": "#/definitions/patient/definitions/staff_member"
+          }
+        },
+        "preferred_location": {
+          "description": "The patient's preferred location to visit with Care Team.",
+          "type": [
+            "object"
+          ],
+          "properties": {
+            "uid": {
+              "$ref": "#/definitions/location/definitions/uid"
+            }
+          },
+          "required": [
+            "uid"
+          ]
+        },
+        "error": {
+          "description": "An error explaining why an action failed",
+          "example": "Icis::Error(Couldn't find Location with 'id'=99)",
+          "minLength": 1,
+          "type": [
+            "string"
+          ]
+        },
+        "errors": {
+          "description": "A collection of errors",
+          "type": [
+            "array"
+          ],
+          "items": {
+            "$ref": "#/definitions/patient/definitions/error"
+          }
+        },
+        "search_payload": {
+          "description": "The expected payload for a search request",
+          "type": [
+            "object"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "primary_insurance_number": {
+              "$ref": "#/definitions/patient/definitions/primary_insurance_number"
+            },
+            "dob": {
+              "$ref": "#/definitions/patient/definitions/dob"
+            },
+            "first_name": {
+              "$ref": "#/definitions/patient/definitions/first_name"
+            },
+            "last_name": {
+              "$ref": "#/definitions/patient/definitions/last_name"
+            }
+          },
+          "required": [
+            "primary_insurance_number",
+            "dob",
+            "first_name",
+            "last_name"
+          ]
+        },
+        "patient_response": {
+          "description": "Successful response to a show or search request",
+          "type": [
+            "object"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "reference_id": {
+              "$ref": "#/definitions/patient/definitions/reference_id"
+            },
+            "patient": {
+              "$ref": "#/definitions/patient"
+            }
+          },
+          "required": [
+            "reference_id",
+            "patient"
+          ]
+        },
+        "error_response": {
+          "description": "Error response to a show or search request",
+          "type": [
+            "object"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "reference_id": {
+              "$ref": "#/definitions/patient/definitions/reference_id"
+            },
+            "errors": {
+              "$ref": "#/definitions/patient/definitions/errors"
+            }
+          },
+          "required": [
+            "reference_id",
+            "errors"
+          ]
+        },
+        "show_response": {
+          "description": "Result of a get request. Can be either a success or a failure.",
+          "type": [
+            "object"
+          ],
+          "optionalProperties": {
+            "patient": {
+              "$ref": "#/definitions/patient"
+            },
+            "reference_id": {
+              "$ref": "#/definitions/patient/definitions/reference_id"
+            }
+          },
+          "additionalProperties": false,
+          "properties": {
+            "patient": {
+              "$ref": "#/definitions/patient"
+            },
+            "reference_id": {
+              "$ref": "#/definitions/patient/definitions/reference_id"
+            }
+          },
+          "oneOf": [
+            {
+              "$ref": "#/definitions/patient/definitions/patient_response"
+            },
+            {
+              "$ref": "#/definitions/patient/definitions/error_response"
+            }
+          ]
+        }
+      },
+      "links": [
+        {
+          "description": "Retrieve a patient",
+          "href": "/patients/{(%23%2Fdefinitions%2Fpatient%2Fdefinitions%2Fidentity)}",
+          "method": "GET",
+          "http_header": {
+            "X-API-KEY": "fb0d2f7a-9a15-4cce-8822-0e92d2a9a2a0",
+            "X-API-SECRET": "98ba7951-bd19-4db2-a9c4-b25387f66f31"
+          },
+          "rel": "instance",
+          "title": "Show",
+          "targetSchema": {
+            "$ref": "#/definitions/patient/definitions/show_response"
+          }
+        },
+        {
+          "description": "Search for a patient",
+          "href": "/patients/search",
+          "http_header": {
+            "X-API-KEY": "fb0d2f7a-9a15-4cce-8822-0e92d2a9a2a0",
+            "X-API-SECRET": "98ba7951-bd19-4db2-a9c4-b25387f66f31"
+          },
+          "method": "GET",
+          "rel": "instance",
+          "schema": {
+            "$ref": "#/definitions/patient/definitions/search_payload"
+          },
+          "targetSchema": {
+            "$ref": "#/definitions/patient/definitions/show_response"
+          },
+          "title": "Search"
+        }
+      ],
+      "type": [
+        "object"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "guid": {
+          "$ref": "#/definitions/patient/definitions/guid"
+        },
+        "first_name": {
+          "$ref": "#/definitions/patient/definitions/first_name"
+        },
+        "last_name": {
+          "$ref": "#/definitions/patient/definitions/last_name"
+        },
+        "dob": {
+          "$ref": "#/definitions/patient/definitions/dob"
+        },
+        "patient_app_shared": {
+          "$ref": "#/definitions/patient/definitions/patient_app_shared"
+        },
+        "care_team": {
+          "$ref": "#/definitions/patient/definitions/care_team"
+        },
+        "practice": {
+          "$ref": "#/definitions/patient/definitions/practice"
+        },
+        "preferred_location": {
+          "$ref": "#/definitions/patient/definitions/preferred_location"
+        }
+      },
+      "required": [
+        "guid",
+        "first_name",
+        "last_name",
+        "dob"
+      ]
+    },
+    "practice": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "Practice",
+      "description": "A Practice resource represents an entity with a shared staff across multiple locations.",
+      "definitions": {
+        "reference_id": {
+          "description": "A unique identifer for the request. This can be useful for debuggin and logging.",
+          "example": "517b00b9-a469-87a0-fdb2-65983f733c54",
+          "format": "uuid",
+          "type": [
+            "string"
+          ]
+        },
+        "uid": {
+          "description": "unique identifier of a practice",
+          "example": "f78ff4140b49430b9033ff1deb65d20b",
+          "pattern": "^[0-9a-f]{32}$",
+          "type": [
+            "string"
+          ]
+        },
+        "identity": {
+          "$ref": "#/definitions/practice/definitions/uid"
+        },
+        "name": {
+          "description": "the name of the practice",
+          "example": "HarkenHealth Chicago",
+          "minLength": 3,
+          "maxLength": 255,
+          "type": [
+            "string"
+          ]
+        },
+        "locations": {
+          "description": "A collection of location resources associated with the practice.",
+          "type": [
+            "array"
+          ],
+          "items": {
+            "$ref": "#/definitions/location"
+          }
+        },
+        "error": {
+          "description": "An error explaining why an action failed",
+          "example": "Icis::Error(Couldn't find Practice with 'id'=99)",
+          "minLength": 1,
+          "type": [
+            "string"
+          ]
+        },
+        "errors": {
+          "description": "A collection of errors",
+          "type": [
+            "array"
+          ],
+          "items": {
+            "$ref": "#/definitions/practice/definitions/error"
+          }
+        },
+        "get_response": {
+          "description": "Response to a show request",
+          "type": [
+            "object"
+          ],
+          "properties": {
+            "reference_id": {
+              "$ref": "#/definitions/location/definitions/reference_id"
+            },
+            "practice": {
+              "$ref": "#/definitions/practice"
+            }
+          },
+          "oneOf": [
+            {
+              "description": "A success response to a show request.",
+              "type": [
+                "object"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "reference_id": {
+                  "$ref": "#/definitions/practice/definitions/reference_id"
+                },
+                "practice": {
+                  "$ref": "#/definitions/practice"
+                }
+              },
+              "required": [
+                "reference_id",
+                "practice"
+              ]
+            },
+            {
+              "description": "A failure response to a show request.",
+              "type": [
+                "object"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "reference_id": {
+                  "$ref": "#/definitions/practice/definitions/reference_id"
+                },
+                "errors": {
+                  "$ref": "#/definitions/practice/definitions/errors"
+                }
+              },
+              "required": [
+                "reference_id",
+                "errors"
+              ]
+            }
+          ]
+        }
+      },
+      "links": [
+        {
+          "description": "Retrieve a practice",
+          "href": "/practices/{(%23%2Fdefinitions%2Fpractice%2Fdefinitions%2Fidentity)}",
+          "method": "GET",
+          "http_header": {
+            "X-API-KEY": "fb0d2f7a-9a15-4cce-8822-0e92d2a9a2a0",
+            "X-API-SECRET": "98ba7951-bd19-4db2-a9c4-b25387f66f31"
+          },
+          "rel": "instance",
+          "targetSchema": {
+            "$ref": "#/definitions/practice/definitions/get_response"
+          },
+          "title": "Show"
+        }
+      ],
+      "additionalProperties": false,
+      "type": [
+        "object"
+      ],
+      "properties": {
+        "uid": {
+          "$ref": "#/definitions/practice/definitions/uid"
+        },
+        "name": {
+          "$ref": "#/definitions/practice/definitions/name"
+        },
+        "locations": {
+          "$ref": "#/definitions/practice/definitions/locations"
+        }
+      },
+      "required": [
+        "uid",
+        "name"
+      ]
+    },
+    "staff_member": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "Staff Member Resource",
+      "description": "A Staff Member at a practice",
+      "definitions": {
+        "reference_id": {
+          "description": "A unique identifer for the request. This can be useful for debuggin and logging.",
+          "example": "517b00b9-a469-87a0-fdb2-65983f733c54",
+          "format": "uuid",
+          "type": [
+            "string"
+          ]
+        },
+        "uid": {
+          "description": "unique identifier of a staff member",
+          "example": "ef63894da35641189b3fc1bf5b931202",
+          "pattern": "^[0-9a-f]{32}$",
+          "type": [
+            "string"
+          ]
+        },
+        "identity": {
+          "$ref": "#/definitions/staff_member/definitions/uid"
+        },
+        "first_name": {
+          "description": "the first name",
+          "example": "Liz",
+          "minLength": 2,
+          "maxLength": 255,
+          "type": [
+            "string"
+          ]
+        },
+        "last_name": {
+          "description": "the last name",
+          "example": "Lemon",
+          "minLength": 2,
+          "maxLength": 255,
+          "type": [
+            "string"
+          ]
+        },
+        "location": {
+          "description": "One of possibly may physical locations of a practice.",
+          "type": [
+            "object"
+          ],
+          "properties": {
+            "uid": {
+              "$ref": "#/definitions/location/definitions/uid"
+            }
+          },
+          "required": [
+            "uid"
+          ]
+        },
+        "role": {
+          "description": "The clinical role the staff member holds within the practice.",
+          "type": [
+            "string"
+          ],
+          "example": "Specialist",
+          "enum": [
+            "Provider",
+            "Health Coach",
+            "Specialist",
+            "ROBOT"
+          ]
+        },
+        "speciality_name": {
+          "description": "The speciality",
+          "example": "Nutritionist",
+          "minLength": 2,
+          "maxLength": 255,
+          "type": [
+            "string"
+          ]
+        },
+        "speciality": {
+          "description": "The associated speciality if a staff member is a specialist.",
+          "additionalProperties": false,
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "uid": {
+              "$ref": "#/definitions/staff_member/definitions/uid"
+            },
+            "name": {
+              "$ref": "#/definitions/staff_member/definitions/speciality_name"
+            }
+          },
+          "required": [
+            "uid",
+            "name"
+          ]
+        },
+        "photo": {
+          "description": "A photo",
+          "type": [
+            "string"
+          ],
+          "example": "https://s3.amazonaws.com/snowflake-staging/photos/44/small.jpg",
+          "format": "uri"
+        },
+        "photos": {
+          "description": "The staff member's photo in different dimensions",
+          "additionalProperties": false,
+          "type": [
+            "object"
+          ],
+          "properties": {
+            "small": {
+              "$ref": "#/definitions/staff_member/definitions/photo"
+            },
+            "medium": {
+              "$ref": "#/definitions/staff_member/definitions/photo"
+            },
+            "large": {
+              "$ref": "#/definitions/staff_member/definitions/photo"
+            }
+          },
+          "required": [
+            "small",
+            "medium",
+            "large"
+          ]
+        },
+        "degree": {
+          "description": "The degree level of the staff member",
+          "example": "RN",
+          "maxLength": 255,
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "suffix": {
+          "description": "The suffix to use when displaying name (this can be used in addition to degree",
+          "example": "MD",
+          "maxLength": 255,
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "staff_members": {
+          "description": "A collection of staff",
+          "type": [
+            "array"
+          ],
+          "items": {
+            "$ref": "#/definitions/staff_member"
+          }
+        },
+        "error": {
+          "description": "An error explaining why an action failed",
+          "example": "Icis::Error(Couldn't find Location with 'id'=99)",
+          "minLength": 1,
+          "type": [
+            "string"
+          ]
+        },
+        "errors": {
+          "description": "A collection of errors",
+          "type": [
+            "array"
+          ],
+          "items": {
+            "$ref": "#/definitions/staff_member/definitions/error"
+          }
+        },
+        "show_response": {
+          "description": "Response to an show request",
+          "type": [
+            "object"
+          ],
+          "properties": {
+            "reference_id": {
+              "$ref": "#/definitions/staff_member/definitions/reference_id"
+            },
+            "staff_member": {
+              "$ref": "#/definitions/staff_member"
+            }
+          },
+          "oneOf": [
+            {
+              "description": "A success response to an index request.",
+              "type": [
+                "object"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "reference_id": {
+                  "$ref": "#/definitions/staff_member/definitions/reference_id"
+                },
+                "staff_member": {
+                  "$ref": "#/definitions/staff_member"
+                }
+              },
+              "required": [
+                "reference_id",
+                "staff_member"
+              ]
+            },
+            {
+              "description": "A failure response to an index request.",
+              "type": [
+                "object"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "reference_id": {
+                  "$ref": "#/definitions/staff_member/definitions/reference_id"
+                },
+                "errors": {
+                  "$ref": "#/definitions/staff_member/definitions/errors"
+                }
+              },
+              "required": [
+                "reference_id",
+                "errors"
+              ]
+            }
+          ]
+        },
+        "index_response": {
+          "description": "Response to an index request",
+          "type": [
+            "object"
+          ],
+          "properties": {
+            "reference_id": {
+              "$ref": "#/definitions/staff_member/definitions/reference_id"
+            },
+            "staff_members": {
+              "$ref": "#/definitions/staff_member/definitions/staff_members"
+            }
+          },
+          "oneOf": [
+            {
+              "description": "A success response to an index request.",
+              "type": [
+                "object"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "reference_id": {
+                  "$ref": "#/definitions/staff_member/definitions/reference_id"
+                },
+                "staff_members": {
+                  "$ref": "#/definitions/staff_member/definitions/staff_members"
+                }
+              },
+              "required": [
+                "reference_id",
+                "staff_members"
+              ]
+            },
+            {
+              "description": "A failure response to an index request.",
+              "type": [
+                "object"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "reference_id": {
+                  "$ref": "#/definitions/staff_member/definitions/reference_id"
+                },
+                "errors": {
+                  "$ref": "#/definitions/staff_member/definitions/errors"
+                }
+              },
+              "required": [
+                "reference_id",
+                "errors"
+              ]
+            }
+          ]
+        }
+      },
+      "links": [
+        {
+          "description": "Retrieve a staff member",
+          "href": "/staff_members/{(%23%2Fdefinitions%2Fstaff_member%2Fdefinitions%2Fidentity)}",
+          "method": "GET",
+          "http_header": {
+            "X-API-KEY": "fb0d2f7a-9a15-4cce-8822-0e92d2a9a2a0",
+            "X-API-SECRET": "98ba7951-bd19-4db2-a9c4-b25387f66f31"
+          },
+          "rel": "instance",
+          "targetSchema": {
+            "$ref": "#/definitions/staff_member/definitions/show_response"
+          },
+          "title": "Show"
+        },
+        {
+          "description": "Retrieve staff members",
+          "href": "/staff_members",
+          "method": "GET",
+          "http_header": {
+            "X-API-KEY": "fb0d2f7a-9a15-4cce-8822-0e92d2a9a2a0",
+            "X-API-SECRET": "98ba7951-bd19-4db2-a9c4-b25387f66f31"
+          },
+          "rel": "instances",
+          "schema": {
+            "type": [
+              "object"
+            ],
+            "properties": {
+              "uids": {
+                "type": [
+                  "array"
+                ],
+                "items": {
+                  "$ref": "#/definitions/staff_member/definitions/uid"
+                }
+              },
+              "practice_uid": {
+                "$ref": "#/definitions/practice/definitions/uid"
+              },
+              "location_uid": {
+                "$ref": "#/definitions/location/definitions/uid"
+              }
+            }
+          },
+          "targetSchema": {
+            "$ref": "#/definitions/staff_member/definitions/index_response"
+          },
+          "title": "Index"
+        }
+      ],
+      "type": [
+        "object"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "uid": {
+          "$ref": "#/definitions/staff_member/definitions/uid"
+        },
+        "default_location": {
+          "$ref": "#/definitions/staff_member/definitions/location"
+        },
+        "first_name": {
+          "$ref": "#/definitions/staff_member/definitions/first_name"
+        },
+        "last_name": {
+          "$ref": "#/definitions/staff_member/definitions/last_name"
+        },
+        "role": {
+          "$ref": "#/definitions/staff_member/definitions/role"
+        },
+        "photos": {
+          "$ref": "#/definitions/staff_member/definitions/photos"
+        },
+        "speciality": {
+          "$ref": "#/definitions/staff_member/definitions/speciality"
+        },
+        "degree": {
+          "$ref": "#/definitions/staff_member/definitions/degree"
+        },
+        "suffix": {
+          "$ref": "#/definitions/staff_member/definitions/suffix"
+        }
+      },
+      "required": [
+        "uid",
+        "first_name",
+        "last_name",
+        "role",
+        "photos"
+      ]
+    },
+    "state_of_health": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "State of Health",
+      "description": "A StateOfHealth Resource for a Patient.",
+      "definitions": {
+        "reference_id": {
+          "description": "A unique identifer for the request. This can be useful for debuggin and logging.",
+          "example": "517b00b9-a469-87a0-fdb2-65983f733c54",
+          "format": "uuid",
+          "type": [
+            "string"
+          ]
+        },
+        "uid": {
+          "description": "unique identifier of a state of health recording",
+          "example": "bebe83f733c54517b00bbebe987a0fdb",
+          "pattern": "^[0-9a-f]{32}$",
+          "type": [
+            "string"
+          ]
+        },
+        "identity": {
+          "$ref": "#/definitions/state_of_health/definitions/uid"
+        },
+        "value": {
+          "description": "A number between 1-10.",
+          "example": 5,
+          "maxValue": 10,
+          "minValue": 1,
+          "type": [
+            "integer"
+          ]
+        },
+        "created_at": {
+          "description": "The time at which the value was stored in ICIS",
+          "example": "1990-12-31T15:59:60-08:00",
+          "format": "date-time",
+          "type": [
+            "string"
+          ]
+        },
+        "state_of_health_response": {
+          "description": "Response to an state of health show request",
+          "type": [
+            "object"
+          ],
+          "properties": {
+            "reference_id": {
+              "$ref": "#/definitions/patient/definitions/reference_id"
+            },
+            "state_of_health": {
+              "$ref": "#/definitions/state_of_health"
+            }
+          },
+          "oneOf": [
+            {
+              "description": "A successful response.",
+              "type": [
+                "object"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "reference_id": {
+                  "$ref": "#/definitions/patient/definitions/reference_id"
+                },
+                "state_of_health": {
+                  "$ref": "#/definitions/state_of_health"
+                }
+              },
+              "required": [
+                "reference_id",
+                "state_of_health"
+              ]
+            },
+            {
+              "description": "A failed response.",
+              "type": [
+                "object"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "reference_id": {
+                  "$ref": "#/definitions/patient/definitions/reference_id"
+                },
+                "errors": {
+                  "$ref": "#/definitions/patient/definitions/errors"
+                }
+              },
+              "required": [
+                "reference_id",
+                "errors"
+              ]
+            }
+          ]
+        }
+      },
+      "links": [
+        {
+          "description": "Retrieve a patient's latest State of Health",
+          "href": "/patients/{(%23%2Fdefinitions%2Fpatient%2Fdefinitions%2Fidentity)}/state_of_health",
+          "method": "GET",
+          "http_header": {
+            "X-API-KEY": "fb0d2f7a-9a15-4cce-8822-0e92d2a9a2a0",
+            "X-API-SECRET": "98ba7951-bd19-4db2-a9c4-b25387f66f31"
+          },
+          "rel": "instance",
+          "targetSchema": {
+            "$ref": "#/definitions/state_of_health/definitions/state_of_health_response"
+          },
+          "title": "State of Health Show"
+        },
+        {
+          "description": "Creates a new State of Health resourse for a patient",
+          "href": "/patients/{(%23%2Fdefinitions%2Fpatient%2Fdefinitions%2Fidentity)}/state_of_health",
+          "method": "POST",
+          "schema": {
+            "type": [
+              "object"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "value": {
+                "$ref": "#/definitions/state_of_health/definitions/value"
+              }
+            },
+            "required": [
+              "value"
+            ]
+          },
+          "rel": "create",
+          "targetSchema": {
+            "$ref": "#/definitions/state_of_health/definitions/state_of_health_response"
+          },
+          "title": "State of Health Create"
+        }
+      ],
+      "type": [
+        "object"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "$ref": "#/definitions/state_of_health/definitions/value"
+        },
+        "created_at": {
+          "$ref": "#/definitions/state_of_health/definitions/created_at"
+        }
+      },
+      "required": [
+        "value"
+      ]
+    }
+  },
+  "properties": {
+    "emergency_contact": {
+      "$ref": "#/definitions/emergency_contact"
+    },
+    "location": {
+      "$ref": "#/definitions/location"
+    },
+    "patient": {
+      "$ref": "#/definitions/patient"
+    },
+    "practice": {
+      "$ref": "#/definitions/practice"
+    },
+    "staff_member": {
+      "$ref": "#/definitions/staff_member"
+    },
+    "state_of_health": {
+      "$ref": "#/definitions/state_of_health"
+    }
+  },
+  "description": "ICIS API v20150918",
+  "id": "icis-v20150918",
+  "links": [
+    {
+      "href": "https://api.icisapp.com/v20150918",
+      "rel": "self"
+    }
+  ],
+  "title": "ICIS API v20150918"
+}

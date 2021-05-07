@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "orderMessage",
+  "id": "orderMessage",
+  "description": "Details of a message for an Order.",
+  "type": "object",
+  "required": [
+    "messageInformation",
+    "severity",
+    "correctionRequired"
+  ],
+  "properties": {
+    "objectType": {
+      "type": "string",
+      "enum": [
+        "orderError"
+      ],
+      "description": "The type of the object, orderMessage."
+    },
+    "code": {
+      "type": "string",
+      "description": "The code associated with this Message.",
+      "maxLength": 12
+    },
+    "field": {
+      "type": "string",
+      "description": "The field / attribute on the Order associated with the Message.",
+      "maxLength": 100
+    },
+    "messageInformation": {
+      "type": "string",
+      "description": "A description of the error condition or information to be conveyed to the Buyer.",
+      "maxLength": 150
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "ERROR",
+        "INFORMATION"
+      ],
+      "description": "The severity of the Message."
+    },
+    "orderItemReference": {
+      "type": "string",
+      "description": "A reference to the item on the Order to which this notification applies.",
+      "maxLength": 4
+    },
+    "correctionRequired": {
+      "type": "boolean",
+      "description": "Indicates whether the Buyer must submit an updated Order to resolve the error/jeopardy condition."
+    }
+  }
+}

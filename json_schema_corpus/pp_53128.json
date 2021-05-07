@@ -1,0 +1,449 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "properties": {
+    "service": {
+      "description": "Graylog app configuration properties.",
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Name for this Graylog instance",
+          "type": "string",
+          "default": "graylog"
+        },
+        "instances": {
+          "description": "Number of Graylog instances to run",
+          "type": "integer",
+          "default": 1,
+          "minimum": 1
+        },
+        "cpus": {
+          "description": "CPU shares to allocate to each Graylog instance",
+          "type": "number",
+          "default": 1,
+          "minimum": 0
+        },
+        "mem": {
+          "description": "Memory (MB) to allocate to each Graylog task",
+          "type": "number",
+          "default": 4096.0,
+          "minimum": 0
+        },
+        "disk": {
+          "description": "Disk (MB) to allocate to each Graylog instance",
+          "type": "number",
+          "default": 0,
+          "minimum": 0
+        },
+        "host_volume": {
+          "description": "The location of a volume on the host to be used for enabled disk based message journal. The final location will be derived from this value plus the name set in `name` (e.g. `/mnt/host_volume/graylog`). Note that this path must be the same on all DCOS agents",
+          "type": "string",
+          "default": "/tmp"
+        },
+        "rest_port": {
+          "description": "Port of the REST-API",
+          "type": "number",
+          "default": 0
+        },
+        "elasticsearch_transport_port": {
+          "description": "Port of the Elascticsearch client transport port",
+          "type": "number",
+          "default": 0
+        },
+        "web_port": {
+          "description": "Port of the user interface",
+          "type": "number",
+          "default": 0
+        },
+        "role": {
+          "description": "Deploy Graylog only on nodes with this role",
+          "type": "string",
+          "default": "*"
+        },
+        "marathon_uri": {
+          "description": "URI of Marathon instance",
+          "type": "string",
+          "default": "http://master.mesos:8080"
+        },
+        "jvm": {
+          "description": "JVM configuration properties",
+          "additionalProperties": false,
+          "type": "object",
+          "properties": {
+            "heap_min": {
+              "description": "Memory (MB) start size for the JVM heap. This number should be be less or equals than the heap_max",
+              "type": "integer",
+              "default": 1024,
+              "minimum": 0
+            },
+            "heap_max": {
+              "description": "Memory (MB) max size for the JVM heap. This number should be less than the memory allocated to the Marathon instance (General rule: 50%)",
+              "type": "integer",
+              "default": 2048,
+              "minimum": 0
+            },
+            "metaspace_max": {
+              "description": "Memory (MB) max size for the JVM Metaspace. This limit the amount of native memory used for class metadata",
+              "type": "integer",
+              "default": 256,
+              "minimum": 0
+            }
+          },
+          "required": [
+            "heap_min",
+            "heap_max",
+            "metaspace_max"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "instances",
+        "cpus",
+        "mem",
+        "disk",
+        "host_volume",
+        "rest_port",
+        "elasticsearch_transport_port",
+        "web_port",
+        "role",
+        "marathon_uri"
+      ]
+    },
+    "general": {
+      "description": "Basic configuration properties",
+      "type": "object",
+      "properties": {
+        "is_master": {
+          "description": "If you are running more than one instances of Graylog server you have to select one of these instances as master. The master will perform some periodical tasks that non-masters won't perform",
+          "type": "boolean",
+          "default": true
+        },
+        "node_id_file": {
+          "description": "The auto-generated node ID will be stored in this file and read after restarts. It is a good idea to use an absolute file path here if you are starting Graylog server from init scripts or similar",
+          "type": "string",
+          "default": "/usr/share/graylog/data/config/node-id"
+        },
+        "password_secret": {
+          "description": "Set a secret to secure/pepper the stored user passwords",
+          "type": "string",
+          "default": "vSh8aXTZGZkOKNIBZYMCJKUybw4cLz1sA2VNEwPS9FGikxt7w9275xDlAaBYoOzL0pYq5c1V7lsW8pufrE96JpNfywYZ46ga"
+        },
+        "root_username": {
+          "description": "Username for the admin user",
+          "type": "string",
+          "default": "admin"
+        },
+        "root_password_is_sha": {
+          "description": "Enable this if your root_password is a sha code",
+          "type": "boolean",
+          "default": false
+        },
+        "root_password": {
+          "description": "Plain password for the admin user or a secure sha code",
+          "type": "string",
+          "default": "admin"
+        },
+        "root_email": {
+          "description": "The email address of the root user",
+          "type": "string",
+          "default": ""
+        },
+        "root_timezone": {
+          "description": "The time zone setting of the root user. See http://www.joda.org/joda-time/timezones.html for a list of valid time zones",
+          "type": "string",
+          "default": "UTC"
+        }
+      },
+      "required": [
+        "is_master"
+      ]
+    },
+    "plugins": {
+      "description": "Plugin configuration properties",
+      "type": "object",
+      "properties": {
+        "enable_plugins": {
+          "description": "",
+          "type": "boolean",
+          "default": false
+        },
+        "plugin_dir": {
+          "description": "Set plugin directory here (relative or absolute)",
+          "type": "string",
+          "default": "/mnt/mesos/sandbox/plugin"
+        },
+        "plugin_uri": {
+          "description": "Valid URI to plugin zip. The unzipped folder must contain the name of the last path of plugin_dir e.g. plugin",
+          "type": "string",
+          "default": ""
+        }
+      },
+      "required": [
+        "enable_plugins"
+      ]
+    },
+    "rest": {
+      "description": "REST configuration properties",
+      "type": "object",
+      "properties": {
+        "rest_listen_uri": {
+          "description": "REST API listen URI. Must be reachable by other Graylog server nodes if you run a cluster. When using Graylog Collectors, this URI will be used to receive heartbeat messages and must be accessible for all collectors",
+          "type": "string",
+          "default": "http://$HOST:$PORT0/"
+        },
+        "rest_transport_uri": {
+          "description": "REST API transport address. Defaults to the value of rest_listen_uri. Exception: If rest_listen_uri is set to a wildcard IP address (0.0.0.0) the first non-loopback IPv4 system address is used. If set, this will be promoted in the cluster discovery APIs, so other nodes may try to connect on this address and it is used to generate URLs addressing entities in the REST API. (see rest_listen_uri). You will need to define this, if your Graylog server is running behind a HTTP proxy that is rewriting the scheme, host name or URI",
+          "type": "string",
+          "default": "http://$HOST:$PORT0/"
+        },
+        "rest_enable_cors": {
+          "description": "Enable CORS headers for REST API. This is necessary for JS-clients accessing the server directly. If these are disabled, modern browsers will not be able to retrieve resources from the server. This is enabled by default. Uncomment the next line to disable it",
+          "type": "boolean",
+          "default": true
+        },
+        "rest_enable_gzip": {
+          "description": "Enable GZIP support for REST API. This compresses API responses and therefore helps to reduce overall round trip times. This is disabled by default. Uncomment the next line to enable it",
+          "type": "boolean",
+          "default": false
+        },
+        "rest_max_header_size": {
+          "description": "The maximum size of the HTTP request headers in bytes",
+          "type": "number",
+          "default": 8192
+        },
+        "rest_max_initial_line_length": {
+          "description": "The maximal length of the initial HTTP/1.1 line in bytes",
+          "type": "number",
+          "default": 4096
+        },
+        "rest_thread_pool_size": {
+          "description": "The size of the thread pool used exclusively for serving the REST API",
+          "type": "number",
+          "default": 16
+        }
+      },
+      "required": [
+        "rest_listen_uri",
+        "rest_transport_uri"
+      ]
+    },
+    "web": {
+      "description": "Web configuration properties",
+      "type": "object",
+      "properties": {
+        "web_enable": {
+          "description": "Enable the embedded Graylog web interface",
+          "type": "boolean",
+          "default": true
+        },
+        "web_listen_uri": {
+          "description": "Web interface listen URI. It must not contain a path other than /",
+          "type": "string",
+          "default": "http://$HOST:$PORT2/"
+        },
+        "web_endpoint_uri": {
+          "description": "Web interface endpoint URI. This setting can be overriden on a per-request basis with the X-Graylog-Server-URL header",
+          "type": "string",
+          "default": "$rest_transport_uri"
+        },
+        "web_enable_cors": {
+          "description": "Enable CORS headers for the web interface. This is necessary for JS-clients accessing the server directly. If these are disabled, modern browsers will not be able to retrieve resources from the server",
+          "type": "boolean",
+          "default": true
+        },
+        "web_enable_gzip": {
+          "description": "Enable/disable GZIP support for the web interface. This compresses HTTP responses and therefore helps to reduce overall round trip times",
+          "type": "boolean",
+          "default": true
+        },
+        "web_max_header_size": {
+          "description": "The maximum size of the HTTP request headers in bytes",
+          "type": "number",
+          "default": 8192
+        },
+        "web_max_initial_line_length": {
+          "description": "The maximal length of the initial HTTP/1.1 line in bytes",
+          "type": "number",
+          "default": 4096
+        },
+        "web_thread_pool_size": {
+          "description": "The size of the thread pool used exclusively for serving the web interface",
+          "type": "number",
+          "default": 16
+        }
+      },
+      "required": [
+        "web_enable"
+      ]
+    },
+    "elasticsearch": {
+      "description": "Elasticsearch configuration properties",
+      "type": "object",
+      "properties": {
+        "cluster_name": {
+          "description": "Clustername of Elasticsearch",
+          "type": "string",
+          "default": "mesos-ha"
+        },
+        "discovery_zen_ping_unicast_hosts": {
+          "description": "Elasticsearch nodes which Graylog is using to connect to the Elasticsearch cluster",
+          "type": "string",
+          "default": "elasticsearch-executor.elasticsearch.mesos:1026"
+        },
+        "retention_strategy": {
+          "description": "Graylog will use multiple indices to store documents in. You can configured the strategy it uses to determine when to rotate the currently active write index",
+          "type": "string",
+          "default": "count"
+        },
+        "max_docs_per_index": {
+          "description": "Maximum number of documents in an Elasticsearch index before a new index is being created, also see no_retention and elasticsearch_max_number_of_indices",
+          "type": "integer",
+          "default": 20000000
+        },
+        "max_number_of_indices": {
+          "description": "How many indices do you want to keep?",
+          "type": "integer",
+          "default": 20
+        },
+        "shards": {
+          "description": "How many Elasticsearch shards should be used per index? Note that this only applies to newly created indices",
+          "type": "integer",
+          "default": 4
+        },
+        "replicas": {
+          "description": "How many Elasticsearch replicas should be used per index? Note that this only applies to newly created indices",
+          "type": "integer",
+          "default": 0
+        },
+        "index_prefix": {
+          "description": "Prefix for all Elasticsearch indices and index aliases managed by Graylog",
+          "type": "string",
+          "default": "graylog"
+        },
+        "analyzer": {
+          "description": "Analyzer (tokenizer) to use for message and full_message field. The standard filter usually is a good idea",
+          "type": "string",
+          "default": "standard"
+        }
+      },
+      "required": [
+        "cluster_name",
+        "discovery_zen_ping_unicast_hosts"
+      ]
+    },
+    "mongodb": {
+      "description": "MongoDB configuration properties",
+      "type": "object",
+      "properties": {
+        "uri": {
+          "description": "MongoDB connection string",
+          "type": "string",
+          "default": "mongodb://mongodb.marathon.mesos/graylog"
+        },
+        "max_connections": {
+          "description": "Increase this value according to the maximum connections your MongoDB server can handle from a single client if you encounter MongoDB connection problems",
+          "type": "integer",
+          "default": 1000
+        },
+        "threads_allowed_to_block_multiplier": {
+          "description": "Number of threads allowed to be blocked by MongoDB connections multiplier",
+          "type": "integer",
+          "default": 5
+        }
+      },
+      "required": [
+        "uri"
+      ]
+    },
+    "email": {
+      "description": "Email transport configuration properties",
+      "type": "object",
+      "properties": {
+        "transport_email_enabled": {
+          "description": "",
+          "type": "boolean",
+          "default": false
+        },
+        "transport_email_hostname": {
+          "description": "",
+          "type": "string",
+          "default": "mail.example.com"
+        },
+        "transport_email_port": {
+          "description": "",
+          "type": "integer",
+          "default": 587
+        },
+        "transport_email_user_auth": {
+          "description": "",
+          "type": "boolean",
+          "default": true
+        },
+        "transport_email_use_tls": {
+          "description": "",
+          "type": "boolean",
+          "default": true
+        },
+        "transport_email_use_ssl": {
+          "description": "",
+          "type": "boolean",
+          "default": true
+        },
+        "transport_email_username": {
+          "description": "",
+          "type": "string",
+          "default": "you@dcos-example.com"
+        },
+        "transport_email_password": {
+          "description": "",
+          "type": "string",
+          "default": "secret"
+        },
+        "transport_email_subject_prefix": {
+          "description": "",
+          "type": "string",
+          "default": "[graylog]"
+        },
+        "transport_email_from_email": {
+          "description": "",
+          "type": "string",
+          "default": "graylog@example.com"
+        }
+      },
+      "required": [
+        "transport_email_enabled"
+      ]
+    },
+    "content-packs": {
+      "description": "Content packs configuration properties",
+      "type": "object",
+      "properties": {
+        "content_packs_loader_enabled": {
+          "description": "Automatically load content packs in content_packs_dir on the first start of Graylog",
+          "type": "boolean",
+          "default": false
+        },
+        "content_packs_dir": {
+          "description": "The directory which contains content packs which should be loaded on the first start of Graylog",
+          "type": "string",
+          "default": "/mnt/mesos/sandbox/content_pack"
+        },
+        "content_packs_uri": {
+          "description": "Valid URI to content-pack zip. The unzipped folder must contain the name of the last path of content_packs_dir e.g. content_pack",
+          "type": "string",
+          "default": ""
+        },
+        "content_packs_auto_load": {
+          "description": "A comma-separated list of content packs (files in content_packs_dir) which should be applied on the first start of Graylog e.g. grok-patterns.json",
+          "type": "string",
+          "default": ""
+        }
+      },
+      "required": [
+        "content_packs_loader_enabled"
+      ]
+    }
+  }
+}

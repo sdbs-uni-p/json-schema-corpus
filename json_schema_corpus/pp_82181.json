@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://toyatech.net/cmsapp/finances/Deposit",
+  "type": "object",
+  "properties": {
+    "date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "type": {
+      "$ref": "http://toyatech.net/cmsapp/finances/DepositType"
+    },
+    "amount": {
+      "type": "number"
+    },
+    "comment": {
+      "type": "string"
+    },
+    "closed": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "date",
+    "type",
+    "amount"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "money",
+  "id": "money",
+  "description": "A base / value business entity used to represent money.",
+  "type": "object",
+  "required": [
+    "amount"
+  ],
+  "properties": {
+    "amount": {
+      "type": "string",
+      "description": "A floating point number representing the money amount."
+    },
+    "units": {
+      "type": "string",
+      "description": "Currency of the money amount."
+    }
+  }
+}

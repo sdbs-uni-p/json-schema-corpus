@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "person",
+  "id": "person.json",
+  "properties": {
+    "uid": {
+      "$ref": "uid.json"
+    },
+    "givenName": {
+      "type": "string"
+    },
+    "familyName": {
+      "type": "string"
+    },
+    "birthDate": {
+      "$ref": "date_string.json"
+    },
+    "deathDate": {
+      "$ref": "date_string.json"
+    }
+  },
+  "required": [
+    "familyName"
+  ]
+}

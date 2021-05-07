@@ -1,0 +1,7 @@
+{
+  "id": "urn:ASHBC.schema.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "A test schema with a name containing the search term: SH.",
+  "name": "ASHBC",
+  "type": "string"
+}

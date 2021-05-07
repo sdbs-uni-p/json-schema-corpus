@@ -1,0 +1,39 @@
+{
+  "id": "https://raw.githubusercontent.com/eviratec/schema/master/v1/service/price.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "schema for a service price",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "type",
+    "amount",
+    "is_public",
+    "date_from",
+    "date_thru"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "type": {
+      "$ref": "https://raw.githubusercontent.com/eviratec/schema/master/v1/service/price/type.json#"
+    },
+    "amount": {
+      "$ref": "https://raw.githubusercontent.com/eviratec/schema/master/v1/currency/amount.json#"
+    },
+    "is_public": {
+      "type": "boolean",
+      "value": false
+    },
+    "date_from": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "date_thru": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

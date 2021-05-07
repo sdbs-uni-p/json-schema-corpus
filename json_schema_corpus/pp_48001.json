@@ -1,0 +1,127 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "title": "Schema",
+      "type": "string"
+    },
+    "cancel_reason": {
+      "title": "Reason for cancelling the loan",
+      "type": "string"
+    },
+    "delivery": {
+      "properties": {
+        "method": {
+          "type": "string"
+        }
+      },
+      "title": "Loan request delivery",
+      "type": "object"
+    },
+    "document_pid": {
+      "title": "Document ID",
+      "type": "string"
+    },
+    "document": {
+      "properties": {
+        "$ref": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "end_date": {
+      "format": "date",
+      "title": "Transaction end date",
+      "type": "string"
+    },
+    "extension_count": {
+      "title": "Loan extension count",
+      "type": "integer"
+    },
+    "item": {
+      "properties": {
+        "$ref": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "item_pid": {
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "title": "Item ID",
+      "type": "object"
+    },
+    "patron_pid": {
+      "title": "Patron ID",
+      "type": "string"
+    },
+    "patron": {
+      "properties": {
+        "$ref": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "pickup_location_pid": {
+      "title": "Request pickup location ID",
+      "type": "string"
+    },
+    "pid": {
+      "title": "Loan ID",
+      "type": "string"
+    },
+    "request_expire_date": {
+      "format": "date",
+      "title": "Request expire date",
+      "type": "string"
+    },
+    "request_start_date": {
+      "format": "date",
+      "title": "Request start date",
+      "type": "string"
+    },
+    "start_date": {
+      "format": "date",
+      "title": "Transaction start date",
+      "type": "string"
+    },
+    "state": {
+      "title": "State name",
+      "type": "string"
+    },
+    "transaction_date": {
+      "format": "date-time",
+      "title": "Loan transaction date",
+      "type": "string"
+    },
+    "transaction_location_pid": {
+      "title": "Transaction location ID",
+      "type": "string"
+    },
+    "transaction_user_pid": {
+      "title": "Transaction user ID",
+      "type": "string"
+    },
+    "trigger": {
+      "title": "The name of the explicit action that triggered the transition to current state",
+      "type": "string"
+    }
+  },
+  "required": [
+    "pid",
+    "$schema",
+    "state"
+  ],
+  "title": "Schema for loan",
+  "type": "object"
+}

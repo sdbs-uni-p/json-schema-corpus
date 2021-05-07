@@ -1,0 +1,394 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "definitions": {
+    "entity": {
+      "$schema": "http://json-schema.org/draft-03/schema#",
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "enum": [
+            "Entity"
+          ]
+        },
+        "type": {
+          "description": "An entity type, e.g. organization",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "name": {
+          "description": "A primary name, e.g. a legally recognized name",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "description": "A description of the entity",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "classification": {
+          "description": "An entity category, e.g. committee",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "birth_date": {
+          "description": "A date of birth",
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9]{4}(-[0-9]{2}){0,2}$"
+        },
+        "death_date": {
+          "description": "A date of death",
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9]{4}(-[0-9]{2}){0,2}$"
+        },
+        "founding_date": {
+          "description": "A date of founding",
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9]{4}(-[0-9]{2}){0,2}$"
+        },
+        "dissolution_date": {
+          "description": "A date of dissolution",
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9]{4}(-[0-9]{2}){0,2}$"
+        },
+        "parent_id": {
+          "description": "The ID of the organization that contains this organization",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "other_names": {
+          "description": "Alternate or former names",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/other_name"
+          }
+        },
+        "identifiers": {
+          "description": "Issued identifiers",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/identifier"
+          }
+        },
+        "contact_details": {
+          "description": "Means of contacting the entity",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/contact_detail"
+          }
+        },
+        "links": {
+          "description": "URLs to documents about the entity",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/link"
+          }
+        },
+        "sources": {
+          "description": "URLs to documents from which the resource is derived",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/link"
+          }
+        },
+        "created_at": {
+          "description": "The time at which the resource was created",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "updated_at": {
+          "description": "The time at which the resource was last modified",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        }
+      }
+    },
+    "relation": {
+      "$schema": "http://json-schema.org/draft-03/schema#",
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "enum": [
+            "Relation"
+          ]
+        },
+        "subject": {
+          "description": "The subject of the relation",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/entity"
+          }
+        },
+        "object": {
+          "description": "The object of the relation",
+          "$ref": "#/definitions/entity"
+        },
+        "name": {
+          "description": "The name of the relation",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "start_date": {
+          "description": "The date on which the relationship began",
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9]{4}((-[0-9]{2}){0,2}|(-[0-9]{2}){2}(T[0-9]{2}(:[0-9]{2}(:[0-9]{2})?)?Z)?)$"
+        },
+        "end_date": {
+          "description": "The date on which the relationship ended",
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9]{4}((-[0-9]{2}){0,2}|(-[0-9]{2}){2}(T[0-9]{2}(:[0-9]{2}(:[0-9]{2})?)?Z)?)$"
+        },
+        "identifiers": {
+          "description": "Issued identifiers",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/identifier"
+          }
+        },
+        "links": {
+          "description": "URLs to documents about the list",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/link"
+          }
+        },
+        "sources": {
+          "description": "URLs to documents from which the resource is derived",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/link"
+          }
+        },
+        "created_at": {
+          "description": "The time at which the resource was created",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "updated_at": {
+          "description": "The time at which the resource was last modified",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        }
+      }
+    },
+    "list": {
+      "$schema": "http://json-schema.org/draft-03/schema#",
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "enum": [
+            "List"
+          ]
+        },
+        "name": {
+          "description": "The name of the list",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "description": "A description of the list",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "number_of_items": {
+          "description": "The number of items in the list",
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "item_list_order": {
+          "description": "The type of ordering (e.g. ascending, descending, unordered)",
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "ascending",
+            "descending",
+            "unordered"
+          ]
+        },
+        "identifiers": {
+          "description": "Issued identifiers",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/identifier"
+          }
+        },
+        "links": {
+          "description": "URLs to documents about the list",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/link"
+          }
+        },
+        "sources": {
+          "description": "URLs to documents from which the resource is derived",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/link"
+          }
+        },
+        "created_at": {
+          "description": "The time at which the resource was created",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "updated_at": {
+          "description": "The time at which the resource was last modified",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        }
+      }
+    },
+    "other_name": {
+      "$schema": "http://json-schema.org/draft-03/schema#",
+      "title": "Other name",
+      "description": "An alternate or former name",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "An alternate or former name",
+          "type": "string"
+        },
+        "start_date": {
+          "description": "The date on which the name was adopted",
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9]{4}(-[0-9]{2}){0,2}$"
+        },
+        "end_date": {
+          "description": "The date on which the name was abandoned",
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9]{4}(-[0-9]{2}){0,2}$"
+        },
+        "note": {
+          "description": "A note, e.g. 'Birth name'",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "identifier": {
+      "$schema": "http://json-schema.org/draft-03/schema#",
+      "title": "Identifier",
+      "description": "An issued identifier",
+      "type": "object",
+      "properties": {
+        "identifier": {
+          "description": "An issued identifier, e.g. a DUNS number",
+          "type": "string",
+          "required": true
+        },
+        "scheme": {
+          "description": "An identifier scheme, e.g. DUNS",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "contact_detail": {
+      "$schema": "http://json-schema.org/draft-03/schema#",
+      "title": "Contact detail",
+      "description": "A means of contacting an entity",
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "A type of medium, e.g. 'fax' or 'email'",
+          "type": "string",
+          "required": true
+        },
+        "value": {
+          "description": "A value, e.g. a phone number or email address",
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    "link": {
+      "$schema": "http://json-schema.org/draft-03/schema#",
+      "title": "Link",
+      "description": "A URL",
+      "type": "object",
+      "properties": {
+        "url": {
+          "description": "A URL",
+          "type": "string",
+          "format": "uri",
+          "required": true
+        },
+        "note": {
+          "description": "A note, e.g. 'Wikipedia page'",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}

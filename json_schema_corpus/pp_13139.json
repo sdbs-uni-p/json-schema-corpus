@@ -1,0 +1,93 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "viewRow": {
+      "title": "View row",
+      "description": "A single row of a view (either add/edit/view or index)",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "minItems": 1,
+      "maxItems": 13
+    },
+    "fieldLabel": {
+      "title": "Field Label",
+      "description": "Label for a row of fields",
+      "type": "string"
+    },
+    "fieldName": {
+      "title": "Module field name",
+      "description": "A single module field name",
+      "type": "string"
+    },
+    "virtualFieldName": {
+      "title": "Module field name",
+      "description": "A single module field name",
+      "type": "string",
+      "enum": []
+    },
+    "relationField": {
+      "title": "Relation field name",
+      "description": "A single relation field name",
+      "type": "string",
+      "pattern": "^(ASSOCIATION)\\((.+)\\)$"
+    },
+    "embeddedField": {
+      "title": "Embedded field",
+      "description": "Embedded fields are valid references.",
+      "type": "string",
+      "pattern": "^(EMBEDDED)\\((.+)\\)$"
+    },
+    "emptyField": {
+      "title": "Empty field",
+      "description": "Empty fields are allowed by the builder.",
+      "type": "string",
+      "pattern": "^$"
+    }
+  },
+  "title": "View configuration",
+  "description": "View configuration",
+  "type": "object",
+  "properties": {
+    "items": {
+      "title": "View row items",
+      "description": "All rows for a given view",
+      "type": "array",
+      "items": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 13,
+        "items": [
+          {
+            "$ref": "#/definitions/fieldLabel"
+          }
+        ],
+        "additionalItems": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/fieldName"
+            },
+            {
+              "$ref": "#/definitions/virtualFieldName"
+            },
+            {
+              "$ref": "#/definitions/embeddedField"
+            },
+            {
+              "$ref": "#/definitions/emptyField"
+            },
+            {
+              "$ref": "#/definitions/relationField"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "items"
+  ],
+  "additionalProperties": false
+}

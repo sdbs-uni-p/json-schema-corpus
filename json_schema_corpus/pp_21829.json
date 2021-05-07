@@ -1,0 +1,16 @@
+{
+  "id": "http://schema.hyperrest.com/gs1/ean_13.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "EAN-13",
+  "oneOf": [
+    {
+      "$ref": "http://schema.hyperrest.com/gs1/ean_13_0.json"
+    },
+    {
+      "$ref": "http://schema.hyperrest.com/gs1/ean_13_2.json"
+    },
+    {
+      "$ref": "http://schema.hyperrest.com/gs1/ean_13_5.json"
+    }
+  ]
+}

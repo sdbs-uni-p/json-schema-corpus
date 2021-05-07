@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "permissions": {
+      "id": "permissions",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "write": {
+          "id": "write",
+          "type": "boolean"
+        },
+        "read": {
+          "id": "read",
+          "type": "boolean"
+        },
+        "delete": {
+          "id": "delete",
+          "type": "boolean"
+        }
+      }
+    },
+    "collection": {
+      "id": "collection",
+      "type": "string",
+      "minLength": 1
+    },
+    "namespace": {
+      "id": "namespace",
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "permissions",
+    "collection",
+    "namespace"
+  ]
+}

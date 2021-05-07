@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "nachfolger": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "rechner": {
+      "type": "string"
+    },
+    "wartezeit": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "nachfolger"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "id": "https://raw.githubusercontent.com/eviratec/schema/master/v1/product.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "schema for a product",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "code",
+    "headline",
+    "full_name",
+    "prices",
+    "date_added",
+    "is_purchaseable"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "code": {
+      "type": "string",
+      "description": "E.g. YEMAYA2017GA",
+      "maxLength": 64
+    },
+    "headline": {
+      "type": "string",
+      "description": "E.g. 'Yemaya 2017 GA Ticket'",
+      "maxLength": 64
+    },
+    "full_name": {
+      "type": "string",
+      "description": "E.g. 'Yemaya 2017 General Admission Ticket'",
+      "maxLength": 255
+    },
+    "prices": {
+      "type": "array",
+      "items": {
+        "$ref": "https://raw.githubusercontent.com/eviratec/schema/master/v1/product/price.json#"
+      },
+      "uniqueItems": true
+    },
+    "date_added": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "is_purchaseable": {
+      "type": "boolean",
+      "value": false
+    }
+  }
+}

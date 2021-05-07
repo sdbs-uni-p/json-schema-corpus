@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "Update period",
+  "description": "Update period",
+  "properties": {
+    "incomes": {
+      "$ref": "self-employment/Incomes.json"
+    },
+    "expenses": {
+      "$ref": "self-employment/Expenses.json"
+    }
+  },
+  "additionalProperties": false
+}

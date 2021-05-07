@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "description": "Upload process definition",
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "description": "UUID",
+      "type": "string"
+    },
+    "metaJobExecutionId": {
+      "description": "Link to the metajob execution",
+      "type": "string"
+    },
+    "status": {
+      "description": "Status of upload",
+      "type": "string",
+      "enum": [
+        "NEW",
+        "IN_PROGRESS",
+        "LOADED",
+        "COMPLETED"
+      ]
+    },
+    "createDate": {
+      "description": "Date and time when the upload definition was created",
+      "type": "string",
+      "format": "date-time"
+    },
+    "fileDefinitions": {
+      "description": "Array of file entities",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "fileDefinition.json"
+      }
+    },
+    "metadata": {
+      "description": "Metadata about creation and changes, provided by the server (client should not provide)",
+      "type": "object",
+      "$ref": "../../raml-util/schemas/metadata.schema",
+      "readonly": true
+    }
+  }
+}

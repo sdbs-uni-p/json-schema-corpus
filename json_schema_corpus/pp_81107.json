@@ -1,0 +1,71 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://tidepool-org.github.io/data-model/schemas/vendors/medtronic/wizard.json",
+  "title": "Medtronic bolus wizard",
+  "additionalProperties": false,
+  "properties": {
+    "deviceTime": {
+      "type": "string",
+      "id": "http://jsonschema.net/mm/bolus/square/deviceTime",
+      "required": true
+    },
+    "id": {
+      "type": "string",
+      "id": "http://jsonschema.net/mm/bolus/square/id",
+      "required": false
+    },
+    "type": {
+      "enum": [
+        "wizard"
+      ],
+      "id": "http://jsonschema.net/wizard/mm/type",
+      "required": true
+    },
+    "smbg": {
+      "type": "string",
+      "id": "http://jsonschema.net/mm/wizard/smbg",
+      "required": true
+    },
+    "carbs": {
+      "type": "string",
+      "id": "http://jsonschema.net/mm/wizard/carbs",
+      "required": true
+    },
+    "carb_units": {
+      "type": "string",
+      "id": "http://jsonschema.net/mm/wizard/carb_units",
+      "required": true
+    },
+    "carb_ratio": {
+      "type": "string",
+      "id": "http://jsonschema.net/mm/wizard/carb_ratio",
+      "required": true
+    },
+    "sensitivity": {
+      "type": "string",
+      "id": "http://jsonschema.net/mm/wizard/sensitivity",
+      "required": true
+    },
+    "recommended": {
+      "type": "string",
+      "id": "http://jsonschema.net/mm/wizard/recommended",
+      "required": true
+    },
+    "correction": {
+      "type": "string",
+      "id": "http://jsonschema.net/mm/wizard/correction",
+      "required": true
+    },
+    "food": {
+      "type": "string",
+      "id": "http://jsonschema.net/mm/wizard/food",
+      "required": true
+    },
+    "value": {
+      "type": "string",
+      "id": "http://jsonschema.net/bolus/mm/wizard/value",
+      "required": true
+    }
+  }
+}

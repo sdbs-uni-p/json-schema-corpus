@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "notifications": {
+      "type": "boolean",
+      "description": "whether this candidate wants to receive email alerts about new jobs"
+    },
+    "internalFlag": {
+      "type": "boolean",
+      "description": "whether this candidate is an internal"
+    },
+    "id": {
+      "type": "integer"
+    }
+  },
+  "type": "object",
+  "properties": {
+    "id": {
+      "$ref": "#/definitions/id"
+    },
+    "notifications": {
+      "$ref": "#/definitions/notifications"
+    },
+    "internalFlag": {
+      "$ref": "#/definitions/internalFlag"
+    },
+    "person": {
+      "$ref": "person.json"
+    },
+    "resumeMeta": {
+      "$ref": "fileDownload.json"
+    },
+    "items": {
+      "$ref": "itemPackagesRead.json"
+    },
+    "categories": {
+      "$ref": "categoriesActual.json"
+    }
+  },
+  "additionalProperties": false
+}

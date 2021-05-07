@@ -1,0 +1,23 @@
+{
+  "id": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/LayoutPanel/ScrollPanel/ScrollPanel.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "\u041a\u043e\u043d\u0442\u0435\u0439\u043d\u0435\u0440 \u0432 \u0432\u0438\u0434\u0435 \u043f\u0440\u043e\u043a\u0440\u0443\u0447\u0438\u0432\u0430\u0435\u043c\u043e\u0439 \u043e\u0431\u043b\u0430\u0441\u0442\u0438",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/Container/Container.json"
+    }
+  ],
+  "properties": {
+    "HorizontalScroll": {
+      "description": "\u0412\u0438\u0434\u0438\u043c\u043e\u0441\u0442\u044c \u043f\u043e\u043b\u043e\u0441\u044b \u043f\u0440\u043e\u043a\u0440\u0443\u0442\u043a\u0438 \u043f\u043e \u0433\u043e\u0440\u0438\u0437\u043e\u043d\u0442\u0430\u043b\u0438",
+      "$ref": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/LayoutPanel/ScrollPanel/ScrollVisibility.json",
+      "default": "Auto"
+    },
+    "VerticalScroll": {
+      "description": "\u0412\u0438\u0434\u0438\u043c\u043e\u0441\u0442\u044c \u043f\u043e\u043b\u043e\u0441\u044b \u043f\u0440\u043e\u043a\u0440\u0443\u0442\u043a\u0438 \u043f\u043e \u0432\u0435\u0440\u0442\u0438\u043a\u0430\u043b\u0438",
+      "$ref": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/LayoutPanel/ScrollPanel/ScrollVisibility.json",
+      "default": "Auto"
+    }
+  }
+}

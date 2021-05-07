@@ -1,0 +1,180 @@
+{
+  "title": "Formula Test Schema",
+  "description": "JSON Schema (v4) for testing purposes",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "string": {
+      "type": "string",
+      "description": "string input without additional properties"
+    },
+    "string_required": {
+      "type": "string",
+      "description": "string input which is required"
+    },
+    "string_minlength_maxlength": {
+      "type": "string",
+      "description": "string input with minLength and maxLength properties set",
+      "minLength": 5,
+      "maxLength": 10
+    },
+    "string_textarea": {
+      "type": "string",
+      "description": "string input rendered as textarea due to form definition"
+    },
+    "string_datetime": {
+      "type": "string",
+      "description": "string input with date-time format property set",
+      "format": "date-time"
+    },
+    "string_date": {
+      "type": "string",
+      "description": "string input with date format property set",
+      "format": "date"
+    },
+    "string_enum_default": {
+      "type": "string",
+      "description": "string input with enum and default properties set",
+      "enum": [
+        "foo",
+        "bar",
+        "baz",
+        "qux"
+      ],
+      "default": "bar"
+    },
+    "string_color": {
+      "type": "string",
+      "description": "string input with color format property set",
+      "format": "color"
+    },
+    "integer_maximum": {
+      "type": "integer",
+      "description": "integer input with maximum property set",
+      "maximum": 10
+    },
+    "number_default": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "description": "number input with default property set",
+      "default": 123
+    },
+    "number_minimum_maximum": {
+      "type": "number",
+      "description": "number input with both minimum and maximum properties set",
+      "minimum": 0.0,
+      "maximum": 1.0
+    },
+    "boolean": {
+      "type": "boolean",
+      "description": "boolean input without additional properties"
+    },
+    "array_object": {
+      "type": "array",
+      "description": "array input with items type property set to object",
+      "items": {
+        "type": "object",
+        "properties": {
+          "string_default": {
+            "type": "string",
+            "description": "string input with default property set",
+            "default": "foobar"
+          },
+          "number": {
+            "type": "number",
+            "description": "required number input"
+          },
+          "string_enum": {
+            "type": "string",
+            "description": "string input with enum and default properties set",
+            "enum": [
+              "foo",
+              "bar",
+              "baz",
+              "qux"
+            ]
+          }
+        },
+        "required": [
+          "number"
+        ]
+      },
+      "minItems": 1
+    },
+    "array_string_enum": {
+      "type": "array",
+      "description": "array input with items type and enum properties set",
+      "items": {
+        "type": "string",
+        "enum": [
+          "foo",
+          "bar",
+          "baz",
+          "qux"
+        ]
+      }
+    },
+    "array_string": {
+      "type": "array",
+      "description": "array input with items type property set to string",
+      "items": {
+        "type": "string",
+        "minLength": 5
+      }
+    },
+    "nested_array": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      }
+    },
+    "array_hierarchy": {
+      "type": "array",
+      "description": "first level array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "sub_array_one": {
+            "type": "array",
+            "description": "second level array one",
+            "items": {
+              "type": "object",
+              "properties": {
+                "sub_sub_array_one": {
+                  "type": "array",
+                  "description": "third level array one",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "obj_1_1_1": {
+                        "type": "string"
+                      },
+                      "obj_1_1_2": {
+                        "type": "number"
+                      },
+                      "obj_1_1_3": {
+                        "type": "string",
+                        "enum": [
+                          "foobar",
+                          "barqux"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "string_required"
+  ]
+}

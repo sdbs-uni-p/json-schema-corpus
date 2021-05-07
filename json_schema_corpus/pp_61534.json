@@ -1,0 +1,82 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Project",
+  "description": "Metadata about a project in the Mopidy ecosystem",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the project"
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name"
+    },
+    "homepage": {
+      "type": "string",
+      "description": "URL to project web site",
+      "format": "uri"
+    },
+    "bugs": {
+      "type": "string",
+      "description": "URL to bug tracker",
+      "format": "uri"
+    },
+    "license": {
+      "type": "string",
+      "description": "License identifier from http://spdx.org/licenses/"
+    },
+    "maintainers": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "description": "Reference to a person, as defined in people/<person>.json"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "is_extension": {
+      "type": "boolean",
+      "description": "If it can be installed as a Mopidy extension",
+      "default": false
+    },
+    "distribution": {
+      "title": "Distributions of the project",
+      "type": "object",
+      "properties": {
+        "github": {
+          "type": "string",
+          "description": "GitHub project identifier, e.g. 'user/project'"
+        },
+        "pypi": {
+          "type": "string",
+          "description": "PyPI package name"
+        },
+        "npm": {
+          "type": "string",
+          "description": "npm package name"
+        },
+        "apt": {
+          "type": "string",
+          "description": "APT package name (on apt.mopidy.com and/or in Debian/Ubuntu)"
+        },
+        "aur": {
+          "type": "string",
+          "description": "Arch User Repository package name"
+        },
+        "homebrew": {
+          "type": "string",
+          "description": "Homebrew formula name, including tap name if any"
+        }
+      }
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "homepage",
+    "license",
+    "maintainers",
+    "distribution"
+  ]
+}

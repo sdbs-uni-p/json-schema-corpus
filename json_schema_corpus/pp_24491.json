@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://atomicbits.io/raml10/cat.json#",
+  "type": "object",
+  "properties": {
+    "_type": {
+      "enum": [
+        "Cat"
+      ]
+    },
+    "name": {
+      "required": false,
+      "type": "string"
+    }
+  }
+}

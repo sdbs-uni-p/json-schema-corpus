@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://atomicbits.io/raml10/error.json",
+  "type": "object",
+  "description": "An error response body",
+  "properties": {
+    "message": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

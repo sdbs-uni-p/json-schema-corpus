@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "charge": {
+      "type": "number",
+      "description": "price that we're going to charge you (exl. VAT)"
+    }
+  },
+  "required": [
+    "charge"
+  ],
+  "additionalProperties": false
+}

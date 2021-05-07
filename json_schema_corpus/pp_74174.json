@@ -1,0 +1,152 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "collection-node": {
+      "type": "object",
+      "properties": {
+        "level": {
+          "type": "string",
+          "enum": [
+            "project",
+            "session",
+            "acquisition"
+          ]
+        },
+        "_id": {
+          "$ref": "common.json#/definitions/objectid"
+        }
+      },
+      "additionalProperties": false
+    },
+    "collection-operation": {
+      "type": "object",
+      "properties": {
+        "operation": {
+          "type": "string",
+          "enum": [
+            "add",
+            "remove"
+          ]
+        },
+        "nodes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/collection-node"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "collection-input": {
+      "type": "object",
+      "properties": {
+        "public": {
+          "$ref": "container.json#/definitions/public"
+        },
+        "label": {
+          "$ref": "common.json#/definitions/label"
+        },
+        "info": {
+          "$ref": "container.json#/definitions/info"
+        },
+        "description": {
+          "$ref": "common.json#/definitions/description"
+        }
+      },
+      "x-sdk-model": "collection",
+      "additionalProperties": false
+    },
+    "collection-input-with-contents": {
+      "type": "object",
+      "properties": {
+        "public": {
+          "$ref": "container.json#/definitions/public"
+        },
+        "label": {
+          "$ref": "common.json#/definitions/label"
+        },
+        "info": {
+          "$ref": "container.json#/definitions/info"
+        },
+        "description": {
+          "$ref": "common.json#/definitions/description"
+        },
+        "contents": {
+          "$ref": "#/definitions/collection-operation"
+        }
+      },
+      "x-sdk-model": "collection",
+      "additionalProperties": false
+    },
+    "collection-new-output": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "$ref": "common.json#/definitions/objectid"
+        }
+      },
+      "required": [
+        "_id"
+      ],
+      "x-sdk-return": "_id"
+    },
+    "collection-output": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "$ref": "common.json#/definitions/objectid"
+        },
+        "public": {
+          "$ref": "container.json#/definitions/public"
+        },
+        "label": {
+          "$ref": "common.json#/definitions/label"
+        },
+        "description": {
+          "$ref": "common.json#/definitions/description"
+        },
+        "info": {
+          "$ref": "container.json#/definitions/info"
+        },
+        "info_exists": {
+          "$ref": "container.json#/definitions/info_exists"
+        },
+        "curator": {
+          "$ref": "common.json#/definitions/user-id"
+        },
+        "created": {
+          "$ref": "created-modified.json#/definitions/created"
+        },
+        "modified": {
+          "$ref": "created-modified.json#/definitions/modified"
+        },
+        "permissions": {
+          "type": "array",
+          "items": {
+            "$ref": "permission.json#/definitions/permission-output-default-required"
+          }
+        },
+        "files": {
+          "type": "array",
+          "items": {
+            "$ref": "file.json#/definitions/file-output"
+          }
+        },
+        "notes": {
+          "$ref": "note.json#/definitions/notes-list-output"
+        },
+        "tags": {
+          "$ref": "tag.json#/definitions/tag-list"
+        },
+        "analyses": {
+          "type": "array",
+          "items": {
+            "$ref": "analysis.json#/definitions/analysis-output"
+          }
+        }
+      },
+      "x-sdk-model": "collection",
+      "additionalProperties": false
+    }
+  }
+}

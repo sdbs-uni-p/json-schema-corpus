@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "serviceDetailResponse",
+  "id": "serviceDetailResponse",
+  "description": "A representation of service capabilities available per the request.",
+  "type": "object",
+  "required": [
+    "id",
+    "objectType",
+    "productSpec"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "description": " An unique identifier for the Service Detail. "
+    },
+    "objectType": {
+      "type": "string",
+      "enum": [
+        "serviceDetailResponse"
+      ],
+      "description": "The type of the object, serviceDetailResponse."
+    },
+    "productSpec": {
+      "$ref": "productSpecResponse.json#",
+      "description": " The Product Specification that matches the request."
+    }
+  }
+}

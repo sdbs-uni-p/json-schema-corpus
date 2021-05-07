@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Backend Config",
+  "description": "A configuration file for the PrairieLearn server.",
+  "type": "object",
+  "properties": {
+    "courseDirs": {
+      "description": "Paths of the course directories.",
+      "type": "array",
+      "items": {
+        "description": "A single course directory path.",
+        "type": "string"
+      }
+    },
+    "secretKey": {
+      "description": "Secret key for authenticating users (should be a long random string).",
+      "type": "string"
+    },
+    "dbAddress": {
+      "description": "The address for connecting to the database.",
+      "type": "string"
+    },
+    "postgresqlUser": {
+      "description": "The user for connecting to the PostgreSQL database.",
+      "type": "string"
+    },
+    "postgresqlDatabase": {
+      "description": "The database for connecting to the PostgreSQL database.",
+      "type": "string"
+    },
+    "postgresqlHost": {
+      "description": "The host for connecting to the PostgreSQL database.",
+      "type": "string"
+    },
+    "amqpAddress": {
+      "description": "Address of the message queue server, or null to disable",
+      "type": "string"
+    },
+    "amqpGradingQueue": {
+      "description": "Name of the grading message queue",
+      "type": "string"
+    },
+    "amqpResultQueue": {
+      "description": "Name of the grading results message queue",
+      "type": "string"
+    },
+    "logFilename": {
+      "description": "Filename to use for server logging.",
+      "type": "string"
+    },
+    "authType": {
+      "description": "The type of authentication to use.",
+      "enum": [
+        "none",
+        "x-auth",
+        "eppn",
+        "x-trust-auth"
+      ]
+    },
+    "serverType": {
+      "description": "The type of server to start.",
+      "enum": [
+        "http",
+        "https"
+      ]
+    },
+    "serverPort": {
+      "description": "The TCP port number for the server.",
+      "type": "string"
+    }
+  }
+}

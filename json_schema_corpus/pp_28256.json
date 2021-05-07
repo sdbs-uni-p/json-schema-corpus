@@ -1,0 +1,36 @@
+{
+  "title": "address",
+  "id": "https://rawgit.com/camshaft/shenu/master/schemas/address.json#",
+  "description": "",
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "required": [
+    "country_name",
+    "locality",
+    "region"
+  ],
+  "properties": {
+    "street_address": {
+      "type": "string"
+    },
+    "region": {
+      "type": "string"
+    },
+    "postal_code": {
+      "type": "string"
+    },
+    "post_office_box": {
+      "type": "string"
+    },
+    "locality": {
+      "type": "string"
+    },
+    "extended_address": {
+      "type": "string"
+    },
+    "country_name": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

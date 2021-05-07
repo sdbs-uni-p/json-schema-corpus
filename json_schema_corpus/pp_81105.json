@@ -1,0 +1,16 @@
+{
+  "title": "Medtronic bolus extensions",
+  "name": "Bolus",
+  "description": "Medtronic's extensions to bolus",
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "id": "http://tidepool-org.github.io/data-model/schemas/vendors/medtronic/bolus.json",
+  "type": "object",
+  "oneOf": [
+    {
+      "$ref": "./square.json"
+    },
+    {
+      "$ref": "../../diabetes/bolus/normal.json"
+    }
+  ]
+}

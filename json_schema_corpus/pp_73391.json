@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "id": {
+      "id": "id",
+      "type": "string"
+    },
+    "description": {
+      "id": "description",
+      "type": "string"
+    },
+    "version": {
+      "id": "version",
+      "type": "string"
+    },
+    "layout": {
+      "id": "layout",
+      "type": "array",
+      "items": {
+        "id": "10",
+        "type": "object",
+        "properties": {
+          "name": {
+            "id": "name",
+            "type": "string"
+          },
+          "class": {
+            "id": "class",
+            "type": "string"
+          },
+          "timeout": {
+            "id": "timeout",
+            "type": "integer"
+          },
+          "numErrorLines": {
+            "id": "numErrorLines",
+            "type": "integer"
+          }
+        },
+        "additionalProperties": false
+      },
+      "additionalItems": false
+    }
+  },
+  "additionalProperties": false
+}

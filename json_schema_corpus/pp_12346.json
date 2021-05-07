@@ -1,0 +1,155 @@
+{
+  "title": "Test Event",
+  "properties": {
+    "Id": {
+      "type": "id",
+      "description": "Record ID"
+    },
+    "OwnerId": {
+      "type": "reference",
+      "description": "Owner ID"
+    },
+    "IsDeleted": {
+      "type": "boolean",
+      "description": "Deleted"
+    },
+    "Name": {
+      "type": "string",
+      "description": "Test Event Name"
+    },
+    "CreatedDate": {
+      "type": "datetime",
+      "description": "Created Date"
+    },
+    "CreatedById": {
+      "type": "reference",
+      "description": "Created By ID"
+    },
+    "LastModifiedDate": {
+      "type": "datetime",
+      "description": "Last Modified Date"
+    },
+    "LastModifiedById": {
+      "type": "reference",
+      "description": "Last Modified By ID"
+    },
+    "SystemModstamp": {
+      "type": "datetime",
+      "description": "System Modstamp"
+    },
+    "ConnectionReceivedId": {
+      "type": "reference",
+      "description": "Received Connection ID"
+    },
+    "ConnectionSentId": {
+      "type": "reference",
+      "description": "Sent Connection ID"
+    },
+    "vera__Test_Event_Name_Unique__c": {
+      "type": "string",
+      "description": "Test Event Name Unique"
+    },
+    "vera__Start_Date__c": {
+      "type": "date",
+      "description": "Start Date"
+    },
+    "vera__End_Date__c": {
+      "type": "date",
+      "description": "End Date"
+    },
+    "vera__ODK_Key__c": {
+      "type": "string",
+      "description": "ODK Key"
+    },
+    "vera__food_name__c": {
+      "type": "string",
+      "description": "food name"
+    },
+    "vera__food_color__c": {
+      "type": "string",
+      "description": "food color"
+    },
+    "vera__sound_volume__c": {
+      "type": "string",
+      "description": "sound volume"
+    },
+    "Attachments": {
+      "type": "array",
+      "id": "Attachment",
+      "foreignKey": "ParentId"
+    },
+    "FeedSubscriptionsForEntity": {
+      "type": "array",
+      "id": "EntitySubscription",
+      "foreignKey": "ParentId"
+    },
+    "Notes": {
+      "type": "array",
+      "id": "Note",
+      "foreignKey": "ParentId"
+    },
+    "NotesAndAttachments": {
+      "type": "array",
+      "id": "NoteAndAttachment",
+      "foreignKey": "ParentId"
+    },
+    "ProcessInstances": {
+      "type": "array",
+      "id": "ProcessInstance",
+      "foreignKey": "TargetObjectId"
+    },
+    "ProcessSteps": {
+      "type": "array",
+      "id": "ProcessInstanceHistory",
+      "foreignKey": "TargetObjectId"
+    },
+    "vera__Attendance__r": {
+      "type": "array",
+      "id": "vera__Attendance__c",
+      "foreignKey": "vera__Test_Event__c"
+    },
+    "vera__Boats1__r": {
+      "type": "array",
+      "id": "vera__Boat__c",
+      "foreignKey": "vera__Other_Event__c"
+    },
+    "vera__Boats__r": {
+      "type": "array",
+      "id": "vera__Boat__c",
+      "foreignKey": "vera__Test_Event__c"
+    },
+    "vera__Boats_Frilitanger__r": {
+      "type": "array",
+      "id": "vera__Boat__c",
+      "foreignKey": "vera__Third_Event__c"
+    },
+    "vera__Cars__r": {
+      "type": "array",
+      "id": "vera__Car__c",
+      "foreignKey": "vera__Test_Event__c"
+    },
+    "vera__Catches__r": {
+      "type": "array",
+      "id": "vera__Catch__c",
+      "foreignKey": "vera__Test_Event__c"
+    },
+    "vera__Students__r": {
+      "type": "array",
+      "id": "vera__Student__c",
+      "foreignKey": "vera__Test_Event__c"
+    }
+  },
+  "required": [
+    "Id",
+    "OwnerId",
+    "IsDeleted",
+    "Name",
+    "CreatedDate",
+    "CreatedById",
+    "LastModifiedDate",
+    "LastModifiedById",
+    "SystemModstamp"
+  ],
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema#"
+}

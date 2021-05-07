@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "id": "problem.json",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "readonly": true
+    },
+    "type": {
+      "type": "string",
+      "format": "uri",
+      "readonly": true
+    },
+    "status": {
+      "type": "integer",
+      "readonly": true
+    },
+    "detail": {
+      "type": "string",
+      "readonly": true
+    }
+  }
+}

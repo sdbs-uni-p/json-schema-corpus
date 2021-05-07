@@ -1,0 +1,13 @@
+{
+  "name": "<%= name %>",
+  "description": "<%= description %>",
+  "integration": {
+    "technology": "<%= laxarIntegrationTechnology %>",
+    "type": "<%= artifactType %>"
+  },
+  "features": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {}
+  }
+}

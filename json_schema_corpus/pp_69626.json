@@ -1,0 +1,10 @@
+{
+  "id": "http://schema.org/Place",
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "extends": {
+    "$ref": "Thing.json"
+  },
+  "description": "Entities that have a somewhat fixed, physical extension. Schema.org: http://schema.org/Place",
+  "type": "object",
+  "additionalProperties": true
+}

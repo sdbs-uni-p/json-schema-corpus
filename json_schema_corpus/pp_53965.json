@@ -1,0 +1,796 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://schema.org/AudioObject",
+  "required": [],
+  "title": "AudioObject",
+  "name": "AudioObject",
+  "description": "An audio file.",
+  "type": "object",
+  "properties": {
+    "transcript": {
+      "id": "http://schema.org/transcript",
+      "title": "transcript",
+      "description": "If this MediaObject is an AudioObject or VideoObject, the transcript of that object.",
+      "type": "string"
+    },
+    "": {
+      "title": "",
+      "description": "",
+      "type": null
+    },
+    "associatedArticle": {
+      "id": "http://schema.org/associatedArticle",
+      "title": "associatedArticle",
+      "description": "A NewsArticle associated with the Media Object.",
+      "type": "object",
+      "properties": {
+        "associatedArticle": {
+          "$ref": "NewsArticle.json#/properties"
+        }
+      }
+    },
+    "bitrate": {
+      "id": "http://schema.org/bitrate",
+      "title": "bitrate",
+      "description": "The bitrate of the media object.",
+      "type": "string"
+    },
+    "contentSize": {
+      "id": "http://schema.org/contentSize",
+      "title": "contentSize",
+      "description": "File size in (mega/kilo) bytes.",
+      "type": "string"
+    },
+    "contentUrl": {
+      "id": "http://schema.org/contentUrl",
+      "title": "contentUrl",
+      "description": "Actual bytes of the media object, for example the image file or video file. (previous spelling: contentURL)",
+      "type": "string",
+      "format": "uri"
+    },
+    "duration": {
+      "id": "http://schema.org/duration",
+      "title": "duration",
+      "description": "The duration of the item (movie, audio recording, event, etc.) in ISO 8601 date format.",
+      "type": "object",
+      "properties": {
+        "duration": {
+          "$ref": "Duration.json#/properties"
+        }
+      }
+    },
+    "embedUrl": {
+      "id": "http://schema.org/embedUrl",
+      "title": "embedUrl",
+      "description": "A URL pointing to a player for a specific video. In general, this is the information in the src element of an embed tag and should not be the same as the content of the loc tag. (previous spelling: embedURL)",
+      "type": "string",
+      "format": "uri"
+    },
+    "encodesCreativeWork": {
+      "id": "http://schema.org/encodesCreativeWork",
+      "title": "encodesCreativeWork",
+      "description": "The CreativeWork encoded by this media object.",
+      "type": "object",
+      "properties": {
+        "encodesCreativeWork": {
+          "$ref": "CreativeWork.json#/properties"
+        }
+      }
+    },
+    "encodingFormat": {
+      "id": "http://schema.org/encodingFormat",
+      "title": "encodingFormat",
+      "description": "mp3, mpeg4, etc.",
+      "type": "string"
+    },
+    "expires": {
+      "id": "http://schema.org/expires",
+      "title": "expires",
+      "description": "Date the content expires and is no longer useful or available. Useful for videos.",
+      "type": "object",
+      "properties": {
+        "expires": {
+          "$ref": "Date.json#/properties"
+        }
+      }
+    },
+    "height": {
+      "id": "http://schema.org/height",
+      "title": "height",
+      "description": "The height of the item or person.",
+      "type": "object",
+      "properties": {
+        "height": {
+          "$ref": "QuantitativeValue.json#/properties"
+        }
+      }
+    },
+    "playerType": {
+      "id": "http://schema.org/playerType",
+      "title": "playerType",
+      "description": "Player type required\u2014for example, Flash or Silverlight.",
+      "type": "string"
+    },
+    "productionCompany": {
+      "id": "http://schema.org/productionCompany",
+      "title": "productionCompany",
+      "description": "The production company or studio responsible for the item e.g. series, video game, episode etc.",
+      "type": "object",
+      "properties": {
+        "productionCompany": {
+          "$ref": "Organization.json#/properties"
+        }
+      }
+    },
+    "publication": {
+      "id": "http://schema.org/publication",
+      "title": "publication",
+      "description": "A publication event associated with the episode, clip or media object.",
+      "type": "object",
+      "properties": {
+        "publication": {
+          "$ref": "PublicationEvent.json#/properties"
+        }
+      }
+    },
+    "regionsAllowed": {
+      "id": "http://schema.org/regionsAllowed",
+      "title": "regionsAllowed",
+      "description": "The regions where the media is allowed. If not specified, then it's assumed to be allowed everywhere. Specify the countries in ISO 3166 format.",
+      "type": "object",
+      "properties": {
+        "regionsAllowed": {
+          "$ref": "Place.json#/properties"
+        }
+      }
+    },
+    "requiresSubscription": {
+      "id": "http://schema.org/requiresSubscription",
+      "title": "requiresSubscription",
+      "description": "Indicates if use of the media require a subscription  (either paid or free). Allowed values are true or false (note that an earlier version had 'yes', 'no').",
+      "type": "boolean"
+    },
+    "uploadDate": {
+      "id": "http://schema.org/uploadDate",
+      "title": "uploadDate",
+      "description": "Date when this media object was uploaded to this site.",
+      "type": "object",
+      "properties": {
+        "uploadDate": {
+          "$ref": "Date.json#/properties"
+        }
+      }
+    },
+    "width": {
+      "id": "http://schema.org/width",
+      "title": "width",
+      "description": "The width of the item.",
+      "type": "object",
+      "properties": {
+        "width": {
+          "$ref": "QuantitativeValue.json#/properties"
+        }
+      }
+    },
+    "about": {
+      "id": "http://schema.org/about",
+      "title": "about",
+      "description": "The subject matter of the content.",
+      "type": "object",
+      "properties": {
+        "about": {
+          "$ref": "Thing.json#/properties"
+        }
+      }
+    },
+    "accessibilityAPI": {
+      "id": "http://schema.org/accessibilityAPI",
+      "title": "accessibilityAPI",
+      "description": "Indicates that the resource is compatible with the referenced accessibility API (WebSchemas wiki lists possible values).\n         ",
+      "type": "string"
+    },
+    "accessibilityControl": {
+      "id": "http://schema.org/accessibilityControl",
+      "title": "accessibilityControl",
+      "description": "Identifies input methods that are sufficient to fully control the described resource (WebSchemas wiki lists possible values).",
+      "type": "string"
+    },
+    "accessibilityFeature": {
+      "id": "http://schema.org/accessibilityFeature",
+      "title": "accessibilityFeature",
+      "description": "Content features of the resource, such as accessible media, alternatives and supported enhancements for accessibility (WebSchemas wiki lists possible values).",
+      "type": "string"
+    },
+    "accessibilityHazard": {
+      "id": "http://schema.org/accessibilityHazard",
+      "title": "accessibilityHazard",
+      "description": "A characteristic of the described resource that is physiologically dangerous to some users. Related to WCAG 2.0 guideline 2.3. (WebSchemas wiki lists possible values)",
+      "type": "string"
+    },
+    "accountablePerson": {
+      "id": "http://schema.org/accountablePerson",
+      "title": "accountablePerson",
+      "description": "Specifies the Person that is legally accountable for the CreativeWork.",
+      "type": "object",
+      "properties": {
+        "accountablePerson": {
+          "$ref": "Person.json#/properties"
+        }
+      }
+    },
+    "aggregateRating": {
+      "id": "http://schema.org/aggregateRating",
+      "title": "aggregateRating",
+      "description": "The overall rating, based on a collection of reviews or ratings, of the item.",
+      "type": "object",
+      "properties": {
+        "aggregateRating": {
+          "$ref": "AggregateRating.json#/properties"
+        }
+      }
+    },
+    "alternativeHeadline": {
+      "id": "http://schema.org/alternativeHeadline",
+      "title": "alternativeHeadline",
+      "description": "A secondary title of the CreativeWork.",
+      "type": "string"
+    },
+    "associatedMedia": {
+      "id": "http://schema.org/associatedMedia",
+      "title": "associatedMedia",
+      "description": "A media object that encodes this CreativeWork. This property is a synonym for encoding.",
+      "type": "object",
+      "properties": {
+        "associatedMedia": {
+          "$ref": "MediaObject.json#/properties"
+        }
+      }
+    },
+    "audience": {
+      "id": "http://schema.org/audience",
+      "title": "audience",
+      "description": "The intended audience of the item, i.e. the group for whom the item was created.",
+      "type": "object",
+      "properties": {
+        "audience": {
+          "$ref": "Audience.json#/properties"
+        }
+      }
+    },
+    "audio": {
+      "id": "http://schema.org/audio",
+      "title": "audio",
+      "description": "An embedded audio object.",
+      "type": "object",
+      "properties": {
+        "audio": {
+          "$ref": "AudioObject.json#/properties"
+        }
+      }
+    },
+    "author": {
+      "id": "http://schema.org/author",
+      "title": "author",
+      "description": "The author of this content. Please note that author is special in that HTML 5 provides a special mechanism for indicating authorship via the rel tag. That is equivalent to this and may be used interchangeably.",
+      "type": "object",
+      "properties": {
+        "author": {
+          "$ref": "Person.json#/properties"
+        }
+      }
+    },
+    "award": {
+      "id": "http://schema.org/award",
+      "title": "award",
+      "description": "An award won by this person or for this creative work. Supersedes awards.",
+      "type": "string"
+    },
+    "character": {
+      "id": "http://schema.org/character",
+      "title": "character",
+      "description": "Fictional person connected with a creative work.",
+      "type": "object",
+      "properties": {
+        "character": {
+          "$ref": "Person.json#/properties"
+        }
+      }
+    },
+    "citation": {
+      "id": "http://schema.org/citation",
+      "title": "citation",
+      "description": "A citation or reference to another creative work, such as another publication, web page, scholarly article, etc.",
+      "type": "object",
+      "properties": {
+        "citation": {
+          "$ref": "CreativeWork.json#/properties"
+        }
+      }
+    },
+    "comment": {
+      "id": "http://schema.org/comment",
+      "title": "comment",
+      "description": "Comments, typically from users, on this CreativeWork.",
+      "type": "object",
+      "properties": {
+        "comment": {
+          "$ref": "UserComments.json#/properties"
+        }
+      }
+    },
+    "commentCount": {
+      "id": "http://schema.org/commentCount",
+      "title": "commentCount",
+      "description": "The number of comments this CreativeWork (e.g. Article, Question or Answer) has received. This is most applicable to works published in Web sites with commenting system; additional comments may exist elsewhere.",
+      "type": "number"
+    },
+    "contentLocation": {
+      "id": "http://schema.org/contentLocation",
+      "title": "contentLocation",
+      "description": "The location of the content.",
+      "type": "object",
+      "properties": {
+        "contentLocation": {
+          "$ref": "Place.json#/properties"
+        }
+      }
+    },
+    "contentRating": {
+      "id": "http://schema.org/contentRating",
+      "title": "contentRating",
+      "description": "Official rating of a piece of content\u2014for example,'MPAA PG-13'.",
+      "type": "string"
+    },
+    "contributor": {
+      "id": "http://schema.org/contributor",
+      "title": "contributor",
+      "description": "A secondary contributor to the CreativeWork.",
+      "type": "object",
+      "properties": {
+        "contributor": {
+          "$ref": "Person.json#/properties"
+        }
+      }
+    },
+    "copyrightHolder": {
+      "id": "http://schema.org/copyrightHolder",
+      "title": "copyrightHolder",
+      "description": "The party holding the legal copyright to the CreativeWork.",
+      "type": "object",
+      "properties": {
+        "copyrightHolder": {
+          "$ref": "Person.json#/properties"
+        }
+      }
+    },
+    "copyrightYear": {
+      "id": "http://schema.org/copyrightYear",
+      "title": "copyrightYear",
+      "description": "The year during which the claimed copyright for the CreativeWork was first asserted.",
+      "type": "number"
+    },
+    "creator": {
+      "id": "http://schema.org/creator",
+      "title": "creator",
+      "description": "The creator/author of this CreativeWork or UserComments. This is the same as the Author property for CreativeWork.",
+      "type": "object",
+      "properties": {
+        "creator": {
+          "$ref": "Person.json#/properties"
+        }
+      }
+    },
+    "dateCreated": {
+      "id": "http://schema.org/dateCreated",
+      "title": "dateCreated",
+      "description": "The date on which the CreativeWork was created.",
+      "type": "object",
+      "properties": {
+        "dateCreated": {
+          "$ref": "Date.json#/properties"
+        }
+      }
+    },
+    "dateModified": {
+      "id": "http://schema.org/dateModified",
+      "title": "dateModified",
+      "description": "The date on which the CreativeWork was most recently modified.",
+      "type": "object",
+      "properties": {
+        "dateModified": {
+          "$ref": "Date.json#/properties"
+        }
+      }
+    },
+    "datePublished": {
+      "id": "http://schema.org/datePublished",
+      "title": "datePublished",
+      "description": "Date of first broadcast/publication.",
+      "type": "object",
+      "properties": {
+        "datePublished": {
+          "$ref": "Date.json#/properties"
+        }
+      }
+    },
+    "discussionUrl": {
+      "id": "http://schema.org/discussionUrl",
+      "title": "discussionUrl",
+      "description": "A link to the page containing the comments of the CreativeWork.",
+      "type": "string",
+      "format": "uri"
+    },
+    "editor": {
+      "id": "http://schema.org/editor",
+      "title": "editor",
+      "description": "Specifies the Person who edited the CreativeWork.",
+      "type": "object",
+      "properties": {
+        "editor": {
+          "$ref": "Person.json#/properties"
+        }
+      }
+    },
+    "educationalAlignment": {
+      "id": "http://schema.org/educationalAlignment",
+      "title": "educationalAlignment",
+      "description": "An alignment to an established educational framework.",
+      "type": "object",
+      "properties": {
+        "educationalAlignment": {
+          "$ref": "AlignmentObject.json#/properties"
+        }
+      }
+    },
+    "educationalUse": {
+      "id": "http://schema.org/educationalUse",
+      "title": "educationalUse",
+      "description": "The purpose of a work in the context of education; for example, 'assignment', 'group work'.",
+      "type": "string"
+    },
+    "encoding": {
+      "id": "http://schema.org/encoding",
+      "title": "encoding",
+      "description": "A media object that encodes this CreativeWork. This property is a synonym for associatedMedia. Supersedes encodings.",
+      "type": "object",
+      "properties": {
+        "encoding": {
+          "$ref": "MediaObject.json#/properties"
+        }
+      }
+    },
+    "exampleOfWork": {
+      "id": "http://schema.org/exampleOfWork",
+      "title": "exampleOfWork",
+      "description": "A creative work that this work is an example/instance/realization/derivation of. Inverse property: workExample.",
+      "type": "object",
+      "properties": {
+        "exampleOfWork": {
+          "$ref": "CreativeWork.json#/properties"
+        }
+      }
+    },
+    "genre": {
+      "id": "http://schema.org/genre",
+      "title": "genre",
+      "description": "Genre of the creative work or group.",
+      "type": "string"
+    },
+    "hasPart": {
+      "id": "http://schema.org/hasPart",
+      "title": "hasPart",
+      "description": "Indicates a CreativeWork that is (in some sense) a part of this CreativeWork. Inverse property: isPartOf.",
+      "type": "object",
+      "properties": {
+        "hasPart": {
+          "$ref": "CreativeWork.json#/properties"
+        }
+      }
+    },
+    "headline": {
+      "id": "http://schema.org/headline",
+      "title": "headline",
+      "description": "Headline of the article",
+      "type": "string"
+    },
+    "inLanguage": {
+      "id": "http://schema.org/inLanguage",
+      "title": "inLanguage",
+      "description": "The language of the content. please use one of the language codes from the IETF BCP 47 standard.",
+      "type": "string"
+    },
+    "interactionCount": {
+      "id": "http://schema.org/interactionCount",
+      "title": "interactionCount",
+      "description": "A count of a specific user interactions with this item\u2014for example, 20 UserLikes, 5 UserComments, or 300 UserDownloads. The user interaction type should be one of the sub types of UserInteraction.",
+      "type": "string"
+    },
+    "interactivityType": {
+      "id": "http://schema.org/interactivityType",
+      "title": "interactivityType",
+      "description": "The predominant mode of learning supported by the learning resource. Acceptable values are 'active', 'expositive', or 'mixed'.",
+      "type": "string"
+    },
+    "isBasedOnUrl": {
+      "id": "http://schema.org/isBasedOnUrl",
+      "title": "isBasedOnUrl",
+      "description": "A resource that was used in the creation of this resource. This term can be repeated for multiple sources. For example, http://example.com/great-multiplication-intro.html",
+      "type": "string",
+      "format": "uri"
+    },
+    "isFamilyFriendly": {
+      "id": "http://schema.org/isFamilyFriendly",
+      "title": "isFamilyFriendly",
+      "description": "Indicates whether this content is family friendly.",
+      "type": "boolean"
+    },
+    "isPartOf": {
+      "id": "http://schema.org/isPartOf",
+      "title": "isPartOf",
+      "description": "Indicates a CreativeWork that this CreativeWork is (in some sense) part of. Inverse property: hasPart.",
+      "type": "object",
+      "properties": {
+        "isPartOf": {
+          "$ref": "CreativeWork.json#/properties"
+        }
+      }
+    },
+    "keywords": {
+      "id": "http://schema.org/keywords",
+      "title": "keywords",
+      "description": "Keywords or tags used to describe this content. Multiple entries in a keywords list are typically delimited by commas.",
+      "type": "string"
+    },
+    "learningResourceType": {
+      "id": "http://schema.org/learningResourceType",
+      "title": "learningResourceType",
+      "description": "The predominant type or kind characterizing the learning resource. For example, 'presentation', 'handout'.",
+      "type": "string"
+    },
+    "license": {
+      "id": "http://schema.org/license",
+      "title": "license",
+      "description": "A license document that applies to this content, typically indicated by URL.",
+      "type": "string",
+      "format": "uri"
+    },
+    "mentions": {
+      "id": "http://schema.org/mentions",
+      "title": "mentions",
+      "description": "Indicates that the CreativeWork contains a reference to, but is not necessarily about a concept.",
+      "type": "object",
+      "properties": {
+        "mentions": {
+          "$ref": "Thing.json#/properties"
+        }
+      }
+    },
+    "offers": {
+      "id": "http://schema.org/offers",
+      "title": "offers",
+      "description": "An offer to provide this item\u2014for example, an offer to sell a product, rent the DVD of a movie, or give away tickets to an event.",
+      "type": "object",
+      "properties": {
+        "offers": {
+          "$ref": "Offer.json#/properties"
+        }
+      }
+    },
+    "position": {
+      "id": "http://schema.org/position",
+      "title": "position",
+      "description": "The position of an item in a series or sequence of items.",
+      "type": "number"
+    },
+    "producer": {
+      "id": "http://schema.org/producer",
+      "title": "producer",
+      "description": "The person or organization who produced the work (e.g. music album, movie, tv/radio series etc.).",
+      "type": "object",
+      "properties": {
+        "producer": {
+          "$ref": "Person.json#/properties"
+        }
+      }
+    },
+    "provider": {
+      "id": "http://schema.org/provider",
+      "title": "provider",
+      "description": "The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller. Supersedes carrier.",
+      "type": "object",
+      "properties": {
+        "provider": {
+          "$ref": "Person.json#/properties"
+        }
+      }
+    },
+    "publisher": {
+      "id": "http://schema.org/publisher",
+      "title": "publisher",
+      "description": "The publisher of the creative work.",
+      "type": "object",
+      "properties": {
+        "publisher": {
+          "$ref": "Organization.json#/properties"
+        }
+      }
+    },
+    "publishingPrinciples": {
+      "id": "http://schema.org/publishingPrinciples",
+      "title": "publishingPrinciples",
+      "description": "Link to page describing the editorial principles of the organization primarily responsible for the creation of the CreativeWork.",
+      "type": "string",
+      "format": "uri"
+    },
+    "recordedAt": {
+      "id": "http://schema.org/recordedAt",
+      "title": "recordedAt",
+      "description": "The Event where the CreativeWork was recorded. The CreativeWork may capture all or part of the event. Inverse property: recordedIn.",
+      "type": "object",
+      "properties": {
+        "recordedAt": {
+          "$ref": "Event.json#/properties"
+        }
+      }
+    },
+    "releasedEvent": {
+      "id": "http://schema.org/releasedEvent",
+      "title": "releasedEvent",
+      "description": "The place and time the release was issued, expressed as a PublicationEvent.",
+      "type": "object",
+      "properties": {
+        "releasedEvent": {
+          "$ref": "PublicationEvent.json#/properties"
+        }
+      }
+    },
+    "review": {
+      "id": "http://schema.org/review",
+      "title": "review",
+      "description": "A review of the item. Supersedes reviews.",
+      "type": "object",
+      "properties": {
+        "review": {
+          "$ref": "Review.json#/properties"
+        }
+      }
+    },
+    "sourceOrganization": {
+      "id": "http://schema.org/sourceOrganization",
+      "title": "sourceOrganization",
+      "description": "The Organization on whose behalf the creator was working.",
+      "type": "object",
+      "properties": {
+        "sourceOrganization": {
+          "$ref": "Organization.json#/properties"
+        }
+      }
+    },
+    "text": {
+      "id": "http://schema.org/text",
+      "title": "text",
+      "description": "The textual content of this CreativeWork.",
+      "type": "string"
+    },
+    "thumbnailUrl": {
+      "id": "http://schema.org/thumbnailUrl",
+      "title": "thumbnailUrl",
+      "description": "A thumbnail image relevant to the Thing.",
+      "type": "string",
+      "format": "uri"
+    },
+    "timeRequired": {
+      "id": "http://schema.org/timeRequired",
+      "title": "timeRequired",
+      "description": "Approximate or typical time it takes to work with or through this learning resource for the typical intended target audience, e.g. 'P30M', 'P1H25M'.",
+      "type": "object",
+      "properties": {
+        "timeRequired": {
+          "$ref": "Duration.json#/properties"
+        }
+      }
+    },
+    "translator": {
+      "id": "http://schema.org/translator",
+      "title": "translator",
+      "description": "Organization or person who adapts a creative work to different languages, regional differences and technical requirements of a target market.",
+      "type": "object",
+      "properties": {
+        "translator": {
+          "$ref": "Person.json#/properties"
+        }
+      }
+    },
+    "typicalAgeRange": {
+      "id": "http://schema.org/typicalAgeRange",
+      "title": "typicalAgeRange",
+      "description": "The typical expected age range, e.g. '7-9', '11-'.",
+      "type": "string"
+    },
+    "version": {
+      "id": "http://schema.org/version",
+      "title": "version",
+      "description": "The version of the CreativeWork embodied by a specified resource.",
+      "type": "number"
+    },
+    "video": {
+      "id": "http://schema.org/video",
+      "title": "video",
+      "description": "An embedded video object.",
+      "type": "object",
+      "properties": {
+        "video": {
+          "$ref": "VideoObject.json#/properties"
+        }
+      }
+    },
+    "workExample": {
+      "id": "http://schema.org/workExample",
+      "title": "workExample",
+      "description": "Example/instance/realization/derivation of the concept of this creative work. eg. The paperback edition, first edition, or eBook. Inverse property: exampleOfWork.",
+      "type": "object",
+      "properties": {
+        "workExample": {
+          "$ref": "CreativeWork.json#/properties"
+        }
+      }
+    },
+    "additionalType": {
+      "id": "http://schema.org/additionalType",
+      "title": "additionalType",
+      "description": "An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.",
+      "type": "string",
+      "format": "uri"
+    },
+    "alternateName": {
+      "id": "http://schema.org/alternateName",
+      "title": "alternateName",
+      "description": "An alias for the item.",
+      "type": "string"
+    },
+    "description": {
+      "id": "http://schema.org/description",
+      "title": "description",
+      "description": "A short description of the item.",
+      "type": "string"
+    },
+    "image": {
+      "id": "http://schema.org/image",
+      "title": "image",
+      "description": "An image of the item. This can be a URL or a fully described ImageObject.",
+      "type": "string",
+      "format": "uri"
+    },
+    "name": {
+      "id": "http://schema.org/name",
+      "title": "name",
+      "description": "The name of the item.",
+      "type": "string"
+    },
+    "potentialAction": {
+      "id": "http://schema.org/potentialAction",
+      "title": "potentialAction",
+      "description": "Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.",
+      "type": "object",
+      "properties": {
+        "potentialAction": {
+          "$ref": "Action.json#/properties"
+        }
+      }
+    },
+    "sameAs": {
+      "id": "http://schema.org/sameAs",
+      "title": "sameAs",
+      "description": "URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.",
+      "type": "string",
+      "format": "uri"
+    },
+    "url": {
+      "id": "http://schema.org/url",
+      "title": "url",
+      "description": "URL of the item.",
+      "type": "string",
+      "format": "uri"
+    }
+  }
+}

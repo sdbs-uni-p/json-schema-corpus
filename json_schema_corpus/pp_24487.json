@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://atomicbits.io/raml10/user.json#",
+  "type": "object",
+  "javaType": "",
+  "description": "A user object.",
+  "definitions": {
+    "address": {
+      "id": "#/definitions/address",
+      "type": "object",
+      "properties": {
+        "streetAddress": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "streetAddress",
+        "city",
+        "state"
+      ]
+    }
+  },
+  "properties": {
+    "id": {
+      "required": true,
+      "type": "string"
+    },
+    "firstName": {
+      "required": true,
+      "type": "string"
+    },
+    "lastName": {
+      "required": true,
+      "type": "string"
+    },
+    "age": {
+      "required": true,
+      "type": "integer"
+    },
+    "birthday": {
+      "type": "date-only",
+      "example": "2015-05-23"
+    },
+    "homePage": {
+      "required": false,
+      "$ref": "http://atomicbits.io/raml10/link.json#"
+    },
+    "address": {
+      "$ref": "#/definitions/address"
+    },
+    "other": {
+      "type": "object",
+      "properties": {}
+    }
+  }
+}

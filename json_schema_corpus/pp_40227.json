@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "rfid": {
+      "type": "string",
+      "pattern": "[A-Z0-9]{8}"
+    },
+    "storeID": {
+      "type": "integer"
+    },
+    "customerID": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "rfid",
+    "storeID",
+    "customerID"
+  ]
+}

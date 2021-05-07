@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "definitions.json#/optional-user-properties"
+    },
+    {
+      "properties": {
+        "mail": {
+          "$ref": "definitions.json#/mail"
+        },
+        "token": {
+          "type": "string"
+        }
+      }
+    }
+  ]
+}

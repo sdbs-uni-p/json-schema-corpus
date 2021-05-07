@@ -1,0 +1,56 @@
+{
+  "id": "Communication",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "required": [
+    "id",
+    "host",
+    "owner",
+    "startingTime",
+    "lastModified",
+    "duration",
+    "communicationStatus"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "null"
+    },
+    "host": {
+      "type": "null"
+    },
+    "owner": {
+      "type": "null"
+    },
+    "startingTime": {
+      "type": "null"
+    },
+    "lastModified": {
+      "type": "null"
+    },
+    "duration": {
+      "type": "null"
+    },
+    "communicationStatus": {
+      "enum": [
+        "OPEN",
+        "PENDING",
+        "CLOSED",
+        "PAUSED",
+        "FAILED"
+      ]
+    },
+    "participantArray": {
+      "type": "array",
+      "items": {
+        "$ref": "Participant"
+      }
+    },
+    "communicationQualityArray": {
+      "type": "array",
+      "items": {
+        "$ref": "CommunicationQuality"
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "http://speedray.org/collections/translations",
+  "$schema": "http://json-schema.org/schema#",
+  "properties": {
+    "locale": {
+      "type": "string"
+    },
+    "value": {
+      "type": "string"
+    }
+  }
+}

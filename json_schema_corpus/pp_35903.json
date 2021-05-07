@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "pathEntry": {
+      "title": "An entry in a path",
+      "id": "#pathEntry",
+      "type": "object",
+      "properties": {
+        "solarSystem": {
+          "$ref": "types.json#solarSystemId"
+        }
+      },
+      "required": [
+        "solarSystem"
+      ]
+    }
+  },
+  "title": "Route Result",
+  "description": "The result of a route request.",
+  "type": "object",
+  "properties": {
+    "path": {
+      "title": "The resulting path",
+      "type": "array",
+      "items": {
+        "$ref": "#pathEntry"
+      }
+    }
+  },
+  "required": [
+    "path"
+  ]
+}

@@ -1,0 +1,255 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "version": "1.2.3",
+  "type": "object",
+  "properties": {
+    "variant": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "entries": {
+            "type": "array",
+            "items": {
+              "properties": {}
+            }
+          },
+          "requires": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "ammunition": {
+                  "type": "boolean"
+                },
+                "armor": {
+                  "type": "boolean"
+                },
+                "axe": {
+                  "type": "boolean"
+                },
+                "sword": {
+                  "type": "boolean"
+                },
+                "weapon": {
+                  "type": "boolean"
+                },
+                "dmgType": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "scfType": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "inherits": {
+            "type": "object",
+            "properties": {
+              "bonusAc": {
+                "type": "string"
+              },
+              "bonusWeapon": {
+                "type": "string"
+              },
+              "bonusWeaponAttack": {
+                "type": "string"
+              },
+              "bonusSpellAttack": {
+                "type": "string"
+              },
+              "bonusSavingThrow": {
+                "type": "string"
+              },
+              "tier": {
+                "type": "string"
+              },
+              "rarity": {
+                "type": "string",
+                "enum": [
+                  "rare",
+                  "none",
+                  "uncommon",
+                  "very rare",
+                  "legendary",
+                  "artifact",
+                  "unknown",
+                  "common",
+                  "unknown (magic)",
+                  "varies"
+                ]
+              },
+              "source": {
+                "type": "string"
+              },
+              "page": {
+                "type": "integer"
+              },
+              "namePrefix": {
+                "type": "string"
+              },
+              "nameSuffix": {
+                "type": "string"
+              },
+              "reqAttune": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "boolean"
+                  }
+                ]
+              },
+              "curse": {
+                "type": "boolean"
+              },
+              "resist": {
+                "type": "string"
+              },
+              "stealth": {
+                "type": "boolean"
+              },
+              "strength": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "wondrous": {
+                "type": "boolean"
+              },
+              "entries": {
+                "type": "array",
+                "items": {
+                  "properties": {}
+                }
+              },
+              "charges": {
+                "type": [
+                  "string",
+                  "integer"
+                ]
+              },
+              "attachedSpells": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "lootTables": {
+                "type": "array",
+                "items": {
+                  "oneOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "object",
+                      "name": {
+                        "type": "string"
+                      },
+                      "source": {
+                        "type": "string"
+                      }
+                    }
+                  ]
+                }
+              },
+              "srd": {
+                "$ref": "util.json#/definitions/srd"
+              },
+              "otherSources": {
+                "$ref": "util.json#/definitions/otherSources"
+              },
+              "valueExpression": {
+                "description": "Expression used to calculate each specific variant's value.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "rarity",
+              "source",
+              "page"
+            ],
+            "additionalProperties": false
+          },
+          "excludes": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ]
+              },
+              "page": {
+                "type": "integer"
+              },
+              "property": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          },
+          "noDisplay": {
+            "type": "boolean"
+          },
+          "charges": {
+            "type": [
+              "string",
+              "integer"
+            ]
+          },
+          "attachedSpells": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "ammo": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "name",
+          "inherits"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "linkedLootTables": {
+      "type": "object",
+      "properties": {
+        "DMG": {
+          "type": "object"
+        }
+      }
+    }
+  },
+  "required": [
+    "variant"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {},
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": [
+        "integer",
+        "string"
+      ],
+      "pattern": "^[a-zA-Z0-9]+[\\w\\._-]*$"
+    },
+    "uri": {
+      "type": "string",
+      "pattern": "^\\w+://.+"
+    },
+    "name": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "enum": null
+    },
+    "validSince": {
+      "$ref": "#/definitions/fuzzyDate"
+    },
+    "validUntil": {
+      "$ref": "#/definitions/fuzzyDate"
+    },
+    "geometry": {
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Point",
+            "LineString",
+            "Polygon",
+            "MultiPoint",
+            "MultiLineString",
+            "MultiPolygon",
+            "GeometryCollection"
+          ]
+        },
+        "coordinates": {}
+      },
+      "dependencies": {
+        "type": [
+          "coordinates"
+        ],
+        "coordinates": [
+          "type"
+        ]
+      }
+    },
+    "data": {}
+  },
+  "oneOf": [
+    {
+      "required": [
+        "id",
+        "type"
+      ]
+    },
+    {
+      "required": [
+        "uri",
+        "type"
+      ]
+    }
+  ],
+  "additionalProperties": false
+}

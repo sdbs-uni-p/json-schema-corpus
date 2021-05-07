@@ -1,0 +1,99 @@
+{
+  "id": "http://schema.management.azure.com/schemas/2015-05-21-preview/Microsoft.DevTestLab.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Microsoft.DevTestLab",
+  "description": "Azure DevTest Labs Resource Types",
+  "resourceDefinitions": {
+    "labs": {
+      "description": "Required properties to create a DevTest Lab",
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [
+            "Microsoft.DevTestLab/labs"
+          ]
+        },
+        "apiVersion": {
+          "enum": [
+            "2015-05-21-preview"
+          ]
+        }
+      },
+      "required": [
+        "type",
+        "apiVersion",
+        "location"
+      ]
+    },
+    "virtualMachines": {
+      "description": "Required properties to create a virtual machine in an existing DevTest Lab",
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [
+            "Microsoft.DevTestLab/labs/virtualMachines"
+          ]
+        },
+        "apiVersion": {
+          "enum": [
+            "2015-05-21-preview"
+          ]
+        },
+        "properties": {
+          "type": "object",
+          "properties": {
+            "customImageId": {
+              "type": "string",
+              "description": "The id of the custom image."
+            },
+            "size": {
+              "type": "string",
+              "description": "The size of the VM (eg. 'Standard_A4')"
+            },
+            "userName": {
+              "type": "string",
+              "description": "Name of the account used for connection to VM"
+            },
+            "password": {
+              "type": "string",
+              "description": "Password of account used for connection to VM"
+            },
+            "sshKey": {
+              "type": "string",
+              "description": "SSH key used for connection to Linux machines"
+            },
+            "isAuthenticationWithSshKey": {
+              "oneOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "$ref": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#/definitions/expression"
+                }
+              ],
+              "description": "Sets whether SSH Key should be used to authenticate to Linux machine"
+            },
+            "labVirtualNetworkId": {
+              "type": "string",
+              "description": "The id for the virtual network"
+            },
+            "labSubnetName": {
+              "type": "string",
+              "description": "The name of the subnet"
+            }
+          },
+          "required": [
+            "size",
+            "labVirtualNetworkId",
+            "labSubnetName"
+          ]
+        }
+      },
+      "required": [
+        "type",
+        "apiVersion",
+        "properties"
+      ]
+    }
+  }
+}

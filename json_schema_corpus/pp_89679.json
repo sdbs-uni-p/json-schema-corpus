@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "YAML Publisher",
+  "id": "yaml_publisher",
+  "additionalProperties": false,
+  "properties": {
+    "publisher_type": {
+      "type": "string",
+      "enum": [
+        "fromyaml-pub"
+      ],
+      "default": "fromyaml-pub"
+    },
+    "yamlfile": {
+      "title": "YAML file",
+      "type": "string"
+    }
+  },
+  "required": [
+    "publisher_type",
+    "yamlfile"
+  ]
+}

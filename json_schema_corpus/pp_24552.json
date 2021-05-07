@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "description": "Verse of a chapter.",
+  "$linkedData": {
+    "chapter": {
+      "schema": "chapter",
+      "type": "single",
+      "path": [
+        "/bibles",
+        "/{bibleId}",
+        "/books",
+        "/{bookId}",
+        "/chapters",
+        "/{chapterId}"
+      ]
+    }
+  },
+  "properties": {
+    "verseId": {
+      "type": "integer",
+      "required": true
+    },
+    "number": {
+      "type": "string",
+      "required": true
+    },
+    "text": {
+      "type": "string",
+      "required": true
+    },
+    "chapterId": {
+      "type": "integer",
+      "required": true
+    },
+    "annotations": {
+      "type": "array",
+      "items": {
+        "$ref": "annotation"
+      }
+    }
+  }
+}

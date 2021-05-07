@@ -1,0 +1,117 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "#",
+  "required": false,
+  "properties": {
+    "discovered": {
+      "format": "date-time",
+      "type": "string",
+      "id": "discovered",
+      "required": true
+    },
+    "source": {
+      "type": "string",
+      "id": "source",
+      "required": true
+    },
+    "topics": {
+      "type": "array",
+      "id": "topics",
+      "required": true,
+      "items": {
+        "type": "object",
+        "name": "topic",
+        "required": false,
+        "properties": {
+          "keyword": {
+            "type": "string",
+            "id": "keyword",
+            "required": true
+          },
+          "searches": {
+            "type": "array",
+            "id": "searches",
+            "required": true,
+            "items": {
+              "type": "object",
+              "id": "0",
+              "required": false,
+              "properties": {
+                "discovered": {
+                  "type": "string",
+                  "format": "date-time",
+                  "id": "discovered",
+                  "required": true
+                },
+                "results": {
+                  "type": "array",
+                  "id": "results",
+                  "required": true,
+                  "items": {
+                    "type": "object",
+                    "id": "0",
+                    "required": false,
+                    "properties": {
+                      "malware_reports": {
+                        "type": "array",
+                        "id": "malware_reports",
+                        "required": true,
+                        "items": {
+                          "type": "object",
+                          "id": "0",
+                          "required": false,
+                          "properties": {
+                            "opinions": {
+                              "type": "array",
+                              "id": "opinions",
+                              "required": true,
+                              "items": [
+                                {
+                                  "type": "object",
+                                  "id": "0",
+                                  "required": false,
+                                  "properties": {
+                                    "confidence": {
+                                      "type": "number",
+                                      "id": "confidence",
+                                      "required": true
+                                    },
+                                    "type": {
+                                      "type": "string",
+                                      "id": "type",
+                                      "required": true
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            "reporter": {
+                              "type": "string",
+                              "id": "reporter",
+                              "required": true
+                            }
+                          }
+                        }
+                      },
+                      "url": {
+                        "type": "string",
+                        "id": "url",
+                        "required": true
+                      }
+                    }
+                  }
+                },
+                "source": {
+                  "type": "string",
+                  "id": "source",
+                  "required": true
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

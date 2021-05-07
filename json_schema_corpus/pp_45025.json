@@ -1,0 +1,512 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "title": "/order_pull_v1",
+  "description": "order_pull_v1",
+  "stability": "draft",
+  "additionalProperties": true,
+  "type": "object",
+  "definitions": {},
+  "links": [
+    {
+      "description": "order_pull_v1",
+      "href": "/order_pull_v1",
+      "method": "post",
+      "rel": "instances",
+      "schema": {
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "action",
+              "version",
+              "client_id",
+              "channel_info"
+            ],
+            "properties": {
+              "integration_auth_token": {
+                "type": "string",
+                "description": "Randomly generated authorization token, for authenticating genuine RetailOps- originated requests.",
+                "example": "2KuxqV9rsAtAM78i47CITMvtnflUapNmgGJAvWiHqgUrk1xkeDNWlM3EsrmJEtmV"
+              },
+              "action": {
+                "type": "string",
+                "description": "Action Name name",
+                "example": "catalog_get_config"
+              },
+              "version": {
+                "type": "integer",
+                "description": "Action Version",
+                "example": 1
+              },
+              "client_id": {
+                "description": "RetailOPS client id",
+                "type": "integer",
+                "example": 497
+              },
+              "channel_info": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "description": "channel id",
+                    "example": 21
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "properties": {
+              "page_token": {
+                "type": "string",
+                "description": "Initially blank, subsequent calls will specifiy the value returned from next_page_token. Your implementation should encode any state information required for order retrieval into this value. If your channel order retrival implementation requires the data which is encoded in page_token, it MUST handle a blank page_token gracefully, and respond with a valid and appropriate next_page_token"
+              },
+              "specific_orders": {
+                "type": "array",
+                "description": "RetailOps may occasionally wish to re-fetch a specific order, or small group of orders. When specified, any next_page_token which is provided will be ignored.",
+                "items": {
+                  "type": "object",
+                  "description": "List of specific orders which are desired to be fetched or re-fetched. Any filtering of acknolwedged orders should be disabled for this function",
+                  "properties": {
+                    "channel_refnum": {
+                      "type": "string",
+                      "description": "Channel reference number for one of the desired orders",
+                      "example": "141"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "targetSchema": {
+        "type": "object",
+        "properties": {
+          "next_page_token": {
+            "type": "string",
+            "description": "In order to affect retieval of large numbers of orders, pagination is generally required. Your implementation should construct a next_page_token value which contains sufficient state information to retrieve the next 'page' of orders. This value will be passed in to a subsequent order_pull call using the page_token field. Return an empty string if there are no additional pages"
+          },
+          "orders": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "description": "List of orders retrieved from the channel. Cannot exceed 100 orders per request. Your implementation MUST NOT consider the order as having been imported until such time as order_acknolwledge is called with the specific order reference numbers.",
+            "maxItems": 100,
+            "items": {
+              "type": "object",
+              "properties": {
+                "tags": {
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "description": "List of text order tags that can be applied to this order (array of strings)",
+                  "example": "['example tag','test']",
+                  "maxItems": 100,
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "channel_order_refnum": {
+                  "type": "string",
+                  "description": "Channel's identifier for this order. This value will be used for acknowledgement, completion, and other interactions",
+                  "example": "X123"
+                },
+                "ship_service_code": {
+                  "type": "string",
+                  "description": "Code identifying the level of service. Could be generic 'Slow' / 'Fast' or Specific 'Fedex Ground'",
+                  "minLength": 1,
+                  "example": "Ground (5-7 days)"
+                },
+                "currency_code": {
+                  "type": "string",
+                  "description": "ISO4217 Currency code for the counterparty (transaction) currency",
+                  "enum": [
+                    "AUD",
+                    "CAD",
+                    "CHF",
+                    "EUR",
+                    "GBP",
+                    "HKD",
+                    "JPY",
+                    "MXN",
+                    "NZD",
+                    "PLN",
+                    "SGD",
+                    "USD"
+                  ]
+                },
+                "currency_values": {
+                  "type": "object",
+                  "description": "Currency values which pertain to the whole order, but are not included in the respective item values. EG: if the item shipping is $1 for each of 10 items, for a total of $10, the shipping_amt here should be $0, and the per-item shipping_amt should be $1; If the order shipping is $10 none of which is directly attributable to specific items, then shipping_amt here should be $10",
+                  "properties": {
+                    "shipping_amt": {
+                      "type": "number",
+                      "description": "Shipping",
+                      "example": 5.75
+                    },
+                    "tax_amt": {
+                      "type": "number",
+                      "description": "Tax Amount",
+                      "example": 4.47
+                    },
+                    "discount_amt": {
+                      "type": "number",
+                      "description": "Discount Amount",
+                      "example": 0
+                    }
+                  }
+                },
+                "cancel": {
+                  "type": "boolean",
+                  "description": "Indicates that the order has been cancelled by the channel. Used for cancelling orders in in Retailops that are in 'channel incomplete' status. Default is 'false'",
+                  "example": false
+                },
+                "channel_date_created": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "Date the order was created in the channel in ISO8610 format. Don't just use the present time, if it can be avoided.",
+                  "example": "2016-01-01T00:42:42Z"
+                },
+                "billing_address": {
+                  "type": "object",
+                  "properties": {
+                    "state_match": {
+                      "type": "string",
+                      "description": "state",
+                      "example": "CA"
+                    },
+                    "country_match": {
+                      "type": "string",
+                      "description": "Country",
+                      "example": "'US' or 'United States'"
+                    },
+                    "last_name": {
+                      "type": "string",
+                      "description": "Last Name",
+                      "example": "Smith"
+                    },
+                    "address2": {
+                      "type": "string",
+                      "description": "Address second line",
+                      "example": "suite 100"
+                    },
+                    "city": {
+                      "type": "string",
+                      "description": "City",
+                      "example": "San Diego"
+                    },
+                    "postal_code": {
+                      "type": "string",
+                      "description": "Postal Code",
+                      "example": "92101"
+                    },
+                    "address1": {
+                      "type": "string",
+                      "description": "Address line one",
+                      "example": "123 Main St"
+                    },
+                    "company": {
+                      "type": "string",
+                      "description": "Company name",
+                      "example": "gudTECH"
+                    },
+                    "first_name": {
+                      "type": "string",
+                      "description": "First Name",
+                      "example": "John"
+                    },
+                    "phone_number": {
+                      "type": "string",
+                      "description": "contact phone number for address",
+                      "example": "(555) 867-5309"
+                    }
+                  }
+                },
+                "shipping_address": {
+                  "type": "object",
+                  "properties": {
+                    "state_match": {
+                      "type": "string",
+                      "description": "state",
+                      "example": "CA"
+                    },
+                    "country_match": {
+                      "type": "string",
+                      "description": "Country",
+                      "example": "'US' or 'United States'"
+                    },
+                    "last_name": {
+                      "type": "string",
+                      "description": "Last Name",
+                      "example": "Smith"
+                    },
+                    "address2": {
+                      "type": "string",
+                      "description": "Address second line",
+                      "example": "suite 100"
+                    },
+                    "city": {
+                      "type": "string",
+                      "description": "City",
+                      "example": "San Diego"
+                    },
+                    "postal_code": {
+                      "type": "string",
+                      "description": "Postal Code",
+                      "example": "92101"
+                    },
+                    "address1": {
+                      "type": "string",
+                      "description": "Address line one",
+                      "example": "123 Main St"
+                    },
+                    "company": {
+                      "type": "string",
+                      "description": "Company name",
+                      "example": "gudTECH"
+                    },
+                    "first_name": {
+                      "type": "string",
+                      "description": "First Name",
+                      "example": "John"
+                    },
+                    "phone_number": {
+                      "type": "string",
+                      "description": "contact phone number for address",
+                      "example": "(555) 867-5309"
+                    }
+                  }
+                },
+                "order_items": {
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "channel_item_refnum": {
+                        "type": "string",
+                        "description": "Channel reference number for this order line item",
+                        "example": "496"
+                      },
+                      "sku": {
+                        "type": "string",
+                        "description": "SKU number to which this order line item is associated",
+                        "example": "S1234"
+                      },
+                      "sku_description": {
+                        "type": "string",
+                        "description": "Used to describe the item in the case where RetailOps does not have a matching SKU",
+                        "example": "Men's Shaving Kit"
+                      },
+                      "quantity": {
+                        "type": "integer",
+                        "description": "SKU Quantity for this item",
+                        "example": 1
+                      },
+                      "item_type": {
+                        "type": "string",
+                        "description": "Item type determines the behavior of the RetailOps order routing system. Use 'ship' for items you wish to be shipped by RetailOps. Use 'advisory' for items which are non-shippable or have already been shipped. Use 'instore' for items which have been purchased in a physical store",
+                        "enum": [
+                          "ship",
+                          "advisory",
+                          "instore"
+                        ]
+                      },
+                      "currency_values": {
+                        "type": "object",
+                        "properties": {
+                          "discount_amt": {
+                            "type": "number"
+                          },
+                          "discount_pct": {
+                            "type": "number"
+                          },
+                          "recycling_amt": {
+                            "type": "number"
+                          },
+                          "ship_amt": {
+                            "type": "number"
+                          },
+                          "shiptax_amt": {
+                            "type": "number"
+                          },
+                          "unit_price": {
+                            "type": "number"
+                          },
+                          "unit_tax": {
+                            "type": "number"
+                          },
+                          "unit_tax_pct": {
+                            "type": "number"
+                          },
+                          "vat_pct": {
+                            "type": "number"
+                          }
+                        }
+                      },
+                      "options": {
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "description": "Type of option, acceptable values are bool, text, and image.  If type is image, you must pass an image url. If type is bool,  pass a string representation of a boolen \"true\" or \"false\"",
+                              "enum": [
+                                "text",
+                                "bool",
+                                "image"
+                              ]
+                            },
+                            "name": {
+                              "type": "string",
+                              "description": "Free form display name (up to 255 characters). If name is blank, RetailOps UI will display the option code"
+                            },
+                            "value": {
+                              "type": "string",
+                              "description": "string value of the option, free form up to 255 characters"
+                            },
+                            "code": {
+                              "type": "string",
+                              "description": "option code, up to 255 characters. Will be displayed in UI if name is empty"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "gift_message": {
+                  "type": "string",
+                  "description": "Gift message for this order",
+                  "example": "Happy Birthday Kiddo!"
+                },
+                "payment_transactions": {
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "payment_processing_type": {
+                        "type": "string",
+                        "description": "Indicates what type of payment RetailOps should record in its payment system. types beginning with channel_ are delegated to the channel for processing. Other types may be handled directly with the payment processor, if the account is on file",
+                        "enum": [
+                          "channel_payment",
+                          "channel_storecredit",
+                          "channel_giftcert",
+                          "authorize.net"
+                        ]
+                      },
+                      "transaction_type": {
+                        "type": "string",
+                        "description": "",
+                        "enum": [
+                          "auth",
+                          "charge",
+                          "capture",
+                          "giftcard"
+                        ]
+                      },
+                      "payment_type": {
+                        "type": "string",
+                        "description": "Payment type for this transaction. Free-form",
+                        "example": "Visa (or MasterCard, giftcard, etc...)"
+                      },
+                      "amount": {
+                        "type": "number",
+                        "description": "Transaction amount",
+                        "example": 100.32
+                      },
+                      "message": {
+                        "type": "string",
+                        "description": "Optional message to record info regarding transaction.",
+                        "example": "Gift card purchase for promotion XYZ"
+                      }
+                    }
+                  }
+                },
+                "customer_info": {
+                  "type": "object",
+                  "description": "customer",
+                  "properties": {
+                    "email_address": {
+                      "type": "string",
+                      "description": "Customer email address",
+                      "example": "john@gudtech.com"
+                    },
+                    "full_name": {
+                      "type": "string",
+                      "description": "Customer's full name",
+                      "example": "John Smith"
+                    },
+                    "phone_number": {
+                      "type": "string",
+                      "description": "customer phone",
+                      "example": "(619)555-5555"
+                    }
+                  }
+                },
+                "attributes": {
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "description": "Attributes which pertain to the order",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "attribute_type": {
+                        "type": "string",
+                        "description": "Type of attribute being specified",
+                        "enum": [
+                          "text",
+                          "number",
+                          "select",
+                          "multiselect"
+                        ],
+                        "example": "text"
+                      },
+                      "handle": {
+                        "type": "string",
+                        "description": "Unique identifier",
+                        "minLength": 2,
+                        "maxLength": 100,
+                        "example": "customer_rewards_number"
+                      },
+                      "value": {
+                        "type": "string",
+                        "description": "value of attribute",
+                        "minLength": 2,
+                        "maxLength": 100,
+                        "example": "XXX_XXXXXX_XXX"
+                      }
+                    }
+                  }
+                },
+                "ip_address": {
+                  "type": "string",
+                  "description": "IP address used to place order",
+                  "example": "61.2.7.122"
+                }
+              }
+            }
+          }
+        }
+      },
+      "title": "/order_pull_v1"
+    }
+  ],
+  "properties": {},
+  "id": "/order_pull_v1"
+}

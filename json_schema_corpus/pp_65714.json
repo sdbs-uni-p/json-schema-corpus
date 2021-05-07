@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "AppSla",
+  "type": "object",
+  "properties": {
+    "cost": {
+      "type": "number"
+    },
+    "currency_type": {
+      "type": "string"
+    },
+    "latency": {
+      "type": "number"
+    },
+    "error_rate": {
+      "type": "number"
+    },
+    "status": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "cost",
+    "currency_type",
+    "latency",
+    "error_rate"
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "A representation of a publication for POST/PUT",
+  "id": "http://paperhive.org/api/v0/schemas/publication_post.json#",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "origins": {
+      "type": "array",
+      "additionalProperties": false,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "pdf": {
+            "type": "string",
+            "format": "uri"
+          },
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "arxiv",
+              "uploaded"
+            ]
+          },
+          "date_added": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "added_by": {
+            "$ref": "person.json#/properties/id"
+          }
+        }
+      }
+    },
+    "md5sum": {
+      "type": "string"
+    },
+    "authors": {
+      "type": "array",
+      "items": {
+        "$ref": "author_post.json"
+      }
+    },
+    "title": {
+      "type": "string"
+    },
+    "date": {
+      "type": "string"
+    },
+    "journal": {
+      "type": "string"
+    },
+    "volume": {
+      "type": "string"
+    },
+    "number": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "origins",
+    "md5sum",
+    "authors",
+    "title",
+    "date"
+  ]
+}

@@ -1,0 +1,193 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "javaType": "com.tas.api....",
+  "properties": {
+    "action": {
+      "$ref": "../schemas/action.json"
+    },
+    "actionProductionsForApps": {
+      "$ref": "../schemas/actionProductionsForApps.json"
+    },
+    "actionProductions": {
+      "$ref": "../schemas/actionProductions.json"
+    },
+    "actionSetupPageDetail": {
+      "$ref": "../schemas/actionSetupPageDetail.json"
+    },
+    "actionsForApp": {
+      "$ref": "../schemas/actionsForApp.json"
+    },
+    "actionsForApps": {
+      "$ref": "../schemas/actionsForApps.json"
+    },
+    "actions": {
+      "$ref": "../schemas/actions.json"
+    },
+    "apiResult": {
+      "$ref": "../schemas/apiResult.json"
+    },
+    "apiTest": {
+      "$ref": "../schemas/apiTest.json"
+    },
+    "applicationView": {
+      "$ref": "../schemas/applicationView.json"
+    },
+    "canApply": {
+      "$ref": "../schemas/canApply.json"
+    },
+    "candidateDetails": {
+      "$ref": "../schemas/candidateDetails.json"
+    },
+    "candidateEdit": {
+      "$ref": "../schemas/candidateEdit.json"
+    },
+    "candidateEditSpec": {
+      "$ref": "../schemas/candidateEditSpec.json"
+    },
+    "candidates": {
+      "$ref": "../schemas/candidates.json"
+    },
+    "candidateWorkflow": {
+      "$ref": "../schemas/candidateWorkflow.json"
+    },
+    "candidateWorkflows": {
+      "$ref": "../schemas/candidateWorkflows.json"
+    },
+    "careerSite": {
+      "$ref": "../schemas/careerSite.json"
+    },
+    "careerSitesForApps": {
+      "$ref": "../schemas/careerSitesForApps.json"
+    },
+    "careerSites": {
+      "$ref": "../schemas/careerSites.json"
+    },
+    "categoriesActualAndWorkflows": {
+      "$ref": "../schemas/categoriesActualAndWorkflows.json"
+    },
+    "categoriesActual": {
+      "$ref": "../schemas/categoriesActual.json"
+    },
+    "categories": {
+      "$ref": "../schemas/categories.json"
+    },
+    "category": {
+      "$ref": "../schemas/category.json"
+    },
+    "categoryValues": {
+      "$ref": "../schemas/categoryValues.json"
+    },
+    "deltaPing": {
+      "$ref": "../schemas/deltaPing.json"
+    },
+    "engagementOrderByTenant": {
+      "$ref": "../schemas/engagementOrderByTenant.json"
+    },
+    "engagementRead": {
+      "$ref": "../schemas/engagementRead.json"
+    },
+    "engagementTypesForApp": {
+      "$ref": "../schemas/engagementTypesForApp.json"
+    },
+    "engagementWriteByApp": {
+      "$ref": "../schemas/engagementWriteByApp.json"
+    },
+    "engagementWriteByTenant": {
+      "$ref": "../schemas/engagementWriteByTenant.json"
+    },
+    "fileDownload": {
+      "$ref": "../schemas/fileDownload.json"
+    },
+    "fileUpload": {
+      "$ref": "../schemas/fileUpload.json"
+    },
+    "filterJob": {
+      "$ref": "../schemas/filterJob.json"
+    },
+    "filterJobs": {
+      "$ref": "../schemas/filterJobs.json"
+    },
+    "homePage": {
+      "$ref": "../schemas/homePage.json"
+    },
+    "intent": {
+      "$ref": "../schemas/intent.json"
+    },
+    "item": {
+      "$ref": "../schemas/item.json"
+    },
+    "items": {
+      "$ref": "../schemas/items.json"
+    },
+    "jcard": {
+      "$ref": "../schemas/jcard.json"
+    },
+    "jobBoard": {
+      "$ref": "../schemas/jobBoard.json"
+    },
+    "jobBoardsForApps": {
+      "$ref": "../schemas/jobBoardsForApps.json"
+    },
+    "jobBoards": {
+      "$ref": "../schemas/jobBoards.json"
+    },
+    "job": {
+      "$ref": "../schemas/job.json"
+    },
+    "jobSearches": {
+      "$ref": "../schemas/jobSearches.json"
+    },
+    "jobSetJob": {
+      "$ref": "../schemas/jobSetJob.json"
+    },
+    "jobSet": {
+      "$ref": "../schemas/jobSet.json"
+    },
+    "jobs": {
+      "$ref": "../schemas/jobs.json"
+    },
+    "jsonSchemaSchema": {
+      "$ref": "../schemas/jsonSchemaSchema.json"
+    },
+    "landingPage": {
+      "$ref": "../schemas/landingPage.json"
+    },
+    "meta": {
+      "$ref": "../schemas/meta.json"
+    },
+    "panel": {
+      "$ref": "../schemas/panel.json"
+    },
+    "panelsForApp": {
+      "$ref": "../schemas/panelsForApp.json"
+    },
+    "panelsForApps": {
+      "$ref": "../schemas/panelsForApps.json"
+    },
+    "panels": {
+      "$ref": "../schemas/panels.json"
+    },
+    "recruiterFilter": {
+      "$ref": "../schemas/recruiterFilter.json"
+    },
+    "recruiter": {
+      "$ref": "../schemas/recruiter.json"
+    },
+    "recruiters": {
+      "$ref": "../schemas/recruiters.json"
+    },
+    "socialNetworks": {
+      "$ref": "../schemas/socialNetworks.json"
+    },
+    "tracker": {
+      "$ref": "../schemas/tracker.json"
+    },
+    "trackers": {
+      "$ref": "../schemas/trackers.json"
+    },
+    "userArea": {
+      "$ref": "../schemas/userArea.json"
+    }
+  }
+}

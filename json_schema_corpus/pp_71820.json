@@ -1,0 +1,193 @@
+{
+  "$schema": "http://json-schema/org/schema#",
+  "id": "f5schemadb://cf-schema_v1.1.0.json",
+  "type": "object",
+  "definitions": {
+    "virtualServerType": {
+      "type": "object",
+      "anyOf": [
+        {
+          "required": [
+            "profiles"
+          ]
+        },
+        {
+          "required": [
+            "policies"
+          ]
+        },
+        {
+          "required": [
+            "sslProfiles"
+          ]
+        }
+      ],
+      "properties": {
+        "policies": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/policyType"
+          },
+          "minItems": 1
+        },
+        "profiles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/profileType"
+          },
+          "minItems": 1
+        },
+        "sslProfiles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/sslProfileType"
+          },
+          "minItems": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "poolType": {
+      "type": "object",
+      "anyOf": [
+        {
+          "required": [
+            "balance"
+          ]
+        },
+        {
+          "required": [
+            "healthMonitors"
+          ]
+        }
+      ],
+      "properties": {
+        "balance": {
+          "type": "string",
+          "minLength": 1
+        },
+        "healthMonitors": {
+          "type": "array",
+          "minItems": 1,
+          "additionalItems": false,
+          "items": {
+            "$ref": "#/definitions/healthMonitorType"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "policyType": {
+      "type": "string",
+      "minLength": 1
+    },
+    "profileType": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sslProfileType": {
+      "type": "string",
+      "minLength": 1
+    },
+    "healthMonitorType": {
+      "type": "object",
+      "oneOf": [
+        {
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "name"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1
+            },
+            "interval": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 86400
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "http",
+                "tcp"
+              ]
+            },
+            "send": {
+              "type": "string",
+              "minLength": 1
+            },
+            "recv": {
+              "type": "string",
+              "minLength": 1
+            },
+            "timeout": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 86400
+            }
+          },
+          "required": [
+            "name",
+            "type"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "properties": {
+    "plans": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "required": [
+          "name",
+          "description"
+        ],
+        "anyOf": [
+          {
+            "required": [
+              "pool"
+            ]
+          },
+          {
+            "required": [
+              "virtualServer"
+            ]
+          }
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "pool": {
+            "$ref": "#/definitions/poolType"
+          },
+          "virtualServer": {
+            "$ref": "#/definitions/virtualServerType"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "plans"
+  ]
+}

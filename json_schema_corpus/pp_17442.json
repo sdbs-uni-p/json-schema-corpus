@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "Income",
+  "description": "Income",
+  "properties": {
+    "amount": {
+      "title": "Amount",
+      "description": "Amount",
+      "type": "number",
+      "multipleOf": 0.01,
+      "minimum": 0
+    },
+    "taxDeducted": {
+      "title": "Tax deducted",
+      "description": "Tax taken of any income",
+      "type": "number",
+      "multipleOf": 0.01,
+      "minimum": 0
+    }
+  },
+  "required": [
+    "amount"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,111 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://atomicbits.io/raml10/many-fields.json",
+  "type": "object",
+  "properties": {
+    "a": {
+      "type": "string",
+      "required": true
+    },
+    "b": {
+      "type": "string",
+      "required": true
+    },
+    "c": {
+      "type": "string",
+      "required": true
+    },
+    "d": {
+      "type": "string",
+      "required": true
+    },
+    "e": {
+      "type": "string",
+      "required": true
+    },
+    "f": {
+      "type": "string",
+      "required": true
+    },
+    "g": {
+      "type": "string",
+      "required": true
+    },
+    "h": {
+      "type": "string",
+      "required": true
+    },
+    "i": {
+      "type": "string",
+      "required": true
+    },
+    "j": {
+      "type": "string",
+      "required": true
+    },
+    "k": {
+      "type": "string",
+      "required": true
+    },
+    "l": {
+      "type": "string",
+      "required": true
+    },
+    "m": {
+      "type": "string",
+      "required": true
+    },
+    "n": {
+      "type": "string",
+      "required": true
+    },
+    "o": {
+      "type": "string",
+      "required": true
+    },
+    "p": {
+      "type": "string",
+      "required": true
+    },
+    "q": {
+      "type": "string",
+      "required": true
+    },
+    "r": {
+      "type": "string",
+      "required": true
+    },
+    "s": {
+      "type": "string",
+      "required": true
+    },
+    "t": {
+      "type": "string",
+      "required": true
+    },
+    "u": {
+      "type": "string",
+      "required": true
+    },
+    "v": {
+      "type": "string",
+      "required": true
+    },
+    "w": {
+      "type": "string",
+      "required": true
+    },
+    "x": {
+      "type": "string",
+      "required": true
+    },
+    "y": {
+      "type": "string",
+      "required": true
+    },
+    "z": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

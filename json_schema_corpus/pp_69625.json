@@ -1,0 +1,132 @@
+{
+  "id": "http://schema.org/Person",
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "extends": {
+    "$ref": "Thing.json"
+  },
+  "description": "A person (alive, dead, undead, or fictional). Schema.org: http://schema.org/Person",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "additionalName": {
+      "description": "An additional name for a Person, can be used for a middle name.",
+      "type": "string"
+    },
+    "address": {
+      "description": "Physical address of the item.",
+      "type": "object",
+      "$ref": "PostalAddress.json"
+    },
+    "affiliation": {
+      "description": "An organization that this person is affiliated with. For example, a school/university, a club, or a team.",
+      "type": "object",
+      "$ref": "Organization.json"
+    },
+    "award": {
+      "description": "An award won by this person or for this creative work. Supercedes awards.",
+      "type": "string"
+    },
+    "birthDate": {
+      "description": "Date of birth.",
+      "type": "string",
+      "format": "date"
+    },
+    "contactPoint": {
+      "description": "A contact point for a person or organization. Supercedes contactPoints.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "ContactPoint.json"
+      }
+    },
+    "deathDate": {
+      "description": "Date of death.",
+      "type": "string",
+      "format": "date"
+    },
+    "email": {
+      "description": "Email address.",
+      "type": "string",
+      "format": "email"
+    },
+    "faxNumber": {
+      "description": "The fax number. E.123",
+      "type": "string",
+      "format": "phone"
+    },
+    "familyName": {
+      "description": "Family name. In the U.S., the last name of an Person. This can be used along with givenName instead of the Name property.",
+      "type": "string"
+    },
+    "follow": {
+      "description": "The most generic uni-directional social relation.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "Person.json"
+      }
+    },
+    "gender": {
+      "description": "Gender of the person.",
+      "type": "string"
+    },
+    "givenName": {
+      "description": "Given name. In the U.S., the first name of a Person. This can be used along with familyName instead of the Name property.",
+      "type": "string"
+    },
+    "honorificPrefix": {
+      "description": "An honorific prefix preceding a Person's name such as Dr/Mrs/Mr.",
+      "type": "string"
+    },
+    "honorificSuffix": {
+      "description": "An honorific suffix preceding a Person's name such as M.D. /PhD/MSCSW.",
+      "type": "string"
+    },
+    "jobTitle": {
+      "description": "The job title of the person (for example, Financial Manager).",
+      "type": "string"
+    },
+    "memberOf": {
+      "description": "An Organization (or ProgramMembership) to which this Person or Organization belongs. Inverse property: member.",
+      "type": "object",
+      "$ref": "Organization.json"
+    },
+    "nationality": {
+      "description": "Nationality of the person.",
+      "type": "object",
+      "$ref": "Country.json"
+    },
+    "parent": {
+      "description": "A parent of this person. Supercedes parents.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "Person.json"
+      }
+    },
+    "spouse": {
+      "description": "The person's spouse.",
+      "type": "object",
+      "$ref": "Person.json"
+    },
+    "telephone": {
+      "description": "The telephone number. E.123",
+      "type": "string",
+      "format": "phone"
+    },
+    "worksFor": {
+      "description": "Organizations that the person works for.",
+      "type": "object",
+      "$ref": "Organization.json"
+    }
+  },
+  "required": [
+    "givenName",
+    "additionalName",
+    "familyName",
+    "email",
+    "gender",
+    "birthDate",
+    "telephone"
+  ]
+}

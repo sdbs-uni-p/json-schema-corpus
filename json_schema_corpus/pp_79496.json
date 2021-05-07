@@ -1,0 +1,85 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "description": "reference to http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html",
+  "properties": {
+    "sub": {
+      "$ref": "samlSubject.json"
+    },
+    "cons": {
+      "description": "details of the app consuming the API",
+      "type": "object",
+      "properties": {
+        "ct": {
+          "type": "string",
+          "description": "the tenant who has installed the app consuming the API"
+        },
+        "ca": {
+          "type": "string",
+          "description": "the app consuming the API"
+        },
+        "sgen": {
+          "type": "integer",
+          "description": "the security generation of the tenant"
+        }
+      },
+      "required": [
+        "ct",
+        "ca",
+        "sgen"
+      ]
+    },
+    "aud": {
+      "description": "audience - details of the app producing the API",
+      "type": "object",
+      "properties": {
+        "pt": {
+          "type": "string",
+          "description": "the tenant who has installed the app producing the API"
+        },
+        "pa": {
+          "type": "string",
+          "description": "the app producing the API"
+        },
+        "sgen": {
+          "type": "integer",
+          "description": "the security generation of the tenant"
+        }
+      },
+      "required": [
+        "pt",
+        "pa",
+        "sgen"
+      ]
+    },
+    "dev": {
+      "type": "string",
+      "description": "the API's developer"
+    },
+    "api": {
+      "type": "string",
+      "description": "the URI template of the API"
+    },
+    "sot": {
+      "type": "boolean",
+      "description": "whether the API is being consumed as SoT (if true) or not"
+    },
+    "iat": {
+      "type": "string",
+      "description": "time the token was issued, as per the spec."
+    },
+    "exp": {
+      "type": "string",
+      "description": "time the token expires, as per the spec."
+    }
+  },
+  "required": [
+    "cons",
+    "aud",
+    "dev",
+    "api",
+    "iat",
+    "exp"
+  ]
+}

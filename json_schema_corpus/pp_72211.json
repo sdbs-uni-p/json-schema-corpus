@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Total Purchase Count",
+  "description": "A count of the total number of purchases we observed for this user (user.customFields.totalPurchaseCount).",
+  "type": "integer"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "http://github.com/alisle/Penella",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "type": "object",
+  "description": "Defines a triple",
+  "required": [
+    "subject",
+    "property",
+    "object"
+  ],
+  "properties": {
+    "subject": {
+      "type": "string",
+      "description": "The subject within the triple"
+    },
+    "property": {
+      "type": "string",
+      "description": "The  property within the triple"
+    },
+    "object": {
+      "type": "string",
+      "description": "The object within the triple"
+    }
+  }
+}

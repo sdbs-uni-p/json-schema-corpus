@@ -1,0 +1,166 @@
+{
+  "id": "http://schemas.gdbots.io/json-schema/gdbots/iam/request/get-user-response/1-0-0.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "_schema": {
+      "type": "string",
+      "pattern": "^pbj:([a-z0-9-]+):([a-z0-9\\.-]+):([a-z0-9-]+)?:([a-z0-9-]+):([0-9]+-[0-9]+-[0-9]+)$",
+      "default": "pbj:gdbots:iam:request:get-user-response:1-0-0"
+    },
+    "response_id": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+    },
+    "created_at": {
+      "type": "string",
+      "pattern": "^[1-9]{1}[0-9]{12,15}$"
+    },
+    "ctx_tenant_id": {
+      "type": "string",
+      "pattern": "^[\\w\\/\\.:-]+$",
+      "description": "Multi-tenant apps can use this field to track the tenant id."
+    },
+    "ctx_request_ref": {
+      "type": "object",
+      "properties": {
+        "curie": {
+          "type": "string",
+          "pattern": "^([a-z0-9-]+):([a-z0-9\\.-]+):([a-z0-9-]+)?:([a-z0-9-]+)$",
+          "minLength": 0,
+          "maxLength": 146
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9:_\\-]+$",
+          "minLength": 0,
+          "maxLength": 255
+        },
+        "tag": {
+          "type": "string",
+          "pattern": "^([\\w\\/-]|[\\w-][\\w\\/-]*[\\w-])$",
+          "minLength": 0,
+          "maxLength": 255
+        }
+      },
+      "required": [
+        "curie",
+        "id"
+      ],
+      "additionalProperties": false
+    },
+    "ctx_request": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "#/definitions/request"
+        }
+      ],
+      "description": "The \"ctx_request\" is the actual request object that \"ctx_request_ref\" refers to. In some cases it's useful for request handlers to copy the request into the response so the requestor has everything in one message. This will NOT always be populated. A common use case is search request/response cycles where you want to know what the search criteria was so you can render that along with the results."
+    },
+    "ctx_correlator_ref": {
+      "type": "object",
+      "properties": {
+        "curie": {
+          "type": "string",
+          "pattern": "^([a-z0-9-]+):([a-z0-9\\.-]+):([a-z0-9-]+)?:([a-z0-9-]+)$",
+          "minLength": 0,
+          "maxLength": 146
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9:_\\-]+$",
+          "minLength": 0,
+          "maxLength": 255
+        },
+        "tag": {
+          "type": "string",
+          "pattern": "^([\\w\\/-]|[\\w-][\\w\\/-]*[\\w-])$",
+          "minLength": 0,
+          "maxLength": 255
+        }
+      },
+      "required": [
+        "curie",
+        "id"
+      ],
+      "additionalProperties": false
+    },
+    "derefs": {
+      "type": "object",
+      "patternProperties": {
+        "^[a-zA-Z_]{1}[\\w\\.:-]+$": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "description": "Responses can include \"dereferenced\" messages to prevent the consumer from needing to make multiple HTTP requests. It is up to the consumer to make use of the dereferenced messages if/when they are provided."
+    },
+    "links": {
+      "type": "object",
+      "patternProperties": {
+        "^[a-zA-Z_]{1}[\\w\\.:-]+$": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 65535
+        }
+      },
+      "additionalProperties": false,
+      "description": "@link https://en.wikipedia.org/wiki/HATEOAS"
+    },
+    "metas": {
+      "type": "object",
+      "patternProperties": {
+        "^[a-zA-Z_]{1}[\\w\\.:-]+$": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 65535
+        }
+      },
+      "additionalProperties": false
+    },
+    "node": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "#/definitions/user"
+        }
+      ]
+    }
+  },
+  "required": [
+    "_schema",
+    "response_id"
+  ],
+  "definitions": {
+    "request": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/request/1-0-0.json#"
+        },
+        {
+          "$ref": "http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/request/1-0-1.json#"
+        },
+        {
+          "$ref": "http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/request/1-0-2.json#"
+        },
+        {
+          "$ref": "http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/request/1-0-3.json#"
+        }
+      ]
+    },
+    "user": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/user/1-0-0.json#"
+        },
+        {
+          "$ref": "http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/user/1-0-1.json#"
+        }
+      ]
+    }
+  },
+  "additionalProperties": false
+}

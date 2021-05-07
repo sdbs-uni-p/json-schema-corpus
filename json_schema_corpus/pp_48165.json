@@ -1,0 +1,17 @@
+{
+  "id": "http://schema.myrtana.sk/text/coupleOfParagraphs.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Couple of Paragraphs",
+  "description": "A couple of paragraphs of text. Max. 5. fit for descriptions, abstracts or comments",
+  "type": "array",
+  "items": {
+    "anyOf": [
+      {
+        "$ref": "http://schema.myrtana.sk/text/paragraph.json"
+      }
+    ]
+  },
+  "minItems": 1,
+  "maxItems": 5,
+  "maxLength": 102400
+}

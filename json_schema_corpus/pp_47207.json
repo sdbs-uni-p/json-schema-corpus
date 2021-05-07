@@ -1,0 +1,52 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#",
+  "id": "http://jsonschema.net",
+  "properties": {
+    "server": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ok",
+        "error"
+      ]
+    },
+    "error": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "message": {
+          "type": "string",
+          "description": "Error message to be passed to users"
+        },
+        "desc": {
+          "type": "string",
+          "description": "Detailed error message for developers"
+        },
+        "link": {
+          "type": "string",
+          "format": "uri",
+          "description": "Link to documentation describing the error"
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "description"
+      ]
+    }
+  },
+  "required": [
+    "server",
+    "version",
+    "status"
+  ]
+}

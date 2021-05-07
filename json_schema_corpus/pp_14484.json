@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Event",
+  "type": "object",
+  "properties": {
+    "timestamp": {
+      "type": "date",
+      "description": "Valid date in ISO-8601. Example: `2015-01-12T05:21:07Z`"
+    },
+    "source": {
+      "type": "string",
+      "description": "The **generatedIdentifier** given by iFLUX Server. See the API `GET eventSources` or GET `eventSources/:id`"
+    },
+    "type": {
+      "type": "string",
+      "description": "Valid URL defining the event type."
+    },
+    "properties": {
+      "type": "object",
+      "description": "Free object that contains representing the event data.",
+      "properties": {
+        "*": {
+          "type": "mixed"
+        }
+      }
+    }
+  },
+  "required": [
+    "timestamp",
+    "type",
+    "properties"
+  ]
+}

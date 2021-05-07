@@ -1,0 +1,8 @@
+{
+  "id": "http://schema.myrtana.sk/support/languageRFC4646.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Language code",
+  "description": "Language code according to RFC4646.",
+  "type": "string",
+  "maxLength": 1024
+}

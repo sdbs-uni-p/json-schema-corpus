@@ -1,0 +1,24 @@
+{
+  "title": "Persisted records",
+  "name": "Persisted",
+  "description": "Tidepool's mongo db records.",
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "id": "http://tidepool-org.github.io/data-model/schemas/persisted.json",
+  "type": "array",
+  "items": {
+    "anyOf": [
+      {
+        "$ref": "diabetes/carbs.json"
+      },
+      {
+        "$ref": "diabetes/cbg.json"
+      },
+      {
+        "$ref": "diabetes/smbg.json"
+      },
+      {
+        "$ref": "message.json"
+      }
+    ]
+  }
+}

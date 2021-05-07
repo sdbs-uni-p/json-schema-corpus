@@ -1,0 +1,12 @@
+{
+  "type": "object",
+  "properties": {
+    "data": {
+      "$ref": "_definitions.json#/definitions/requestData"
+    }
+  },
+  "required": [
+    "data"
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

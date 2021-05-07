@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "get crawl result response",
+  "description": "get crawl result response",
+  "type": "object",
+  "properties": {
+    "crawl_results_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "base64_encoded_crawl_results": {
+      "type": "string",
+      "minLength": 1
+    },
+    "links": {
+      "type": "object",
+      "properties": {
+        "self": {
+          "type": "object",
+          "properties": {
+            "href": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "required": [
+            "href"
+          ]
+        }
+      },
+      "required": [
+        "self"
+      ]
+    }
+  },
+  "required": [
+    "crawl_results_id",
+    "base64_encoded_crawl_results",
+    "links"
+  ],
+  "additionalProperties": true
+}

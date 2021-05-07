@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "userId": {
+      "type": "string"
+    },
+    "text": {
+      "type": "string"
+    },
+    "location": {
+      "type": "object"
+    },
+    "image": {
+      "id": "image",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "userId",
+    "text"
+  ]
+}

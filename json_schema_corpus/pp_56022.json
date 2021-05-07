@@ -1,0 +1,170 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Fibaro Home Center Binary Light JSON Schema",
+  "name": "virtual_device",
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "Fibaro Home Center device ID",
+      "type": "integer",
+      "minimum": 2
+    },
+    "name": {
+      "description": "Device name",
+      "type": "string",
+      "maxLength": 20
+    },
+    "roomID": {
+      "description": "Room ID defined in Home Center GUI",
+      "type": "integer",
+      "minimum": 0
+    },
+    "type": {
+      "description": "Zwave device type",
+      "enum": [
+        "virtual_device"
+      ]
+    },
+    "properties": {
+      "type": "object",
+      "properties": {
+        "deviceIcon": {
+          "type": "integer"
+        },
+        "ip": {
+          "type": "string",
+          "format": "ipv4"
+        },
+        "port": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "currentIcon": {
+          "type": "string"
+        },
+        "mainLoop": {
+          "type": "string"
+        },
+        "saveLogs": {
+          "enum": [
+            "0",
+            "1"
+          ]
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string"
+              },
+              "elements": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "lua": {
+                      "type": "boolean"
+                    },
+                    "waitForResponse": {
+                      "type": "boolean"
+                    },
+                    "caption": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "empty": {
+                      "type": "boolean"
+                    },
+                    "msg": {
+                      "type": "string"
+                    },
+                    "buttonIcon": {
+                      "type": "integer"
+                    },
+                    "value": {
+                      "type": "integer"
+                    },
+                    "favourite": {
+                      "type": "boolean"
+                    },
+                    "main": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "lua",
+                    "waitForResponse",
+                    "caption",
+                    "name",
+                    "favourite",
+                    "main"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "required": [
+        "deviceIcon",
+        "ip",
+        "port",
+        "currentIcon",
+        "mainLoop",
+        "saveLogs",
+        "rows"
+      ],
+      "patternProperties": {
+        "ui.*": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "actions": {
+      "type": "object",
+      "properties": {
+        "pressButton": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1
+        },
+        "setSlider": {
+          "type": "integer",
+          "minimum": 2,
+          "maximum": 2
+        },
+        "setProperty": {
+          "type": "integer",
+          "minimum": 2,
+          "maximum": 2
+        }
+      },
+      "required": [
+        "pressButton",
+        "setSlider"
+      ],
+      "additionalProperties": false
+    },
+    "created": {
+      "type": "number"
+    },
+    "modified": {
+      "type": "number"
+    },
+    "sortOrder": {
+      "type": "number"
+    }
+  },
+  "additionalProperties": false
+}

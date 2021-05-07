@@ -1,0 +1,473 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "#root",
+  "definitions": {
+    "#physics": {
+      "id": "#physics",
+      "properties": {
+        "type": {
+          "$ref": "#physics_type"
+        },
+        "radius": {
+          "type": "integer"
+        },
+        "push_class": {
+          "type": "integer"
+        },
+        "push_sideways": {
+          "type": "boolean"
+        },
+        "allow_pushing": {
+          "type": "boolean"
+        },
+        "air_friction": {
+          "type": "number"
+        },
+        "gravity_scalar": {
+          "type": "integer"
+        },
+        "ignore_gravity": {
+          "type": "boolean"
+        },
+        "add_to_spatial_db": {
+          "type": "boolean"
+        },
+        "allow_underground": {
+          "type": "boolean"
+        }
+      }
+    },
+    "#physics_type": {
+      "id": "#physics_type",
+      "type": "string"
+    },
+    "#ammo_type": {
+      "id": "#ammo_type",
+      "type": "string"
+    },
+    "#flight_type": {
+      "id": "#flight_type",
+      "type": "string"
+    },
+    "#flight_layer": {
+      "id": "#flight_layer",
+      "type": "string"
+    },
+    "#layer": {
+      "id": "#layer",
+      "type": "string"
+    },
+    "#vec_int3": {
+      "id": "#vec_int3",
+      "type": "array",
+      "items": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "integer"
+        },
+        {
+          "type": "integer"
+        }
+      ]
+    },
+    "#pfx_ref": {
+      "id": "#pfx_ref",
+      "type": "string"
+    },
+    "#papa_ref": {
+      "id": "#papa_ref",
+      "type": "string"
+    },
+    "#json_ref": {
+      "id": "#json_ref",
+      "type": "string"
+    },
+    "#audio_ref": {
+      "id": "#audio_ref",
+      "type": "string"
+    },
+    "#model": {
+      "id": "#model",
+      "type": "object",
+      "properties": {
+        "filename": {
+          "$ref": "#papa_ref"
+        },
+        "arrows": {
+          "type": "integer",
+          "required": false
+        },
+        "animations": {},
+        "animtree": {}
+      }
+    },
+    "#fx_trail": {
+      "id": "#fx_trail",
+      "type": "object",
+      "properties": {
+        "filename": {
+          "$ref": "#pfx_ref"
+        },
+        "offset": {
+          "$ref": "#vec_int3"
+        }
+      }
+    },
+    "#events": {
+      "id": "#events",
+      "type": "object",
+      "patternProperties": {
+        "died|build_complete": {
+          "$ref": "#event"
+        }
+      }
+    },
+    "#event": {
+      "id": "#event",
+      "type": "object",
+      "properties": {
+        "effect_spec": {
+          "$ref": "#pfx_ref"
+        },
+        "audio_cue": {
+          "$ref": "#audio_ref"
+        },
+        "effect_scale": {
+          "type": "number",
+          "default": 1.0,
+          "required": false
+        }
+      }
+    },
+    "#ammo_stage": {
+      "id": "#ammo_stage",
+      "type": "object",
+      "properties": {
+        "ignores_gravity": {
+          "type": "boolean"
+        },
+        "ignores_LOS": {
+          "type": "boolean"
+        },
+        "stage_duration": {
+          "type": "integer"
+        },
+        "stage_turn_rate": {
+          "type": "integer"
+        },
+        "rotates_to_velocity": {
+          "type": "boolean"
+        }
+      }
+    },
+    "#armor_type": {
+      "id": "#armor_type",
+      "type": "string",
+      "enum": [
+        "AT_Air",
+        "AT_Naval",
+        "AT_Bot"
+      ]
+    },
+    "#unit_type": {
+      "id": "#unit_type",
+      "type": "string",
+      "enum": [
+        "UNITTYPE_Orbital",
+        "UNITTYPE_Land",
+        "UNITTYPE_Naval",
+        "UNITTYPE_Air",
+        "UNITTYPE_Mobile",
+        "UNITTYPE_Structure",
+        "UNITTYPE_Basic",
+        "UNITTYPE_Advanced",
+        "UNITTYPE_Recon",
+        "UNITTYPE_Scout",
+        "UNITTYPE_AirDefense",
+        "UNITTYPE_FabBuild",
+        "UNITTYPE_FabAdvBuild",
+        "UNITTYPE_FactoryBuild",
+        "UNITTYPE_NoBuild",
+        "UNITTYPE_Bot",
+        "UNITTYPE_Factory",
+        "UNITTYPE_Construction"
+      ]
+    },
+    "#command": {
+      "id": "#command",
+      "type": "string",
+      "enum": [
+        "ORDER_Move",
+        "ORDER_Patrol",
+        "ORDER_FactoryBuild",
+        "ORDER_Reclaim",
+        "ORDER_Repair",
+        "ORDER_Attack",
+        "ORDER_Assist",
+        "ORDER_Use"
+      ]
+    },
+    "#recon": {
+      "id": "#recon",
+      "type": "object",
+      "properties": {
+        "observer": {
+          "$ref": "#recon_observer"
+        }
+      }
+    },
+    "#recon_observer": {
+      "id": "#recon_observer",
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#recon_observer_target"
+          }
+        }
+      }
+    },
+    "#recon_observer_target": {
+      "id": "#recon_observer_target",
+      "type": "object",
+      "anyOf": [
+        {
+          "properties": {
+            "shape": {
+              "enum": [
+                "capsule"
+              ]
+            },
+            "radius": {
+              "type": "integer"
+            }
+          }
+        }
+      ],
+      "properties": {
+        "layer": {
+          "$ref": "#recon_layer"
+        },
+        "channel": {
+          "$ref": "#recon_channel"
+        },
+        "uses_energy": {
+          "type": "boolean",
+          "default": false,
+          "required": false
+        },
+        "shape": {},
+        "radius": {
+          "required": false
+        }
+      }
+    },
+    "#recon_layer": {
+      "id": "#recon_layer",
+      "type": "string",
+      "enum": [
+        "surface_and_air",
+        "orbit",
+        "celestial"
+      ]
+    },
+    "#recon_channel": {
+      "id": "#recon_channel",
+      "type": "string",
+      "enum": [
+        "sight",
+        "radar"
+      ]
+    },
+    "#navigation": {
+      "id": "#navigation",
+      "type": "object"
+    },
+    "#economy_balance": {
+      "id": "#economy_balance",
+      "type": "object",
+      "properties": {
+        "metal": {
+          "type": "integer",
+          "required": false,
+          "default": 0
+        },
+        "energy": {
+          "type": "integer",
+          "required": false,
+          "default": 0
+        }
+      }
+    },
+    "#unit": {
+      "id": "#unit",
+      "type": "object",
+      "properties": {
+        "display_name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "display_group": {
+          "type": "integer"
+        },
+        "max_health": {
+          "type": "integer"
+        },
+        "wreckage_health_frac": {
+          "type": "number"
+        },
+        "spawn_layers": {
+          "$ref": "#layer"
+        },
+        "mesh_bounds": {
+          "$ref": "#vec_int3"
+        },
+        "armor_type": {
+          "$ref": "#armor_type"
+        },
+        "atrophy_rate": {
+          "type": "number"
+        },
+        "atrophy_cool_down": {
+          "type": "number"
+        },
+        "buildable_types": {
+          "type": "string"
+        },
+        "rolloff_dirs": {
+          "type": "array",
+          "items": {
+            "$ref": "#vec_int3"
+          }
+        },
+        "wait_to_rolloff_time": {
+          "type": "integer"
+        },
+        "factory_cooldown_time": {
+          "type": "integer"
+        },
+        "unit_types": {
+          "type": "array",
+          "items": {
+            "$ref": "#unit_type"
+          }
+        },
+        "command_caps": {
+          "type": "array",
+          "items": {
+            "$ref": "#command"
+          }
+        },
+        "navigation": {
+          "$ref": "#navigation"
+        },
+        "build_metal_cost": {
+          "type": "integer",
+          "required": false,
+          "default": 0
+        },
+        "production": {
+          "$ref": "#economy_balance"
+        },
+        "consumption": {
+          "$ref": "#economy_balance"
+        }
+      }
+    },
+    "#ammo": {
+      "id": "#ammo",
+      "type": "object",
+      "properties": {
+        "base_spec": {
+          "$ref": "#json_ref"
+        },
+        "ammo_type": {
+          "$ref": "#ammo_type"
+        },
+        "flight_type": {
+          "$ref": "#flight_type"
+        },
+        "flight_layer": {
+          "$ref": "#flight_layer"
+        },
+        "spawn_layers": {
+          "$ref": "#layer"
+        },
+        "model": {
+          "$ref": "#model"
+        },
+        "fx_trail": {
+          "$ref": "#fx_trail"
+        },
+        "events": {
+          "$ref": "#events"
+        },
+        "audio_loop": {
+          "$ref": "#audio_ref"
+        },
+        "physics": {
+          "$ref": "#physics"
+        },
+        "damage": {
+          "type": "integer"
+        },
+        "splash_damage": {
+          "type": "integer"
+        },
+        "splash_radius": {
+          "type": "integer"
+        },
+        "cruise_height": {
+          "type": "integer"
+        },
+        "splash_damages_allies": {
+          "type": "boolean"
+        },
+        "lifetime": {
+          "type": "integer"
+        },
+        "initial_velocity": {
+          "type": "integer"
+        },
+        "max_velocity": {
+          "type": "integer"
+        },
+        "turn_rate": {
+          "type": "integer"
+        },
+        "burn_damage": {
+          "type": "integer"
+        },
+        "burn_radius": {
+          "type": "integer"
+        },
+        "burn_duration": {
+          "type": "number"
+        },
+        "stages": {
+          "type": "array",
+          "items": {
+            "$ref": "#ammo_stage"
+          }
+        }
+      }
+    }
+  },
+  "type": "object",
+  "oneOf": [
+    {
+      "$ref": "#unit"
+    },
+    {
+      "$ref": "#ammo"
+    },
+    {
+      "$ref": "#tool"
+    }
+  ]
+}

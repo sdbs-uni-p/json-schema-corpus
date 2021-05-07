@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://mcda.drugis.org/gammaDistribution.json#",
+  "title": "MCDA gamma distribution for the performance table entry of absolute data",
+  "type": "object",
+  "required": [
+    "type",
+    "parameters"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "dgamma"
+      ]
+    },
+    "parameters": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "alpha",
+        "beta"
+      ],
+      "properties": {
+        "alpha": {
+          "type": "number"
+        },
+        "beta": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "endpoint": "/headers",
+  "description": "testing the sending of headers",
+  "methods": [
+    "get",
+    "post",
+    "put",
+    "delete"
+  ],
+  "headers": {
+    "x-key": "value"
+  },
+  "type": "object",
+  "properties": {
+    "x-key": {
+      "type": "string",
+      "enum": [
+        "value"
+      ]
+    }
+  },
+  "required": [
+    "x-key"
+  ]
+}

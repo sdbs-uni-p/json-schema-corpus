@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "locationattributes",
+  "description": "Location Attributes Structure",
+  "type": "object",
+  "properties": {
+    "name": {
+      "$ref": "/schema/locationattributetype"
+    },
+    "value": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "$ref": "/schema/paymenttype"
+          },
+          {
+            "$ref": "/schema/cuisine"
+          },
+          {
+            "$ref": "/schema/meals"
+          }
+        ]
+      }
+    }
+  },
+  "required": [
+    "name",
+    "value"
+  ]
+}

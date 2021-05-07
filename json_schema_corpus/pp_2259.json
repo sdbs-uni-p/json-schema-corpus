@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://localhost:9999/schemas/userInfo.json",
+  "type": "object",
+  "properties": {
+    "name": {
+      "id": "name",
+      "type:": "string"
+    },
+    "surname": {
+      "id": "surname",
+      "type:": "string"
+    },
+    "authMode": {
+      "id": "authMode",
+      "enum": [
+        "Email",
+        "Facebook"
+      ]
+    },
+    "image": {
+      "id": "image",
+      "type": "string"
+    },
+    "skills": {
+      "id": "skills",
+      "type": "array",
+      "items": {
+        "$ref": "badgeUser.json"
+      }
+    }
+  },
+  "required": [
+    "name",
+    "surname"
+  ]
+}

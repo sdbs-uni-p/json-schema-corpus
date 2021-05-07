@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "type": "object",
+  "extends": {
+    "$ref": "base.json"
+  },
+  "additionalProperties": false,
+  "properties": {
+    "type": {
+      "type": "string",
+      "required": true,
+      "enum": [
+        "TestTypeV1.2"
+      ]
+    },
+    "text_field": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

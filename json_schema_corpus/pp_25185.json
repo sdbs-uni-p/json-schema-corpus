@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "properties": {
+    "bar": {
+      "type": "integer",
+      "maximum": 10,
+      "exclusiveMaximum": true
+    },
+    "baz": {
+      "type": "integer",
+      "maximum": 10,
+      "exclusiveMaximum": false
+    },
+    "qux": {
+      "type": "integer",
+      "maximum": 10
+    }
+  }
+}

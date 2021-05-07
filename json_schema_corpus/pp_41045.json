@@ -1,0 +1,140 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "name": {
+      "id": "name",
+      "title": "Name of the library",
+      "type": "string"
+    },
+    "version": {
+      "id": "version",
+      "description": "version of the library",
+      "type": "string"
+    },
+    "description": {
+      "id": "description",
+      "type": "string"
+    },
+    "homepage": {
+      "id": "homepage",
+      "title": "Homepage the library",
+      "description": "The homepage contains additional documentation useful for the use of the library",
+      "type": "string"
+    },
+    "icon": {
+      "id": "icon",
+      "type": "string"
+    },
+    "license": {
+      "id": "license",
+      "type": "string"
+    },
+    "anyNumber": {
+      "type": "number"
+    },
+    "anyBoolean": {
+      "type": "boolean"
+    },
+    "anyInteger": {
+      "type": "integer"
+    },
+    "main": {
+      "id": "main",
+      "type": "string"
+    },
+    "keywords": {
+      "id": "keywords",
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": false,
+      "additionalItems": true,
+      "items": {
+        "id": "2",
+        "type": "string"
+      }
+    },
+    "author": {
+      "id": "author",
+      "type": "object",
+      "properties": {
+        "name": {
+          "id": "name",
+          "type": "string"
+        },
+        "email": {
+          "id": "email",
+          "type": "string"
+        },
+        "url": {
+          "id": "url",
+          "type": "string"
+        }
+      }
+    },
+    "contributors": {
+      "id": "contributors",
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": false,
+      "additionalItems": true,
+      "items": {
+        "id": "4",
+        "type": "object",
+        "properties": {
+          "name": {
+            "id": "name",
+            "type": "string"
+          },
+          "email": {
+            "id": "email",
+            "type": "string"
+          },
+          "url": {
+            "id": "url",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "repository": {
+      "id": "repository",
+      "type": "object",
+      "properties": {
+        "type": {
+          "id": "type",
+          "type": "string"
+        },
+        "url": {
+          "id": "url",
+          "type": "string"
+        }
+      }
+    },
+    "scripts": {
+      "id": "scripts",
+      "type": "object",
+      "properties": {
+        "test": {
+          "id": "test",
+          "type": "string"
+        }
+      }
+    }
+  },
+  "required": [
+    "name",
+    "version",
+    "description",
+    "homepage",
+    "icon",
+    "license",
+    "main",
+    "keywords",
+    "author",
+    "contributors",
+    "repository",
+    "scripts"
+  ]
+}

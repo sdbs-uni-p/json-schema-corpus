@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "definitions": {},
+  "description": "\u4f8b\u306eAPI",
+  "links": [
+    {
+      "href": "http://api.example.com",
+      "rel": "self"
+    }
+  ],
+  "properties": {},
+  "title": "Example API",
+  "type": [
+    "object"
+  ]
+}

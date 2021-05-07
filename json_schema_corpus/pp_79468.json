@@ -1,0 +1,91 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "javaType": "com.tas.api....",
+  "properties": {
+    "api": {
+      "$ref": "../schemas/api.json"
+    },
+    "apiList": {
+      "$ref": "../schemas/apiList.json"
+    },
+    "app": {
+      "$ref": "../schemas/app.json"
+    },
+    "appPublic": {
+      "$ref": "../schemas/appPublic.json"
+    },
+    "assertionHooks": {
+      "$ref": "../schemas/assertionHooks.json"
+    },
+    "attributeMappings": {
+      "$ref": "../schemas/attributeMappings.json"
+    },
+    "passwordManagerAccount": {
+      "$ref": "../schemas/passwordManagerAccount.json"
+    },
+    "passwordManagerCapabilities": {
+      "$ref": "../schemas/passwordManagerCapabilities.json"
+    },
+    "patchSet": {
+      "$ref": "../schemas/patchSet.json"
+    },
+    "patchSetPreparer": {
+      "$ref": "../schemas/patchSetPreparer.json"
+    },
+    "rebootLaunchKey": {
+      "$ref": "../schemas/rebootLaunchKey.json"
+    },
+    "rebootStatus": {
+      "$ref": "../schemas/rebootStatus.json"
+    },
+    "rolesList": {
+      "$ref": "../schemas/rolesList.json"
+    },
+    "routeBase": {
+      "$ref": "../schemas/routeBase.json"
+    },
+    "route": {
+      "$ref": "../schemas/route.json"
+    },
+    "routes": {
+      "$ref": "../schemas/routes.json"
+    },
+    "samlKey": {
+      "$ref": "../schemas/samlKey.json"
+    },
+    "samlSubject": {
+      "$ref": "../schemas/samlSubject.json"
+    },
+    "simplePatchSet": {
+      "$ref": "../schemas/simplePatchSet.json"
+    },
+    "storeFrontMainPage": {
+      "$ref": "../schemas/storeFrontMainPage.json"
+    },
+    "tenantExtended": {
+      "$ref": "../schemas/tenantExtended.json"
+    },
+    "tenantInstallsAppStatus": {
+      "$ref": "../schemas/tenantInstallsAppStatus.json"
+    },
+    "tenant": {
+      "$ref": "../schemas/tenant.json"
+    },
+    "tenantList": {
+      "$ref": "../schemas/tenantList.json"
+    },
+    "tenantStatus": {
+      "$ref": "../schemas/tenantStatus.json"
+    },
+    "tokenJwt": {
+      "$ref": "../schemas/tokenJwt.json"
+    },
+    "tokenResponse": {
+      "$ref": "../schemas/tokenResponse.json"
+    },
+    "wellKnownSamlAttributes": {
+      "$ref": "../schemas/wellKnownSamlAttributes.json"
+    }
+  }
+}

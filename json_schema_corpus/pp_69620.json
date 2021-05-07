@@ -1,0 +1,10 @@
+{
+  "id": "http://schema.org/Language",
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "extends": {
+    "$ref": "Intangible.json"
+  },
+  "description": "Natural languages such as Spanish, Tamil, Hindi, English, etc. and programming languages such as Scheme and Lisp. Schema.org: http://schema.org/Language",
+  "type": "object",
+  "additionalProperties": true
+}

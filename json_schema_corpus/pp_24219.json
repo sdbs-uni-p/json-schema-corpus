@@ -1,0 +1,9 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "array",
+  "description": "collection of search results",
+  "items": {
+    "type": "object",
+    "$ref": "searchResult.json"
+  }
+}

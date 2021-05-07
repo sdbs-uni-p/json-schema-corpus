@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://judkins.house/apis/k2/v1/kubeAuthAuthnEntry.json",
+  "$$target": "kubeAuthAuthnEntry.json",
+  "title": "Kubernetes Authentication Authn Entry",
+  "description": "Kubernetes Authentication Authn Entry",
+  "properties": {
+    "basic": {
+      "description": "List of Basic auth users to be created.",
+      "items": {
+        "$ref": "kubeAuthBasicUser.json"
+      },
+      "type": "array",
+      "minItems": 1
+    },
+    "cert": {
+      "description": "List of Cert auth users to be created.",
+      "items": {
+        "$ref": "kubeAuthCertUser.json"
+      },
+      "type": "array",
+      "minItems": 1
+    },
+    "default_basic_user": {
+      "description": "Default admin user for kubeauth file. Must match one of the user names.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "default_basic_user"
+  ],
+  "anyOf": [
+    {
+      "required": [
+        "basic"
+      ]
+    },
+    {
+      "required": [
+        "cert"
+      ]
+    }
+  ],
+  "additionalProperties": false,
+  "type": "object"
+}

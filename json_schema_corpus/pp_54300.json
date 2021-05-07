@@ -1,0 +1,204 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://schema.org/NutritionInformation",
+  "required": [],
+  "title": "NutritionInformation",
+  "name": "NutritionInformation",
+  "description": "Nutritional information about the recipe.",
+  "type": "object",
+  "properties": {
+    "calories": {
+      "id": "http://schema.org/calories",
+      "title": "calories",
+      "description": "The number of calories",
+      "type": "object",
+      "properties": {
+        "calories": {
+          "$ref": "Energy.json#/properties"
+        }
+      }
+    },
+    "carbohydrateContent": {
+      "id": "http://schema.org/carbohydrateContent",
+      "title": "carbohydrateContent",
+      "description": "The number of grams of carbohydrates.",
+      "type": "object",
+      "properties": {
+        "carbohydrateContent": {
+          "$ref": "Mass.json#/properties"
+        }
+      }
+    },
+    "cholesterolContent": {
+      "id": "http://schema.org/cholesterolContent",
+      "title": "cholesterolContent",
+      "description": "The number of milligrams of cholesterol.",
+      "type": "object",
+      "properties": {
+        "cholesterolContent": {
+          "$ref": "Mass.json#/properties"
+        }
+      }
+    },
+    "fatContent": {
+      "id": "http://schema.org/fatContent",
+      "title": "fatContent",
+      "description": "The number of grams of fat.",
+      "type": "object",
+      "properties": {
+        "fatContent": {
+          "$ref": "Mass.json#/properties"
+        }
+      }
+    },
+    "fiberContent": {
+      "id": "http://schema.org/fiberContent",
+      "title": "fiberContent",
+      "description": "The number of grams of fiber.",
+      "type": "object",
+      "properties": {
+        "fiberContent": {
+          "$ref": "Mass.json#/properties"
+        }
+      }
+    },
+    "proteinContent": {
+      "id": "http://schema.org/proteinContent",
+      "title": "proteinContent",
+      "description": "The number of grams of protein.",
+      "type": "object",
+      "properties": {
+        "proteinContent": {
+          "$ref": "Mass.json#/properties"
+        }
+      }
+    },
+    "saturatedFatContent": {
+      "id": "http://schema.org/saturatedFatContent",
+      "title": "saturatedFatContent",
+      "description": "The number of grams of saturated fat.",
+      "type": "object",
+      "properties": {
+        "saturatedFatContent": {
+          "$ref": "Mass.json#/properties"
+        }
+      }
+    },
+    "servingSize": {
+      "id": "http://schema.org/servingSize",
+      "title": "servingSize",
+      "description": "The serving size, in terms of the number of volume or mass.",
+      "type": "string"
+    },
+    "sodiumContent": {
+      "id": "http://schema.org/sodiumContent",
+      "title": "sodiumContent",
+      "description": "The number of milligrams of sodium.",
+      "type": "object",
+      "properties": {
+        "sodiumContent": {
+          "$ref": "Mass.json#/properties"
+        }
+      }
+    },
+    "sugarContent": {
+      "id": "http://schema.org/sugarContent",
+      "title": "sugarContent",
+      "description": "The number of grams of sugar.",
+      "type": "object",
+      "properties": {
+        "sugarContent": {
+          "$ref": "Mass.json#/properties"
+        }
+      }
+    },
+    "transFatContent": {
+      "id": "http://schema.org/transFatContent",
+      "title": "transFatContent",
+      "description": "The number of grams of trans fat.",
+      "type": "object",
+      "properties": {
+        "transFatContent": {
+          "$ref": "Mass.json#/properties"
+        }
+      }
+    },
+    "unsaturatedFatContent": {
+      "id": "http://schema.org/unsaturatedFatContent",
+      "title": "unsaturatedFatContent",
+      "description": "The number of grams of unsaturated fat.",
+      "type": "object",
+      "properties": {
+        "unsaturatedFatContent": {
+          "$ref": "Mass.json#/properties"
+        }
+      }
+    },
+    "": {
+      "title": "",
+      "description": "",
+      "type": null
+    },
+    "additionalType": {
+      "id": "http://schema.org/additionalType",
+      "title": "additionalType",
+      "description": "An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.",
+      "type": "string",
+      "format": "uri"
+    },
+    "alternateName": {
+      "id": "http://schema.org/alternateName",
+      "title": "alternateName",
+      "description": "An alias for the item.",
+      "type": "string"
+    },
+    "description": {
+      "id": "http://schema.org/description",
+      "title": "description",
+      "description": "A short description of the item.",
+      "type": "string"
+    },
+    "image": {
+      "id": "http://schema.org/image",
+      "title": "image",
+      "description": "An image of the item. This can be a URL or a fully described ImageObject.",
+      "type": "object",
+      "properties": {
+        "image": {
+          "$ref": "ImageObject.json#/properties"
+        }
+      }
+    },
+    "name": {
+      "id": "http://schema.org/name",
+      "title": "name",
+      "description": "The name of the item.",
+      "type": "string"
+    },
+    "potentialAction": {
+      "id": "http://schema.org/potentialAction",
+      "title": "potentialAction",
+      "description": "Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.",
+      "type": "object",
+      "properties": {
+        "potentialAction": {
+          "$ref": "Action.json#/properties"
+        }
+      }
+    },
+    "sameAs": {
+      "id": "http://schema.org/sameAs",
+      "title": "sameAs",
+      "description": "URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.",
+      "type": "string",
+      "format": "uri"
+    },
+    "url": {
+      "id": "http://schema.org/url",
+      "title": "url",
+      "description": "URL of the item.",
+      "type": "string",
+      "format": "uri"
+    }
+  }
+}

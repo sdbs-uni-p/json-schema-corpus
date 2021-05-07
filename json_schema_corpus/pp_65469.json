@@ -1,0 +1,96 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "An entity of unknown type - potentially a company, a person, government entity, or some unincorporated organisation",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the entity",
+      "minLength": 1
+    },
+    "jurisdiction": {
+      "type": "string",
+      "description": "Name of the jurisdiction in which the entity is incorporated/domiciled"
+    },
+    "uid": {
+      "description": "Unique id for the entity if it has one",
+      "type": "string"
+    },
+    "website": {
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 5
+        },
+        {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string",
+            "minLength": 5
+          }
+        }
+      ]
+    },
+    "telephone_number": {
+      "type": "string",
+      "minLength": 4
+    },
+    "fax_number": {
+      "type": "string",
+      "minLength": 4
+    },
+    "registered_address": {
+      "$ref": "address.json"
+    },
+    "headquarters_address": {
+      "$ref": "address.json"
+    },
+    "mailing_address": {
+      "$ref": "address.json"
+    },
+    "addresses": {
+      "type": "array",
+      "items": {
+        "$ref": "address-with-type.json"
+      }
+    },
+    "identifiers": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "identifier.json"
+      }
+    },
+    "industry_codes": {
+      "type": "array",
+      "items": {
+        "$ref": "industry-code.json"
+      }
+    },
+    "previous_names": {
+      "type": "array",
+      "items": {
+        "$ref": "previous-name.json"
+      }
+    },
+    "alternative_names": {
+      "type": "array",
+      "items": {
+        "$ref": "alternative-name.json"
+      }
+    },
+    "other_attributes": {
+      "description": "Use for other attributes for which we don't yet have curated schema attributes",
+      "type": "object"
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

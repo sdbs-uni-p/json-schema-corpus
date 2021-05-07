@@ -1,0 +1,44 @@
+{
+  "id": "http://schema.org/ContactPoint",
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "extends": {
+    "$ref": "StructuredValue.json"
+  },
+  "description": "A contact point\u2014for example, a Customer Complaints department. Schema.org: http://schema.org/ContactPoint",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "availableLanguage": {
+      "description": "A language someone may use with the item.",
+      "type": "object",
+      "$ref": "Language.json"
+    },
+    "email": {
+      "description": "Email address.",
+      "type": "string",
+      "format": "email"
+    },
+    "contactType": {
+      "description": "A person or organization can have different contact points, for different purposes. For example, a sales contact point, a PR contact point and so on. This property is used to specify the kind of contact point.",
+      "type": "string"
+    },
+    "faxNumber": {
+      "description": "The fax number. E.123.",
+      "type": "string",
+      "format": "phone"
+    },
+    "productSupported": {
+      "description": "The product or service this support contact point is related to (such as product support for a particular product line). This can be a specific product or product line (e.g. 'iPhone') or a general category of products or services (e.g. 'smartphones').",
+      "type": "string"
+    },
+    "telephone": {
+      "description": "The telephone number. E.123.",
+      "type": "string",
+      "format": "phone"
+    }
+  },
+  "required": [
+    "telephone",
+    "email"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "billingInformation",
+  "id": "billingInformation",
+  "description": "A billing information to set up a new billing account.",
+  "type": "object",
+  "required": [
+    "objectType"
+  ],
+  "properties": {
+    "objectType": {
+      "type": "string",
+      "enum": [
+        "billingInformation"
+      ],
+      "description": "The type of the object, billingInformation."
+    },
+    "existingBillingAccountNumber": {
+      "type": "string",
+      "description": "Identifies an existing billing account to which the recurring and non-recurring charges for this request will be billed. Must be specified if billing contact and billing address are not specified",
+      "maxLength": 13
+    },
+    "billingContact": {
+      "$ref": "contact.json#",
+      "description": "Identifies the information of the person or office to be contacted on billing matters. Used to establish a new billing account. Must be specified if existingBillingAccountNumber is not specified."
+    },
+    "billingAddressType": {
+      "type": "string",
+      "enum": [
+        "FIELDED_ADDRESS",
+        "FORMATTED_ADDRESS",
+        "ADDRESS_REFERENCE",
+        "GEOGRAPHIC_POINT"
+      ]
+    },
+    "billingAddress": {
+      "oneOf": [
+        {
+          "$ref": "formattedAddress.json#"
+        },
+        {
+          "$ref": "fieldedAddress.json#"
+        },
+        {
+          "$ref": "addressReference.json#"
+        }
+      ],
+      "description": "Identifies a property address or postal delivery address. Used to establish a new billing account. Must be specified if existingBillingAccountNumber is not specified."
+    }
+  }
+}

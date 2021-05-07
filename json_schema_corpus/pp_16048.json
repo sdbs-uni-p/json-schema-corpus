@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "An Ideas state",
+  "type": "array",
+  "minItems": 4,
+  "maxItems": 4,
+  "items": [
+    {
+      "description": "The unique identifier for the scenario",
+      "type": "string",
+      "example": "gmd4"
+    },
+    {
+      "description": "The location in the internal strategy. Implementation-specific, do not parse this value.",
+      "type": "string"
+    },
+    {
+      "$ref": "scenariostate.schema.json#"
+    },
+    {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false
+    }
+  ],
+  "additionalItems": false
+}

@@ -1,0 +1,93 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "Connection",
+  "type": "object",
+  "required": [
+    "scheme",
+    "status",
+    "owner",
+    "peer"
+  ],
+  "properties": {
+    "scheme": {
+      "constant": "connection"
+    },
+    "status": {
+      "type": "string"
+    },
+    "owner": {
+      "type": "string"
+    },
+    "peer": {
+      "type": "string"
+    }
+  },
+  "OwnerPeer": {
+    "type": "object",
+    "properties": {}
+  },
+  "Peer": {
+    "type": "object",
+    "properties": {}
+  },
+  "IceCandidate": {
+    "type": "object",
+    "required": [
+      "candidate",
+      "sdpMLineIndex",
+      "sdpMid"
+    ],
+    "properties": {
+      "candidate": {
+        "type": "string"
+      },
+      "sdpMLineIndex": {
+        "type": "integer"
+      },
+      "sdpMid": {
+        "type": "string"
+      }
+    }
+  },
+  "IceCandidates": {
+    "type": "object",
+    "required": [
+      "status"
+    ],
+    "properties": {
+      "status": {
+        "enum": [
+          "new",
+          "checking",
+          "connected",
+          "completed",
+          "failed",
+          "disconnected",
+          "closed"
+        ]
+      }
+    }
+  },
+  "ConnectionDescription": {
+    "type": "object",
+    "required": [
+      "sdp"
+    ],
+    "properties": {
+      "sdp": {
+        "type": "string"
+      }
+    }
+  },
+  "RtpTransportParameters": {
+    "type": "object",
+    "required": [
+      "status"
+    ],
+    "properties": {
+      "status": {
+        "type": "null"
+      }
+    }
+  }
+}

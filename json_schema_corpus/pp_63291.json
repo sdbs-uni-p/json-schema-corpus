@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "type": "object",
+  "description": "Stock",
+  "properties": {
+    "state": {
+      "type": "string"
+    },
+    "productId": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{24}$",
+      "required": true
+    },
+    "supplierId": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{24}$",
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

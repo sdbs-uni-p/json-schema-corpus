@@ -1,0 +1,98 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "DESCRIBE NANOPUB COLLECTION",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "nanopub_collection",
+    "facets"
+  ],
+  "properties": {
+    "nanopub_collection": {
+      "type": "array",
+      "minItems": 0,
+      "title": "",
+      "description": "",
+      "items": {
+        "$ref": "nanopub_resource.schema.json"
+      }
+    },
+    "facets": {
+      "type": "array",
+      "minItems": 0,
+      "title": "",
+      "description": "",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "category",
+          "name",
+          "value",
+          "filter",
+          "count"
+        ],
+        "properties": {
+          "category": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          },
+          "filter": {
+            "type": "string"
+          },
+          "count": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "metadata": {
+      "title": "Metadata",
+      "description": "Data about the nanopub collection",
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "collection_paging": {
+          "type": "object",
+          "properties": {
+            "total": {
+              "title": "Total",
+              "description": "The total number of resources in this collection.",
+              "type": "number",
+              "minimum": 0
+            },
+            "total_filtered": {
+              "title": "Total Filtered",
+              "description": "The total number of resources in the filtered collection.",
+              "type": "number",
+              "minimum": 0
+            },
+            "total_pages": {
+              "title": "Total Pages",
+              "description": "The total number of pages (i.e. sized partitions) in the filtered collection.",
+              "type": "number",
+              "minimum": 0
+            },
+            "current_page": {
+              "title": "Current Page",
+              "description": "The current page of the filtered collection that this resource represents.",
+              "type": "number",
+              "minimum": 0
+            },
+            "current_page_size": {
+              "title": "Current Page Size",
+              "description": "The number of resources in the current page of the filtered collection.",
+              "type": "number",
+              "minimum": 0
+            }
+          }
+        }
+      }
+    }
+  }
+}

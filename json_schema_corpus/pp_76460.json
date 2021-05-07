@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "datastore entity properties",
+  "description": "datastore entity properties",
+  "type": "object",
+  "properties": {
+    "base64_encoded_crawl_results": {
+      "type": "string",
+      "minLength": 1
+    },
+    "last_updated": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "base64_encoded_crawl_results",
+    "last_updated"
+  ],
+  "additionalProperties": true
+}

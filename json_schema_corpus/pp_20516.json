@@ -1,0 +1,132 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Audio Book Schema",
+  "description": "The Audio Book Archetype - Essential properties that define an audio book",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "title, author, primary_audio_archetype"
+  ],
+  "properties": {
+    "_id": {
+      "type": "string",
+      "description": "Unique identifier for this archetype record",
+      "maxLength": 50,
+      "default": ""
+    },
+    "draft": {
+      "type": "boolean",
+      "description": "Indicates this archetype record is a draft and is not published",
+      "default": false
+    },
+    "created": {
+      "type": "string",
+      "description": "Date and time this archetype record was created in ISO 8601 date standard e.g. YYYY-MM-DDThh:mm:ss.sTZD",
+      "format": "date-time",
+      "default": ""
+    },
+    "updated": {
+      "type": "string",
+      "description": "Date and time this archetype record was updated in ISO 8601 date standard e.g. YYYY-MM-DDThh:mm:ss.sTZD",
+      "format": "date-time",
+      "default": ""
+    },
+    "title": {
+      "type": "string",
+      "description": "Title of the audio book",
+      "maxLength": 250,
+      "default": ""
+    },
+    "author": {
+      "type": "string",
+      "description": "Author of the book",
+      "maxLength": 140,
+      "default": ""
+    },
+    "primary_audio_archetype": {
+      "$ref": "audio_archetype_schema.json",
+      "description": "Audio Archetype ID to use as the primary audio file of this audio book"
+    },
+    "audio_archetypes": {
+      "type": "array",
+      "description": "Array of Audio Archetype IDs",
+      "uniqueItems": true,
+      "additionalItems": false,
+      "default": [],
+      "maxItems": 15,
+      "items": {
+        "$ref": "audio_archetype_schema.json"
+      }
+    },
+    "primary_image_archetype": {
+      "$ref": "image_archetype_schema.json",
+      "description": "Image Archetype ID to use as the primary image of this audio book"
+    },
+    "price": {
+      "type": "integer",
+      "description": "Audio book price in cents as an integer (whole number)",
+      "minimum": 0,
+      "maximum": 999999999999999,
+      "default": 0
+    },
+    "narrator": {
+      "type": "string",
+      "description": "Narrator of the audio book",
+      "maxLength": 140,
+      "default": ""
+    },
+    "series": {
+      "type": "string",
+      "description": "The series the audio book belongs to",
+      "maxLength": 140,
+      "default": ""
+    },
+    "publication_date": {
+      "type": "string",
+      "description": "Date and time the audio book was published in ISO 8601 date standard e.g. YYYY-MM-DDThh:mm:ss.sTZD",
+      "format": "date-time",
+      "default": ""
+    },
+    "duration": {
+      "type": "string",
+      "description": "Timed duration of the audio book",
+      "maxLength": 140,
+      "default": ""
+    },
+    "publisher": {
+      "type": "string",
+      "description": "The publiser of the audio book",
+      "maxLength": 140,
+      "default": ""
+    },
+    "summary": {
+      "type": "string",
+      "description": "Summary of the audio book",
+      "maxLength": 5000,
+      "default": ""
+    },
+    "category": {
+      "type": "string",
+      "description": "General category of the audio book, e.g. Sci-Fi & Fantasy",
+      "maxLength": 40,
+      "default": ""
+    },
+    "subcategory": {
+      "type": "string",
+      "description": "Specific category of the audio book, e.g. Fantasy - Epic",
+      "maxLength": 40,
+      "default": ""
+    },
+    "tags": {
+      "type": "array",
+      "description": "Array of Tag Archetypes that are used to help categorize this Archetype record",
+      "maxItems": 6,
+      "uniqueItems": true,
+      "additionalItems": false,
+      "default": [],
+      "items": {
+        "$ref": "tag_archetype_schema.json"
+      }
+    }
+  }
+}

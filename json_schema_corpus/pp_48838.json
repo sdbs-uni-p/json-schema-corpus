@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "required": false,
+  "properties": {
+    "identity": {
+      "type": "object",
+      "id": "http://qcif.edu.au/identity",
+      "required": false,
+      "properties": {
+        "RIF_CSGroup": {
+          "type": "string",
+          "id": "http://qcif.edu.au/identity/RIF_CSGroup",
+          "required": true
+        },
+        "institution": {
+          "type": "string",
+          "id": "http://qcif.edu.au/identity/institution",
+          "required": true
+        },
+        "internalGrantString": {
+          "type": "string",
+          "id": "http://qcif.edu.au/identity/internalGrantString",
+          "required": false
+        }
+      }
+    }
+  }
+}

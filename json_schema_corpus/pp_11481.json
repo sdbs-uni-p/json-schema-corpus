@@ -1,0 +1,82 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "title": "NCSU OLE Ingest Toolkit Bibliographic Record",
+  "type": "object",
+  "properties": {
+    "bib_id": {
+      "type": "string",
+      "description": "The ID generally used to refer to the record"
+    },
+    "former_id": {
+      "type": "string",
+      "description": "An identifier for the record from an previous system"
+    },
+    "fast_add": {
+      "type": "boolean",
+      "description": "Was the record added at a circulation desk?",
+      "default": false
+    },
+    "staff_only": {
+      "type": "boolean",
+      "description": "Is the record restricted for viewing to just staff?",
+      "default": false
+    },
+    "created_by": {
+      "type": "string",
+      "description": "ID or initials of the user who created the record",
+      "default": "olemigrator"
+    },
+    "date_created": {
+      "type": "string",
+      "description": "Timestamp record was originally created (ISO-8601 format)",
+      "pattern": "date-time"
+    },
+    "updated_by": {
+      "type": "string",
+      "description": "Identifier for the last user who altered the record",
+      "default": "olemigrator"
+    },
+    "date_updated": {
+      "type": "string",
+      "description": "Timestamp for last record alteration",
+      "pattern": "date-time",
+      "default": "(current time)"
+    },
+    "status_updated_by": {
+      "type": "string",
+      "description": "Identifier for last user to update the cataloguing status of the record",
+      "default": "olemigrator"
+    },
+    "status": {
+      "type": "string",
+      "description": "name?  id? of last cataloguing status",
+      "default": "Catalogued"
+    },
+    "status_updated_date": {
+      "type": "string",
+      "description": "timestamp of status update for this record",
+      "pattern": "date-time",
+      "default": "(current time)"
+    },
+    "unique_id_prefix": {
+      "type": "string",
+      "description": "prefix for record type that will be added to bib_id property to identify the object in OLE's Solr index",
+      "enum": [
+        "wbm"
+      ],
+      "default": "wbm"
+    },
+    "content": {
+      "type": "string",
+      "description": "MARCXML serialization of the bibliographic record"
+    },
+    "holdings": {
+      "type": "array"
+    }
+  },
+  "required": [
+    "bib_id",
+    "content",
+    "date_created"
+  ]
+}

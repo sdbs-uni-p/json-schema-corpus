@@ -1,0 +1,90 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "name": "Relationship",
+  "description": "Represent a Relationship in the ER model",
+  "type": "object",
+  "properties": {
+    "name": {
+      "description": "name of the Relationship",
+      "type": "string"
+    },
+    "version": {
+      "description": "version",
+      "type": "string"
+    },
+    "author": {
+      "description": "name of the author",
+      "type": "string"
+    },
+    "description": {
+      "description": "human readable description",
+      "type": "string"
+    },
+    "associated-tool": {
+      "description": "name of the associated tool (eg- Docker-Rest-API)",
+      "type": "string"
+    },
+    "participating-entities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "name of the participating Entity",
+            "type": "string"
+          },
+          "version": {
+            "description": "version of the participating Entity",
+            "type": "string"
+          },
+          "role": {
+            "description": "role of the participating Entity this Relationship",
+            "type": "string"
+          },
+          "cardinality": {
+            "description": "Cardinality values",
+            "type": "object",
+            "properties": {
+              "min-value": {
+                "type": "string"
+              },
+              "max-value": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "minItems": 2,
+        "maxItems": 2
+      }
+    },
+    "properties": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "name of the attribute",
+            "type": "string"
+          },
+          "type": {
+            "description": "data type of the attribute",
+            "type": "string"
+          },
+          "default-value": {
+            "description": "default-value for the attribute",
+            "type": "string"
+          },
+          "required": {
+            "description": "required or not?",
+            "type": "boolean"
+          },
+          "description": {
+            "description": "human readable description for the attribute",
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

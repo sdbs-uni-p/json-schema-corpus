@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "serviceabilityConfidence",
+  "id": "serviceabilityConfidence",
+  "description": "A description of the confidence a Seller has in delivering services.",
+  "type": "object",
+  "required": [
+    "objectType",
+    "color"
+  ],
+  "properties": {
+    "objectType": {
+      "type": "string",
+      "enum": [
+        "serviceabilityConfidence"
+      ],
+      "description": "The type of the object, serviceabilityConfidence."
+    },
+    "color": {
+      "type": "string",
+      "enum": [
+        "GREEN",
+        "YELLOW",
+        "RED"
+      ],
+      "description": "A color that indicates confidence. Green = Serviceable, Red = Unserviceable, Yellow = We'll get back to you."
+    },
+    "estimatedResponseDate": {
+      "type": "string",
+      "formate": "date-time",
+      "description": "When the color is Yellow (meaning 'We'll get back to you'), this date indicates when the Seller plans to provide a more complete response. The date formatted as  YYYY-MM-DD (eg 1997-07-16) or YYYY-MM-DDThh:mmTZD (eg 1997-07-16T19:20+01:00)."
+    },
+    "reason": {
+      "type": "string",
+      "description": "A description of the reason a particular color is being provided. This may include a specific standard reason codes and descriptions.",
+      "maxLength": 100
+    }
+  }
+}

@@ -1,0 +1,440 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Case",
+  "description": "An Ebola case registered by the call centre",
+  "type": "object",
+  "properties": {
+    "doc_type": {
+      "type": "string",
+      "pattern": "^case$"
+    },
+    "version": {
+      "type": "string",
+      "format": "semver"
+    },
+    "caseStatus": {
+      "type": "string"
+    },
+    "callback": {
+      "type": "object",
+      "properties": {
+        "required": {
+          "type": "boolean"
+        },
+        "requiredAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "completedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "responseLine": {
+      "type": "string",
+      "enum": [
+        "117"
+      ]
+    },
+    "callNature": {
+      "enum": [
+        "death",
+        "suspect",
+        "sick",
+        "health information",
+        "quarantine",
+        "security threat",
+        "prank call",
+        "other",
+        "non ebola"
+      ]
+    },
+    "callNatureOther": {
+      "type": "string"
+    },
+    "reponseLine": {
+      "type": "string"
+    },
+    "requestedHealthInfo": {
+      "type": "object"
+    },
+    "createdOn": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "createdBy": {
+      "$ref": "#/definitions/user"
+    },
+    "callDetails": {
+      "type": "string"
+    },
+    "isFollowUpCall": {
+      "type": "boolean"
+    },
+    "sameCallPatients": {
+      "type": "array"
+    },
+    "duplicateIDs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "callId": {
+      "type": "string"
+    },
+    "changeLog": {
+      "$ref": "#/definitions/changeLog"
+    },
+    "contact": {
+      "$ref": "#/definitions/contact"
+    },
+    "patient": {
+      "$ref": "#/definitions/patient"
+    },
+    "response": {
+      "$ref": "#/definitions/response"
+    },
+    "dispatch": {
+      "$ref": "#/definitions/dispatch"
+    },
+    "quarantine": {
+      "$ref": "#/definitions/quarantine"
+    },
+    "swabbing": {
+      "$ref": "#/definitions/swabbing"
+    }
+  },
+  "definitions": {
+    "changeLog": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "rev": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "integer"
+          },
+          "user": {
+            "$ref": "#/definitions/user"
+          }
+        }
+      }
+    },
+    "contact": {
+      "type": "object",
+      "properties": {
+        "doc_type": {
+          "type": "string",
+          "enum": [
+            "contact"
+          ]
+        },
+        "gender": {
+          "enum": [
+            "F",
+            "M",
+            "unknown"
+          ]
+        },
+        "age": {
+          "type": "object",
+          "properties": {
+            "years": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 121
+            },
+            "months": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 11
+            },
+            "category": {
+              "enum": [
+                "child",
+                "adult"
+              ]
+            }
+          }
+        },
+        "category": {
+          "type": "string"
+        },
+        "phoneNo": {
+          "type": "string",
+          "faker": "phone.phoneNumber"
+        },
+        "address": {
+          "type": "string"
+        },
+        "location": {
+          "$ref": "#/definitions/location"
+        },
+        "preferredLanguages": {
+          "type": "array"
+        },
+        "ward": {
+          "$ref": "#/definitions/ward"
+        },
+        "organisation": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "doc_type",
+        "phoneNo"
+      ]
+    },
+    "patient": {
+      "title": "Patient",
+      "description": "a patient registered by the Call Center",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number"
+        },
+        "doc_type": {
+          "type": "string",
+          "enum": [
+            "patient"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "dead",
+            "alive"
+          ]
+        },
+        "dateOfDeath": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "causeOfDeath": {
+          "enum": [
+            "trauma or accident",
+            "fever",
+            "maternal death",
+            "still death",
+            "other"
+          ]
+        },
+        "symptomsOn": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "gender": {
+          "enum": [
+            "F",
+            "M",
+            "unknown"
+          ]
+        },
+        "age": {
+          "type": "object",
+          "properties": {
+            "years": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 121
+            },
+            "months": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 11
+            },
+            "category": {
+              "enum": [
+                "infant",
+                "child",
+                "adult"
+              ]
+            }
+          }
+        },
+        "patientName": {
+          "type": "string"
+        },
+        "phoneNo": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "location": {
+          "$ref": "#/definitions/location"
+        },
+        "household": {
+          "type": "object",
+          "properties": {
+            "child": {
+              "type": "boolean"
+            },
+            "disabledPerson": {
+              "type": "boolean"
+            },
+            "pregnantWoman": {
+              "type": "boolean"
+            }
+          }
+        },
+        "ward": {
+          "$ref": "#/definitions/ward"
+        }
+      },
+      "required": [
+        "location",
+        "age",
+        "status",
+        "household",
+        "doc_type"
+      ]
+    },
+    "response": {
+      "type": "object",
+      "swabId": {
+        "type": "string"
+      }
+    },
+    "dispatch": {
+      "type": "object"
+    },
+    "user": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "fullName": {
+          "type": "string"
+        }
+      }
+    },
+    "location": {
+      "type": "object",
+      "properties": {
+        "adminDivision1": {
+          "$ref": "#/definitions/adminDivision"
+        },
+        "adminDivision2": {
+          "$ref": "#/definitions/adminDivision"
+        },
+        "adminDivision3": {
+          "$ref": "#/definitions/adminDivision"
+        },
+        "adminDivision4": {
+          "$ref": "#/definitions/adminDivision"
+        }
+      }
+    },
+    "swabbing": {
+      "type": "object",
+      "description": "sample taken from patient",
+      "properties": {
+        "suggestedOn": {
+          "type": "string",
+          "format": "date-time",
+          "description": "when the swabbing was suggested to be performed"
+        },
+        "serialNumber": {
+          "type": "string"
+        },
+        "collectorName": {
+          "type": "string",
+          "description": "swabbing collector's name"
+        },
+        "location": {
+          "type": "string",
+          "description": "location where the swabbing has taken place"
+        },
+        "date": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "quarantine": {
+      "type": "object",
+      "properties": {
+        "actionTaken": {
+          "enum": [
+            "falseSecurityPresent",
+            "nutritionNotified",
+            "securityNotified",
+            "personTransferred",
+            "collectedByBurialTeam",
+            "falseFoodDelivered"
+          ]
+        },
+        "officer": {
+          "type": "string"
+        },
+        "phoneNo": {
+          "type": "string"
+        },
+        "dateResponded": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "adminDivision": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": [
+            "string",
+            "number"
+          ]
+        },
+        "ochaId": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "coordinates": {
+          "type": "object",
+          "properties": {
+            "lon": {
+              "type": "number"
+            },
+            "lat": {
+              "type": "number"
+            }
+          }
+        },
+        "deprecated": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ]
+    },
+    "ward": {
+      "type": "string",
+      "maxLength": 3
+    }
+  },
+  "required": [
+    "doc_type",
+    "version",
+    "createdOn",
+    "contact",
+    "createdBy",
+    "patient",
+    "response",
+    "dispatch",
+    "callNature",
+    "responseLine"
+  ]
+}

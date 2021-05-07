@@ -1,0 +1,270 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/containers/create",
+  "type": "object",
+  "properties": {
+    "Hostname": {
+      "id": "Hostname",
+      "type": "string"
+    },
+    "Domainname": {
+      "id": "Domainname",
+      "type": "string"
+    },
+    "User": {
+      "id": "User",
+      "type": "string"
+    },
+    "Memory": {
+      "id": "Memory",
+      "type": "integer"
+    },
+    "MemorySwap": {
+      "id": "MemorySwap",
+      "type": "integer"
+    },
+    "CpuShares": {
+      "id": "CpuShares",
+      "type": "integer"
+    },
+    "Cpuset": {
+      "id": "Cpuset",
+      "type": "string"
+    },
+    "AttachStdin": {
+      "id": "AttachStdin",
+      "type": "boolean"
+    },
+    "AttachStdout": {
+      "id": "AttachStdout",
+      "type": "boolean"
+    },
+    "AttachStderr": {
+      "id": "AttachStderr",
+      "type": "boolean"
+    },
+    "Tty": {
+      "id": "Tty",
+      "type": "boolean"
+    },
+    "OpenStdin": {
+      "id": "OpenStdin",
+      "type": "boolean"
+    },
+    "StdinOnce": {
+      "id": "StdinOnce",
+      "type": "boolean"
+    },
+    "Env": {
+      "id": "Env",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "Cmd": {
+      "id": "Cmd",
+      "type": "array",
+      "items": {
+        "id": "0",
+        "type": "string"
+      }
+    },
+    "Entrypoint": {
+      "id": "Entrypoint",
+      "type": "string"
+    },
+    "Image": {
+      "id": "Image",
+      "type": "string"
+    },
+    "Volumes": {
+      "id": "/containers/create/Volumes",
+      "type": "object",
+      "additionalProperties": {
+        "type": "object"
+      }
+    },
+    "WorkingDir": {
+      "id": "WorkingDir",
+      "type": "string"
+    },
+    "NetworkDisabled": {
+      "id": "NetworkDisabled",
+      "type": "boolean"
+    },
+    "MacAddress": {
+      "id": "MacAddress",
+      "type": "string"
+    },
+    "ExposedPorts": {
+      "id": "ExposedPorts",
+      "type": "object",
+      "additionalProperties": {
+        "type": "object"
+      }
+    },
+    "SecurityOpts": {
+      "id": "SecurityOpts",
+      "type": "array",
+      "items": {
+        "id": "0",
+        "type": "string"
+      }
+    },
+    "HostConfig": {
+      "id": "HostConfig",
+      "type": "object",
+      "properties": {
+        "Binds": {
+          "id": "Binds",
+          "type": "array",
+          "items": {
+            "id": "0",
+            "type": "string"
+          }
+        },
+        "Links": {
+          "id": "Links",
+          "type": "array",
+          "items": {
+            "id": "0",
+            "type": "string"
+          }
+        },
+        "LxcConf": {
+          "id": "LxcConf",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "PortBindings": {
+          "id": "PortBindings",
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "id": "PortBinding",
+              "type": "object",
+              "properties": {
+                "HostPort": {
+                  "id": "HostPort",
+                  "type": "string"
+                },
+                "HostIp": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "PublishAllPorts": {
+          "id": "PublishAllPorts",
+          "type": "boolean"
+        },
+        "Privileged": {
+          "id": "Privileged",
+          "type": "boolean"
+        },
+        "ReadonlyRootfs": {
+          "id": "ReadonlyRootfs",
+          "type": "boolean"
+        },
+        "Dns": {
+          "id": "Dns",
+          "type": "array",
+          "items": {
+            "id": "0",
+            "type": "string"
+          }
+        },
+        "DnsSearch": {
+          "id": "DnsSearch",
+          "type": "array",
+          "items": {
+            "id": "0",
+            "type": "string"
+          }
+        },
+        "ExtraHosts": {
+          "id": "ExtraHosts",
+          "type": "null"
+        },
+        "VolumesFrom": {
+          "id": "VolumesFrom",
+          "type": "array",
+          "items": {
+            "id": "1",
+            "type": "string"
+          }
+        },
+        "CapAdd": {
+          "id": "CapAdd",
+          "type": "array",
+          "items": {
+            "id": "0",
+            "type": "string"
+          }
+        },
+        "CapDrop": {
+          "id": "CapDrop",
+          "type": "array",
+          "items": {
+            "id": "0",
+            "type": "string"
+          }
+        },
+        "RestartPolicy": {
+          "id": "RestartPolicy",
+          "type": "object",
+          "properties": {
+            "Name": {
+              "id": "Name",
+              "type": "string"
+            },
+            "MaximumRetryCount": {
+              "id": "MaximumRetryCount",
+              "type": "integer"
+            }
+          }
+        },
+        "NetworkMode": {
+          "id": "NetworkMode",
+          "type": "string"
+        },
+        "Devices": {
+          "id": "Devices",
+          "type": "array",
+          "items": {}
+        }
+      }
+    }
+  },
+  "required": [
+    "Hostname",
+    "Domainname",
+    "User",
+    "Memory",
+    "MemorySwap",
+    "CpuShares",
+    "Cpuset",
+    "AttachStdin",
+    "AttachStdout",
+    "AttachStderr",
+    "Tty",
+    "OpenStdin",
+    "StdinOnce",
+    "Env",
+    "Cmd",
+    "Entrypoint",
+    "Image",
+    "Volumes",
+    "WorkingDir",
+    "NetworkDisabled",
+    "MacAddress",
+    "ExposedPorts",
+    "SecurityOpts",
+    "HostConfig"
+  ]
+}

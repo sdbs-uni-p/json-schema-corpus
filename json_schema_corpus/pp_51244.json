@@ -1,0 +1,95 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "malicious-tool",
+  "description": "A piece of software used directly by an attacker",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "../stix/ttp-base.json"
+    },
+    {
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "malicious-tool"
+          ]
+        },
+        "compensation_model": {
+          "type": "string",
+          "description": "The type of compensation model used for this tool."
+        },
+        "kind": {
+          "type": "array",
+          "description": "The type of tool being described",
+          "items": {
+            "allOf": [
+              {
+                "$ref": "../common/statement.json"
+              },
+              {
+                "properties": {
+                  "value": {
+                    "type": "string",
+                    "enum": [
+                      "Penetration Testing",
+                      "Port Scanner",
+                      "Traffic Scanner",
+                      "Vulnerability Scanner",
+                      "Application Scanner",
+                      "Password Cracking"
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "relationships": {
+    "related": [
+      "asset",
+      "attack-pattern",
+      "campaign",
+      "configuration",
+      "course-of-action",
+      "identity",
+      "incident",
+      "indicator",
+      "kill-chain",
+      "kill-chain-phase",
+      "malicious-infrastructure",
+      "malicious-tool",
+      "malware",
+      "observation",
+      "threat-actor",
+      "tool",
+      "victim-targeting",
+      "vulnerability",
+      "weakness"
+    ],
+    "kill-chain-phases": [
+      "kill-chain-phase"
+    ],
+    "exploits": [
+      "exploit-target"
+    ],
+    "duplicate-of": [
+      "malicious-tool"
+    ],
+    "suggested-update": [
+      "malicious-tool"
+    ],
+    "derived-from": [
+      "malicious-tool"
+    ],
+    "characterized-by": [
+      "asset"
+    ]
+  },
+  "required": [
+    "type"
+  ]
+}

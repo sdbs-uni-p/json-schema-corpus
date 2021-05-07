@@ -1,0 +1,125 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "required": [
+    "hitSamples",
+    "activeSessions",
+    "startedSessions",
+    "endedSessions"
+  ],
+  "properties": {
+    "hitSamples": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "ua",
+          "ip",
+          "ts"
+        ],
+        "properties": {
+          "ua": {
+            "id": "ua",
+            "type": "string"
+          },
+          "ip": {
+            "id": "ip",
+            "type": "string"
+          },
+          "host": {
+            "id": "host",
+            "type": "string"
+          },
+          "url": {
+            "id": "url",
+            "type": "string"
+          },
+          "ts": {
+            "id": "ts",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "activeSessions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "ua",
+          "ip",
+          "started"
+        ],
+        "properties": {
+          "ua": {
+            "id": "ua",
+            "type": "string"
+          },
+          "ip": {
+            "id": "ip",
+            "type": "string"
+          },
+          "started": {
+            "id": "started",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "startedSessions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "ua",
+          "ip",
+          "started"
+        ],
+        "properties": {
+          "ua": {
+            "id": "ua",
+            "type": "string"
+          },
+          "ip": {
+            "id": "ip",
+            "type": "string"
+          },
+          "started": {
+            "id": "started",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "endedSessions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "ua",
+          "ip",
+          "started",
+          "ended"
+        ],
+        "properties": {
+          "ua": {
+            "id": "ua",
+            "type": "string"
+          },
+          "ip": {
+            "id": "ip",
+            "type": "string"
+          },
+          "started": {
+            "id": "started",
+            "type": "string"
+          },
+          "ended": {
+            "id": "ended",
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

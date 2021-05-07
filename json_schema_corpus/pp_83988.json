@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "definitions": {
+    "body": {
+      "type": "string"
+    },
+    "headline": {
+      "type": "string"
+    },
+    "Item_Page_Article": {
+      "type": "object",
+      "properties": {
+        "body": {
+          "$ref": "#definitions/body"
+        },
+        "headline": {
+          "$ref": "#definitions/headline"
+        }
+      }
+    }
+  },
+  "type": "object",
+  "required": [
+    "Item",
+    "Item_Page_Article"
+  ],
+  "properties": {
+    "Item": {
+      "$ref": "Item.json#/definitions/Item"
+    },
+    "Item_Page": {
+      "$ref": "Page.json#/definitions/Item_Page"
+    },
+    "Item_Page_Article": {
+      "$ref": "#/definitions/Item_Page_Article"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Users List Response",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "$ref": "__apigModelsEndpoint__/User"
+          },
+          "role": {
+            "$ref": "__apigModelsEndpoint__/Role"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "items"
+  ]
+}

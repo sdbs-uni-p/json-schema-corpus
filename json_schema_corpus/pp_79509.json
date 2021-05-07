@@ -1,0 +1,8 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "type": "array",
+  "items": {
+    "$ref": "actionsForApp.json"
+  },
+  "description": "An array of actions rolled up across all producing apps"
+}

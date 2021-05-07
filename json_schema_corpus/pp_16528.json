@@ -1,0 +1,82 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "filter.crop",
+  "name": "crop",
+  "defaults": {},
+  "groups": [
+    {
+      "class": "standard",
+      "id": "standard",
+      "properties": [
+        {
+          "id": "out_w",
+          "parameter": "out_w",
+          "forced": true,
+          "control": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 8192,
+            "singleStep": 16,
+            "value": 800
+          }
+        },
+        {
+          "id": "out_h",
+          "parameter": "out_h",
+          "forced": true,
+          "control": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 8192,
+            "singleStep": 8,
+            "value": 600
+          }
+        }
+      ]
+    },
+    {
+      "class": "advanced",
+      "id": "advanced",
+      "properties": [
+        {
+          "id": "x",
+          "parameter": "x",
+          "control": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 8192,
+            "singleStep": 16,
+            "value": 0
+          }
+        },
+        {
+          "id": "y",
+          "parameter": "y",
+          "control": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 8192,
+            "singleStep": 8,
+            "value": 0
+          }
+        },
+        {
+          "id": "keep_aspect",
+          "parameter": "keep_aspect",
+          "control": {
+            "type": "boolean",
+            "value": false
+          }
+        },
+        {
+          "id": "exact",
+          "parameter": "exact",
+          "control": {
+            "type": "boolean",
+            "value": false
+          }
+        }
+      ]
+    }
+  ]
+}

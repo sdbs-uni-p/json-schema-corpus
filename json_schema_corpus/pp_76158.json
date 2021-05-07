@@ -1,0 +1,79 @@
+{
+  "$id": "https://example.com/schemas/error-message.json",
+  "title": "An error message that contains information related to an error that occurred.",
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "type": "object",
+  "required": [
+    "id",
+    "title"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "description": "A unique identifier used only for this one error. When technical support is requested for an error, this ID should be included in the support request.",
+      "$ref": "https://example.com/schemas/uuid.json"
+    },
+    "title": {
+      "description": "A suitable brief title for this type of error. Note that the title is for the *type* of error, not the specific instance, so does not include instance details.",
+      "type": "string",
+      "minLength": 1,
+      "example": "Invalid URL parameter."
+    },
+    "detail": {
+      "description": "A more descriptive, but human-readable description of the error, including details related to this specific instance of the error that help the user to diagnose the cause of the errror.",
+      "type": "string",
+      "minLength": 1,
+      "example": "The 'state' parameter in the URL was 'foo', but only 'abc' or 'xyz' are allowed."
+    },
+    "status": {
+      "description": "The HTTP status code associated with this particular error; useful when a response includes multiple errors, each with a different HTTP status code.",
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 999
+    },
+    "sources": {
+      "description": "If applicable, the source(s) of the problem. The source(s) of an error are only supplied for errors that are caused by the request since those are the only sources that the user has control over. The user could potentially resolve these errors by making a change to their request. Note that at times more than one source is returned, but it is impossible for the server to ascertain which source is actually to blame. For example, if two parameters are used in a URL, and no object is found at that URL, the server may not be sure of which parameter may be valid.",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/error-source"
+      },
+      "minItems": 1
+    }
+  },
+  "definitions": {
+    "error-source": {
+      "type": "object",
+      "required": [
+        "location",
+        "path"
+      ],
+      "properties": {
+        "location": {
+          "description": "Which location in the request the path of the problem applies to.",
+          "type": "string",
+          "enum": [
+            "body",
+            "url",
+            "header"
+          ]
+        },
+        "path": {
+          "description": "The path to the specific field that caused the problem, according to location. For the url and header locations, the path is the name of the parameter or header. For the body location, the path is a JSON pointer (see https://tools.ietf.org/html/rfc6901) to the part of the body document that caused the error.",
+          "type": "string",
+          "example": "#/firstName"
+        },
+        "detail": {
+          "description": "Optional details about the error at this particular source location.",
+          "type": "string",
+          "minLength": 1,
+          "example": "Password must contain lots of funny characters."
+        },
+        "schemaPath": {
+          "description": "If the error was due to an object not matching the schema it is supposed to match, the 'path' is the path to the errant field in the object itself, and the schemaPath is the path in the schema document of the rule that was not satisifed.",
+          "type": "string",
+          "example": "#/definitions/user/firstName"
+        }
+      }
+    }
+  }
+}

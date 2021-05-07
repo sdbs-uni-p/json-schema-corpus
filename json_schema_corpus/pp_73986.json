@@ -1,0 +1,33 @@
+{
+  "id": "http://schlothauer.de/schemas/shared/domain.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Domain of a running application.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "description": "Domain name",
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+      "__unique": true,
+      "__visKey": true
+    },
+    "description": {
+      "description": "some words to explain",
+      "type": "string"
+    },
+    "gid": {
+      "description": "global identifier",
+      "type": "string",
+      "format": "uuid"
+    },
+    "active": {
+      "description": "is this entry still active",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "name",
+    "domain_id"
+  ],
+  "__version": 4
+}

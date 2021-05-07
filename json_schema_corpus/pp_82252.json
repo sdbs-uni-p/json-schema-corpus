@@ -1,0 +1,93 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "blueprint",
+  "description": "A blueprint as defined by dstore",
+  "type": "object",
+  "properties": {
+    "elasticsearch": {
+      "type": "object",
+      "properties": {
+        "type": "string"
+      },
+      "required": [
+        "type"
+      ]
+    },
+    "postgresql": {
+      "type": "object",
+      "properties": {
+        "table": "string"
+      },
+      "required": [
+        "table"
+      ]
+    },
+    "leveldb": {
+      "type": "object",
+      "properties": {
+        "type": "string"
+      },
+      "required": [
+        "type"
+      ]
+    },
+    "columns": {
+      "additionalProperties": {
+        "$ref": "#/definitions/column"
+      }
+    }
+  },
+  "required": [
+    "elasticsearch",
+    "postgresql",
+    "leveldb",
+    "columns"
+  ],
+  "definitions": {
+    "column": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [
+            "uuid",
+            "string",
+            "text",
+            "point",
+            "linestring",
+            "polygon",
+            "date",
+            "datetime",
+            "float",
+            "integer",
+            "boolean",
+            "json",
+            "uuid[]",
+            "string[]",
+            "text[]",
+            "point[]",
+            "linestring[]",
+            "polygon[]",
+            "date[]",
+            "datetime[]",
+            "float[]",
+            "integer[]",
+            "boolean[]",
+            "json[]"
+          ]
+        },
+        "elasticsearch_options": {
+          "type": "object"
+        },
+        "postgresql_options": {
+          "type": "object"
+        },
+        "validation": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "type"
+      ]
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "The value returned by DELETE /{db}/{docid}",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "ok": {
+      "type": "boolean"
+    },
+    "rev": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "ok"
+  ],
+  "title": "CouchDB delete doc",
+  "type": "object"
+}

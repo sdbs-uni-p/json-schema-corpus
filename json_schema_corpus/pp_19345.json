@@ -1,0 +1,121 @@
+{
+  "title": "Nodedoy Config",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "type": "object",
+  "properties": {
+    "enableHTTPConfigChanges": {
+      "title": "Changes from HTTP requests are allowed",
+      "type": "boolean"
+    },
+    "storage": {
+      "title": "State storage configuration",
+      "type": "object",
+      "properties": {
+        "type": {
+          "title": "Storage type",
+          "type": "string"
+        },
+        "config": {
+          "title": "Storage configuration",
+          "type": "object",
+          "description": "Each storage type needs to define the supported values for this object"
+        }
+      }
+    },
+    "modules": {
+      "title": "Modules",
+      "type": "array",
+      "items": {
+        "title": "Module",
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "Module instance id",
+            "type": "string"
+          },
+          "type": {
+            "title": "Module instance type",
+            "type": "string"
+          },
+          "config": {
+            "title": "Module configuration",
+            "type": "object",
+            "description": "Each module will get this configuration and is up to it to define which values it supports"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "resultActions": {
+      "title": "Result actions",
+      "id": "resultActions",
+      "type": "object",
+      "description": "Defines to actions on each of the results",
+      "properties": {
+        "ok": {
+          "title": "OK result",
+          "$ref": "#actionDefinition"
+        },
+        "warning": {
+          "title": "Warning result",
+          "$ref": "#actionDefinition"
+        },
+        "error": {
+          "title": "Error result",
+          "$ref": "#actionDefinition"
+        },
+        "unknown": {
+          "title": "Unknown",
+          "$ref": "#actionDefinition"
+        }
+      }
+    },
+    "actionDefinition": {
+      "title": "Action definition",
+      "id": "actionDefinition",
+      "type": "object",
+      "properties": {
+        "commands": {
+          "title": "Commands array",
+          "type": "array",
+          "items": {
+            "title": "Command",
+            "type": "object",
+            "properties": {
+              "type": {
+                "title": "Command type",
+                "enum": [
+                  "eval",
+                  "exec"
+                ]
+              },
+              "command": {
+                "title": "Command to run",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "after": {
+                "title": "Execute after",
+                "type": "integer",
+                "description": "Delay before the command is executed"
+              },
+              "repeatEvery": {
+                "title": "Repeat delay",
+                "type": "integer",
+                "description": "Repeats the command after this number of seconds"
+              },
+              "repetitions": {
+                "title": "Repetitions",
+                "type": "integer",
+                "description": "Number of times that the command is executed"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

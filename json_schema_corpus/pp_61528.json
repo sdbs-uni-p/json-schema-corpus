@@ -1,0 +1,93 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://xray.com/domain/course",
+  "title": "Courses",
+  "description": "X-Ray web service course method schema",
+  "oneOf": [
+    {
+      "$ref": "base_schema_ref.json#/definitions/base_response"
+    },
+    {
+      "id": "http://xray.com/domain/course/okresponse",
+      "type": "array",
+      "items": {
+        "required": [
+          "category",
+          "startdate",
+          "forumcount",
+          "id",
+          "participants",
+          "shortname",
+          "fullname"
+        ],
+        "type": "object",
+        "properties": {
+          "category": {
+            "type": "number"
+          },
+          "startdate": {
+            "type": "string"
+          },
+          "forumcount": {
+            "type": "string"
+          },
+          "fullname": {
+            "type": "string"
+          },
+          "participants": {
+            "required": [
+              "participantid",
+              "firstname",
+              "courseid",
+              "lastname",
+              "roleid",
+              "email"
+            ],
+            "type": "object",
+            "properties": {
+              "participantid": {
+                "items": {
+                  "type": "number"
+                },
+                "type": "array"
+              },
+              "firstname": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "courseid": {
+                "type": "number"
+              },
+              "lastname": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "roleid": {
+                "items": {
+                  "type": "number"
+                },
+                "type": "array"
+              },
+              "email": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            }
+          },
+          "shortname": {
+            "type": "string"
+          },
+          "id": {
+            "type": "number"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "description": "Collection of users",
+  "properties": {
+    "users": {
+      "description": "List of userdata items",
+      "type": "array",
+      "id": "usersData",
+      "items": {
+        "type": "object",
+        "$ref": "userdata.json"
+      }
+    },
+    "totalRecords": {
+      "type": "integer"
+    },
+    "resultInfo": {
+      "$ref": "../resultInfo.schema",
+      "readonly": true
+    }
+  },
+  "required": [
+    "users",
+    "totalRecords"
+  ]
+}

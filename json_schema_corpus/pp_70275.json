@@ -1,0 +1,71 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "locationphoto",
+  "description": "Location Photo",
+  "type": "object",
+  "properties": {
+    "id": {
+      "$ref": "/schema/id"
+    },
+    "photo_id": {
+      "$ref": "/schema/id"
+    },
+    "location_id": {
+      "$ref": "/schema/id"
+    },
+    "spv2_location_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "title": {
+      "$ref": "/schema/name"
+    },
+    "photo_type": {
+      "$ref": "/schema/phototype"
+    },
+    "source": {
+      "type": "string"
+    },
+    "width": {
+      "type": "number"
+    },
+    "height": {
+      "type": "number"
+    },
+    "size": {
+      "type": "number"
+    },
+    "foreign_url": {
+      "$ref": "/schema/url"
+    },
+    "main_image": {
+      "$ref": "/schema/url"
+    },
+    "photos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "/schema/id"
+          },
+          "url": {
+            "$ref": "/schema/url"
+          }
+        }
+      }
+    },
+    "created": {
+      "$ref": "/schema/timestamp"
+    },
+    "updated": {
+      "$ref": "/schema/timestamp"
+    }
+  },
+  "required": [
+    "photo_id",
+    "location_id"
+  ]
+}

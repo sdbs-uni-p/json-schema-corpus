@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Beschreibung fehlt",
+  "properties": {
+    "city": {
+      "description": "Beschreibung fehlt",
+      "title": "City schema.",
+      "type": "string"
+    },
+    "country": {
+      "description": "Beschreibung fehlt",
+      "title": "Country schema.",
+      "type": "string"
+    },
+    "district": {
+      "description": "Beschreibung fehlt",
+      "title": "District schema.",
+      "type": "string"
+    },
+    "federal_state": {
+      "description": "Beschreibung fehlt",
+      "title": "Federal_state schema.",
+      "type": "string"
+    },
+    "global_id": {
+      "description": "Beschreibung fehlt",
+      "title": "Global_id schema.",
+      "type": "string"
+    },
+    "internal_id": {
+      "description": "Beschreibung fehlt",
+      "title": "Internal_id schema.",
+      "type": "string"
+    },
+    "kind": {
+      "description": "Beschreibung fehlt",
+      "enum": [
+        "group"
+      ],
+      "title": "Kind schema.",
+      "type": "string"
+    },
+    "layer": {
+      "description": "Beschreibung fehlt",
+      "title": "Layer schema.",
+      "type": "string"
+    },
+    "name": {
+      "description": "Beschreibung fehlt",
+      "title": "Name schema.",
+      "type": "string"
+    },
+    "zip": {
+      "description": "Beschreibung fehlt",
+      "title": "Zip schema.",
+      "type": "string"
+    }
+  },
+  "title": "Root schema.",
+  "type": "object"
+}

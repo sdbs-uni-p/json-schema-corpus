@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "required": [
+    "id",
+    "version",
+    "post_time",
+    "data",
+    "votes_score"
+  ],
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "version": {
+      "type": "integer"
+    },
+    "post_time": {
+      "type": "string"
+    },
+    "data": {
+      "type": "object"
+    },
+    "votes_score": {
+      "type": "integer"
+    }
+  }
+}

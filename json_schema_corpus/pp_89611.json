@@ -1,0 +1,125 @@
+{
+  "name": "AxMessagesWidget",
+  "description": "Displays messages to the user, for example to communicate validation results.",
+  "integration": {
+    "technology": "angular",
+    "type": "widget"
+  },
+  "compatibility": [
+    "json-patch"
+  ],
+  "features": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "layout": {
+        "type": "object",
+        "description": "How to present the messages.",
+        "properties": {
+          "variant": {
+            "type": "integer",
+            "description": "A layout-variant code (preliminary; 1: no alert/border, 2: single alert, 3: one alert per error-class, 4: one alert per message).",
+            "default": 3
+          }
+        }
+      },
+      "dismiss": {
+        "type": "object",
+        "description": "Tells if and how messages may be dismissed by the user.",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "description": "If true, a button for dismissing is provided to the user.",
+            "default": true
+          }
+        }
+      },
+      "status": {
+        "type": "object",
+        "description": "Flags by which the most severe level among all messages is indicated.",
+        "properties": {
+          "ERROR": {
+            "type": "string",
+            "default": "messageStatus-ERROR"
+          },
+          "WARNING": {
+            "type": "string",
+            "default": "messageStatus-WARNING"
+          },
+          "INFO": {
+            "type": "string",
+            "default": "messageStatus-INFO"
+          },
+          "SUCCESS": {
+            "type": "string",
+            "default": "messageStatus-SUCCESS"
+          },
+          "BLANK": {
+            "type": "string",
+            "default": "messageStatus-BLANK"
+          },
+          "reset": {
+            "type": "object",
+            "description": "Delete all messages and set the state to BLANK",
+            "properties": {
+              "onActions": {
+                "type": "array",
+                "description": "List with actions"
+              }
+            }
+          }
+        }
+      },
+      "errors": {
+        "type": "object",
+        "description": "If enabled, errors received via didEncounterError will be displayed too",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "default": true
+          }
+        }
+      },
+      "resource": {
+        "type": "object",
+        "description": "List of resources for which publish- and validation-messages are processed.",
+        "properties": {
+          "list": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "description": "Resource topic list. Empty list serves as catch-all, null disables the resource-feature.",
+            "default": null,
+            "items": {
+              "type": "string"
+            }
+          },
+          "exclude": {
+            "type": "array",
+            "description": "A list of resources to exclude from the display in case resource.list is set to catch-all.",
+            "items": {
+              "type": "string"
+            }
+          },
+          "replace": {
+            "type": "boolean",
+            "description": "Whether to replace messages with success message.",
+            "default": false
+          }
+        }
+      },
+      "i18n": {
+        "description": "Which locale to use for displaying this widget.",
+        "type": "object",
+        "properties": {
+          "locale": {
+            "type": "string",
+            "description": "The topic under which to expect the locale for this widget.",
+            "default": "default"
+          }
+        }
+      }
+    }
+  }
+}

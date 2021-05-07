@@ -1,0 +1,69 @@
+{
+  "description": "Hypercharge pay_in_advance Transaction request",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "additionalProperties": false,
+  "properties": {
+    "payment_transaction": {
+      "type": "object",
+      "required": true,
+      "additionalProperties": false,
+      "properties": {
+        "transaction_type": {
+          "description": "Type of the Transaction => static 'pay_in_advance'",
+          "required": true,
+          "type": "string",
+          "pattern": "^pay_in_advance$"
+        },
+        "transaction_id": {
+          "required": false,
+          "extends": "types.json#/transaction_id"
+        },
+        "usage": {
+          "required": false,
+          "extends": "types.json#/usage"
+        },
+        "remote_ip": {
+          "required": true,
+          "extends": "types.json#/ipv4"
+        },
+        "wire_reference_id": {
+          "required": false,
+          "extends": "types.json#/wire_reference_id"
+        },
+        "amount": {
+          "required": true,
+          "extends": "types.json#/amount"
+        },
+        "currency": {
+          "required": true,
+          "extends": "types.json#/currency"
+        },
+        "customer_email": {
+          "required": true,
+          "extends": "types.json#/customer_email"
+        },
+        "customer_phone": {
+          "required": false,
+          "extends": "types.json#/customer_phone"
+        },
+        "billing_address": {
+          "required": true,
+          "extends": "types.json#/address"
+        },
+        "shipping_address": {
+          "required": false,
+          "extends": "types.json#/address"
+        },
+        "risk_params": {
+          "required": false,
+          "extends": "types.json#/risk_params"
+        },
+        "meta": {
+          "required": false,
+          "extends": "types.json#/meta"
+        }
+      }
+    }
+  }
+}

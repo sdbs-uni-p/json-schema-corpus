@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "title": "Batch Deep Learning Job Configuration",
+  "type": "object",
+  "required": [
+    "id",
+    "input_directory",
+    "config_file"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Name of the job. Will be used as the name of the submitted job."
+    },
+    "input_directory": {
+      "type": "string",
+      "description": "The 'RootDir' argument to the CNTK command line"
+    },
+    "config_file": {
+      "type": "string",
+      "description": "The 'configFile' argument to the CNTK command line"
+    }
+  }
+}

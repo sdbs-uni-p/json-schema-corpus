@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Symmetric Key Expression",
+  "type": "object",
+  "properties": {
+    "sym_key": {
+      "type": "object",
+      "$ref": "./expression.schema.json"
+    }
+  },
+  "required": [
+    "sym_key"
+  ]
+}

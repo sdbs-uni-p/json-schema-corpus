@@ -1,0 +1,40 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "#",
+  "javaType": "org.apache.streams.elasticsearch.ElasticsearchWriterConfiguration",
+  "extends": {
+    "$ref": "ElasticsearchConfiguration.json"
+  },
+  "javaInterfaces": [
+    "java.io.Serializable"
+  ],
+  "properties": {
+    "index": {
+      "type": "string",
+      "description": "Index to write to"
+    },
+    "type": {
+      "type": "string",
+      "description": "Type to write as"
+    },
+    "bulk": {
+      "type": "boolean",
+      "description": "Index in large or small batches",
+      "default": "false"
+    },
+    "batchSize": {
+      "type": "integer",
+      "description": "Item Count before flush",
+      "default": 100
+    },
+    "batchBytes": {
+      "type": "integer",
+      "description": "Number of bytes before flush",
+      "default": 5242880
+    },
+    "maxTimeBetweenFlushMs": {
+      "type": "integer"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "title": "Nanopub Resource",
+  "description": "A single nanopub resource.",
+  "type": "object",
+  "required": [
+    "nanopub"
+  ],
+  "properties": {
+    "nanopub_resource": {
+      "allOf": [
+        {
+          "$ref": "nanopub.schema.json"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "links"
+          ],
+          "properties": {
+            "links": {
+              "type": "object"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

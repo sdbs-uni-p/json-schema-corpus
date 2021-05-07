@@ -1,0 +1,39 @@
+{
+  "name": "navigation-widget",
+  "description": "Just a list of links",
+  "integration": {
+    "technology": "angular",
+    "type": "widget"
+  },
+  "features": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "navigation": {
+        "type": "array",
+        "description": "Navigation items.",
+        "default": [],
+        "items": {
+          "type": "object",
+          "properties": {
+            "place": {
+              "type": "string",
+              "description": "The name of the place to navigate to when this navigation item is clicked."
+            },
+            "icon": {
+              "type": "string",
+              "description": "A FontAwesome (or compatible) icon class to use for this navigation item."
+            },
+            "i18nHtmlLabel": {
+              "type": [
+                "string",
+                "object"
+              ],
+              "description": "The (internationalized) label for this navigation item."
+            }
+          }
+        }
+      }
+    }
+  }
+}

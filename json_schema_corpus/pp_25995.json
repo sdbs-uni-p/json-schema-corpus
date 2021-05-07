@@ -1,0 +1,78 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://flynn.io/schema/controller/job#",
+  "title": "Job",
+  "description": "A job is a single process in a container.",
+  "sortIndex": 6,
+  "type": "object",
+  "examples": [
+    "schema/examples/controller/job_list#",
+    "schema/examples/controller/job_update#",
+    "schema/examples/controller/job_get#",
+    "schema/examples/controller/job_delete#"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "the job's cluster ID"
+    },
+    "uuid": {
+      "$ref": "/schema/controller/common#/definitions/id"
+    },
+    "host_id": {
+      "type": "string",
+      "description": "the ID of the host the job is running on"
+    },
+    "app": {
+      "$ref": "/schema/controller/common#/definitions/id"
+    },
+    "release": {
+      "$ref": "/schema/controller/common#/definitions/id"
+    },
+    "type": {
+      "description": "process type name from the release",
+      "type": "string"
+    },
+    "state": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "starting",
+        "up",
+        "down",
+        "crashed",
+        "failed"
+      ]
+    },
+    "cmd": {
+      "$ref": "/schema/controller/common#/definitions/cmd"
+    },
+    "meta": {
+      "$ref": "/schema/controller/common#/definitions/meta"
+    },
+    "exit_status": {
+      "type": "integer",
+      "description": "job exit status"
+    },
+    "host_error": {
+      "type": "string",
+      "description": "host error if job failed to start"
+    },
+    "run_at": {
+      "type": "string",
+      "description": "time a pending job will be started",
+      "format": "date-time"
+    },
+    "restarts": {
+      "type": "integer",
+      "description": "number of times this job has been restarted"
+    },
+    "created_at": {
+      "$ref": "/schema/controller/common#/definitions/created_at"
+    },
+    "updated_at": {
+      "$ref": "/schema/controller/common#/definitions/updated_at"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://toyatech.net/cmsapp/finances/Campaign",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "goal": {
+      "type": "number"
+    },
+    "pledges": {
+      "type": "array",
+      "items": {
+        "$ref": "http://toyatech.net/cmsapp/finances/Pledge"
+      }
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

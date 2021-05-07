@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "id": "https://inowas.com/schema/",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_\\-]{3,255}$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "geometry": {
+      "$ref": "geojson/point.json"
+    },
+    "date_time_values": {
+      "$ref": "modflow/boundary/riverDateTimeValues.json"
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "geometry",
+    "date_time_values"
+  ]
+}

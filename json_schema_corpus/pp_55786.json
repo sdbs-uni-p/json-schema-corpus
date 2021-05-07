@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Heartbeat response provided to a CBSD",
+  "type": "object",
+  "required": [
+    "transmitExpireTime",
+    "response"
+  ],
+  "properties": {
+    "cbsdId": {
+      "type": "string",
+      "description": "Unique designator for the CBSD as passed in the heartbeat request."
+    },
+    "grantId": {
+      "type": "string",
+      "description": "Unique designator for the grant as passed in the heartbeat request."
+    },
+    "transmitExpireTime": {
+      "type": "string",
+      "description": "An RFC3339-formatted string indicating the time the CBSD can transmit until."
+    },
+    "grantExpireTime": {
+      "type": "string",
+      "description": "An RFC3339-formatted string indicating the expiry time of the CBSD grant."
+    },
+    "heartbeatInterval": {
+      "type": "number",
+      "description": "If present, the CBSD is required to use the indicated heartbeat interval in subsequent heartbeat requests."
+    },
+    "operationParam": {
+      "$ref": "file:OperationParam.schema.json"
+    },
+    "measReportConfig": {
+      "$ref": "file:MeasReportConfig.schema.json"
+    },
+    "response": {
+      "$ref": "file:Response.schema.json"
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Pantry",
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "[Output only] Unique ID of food pantry",
+      "type": "string",
+      "minLength": 1
+    },
+    "name": {
+      "description": "Name of food pantry",
+      "type": "string",
+      "minLength": 1
+    },
+    "friendlyName": {
+      "description": "Friendly name of food pantry",
+      "type": "string",
+      "minLength": 1
+    },
+    "email": {
+      "description": "E-mail address for the food pantry",
+      "type": "string",
+      "format": "email",
+      "minLength": 1
+    },
+    "officePhone": {
+      "description": "Main office phone number for the food pantry",
+      "type": "number"
+    },
+    "website": {
+      "description": "Website for the food pantry",
+      "type": "string",
+      "pattern": "[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)"
+    },
+    "createdAt": {
+      "description": "[Output only] Creation time of the food pantry",
+      "type": "string",
+      "format": "date-time",
+      "minLength": 1
+    },
+    "createdBy": {
+      "description": "[Output only] Creator of the food pantry",
+      "type": "string",
+      "minLength": 1
+    },
+    "updatedAt": {
+      "description": "[Output only] Last modification time of the food pantry",
+      "type": "string",
+      "format": "date-time",
+      "minLength": 1
+    },
+    "updatedBy": {
+      "description": "[Output only] User to last modify the food pantry",
+      "type": "string",
+      "minLength": 1
+    },
+    "mailingAddress": {
+      "$ref": "__apigModelsEndpoint__/Address"
+    },
+    "physicalAddress": {
+      "$ref": "__apigModelsEndpoint__/Address"
+    }
+  },
+  "required": [
+    "name",
+    "email",
+    "officePhone",
+    "mailingAddress",
+    "physicalAddress"
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "patternProperties": {
+    "^[a-zA-Z0-9\\W]*$": {
+      "type": "object",
+      "properties": {
+        "accent": {
+          "type": "string",
+          "format": "color"
+        },
+        "lightAccent": {
+          "type": "string",
+          "format": "color"
+        },
+        "text": {
+          "type": "string",
+          "format": "color"
+        },
+        "background": {
+          "type": "string",
+          "format": "color"
+        },
+        "internal": {
+          "type": "string",
+          "format": "color"
+        },
+        "incorrect": {
+          "type": "string",
+          "format": "color"
+        },
+        "correct": {
+          "type": "string",
+          "format": "color"
+        },
+        "inputColor": {
+          "type": "string",
+          "format": "color"
+        },
+        "linkColor": {
+          "type": "string",
+          "format": "color"
+        },
+        "highlightColor": {
+          "type": "string",
+          "format": "color"
+        }
+      },
+      "required": [
+        "accent",
+        "lightAccent",
+        "text",
+        "background",
+        "internal",
+        "incorrect",
+        "correct",
+        "inputColor",
+        "linkColor",
+        "highlightColor"
+      ]
+    }
+  },
+  "required": [
+    "Vanilla"
+  ]
+}

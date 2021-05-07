@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "resource_id": {
+    "$ref": "common.json#/cell"
+  },
+  "resource": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "location": {
+        "$ref": "common.json#/location"
+      },
+      "treadmill_root": {
+        "type": "string"
+      },
+      "treadmillid": {
+        "$ref": "common.json#/proid"
+      },
+      "version": {
+        "type": "string"
+      },
+      "zk_auth_scheme": {
+        "type": "string"
+      }
+    }
+  },
+  "verbs": {
+    "create": {
+      "required": [
+        "treadmillid",
+        "version",
+        "location"
+      ]
+    },
+    "update": {
+      "required": []
+    }
+  }
+}

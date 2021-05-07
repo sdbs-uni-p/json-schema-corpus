@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "title": "Schema of App",
+  "type": "object",
+  "required": [
+    "db",
+    "net",
+    "learning"
+  ],
+  "properties": {
+    "db": {
+      "description": "Path of `db`",
+      "type": "string"
+    },
+    "net": {
+      "description": "Path of `net`",
+      "type": "string"
+    },
+    "learning": {
+      "description": "Path of `learning` parameters",
+      "type": "string"
+    }
+  }
+}

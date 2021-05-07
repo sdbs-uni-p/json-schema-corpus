@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Vault Tree External Input Expression",
+  "type": "object",
+  "properties": {
+    "external_input": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "external_input"
+  ],
+  "additionalProperties": false
+}

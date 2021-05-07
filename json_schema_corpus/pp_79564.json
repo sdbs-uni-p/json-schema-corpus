@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "description": "Details for a file upload operation",
+  "properties": {
+    "data": {
+      "$ref": "fileDownload.json#/definitions/data"
+    },
+    "fileName": {
+      "$ref": "fileDownload.json#/definitions/fileName"
+    },
+    "via": {
+      "$ref": "fileDownload.json#/definitions/via"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "data",
+    "fileName",
+    "via"
+  ]
+}

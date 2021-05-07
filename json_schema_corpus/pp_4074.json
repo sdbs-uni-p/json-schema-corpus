@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "IndividualObject",
+  "description": "Databook individual object",
+  "type": "object",
+  "javaType": "databook.persistence.rule.rdf.ruleset.IndividualObject",
+  "extends": {
+    "$ref": "DataEntity.json"
+  },
+  "properties": {
+    "replaces": {
+      "$ref": "#"
+    },
+    "replacedBy": {
+      "$ref": "#"
+    },
+    "hasVersion": {
+      "type": "string"
+    },
+    "dataSize": {
+      "type": "number"
+    }
+  }
+}

@@ -1,0 +1,218 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "required": [
+    "initialLevel"
+  ],
+  "properties": {
+    "initialLevel": {
+      "$ref": "#/definitions/initialLevel"
+    },
+    "extensionLevels": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/extensionLevel"
+      },
+      "default": []
+    }
+  },
+  "definitions": {
+    "initialLevel": {
+      "type": "object",
+      "required": [
+        "functionalityProvisions"
+      ],
+      "properties": {
+        "functionalityProvisions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/functionalityProvision"
+          },
+          "minItems": 1
+        }
+      }
+    },
+    "extensionLevel": {
+      "type": "object",
+      "required": [
+        "actionProvisions"
+      ],
+      "properties": {
+        "actionProvisions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/actionProvision"
+          },
+          "minItems": 1
+        }
+      }
+    },
+    "actionProvision": {
+      "type": "object",
+      "required": [
+        "request"
+      ],
+      "properties": {
+        "requestedAction": {
+          "$ref": "#/definitions/action"
+        },
+        "precursorAction": {
+          "$ref": "#/definitions/action"
+        },
+        "propertyProvisions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/propertyProvision"
+          },
+          "minItems": 1
+        }
+      }
+    },
+    "propertyProvision": {
+      "type": "object",
+      "required": [
+        "request",
+        "offer",
+        "providingAction"
+      ],
+      "properties": {
+        "request": {
+          "$ref": "#/definitions/property"
+        },
+        "offer": {
+          "$ref": "#/definitions/property"
+        },
+        "providingAction": {
+          "$ref": "#/definitions/action"
+        },
+        "distance": {
+          "$ref": "#/definitions/distance"
+        }
+      }
+    },
+    "functionalityProvision": {
+      "type": "object",
+      "required": [
+        "request",
+        "offer",
+        "providingAction"
+      ],
+      "properties": {
+        "request": {
+          "$ref": "#/definitions/functionality"
+        },
+        "offer": {
+          "$ref": "#/definitions/functionality"
+        },
+        "providingAction": {
+          "$ref": "#/definitions/action"
+        },
+        "distance": {
+          "$ref": "#/definitions/distance"
+        }
+      }
+    },
+    "action": {
+      "type": "object",
+      "required": [
+        "widget"
+      ],
+      "properties": {
+        "widget": {
+          "$ref": "#/definitions/widget"
+        },
+        "interactions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/interaction"
+          },
+          "default": []
+        },
+        "publishedProperties": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/property"
+          },
+          "default": []
+        },
+        "realizedFunctionalities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/functionality"
+          },
+          "default": []
+        }
+      }
+    },
+    "property": {
+      "type": "object",
+      "required": [
+        "name",
+        "type"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/type"
+        }
+      }
+    },
+    "interaction": {
+      "type": "object",
+      "required": [
+        "instructionText"
+      ],
+      "properties": {
+        "instructionText": {
+          "type": "string"
+        }
+      }
+    },
+    "widget": {
+      "$ref": "#/definitions/identifiable"
+    },
+    "functionality": {
+      "$ref": "#/definitions/identifiable"
+    },
+    "type": {
+      "$ref": "#/definitions/identifiable"
+    },
+    "identifiable": {
+      "description": "a uniquely identifiable entity",
+      "type": "object",
+      "oneOf": [
+        {
+          "required": [
+            "uri"
+          ],
+          "properties": {
+            "uri": {
+              "type": "string",
+              "format": "uri",
+              "description": "a URI identifying the entity"
+            }
+          }
+        },
+        {
+          "required": [
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "a value uniquely identifying the entity within a single plan, used when the entity cannot identified by a URI"
+            }
+          }
+        }
+      ]
+    },
+    "distance": {
+      "type": "number",
+      "min": 0,
+      "default": 0,
+      "description": "a value indicating the distance between two related concepts, the higher the value the more distant their relation is, value 0 means identical concepts"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Lock",
+  "description": "Information about the locked status of a document or part of it",
+  "type": "object",
+  "properties": {
+    "doc_type": {
+      "type": "string",
+      "pattern": "^lock$"
+    },
+    "date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "owner": {
+      "type": "string"
+    },
+    "ownerToShow": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "date",
+    "owner"
+  ]
+}

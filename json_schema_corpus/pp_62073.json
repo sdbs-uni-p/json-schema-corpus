@@ -1,0 +1,86 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "type": [
+    "object"
+  ],
+  "definitions": {
+    "signup": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "Sign up",
+      "description": "Resource representing new user to be created",
+      "stability": "prototype",
+      "strictProperties": true,
+      "type": [
+        "object"
+      ],
+      "definitions": {
+        "email": {
+          "description": "New user's email",
+          "readOnly": true,
+          "format": "email",
+          "type": [
+            "string"
+          ]
+        },
+        "password": {
+          "description": "New user's password",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "confirm": {
+          "description": "New user's password confirmation. Should match `password` field",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "links": [
+        {
+          "description": "Create new user",
+          "href": "/signup",
+          "method": "POST",
+          "rel": "create",
+          "schema": {
+            "type": [
+              "object"
+            ],
+            "properties": {
+              "email": {
+                "$ref": "#/definitions/signup/definitions/email"
+              },
+              "password": {
+                "$ref": "#/definitions/signup/definitions/password"
+              },
+              "confirm": {
+                "$ref": "#/definitions/signup/definitions/confirm"
+              }
+            },
+            "required": [
+              "email",
+              "password",
+              "confirm"
+            ]
+          }
+        }
+      ],
+      "properties": {}
+    }
+  },
+  "properties": {
+    "signup": {
+      "$ref": "#/definitions/signup"
+    }
+  },
+  "id": "mtodo-api",
+  "title": "mtodo application API",
+  "description": "Generic purpose collection of schemas for mtodo application RESTful APIs",
+  "links": [
+    {
+      "href": "http://mtodoapp.com/api",
+      "rel": "self"
+    }
+  ]
+}

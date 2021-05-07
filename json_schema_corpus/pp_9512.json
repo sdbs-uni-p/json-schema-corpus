@@ -1,0 +1,161 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "id": "/schemata/export_by_user_identity",
+  "title": "Export/Report",
+  "stability": "production",
+  "description": "Retrieve details on all exports (e.g. export templates) that a user has access to within a specific identity. The **id** returned for each export is the value that needs to be provided in order to run that export.",
+  "links": [
+    {
+      "description": "The response is the collection of exports belonging to a specific identity in the current user\u2019s WebAdMIT profile, including the List that each export is tied to.",
+      "href": "/api/v1/user_identities/:user_identity_id/exports",
+      "method": "GET",
+      "rel": "instances",
+      "title": "List",
+      "http_header": {
+        "x-api-key": "0123456789abcdef0123456789abcdef"
+      },
+      "targetSchema": {
+        "properties": {
+          "href": {
+            "type": "string",
+            "description": "Hypertext reference to this resource.",
+            "pattern": "/api/v1/user_identities/\\d+/exports",
+            "example": "/api/v1/user_identities/24567/exports"
+          },
+          "exports": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id",
+                "name",
+                "list_type",
+                "format",
+                "mime_type"
+              ],
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "example": 29897,
+                  "description": "Unique identifier of this export."
+                },
+                "name": {
+                  "type": "string",
+                  "example": "Nightly Banner Export",
+                  "description": "Human-readable name for this export."
+                },
+                "list_type": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "enum": [
+                    "all",
+                    "clipboard",
+                    "search"
+                  ],
+                  "example": "all"
+                },
+                "format": {
+                  "type": "string",
+                  "enum": [
+                    "Comma-Separated Values",
+                    "Microsoft Excel",
+                    "Website HTML",
+                    "Fixed Width Report",
+                    "Comma-Separated Values in Multiple Files"
+                  ],
+                  "example": "Comma-Separated Values"
+                },
+                "mime_type": {
+                  "type": "string",
+                  "enum": [
+                    "text/csv;charset=iso-8859-1",
+                    "application/vnd.ms-excel",
+                    "text/html",
+                    "text/plain",
+                    "application/zip"
+                  ],
+                  "example": "text/csv;charset=iso-8859-1"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "type": "object",
+  "strictProperties": true,
+  "properties": {
+    "href": {
+      "title": "href",
+      "type": "string",
+      "description": "Hypertext reference to this resource.",
+      "pattern": "/api/v1/user_identities/\\d+/exports",
+      "example": "/api/v1/user_identities/24567/exports"
+    },
+    "exports": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "list_type",
+          "format",
+          "mime_type"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 29897,
+            "description": "Unique identifier of this export."
+          },
+          "name": {
+            "type": "string",
+            "example": "Nightly Banner Export",
+            "description": "Human-readable name for this export."
+          },
+          "list_type": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "enum": [
+              "all",
+              "clipboard",
+              "search"
+            ],
+            "description": "Type of the list used for this export.",
+            "example": "all"
+          },
+          "format": {
+            "type": "string",
+            "enum": [
+              "Comma-Separated Values",
+              "Microsoft Excel",
+              "Website HTML",
+              "Fixed Width Report",
+              "Comma-Separated Values in Multiple Files"
+            ],
+            "description": "Format of the file.",
+            "example": "Comma-Separated Values"
+          },
+          "mime_type": {
+            "type": "string",
+            "enum": [
+              "text/csv;charset=iso-8859-1",
+              "application/vnd.ms-excel",
+              "text/html",
+              "text/plain",
+              "application/zip"
+            ],
+            "description": "MIME type of the file.",
+            "example": "text/csv;charset=iso-8859-1"
+          }
+        }
+      }
+    }
+  }
+}

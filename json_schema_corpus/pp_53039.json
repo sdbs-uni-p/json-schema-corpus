@@ -1,0 +1,123 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Step schema",
+  "description": "Description of a single step of the instructions",
+  "step": {
+    "type": "object",
+    "properties": {
+      "title": {
+        "type": "string",
+        "description": "Title for this step"
+      },
+      "duration": {
+        "type": "string",
+        "description": "active time required, e.g. 1 hour 15 min or 2 m 20 s"
+      },
+      "waiting": {
+        "type": "string",
+        "description": "waiting time after active time, same format as duration"
+      },
+      "requires": {
+        "oneOf": [
+          {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "The ids of the steps on which this step depends"
+            }
+          },
+          {
+            "type": "string",
+            "description": "A single id if only a single step is required"
+          }
+        ]
+      },
+      "description": {
+        "type": "string",
+        "description": "textual description for this step"
+      },
+      "attention": {
+        "type": "string",
+        "description": "warnings about critical mistakes that can be made"
+      },
+      "images": {
+        "type": "object",
+        "patternProperties": {
+          "^([a-zA-Z][0-9a-zA-Z]*)$": {
+            "$ref": "image.json#/image"
+          }
+        },
+        "additionalProperties": false
+      },
+      "files": {
+        "type": "object",
+        "patternProperties": {
+          "^([a-zA-Z][0-9a-zA-Z]*)$": {
+            "$ref": "file.json#/file"
+          }
+        },
+        "additionalProperties": false
+      },
+      "tools": {
+        "type": "object",
+        "patternProperties": {
+          "^([a-zA-Z][0-9a-zA-Z]*)$": {
+            "oneOf": [
+              {
+                "$ref": "object.json#/object"
+              },
+              {
+                "$ref": "object.json#/reference"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "parts": {
+        "type": "object",
+        "patternProperties": {
+          "^([a-zA-Z][0-9a-zA-Z]*)$": {
+            "oneOf": [
+              {
+                "$ref": "object.json#/object"
+              },
+              {
+                "$ref": "object.json#/reference"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "results": {
+        "type": "object",
+        "patternProperties": {
+          "^([a-zA-Z][0-9a-zA-Z]*)$": {
+            "$ref": "object.json#/object"
+          }
+        },
+        "additionalProperties": false
+      },
+      "assertions": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "description": "Assertions about the results of the step"
+        }
+      },
+      "openscad": {
+        "$ref": "openscad.json#/openscad"
+      },
+      "bolts": {
+        "$ref": "bolts.json#/bolts"
+      }
+    },
+    "required": [
+      "title",
+      "description",
+      "duration"
+    ],
+    "additionalProperties": false
+  }
+}

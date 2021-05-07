@@ -1,0 +1,97 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Song Schema",
+  "description": "The Song Archetype - Essential properties that define a song",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "title, artist, primary_audio_archetype"
+  ],
+  "properties": {
+    "_id": {
+      "type": "string",
+      "description": "Unique identifier for this archetype record",
+      "maxLength": 50,
+      "default": ""
+    },
+    "draft": {
+      "type": "boolean",
+      "description": "Indicates this archetype record is a draft and is not published",
+      "default": false
+    },
+    "created": {
+      "type": "string",
+      "description": "Date and time this archetype record was created in ISO 8601 date standard e.g. YYYY-MM-DDThh:mm:ss.sTZD",
+      "format": "date-time",
+      "default": ""
+    },
+    "updated": {
+      "type": "string",
+      "description": "Date and time this archetype record was updated in ISO 8601 date standard e.g. YYYY-MM-DDThh:mm:ss.sTZD",
+      "format": "date-time",
+      "default": ""
+    },
+    "title": {
+      "type": "string",
+      "description": "Title of the song",
+      "maxLength": 140,
+      "default": ""
+    },
+    "artist": {
+      "type": "string",
+      "description": "Creator of the song",
+      "maxLength": 140,
+      "default": ""
+    },
+    "primary_audio_archetype": {
+      "$ref": "audio_archetype_schema.json",
+      "description": "Audio Archetype ID to use as the audio file of the song"
+    },
+    "album": {
+      "type": "string",
+      "description": "Album containing the song",
+      "maxLength": 140,
+      "default": ""
+    },
+    "cover_image": {
+      "$ref": "image_archetype_schema.json",
+      "description": "Image Archetype ID to use as the cover image of this song"
+    },
+    "category": {
+      "type": "string",
+      "description": "General category of the song, e.g. EDM",
+      "maxLength": 40,
+      "default": ""
+    },
+    "subcategory": {
+      "type": "string",
+      "description": "Specific category of the song, e.g. Trance",
+      "maxLength": 40,
+      "default": ""
+    },
+    "publish_date": {
+      "type": "string",
+      "description": "Date and time of publication in ISO 8601 date standard e.g. YYYY-MM-DDThh:mm:ss.sTZD",
+      "format": "date-time",
+      "default": ""
+    },
+    "artist_info": {
+      "type": "string",
+      "description": "URL to the artist's website",
+      "format": "uri",
+      "maxLength": 1000,
+      "default": ""
+    },
+    "tags": {
+      "type": "array",
+      "description": "Array of Tag Archetypes that are used to help categorize this Archetype record",
+      "maxItems": 6,
+      "uniqueItems": true,
+      "additionalItems": false,
+      "default": [],
+      "items": {
+        "$ref": "tag_archetype_schema.json"
+      }
+    }
+  }
+}

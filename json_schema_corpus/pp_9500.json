@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "id": "/schemata/applicant_details",
+  "title": "Applicant Details",
+  "stability": "prototype",
+  "description": "Applicant details stores information about the applicant, only some of this information is editable.",
+  "links": [
+    {
+      "description": "Update a batch of Applicant Details, this endpoint is **limited to 1000 Applicants per call**.",
+      "href": "/api/v1/user_identities/:user_identity_id/applicant_details",
+      "method": "PUT",
+      "rel": "update",
+      "title": "Update Applicant Details",
+      "http_header": {
+        "x-api-key": "0123456789abcdef0123456789abcdef"
+      },
+      "schema": {
+        "type": "object",
+        "properties": {
+          "applicants": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "applicant_cas_id"
+              ],
+              "properties": {
+                "applicant_cas_id": {
+                  "type": "string",
+                  "description": "Unique identifier of the applicant.",
+                  "example": "123456789"
+                },
+                "redirect_eligible": {
+                  "type": "boolean",
+                  "description": "True if the applicant is eligible for redirect.",
+                  "example": true
+                }
+              }
+            },
+            "minItems": 1,
+            "maxItems": 1000
+          }
+        },
+        "required": [
+          "applicants"
+        ]
+      }
+    }
+  ],
+  "type": "object",
+  "strictProperties": true,
+  "properties": {}
+}

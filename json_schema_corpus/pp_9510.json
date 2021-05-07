@@ -1,0 +1,138 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "id": "/schemata/designation",
+  "title": "Designation",
+  "description": "An applicant applies to one or more **programs** through **designations**.  **Programs** render a **decision** for the **designation**.",
+  "links": [
+    {
+      "description": "Display the designation for the applicant with the given applicant CAS ID and program ID.",
+      "href": "/api/v1/user_identities/:user_identity_id/programs/:program_id/applicants_by_cas_id/:applicant_cas_id/designation",
+      "method": "GET",
+      "rel": "self",
+      "title": "Show",
+      "http_header": {
+        "x-api-key": "0123456789abcdef0123456789abcdef"
+      }
+    },
+    {
+      "description": "Update the designation with the given applicant CASID and program ID. **WARNING:** You'll get this error when you're trying to set a decision_id to a designation that already has a local status assigned. If you want to be able to force the decision_id please contact Liaison to turn on the \"Disassociate Decision Codes from Local Status\" feature which will allow you to set the decision even if the local_status is present.",
+      "href": "/api/v1/user_identities/:user_identity_id/programs/:program_id/applicants_by_cas_id/:applicant_cas_id/designation",
+      "method": "PATCH",
+      "rel": "update",
+      "title": "Update",
+      "http_header": {
+        "x-api-key": "0123456789abcdef0123456789abcdef"
+      },
+      "targetSchema": {
+        "properties": {
+          "href": {
+            "type": "string",
+            "description": "Hypertext reference to this resource.",
+            "pattern": "/api/v1/user_identities/\\d+/programs/\\d+/applicants_by_cas_id/\\d+/designation",
+            "example": "/api/v1/user_identities/1/programs/42023191739237/applicants_by_cas_id/4/designation"
+          },
+          "decisions_href": {
+            "type": "string",
+            "description": "Hypertext reference for valid decisions.",
+            "pattern": "/api/v1/user_identities/\\d+/decisions",
+            "example": "/api/v1/user_identities/1/decisions"
+          },
+          "decision": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "id": {
+                "type": "integer",
+                "example": 43
+              },
+              "name": {
+                "type": "string",
+                "example": "Matriculated"
+              }
+            }
+          },
+          "local_status": {
+            "type": "null"
+          }
+        }
+      },
+      "schema": {
+        "type": "object",
+        "properties": {
+          "designation": {
+            "type": "object",
+            "properties": {
+              "decision_id": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "description": "The unique identifier for the decision to set. If the designation is in received status and the preliminary_data_handling feature is on, the code will prevent changes to the decision code.",
+                "example": 43
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "type": "object",
+  "properties": {
+    "designation": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "Hypertext reference to this resource.",
+          "pattern": "/api/v1/user_identities/\\d+/programs/\\d+/applicants_by_cas_id/\\d+/designation",
+          "example": "/api/v1/user_identities/1/programs/42023191739237/applicants_by_cas_id/3/designation"
+        },
+        "decisions_href": {
+          "type": "string",
+          "description": "Hypertext reference for valid decisions.",
+          "pattern": "/api/v1/user_identities/\\d+/decisions",
+          "example": "/api/v1/user_identities/1/decisions"
+        },
+        "decision": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "id": {
+              "type": "integer",
+              "description": "Unique identifier of this decision.",
+              "example": 42
+            },
+            "name": {
+              "type": "string",
+              "description": "Human-readable name for this decision.",
+              "example": "Offer Accepted"
+            }
+          }
+        },
+        "local_status": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "description": "For programs using WebAdMIT to manage their admissions process, a local status is a way for those programs to enter their workflow into WebAdMIT.  Typically, these programs will tie a decision to a local status.  Decisions are used for reporting at a national level (or school-wide level for UniCAS), but local statuses are for an individual program's process.",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "description": "Unique identifier of this local status.",
+              "example": 123456
+            },
+            "title": {
+              "type": "string",
+              "description": "Human-readable title for this local status.",
+              "example": "Deposit Made"
+            }
+          }
+        }
+      }
+    }
+  }
+}

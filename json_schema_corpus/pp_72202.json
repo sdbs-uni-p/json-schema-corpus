@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "title": "User Identifier Schema",
+  "description": "The unique identifiers used to distinguish a user.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "title": "User Id",
+      "description": "This user's unique identifier"
+    },
+    "accountId": {
+      "type": "string",
+      "title": "Account Id",
+      "description": "The unique identifier of the account this user belongs to"
+    }
+  },
+  "required": [
+    "id",
+    "accountId"
+  ],
+  "additionalProperties": false
+}

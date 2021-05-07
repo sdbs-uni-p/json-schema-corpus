@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "required": [
+    "name",
+    "url",
+    "readable",
+    "writable"
+  ],
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "vagrant": {
+      "type": "string"
+    },
+    "ssh": {
+      "type": "string",
+      "pattern": "^.+@.+$"
+    },
+    "port": {
+      "type": "number"
+    },
+    "url": {
+      "type": "string",
+      "pattern": "^https?://"
+    },
+    "exclude": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "readable": {
+      "type": "boolean"
+    },
+    "writable": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": false
+}

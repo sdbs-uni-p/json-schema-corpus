@@ -1,0 +1,23 @@
+{
+  "title": "geographic_coordinate",
+  "id": "https://rawgit.com/camshaft/shenu/master/schemas/geographic_coordinate.json#",
+  "description": "",
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "required": [
+    "latitude",
+    "longitude"
+  ],
+  "properties": {
+    "longitude": {
+      "type": "number"
+    },
+    "latitude": {
+      "type": "number"
+    },
+    "altitude": {
+      "type": "number"
+    }
+  },
+  "additionalProperties": false
+}

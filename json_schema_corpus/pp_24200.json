@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Collection of result DTO",
+  "type": "object",
+  "properties": {
+    "results": {
+      "description": "List of results",
+      "type": "array",
+      "id": "resultList",
+      "items": {
+        "type": "object",
+        "$ref": "result.json"
+      }
+    },
+    "totalRecords": {
+      "description": "Total number of results",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "results",
+    "totalRecords"
+  ]
+}

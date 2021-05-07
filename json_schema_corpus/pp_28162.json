@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "organizationLookup",
+  "id": "organizationLookup",
+  "description": "A lookup view of an organization.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the Organization."
+    },
+    "link": {
+      "$ref": "link",
+      "description": "A self referncing link to the Organization."
+    },
+    "externalSytemId": {
+      "$ref": "externalSystemReference",
+      "description": "Id to an external system."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the Organization."
+    },
+    "orgType": {
+      "type": "string",
+      "enum": [
+        "Provider",
+        "Customer"
+      ],
+      "description": "The Organization's type (e.g. Provider, Customer)."
+    },
+    "extendedProperties": {
+      "type": "array",
+      "description": "A list of extendedProperties.",
+      "items": {
+        "$ref": "extendedProperty"
+      }
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema#",
+  "id": "https://raw.github.com/webnium/JsonSchemaValidator/master/tests/Webnium/BEAR/JsonSchemaValidation/Interceptor/schema/default.json",
+  "type": "object",
+  "required": true,
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "links": [
+    {
+      "rel": "parent",
+      "href": "/parent/"
+    },
+    {
+      "rel": "self",
+      "encType": "application/x-www-form-urlencoded",
+      "schema": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "required": true
+          }
+        }
+      }
+    },
+    {
+      "rel": "self",
+      "method": "POST",
+      "encType": "application/x-www-form-urlencoded",
+      "schema": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "required": true
+          },
+          "option": {
+            "type": "string",
+            "required": false
+          },
+          "number": {
+            "type": "integer",
+            "maximum": 10,
+            "required": true
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Crush Task-Add message",
+  "description": "Client->Coordinator message indicating the addition of a task",
+  "type": "object",
+  "properties": {
+    "name": {
+      "description": "Identifier for task being created, must be unique",
+      "type": "string"
+    },
+    "prettyname": {
+      "description": "Human-readable name for this task",
+      "type": "string"
+    },
+    "parent": {
+      "description": "Name of this task's parent",
+      "type": "string"
+    },
+    "resources": {
+      "description": "Fungible resources required on the local computer",
+      "type": "object",
+      "properties": {
+        "memory": {
+          "$ref": "#/definitions/resources"
+        },
+        "cores": {
+          "$ref": "#/definitions/resources"
+        },
+        "disk": {
+          "$ref": "#/definitions/resources"
+        },
+        "gpu": {
+          "$ref": "#/definitions/resources"
+        }
+      },
+      "additionalProperties": false
+    },
+    "properties": {
+      "description": ""
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Login",
+  "type": "object",
+  "properties": {
+    "email-address": {
+      "type": "string",
+      "format": "email"
+    },
+    "password": {
+      "type": "string",
+      "format": "password"
+    }
+  },
+  "order": [
+    "email-address",
+    "password"
+  ],
+  "submit": "Login",
+  "required": [
+    "email-address",
+    "password"
+  ],
+  "additionalProperties": false
+}

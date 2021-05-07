@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://flynn.io/schema/controller/deployment#",
+  "title": "Deployment",
+  "description": "",
+  "sortIndex": 4,
+  "type": "object",
+  "examples": [
+    "schema/examples/controller/deployment_create#",
+    "schema/examples/controller/deployment_get#",
+    "schema/examples/controller/deployment_list#"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "$ref": "/schema/controller/common#/definitions/id"
+    },
+    "app": {
+      "$ref": "/schema/controller/common#/definitions/id"
+    },
+    "old_release": {
+      "$ref": "/schema/controller/common#/definitions/id"
+    },
+    "new_release": {
+      "$ref": "/schema/controller/common#/definitions/id"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "running",
+        "complete",
+        "failed"
+      ]
+    },
+    "strategy": {
+      "$ref": "/schema/controller/common#/definitions/strategy"
+    },
+    "processes": {
+      "description": "count of processes to run for each process type",
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer"
+      }
+    },
+    "tags": {
+      "description": "process tags",
+      "type": "object"
+    },
+    "deploy_timeout": {
+      "$ref": "/schema/controller/common#/definitions/deploy_timeout"
+    },
+    "created_at": {
+      "$ref": "/schema/controller/common#/definitions/created_at"
+    },
+    "finished_at": {
+      "format": "date-time",
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri"
+    }
+  }
+}

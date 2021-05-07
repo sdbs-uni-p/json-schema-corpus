@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "action",
+  "description": "An Action of data provided by an Action Provider",
+  "type": "object",
+  "properties": {
+    "schema_url": {
+      "$ref": "/schema/url"
+    },
+    "document_id": {
+      "$ref": "/schema/uuid"
+    },
+    "timestamp": {
+      "$ref": "/schema/timestamp"
+    },
+    "Location_ID": {
+      "$ref": "/schema/id"
+    },
+    "Action_ID": {
+      "$ref": "/schema/id"
+    },
+    "Location_NAP": {
+      "$ref": "/schema/nap"
+    },
+    "Created_Date": {
+      "$ref": "/schema/date"
+    },
+    "Last_Updated_Date": {
+      "$ref": "/schema/date"
+    },
+    "Action_URL": {
+      "$ref": "/schema/url"
+    },
+    "JS_SRC": {
+      "$ref": "/schema/javascript"
+    },
+    "Action_Title": {
+      "$ref": "/schema/name"
+    },
+    "Action_Description": {
+      "$ref": "/schema/description"
+    },
+    "Action_Image": {
+      "$ref": "/schema/url"
+    },
+    "Action_Discount": {
+      "$ref": "/schema/percent"
+    },
+    "Action_Expiration": {
+      "$ref": "/schema/date"
+    },
+    "Action_Category": {
+      "$ref": "/schema/category"
+    }
+  },
+  "required": [
+    "Location_ID",
+    "Action_URL",
+    "Location_NAP"
+  ]
+}

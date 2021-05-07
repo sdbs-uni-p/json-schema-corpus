@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "description": "package of data for the tenant (e.g. via some trusted app like an ats) to update an assessment",
+  "properties": {
+    "status": {
+      "$ref": "assessmentRead.json#/definitions/status"
+    }
+  },
+  "additionalProperties": false
+}

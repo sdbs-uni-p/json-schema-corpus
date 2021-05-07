@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://toyatech.net/cmsapp/events/EventType",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "recurrancePattern": {
+      "$ref": "http://toyatech.net/cmsapp/common/RecurrancePattern"
+    },
+    "startTime": {
+      "type": "string"
+    },
+    "attendanceTemplate": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/AttendanceRecord"
+      }
+    },
+    "groupEvent": {
+      "type": "boolean"
+    },
+    "group": {
+      "$ref": "http://toyatech.net/cmsapp/groups/Group"
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

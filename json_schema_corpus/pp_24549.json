@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "description": "Available books within the Holy Bible.",
+  "properties": {
+    "size": {
+      "type": "integer",
+      "required": true
+    },
+    "books": {
+      "type": "array",
+      "items": {
+        "$ref": "book"
+      }
+    }
+  }
+}

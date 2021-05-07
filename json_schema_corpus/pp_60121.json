@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "The value returned by PUT /{db}/_revs_limit",
+  "title": "CouchDB database revision limit",
+  "type": "number"
+}

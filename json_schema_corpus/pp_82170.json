@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://toyatech.net/cmsapp/reports",
+  "properties": {
+    "RecurrancePattern": {
+      "type": "object",
+      "definitions": {
+        "RecurranceRule": {
+          "type": "object",
+          "properties": {
+            "units": {
+              "type": "number"
+            },
+            "measure": {
+              "type": "string",
+              "enum": [
+                "days",
+                "weeks",
+                "months",
+                "years",
+                "daysOfWeek",
+                "daysOfMonth",
+                "weeksOfMonth",
+                "weeksOfYear",
+                "monthsOfYear"
+              ]
+            }
+          }
+        }
+      },
+      "properties": {
+        "start": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "end": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "rules": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RecurranceRule"
+          }
+        },
+        "execptions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    }
+  }
+}

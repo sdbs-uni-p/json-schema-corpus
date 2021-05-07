@@ -1,0 +1,116 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "id": "/schemata/pdf_manager_template",
+  "title": "PDF Manager Template",
+  "stability": "production",
+  "description": "A **PDF Manager template** contains the configuration that determines the contents of a **PDF Manager batch**.  It is configured in the user interface and only *readable* in the API.",
+  "links": [
+    {
+      "description": "List existing PDF Manager templates.",
+      "href": "/api/v1/user_identities/:user_identity_id/pdf_manager_templates",
+      "method": "GET",
+      "rel": "instances",
+      "title": "List",
+      "http_header": {
+        "x-api-key": "0123456789abcdef0123456789abcdef"
+      },
+      "targetSchema": {
+        "properties": {
+          "href": {
+            "type": "string",
+            "pattern": "/api/v1/user_identities/\\d+/pdf_manager_templates",
+            "example": "/api/v1/user_identities/1/pdf_manager_templates"
+          },
+          "pdf_manager_templates": {
+            "type": "array",
+            "items": {
+              "required": [
+                "href",
+                "id",
+                "name",
+                "list_name",
+                "document_source_title"
+              ],
+              "type": "object",
+              "properties": {
+                "href": {
+                  "type": "string",
+                  "pattern": "/api/v1/user_identities/\\d+/pdf_manager_templates/\\d+",
+                  "example": "/api/v1/user_identities/1/pdf_manager_templates/2"
+                },
+                "id": {
+                  "type": "integer",
+                  "example": 2
+                },
+                "name": {
+                  "type": "string",
+                  "example": "Accepted Offers for Review"
+                },
+                "list_name": {
+                  "type": "string",
+                  "example": "Offer Accepted"
+                },
+                "document_source_title": {
+                  "type": "string",
+                  "example": "Full Application PDF"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "description": "Display an existing PDF Manager template.",
+      "href": "/api/v1/user_identities/:user_identity_id/pdf_manager_templates/:pdf_manager_template_id",
+      "method": "GET",
+      "rel": "self",
+      "title": "Show",
+      "http_header": {
+        "x-api-key": "0123456789abcdef0123456789abcdef"
+      }
+    }
+  ],
+  "type": "object",
+  "strictProperties": true,
+  "properties": {
+    "pdf_manager_template": {
+      "type": "object",
+      "required": [
+        "href",
+        "id",
+        "name",
+        "list_name",
+        "document_source_title"
+      ],
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "Hypertext reference to this resource.",
+          "pattern": "/api/v1/user_identities/\\d+/pdf_manager_templates/\\d+",
+          "example": "/api/v1/user_identities/1/pdf_manager_templates/2"
+        },
+        "id": {
+          "type": "integer",
+          "description": "Unique identifier of this PDF Manager template.",
+          "example": 2
+        },
+        "name": {
+          "type": "string",
+          "description": "Human-readable name of this PDF Manager template.",
+          "example": "Accepted Offers for Review"
+        },
+        "list_name": {
+          "type": "string",
+          "description": "Human-readable name of the list that is used when populating this template.",
+          "example": "Offer Accepted"
+        },
+        "document_source_title": {
+          "type": "string",
+          "description": "Human-readable name of the document source that is used when populating this template.",
+          "example": "Full Application PDF"
+        }
+      }
+    }
+  }
+}

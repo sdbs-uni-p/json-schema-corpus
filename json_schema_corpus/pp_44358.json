@@ -1,0 +1,81 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://schema.envirocar.org/measurement.json#",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "type",
+    "geometry",
+    "properties"
+  ],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "Feature"
+      ]
+    },
+    "geometry": {
+      "$ref": "http://schema.envirocar.org/geometry.json#"
+    },
+    "properties": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "time",
+        "phenomenons"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "modified": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "sensor": {
+          "$ref": "http://schema.envirocar.org/sensor.json#"
+        },
+        "time": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "user": {
+          "$ref": "http://schema.envirocar.org/user.json#"
+        },
+        "track": {
+          "type": "string"
+        },
+        "phenomenons": {
+          "type": "object",
+          "additionalItems": {
+            "type": "object",
+            "additionalProperties": false,
+            "allOf": [
+              {
+                "$ref": "http://schema.envirocar.org/phenomenon.json"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "value": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

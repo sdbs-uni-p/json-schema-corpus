@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "quote",
+  "id": "quote",
+  "description": "Details of a Quote.",
+  "type": "object",
+  "required": [
+    "objectType",
+    "id",
+    "pricing"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the Product Specification.",
+      "maxLength": 25
+    },
+    "objectType": {
+      "type": "string",
+      "enum": [
+        "quote"
+      ],
+      "description": "The type of the object, quote."
+    },
+    "pricing": {
+      "type": "array",
+      "items": {
+        "$ref": "pricing.json#"
+      },
+      "description": "An array of Pricing Response for the quote."
+    }
+  }
+}

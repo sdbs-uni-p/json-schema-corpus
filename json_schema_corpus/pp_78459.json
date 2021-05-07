@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "POI update_stamp",
+  "type": "object",
+  "properties": {
+    "timestamp": {
+      "description": "When updated - to catch conflicts (unix timestamp format)",
+      "type": "integer"
+    },
+    "responsible": {
+      "description": "Who updated, UUID of the profile",
+      "type": "string"
+    }
+  },
+  "required": [
+    "timestamp",
+    "responsible"
+  ],
+  "additionalProperties": false
+}

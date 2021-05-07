@@ -1,0 +1,323 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "flavors": {
+      "id": "flavors",
+      "type": "array",
+      "items": [
+        {
+          "id": "0",
+          "type": "object",
+          "properties": {
+            "id": {
+              "id": "id",
+              "type": "string"
+            },
+            "name": {
+              "id": "name",
+              "type": "string"
+            },
+            "vcpus": {
+              "id": "vcpus",
+              "type": "integer"
+            },
+            "ram": {
+              "id": "ram",
+              "type": "integer"
+            },
+            "disk": {
+              "id": "disk",
+              "type": "integer"
+            },
+            "swap": {
+              "id": "swap",
+              "type": "integer"
+            },
+            "promoted": {
+              "id": "promoted",
+              "type": "boolean"
+            },
+            "public": {
+              "id": "public",
+              "type": "boolean"
+            },
+            "nodes": {
+              "id": "nodes",
+              "type": "array",
+              "items": [
+                {
+                  "id": "0",
+                  "type": "string"
+                },
+                {
+                  "id": "1",
+                  "type": "string"
+                },
+                {
+                  "id": "2",
+                  "type": "string"
+                },
+                {
+                  "id": "3",
+                  "type": "string"
+                },
+                {
+                  "id": "4",
+                  "type": "string"
+                },
+                {
+                  "id": "5",
+                  "type": "string"
+                },
+                {
+                  "id": "6",
+                  "type": "string"
+                },
+                {
+                  "id": "7",
+                  "type": "string"
+                },
+                {
+                  "id": "8",
+                  "type": "string"
+                },
+                {
+                  "id": "9",
+                  "type": "string"
+                },
+                {
+                  "id": "10",
+                  "type": "string"
+                },
+                {
+                  "id": "11",
+                  "type": "string"
+                },
+                {
+                  "id": "12",
+                  "type": "string"
+                },
+                {
+                  "id": "13",
+                  "type": "string"
+                },
+                {
+                  "id": "14",
+                  "type": "string"
+                },
+                {
+                  "id": "15",
+                  "type": "string"
+                },
+                {
+                  "id": "16",
+                  "type": "string"
+                },
+                {
+                  "id": "17",
+                  "type": "string"
+                },
+                {
+                  "id": "18",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "name",
+            "vcpus",
+            "ram",
+            "disk",
+            "swap",
+            "promoted",
+            "public",
+            "nodes"
+          ]
+        },
+        {
+          "id": "1",
+          "type": "object",
+          "properties": {
+            "id": {
+              "id": "id",
+              "type": "string"
+            },
+            "name": {
+              "id": "name",
+              "type": "string"
+            },
+            "vcpus": {
+              "id": "vcpus",
+              "type": "integer"
+            },
+            "ram": {
+              "id": "ram",
+              "type": "integer"
+            },
+            "disk": {
+              "id": "disk",
+              "type": "integer"
+            },
+            "swap": {
+              "id": "swap",
+              "type": "integer"
+            },
+            "promoted": {
+              "id": "promoted",
+              "type": "boolean"
+            },
+            "public": {
+              "id": "public",
+              "type": "boolean"
+            },
+            "nodes": {
+              "id": "nodes",
+              "type": "array",
+              "items": [
+                {
+                  "id": "0",
+                  "type": "string"
+                },
+                {
+                  "id": "1",
+                  "type": "string"
+                },
+                {
+                  "id": "2",
+                  "type": "string"
+                },
+                {
+                  "id": "3",
+                  "type": "string"
+                },
+                {
+                  "id": "4",
+                  "type": "string"
+                },
+                {
+                  "id": "5",
+                  "type": "string"
+                },
+                {
+                  "id": "6",
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "2",
+          "type": "object",
+          "properties": {
+            "id": {
+              "id": "id",
+              "type": "string"
+            },
+            "name": {
+              "id": "name",
+              "type": "string"
+            },
+            "vcpus": {
+              "id": "vcpus",
+              "type": "integer"
+            },
+            "ram": {
+              "id": "ram",
+              "type": "integer"
+            },
+            "disk": {
+              "id": "disk",
+              "type": "integer"
+            },
+            "swap": {
+              "id": "swap",
+              "type": "integer"
+            },
+            "promoted": {
+              "id": "promoted",
+              "type": "boolean"
+            },
+            "public": {
+              "id": "public",
+              "type": "boolean"
+            },
+            "nodes": {
+              "id": "nodes",
+              "type": "array",
+              "items": [
+                {
+                  "id": "0",
+                  "type": "string"
+                },
+                {
+                  "id": "1",
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "3",
+          "type": "object",
+          "properties": {
+            "id": {
+              "id": "id",
+              "type": "string"
+            },
+            "name": {
+              "id": "name",
+              "type": "string"
+            },
+            "vcpus": {
+              "id": "vcpus",
+              "type": "integer"
+            },
+            "ram": {
+              "id": "ram",
+              "type": "integer"
+            },
+            "disk": {
+              "id": "disk",
+              "type": "integer"
+            },
+            "swap": {
+              "id": "swap",
+              "type": "integer"
+            },
+            "promoted": {
+              "id": "promoted",
+              "type": "boolean"
+            },
+            "public": {
+              "id": "public",
+              "type": "boolean"
+            },
+            "nodes": {
+              "id": "nodes",
+              "type": "array",
+              "items": {
+                "id": "0",
+                "type": "string"
+              }
+            }
+          }
+        }
+      ],
+      "required": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ]
+    }
+  },
+  "required": [
+    "flavors"
+  ]
+}

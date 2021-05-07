@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "https://github.com/empirefox/node-private-tools/blob/master/src/schemas/ts-trans.json#",
+  "title": "ts-trans Config",
+  "description": "Generate translate from ts interface.",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "$tool": {
+      "type": "string",
+      "description": "Must be set to ts-trans.",
+      "const": "ts-trans"
+    },
+    "src": {
+      "description": "Input go files(Glob), expand with env first.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "preproccess": "env"
+      }
+    },
+    "dist": {
+      "description": "The output root path (relative to the pwd).",
+      "type": "string"
+    },
+    "tag": {
+      "description": "Field with this tag content will be parsed.",
+      "type": "string",
+      "default": "tr"
+    },
+    "langs": {
+      "description": "Langs to exrtact. Field name will be used if lang not set.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z]{2}(-[A-Z]{2})?$"
+      }
+    },
+    "pipePrefix": {
+      "description": "Prefix to pipe name, pipe name is used as file name.",
+      "type": "string",
+      "default": ""
+    }
+  },
+  "required": [
+    "$tool",
+    "src",
+    "dist",
+    "tag",
+    "langs",
+    "pipePrefix"
+  ],
+  "additionalProperties": false
+}

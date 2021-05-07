@@ -1,0 +1,99 @@
+{
+  "title": "Document",
+  "description": "Additional files like pdf, doc, txt",
+  "id": "/profiles/document.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "required": [
+    "lab",
+    "award"
+  ],
+  "identifyingProperties": [
+    "uuid",
+    "aliases"
+  ],
+  "additionalProperties": false,
+  "mixinProperties": [
+    {
+      "$ref": "mixins.json#/schema_version"
+    },
+    {
+      "$ref": "mixins.json#/uuid"
+    },
+    {
+      "$ref": "mixins.json#/status"
+    },
+    {
+      "$ref": "mixins.json#/aliases"
+    },
+    {
+      "$ref": "mixins.json#/attribution"
+    },
+    {
+      "$ref": "mixins.json#/submitted"
+    },
+    {
+      "$ref": "mixins.json#/modified"
+    },
+    {
+      "$ref": "mixins.json#/references"
+    },
+    {
+      "$ref": "mixins.json#/tags"
+    },
+    {
+      "$ref": "mixins.json#/attachment"
+    },
+    {
+      "$ref": "mixins.json#/release_dates"
+    },
+    {
+      "$ref": "mixins.json#/notes"
+    },
+    {
+      "$ref": "mixins.json#/static_embeds"
+    }
+  ],
+  "mixinFacets": [
+    {
+      "$ref": "mixins.json#/facets_common"
+    }
+  ],
+  "properties": {
+    "schema_version": {
+      "default": "1"
+    },
+    "description": {
+      "title": "Description",
+      "description": "A plain text description of the document.",
+      "type": "string",
+      "elasticsearch_mapping_index_type": {
+        "title": "Field mapping index type",
+        "description": "Defines one of three types of indexing available",
+        "type": "string",
+        "default": "analyzed",
+        "lookup": 30,
+        "enum": [
+          "analyzed",
+          "not_analyzed",
+          "no"
+        ]
+      },
+      "formInput": "textarea"
+    },
+    "urls": {
+      "rdfs:subPropertyOf": "rdfs:seeAlso",
+      "title": "URLs",
+      "description": "External resources with additional information to the document.",
+      "type": "array",
+      "lookup": 40,
+      "uniqueItems": true,
+      "items": {
+        "title": "URL",
+        "description": "An external resource with additional information to the document.",
+        "type": "string",
+        "format": "uri"
+      }
+    }
+  }
+}

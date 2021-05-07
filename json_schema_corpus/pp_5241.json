@@ -1,0 +1,272 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/Enfernuz/quik-lua-rpc/json/schema/getOrderByNumber.result.scheme.json",
+  "title": "\u0420\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442 \u043f\u0440\u043e\u0446\u0435\u0434\u0443\u0440\u044b getOrderByNumber",
+  "description": "\u0421\u0445\u0435\u043c\u0430 \u043e\u0431\u044a\u0435\u043a\u0442\u0430 \u0440\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442\u0430 \u0443\u0434\u0430\u043b\u0451\u043d\u043d\u043e\u0433\u043e \u0432\u044b\u0437\u043e\u0432\u0430 \u043f\u0440\u043e\u0446\u0435\u0434\u0443\u0440\u044b getOrderByNumber",
+  "type": "object",
+  "properties": {
+    "order": {
+      "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 order",
+      "type": "object",
+      "properties": {
+        "order_num": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 order_num",
+          "type": "number"
+        },
+        "flags": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 flags",
+          "type": "number"
+        },
+        "brokerref": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 brokerref",
+          "type": "string"
+        },
+        "userid": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 userid",
+          "type": "string"
+        },
+        "firmid": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 firmid",
+          "type": "string"
+        },
+        "account": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 account",
+          "type": "string"
+        },
+        "price": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 price",
+          "type": "string"
+        },
+        "qty": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 qty",
+          "type": "number"
+        },
+        "balance": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 balance",
+          "type": "string"
+        },
+        "value": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 value",
+          "type": "string"
+        },
+        "accruedint": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 accruedint",
+          "type": "string"
+        },
+        "yield": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 yield",
+          "type": "string"
+        },
+        "trans_id": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 trans_id",
+          "type": "string"
+        },
+        "client_code": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 client_code",
+          "type": "string"
+        },
+        "price2": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 price2",
+          "type": "string"
+        },
+        "settlecode": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 settlecode",
+          "type": "string"
+        },
+        "uid": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 uid",
+          "type": "string"
+        },
+        "canceled_uid": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 canceled_uid",
+          "type": "string"
+        },
+        "exchange_code": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 exchange_code",
+          "type": "string"
+        },
+        "activation_time": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 activation_time",
+          "type": "string"
+        },
+        "linkedorder": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 linkedorder",
+          "type": "string"
+        },
+        "expiry": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 expiry",
+          "type": "string"
+        },
+        "sec_code": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 sec_code",
+          "type": "string"
+        },
+        "class_code": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 class_code",
+          "type": "string"
+        },
+        "datetime": {
+          "$ref": "https://github.com/Enfernuz/quik-lua-rpc/json/schema/QluaStructures.scheme.json#/definitions/DateTimeEntry"
+        },
+        "withdraw_datetime": {
+          "$ref": "https://github.com/Enfernuz/quik-lua-rpc/json/schema/QluaStructures.scheme.json#/definitions/DateTimeEntry"
+        },
+        "bank_acc_id": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 bank_acc_id",
+          "type": "string"
+        },
+        "value_entry_type": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 value_entry_type",
+          "type": "number"
+        },
+        "repoterm": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 repoterm",
+          "type": "string"
+        },
+        "repovalue": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 repovalue",
+          "type": "string"
+        },
+        "repo2value": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 repo2value",
+          "type": "string"
+        },
+        "repo_value_balance": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 repo_value_balance",
+          "type": "string"
+        },
+        "start_discount": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 start_discount",
+          "type": "string"
+        },
+        "reject_reason": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 reject_reason",
+          "type": "string"
+        },
+        "ext_order_flags": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 ext_order_flags",
+          "type": "string"
+        },
+        "min_qty": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 min_qty",
+          "type": "number"
+        },
+        "exec_type": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 exec_type",
+          "type": "number"
+        },
+        "side_qualifier": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 side_qualifier",
+          "type": "number"
+        },
+        "acnt_type": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 acnt_type",
+          "type": "number"
+        },
+        "capacity": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 capacity",
+          "type": "number"
+        },
+        "passive_only_order": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 passive_only_order",
+          "type": "number"
+        },
+        "visible": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 visible",
+          "type": "number"
+        },
+        "awg_price": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 awg_price",
+          "type": "string"
+        },
+        "expiry_time": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 expiry_time",
+          "type": "string"
+        },
+        "revision_number": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 revision_number",
+          "type": "string"
+        },
+        "price_currency": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 price_currency",
+          "type": "string"
+        },
+        "ext_order_status": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 ext_order_status",
+          "type": "number"
+        },
+        "accepted_uid": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 accepted_uid",
+          "type": "string"
+        },
+        "filled_value": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 filled_value",
+          "type": "string"
+        },
+        "extref": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 filled_value",
+          "type": "string"
+        },
+        "settle_currency": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 settle_currency",
+          "type": "string"
+        },
+        "on_behalf_of_uid": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 on_behalf_of_uid",
+          "type": "string"
+        },
+        "client_qualifier": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 client_qualifier",
+          "type": "number"
+        },
+        "client_short_code": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 client_short_code",
+          "type": "string"
+        },
+        "investment_decision_maker_qualifier": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 investment_decision_maker_qualifier",
+          "type": "number"
+        },
+        "investment_decision_maker_short_code": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 investment_decision_maker_short_code",
+          "type": "string"
+        },
+        "executing_trader_qualifier": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 executing_trader_qualifier",
+          "type": "number"
+        },
+        "executing_trader_short_code": {
+          "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 executing_trader_short_code",
+          "type": "string"
+        }
+      },
+      "required": [
+        "order_num",
+        "flags",
+        "price",
+        "qty",
+        "value",
+        "sec_code",
+        "class_code",
+        "datetime",
+        "value_entry_type",
+        "min_qty",
+        "exec_type",
+        "side_qualifier",
+        "acnt_type",
+        "capacity",
+        "passive_only_order",
+        "visible",
+        "ext_order_status",
+        "client_qualifier",
+        "investment_decision_maker_qualifier",
+        "executing_trader_qualifier"
+      ]
+    },
+    "indx": {
+      "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 indx",
+      "type": "number"
+    }
+  },
+  "additionalProperties": false
+}

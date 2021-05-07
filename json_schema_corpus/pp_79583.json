@@ -1,0 +1,185 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "definitions": {
+    "id": {
+      "type": "integer"
+    },
+    "org": {
+      "type": "integer",
+      "description": "the job's org (a value from GET /orgs)"
+    },
+    "status": {
+      "enum": [
+        "active",
+        "complete"
+      ],
+      "description": "from HR-XML"
+    },
+    "shortSummary": {
+      "type": "string",
+      "description": "A short (up to 75 characters) and enticing call to action for candidates for this job"
+    },
+    "description": {
+      "type": "string",
+      "description": "Formatted using a subset (no angle brackets) of markdown with individual lines demarcated with \n."
+    },
+    "company": {
+      "type": "string",
+      "description": "as per Salesforce, more explicit than org"
+    },
+    "country": {
+      "type": "string",
+      "description": "a 2 letter country code for the job as per ISO 3166-1 alpha-2"
+    },
+    "code": {
+      "type": "string",
+      "description": "A code, often used in advertisements and when referring to the job opening with candidates. Codes are expected to be unique within currently active job openings. Not in HR/XML"
+    },
+    "externalId": {
+      "type": "string",
+      "description": "An immutable external identifier, e.g. primary key in an upstream system, used to identify the job"
+    },
+    "accessCode": {
+      "type": "string",
+      "description": "a code that, if held on an incoming tracker, allows the holder to view and apply for the job even if it would otherwise be not visible to them"
+    },
+    "title": {
+      "type": "string",
+      "description": "A short phrase describing the position as it would be listed on a business card or in a company directory"
+    },
+    "templateFlag": {
+      "type": "boolean",
+      "description": "true if this job is a template, otherwise false/null/not present"
+    },
+    "availability": {
+      "type": "object",
+      "properties": {
+        "availableInternally": {
+          "type": "boolean",
+          "description": "Position is currently open to internals (implies status is active, but callers should check that relevant closeDates are in the future)"
+        },
+        "availableExternally": {
+          "type": "boolean",
+          "description": "Position is currently open to externals (implies status is active, but callers should check that relevant closeDates are in the future)"
+        },
+        "jobPublishDates": {
+          "type": "object",
+          "properties": {
+            "publishDate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "the date on which the job was published (became available to candidates)"
+            },
+            "internalPublishDate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "the date on which the job was published to internal candidates. If not set, use publishDate."
+            },
+            "externalPublishDate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "the date on which the job was published to external candidates. If not set, use publishDate."
+            }
+          },
+          "required": [
+            "publishDate"
+          ],
+          "additionalProperties": false
+        },
+        "applicationCloseDates": {
+          "type": "object",
+          "properties": {
+            "closeDate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "the date on which applications are scheduled to close"
+            },
+            "internalCloseDate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "the date on which applications from internal candidates are scheduled to close. If not set, closeDate is used."
+            },
+            "externalCloseDate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "the date on which applications from external candidates are scheduled to close. If not set, closeDate is used."
+            }
+          },
+          "required": [
+            "closeDate"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "workflow": {
+      "type": "integer"
+    },
+    "dateLastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "type": "object",
+  "properties": {
+    "id": {
+      "$ref": "#/definitions/id"
+    },
+    "status": {
+      "$ref": "#/definitions/status"
+    },
+    "org": {
+      "$ref": "#/definitions/org"
+    },
+    "templateFlag": {
+      "$ref": "#/definitions/templateFlag"
+    },
+    "availability": {
+      "$ref": "#/definitions/availability"
+    },
+    "code": {
+      "$ref": "#/definitions/code"
+    },
+    "externalId": {
+      "$ref": "#/definitions/externalId"
+    },
+    "accessCode": {
+      "$ref": "#/definitions/accessCode"
+    },
+    "title": {
+      "$ref": "#/definitions/title"
+    },
+    "shortSummary": {
+      "$ref": "#/definitions/shortSummary"
+    },
+    "description": {
+      "$ref": "#/definitions/description"
+    },
+    "company": {
+      "$ref": "#/definitions/company"
+    },
+    "country": {
+      "$ref": "#/definitions/country"
+    },
+    "manager": {
+      "$ref": "userRead.json"
+    },
+    "recruiter": {
+      "$ref": "userRead.json"
+    },
+    "workflow": {
+      "$ref": "#/definitions/workflow"
+    },
+    "categories": {
+      "$ref": "categoriesActual.json"
+    },
+    "items": {
+      "$ref": "itemPackagesRead.json"
+    },
+    "dateLastUpdated": {
+      "$ref": "#/definitions/dateLastUpdated"
+    }
+  },
+  "additionalProperties": false
+}

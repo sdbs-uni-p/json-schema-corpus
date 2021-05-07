@@ -1,0 +1,92 @@
+{
+  "id": "https://opendesk.cc/schemata/base/set_string.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Winnow Set",
+  "oneOf": [
+    {
+      "$ref": "#/values"
+    },
+    {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://opendesk.cc/schemata/base/option.json#"
+        },
+        {
+          "properties": {
+            "values": {
+              "oneOf": [
+                {
+                  "$ref": "#/values"
+                },
+                {
+                  "$ref": "https://opendesk.cc/schemata/base/reference.json#"
+                }
+              ]
+            }
+          },
+          "required": [
+            "values"
+          ],
+          "oneOf": [
+            {
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "pattern": "set::string"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "set_value": {
+    "oneOf": [
+      {
+        "type": "string",
+        "pattern": "^[_:@&/.0-9A-Za-z-]{1,}$"
+      },
+      {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "https://opendesk.cc/schemata/base/value.json#"
+          },
+          {
+            "$ref": "https://opendesk.cc/schemata/base/options.json#"
+          },
+          {
+            "properties": {
+              "type": {
+                "type": "string",
+                "pattern": "string"
+              },
+              "value": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "type",
+              "value"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "values": {
+    "oneOf": [
+      {
+        "$ref": "#/set_value"
+      },
+      {
+        "type": "array",
+        "items": {
+          "$ref": "#/set_value"
+        }
+      }
+    ]
+  }
+}

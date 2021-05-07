@@ -1,0 +1,70 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "required": true,
+  "properties": {
+    "features": {
+      "type": "array",
+      "minItems": 1,
+      "required": true,
+      "items": {
+        "type": "object",
+        "required": true,
+        "properties": {
+          "geometry": {
+            "type": "object",
+            "required": true,
+            "properties": {
+              "coordinates": {
+                "type": "array",
+                "maxItems": 2,
+                "minItems": 2,
+                "required": true,
+                "items": {
+                  "type": "number",
+                  "required": true
+                }
+              },
+              "type": {
+                "enum": [
+                  "Point"
+                ],
+                "required": true
+              }
+            }
+          },
+          "properties": {
+            "type": "object",
+            "required": false,
+            "properties": {
+              "height": {
+                "type": "number",
+                "required": false
+              },
+              "lowered": {
+                "type": "boolean",
+                "required": false
+              },
+              "tactile_paving": {
+                "type": "boolean",
+                "required": false
+              }
+            }
+          },
+          "type": {
+            "enum": [
+              "Feature"
+            ],
+            "required": true
+          }
+        }
+      }
+    },
+    "type": {
+      "enum": [
+        "FeatureCollection"
+      ],
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,240 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "id": "urn:x-jubatus:api:clustering",
+  "definitions": {
+    "weighted_datum": {
+      "title": "weighted_datum",
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": [
+        {
+          "title": "weight",
+          "type": "number"
+        },
+        {
+          "title": "point",
+          "$ref": "urn:x-jubatus:api:common#/definitions/datum"
+        }
+      ],
+      "additionalItems": false
+    },
+    "indexed_point": {
+      "title": "indexed_point",
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": [
+        {
+          "title": "id",
+          "type": "string"
+        },
+        {
+          "title": "point",
+          "$ref": "urn:x-jubatus:api:common#/definitions/datum"
+        }
+      ],
+      "additionalItems": false
+    },
+    "weighted_index": {
+      "title": "weighted_index",
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": [
+        {
+          "title": "weight",
+          "type": "number"
+        },
+        {
+          "title": "id",
+          "type": "string"
+        }
+      ],
+      "additionalItems": false
+    }
+  },
+  "title": "clustering",
+  "properties": {
+    "push": {
+      "title": "push",
+      "description": "Adds points.",
+      "properties": {
+        "return": {
+          "description": "True when the point was added successfully",
+          "type": "boolean"
+        },
+        "arguments": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1,
+          "items": [
+            {
+              "title": "points",
+              "description": "list of indexed_point for the points. indexed_point is a tuple of string id and datum",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/indexed_point"
+              }
+            }
+          ],
+          "additionalItems": false
+        }
+      }
+    },
+    "get_revision": {
+      "title": "get_revision",
+      "description": "Return revesion of cluster.",
+      "properties": {
+        "return": {
+          "description": "revision of cluster",
+          "type": "integer"
+        },
+        "arguments": {
+          "type": "array",
+          "minItems": 0,
+          "maxItems": 0,
+          "additionalItems": false
+        }
+      }
+    },
+    "get_core_members": {
+      "title": "get_core_members",
+      "description": "Returns coreset of cluster in datum. This method is not supported in dbscan.",
+      "properties": {
+        "return": {
+          "description": "coreset of cluster",
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/weighted_datum"
+            }
+          }
+        },
+        "arguments": {
+          "type": "array",
+          "minItems": 0,
+          "maxItems": 0,
+          "additionalItems": false
+        }
+      }
+    },
+    "get_core_members_light": {
+      "title": "get_core_members_light",
+      "description": "Returns coreset of cluster in index. This method is not supported in dbscan.",
+      "properties": {
+        "return": {
+          "description": "coreset of cluster",
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/weighted_index"
+            }
+          }
+        },
+        "arguments": {
+          "type": "array",
+          "minItems": 0,
+          "maxItems": 0,
+          "additionalItems": false
+        }
+      }
+    },
+    "get_k_center": {
+      "title": "get_k_center",
+      "description": "Returns k cluster centers.",
+      "properties": {
+        "return": {
+          "description": "cluster centers",
+          "type": "array",
+          "items": {
+            "$ref": "urn:x-jubatus:api:common#/definitions/datum"
+          }
+        },
+        "arguments": {
+          "type": "array",
+          "minItems": 0,
+          "maxItems": 0,
+          "additionalItems": false
+        }
+      }
+    },
+    "get_nearest_center": {
+      "title": "get_nearest_center",
+      "description": "Returns nearest cluster center without adding point to cluster. This method is not supported in dbscan.",
+      "properties": {
+        "return": {
+          "description": "nearest cluster center",
+          "$ref": "urn:x-jubatus:api:common#/definitions/datum"
+        },
+        "arguments": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1,
+          "items": [
+            {
+              "title": "point",
+              "description": "datum",
+              "$ref": "urn:x-jubatus:api:common#/definitions/datum"
+            }
+          ],
+          "additionalItems": false
+        }
+      }
+    },
+    "get_nearest_members": {
+      "title": "get_nearest_members",
+      "description": "Returns nearest summary of cluster(coreset) from point. Its format is a list of tuples of weight and datum. This method is not supported in dbscan.",
+      "properties": {
+        "return": {
+          "description": "coreset",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/weighted_datum"
+          }
+        },
+        "arguments": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1,
+          "items": [
+            {
+              "title": "point",
+              "description": "datum",
+              "$ref": "urn:x-jubatus:api:common#/definitions/datum"
+            }
+          ],
+          "additionalItems": false
+        }
+      }
+    },
+    "get_nearest_members_light": {
+      "title": "get_nearest_members_light",
+      "description": "Returns nearest summary of cluster(coreset) from point. Its format is a list of tuples of weight and id. This method is not supported in dbscan.",
+      "properties": {
+        "return": {
+          "description": "coreset",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/weighted_index"
+          }
+        },
+        "arguments": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1,
+          "items": [
+            {
+              "title": "point",
+              "description": "datum",
+              "$ref": "urn:x-jubatus:api:common#/definitions/datum"
+            }
+          ],
+          "additionalItems": false
+        }
+      }
+    }
+  }
+}

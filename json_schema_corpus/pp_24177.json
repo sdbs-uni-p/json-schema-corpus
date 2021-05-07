@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "description": "Collection of locations",
+  "properties": {
+    "locations": {
+      "type": "array",
+      "locations": {
+        "type": "object",
+        "$ref": "location.json"
+      }
+    },
+    "resultInfo": {
+      "$ref": "../resultInfo.schema"
+    }
+  },
+  "required": [
+    "locations",
+    "resultInfo"
+  ]
+}

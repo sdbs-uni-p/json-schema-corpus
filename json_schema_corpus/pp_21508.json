@@ -1,0 +1,104 @@
+{
+  "id": "/KPI",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "value-attribute": {
+      "type": "string",
+      "required": true
+    },
+    "classes": {
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "format": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": true,
+          "additionalProperties": false,
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "number"
+              ]
+            },
+            "magnitude": {
+              "type": "boolean"
+            },
+            "sigfigs": {
+              "type": "integer"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "required": true,
+          "additionalProperties": false,
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "currency"
+              ]
+            },
+            "magnitude": {
+              "type": "boolean"
+            },
+            "sigfigs": {
+              "type": "integer"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "required": true,
+          "additionalProperties": false,
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "currency"
+              ]
+            },
+            "dps": {
+              "type": "integer"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "required": true,
+          "additionalProperties": false,
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "currency"
+              ]
+            },
+            "pence": {
+              "type": "boolean"
+            }
+          }
+        }
+      ],
+      "required": true
+    },
+    "date-period": {
+      "type": "string",
+      "enum": [
+        "hour",
+        "day",
+        "week",
+        "month",
+        "quarter"
+      ],
+      "required": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-03/schema#"
+}

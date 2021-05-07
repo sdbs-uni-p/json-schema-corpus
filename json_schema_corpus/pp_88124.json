@@ -1,0 +1,31 @@
+{
+  "id": "http://schemas.wbeme.com/json-schema/eme/collector/mixin/collectable/1-0-0.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "collector": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "#/definitions/app"
+        }
+      ],
+      "description": "The application collecting the message. This is set on the server by the collector app itself.",
+      "pbj": {
+        "type": "message",
+        "rule": "single"
+      }
+    }
+  },
+  "definitions": {
+    "app": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "http://schemas.wbeme.com/json-schema/gdbots/contexts/app/1-0-0.json#"
+        }
+      ]
+    }
+  },
+  "additionalProperties": true
+}

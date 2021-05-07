@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "UserLink",
+  "description": "Databook user link",
+  "type": "object",
+  "javaType": "databook.persistence.rule.rdf.ruleset.UserLink",
+  "extends": {
+    "$ref": "DataEntity.json"
+  },
+  "properties": {
+    "user": {
+      "$ref": "User.json"
+    },
+    "userRole": {
+      "type": "string"
+    }
+  }
+}

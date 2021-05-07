@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "identifiertype",
+  "description": "Identifier Type",
+  "type": "string",
+  "enum": [
+    "facebook",
+    "facebook_page_id",
+    "factual",
+    "foursquare",
+    "grubhub",
+    "mindbody",
+    "opentable",
+    "salesforce",
+    "salesforce-real",
+    "spv2",
+    "store_number",
+    "vanity",
+    "yelp",
+    "zoho"
+  ]
+}

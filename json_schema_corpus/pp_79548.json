@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "notifications": {
+      "$ref": "candidateRead.json#/definitions/notifications"
+    },
+    "internalFlag": {
+      "$ref": "candidateRead.json#/definitions/internalFlag"
+    },
+    "person": {
+      "$ref": "person.json"
+    },
+    "resume": {
+      "$ref": "fileUpload.json"
+    },
+    "items": {
+      "$ref": "itemsWrite.json"
+    },
+    "categories": {
+      "$ref": "categoriesActual.json"
+    }
+  },
+  "additionalProperties": false
+}

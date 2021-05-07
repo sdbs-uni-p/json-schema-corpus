@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "#result",
+  "type": "object",
+  "properties": {
+    "score": {
+      "$ref": "#score"
+    },
+    "success": {
+      "type": "boolean"
+    },
+    "completion": {
+      "type": "boolean"
+    },
+    "response": {
+      "type": "string"
+    },
+    "duration": {
+      "type": "string",
+      "format": "iso_duration"
+    },
+    "extensions": {
+      "$ref": "#extensions"
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "definitions": {
+    "givenName": {
+      "type": "string"
+    },
+    "familyName": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "image": {
+      "type": "string",
+      "format": "uri"
+    }
+  },
+  "type": "object",
+  "properties": {
+    "givenName": {
+      "$ref": "#/definitions/givenName"
+    },
+    "familyName": {
+      "$ref": "#/definitions/familyName"
+    },
+    "email": {
+      "$ref": "#/definitions/email"
+    },
+    "image": {
+      "$ref": "#/definitions/image"
+    },
+    "vcard": {
+      "$ref": "jcard.json"
+    }
+  },
+  "additionalProperties": false
+}

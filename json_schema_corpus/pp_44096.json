@@ -1,0 +1,71 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "This schema represents a patient. It is primarily concerned with the core data about a given person, and may have a relationship to their EHR or other documents.",
+  "type": "object",
+  "references": [],
+  "definitions": {
+    "body_height": {
+      "$ref": "http://localhost:12000/mhealth/clinical/body-height-1.0.json"
+    },
+    "body_weight": {
+      "$ref": "http://localhost:12000/mhealth/clinical/body-weight-1.0.json"
+    },
+    "date_time": {
+      "$ref": "http://localhost:12000/mhealth/generic/date-time-1.0.json"
+    },
+    "blood_pressure": {
+      "$ref": "http://localhost:12000/mhealth/clinical/blood-pressure-1.0.json"
+    },
+    "person_name": {
+      "$ref": "http://localhost:12000/cmr/people/person-name.json"
+    }
+  },
+  "properties": {
+    "biographical_data": {
+      "name": {
+        "description": "The patient's name.",
+        "$ref": "#/definitions/person_name"
+      },
+      "address": {
+        "street": {
+          "type": "array"
+        },
+        "city": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        }
+      },
+      "blood_type": {
+        "type": "string"
+      },
+      "visual_acuity": {
+        "type": "string"
+      },
+      "date_of_birth": "1976-08-18T00:00:00Z",
+      "allergies": {
+        "type": "array"
+      }
+    },
+    "height": {
+      "description": "The patient's height.",
+      "$ref": "#/definitions/body_height"
+    },
+    "weight": {
+      "description": "The patient's weight.",
+      "$ref": "#/definitions/body_weight"
+    },
+    "blood_pressure": {
+      "$ref": "#/definitions/blood_pressure"
+    }
+  },
+  "required": [
+    "biographical_data",
+    "height",
+    "weight"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://localhost:8080/schemas/serviceState.json",
+  "enum": [
+    "OK",
+    "KO"
+  ]
+}

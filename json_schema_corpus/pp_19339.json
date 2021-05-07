@@ -1,0 +1,165 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "description": "ServiceGroup object",
+  "properties": {
+    "ServiceGroup": {
+      "id": "ServiceGroup",
+      "type": "object",
+      "properties": {
+        "ID": {
+          "id": "ID",
+          "type": "string"
+        },
+        "Name": {
+          "id": "Name",
+          "type": "string"
+        },
+        "ProgramName": {
+          "id": "ProgramName",
+          "type": "string"
+        },
+        "Description": {
+          "id": "Description",
+          "type": "string"
+        },
+        "ApplicationProcess": {
+          "id": "ApplicationProcess",
+          "type": "object",
+          "properties": {
+            "Title": {
+              "id": "Title",
+              "type": "string"
+            },
+            "Description": {
+              "id": "Description",
+              "type": "string"
+            }
+          }
+        },
+        "ResourceInfo": {
+          "id": "ResourceInfo",
+          "type": "object",
+          "properties": {
+            "Contact": {
+              "id": "Contact",
+              "type": "object",
+              "properties": {
+                "ID": {
+                  "id": "ID",
+                  "type": "string"
+                },
+                "AgencyID": {
+                  "id": "AgencyID",
+                  "type": "string"
+                },
+                "ServiceID": {
+                  "id": "ServiceID",
+                  "type": "string"
+                },
+                "Department": {
+                  "id": "Department",
+                  "type": "string"
+                },
+                "Title": {
+                  "id": "Title",
+                  "type": "string"
+                },
+                "Name": {
+                  "id": "Name",
+                  "type": "string"
+                },
+                "Nickname": {
+                  "id": "Nickname",
+                  "type": "string"
+                },
+                "ContactEmail": {
+                  "id": "ContactEmail",
+                  "type": "string"
+                },
+                "ContactPhone": {
+                  "id": "ContactPhone",
+                  "type": "object",
+                  "properties": {
+                    "Phone": {
+                      "id": "Phone",
+                      "type": "string"
+                    },
+                    "Confidential": {
+                      "id": "Confidential",
+                      "type": "boolean"
+                    },
+                    "ReasonWithheld": {
+                      "id": "ReasonWithheld",
+                      "type": "string"
+                    },
+                    "Description": {
+                      "id": "Description",
+                      "type": "string"
+                    },
+                    "Type": {
+                      "id": "Type",
+                      "type": "string"
+                    },
+                    "Function": {
+                      "id": "Function",
+                      "type": "string"
+                    },
+                    "TollFree": {
+                      "id": "TollFree",
+                      "type": "boolean"
+                    },
+                    "Department": {
+                      "id": "Department",
+                      "type": "string"
+                    },
+                    "CountryPrefix": {
+                      "id": "CountryPrefix",
+                      "type": "string"
+                    }
+                  }
+                },
+                "ContactType": {
+                  "id": "ContactType",
+                  "type": "string"
+                }
+              }
+            },
+            "ResourceSpecialist": {
+              "id": "ResourceSpecialist",
+              "type": "string"
+            },
+            "AvailableForDirectory": {
+              "id": "AvailableForDirectory",
+              "type": "boolean"
+            },
+            "AvailableForReferral": {
+              "id": "AvailableForReferral",
+              "type": "boolean"
+            },
+            "AvailableForResearch": {
+              "id": "AvailableForResearch",
+              "type": "boolean"
+            },
+            "DateAdded": {
+              "id": "DateAdded",
+              "type": "string"
+            },
+            "DateLastVerified": {
+              "id": "DateLastVerified",
+              "type": "string"
+            },
+            "DateOfLastAction": {
+              "id": "DateOfLastAction",
+              "type": "string"
+            },
+            "LastActionType": {
+              "id": "LastActionType",
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,212 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "http://reference.focusnet.eu/schemas/focus-mobile-app-content-definition/v1.0",
+  "title": "FOCUS Mobile application - Content definition",
+  "description": "Content definition of the mobile application",
+  "__comment": "IMPORTANT: This schema is incomplete. Read the sources of FOCUS Mobile and especially the following package: eu.focusnet.app.model.gson. We use GSON to deserialize the application content, so there is a direct match between the classes in the Java app and the application content definition",
+  "allOf": [
+    {
+      "$ref": "http://reference.focusnet.eu/schemas/focus-object/v1.0#/definitions/metadata"
+    },
+    {
+      "$ref": "#/definitions/app-content"
+    }
+  ],
+  "definitions": {
+    "app-content": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "language": {
+          "type": "string",
+          "pattern": "^[a-z]{2}(_[A-Z]{2})?$"
+        },
+        "data": {
+          "type": "object",
+          "__FIXME": "to define"
+        },
+        "projects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/project"
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "title",
+        "projects"
+      ]
+    },
+    "types": {
+      "contextual-variable": {
+        "type": "string",
+        "__FIXME": "pattern: <ctx/ref/prop1>"
+      },
+      "contextual-string": {
+        "type": "string",
+        "__FIXME": "highlight the fact that can contain references such as ' test 123 <ctx/ref/prop1>'?"
+      }
+    },
+    "project": {
+      "type": "object",
+      "properties": {
+        "guid": {
+          "$ref": "http://reference.focusnet.eu/schemas/focus-object/v1.0#/definitions/types/identifier"
+        },
+        "iterator": {
+          "$ref": "#/definitions/types/contextual-variable"
+        },
+        "data": {
+          "type": "object",
+          "__FIXME": "to define"
+        },
+        "title": {
+          "$ref": "#/definitions/types/contextual-string"
+        },
+        "description": {
+          "$ref": "#/definitions/types/contextual-string"
+        },
+        "widgets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/widget/any"
+          },
+          "minItems": 1
+        },
+        "pages": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "guid": {
+                "$ref": "http://reference.focusnet.eu/schemas/focus-object/v1.0#/definitions/types/identifier"
+              },
+              "iterator": {
+                "$ref": "#/definitions/types/contextual-variable"
+              },
+              "data": {
+                "type": "object",
+                "__FIXME": "to define"
+              },
+              "title": {
+                "$ref": "#/definitions/types/contextual-string"
+              },
+              "description": {
+                "$ref": "#/definitions/types/contextual-string"
+              },
+              "widgets": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/widget-reference"
+                },
+                "minItems": 1
+              },
+              "disabled": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "guid",
+              "title"
+            ]
+          },
+          "minItems": 1
+        },
+        "dashboards": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/page-reference"
+          },
+          "minItems": 1
+        },
+        "tools": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/page-reference"
+          },
+          "minItems": 1
+        },
+        "projects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/project"
+          },
+          "minItems": 1
+        }
+      },
+      "disabled": {
+        "type": "boolean"
+      },
+      "required": [
+        "guid",
+        "title"
+      ],
+      "additionalProperties": false
+    },
+    "widget": {
+      "any": {
+        "anyOf": [
+          {
+            "$ref": "#/definitions/widget/common"
+          }
+        ]
+      },
+      "common": {
+        "type": "object",
+        "properties": {
+          "guid": {
+            "$ref": "http://reference.focusnet.eu/schemas/focus-object/v1.0#/definitions/types/identifier"
+          },
+          "type": {
+            "type": "string"
+          },
+          "__FIXME": "fill missing specification; keep same json path as in FOCUS Mobile source code, e.g. #/definitions/widget/visualize/piechart (not strictly mandatory, but that's cleaner)"
+        },
+        "required": [
+          "guid",
+          "type"
+        ]
+      }
+    },
+    "page-reference": {
+      "type": "object",
+      "properties": {
+        "pageid": {
+          "$ref": "http://reference.focusnet.eu/schemas/focus-object/v1.0#/definitions/types/identifier"
+        }
+      },
+      "required": [
+        "pageid"
+      ]
+    },
+    "widget-reference": {
+      "type": "object",
+      "properties": {
+        "widgetid": {
+          "$ref": "http://reference.focusnet.eu/schemas/focus-object/v1.0#/definitions/types/identifier"
+        },
+        "layout": {
+          "type": "object",
+          "properties": {
+            "width": {
+              "type": "string",
+              "enum": [
+                "1of4",
+                "2of4",
+                "3of4",
+                "4of4"
+              ],
+              "default": "4of4"
+            }
+          }
+        }
+      },
+      "required": [
+        "widgetid"
+      ]
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "id": "https://raw.githubusercontent.com/eviratec/schema/master/v1/contact/message.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "schema for a contact message",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "date",
+    "source",
+    "replyTo",
+    "content"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source": {
+      "enum": [
+        "web_form",
+        "phone",
+        "in_person"
+      ]
+    },
+    "reply_to": {
+      "$ref": "https://raw.githubusercontent.com/eviratec/schema/master/v1/contact/person.json#"
+    },
+    "content": {
+      "type": "string"
+    }
+  }
+}

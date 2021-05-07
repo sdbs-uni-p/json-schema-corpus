@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "title": "This document describes the structure of linterhub error",
+  "description": "The problem definition including code and explandatory text",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "integer",
+      "description": "The error code"
+    },
+    "title": {
+      "type": "string",
+      "description": "The error title"
+    },
+    "description": {
+      "type": "string",
+      "description": "The error decription"
+    }
+  },
+  "required": [
+    "code",
+    "title"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "id": "http://schema.myrtana.sk/entities/entityorperson.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Entity or Person",
+  "description": "A paragraph of text. Should work for left-to-right and right-to-left languages.",
+  "type": "string"
+}

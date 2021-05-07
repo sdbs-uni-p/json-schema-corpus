@@ -1,0 +1,189 @@
+{
+  "$schema": "http://interagent.github.io/interagent-hyper-schema",
+  "type": [
+    "object"
+  ],
+  "definitions": {
+    "cow": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "The Cow",
+      "type": [
+        "object"
+      ],
+      "properties": {
+        "cow": {
+          "title": "The Cow",
+          "type": [
+            "object"
+          ],
+          "properties": {
+            "milk": {
+              "title": "Milk",
+              "type": [
+                "string"
+              ],
+              "enum": [
+                "Cream",
+                "Whole",
+                "Organic-non-pasteurize-non-homogenized-non-gmo",
+                "Skim",
+                "1%"
+              ]
+            },
+            "quantity": {
+              "title": "Quantity (oz.)",
+              "type": [
+                "number"
+              ],
+              "minimum": 8
+            }
+          }
+        }
+      }
+    },
+    "grocer": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "The Grocer",
+      "type": [
+        "object"
+      ],
+      "properties": {
+        "grocer": {
+          "title": "The Grocer",
+          "type": [
+            "object"
+          ],
+          "properties": {
+            "ice_cream_essentials": {
+              "title": "Essentials",
+              "type": [
+                "string"
+              ],
+              "enum": [
+                "sugar",
+                "stevia"
+              ]
+            },
+            "mixins": {
+              "title": "Mixins",
+              "type": [
+                "string"
+              ],
+              "enum": [
+                "chocolate chips",
+                "anchovies",
+                "blueberries",
+                "mixed fruit",
+                "jello",
+                "guar gum",
+                "apples",
+                "coffee",
+                "caramel",
+                "sea salt"
+              ]
+            },
+            "custom": {
+              "title": "Custom",
+              "description": "Write your own order",
+              "type": [
+                "string"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "hen": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "The Hen",
+      "type": [
+        "object"
+      ],
+      "properties": {
+        "hen": {
+          "title": "The Hen",
+          "type": [
+            "object"
+          ],
+          "properties": {
+            "egg": {
+              "title": "Egg(s)",
+              "type": [
+                "string"
+              ],
+              "enum": [
+                "brown/yolk only",
+                "scavenged (turkey)/ whole",
+                "stolen (crocodile)/ yolk only"
+              ]
+            },
+            "count": {
+              "title": "Count",
+              "type": [
+                "number"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "ice-man": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "The Ice-man",
+      "type": [
+        "object"
+      ],
+      "properties": {
+        "ice_man": {
+          "title": "The Ice Man",
+          "type": [
+            "object"
+          ],
+          "properties": {
+            "ice": {
+              "title": "Ice",
+              "type": [
+                "string"
+              ],
+              "enum": [
+                "cube",
+                "sphere",
+                "special square"
+              ]
+            },
+            "count": {
+              "title": "Count",
+              "type": [
+                "number"
+              ],
+              "minimum": 1
+            }
+          }
+        }
+      }
+    }
+  },
+  "properties": {
+    "cow": {
+      "$ref": "#/definitions/cow"
+    },
+    "grocer": {
+      "$ref": "#/definitions/grocer"
+    },
+    "hen": {
+      "$ref": "#/definitions/hen"
+    },
+    "ice-man": {
+      "$ref": "#/definitions/ice-man"
+    }
+  },
+  "description": "Ice cream API",
+  "id": "icecream",
+  "links": [
+    {
+      "href": "http://localhost:4567",
+      "rel": "self"
+    }
+  ],
+  "title": "Ice cream"
+}

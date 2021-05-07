@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "title": "com.xcitestudios.schema.Parallelisation.Event",
+  "description": "Minimum required output for Event",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "Return the type of this event, this is an identifier to determine how to react to it.\n\nFor example you could use a function name, e.g. CalculateFibonacci.\n\nIt is recommended to namespace your types so they will not conflict with others, e.g. 'MyCompany.Math.CalculateFibonacci'."
+    },
+    "successful": {
+      "type": "boolean",
+      "description": "Did the event get handled correctly and can the data be trusted to be correct for the request."
+    },
+    "responseMessage": {
+      "type": "string",
+      "description": "A general human readable response, useful for providing an error message if WasSuccessful returns false."
+    },
+    "input": {
+      "$ref": "EventInput.json#"
+    },
+    "output": {
+      "$ref": "EventOutput.json#"
+    }
+  },
+  "required": [
+    "type",
+    "input",
+    "successful"
+  ]
+}

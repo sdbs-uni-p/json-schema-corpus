@@ -1,0 +1,63 @@
+{
+  "title": "Clack Schema",
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "properties": {
+    "default": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/command"
+        },
+        {
+          "type": "object",
+          "required": [
+            "command"
+          ]
+        }
+      ]
+    },
+    "iterations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/command"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "iterations"
+  ],
+  "definitions": {
+    "command": {
+      "type": "object",
+      "properties": {
+        "command": {
+          "type": "string"
+        },
+        "options": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "arguments": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "description": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

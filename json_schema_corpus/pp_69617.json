@@ -1,0 +1,28 @@
+{
+  "id": "http://schema.org/GeoCoordinates",
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "extends": {
+    "$ref": "StructuredValue.json"
+  },
+  "description": "The geographic coordinates of a place or event. Schema.org: http://schema.org/GeoCoordinates",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "elevation": {
+      "description": "The elevation of a location.",
+      "type": "number"
+    },
+    "latitude": {
+      "description": "The latitude of a location. For example 37.42242.",
+      "type": "number"
+    },
+    "longitude": {
+      "description": "The longitude of a location. For example -122.08585.",
+      "type": "number"
+    }
+  },
+  "required": [
+    "latitude",
+    "longitude"
+  ]
+}

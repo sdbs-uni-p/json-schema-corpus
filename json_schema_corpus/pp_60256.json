@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "title": "Token",
+  "description": "Token description",
+  "stability": "prototype",
+  "strictProperties": true,
+  "type": [
+    "object"
+  ],
+  "definitions": {
+    "access_token": {
+      "description": "unique token identifier of user",
+      "readOnly": true,
+      "type": [
+        "string"
+      ]
+    },
+    "identity": {}
+  },
+  "links": [
+    {
+      "description": "Get a new token.",
+      "href": "/tokens",
+      "method": "PUT",
+      "rel": "update",
+      "schema": {
+        "properties": {},
+        "type": [
+          "object"
+        ]
+      },
+      "title": "Update"
+    }
+  ],
+  "properties": {
+    "access_token": {
+      "$ref": "/schemata/token#/definitions/access_token"
+    }
+  },
+  "id": "/schemata/token"
+}

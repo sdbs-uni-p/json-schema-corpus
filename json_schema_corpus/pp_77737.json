@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "insurance",
+  "title": "Insurance Schema",
+  "type": "object",
+  "properties": {
+    "company": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "company"
+  ]
+}

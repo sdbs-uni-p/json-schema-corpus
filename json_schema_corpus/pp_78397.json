@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "films_show",
+  "type": "object",
+  "endpoint": "http://{host}/films/{id}",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "year": {
+      "type": "integer"
+    }
+  }
+}

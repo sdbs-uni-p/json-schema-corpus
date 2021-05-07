@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "uri://registries/referee#",
+  "new": {
+    "table": "people",
+    "properties": {
+      "baseData": {
+        "$ref": "uri://registries/people#person/properties/baseData"
+      },
+      "additionalInfo": {
+        "$ref": "uri://registries/people#person/properties/additionalDataReferee"
+      },
+      "photoInfo": {
+        "$ref": "uri://registries/people#person/properties/photoInfo"
+      },
+      "contactInfo": {
+        "$ref": "uri://registries/people#person/properties/contactInfo"
+      },
+      "otherInfo": {
+        "$ref": "uri://registries/people#person/properties/otherInfo"
+      },
+      "licence": {
+        "$ref": "uri://registries/people#person/properties/licence"
+      },
+      "idInfo": {
+        "$ref": "uri://registries/people#person/properties/idInfo"
+      }
+    }
+  },
+  "view": {
+    "$ref": "uri://registries/referee#new"
+  },
+  "search": {
+    "table": "people",
+    "title": "osoba",
+    "listFields": {
+      "$ref": "uri://registries/people#person/listFields"
+    },
+    "properties": {
+      "baseData": {
+        "$ref": "uri://registries/people#person/properties/baseData"
+      },
+      "contactInfo": {
+        "$ref": "uri://registries/people#person/properties/contactInfo"
+      },
+      "bankInfo": {
+        "$ref": "uri://registries/people#person/properties/bankInfo"
+      },
+      "otherInfo": {
+        "$ref": "uri://registries/people#person/properties/otherInfo"
+      },
+      "additionalDataReferee": {
+        "$ref": "uri://registries/people#person/properties/additionalDataReferee/properties/refereeLicence"
+      }
+    }
+  }
+}

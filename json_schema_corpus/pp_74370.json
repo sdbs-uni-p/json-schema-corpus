@@ -1,0 +1,111 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Beschreibung fehlt",
+  "properties": {
+    "event_ids": {
+      "description": "Beschreibung fehlt",
+      "properties": {
+        "afterDate": {
+          "description": "Beschreibung fehlt",
+          "title": "AfterDate schema.",
+          "type": "string"
+        },
+        "before": {
+          "description": "Beschreibung fehlt",
+          "title": "Before schema.",
+          "type": "string"
+        },
+        "beforeDate": {
+          "description": "Beschreibung fehlt",
+          "title": "BeforeDate schema.",
+          "type": "string"
+        },
+        "limit": {
+          "description": "Beschreibung fehlt",
+          "title": "Limit schema.",
+          "type": "integer"
+        },
+        "uid": {
+          "description": "Beschreibung fehlt",
+          "title": "Uid schema.",
+          "type": "string"
+        }
+      },
+      "title": "Event_ids schema.",
+      "type": "object"
+    },
+    "events": {
+      "description": "Beschreibung fehlt",
+      "properties": {
+        "afterDate": {
+          "description": "Beschreibung fehlt",
+          "title": "AfterDate schema.",
+          "type": "string"
+        },
+        "before": {
+          "description": "Beschreibung fehlt",
+          "title": "Before schema.",
+          "type": "string"
+        },
+        "beforeDate": {
+          "description": "Beschreibung fehlt",
+          "title": "BeforeDate schema.",
+          "type": "string"
+        },
+        "limit": {
+          "description": "Beschreibung fehlt",
+          "title": "Limit schema.",
+          "type": "integer"
+        },
+        "uid": {
+          "description": "Beschreibung fehlt",
+          "title": "Uid schema.",
+          "type": "string"
+        }
+      },
+      "title": "Events schema.",
+      "type": "object"
+    },
+    "index": {
+      "description": "Beschreibung fehlt",
+      "properties": {
+        "deeps": {
+          "description": "Beschreibung fehlt",
+          "title": "Deeps schema.",
+          "type": "integer"
+        },
+        "limit": {
+          "description": "Beschreibung fehlt",
+          "title": "Limit schema.",
+          "type": "integer"
+        },
+        "uid": {
+          "description": "Beschreibung fehlt",
+          "title": "Uid schema.",
+          "type": "string"
+        }
+      },
+      "title": "Index schema.",
+      "type": "object"
+    },
+    "kalenders": {
+      "description": "Beschreibung fehlt",
+      "properties": {
+        "limit": {
+          "description": "Beschreibung fehlt",
+          "title": "Limit schema.",
+          "type": "integer"
+        },
+        "uid": {
+          "description": "Beschreibung fehlt",
+          "title": "Uid schema.",
+          "type": "string"
+        }
+      },
+      "title": "Kalenders schema.",
+      "type": "object"
+    }
+  },
+  "title": "Root schema.",
+  "type": "object"
+}

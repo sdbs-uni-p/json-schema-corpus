@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://toyatech.net/cmsapp/contacts/Family",
+  "type": "object",
+  "properties": {
+    "familyName": {
+      "type": "string"
+    },
+    "familyMembers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/Person"
+      }
+    },
+    "address": {
+      "$ref": "$/definitions/PostalAddress"
+    },
+    "homePhone": {
+      "type": "string"
+    },
+    "emailAddress": {
+      "type": "string",
+      "format": "email"
+    },
+    "marriageDate": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "familyName"
+  ]
+}

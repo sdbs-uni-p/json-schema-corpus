@@ -1,0 +1,100 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "core",
+  "description": "The base properties used in all top-level types",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "Hardcoded value to indicate what type of construct this is"
+    },
+    "id": {
+      "$ref": "id.json",
+      "description": "Globally unique identifier for this construct."
+    },
+    "revision": {
+      "type": "integer",
+      "description": "The revision number of this construct. MUST be omitted if this is the first version, otherwise required."
+    },
+    "created_at": {
+      "$ref": "timestamp.json",
+      "description": "Time at which this construct was created."
+    },
+    "external_ids": {
+      "type": "array",
+      "description": "A list of external identifiers by which this construct may be known.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "description": "The source of this ID, i.e. name of an external system."
+          },
+          "id": {
+            "type": "string",
+            "description": "ID itself"
+          },
+          "link": {
+            "type": "string",
+            "description": "A link to this construct in the external system"
+          }
+        },
+        "required": [
+          "source",
+          "id"
+        ]
+      }
+    },
+    "producer_ref": {
+      "$ref": "id.json",
+      "description": "ID to the information source that produced this content"
+    },
+    "marking_refs": {
+      "type": "array",
+      "description": "The set of markings to be applied to this construct",
+      "items": {
+        "$ref": "id.json"
+      }
+    },
+    "structured_markings": {
+      "type": "array",
+      "description": "The set of L2 markings to be applied to this construct",
+      "items": {
+        "$ref": "#/definitions/structured-marking"
+      }
+    }
+  },
+  "required": [
+    "type",
+    "id",
+    "created_at",
+    "producer_ref"
+  ],
+  "definitions": {
+    "structured-marking": {
+      "title": "structured-marking",
+      "description": "A single definition of a structured marking",
+      "type": "object",
+      "properties": {
+        "controlled_structures": {
+          "type": "array",
+          "description": "A list of JSONPath statements, rooted at the top-level object that the structured_markings key is contained in, that the marking_refs apply to.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "marking_refs": {
+          "type": "array",
+          "description": "The set of markings applied to the fields selected by the controlled_structures.",
+          "items": {
+            "$ref": "id.json"
+          }
+        }
+      },
+      "required": [
+        "controlled_structures",
+        "marking_refs"
+      ]
+    }
+  }
+}

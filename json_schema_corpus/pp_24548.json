@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "description": "Book within the Holy Bible.",
+  "$linkedData": {
+    "chapters": {
+      "schema": "chapter",
+      "type": "collection",
+      "path": [
+        "/bibles",
+        "/{bibleId}",
+        "/books",
+        "/{bookId}",
+        "/chapters"
+      ]
+    },
+    "bible": {
+      "schema": "bible",
+      "type": "single",
+      "path": [
+        "/bibles",
+        "/{bibleId}"
+      ]
+    }
+  },
+  "properties": {
+    "bookId": {
+      "type": "integer",
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "bibleId": {
+      "type": "integer",
+      "required": true
+    }
+  }
+}

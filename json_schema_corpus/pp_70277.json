@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "menu",
+  "description": "Menu structure for the data marshal system",
+  "type": "object",
+  "properties": {
+    "menu_id": {
+      "$ref": "/schema/id"
+    },
+    "enabled": {
+      "type": "boolean"
+    },
+    "menu_type": {
+      "$ref": "/schema/menutype"
+    },
+    "location_id": {
+      "$ref": "/schema/id"
+    },
+    "location_aliases": {
+      "type": "array",
+      "items": {
+        "$ref": "/schema/name"
+      }
+    },
+    "is_owner_verified": {
+      "type": "boolean"
+    },
+    "name": {
+      "$ref": "/schema/name"
+    },
+    "description": {
+      "$ref": "/schema/description"
+    },
+    "footnote": {
+      "$ref": "/schema/description"
+    },
+    "order_num": {
+      "type": "integer"
+    },
+    "label": {
+      "$ref": "/schema/name"
+    },
+    "currency": {
+      "$ref": "/schema/currency"
+    },
+    "created": {
+      "$ref": "/schema/timestamp"
+    },
+    "updated": {
+      "$ref": "/schema/timestamp"
+    },
+    "sections": {
+      "type": "array",
+      "items": {
+        "$ref": "/schema/menusection"
+      }
+    }
+  },
+  "required": [
+    "menu_id",
+    "location_id"
+  ]
+}

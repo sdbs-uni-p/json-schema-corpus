@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "image2#tif",
+  "name": "Image series",
+  "extension": "tif",
+  "encoders": {
+    "video": [
+      "tiff"
+    ],
+    "audio": []
+  },
+  "capabilities": {
+    "faststart": false
+  }
+}

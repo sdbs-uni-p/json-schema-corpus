@@ -1,0 +1,22 @@
+{
+  "id": "/ModuleTab",
+  "type": "object",
+  "properties": {
+    "tabs": {
+      "type": "array",
+      "required": true,
+      "minItems": 2,
+      "items": {
+        "properties": {
+          "slug": {
+            "type": "string",
+            "required": true,
+            "maxLength": 30,
+            "pattern": "^[-a-z0-9]+$"
+          }
+        }
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/draft-03/schema#"
+}

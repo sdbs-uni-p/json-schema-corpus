@@ -1,0 +1,72 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "name": "Voting recommendation",
+  "description": "Voting recommendations allow any organization to represent their expected outcome of a legislation voting.",
+  "id": "http://jsonschema.net",
+  "properties": {
+    "name": {
+      "type": "string",
+      "name": "Name",
+      "description": "The name of this set of voting recommendations. Could be, for example, the name of the law or report on which voting occurs.",
+      "id": "name",
+      "required": false
+    },
+    "author": {
+      "type": "object",
+      "$ref": "http://json-schema.org/card",
+      "name": "Author",
+      "description": "The person or entity who wrote this recommendation.",
+      "id": "author",
+      "required": true
+    },
+    "timestamp": {
+      "type": "integer",
+      "name": "Creation timestamp",
+      "description": "The time at which this recommendation was edited, in seconds since the Epoch.",
+      "id": "timestamp",
+      "required": false
+    },
+    "requester": {
+      "type": "string",
+      "$ref": "http://json-schema.org/card",
+      "name": "Requester",
+      "description": "The requester of this recommendation, if different from the author.",
+      "id": "requester",
+      "required": false
+    },
+    "recommendations": {
+      "type": "object",
+      "name": "Voting recommendations",
+      "id": "recommendations",
+      "required": true,
+      "items": {
+        "$ref": "recommendations/article"
+      }
+    },
+    "definitions": {
+      "article": {
+        "type": "object",
+        "id": "recommendations/article",
+        "required": false,
+        "properties": {
+          "vote": {
+            "type": "string",
+            "id": "recommendations/article/vote",
+            "required": false
+          },
+          "weight": {
+            "type": "number",
+            "id": "recommendations/article/weight",
+            "required": false
+          },
+          "remarks": {
+            "type": "string",
+            "id": "recommendations/article/remarks",
+            "required": false
+          }
+        }
+      }
+    }
+  }
+}

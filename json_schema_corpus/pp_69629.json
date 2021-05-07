@@ -1,0 +1,30 @@
+{
+  "id": "http://schema.org/Review",
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "extends": {
+    "$ref": "CreativeWork.json"
+  },
+  "description": "A review of an item - for example, of a restaurant, movie, or store. Schema.org: http://schema.org/Review",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "itemReviewed": {
+      "description": "The item that is being reviewed/rated.",
+      "type": "object",
+      "$ref": "Thing.json"
+    },
+    "reviewBody": {
+      "description": "The actual body of the review.",
+      "type": "string"
+    },
+    "reviewRating": {
+      "description": "The rating given in this review. Note that reviews can themselves be rated. The reviewRating applies to rating given by the review. The aggregateRating property applies to the review itself, as a creative work.",
+      "type": "object",
+      "$ref": "Rating.json"
+    }
+  },
+  "required": [
+    "itemReviewed",
+    "reviewBody"
+  ]
+}

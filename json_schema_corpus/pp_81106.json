@@ -1,0 +1,53 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://tidepool-org.github.io/data-model/schemas/vendors/medtronic/square.json",
+  "title": "Square wave bolus",
+  "additionalProperties": false,
+  "properties": {
+    "deviceTime": {
+      "type": "string",
+      "id": "http://jsonschema.net/mm/bolus/square/deviceTime",
+      "required": true
+    },
+    "duration": {
+      "type": [
+        "string",
+        "number"
+      ],
+      "id": "http://jsonschema.net/mm/bolus/square/duration",
+      "required": true
+    },
+    "id": {
+      "type": "string",
+      "id": "http://jsonschema.net/mm/bolus/square/id",
+      "required": false
+    },
+    "programmed": {
+      "type": "number",
+      "id": "http://jsonschema.net/mm/bolus/programmed",
+      "required": false
+    },
+    "type": {
+      "enum": [
+        "bolus",
+        "bolus-dual/square"
+      ],
+      "id": "http://jsonschema.net/bolus/mm/square/type",
+      "required": true
+    },
+    "bolus": {
+      "type": "number",
+      "id": "http://jsonschema.net/bolus/mm/square/bolus",
+      "required": true
+    },
+    "value": {
+      "type": [
+        "string",
+        "number"
+      ],
+      "id": "http://jsonschema.net/bolus/mm/square/value",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Person",
+  "description": "Metadata about a person in the Mopidy community",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the person"
+    },
+    "name": {
+      "type": "string",
+      "description": "Full name"
+    },
+    "email": {
+      "type": "string",
+      "description": "Email address",
+      "format": "email"
+    },
+    "homepage": {
+      "type": "string",
+      "description": "URL to personal web site",
+      "format": "uri"
+    },
+    "profiles": {
+      "title": "User profiles",
+      "type": "object",
+      "properties": {
+        "github": {
+          "type": "string",
+          "description": "GitHub username"
+        },
+        "twitter": {
+          "type": "string",
+          "description": "Twitter username"
+        },
+        "freenode": {
+          "type": "string",
+          "description": "IRC nickname on freenode.net"
+        },
+        "discuss": {
+          "type": "string",
+          "description": "Username on discuss.mopidy.com"
+        }
+      }
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "email",
+    "profiles"
+  ]
+}

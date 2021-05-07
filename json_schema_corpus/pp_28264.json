@@ -1,0 +1,7 @@
+{
+  "title": "multi_category",
+  "id": "https://rawgit.com/camshaft/shenu/master/schemas/multi_category.json#",
+  "description": "",
+  "$schema": "http://json-schema.org/schema#",
+  "type": "array"
+}

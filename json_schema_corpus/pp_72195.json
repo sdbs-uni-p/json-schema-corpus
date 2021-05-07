@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Refund Event Fields Schema",
+  "description": "Defines the event fields our system recognizes as a refund event",
+  "type": "object",
+  "properties": {
+    "order_id": {
+      "title": "Refunded Order ID",
+      "description": "The order or transaction ID associated with the refunded purchase",
+      "$ref": "PurchaseEventFields.schema.json#/properties/order_id"
+    },
+    "affiliation": {
+      "$ref": "PurchaseEventFields.schema.json#/properties/affiliation"
+    },
+    "total": {
+      "title": "Refunded Total",
+      "$ref": "PurchaseEventFields.schema.json#/properties/total"
+    },
+    "revenue": {
+      "title": "Refunded Revenue",
+      "$ref": "PurchaseEventFields.schema.json#/properties/revenue"
+    },
+    "shipping": {
+      "title": "Refunded Shipping",
+      "$ref": "PurchaseEventFields.schema.json#/properties/shipping"
+    },
+    "tax": {
+      "title": "Refunded Tax",
+      "$ref": "PurchaseEventFields.schema.json#/properties/tax"
+    },
+    "currency": {
+      "title": "Refunded Currency",
+      "$ref": "PurchaseEventFields.schema.json#/properties/currency"
+    },
+    "products": {
+      "title": "Refunded Products",
+      "$ref": "PurchaseEventFields.schema.json#/properties/products"
+    }
+  },
+  "additionalProperties": false
+}

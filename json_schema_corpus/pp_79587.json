@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "total": {
+      "type": "integer",
+      "description": "the total number of results (if available)"
+    },
+    "results": {
+      "type": "array",
+      "items": {
+        "$ref": "jobRead.json"
+      }
+    }
+  }
+}

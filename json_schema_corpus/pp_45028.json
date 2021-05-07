@@ -1,0 +1,230 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "title": "/order_shipment_submit_v1",
+  "description": "order_shipment_submit_v1",
+  "stability": "draft",
+  "additionalProperties": true,
+  "type": "object",
+  "definitions": {},
+  "links": [
+    {
+      "description": "order_shipment_submit_v1",
+      "href": "/order_shipment_submit_v1",
+      "method": "post",
+      "rel": "instances",
+      "schema": {
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "action",
+              "version",
+              "client_id",
+              "channel_info"
+            ],
+            "properties": {
+              "integration_auth_token": {
+                "type": "string",
+                "description": "Randomly generated authorization token, for authenticating genuine RetailOps- originated requests.",
+                "example": "2KuxqV9rsAtAM78i47CITMvtnflUapNmgGJAvWiHqgUrk1xkeDNWlM3EsrmJEtmV"
+              },
+              "action": {
+                "type": "string",
+                "description": "Action Name name",
+                "example": "catalog_get_config"
+              },
+              "version": {
+                "type": "integer",
+                "description": "Action Version",
+                "example": 1
+              },
+              "client_id": {
+                "description": "RetailOPS client id",
+                "type": "integer",
+                "example": 497
+              },
+              "channel_info": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "description": "channel id",
+                    "example": 21
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "properties": {
+              "channel_order_refnum": {
+                "type": "string",
+                "description": "channel reference number for order"
+              },
+              "retailops_order_id": {
+                "type": "integer",
+                "description": "RetailOps Order ID"
+              },
+              "shipment": {
+                "type": "object",
+                "description": "shipment object",
+                "properties": {
+                  "retailops_shipment_id": {
+                    "type": "integer",
+                    "description": "RetailOps Shipment ID"
+                  },
+                  "packages": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "description": "a package included in shipment",
+                      "properties": {
+                        "retailops_package_id": {
+                          "type": "integer",
+                          "description": "RetailOps Package ID"
+                        },
+                        "carrier_name": {
+                          "type": "string",
+                          "description": "Ship Carrier Name",
+                          "example": "UPS"
+                        },
+                        "carrier_class_name": {
+                          "type": "string",
+                          "description": "Ship Carrier's Class Name",
+                          "example": "Ground"
+                        },
+                        "channel_ship_code": {
+                          "type": "string",
+                          "description": "Code which has been configured for this channel to represent the above carrier/class. EG: 'UPS Ground' -> 'UPSGRND' or 'U,GRD'"
+                        },
+                        "tracking_number": {
+                          "type": "string",
+                          "description": "Tracking number",
+                          "example": "ZX29827782929"
+                        },
+                        "weight_kg": {
+                          "type": "number",
+                          "description": "Weight in Kilograms"
+                        },
+                        "date_shipped": {
+                          "type": "string",
+                          "description": "Date the package was shipped",
+                          "example": "2016-04-08T21:13:11Z"
+                        },
+                        "package_items": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "sku": {
+                                "type": "string",
+                                "description": "SKU Number of the item"
+                              },
+                              "retailops_order_item_id": {
+                                "type": "integer",
+                                "description": "RetailOps Order Item ID"
+                              },
+                              "retailops_shipment_item_id": {
+                                "type": "integer",
+                                "description": "RetailOps Shipment Item ID"
+                              },
+                              "channel_item_refnum": {
+                                "type": "string",
+                                "description": "Channel reference number for this item"
+                              },
+                              "quantity": {
+                                "type": "integer",
+                                "description": "Quantity of the referenced items which was included in this package"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "targetSchema": {
+        "type": "object",
+        "properties": {
+          "events": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": "object",
+              "description": "event returned in action response",
+              "properties": {
+                "event_type": {
+                  "type": "string",
+                  "description": "event type",
+                  "enum": [
+                    "error",
+                    "warning",
+                    "info"
+                  ],
+                  "example": "error"
+                },
+                "code": {
+                  "type": "string",
+                  "description": "error/warning code",
+                  "example": "ERR1234"
+                },
+                "message": {
+                  "type": "string",
+                  "description": "descriptive error/warning message",
+                  "example": "Example error message"
+                },
+                "diagnostic_data": {
+                  "type": "string",
+                  "description": ""
+                },
+                "associations": {
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "description": "",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "identifier_type": {
+                        "type": "string",
+                        "description": "Type of identifier being provided",
+                        "enum": [
+                          "order_id",
+                          "order_refnum",
+                          "orderitem_id",
+                          "orderitem_refnum",
+                          "shipment_id",
+                          "shipmentitem_id",
+                          "product_id",
+                          "sku_number"
+                        ],
+                        "example": "sku_number"
+                      },
+                      "identifier": {
+                        "type": "string",
+                        "description": "identify value corresponding to the type",
+                        "example": "S1234"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "title": "/order_shipment_submit_v1"
+    }
+  ],
+  "properties": {},
+  "id": "/order_shipment_submit_v1"
+}

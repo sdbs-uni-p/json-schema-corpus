@@ -1,0 +1,206 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://jsonschema.net",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "type": {
+      "id": "http://jsonschema.net/type",
+      "type": "string"
+    },
+    "title": {
+      "id": "http://jsonschema.net/title",
+      "type": "string"
+    },
+    "description": {
+      "id": "http://jsonschema.net/description",
+      "type": "string"
+    },
+    "keywords": {
+      "id": "http://jsonschema.net/keywords",
+      "type": "array",
+      "items": {
+        "id": "http://jsonschema.net/keywords/2",
+        "type": "string"
+      },
+      "required": [
+        "2"
+      ]
+    },
+    "extent": {
+      "id": "http://jsonschema.net/extent",
+      "type": "string"
+    },
+    "datasize": {
+      "id": "http://jsonschema.net/datasize",
+      "type": "string"
+    },
+    "spacial": {
+      "id": "http://jsonschema.net/spacial",
+      "type": "array",
+      "items": {
+        "id": "http://jsonschema.net/spacial/0",
+        "type": "string"
+      }
+    },
+    "temporal": {
+      "id": "http://jsonschema.net/temporal",
+      "type": "string"
+    },
+    "website": {
+      "id": "http://jsonschema.net/website",
+      "type": "string"
+    },
+    "image": {
+      "id": "http://jsonschema.net/image",
+      "type": "string"
+    },
+    "preview": {
+      "id": "http://jsonschema.net/preview",
+      "type": "string"
+    },
+    "conditionsOfUse": {
+      "id": "http://jsonschema.net/conditionsOfUse",
+      "type": "string"
+    },
+    "statusOfUse": {
+      "id": "http://jsonschema.net/statusOfUse",
+      "type": "string"
+    },
+    "license": {
+      "id": "http://jsonschema.net/license",
+      "type": "string"
+    },
+    "licenseWebsite": {
+      "id": "http://jsonschema.net/licenseWebsite",
+      "type": "string"
+    },
+    "producer": {
+      "id": "http://jsonschema.net/producer",
+      "type": "array",
+      "items": {
+        "id": "http://jsonschema.net/producer/0",
+        "type": "string"
+      }
+    },
+    "researcher": {
+      "id": "http://jsonschema.net/researcher",
+      "type": "array",
+      "items": {
+        "id": "http://jsonschema.net/researcher/2",
+        "type": "string"
+      }
+    },
+    "manager": {
+      "id": "http://jsonschema.net/manager",
+      "type": "array",
+      "items": {
+        "id": "http://jsonschema.net/manager/2",
+        "type": "string"
+      }
+    },
+    "developer": {
+      "id": "http://jsonschema.net/developer",
+      "type": "array",
+      "items": {
+        "id": "http://jsonschema.net/developer/0",
+        "type": "string"
+      }
+    },
+    "language": {
+      "id": "http://jsonschema.net/language",
+      "type": "array",
+      "items": {
+        "id": "http://jsonschema.net/language/0",
+        "type": "string"
+      }
+    },
+    "primaryLanguage": {
+      "id": "http://jsonschema.net/primaryLanguage",
+      "type": "array",
+      "items": {
+        "id": "http://jsonschema.net/primaryLanguage/0",
+        "type": "string"
+      }
+    },
+    "discourseType": {
+      "id": "http://jsonschema.net/discourseType",
+      "type": "array",
+      "items": {
+        "id": "http://jsonschema.net/discourseType/0",
+        "type": "string"
+      }
+    },
+    "linguisticSubject": {
+      "id": "http://jsonschema.net/linguisticSubject",
+      "type": "array",
+      "items": {
+        "id": "http://jsonschema.net/linguisticSubject/0",
+        "type": "string"
+      }
+    },
+    "linguisticDataType": {
+      "id": "http://jsonschema.net/linguisticDataType",
+      "type": "string"
+    },
+    "opearatingSystem": {
+      "id": "http://jsonschema.net/opearatingSystem",
+      "type": "array",
+      "items": {
+        "id": "http://jsonschema.net/opearatingSystem/0",
+        "type": "string"
+      }
+    },
+    "programmingLanguage": {
+      "id": "http://jsonschema.net/programmingLanguage",
+      "type": "array",
+      "items": {
+        "id": "http://jsonschema.net/programmingLanguage/0",
+        "type": "string"
+      }
+    },
+    "navigationLanguage": {
+      "id": "http://jsonschema.net/navigationLanguage",
+      "type": "array",
+      "items": {
+        "id": "http://jsonschema.net/navigationLanguage/0",
+        "type": "string"
+      }
+    },
+    "toolLanguage": {
+      "id": "http://jsonschema.net/toolLanguage",
+      "type": "array",
+      "items": {
+        "id": "http://jsonschema.net/toolLanguage/0",
+        "type": "string"
+      }
+    },
+    "toolSupport": {
+      "id": "http://jsonschema.net/toolSupport",
+      "type": "string"
+    },
+    "toolHelp": {
+      "id": "http://jsonschema.net/toolHelp",
+      "type": "string"
+    },
+    "toolId": {
+      "id": "http://jsonschema.net/toolId",
+      "type": "string"
+    },
+    "toolUrl": {
+      "id": "http://jsonschema.net/toolUrl",
+      "type": "string"
+    },
+    "applicationUrl": {
+      "id": "http://jsonschema.net/applicationUrl",
+      "type": "string"
+    }
+  },
+  "required": [
+    "producer",
+    "type",
+    "title",
+    "description",
+    "statusOfUse"
+  ]
+}

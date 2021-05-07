@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://inowas.com/schema/",
+  "type": "array",
+  "items": {
+    "description": "Cell-values",
+    "type": "array",
+    "items": {
+      "description": "Cell-value",
+      "type": "integer"
+    },
+    "minItems": 2,
+    "maxItems": 2
+  }
+}

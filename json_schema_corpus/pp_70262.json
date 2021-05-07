@@ -1,0 +1,8 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "directions",
+  "description": "directions",
+  "type": "string",
+  "minLength": 4,
+  "maxLength": 1000000
+}

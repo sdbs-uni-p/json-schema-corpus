@@ -1,0 +1,166 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$ref": "#/network",
+  "network": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "$ref": "#/name"
+      },
+      "meta": {
+        "$ref": "#/metadata"
+      },
+      "transactions": {
+        "type": "array",
+        "items": {
+          "$ref": "#/transaction"
+        }
+      },
+      "ussd_codes": {
+        "type": "array",
+        "items": {
+          "$ref": "#/ussd-code"
+        }
+      }
+    },
+    "required": [
+      "name",
+      "meta",
+      "transactions",
+      "ussd_codes"
+    ]
+  },
+  "metadata": {
+    "type": "object",
+    "properties": {
+      "spec": {
+        "type": "string",
+        "pattern": "^[0-9].[0-9]$"
+      },
+      "date_updated": {
+        "$ref": "#/date"
+      },
+      "url": {
+        "type": "string",
+        "format": "uri"
+      }
+    },
+    "required": [
+      "spec",
+      "date_updated",
+      "url"
+    ]
+  },
+  "transaction": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "$ref": "#/name"
+      },
+      "classes": {
+        "type": "array",
+        "items": {
+          "$ref": "#/class"
+        }
+      },
+      "amount_input": {
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "name",
+      "classes"
+    ]
+  },
+  "class": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "$ref": "#/name"
+      },
+      "ranges": {
+        "type": "array",
+        "items": {
+          "$ref": "#/range"
+        }
+      },
+      "amount": {
+        "$ref": "#/cost"
+      },
+      "message": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "name"
+    ]
+  },
+  "range": {
+    "type": "object",
+    "properties": {
+      "low": {
+        "$ref": "#/cost"
+      },
+      "high": {
+        "$ref": "#/cost"
+      },
+      "amount": {
+        "$ref": "#/cost"
+      }
+    },
+    "required": [
+      "low",
+      "high",
+      "amount"
+    ]
+  },
+  "cost": {
+    "type": [
+      "number",
+      "string"
+    ],
+    "minimum": -2,
+    "pattern": "^[+-]Infinity$"
+  },
+  "ussd-code": {
+    "type": "object",
+    "properties": {
+      "code": {
+        "type": "string"
+      },
+      "description": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "code",
+      "description"
+    ]
+  },
+  "name": {
+    "type": "string"
+  },
+  "date": {
+    "type": "string",
+    "format": "date"
+  },
+  "error": {
+    "type": "object",
+    "properties": {
+      "message": {
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      },
+      "statusCode": {
+        "type": "integer"
+      }
+    },
+    "required": [
+      "message",
+      "name",
+      "statusCode"
+    ]
+  }
+}

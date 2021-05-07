@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "id": "https://inowas.com/schema/",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_\\-]{3,255}$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "geometry": {
+      "$ref": "geojson/linestring.json"
+    },
+    "type": {
+      "type": "string",
+      "pattern": "^riv$"
+    },
+    "affected_layers": {
+      "$ref": "modflow/affectedLayers.json"
+    },
+    "active_cells": {
+      "$ref": "modflow/activeCells.json"
+    },
+    "metadata": {},
+    "observation_points": {
+      "type": "array",
+      "items": {
+        "$ref": "modflow/boundary/riverObservationPoint.json"
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "type",
+    "id",
+    "name",
+    "geometry",
+    "affected_layers",
+    "metadata",
+    "observation_points"
+  ]
+}

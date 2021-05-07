@@ -1,0 +1,126 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Beschreibung fehlt",
+  "properties": {
+    "description": {
+      "description": "Beschreibung fehlt",
+      "title": "Description schema.",
+      "type": "string"
+    },
+    "end_date": {
+      "description": "Beschreibung fehlt",
+      "title": "End_date schema.",
+      "type": "string"
+    },
+    "end_time": {
+      "description": "Beschreibung fehlt",
+      "title": "End_time schema.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "group_id": {
+      "description": "Beschreibung fehlt",
+      "title": "Group_id schema.",
+      "type": "string"
+    },
+    "id": {
+      "description": "Beschreibung fehlt",
+      "title": "Id schema.",
+      "type": "string"
+    },
+    "keywords": {
+      "description": "Beschreibung fehlt",
+      "properties": {
+        "elements": {
+          "description": "Beschreibung fehlt",
+          "title": "Elements schema.",
+          "type": "object"
+        },
+        "kind": {
+          "description": "Beschreibung fehlt",
+          "title": "Kind schema.",
+          "type": "string"
+        }
+      },
+      "title": "Keywords schema.",
+      "type": "object"
+    },
+    "kind": {
+      "description": "Beschreibung fehlt",
+      "enum": [
+        "event"
+      ],
+      "title": "Kind schema.",
+      "type": "string"
+    },
+    "last_modified_by": {
+      "description": "Beschreibung fehlt",
+      "title": "Last_modified_by schema.",
+      "type": "string"
+    },
+    "last_modified_on": {
+      "description": "Beschreibung fehlt",
+      "format": "date-time",
+      "title": "Last_modified_on schema.",
+      "type": "string"
+    },
+    "location": {
+      "description": "Beschreibung fehlt",
+      "title": "Location schema.",
+      "type": "string"
+    },
+    "organizer": {
+      "description": "Beschreibung fehlt",
+      "title": "Organizer schema.",
+      "type": "string"
+    },
+    "start_date": {
+      "description": "Beschreibung fehlt",
+      "title": "Start_date schema.",
+      "type": "string"
+    },
+    "start_time": {
+      "description": "Beschreibung fehlt",
+      "title": "Start_time schema.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "target_group": {
+      "description": "Beschreibung fehlt",
+      "title": "Target_group schema.",
+      "type": "string"
+    },
+    "title": {
+      "description": "Beschreibung fehlt",
+      "title": "Title schema.",
+      "type": "string"
+    },
+    "uid": {
+      "description": "Beschreibung fehlt",
+      "title": "Uid schema.",
+      "type": "string"
+    },
+    "url": {
+      "description": "Beschreibung fehlt",
+      "format": "uri",
+      "title": "Url schema.",
+      "type": "string"
+    },
+    "url_text": {
+      "description": "Beschreibung fehlt",
+      "title": "Url_text schema.",
+      "type": "string"
+    },
+    "zip": {
+      "description": "Beschreibung fehlt",
+      "title": "Zip schema.",
+      "type": "string"
+    }
+  },
+  "title": "Root schema.",
+  "type": "object"
+}

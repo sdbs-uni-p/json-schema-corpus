@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "assessmentTypeWithID": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number"
+        },
+        "activeFlag": {
+          "type": "boolean"
+        },
+        "assessmentType": {
+          "$ref": "assessmentType.json"
+        }
+      },
+      "required": [
+        "id",
+        "activeFlag",
+        "assessmentType"
+      ]
+    },
+    "assessmentTypesWithID": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/assessmentTypeWithID"
+      }
+    },
+    "appTypesWithID": {
+      "type": "object",
+      "properties": {
+        "app": {
+          "type": "string",
+          "description": "Shortcode for the app that owns these assessment types"
+        },
+        "appName": {
+          "type": "string",
+          "description": "Name for the app that owns these assessment types"
+        },
+        "assessmentTypesWithID": {
+          "$ref": "#/definitions/assessmentTypesWithID"
+        }
+      },
+      "required": [
+        "app",
+        "appName",
+        "assessmentTypesWithID"
+      ]
+    }
+  },
+  "type": "array",
+  "items": {
+    "$ref": "#/definitions/appTypesWithID"
+  }
+}

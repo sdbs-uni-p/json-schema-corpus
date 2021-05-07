@@ -1,0 +1,183 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "title": "User",
+  "description": "Working with MMS Users",
+  "type": "object",
+  "definitions": {
+    "id": {
+      "description": "Unique identifier",
+      "example": "533dc19ce4b00835ff81e2eb",
+      "type": "string"
+    },
+    "username": {
+      "description": "MMS username",
+      "example": "jane.doe@mongodb.com",
+      "type": "string"
+    },
+    "password": {
+      "description": "Password. This field is NOT included in the entity returned from the server. It can only be sent in the entity body when creating a new user.",
+      "example": "M0ng0D8!:)",
+      "type": "string"
+    },
+    "emailAddress": {
+      "description": "Email address",
+      "example": "jane.doe@mongodb.com",
+      "type": "string"
+    },
+    "mobileNumber": {
+      "description": "Mobile number. This field can only be set or edited using the MMS UI because it is tied to two factor authentication",
+      "example": "2125551234",
+      "type": "string"
+    },
+    "firstName": {
+      "description": "First name",
+      "example": "Jane",
+      "type": "string"
+    },
+    "lastName": {
+      "description": "Last name",
+      "example": "Doe",
+      "type": "string"
+    },
+    "roles": {
+      "description": "Role assignments",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "groupId": {
+            "description": "The groupId in which the user has the specified role. Note that for the \u201cglobal\u201d roles (those whose name starts with GLOBAL_) there is no groupId since these roles are not tied to a group.",
+            "example": "8491812938cbda83918c",
+            "type": "string"
+          },
+          "roleName": {
+            "description": "The name of the role.",
+            "example": "GROUP_OWNER",
+            "type": "string",
+            "enum": [
+              "GLOBAL_AUTOMATION_ADMIN",
+              "GLOBAL_BACKUP_ADMIN",
+              "GLOBAL_MONITORING_ADMIN",
+              "GLOBAL_OWNER",
+              "GLOBAL_READ_ONLY",
+              "GLOBAL_USER_ADMIN",
+              "GROUP_AUTOMATION_ADMIN",
+              "GROUP_BACKUP_ADMIN",
+              "GROUP_MONITORING_ADMIN",
+              "GROUP_OWNER",
+              "GROUP_READ_ONLY",
+              "GROUP_USER_ADMIN"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "links": [
+    {
+      "description": "Create a new user.",
+      "href": "/users",
+      "method": "POST",
+      "rel": "create",
+      "schema": {
+        "$ref": "/schemata/user"
+      },
+      "targetSchema": {
+        "$ref": "/schemata/user"
+      },
+      "title": "Create"
+    },
+    {
+      "description": "Add a user to an existing group.",
+      "href": "/groups/{(%2Fschemata%2Fgroup%23%2Fdefinitions%2Fid)}/users",
+      "method": "POST",
+      "rel": "create",
+      "schema": {
+        "$ref": "/schemata/user"
+      },
+      "targetSchema": {
+        "$ref": "/schemata/user"
+      },
+      "title": "Add"
+    },
+    {
+      "description": "Info for existing user.",
+      "href": "/users/{(%2Fschemata%2Fuser%23%2Fdefinitions%2Fid)}",
+      "method": "GET",
+      "rel": "self",
+      "targetSchema": {
+        "$ref": "/schemata/user"
+      },
+      "title": "Info"
+    },
+    {
+      "description": "List existing users.",
+      "href": "/groups/{(%2Fschemata%2Fgroup%23%2Fdefinitions%2Fid)}/users",
+      "method": "GET",
+      "rel": "instances",
+      "targetSchema": {
+        "type": "object",
+        "properties": {
+          "totalCount": {
+            "example": 1,
+            "type": "integer"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "/schemata/user"
+            }
+          }
+        }
+      },
+      "title": "List"
+    },
+    {
+      "description": "Delete an existing user.",
+      "href": "/groups/{(%2Fschemata%2Fgroup%23%2Fdefinitions%2Fid)}/users/{(%2Fschemata%2Fuser%23%2Fdefinitions%2Fid)}",
+      "method": "DELETE",
+      "rel": "destroy",
+      "title": "Delete"
+    },
+    {
+      "description": "Update an existing user.",
+      "href": "/users/{(%2Fschemata%2Fuser%23%2Fdefinitions%2Fid)}",
+      "method": "PATCH",
+      "rel": "update",
+      "schema": {
+        "$ref": "/schemata/user"
+      },
+      "targetSchema": {
+        "$ref": "/schemata/user"
+      },
+      "title": "Update"
+    }
+  ],
+  "properties": {
+    "id": {
+      "$ref": "/schemata/user#/definitions/id"
+    },
+    "username": {
+      "$ref": "/schemata/user#/definitions/username"
+    },
+    "password": {
+      "$ref": "/schemata/user#/definitions/password"
+    },
+    "emailAddress": {
+      "$ref": "/schemata/user#/definitions/emailAddress"
+    },
+    "mobileNumber": {
+      "$ref": "/schemata/user#/definitions/mobileNumber"
+    },
+    "firstName": {
+      "$ref": "/schemata/user#/definitions/firstName"
+    },
+    "lastName": {
+      "$ref": "/schemata/user#/definitions/lastName"
+    },
+    "roles": {
+      "$ref": "/schemata/user#/definitions/roles"
+    }
+  },
+  "id": "schemata/user"
+}

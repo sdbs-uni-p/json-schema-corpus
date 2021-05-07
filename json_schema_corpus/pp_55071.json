@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "sender": {
+      "id": "sender",
+      "type": "object",
+      "properties": {
+        "login": {
+          "id": "login",
+          "type": "string"
+        },
+        "html_url": {
+          "id": "html_url",
+          "type": "string"
+        }
+      },
+      "additionalProperties": true,
+      "required": [
+        "login",
+        "html_url"
+      ]
+    },
+    "repository": {
+      "id": "repository",
+      "type": "object",
+      "properties": {
+        "full_name": {
+          "id": "full_name",
+          "type": "string"
+        },
+        "html_url": {
+          "id": "html_url",
+          "type": "string"
+        }
+      },
+      "additionalProperties": true,
+      "required": [
+        "full_name",
+        "html_url"
+      ]
+    },
+    "commits": {
+      "id": "commits",
+      "type": "array",
+      "items": {
+        "id": "commit",
+        "type": "object",
+        "properties": {},
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true,
+  "required": [
+    "repository",
+    "commits",
+    "sender"
+  ]
+}

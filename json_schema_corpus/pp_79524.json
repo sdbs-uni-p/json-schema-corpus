@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "definitions": {},
+  "properties": {
+    "source": {
+      "$ref": "applicationRead.json#/definitions/source"
+    },
+    "formFactor": {
+      "$ref": "applicationRead.json#/definitions/formFactor"
+    },
+    "tracker": {
+      "$ref": "applicationRead.json#/definitions/tracker"
+    },
+    "items": {
+      "$ref": "itemsWrite.json"
+    }
+  },
+  "additionalProperties": false
+}

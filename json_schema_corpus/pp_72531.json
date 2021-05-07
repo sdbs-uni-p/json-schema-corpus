@@ -1,0 +1,118 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "title": "IIJmio Coupon API - Packet",
+  "definitions": {
+    "date": {
+      "description": "\u901a\u4fe1\u3092\u884c\u3063\u305f\u65e5\u4ed8",
+      "example": "201403",
+      "type": [
+        "string"
+      ]
+    },
+    "withCoupon": {
+      "description": "\u30af\u30fc\u30dd\u30f3\u4f7f\u7528\u72b6\u614b\u3067\u306e\u30c7\u30fc\u30bf\u5229\u7528\u91cf\uff08MB\u5358\u4f4d\uff09",
+      "example": 59,
+      "type": [
+        "integer"
+      ]
+    },
+    "withoutCoupon": {
+      "description": "\u30af\u30fc\u30dd\u30f3\u4e0d\u4f7f\u7528\u72b6\u614b\u3067\u306e\u30c7\u30fc\u30bf\u5229\u7528\u91cf\uff08MB\u5358\u4f4d\uff09",
+      "example": 21,
+      "type": [
+        "integer"
+      ]
+    }
+  },
+  "description": "\u30c7\u30fc\u30bf\u5229\u7528\u72b6\u6cc1",
+  "links": [
+    {
+      "description": "\u30c7\u30fc\u30bf\u5229\u7528\u91cf\u3092\u7167\u4f1a\u3057\u307e\u3059\u3002\u904e\u53bb30\u65e5\u5206\u3068\u5f53\u65e5\u306e\u30c7\u30fc\u30bf\u5229\u7528\u91cf\uff08MB\u5358\u4f4d\uff09\u304c\u65e5\u4ed8\u9806\u306b\u8fd4\u308a\u307e\u3059\u3002\u901a\u4fe1\u304c\u884c\u308f\u308c\u306a\u304b\u3063\u305f\u65e5\u306b\u3064\u3044\u3066\u3082\u30010 \u3068\u3057\u3066\u5024\u304c\u8fd4\u308a\u307e\u3059\u3002",
+      "href": "/log/packet/",
+      "method": "GET",
+      "rel": "instances",
+      "title": "List"
+    }
+  ],
+  "properties": {
+    "returnCode": {
+      "$ref": "/schemata/base#/definitions/returnCode"
+    },
+    "packetLogInfo": {
+      "type": [
+        "array"
+      ],
+      "items": {
+        "type": [
+          "object"
+        ],
+        "properties": {
+          "hddServiceCode": {
+            "$ref": "/schemata/base#/definitions/hddServiceCode"
+          },
+          "plan": {
+            "$ref": "/schemata/base#/definitions/plan"
+          },
+          "hdoInfo": {
+            "type": [
+              "array"
+            ],
+            "items": {
+              "type": [
+                "object"
+              ],
+              "properties": {
+                "hdoServiceCode": {
+                  "$ref": "/schemata/base#/definitions/hdoServiceCode"
+                },
+                "packetLog": {
+                  "type": [
+                    "array"
+                  ],
+                  "items": {
+                    "type": [
+                      "object"
+                    ],
+                    "properties": {
+                      "date": {
+                        "$ref": "/schemata/packet#/definitions/date"
+                      },
+                      "withCoupon": {
+                        "$ref": "/schemata/packet#/definitions/withCoupon"
+                      },
+                      "withoutCoupon": {
+                        "$ref": "/schemata/packet#/definitions/withoutCoupon"
+                      }
+                    },
+                    "required": [
+                      "date",
+                      "withCoupon",
+                      "withoutCoupon"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "hdoServiceCode",
+                "packetLog"
+              ]
+            }
+          }
+        },
+        "required": [
+          "hddServiceCode",
+          "plan",
+          "hdoInfo",
+          "coupon"
+        ]
+      }
+    }
+  },
+  "required": [
+    "returnCode"
+  ],
+  "type": [
+    "object"
+  ],
+  "id": "schemata/packet"
+}

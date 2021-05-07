@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "DemandProfile",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "config": {
+      "$ref": "demand-profile-string.json"
+    },
+    "config_json": {
+      "$ref": "demand-profile-string.json"
+    },
+    "config_filename": {
+      "type": "string"
+    },
+    "load_duration": {
+      "type": "integer"
+    },
+    "created": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "type": "object",
+  "properties": {
+    "bar": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "baz": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "qux": {
+      "type": "array",
+      "items": {
+        "$ref": "qux.json#"
+      }
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://qcif.edu.au",
+  "required": false,
+  "properties": {
+    "sso": {
+      "type": "object",
+      "id": "http://qcif.edu.au/sso",
+      "required": false,
+      "properties": {
+        "plugins": {
+          "type": "array",
+          "id": "http://qcif.edu.au/sso/plugins",
+          "required": false,
+          "items": {
+            "type": "string",
+            "id": "http://qcif.edu.au/sso/plugins/0",
+            "required": false,
+            "enum": [
+              "rapidAafSso"
+            ]
+          }
+        },
+        "trustTokens": {
+          "type": "object",
+          "id": "http://qcif.edu.au/sso/trustTokens",
+          "required": false
+        },
+        "urlExclusions": {
+          "type": "object",
+          "id": "http://qcif.edu.au/sso/urlExclusions",
+          "required": false,
+          "properties": {
+            "endsWith": {
+              "type": "array",
+              "id": "http://qcif.edu.au/sso/urlExclusions/endsWith",
+              "required": false,
+              "items": {
+                "type": "string",
+                "id": "http://qcif.edu.au/sso/urlExclusions/endsWith/0",
+                "required": false
+              }
+            },
+            "equals": {
+              "type": "array",
+              "id": "http://qcif.edu.au/sso/urlExclusions/equals",
+              "required": false,
+              "items": {
+                "type": "string",
+                "id": "http://qcif.edu.au/sso/urlExclusions/equals/0",
+                "required": false
+              }
+            },
+            "startsWith": {
+              "type": "array",
+              "id": "http://qcif.edu.au/sso/urlExclusions/startsWith",
+              "required": false,
+              "items": {
+                "type": "string",
+                "id": "http://qcif.edu.au/sso/urlExclusions/startsWith/0",
+                "required": false
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

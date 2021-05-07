@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "definitions": {
+    "actionProductionsForApp": {
+      "type": "object",
+      "properties": {
+        "app": {
+          "type": "string",
+          "description": "the app that can produce these actions"
+        },
+        "actionProductions": {
+          "$ref": "actionProductions.json"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "app",
+        "actionProductions"
+      ]
+    }
+  },
+  "type": "array",
+  "items": {
+    "$ref": "#/definitions/actionProductionsForApp"
+  }
+}

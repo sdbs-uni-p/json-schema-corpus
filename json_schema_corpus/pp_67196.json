@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "http://comrade.forma-pro.com/schemas/policy/ExclusivePolicy.json",
+  "type": "object",
+  "properties": {
+    "onDuplicateRun": {
+      "type": "string",
+      "enum": [
+        "mark_job_as_canceled",
+        "mark_job_as_failed"
+      ]
+    }
+  },
+  "required": [
+    "onDuplicateRun"
+  ]
+}

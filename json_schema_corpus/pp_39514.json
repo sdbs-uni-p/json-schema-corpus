@@ -1,0 +1,22 @@
+{
+  "id": "https://raw.githubusercontent.com/eviratec/schema/master/v1/vendor.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "schema for a vendor",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "name"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "name": {
+      "type": "string",
+      "description": "The vendor name, e.g. Eviratec",
+      "maxLength": 64
+    }
+  }
+}

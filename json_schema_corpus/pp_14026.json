@@ -1,0 +1,36 @@
+{
+  "type": "object",
+  "title": "Event schema",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "properties": {
+    "id": {
+      "required": true,
+      "type": "id_field",
+      "args": {
+        "primary_key": true
+      }
+    },
+    "description": {
+      "required": false,
+      "type": "text"
+    },
+    "artist_id": {
+      "required": false,
+      "type": "foreign_key",
+      "args": {
+        "ref_document": "Artist",
+        "ref_column": "artist.id",
+        "ref_column_type": "id_field"
+      }
+    },
+    "track_id": {
+      "required": false,
+      "type": "foreign_key",
+      "args": {
+        "ref_document": "Track",
+        "ref_column": "track.id",
+        "ref_column_type": "id_field"
+      }
+    }
+  }
+}

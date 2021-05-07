@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Interview",
+  "description": "Google form driven interview",
+  "type": "object",
+  "properties": {
+    "doc_type": {
+      "type": "string",
+      "pattern": "^interview$"
+    },
+    "callbackId": {
+      "type": "string"
+    },
+    "humanId": {
+      "type": "string"
+    },
+    "createdOn": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "reason": {
+      "enum": [
+        "burial",
+        "suspect"
+      ]
+    }
+  },
+  "required": [
+    "doc_type",
+    "createdOn",
+    "reason",
+    "humanId",
+    "callbackId"
+  ]
+}

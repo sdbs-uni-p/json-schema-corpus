@@ -1,0 +1,140 @@
+{
+  "type": "object",
+  "title": "Story schema",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "auth_fields": [
+    "id",
+    "start_date",
+    "due_date",
+    "name",
+    "description",
+    "progress"
+  ],
+  "public_fields": [
+    "id",
+    "start_date",
+    "due_date",
+    "name"
+  ],
+  "properties": {
+    "id": {
+      "required": false,
+      "type": "id_field",
+      "args": {
+        "primary_key": true
+      }
+    },
+    "created_at": {
+      "required": false,
+      "type": "datetime",
+      "args": {
+        "default": "{{datetime.datetime.utcnow}}"
+      }
+    },
+    "updated_at": {
+      "required": false,
+      "type": "datetime",
+      "args": {
+        "onupdate": "{{datetime.datetime.utcnow}}"
+      }
+    },
+    "start_date": {
+      "required": false,
+      "type": "datetime"
+    },
+    "due_date": {
+      "required": false,
+      "type": "datetime"
+    },
+    "name": {
+      "required": true,
+      "type": "string"
+    },
+    "description": {
+      "required": true,
+      "type": "text"
+    },
+    "progress": {
+      "required": false,
+      "type": "float",
+      "args": {
+        "default": 0
+      }
+    },
+    "completed": {
+      "required": false,
+      "type": "boolean",
+      "args": {
+        "default": false
+      }
+    },
+    "owner_id": {
+      "required": false,
+      "type": "foreign_key",
+      "args": {
+        "ref_document": "User",
+        "ref_column": "user.username",
+        "ref_column_type": "string"
+      }
+    },
+    "assignee_id": {
+      "required": false,
+      "type": "foreign_key",
+      "args": {
+        "ref_document": "User",
+        "ref_column": "user.username",
+        "ref_column_type": "string"
+      }
+    },
+    "signs_number": {
+      "required": false,
+      "type": "big_integer"
+    },
+    "valid_date": {
+      "required": false,
+      "type": "date"
+    },
+    "valid_time": {
+      "required": false,
+      "type": "time"
+    },
+    "reads": {
+      "required": false,
+      "type": "integer",
+      "args": {
+        "default": 0
+      }
+    },
+    "rating": {
+      "required": false,
+      "type": "small_integer"
+    },
+    "available_for": {
+      "required": false,
+      "type": "interval"
+    },
+    "attachment": {
+      "required": false,
+      "type": "file"
+    },
+    "price": {
+      "required": false,
+      "type": "decimal",
+      "args": {
+        "scale": 10
+      }
+    },
+    "arbitrary_object": {
+      "required": false,
+      "type": "pickle"
+    },
+    "unicode_name": {
+      "required": false,
+      "type": "unicode"
+    },
+    "unicode_description": {
+      "required": false,
+      "type": "unicode_text"
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "HypertyInstance",
+  "type": "object",
+  "required": [
+    "url",
+    "user",
+    "dataSchemes",
+    "resources",
+    "runtime"
+  ],
+  "properties": {
+    "url": {
+      "type": "string"
+    },
+    "user": {
+      "type": "string"
+    },
+    "guid": {
+      "type": "string"
+    },
+    "dataSchemes": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "comm",
+          "connection",
+          "context",
+          "identity"
+        ]
+      }
+    },
+    "resources": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "chat",
+          "audio",
+          "video",
+          "av",
+          "screen",
+          "file",
+          "midi",
+          "activity_context",
+          "availability_context",
+          "location_context",
+          "heart_rate_contexst",
+          "user_steps_context",
+          "battery_context",
+          "sleep_context",
+          "light_context",
+          "humidity_context",
+          "power",
+          "user_activity_context",
+          "user_communication_context"
+        ]
+      }
+    },
+    "runtime": {
+      "type": "string"
+    },
+    "context": {
+      "type": "string"
+    },
+    "p2pHandler": {
+      "type": "string"
+    },
+    "p2pRequester": {
+      "type": "string"
+    }
+  }
+}

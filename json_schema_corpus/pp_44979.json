@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "@id": {
+      "type": "string"
+    },
+    "nif:beginIndex": {
+      "type": "integer"
+    },
+    "nif:endIndex": {
+      "type": "integer"
+    },
+    "nif:anchorOf": {
+      "description": "Piece of context that contains the Sentiment",
+      "type": "string"
+    },
+    "onyx:hasEmotion": {
+      "type": "array",
+      "items": {
+        "$ref": "emotion.json"
+      }
+    },
+    "prov:wasGeneratedBy": {
+      "type": "string",
+      "description": "The ID of the analysis that generated this Emotion. The full object should be included in the \"analysis\" property of the root object"
+    }
+  },
+  "required": [
+    "prov:wasGeneratedBy",
+    "onyx:hasEmotion"
+  ]
+}

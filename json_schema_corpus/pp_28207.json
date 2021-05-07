@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "productSpecRef",
+  "id": "productSpecRef",
+  "description": "A reference (by name, id or link) to a Product Specification.",
+  "type": "object",
+  "required": [
+    "objectType"
+  ],
+  "properties": {
+    "objectType": {
+      "type": "string",
+      "enum": [
+        "productSpecRef"
+      ],
+      "description": "The type of the object, A Product Specification Reference."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name a product (specification) is known by within an organization (e.g., Access EVPL 100).",
+      "maxLength": 25
+    },
+    "code": {
+      "type": "string",
+      "description": "Unique identifier that an organization uses for a product (specification) in its internal systems that can refer to one or a set of products (e.g., AEVPL100).",
+      "maxLength": 15
+    },
+    "productSpecification": {
+      "$ref": "resourceReference.json#",
+      "description": "A reference to the Partner/Access Provider (Seller) Product Specification (product catalog item) that the buyer is ordering."
+    }
+  }
+}

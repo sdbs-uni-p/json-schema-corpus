@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "@id": {
+      "type": "string"
+    },
+    "nif:beginIndex": {
+      "type": "integer"
+    },
+    "nif:endIndex": {
+      "type": "integer"
+    },
+    "nif:anchorOf": {
+      "description": "Piece of context that contains the Emotion",
+      "type": "string"
+    },
+    "onyx:hasDimension": {
+      "type": "array",
+      "items": {
+        "$ref": "dimensions.json"
+      },
+      "uniqueItems": true
+    },
+    "onyx:hasEmotionCategory": {
+      "type": "array",
+      "items": {
+        "$ref": "emotion.json"
+      }
+    }
+  },
+  "required": [
+    "@id",
+    "onyx:hasEmotion"
+  ]
+}

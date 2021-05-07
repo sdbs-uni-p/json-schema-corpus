@@ -1,0 +1,91 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "OTA_SimpleTypes",
+  "x-otm-library": {
+    "LibraryName": "OTA_SimpleTypes",
+    "LibraryVersion": "0.0.0",
+    "LibraryStatus": "FINAL",
+    "SourceFile": "/OTA_SimpleTypes_0_0_0.otm",
+    "CompilerVersion": "4.0-SNAPSHOT",
+    "CompileDate": "2016-05-18T14:45:07.314-0400"
+  },
+  "definitions": {
+    "String_Long": {
+      "x-otm-entity": {
+        "EntityType": "Simple",
+        "EntityName": "String_Long"
+      },
+      "description": "A long string  \nMinimum length of 0 and a maximum length of 4096",
+      "x-otm-annotations": {
+        "examples": [
+          {
+            "context": "OTA2",
+            "value": "I am a long string."
+          }
+        ]
+      },
+      "type": "string",
+      "maxLength": 4096
+    },
+    "String": {
+      "x-otm-entity": {
+        "EntityType": "Simple",
+        "EntityName": "String"
+      },
+      "description": "A string with a minimum length of 0 and a maximum length of 512.",
+      "x-otm-annotations": {
+        "examples": [
+          {
+            "context": "OTA2",
+            "value": "I am a medium string."
+          }
+        ]
+      },
+      "type": "string",
+      "maxLength": 512
+    },
+    "String_Short": {
+      "x-otm-entity": {
+        "EntityType": "Simple",
+        "EntityName": "String_Short"
+      },
+      "description": "A short string  \nMinimum length of 0 and a maximum length of 128",
+      "x-otm-annotations": {
+        "examples": [
+          {
+            "context": "OTA2",
+            "value": "I am a short string."
+          }
+        ]
+      },
+      "type": "string",
+      "maxLength": 128
+    },
+    "String_Tiny": {
+      "x-otm-entity": {
+        "EntityType": "Simple",
+        "EntityName": "String_Tiny"
+      },
+      "description": "A tiny string  \nMinimum length of 0 and a maximum length of 32",
+      "x-otm-annotations": {
+        "examples": [
+          {
+            "context": "OTA2",
+            "value": "I am a tiny string."
+          }
+        ]
+      },
+      "type": "string",
+      "maxLength": 32
+    },
+    "String_Text": {
+      "x-otm-entity": {
+        "EntityType": "Simple",
+        "EntityName": "String_Text"
+      },
+      "description": "A string intended for free text \nMinimum length of 0 and maximum length of 4096",
+      "type": "string",
+      "maxLength": 4096
+    }
+  }
+}

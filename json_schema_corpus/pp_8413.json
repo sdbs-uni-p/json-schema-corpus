@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "properties": {
+    "links": {
+      "type": "array",
+      "items": {
+        "$ref": "TemplateLink_schema.json"
+      }
+    },
+    "recurring": {
+      "type": "array",
+      "items": {
+        "$ref": "TemplateRecurringAction_schema.json"
+      }
+    }
+  },
+  "required": [
+    "links",
+    "recurring"
+  ]
+}

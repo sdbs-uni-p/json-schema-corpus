@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "HypertyRuntimeInstance",
+  "type": "object",
+  "required": [
+    "url",
+    "domains"
+  ],
+  "properties": {
+    "url": {
+      "type": "string"
+    },
+    "domains": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

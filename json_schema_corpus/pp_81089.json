@@ -1,0 +1,54 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "basal-inferred.json",
+  "name": "basal-inferred",
+  "title": "Inferred basal rate",
+  "description": "Inferred basal rates moments in time for which we know the rate delivered, but the device did not keep an audit trail for that block of time.",
+  "properties": {
+    "delivered": {
+      "type": "number",
+      "id": "http://jsonschema.net/basal/inferred/delivered",
+      "required": true
+    },
+    "deliveryType": {
+      "type": "string",
+      "id": "http://jsonschema.net/deliveryType",
+      "required": true
+    },
+    "end": {
+      "type": "string",
+      "id": "http://jsonschema.net/end",
+      "required": true
+    },
+    "id": {
+      "type": "string",
+      "id": "http://jsonschema.net/id",
+      "required": false
+    },
+    "inferred": {
+      "enum": [
+        true
+      ],
+      "id": "http://jsonschema.net/inferred",
+      "required": true
+    },
+    "start": {
+      "type": "string",
+      "id": "http://jsonschema.net/start",
+      "required": true
+    },
+    "type": {
+      "enum": [
+        "basal-rate-segment",
+        "basal-rate-change"
+      ],
+      "required": true
+    },
+    "value": {
+      "type": "number",
+      "id": "http://jsonschema.net/basal/value",
+      "required": true
+    }
+  }
+}

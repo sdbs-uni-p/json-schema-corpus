@@ -1,0 +1,129 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "Job",
+  "description": "Defines all the info needed to perform a crawl job",
+  "definitions": {
+    "pluginConfig": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": {
+            "enum": [
+              "DATA_EXTRACTOR",
+              "DATA_WRITER",
+              "DATA_ENHANCER"
+            ]
+          },
+          "description": "Type of Data Adapter plugin"
+        },
+        "className": {
+          "type": "string",
+          "description": "Fully qualified class name for data adapter"
+        },
+        "pluginProperties": {
+          "type": "object",
+          "description": "A key value map of properties used to configure the plugin. The exact set of keys is dictated by the type of the plugin",
+          "additionalProperties": {
+            "type": "string",
+            "description": "string values"
+          }
+        }
+      }
+    }
+  },
+  "properties": {
+    "jobName": {
+      "type": "string",
+      "description": "Human-readable name for a job. This may not be unique throughout the system if processing multiple jobs"
+    },
+    "submissionTime": {
+      "type": "number",
+      "description": "Timestamp of when job was submitted (milliseconds since midnight, January 1, 1970 UTC"
+    },
+    "startUrls": {
+      "type": "array",
+      "description": "Array of url strings from which a crawl will be started.",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "includePatterns": {
+      "type": "array",
+      "description": "Array of regular expression strings against which all discovered links will be checked. Only links matching at least one of these patterns will be visited. ",
+      "items": {
+        "type": "string"
+      }
+    },
+    "ignorePatterns": {
+      "type": "array",
+      "description": "Array of regular expression strings against which all discovered links will be checked. Only links that do mot match any of these patterns will be visited.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "maxThreads": {
+      "type": "number",
+      "description": "Number of threads each node will spawn for this job",
+      "minimum": 1
+    },
+    "dataExtractor": {
+      "$ref": "#definitions/pluginConfig",
+      "description": "Configuration for the data extractor class to be used to pull data out of each page"
+    },
+    "dataWriter": {
+      "$ref": "#definitions/pluginConfig",
+      "description": "Configuration for the data writer class to be used to write output. If running in an ensemble, this is the writer that will run on EACH node participating in the job."
+    },
+    "coordinatorDataWriter": {
+      "$ref": "#definitions/pluginConfig",
+      "description": "Configuration for the data writer class to be used to write output on the coordinator. It only makes sense to use this if running in an ensemble as it is a way of consolidating the output of all nodes on a single host."
+    },
+    "dataEnhancers": {
+      "type": "array",
+      "description": "Pipeline of DataEnhancer plugins that will run on every DataRecord emitted by the DataExtractor prior to sending it to the DataWriter",
+      "items": {
+        "$ref": "#definitions/pluginConfig"
+      }
+    },
+    "status": {
+      "type": {
+        "enum": [
+          "SUBMITTED",
+          "PROCESSING",
+          "NODE_COMPLETE",
+          "COMPLETE",
+          "ABORTED"
+        ]
+      },
+      "description": "Status of this job."
+    },
+    "mode": {
+      "type": {
+        "enum": [
+          "ONCE",
+          "CONTINUOUS"
+        ]
+      },
+      "description": "Crawl mode. ONCE means the job is complete after all links have been visited. CONTINUOUS means it will start over after finishing the crawl."
+    },
+    "guid": {
+      "type": "string",
+      "description": "Unique id issued by the system when a job is accepted."
+    },
+    "continuousCrawlInterval": {
+      "type": "number",
+      "description": "Number of milliseconds to wait after completing a crawl before restarting when running in CONTINUOUS mode",
+      "minimum": 1
+    }
+  },
+  "required": [
+    "jobName",
+    "startUrls",
+    "maxThreads",
+    "dataExtractor",
+    "dataWriter",
+    "mode"
+  ]
+}

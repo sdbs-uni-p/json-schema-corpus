@@ -1,0 +1,121 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "title": "Cluster",
+  "description": "Working with MMS Clusters",
+  "type": "object",
+  "definitions": {
+    "id": {
+      "description": "Unique identifier",
+      "example": "5196d3628d022db4cbc26d9e",
+      "type": "string"
+    },
+    "groupId": {
+      "description": "ID of the group that owns this cluster.",
+      "example": "533d7d4730040be257defe88",
+      "type": "string"
+    },
+    "typeName": {
+      "description": "Specifies what kind of cluster this is.",
+      "example": "REPLICA_SET",
+      "type": "string",
+      "enum": [
+        "MASTER_SLAVE",
+        "REPLICA_SET",
+        "SHARDED",
+        "SHARDED_REPLICA_SET"
+      ]
+    },
+    "clusterName": {
+      "description": "Display name of the cluster. Only applies to sharded clusters. Note that mongod itself doesn't allow you to name a cluster; this name is supplied by (and editable within) MMS. For a replica set within a sharded cluster, the cluster name is the name of its parent cluster.",
+      "example": "Cluster 0",
+      "type": "string"
+    },
+    "shardName": {
+      "description": "Name of the shard. Only present for a cluster of type SHARDED or REPLICA_SET that is part of a sharded cluster.",
+      "example": "shard001",
+      "type": "string"
+    },
+    "replicaSetName": {
+      "description": "Name of the replica set. Only present for a cluster of type REPLICA_SET.",
+      "example": "rs1",
+      "type": "string"
+    },
+    "lastHeartbeat": {
+      "description": "The approximate last time MMS processed a ping from this cluster.",
+      "example": "2014-02-26T17:32:45Z",
+      "format": "date-time",
+      "type": "string"
+    }
+  },
+  "links": [
+    {
+      "description": "Info for existing cluster.",
+      "href": "/groups/{(%2Fschemata%2Fgroup%23%2Fdefinitions%2Fid)}/clusters/{(%2Fschemata%2Fcluster%23%2Fdefinitions%2Fid)}",
+      "method": "GET",
+      "rel": "self",
+      "targetSchema": {
+        "$ref": "/schemata/cluster"
+      },
+      "title": "Info"
+    },
+    {
+      "description": "List existing clusters.",
+      "href": "/groups/{(%2Fschemata%2Fgroup%23%2Fdefinitions%2Fid)}/clusters",
+      "method": "GET",
+      "rel": "instances",
+      "targetSchema": {
+        "type": "object",
+        "properties": {
+          "totalCount": {
+            "example": 1,
+            "type": "integer"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "/schemata/cluster"
+            }
+          }
+        }
+      },
+      "title": "List"
+    },
+    {
+      "description": "Update an existing cluster.",
+      "href": "/groups/{(%2Fschemata%2Fgroup%23%2Fdefinitions%2Fid)}/clusters/{(%2Fschemata%2Fcluster%23%2Fdefinitions%2Fid)}",
+      "method": "PATCH",
+      "rel": "update",
+      "schema": {
+        "$ref": "/schemata/cluster"
+      },
+      "targetSchema": {
+        "$ref": "/schemata/cluster"
+      },
+      "title": "Update"
+    }
+  ],
+  "properties": {
+    "id": {
+      "$ref": "/schemata/cluster#/definitions/id"
+    },
+    "groupId": {
+      "$ref": "/schemata/cluster#/definitions/groupId"
+    },
+    "typeName": {
+      "$ref": "/schemata/cluster#/definitions/typeName"
+    },
+    "clusterName": {
+      "$ref": "/schemata/cluster#/definitions/clusterName"
+    },
+    "shardName": {
+      "$ref": "/schemata/cluster#/definitions/shardName"
+    },
+    "replicaSetName": {
+      "$ref": "/schemata/cluster#/definitions/replicaSetName"
+    },
+    "lastHeartbeat": {
+      "$ref": "/schemata/cluster#/definitions/lastHeartbeat"
+    }
+  },
+  "id": "schemata/cluster"
+}

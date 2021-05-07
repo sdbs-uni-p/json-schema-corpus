@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "array",
+  "minItems": 1,
+  "uniqueItems": false,
+  "additionalItems": true,
+  "items": {
+    "id": "0",
+    "type": "object",
+    "additionalProperties": true,
+    "properties": {
+      "IATA": {
+        "id": "IATA",
+        "type": "string",
+        "minLength": 1
+      },
+      "ICAO": {
+        "id": "ICAO",
+        "type": "string",
+        "minLength": 1
+      },
+      "Airline": {
+        "id": "Airline",
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "name": {
+            "id": "name",
+            "type": "string",
+            "minLength": 1
+          },
+          "link": {
+            "id": "link",
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "CallSign": {
+        "id": "CallSign",
+        "type": "string",
+        "minLength": 1
+      },
+      "Country": {
+        "id": "Country",
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  }
+}

@@ -1,0 +1,247 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "title": "Comment",
+  "description": "Comments description",
+  "stability": "prototype",
+  "strictProperties": true,
+  "type": [
+    "object"
+  ],
+  "definitions": {
+    "id": {
+      "description": "unique identifier of comment",
+      "type": [
+        "number"
+      ],
+      "example": "42"
+    },
+    "content": {
+      "description": "unique name of comment",
+      "type": [
+        "string"
+      ],
+      "example": "Some comment"
+    },
+    "user_object": {
+      "description": "short user object",
+      "type": "object",
+      "properties": {
+        "login": {
+          "$ref": "/schemata/user#/definitions/login"
+        }
+      }
+    },
+    "errors_object": {
+      "description": "comment errors object",
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "object",
+          "properties": {
+            "content": {
+              "type": "array"
+            }
+          }
+        }
+      }
+    },
+    "post_object": {
+      "description": "short post object",
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "/schemata/post#/definitions/identity"
+        }
+      }
+    },
+    "request_object_default": {
+      "description": "default request object",
+      "required": [
+        "comment"
+      ],
+      "properties": {
+        "comment": {
+          "required": [
+            "content"
+          ],
+          "properties": {
+            "content": {
+              "$ref": "/schemata/comment#/definitions/content"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "comment_object": {
+      "description": "default comment object",
+      "required": [
+        "content",
+        "id"
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "/schemata/comment#/definitions/id"
+        },
+        "content": {
+          "$ref": "/schemata/comment#/definitions/content"
+        },
+        "post": {
+          "$ref": "/schemata/comment#/definitions/post_object"
+        },
+        "user": {
+          "$ref": "/schemata/comment#/definitions/user_object"
+        }
+      }
+    },
+    "response_only_object": {
+      "description": "default response by comment",
+      "type": "object",
+      "required": [
+        "comment"
+      ],
+      "properties": {
+        "comment": {
+          "$ref": "/schemata/comment#"
+        }
+      }
+    },
+    "response_with_single": {
+      "description": "response_with_single",
+      "type": "object",
+      "required": [
+        "comment"
+      ],
+      "properties": {
+        "comment": {
+          "$ref": "/schemata/comment#/definitions/comment_object"
+        }
+      }
+    },
+    "response_with_list": {
+      "description": "response_with_list",
+      "type": "object",
+      "required": [
+        "comments",
+        "meta"
+      ],
+      "properties": {
+        "comments": {
+          "type": "array",
+          "items": {
+            "$ref": "/schemata/comment#/definitions/comment_object"
+          }
+        },
+        "meta": {
+          "$ref": "/schemata/shared#/definitions/default_meta"
+        }
+      }
+    },
+    "identity": {
+      "anyOf": [
+        {
+          "$ref": "/schemata/comment#/definitions/id"
+        }
+      ]
+    },
+    "created_at": {
+      "description": "when comment was created",
+      "format": "date-time",
+      "type": [
+        "string"
+      ]
+    },
+    "updated_at": {
+      "description": "when comment was updated",
+      "format": "date-time",
+      "type": [
+        "string"
+      ]
+    }
+  },
+  "links": [
+    {
+      "description": "Info for existing comment.",
+      "href": "/comments/{(%2Fschemata%2Fcomment%23%2Fdefinitions%2Fidentity)}",
+      "method": "GET",
+      "rel": "self",
+      "title": "Info",
+      "targetSchema": {
+        "$ref": "/schemata/comment#/definitions/response_with_single"
+      }
+    },
+    {
+      "description": "List existing comments.",
+      "href": "/comments",
+      "method": "GET",
+      "rel": "instances",
+      "title": "List",
+      "targetSchema": {
+        "$ref": "/schemata/comment#/definitions/response_with_list"
+      },
+      "schema": {
+        "$ref": "/schemata/shared#/definitions/request_object_lite"
+      }
+    },
+    {
+      "description": "Update an existing comment.",
+      "href": "/comments/{(%2Fschemata%2Fcomment%23%2Fdefinitions%2Fidentity)}",
+      "method": "PUT",
+      "rel": "update",
+      "targetSchema": {
+        "$ref": "/schemata/comment#/definitions/response_only_object"
+      },
+      "schema": {
+        "$ref": "/schemata/comment#/definitions/request_object_default"
+      },
+      "title": "Update"
+    },
+    {
+      "description": "Delete an existing comment.",
+      "href": "/comments/{(%2Fschemata%2Fcomment%23%2Fdefinitions%2Fidentity)}",
+      "method": "DELETE",
+      "rel": "destroy",
+      "title": "Delete",
+      "targetSchema": {
+        "$ref": "/schemata/shared#/definitions/default_success_boolean"
+      }
+    },
+    {
+      "description": "List existing comments for existing post.",
+      "href": "/posts/{(%2Fschemata%2Fpost%23%2Fdefinitions%2Fidentity)}/comments",
+      "method": "GET",
+      "rel": "instances",
+      "title": "List",
+      "targetSchema": {
+        "$ref": "/schemata/comment#/definitions/response_with_list"
+      },
+      "schema": {
+        "$ref": "/schemata/shared#/definitions/request_object_lite"
+      }
+    },
+    {
+      "description": "Create a new comment for post.",
+      "href": "/posts/{(%2Fschemata%2Fpost%23%2Fdefinitions%2Fidentity)}/comments",
+      "method": "POST",
+      "rel": "create",
+      "targetSchema": {
+        "$ref": "/schemata/comment#/definitions/response_only_object"
+      },
+      "schema": {
+        "$ref": "/schemata/comment#/definitions/request_object_default"
+      },
+      "title": "Create"
+    }
+  ],
+  "properties": {
+    "id": {
+      "$ref": "/schemata/comment#/definitions/id"
+    },
+    "content": {
+      "$ref": "/schemata/comment#/definitions/content"
+    }
+  },
+  "id": "/schemata/comment"
+}

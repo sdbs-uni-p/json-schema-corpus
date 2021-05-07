@@ -1,0 +1,98 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "BuildAngularWebpackUniversalSchema",
+  "title": "Universal Target",
+  "description": "Universal target options for Build Facade.",
+  "type": "object",
+  "properties": {
+    "browserTarget": {
+      "type": "string",
+      "description": "Target to browser."
+    },
+    "serverTarget": {
+      "type": "string",
+      "description": "Target to server."
+    },
+    "bundleDependenciesWhitelist": {
+      "type": "array",
+      "description": "DEPRECATED use \"externalDependencies\" in server builder",
+      "items": {
+        "type": "string"
+      }
+    },
+    "deleteOutputPath": {
+      "type": "boolean",
+      "description": "Delete the output path before building.",
+      "default": true
+    },
+    "fileLoaderEmitFile": {
+      "type": "boolean",
+      "description": "DEPRECATED server builder doesn't emit any file since angular v9",
+      "default": false
+    },
+    "fileReplacements": {
+      "description": "Replace files with other files in the build.",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/fileReplacement"
+      },
+      "default": []
+    },
+    "partialBrowserConfig": {
+      "type": "string",
+      "description": "Partial webpack config for browser."
+    },
+    "partialServerConfig": {
+      "type": "string",
+      "description": "Partial webpack config for server."
+    },
+    "verbose": {
+      "type": "boolean",
+      "description": "Adds more details to output logging.",
+      "default": false
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "browserTarget",
+    "serverTarget"
+  ],
+  "definitions": {
+    "fileReplacement": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "src": {
+              "type": "string"
+            },
+            "replaceWith": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "src",
+            "replaceWith"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "replace": {
+              "type": "string"
+            },
+            "with": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "replace",
+            "with"
+          ]
+        }
+      ]
+    }
+  }
+}

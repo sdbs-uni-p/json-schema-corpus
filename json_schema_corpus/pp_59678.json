@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "description": "Generated from kata/spec/fixtures/examples/servers.json with shasum 568cdaa5cef13f7b5ece95a9dc6d65460d8362ba",
+  "type": "object",
+  "required": true,
+  "properties": {
+    "servers": {
+      "type": "array",
+      "required": true,
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "required": true,
+        "properties": {
+          "id": {
+            "type": "string",
+            "required": true
+          },
+          "links": {
+            "type": "array",
+            "required": true,
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "object",
+              "required": true,
+              "properties": {
+                "href": {
+                  "type": "string",
+                  "required": true
+                },
+                "rel": {
+                  "type": "string",
+                  "required": true
+                }
+              }
+            }
+          },
+          "name": {
+            "type": "string",
+            "required": true
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://qcif.edu.au",
+  "required": false,
+  "properties": {
+    "rapidAafSso": {
+      "type": "object",
+      "id": "http://qcif.edu.au/rapidAafSso",
+      "required": false,
+      "properties": {
+        "attrParentField": {
+          "type": "string",
+          "id": "http://qcif.edu.au/rapidAafSso/attrParentField",
+          "required": false
+        },
+        "aud": {
+          "type": "string",
+          "id": "http://qcif.edu.au/rapidAafSso/aud",
+          "required": false
+        },
+        "iss": {
+          "type": "string",
+          "id": "http://qcif.edu.au/rapidAafSso/iss",
+          "required": false
+        },
+        "sharedKey": {
+          "type": "string",
+          "id": "http://qcif.edu.au/rapidAafSso/sharedKey",
+          "required": false
+        },
+        "source": {
+          "type": "string",
+          "id": "http://qcif.edu.au/rapidAafSso/source",
+          "required": false
+        },
+        "url": {
+          "type": "string",
+          "id": "http://qcif.edu.au/rapidAafSso/url",
+          "required": false
+        },
+        "userFields": {
+          "type": "array",
+          "id": "http://qcif.edu.au/rapidAafSso/userFields",
+          "required": false,
+          "items": {
+            "type": "string",
+            "id": "http://qcif.edu.au/rapidAafSso/userFields/0",
+            "required": false
+          }
+        },
+        "usernameField": {
+          "type": "string",
+          "id": "http://qcif.edu.au/rapidAafSso/usernameField",
+          "required": false
+        }
+      }
+    }
+  }
+}

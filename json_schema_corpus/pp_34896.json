@@ -1,0 +1,162 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "properties": {
+    "service": {
+      "properties": {
+        "name": {
+          "description": "Name for this dispatcher application",
+          "type": "string",
+          "default": "dispatcher"
+        },
+        "instances": {
+          "description": "Number of dispatcher instances to run.",
+          "type": "integer",
+          "default": 1,
+          "minimum": 1
+        },
+        "cpus": {
+          "description": "CPU shares to allocate to each dispatcher instance.",
+          "type": "number",
+          "default": 0.1
+        },
+        "mem": {
+          "description": "Memory (MB) to allocate to each dispatcher task.",
+          "type": "number",
+          "default": 128.0,
+          "minimum": 64.0
+        },
+        "role": {
+          "description": "Deploy dispatcher only on nodes with this role.",
+          "type": "string",
+          "default": "*"
+        },
+        "constraints": {
+          "description": "Deploy dispatcher only on nodes with this role.",
+          "type": "string",
+          "default": "hostname:UNIQUE"
+        }
+      },
+      "required": [
+        "instances"
+      ],
+      "type": "object"
+    },
+    "hls-edge": {
+      "properties": {
+        "cpus": {
+          "description": "CPU shares to allocate to each hls-edge instance.",
+          "type": "number",
+          "default": 0.1
+        },
+        "mem": {
+          "description": "Memory (MB) to allocate to each hls-edge task.",
+          "type": "number",
+          "default": 128.0,
+          "minimum": 64.0
+        },
+        "role": {
+          "description": "Deploy hls-edge only on nodes with this role.",
+          "type": "string",
+          "default": "*"
+        },
+        "constraints": {
+          "description": "Deploy hls-edge only on nodes with this constraints.",
+          "type": "string",
+          "default": "hostname:UNIQUE"
+        }
+      },
+      "required": [
+        "cpus"
+      ],
+      "type": "object"
+    },
+    "hls-origin": {
+      "properties": {
+        "cpus": {
+          "description": "CPU shares to allocate to each hls-origin instance.",
+          "type": "number",
+          "default": 0.1
+        },
+        "mem": {
+          "description": "Memory (MB) to allocate to each hls-origin task.",
+          "type": "number",
+          "default": 128.0,
+          "minimum": 64.0
+        },
+        "role": {
+          "description": "Deploy hls-origin only on nodes with this role.",
+          "type": "string",
+          "default": "*"
+        },
+        "constraints": {
+          "description": "Deploy hls-origin only on nodes with this constraints.",
+          "type": "string",
+          "default": ""
+        }
+      },
+      "required": [
+        "cpus"
+      ],
+      "type": "object"
+    },
+    "rtmp-origin": {
+      "properties": {
+        "cpus": {
+          "description": "CPU shares to allocate to each rtmp-origin instance.",
+          "type": "number",
+          "default": 0.1
+        },
+        "mem": {
+          "description": "Memory (MB) to allocate to each rtmp-origin task.",
+          "type": "number",
+          "default": 128.0,
+          "minimum": 64.0
+        },
+        "role": {
+          "description": "Deploy rtmp-origin only on nodes with this role.",
+          "type": "string",
+          "default": "*"
+        },
+        "constraints": {
+          "description": "Deploy rtmp-origin only on nodes with this constraints.",
+          "type": "string",
+          "default": "hostname:UNIQUE"
+        }
+      },
+      "required": [
+        "cpus"
+      ],
+      "type": "object"
+    },
+    "rtmp-transcoder": {
+      "properties": {
+        "cpus": {
+          "description": "CPU shares to allocate to each rtmp-transcoder instance.",
+          "type": "number",
+          "default": 0.1
+        },
+        "mem": {
+          "description": "Memory (MB) to allocate to each rtmp-transcoder task.",
+          "type": "number",
+          "default": 128.0,
+          "minimum": 64.0
+        },
+        "role": {
+          "description": "Deploy rtmp-transcoder only on nodes with this role.",
+          "type": "string",
+          "default": "*"
+        },
+        "constraints": {
+          "description": "Deploy rtmp-transcoder only on nodes with this constraints.",
+          "type": "string",
+          "default": ""
+        }
+      },
+      "required": [
+        "cpus"
+      ],
+      "type": "object"
+    }
+  },
+  "type": "object"
+}

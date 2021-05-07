@@ -1,0 +1,1136 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://xray.com/somedomain/course/123/firstLogin",
+  "title": "firstLogin report",
+  "description": "X-Ray web service firstLogin method schema",
+  "oneOf": [
+    {
+      "$ref": "base_schema_ref.json#/definitions/base_response"
+    },
+    {
+      "id": "http://xray.com/somedomain/course/123/firstLogin/okresponse",
+      "required": [
+        "reportdate",
+        "scheduleid",
+        "forumid",
+        "datapoints_plain",
+        "attachments",
+        "subtype",
+        "courseid",
+        "datecreated",
+        "notifications",
+        "elements",
+        "oldid",
+        "datapoints",
+        "date",
+        "type",
+        "id",
+        "participantid"
+      ],
+      "type": "object",
+      "properties": {
+        "reportdate": {
+          "type": "string"
+        },
+        "scheduleid": {
+          "type": "number"
+        },
+        "forumid": {
+          "type": "number"
+        },
+        "datapoints_plain": {
+          "type": [
+            "array",
+            "object"
+          ]
+        },
+        "attachments": {
+          "type": "array"
+        },
+        "notifications": {
+          "required": [
+            "attributes",
+            "type",
+            "value"
+          ],
+          "type": "object",
+          "properties": {
+            "attributes": {
+              "required": [
+                "class",
+                "names",
+                "row.names"
+              ],
+              "type": "object",
+              "properties": {
+                "row.names": {
+                  "required": [
+                    "attributes",
+                    "type",
+                    "value"
+                  ],
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "attributes": {
+                      "type": [
+                        "object",
+                        "null"
+                      ]
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "items": {
+                        "type": [
+                          "number",
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "type": "array"
+                    }
+                  }
+                },
+                "class": {
+                  "required": [
+                    "attributes",
+                    "type",
+                    "value"
+                  ],
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "attributes": {
+                      "type": [
+                        "object",
+                        "null"
+                      ]
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "items": {
+                        "type": [
+                          "number",
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "type": "array"
+                    }
+                  }
+                },
+                "names": {
+                  "required": [
+                    "attributes",
+                    "type",
+                    "value"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "attributes": {
+                      "type": [
+                        "object",
+                        "null"
+                      ]
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "items": {
+                        "type": [
+                          "number",
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "type": "array"
+                    }
+                  }
+                }
+              }
+            },
+            "type": {
+              "type": "string"
+            },
+            "value": {
+              "items": {
+                "required": [
+                  "attributes",
+                  "type",
+                  "value"
+                ],
+                "type": "object",
+                "properties": {
+                  "attributes": {
+                    "type": [
+                      "object",
+                      "null"
+                    ]
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "items": {
+                      "type": [
+                        "number",
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "type": "array"
+                  }
+                }
+              },
+              "type": "array"
+            }
+          }
+        },
+        "courseid": {
+          "type": "number"
+        },
+        "datecreated": {
+          "type": "string"
+        },
+        "subtype": {
+          "type": "string"
+        },
+        "elements": {
+          "required": [
+            "observedStartDate",
+            "nonStarters",
+            "firstloginPiechartAdjusted",
+            "studentList",
+            "element1"
+          ],
+          "type": "object",
+          "properties": {
+            "observedStartDate": {
+              "required": [
+                "comment",
+                "elementName",
+                "subtitle",
+                "uuid",
+                "title",
+                "items",
+                "tooltipOrder",
+                "elementType"
+              ],
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "comment": {
+                  "type": "array"
+                },
+                "elementName": {
+                  "type": "string"
+                },
+                "subtitle": {
+                  "type": "array"
+                },
+                "uuid": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "items": {
+                  "items": {
+                    "required": [
+                      "name",
+                      "value"
+                    ],
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "value": {
+                        "type": [
+                          "number",
+                          "string",
+                          "null",
+                          "object"
+                        ]
+                      }
+                    }
+                  },
+                  "type": "array"
+                },
+                "tooltipOrder": {
+                  "items": {
+                    "type": [
+                      "number",
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "type": "array"
+                },
+                "elementType": {
+                  "type": "string"
+                }
+              }
+            },
+            "nonStarters": {
+              "required": [
+                "comment",
+                "elementName",
+                "enableGraph",
+                "uuid",
+                "title",
+                "columnOrder",
+                "legend",
+                "inverted",
+                "dataFormat",
+                "colorCodesSpecs",
+                "elementType",
+                "data",
+                "columnHeaders"
+              ],
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "comment": {
+                  "type": "array"
+                },
+                "elementName": {
+                  "type": "string"
+                },
+                "enableGraph": {
+                  "type": "boolean"
+                },
+                "uuid": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "columnOrder": {
+                  "required": [
+                    "className",
+                    "field",
+                    "class"
+                  ],
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "className": {
+                      "type": "string"
+                    },
+                    "field": {
+                      "type": "string"
+                    },
+                    "class": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "inverted": {
+                  "type": "boolean"
+                },
+                "dataFormat": {
+                  "type": "array"
+                },
+                "colorCodesSpecs": {
+                  "type": "array"
+                },
+                "columnHeaders": {
+                  "required": [
+                    "lastname",
+                    "firstname"
+                  ],
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "lastname": {
+                      "type": "string"
+                    },
+                    "firstname": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "elementType": {
+                  "type": "string"
+                },
+                "data": {
+                  "items": {
+                    "required": [
+                      "participantId",
+                      "firstname",
+                      "deleted",
+                      "firstLoginUnix",
+                      "firstLogin",
+                      "inactive",
+                      "courseId",
+                      "suspended",
+                      "firstlogin",
+                      "lastname",
+                      "roleId"
+                    ],
+                    "type": "object",
+                    "properties": {
+                      "firstlogin": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "properties": {
+                          "value": {
+                            "type": [
+                              "object",
+                              "null"
+                            ]
+                          }
+                        }
+                      },
+                      "participantId": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "properties": {
+                          "value": {
+                            "type": "number"
+                          }
+                        }
+                      },
+                      "firstname": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "properties": {
+                          "value": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "deleted": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "properties": {
+                          "value": {
+                            "type": "number"
+                          }
+                        }
+                      },
+                      "firstLoginUnix": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "properties": {
+                          "value": {
+                            "type": [
+                              "object",
+                              "null"
+                            ]
+                          }
+                        }
+                      },
+                      "firstLogin": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "type": [
+                              "object",
+                              "null"
+                            ]
+                          }
+                        }
+                      },
+                      "courseId": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "properties": {
+                          "value": {
+                            "type": "number"
+                          }
+                        }
+                      },
+                      "inactive": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "type": "boolean"
+                          }
+                        }
+                      },
+                      "roleId": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "properties": {
+                          "value": {
+                            "type": "number"
+                          }
+                        }
+                      },
+                      "suspended": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "properties": {
+                          "value": {
+                            "type": "number"
+                          }
+                        }
+                      },
+                      "lastname": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "properties": {
+                          "value": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "type": "array"
+                },
+                "legend": {
+                  "type": "string"
+                }
+              }
+            },
+            "firstloginPiechartAdjusted": {
+              "required": [
+                "elementName",
+                "dimensions",
+                "reportId",
+                "title",
+                "contexts",
+                "customData",
+                "mapping",
+                "tooltip",
+                "filename",
+                "plotType",
+                "elementType",
+                "legend",
+                "uuid"
+              ],
+              "type": "object",
+              "properties": {
+                "elementName": {
+                  "type": "string"
+                },
+                "dimensions": {
+                  "required": [
+                    "width",
+                    "height"
+                  ],
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "width": {
+                      "type": "number"
+                    },
+                    "height": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "title": {
+                  "type": "string"
+                },
+                "contexts": {
+                  "required": [
+                    "courseContext",
+                    "forumContext",
+                    "timeMachine",
+                    "participantContext"
+                  ],
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "courseContext": {
+                      "type": "string"
+                    },
+                    "forumContext": {
+                      "type": "string"
+                    },
+                    "timeMachine": {
+                      "type": "string"
+                    },
+                    "participantContext": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "customData": {
+                  "required": [
+                    "observedStartDate",
+                    "studentList",
+                    "nonStarters"
+                  ],
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "observedStartDate": {
+                      "type": [
+                        "object",
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "studentList": {
+                      "type": [
+                        "array",
+                        "null"
+                      ]
+                    },
+                    "nonStarters": {
+                      "items": {
+                        "required": [
+                          "participantId",
+                          "firstname",
+                          "deleted",
+                          "firstLoginUnix",
+                          "firstLogin",
+                          "inactive",
+                          "courseId",
+                          "suspended",
+                          "firstlogin",
+                          "lastname",
+                          "roleId"
+                        ],
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "properties": {
+                          "firstlogin": {
+                            "type": [
+                              "object",
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "participantId": {
+                            "type": [
+                              "number",
+                              "null"
+                            ]
+                          },
+                          "firstname": {
+                            "type": "string"
+                          },
+                          "deleted": {
+                            "type": [
+                              "number",
+                              "null"
+                            ]
+                          },
+                          "firstLoginUnix": {
+                            "type": [
+                              "object",
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "firstLogin": {
+                            "type": [
+                              "object",
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "courseId": {
+                            "type": "number"
+                          },
+                          "inactive": {
+                            "type": "boolean"
+                          },
+                          "roleId": {
+                            "type": "number"
+                          },
+                          "suspended": {
+                            "type": "number"
+                          },
+                          "lastname": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "type": "array"
+                    }
+                  }
+                },
+                "mapping": {
+                  "type": "array"
+                },
+                "tooltip": {
+                  "type": "string"
+                },
+                "filename": {
+                  "type": "string"
+                },
+                "reportId": {
+                  "type": "array"
+                },
+                "uuid": {
+                  "type": "string"
+                },
+                "elementType": {
+                  "type": "string"
+                },
+                "legend": {
+                  "type": "string"
+                },
+                "plotType": {
+                  "type": "string"
+                }
+              }
+            },
+            "studentList": {
+              "required": [
+                "comment",
+                "elementName",
+                "enableGraph",
+                "uuid",
+                "title",
+                "columnOrder",
+                "legend",
+                "inverted",
+                "dataFormat",
+                "colorCodesSpecs",
+                "elementType",
+                "data",
+                "columnHeaders"
+              ],
+              "type": "object",
+              "properties": {
+                "comment": {
+                  "type": "array"
+                },
+                "elementName": {
+                  "type": "string"
+                },
+                "enableGraph": {
+                  "type": "boolean"
+                },
+                "uuid": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "columnOrder": {
+                  "required": [
+                    "className",
+                    "field",
+                    "class"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "className": {
+                      "type": "string"
+                    },
+                    "field": {
+                      "type": "string"
+                    },
+                    "class": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "inverted": {
+                  "type": "boolean"
+                },
+                "dataFormat": {
+                  "type": "array"
+                },
+                "colorCodesSpecs": {
+                  "type": "array"
+                },
+                "columnHeaders": {
+                  "required": [
+                    "lastname",
+                    "firstLogin",
+                    "firstname"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "lastname": {
+                      "type": "string"
+                    },
+                    "firstLogin": {
+                      "type": "string"
+                    },
+                    "firstname": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "elementType": {
+                  "type": "string"
+                },
+                "data": {
+                  "items": {
+                    "required": [
+                      "lastname",
+                      "firstLogin",
+                      "firstname"
+                    ],
+                    "type": "object",
+                    "properties": {
+                      "lastname": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "firstLogin": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "type": [
+                              "object",
+                              "string",
+                              "null"
+                            ]
+                          }
+                        }
+                      },
+                      "firstname": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "type": "array"
+                },
+                "legend": {
+                  "type": "string"
+                }
+              }
+            },
+            "element1": {
+              "required": [
+                "sectionLevel",
+                "elementName",
+                "title",
+                "courseName",
+                "instructors",
+                "date",
+                "elementType"
+              ],
+              "type": "object",
+              "properties": {
+                "sectionLevel": {
+                  "type": "number"
+                },
+                "elementName": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "courseName": {
+                  "type": "string"
+                },
+                "instructors": {
+                  "type": [
+                    "array",
+                    "string"
+                  ]
+                },
+                "date": {
+                  "type": "string"
+                },
+                "elementType": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "oldid": {
+          "type": "null"
+        },
+        "datapoints": {
+          "required": [
+            "attributes",
+            "type",
+            "value"
+          ],
+          "type": "object",
+          "properties": {
+            "attributes": {
+              "required": [
+                "names"
+              ],
+              "type": "object",
+              "properties": {
+                "names": {
+                  "required": [
+                    "attributes",
+                    "type",
+                    "value"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "attributes": {
+                      "type": "object"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "items": {
+                        "type": [
+                          "number",
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "type": "array"
+                    }
+                  }
+                }
+              }
+            },
+            "type": {
+              "type": "string"
+            },
+            "value": {
+              "items": {
+                "required": [
+                  "attributes",
+                  "type",
+                  "value"
+                ],
+                "type": "object",
+                "properties": {
+                  "attributes": {
+                    "type": "object",
+                    "properties": {
+                      "row.names": {
+                        "required": [
+                          "attributes",
+                          "type",
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "attributes": {
+                            "type": "object"
+                          },
+                          "type": {
+                            "type": "string"
+                          },
+                          "value": {
+                            "items": {
+                              "type": [
+                                "number",
+                                "string",
+                                "null",
+                                "boolean"
+                              ]
+                            },
+                            "type": "array"
+                          }
+                        }
+                      },
+                      "class": {
+                        "required": [
+                          "attributes",
+                          "type",
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "attributes": {
+                            "type": "object"
+                          },
+                          "type": {
+                            "type": "string"
+                          },
+                          "value": {
+                            "items": {
+                              "type": [
+                                "number",
+                                "string",
+                                "null",
+                                "boolean"
+                              ]
+                            },
+                            "type": "array"
+                          }
+                        }
+                      },
+                      "names": {
+                        "required": [
+                          "attributes",
+                          "type",
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "attributes": {
+                            "type": "object"
+                          },
+                          "type": {
+                            "type": "string"
+                          },
+                          "value": {
+                            "items": {
+                              "type": [
+                                "number",
+                                "string",
+                                "null",
+                                "boolean"
+                              ]
+                            },
+                            "type": "array"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "items": {
+                      "required": [
+                        "attributes",
+                        "type",
+                        "value"
+                      ],
+                      "type": [
+                        "object",
+                        "null",
+                        "string",
+                        "number",
+                        "boolean"
+                      ],
+                      "properties": {
+                        "attributes": {
+                          "type": "object"
+                        },
+                        "type": {
+                          "type": "string"
+                        },
+                        "value": {
+                          "items": {
+                            "type": [
+                              "number",
+                              "string",
+                              "null",
+                              "boolean"
+                            ]
+                          },
+                          "type": "array"
+                        }
+                      }
+                    },
+                    "type": "array"
+                  }
+                }
+              },
+              "type": "array"
+            }
+          }
+        },
+        "date": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "id": {
+          "type": "number"
+        },
+        "participantid": {
+          "type": "number"
+        }
+      }
+    }
+  ]
+}

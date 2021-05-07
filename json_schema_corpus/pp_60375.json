@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "",
+  "type": "object",
+  "properties": {
+    "User": {
+      "id": "/User",
+      "type": "object",
+      "properties": {
+        "firstName": {
+          "id": "/User/firstName",
+          "type": "string"
+        },
+        "lastName": {
+          "id": "/User/lastName",
+          "type": "string"
+        },
+        "password": {
+          "id": "/User/password",
+          "type": "string"
+        },
+        "email": {
+          "id": "/User/email",
+          "type": "string"
+        }
+      },
+      "required": [
+        "firstName",
+        "lastName",
+        "password",
+        "email"
+      ]
+    },
+    "emails": {
+      "id": "/emails",
+      "type": "array",
+      "items": {
+        "id": "/emails/0",
+        "type": "object",
+        "properties": {
+          "author": {
+            "id": "/emails/0/author",
+            "type": "string"
+          },
+          "id": {
+            "id": "/emails/0/id",
+            "type": "string"
+          },
+          "subject": {
+            "id": "/emails/0/subject",
+            "type": "string"
+          },
+          "html": {
+            "id": "/emails/0/html",
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "User",
+    "emails"
+  ]
+}

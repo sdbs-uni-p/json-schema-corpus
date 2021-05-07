@@ -1,0 +1,525 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Security Schema",
+  "description": "A security represents a tradable financial instrument held or financed by an institution for investment or collateral.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "The unique identifier for the security within the financial institution.",
+      "type": "string"
+    },
+    "date": {
+      "description": "The observation or effective date for the data in this object. Formatted as YYYY-MM-DDTHH:MM:SSZ in accordance with ISO 8601.",
+      "type": "string",
+      "format": "date-time"
+    },
+    "acc_fv_change_before_taxes": {
+      "description": "Accumulated change in fair value before taxes.",
+      "type": "integer"
+    },
+    "acc_fv_change_credit_risk": {
+      "description": "Accumulated changes in fair value due to credit risk.",
+      "type": "integer"
+    },
+    "accounting_treatment": {
+      "$ref": "https://raw.githubusercontent.com/SuadeLabs/fire/master/v1-dev/common.json#/accounting_treatment"
+    },
+    "accrued_interest": {
+      "description": "The accrued interest since the last payment date and due at the next payment date. Monetary type represented as an integer number of cents/pence.",
+      "type": "integer"
+    },
+    "asset_liability": {
+      "description": "Is the security (valued at either amortised cost or fair value) an asset or a liability on the firm's balance sheet.",
+      "$ref": "https://raw.githubusercontent.com/SuadeLabs/fire/master/v1-dev/common.json#/asset_liability"
+    },
+    "capital_tier": {
+      "description": "The capital tiers based on own funds requirements.",
+      "type": "string",
+      "enum": [
+        "tier_1",
+        "ce_tier_1",
+        "add_tier_1",
+        "tier_2",
+        "anc_tier_2",
+        "bas_tier_2",
+        "tier_3",
+        "anc_tier_3",
+        "bas_tier_3"
+      ]
+    },
+    "cb_haircut": {
+      "description": "The haircut as determined by the firm's central bank",
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0
+    },
+    "cost_center_code": {
+      "description": "The organizational unit or sub-unit to which costs/profits are booked.",
+      "type": "string"
+    },
+    "balance": {
+      "description": "Outstanding amount including accrued interest. Monetary integer number of cents/pence.",
+      "type": "integer"
+    },
+    "base_rate": {
+      "description": "The base rate represents the basis of the rate on the balance at the given date as agreed in the terms of the financial product.",
+      "type": "string",
+      "enum": [
+        "ZERO",
+        "UKBRBASE",
+        "FDTR"
+      ]
+    },
+    "break_dates": {
+      "description": "Dates where this contract can be broken (by either party). Formatted as YYYY-MM-DDTHH:MM:SSZ in accordance with ISO 8601.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "format": "date-time"
+      }
+    },
+    "call_dates": {
+      "description": "Dates where this contract can be called (by the customer). Formatted as YYYY-MM-DDTHH:MM:SSZ in accordance with ISO 8601.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "format": "date-time"
+      }
+    },
+    "country_code": {
+      "description": "Two-letter country code for security location/jurisdiction. In accordance with ISO 3166-1.",
+      "$ref": "https://raw.githubusercontent.com/SuadeLabs/fire/master/v1-dev/common.json#/country_code"
+    },
+    "cqs_standardised": {
+      "description": "The credit quality step for standardised approach.",
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 6
+    },
+    "cqs_irb": {
+      "description": "The credit quality step for internal ratings based approach.",
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 12
+    },
+    "csa_id": {
+      "description": "The unique identifier of the credit support annex this security falls under. Typically where used as derivatives collateral.",
+      "type": "string"
+    },
+    "currency_code": {
+      "description": "Actual currency of the security in accordance with ISO 4217 standards. It should be consistent with balance, accrued_interest, guarantee_amount and other monetary amounts.",
+      "$ref": "https://raw.githubusercontent.com/SuadeLabs/fire/master/v1-dev/common.json#/currency_code"
+    },
+    "customer_id": {
+      "description": "The unique identifier used by the financial institution to identify the customer for this product.",
+      "type": "string"
+    },
+    "deal_id": {
+      "description": "The unique identifier used by the financial institution to identify the deal for this product that links it to other products of the same or different type.",
+      "type": "string"
+    },
+    "encumbrance_amount": {
+      "description": "The amount of the security that is encumbered by potential future commitments or legal liabilities such as within a repo pool. Monetary type represented as a naturally positive integer number of cents/pence.",
+      "type": "integer",
+      "minimum": 0
+    },
+    "end_date": {
+      "description": "YYYY-MM-DDTHH:MM:SSZ in accordance with ISO 8601",
+      "type": "string",
+      "format": "date-time"
+    },
+    "fvh_level": {
+      "description": "Fair value hierarchy category according to IFRS 13.93 (b)",
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 3
+    },
+    "first_payment_date": {
+      "description": "The first payment date for interest payments.",
+      "type": "string",
+      "format": "date-time"
+    },
+    "guarantor_id": {
+      "description": "The unique identifier for the guarantor within the financial institution.",
+      "type": "string"
+    },
+    "guarantee_start_date": {
+      "description": "The first day the security became guaranteed by the guarantor. YYYY-MM-DDTHH:MM:SSZ in accordance with ISO 8601",
+      "type": "string",
+      "format": "date-time"
+    },
+    "hqla_class": {
+      "description": "What is the HQLA classification of this security?",
+      "type": "string",
+      "enum": [
+        "i",
+        "iia",
+        "iib",
+        "ineligible",
+        "exclude"
+      ]
+    },
+    "impairment_amount": {
+      "description": "The impairment amount for a security is the allowance set aside by the firm for losses.",
+      "type": "integer",
+      "minimum": 0
+    },
+    "impairment_status": {
+      "$ref": "https://raw.githubusercontent.com/SuadeLabs/fire/master/v1-dev/common.json#/impairment_status"
+    },
+    "insolvency_rank": {
+      "description": "The insolvency ranking as per the national legal fraamework of the reporting institution.",
+      "type": "integer",
+      "minimum": 1
+    },
+    "isin_code": {
+      "description": "The unique International Securities Identification Number for the security according to ISO 6166.",
+      "type": "string",
+      "minLength": 12,
+      "maxLength": 12
+    },
+    "issuer_id": {
+      "description": "The unique identifier for the issuer within the financial institution.",
+      "type": "string"
+    },
+    "last_payment_date": {
+      "description": "The final payment date for interest payments, often coincides with end_date.",
+      "type": "string",
+      "format": "date-time"
+    },
+    "ledger_code": {
+      "description": "The internal ledger code or line item name.",
+      "type": "string"
+    },
+    "mic_code": {
+      "$ref": "https://raw.githubusercontent.com/SuadeLabs/fire/master/v1-dev/common.json#/mic_code"
+    },
+    "mna_id": {
+      "description": "The unique identifier of the Master Netting Agreement this security falls under. Typically where used as derivatives collateral.",
+      "type": "string"
+    },
+    "movement": {
+      "description": "The movement parameter describes how the security arrived to the firm.",
+      "type": "string",
+      "enum": [
+        "cash",
+        "asset",
+        "issuance",
+        "debt_issue",
+        "cb_omo",
+        "other"
+      ]
+    },
+    "mtm_clean": {
+      "description": "The mark-to-market value of the security excluding interest. Monetary number of cents/pence.",
+      "type": "integer"
+    },
+    "mtm_dirty": {
+      "description": "The mark-to-market value of the security including interest. Monetary number of cents/pence.",
+      "type": "integer"
+    },
+    "next_payment_date": {
+      "description": "The next date at which interest will be paid or accrued_interest balance returned to zero.",
+      "type": "string",
+      "format": "date-time"
+    },
+    "notional_amount": {
+      "description": "The notional value is the total amount of a security's underlying asset at its spot price. Monetary number of cents.",
+      "type": "integer"
+    },
+    "on_balance_sheet": {
+      "description": "Is the security reported on the balance sheet of the financial institution?",
+      "type": "boolean"
+    },
+    "prev_payment_date": {
+      "description": "The most recent previous date at which interest was paid or accrued_interest balance returned to zero.",
+      "type": "string",
+      "format": "date-time"
+    },
+    "product_name": {
+      "description": "The name of the product as given by the financial institution to be used for display and reference purposes.",
+      "type": "string"
+    },
+    "purpose": {
+      "description": "The purpose for which the security is being held.",
+      "type": "string",
+      "enum": [
+        "aircraft_finance",
+        "back_to_back",
+        "collateral",
+        "custody",
+        "derivative_collateral",
+        "independent_collateral_amount",
+        "insurance",
+        "investment",
+        "non_controlling",
+        "other",
+        "reference",
+        "share_capital",
+        "trade_finance"
+      ]
+    },
+    "rate": {
+      "description": "The full interest rate applied to the security notional in percentage terms. Note that this therefore includes the base_rate (ie. not the spread).",
+      "type": "number"
+    },
+    "regulatory_book": {
+      "$ref": "https://raw.githubusercontent.com/SuadeLabs/fire/master/v1-dev/common.json#/regulatory_book"
+    },
+    "rehypothecation": {
+      "description": "Can the security be rehypothecated by the borrower?",
+      "type": "boolean"
+    },
+    "reporting_entity_name": {
+      "description": "The name of the reporting legal entity for display purposes.",
+      "type": "string"
+    },
+    "reporting_id": {
+      "description": "The internal ID for the legal entity under which the account is being reported.",
+      "type": "string"
+    },
+    "risk_country_code": {
+      "description": "Two-letter country code describing where the risk for the security resides. In accordance with ISO 3166-1",
+      "$ref": "https://raw.githubusercontent.com/SuadeLabs/fire/master/v1-dev/common.json#/country_code"
+    },
+    "seniority": {
+      "description": "The seniority of the security in the event of sale or bankruptcy of the issuer.",
+      "type": "string",
+      "enum": [
+        "senior_secured",
+        "senior_unsecured",
+        "subordinated_secured",
+        "subordinated_unsecured"
+      ]
+    },
+    "sft_type": {
+      "description": "The sft_type parameter defines the transaction mechanism conducted for the SFT for this security product.",
+      "type": "string",
+      "enum": [
+        "repo",
+        "rev_repo",
+        "sell_buy_back",
+        "buy_sell_back",
+        "bond_loan",
+        "bond_borrow",
+        "stock_loan",
+        "stock_borrow",
+        "margin_loan"
+      ]
+    },
+    "fitch_lt": {
+      "description": "Fitch long term credit ratings",
+      "type": "string",
+      "enum": [
+        "aaa",
+        "aa_plus",
+        "aa",
+        "aa_minus",
+        "a_plus",
+        "a",
+        "a_minus",
+        "bbb_plus",
+        "bbb",
+        "bbb_minus",
+        "bb_plus",
+        "bb",
+        "bb_minus",
+        "b_plus",
+        "b",
+        "b_minus",
+        "ccc_plus",
+        "ccc",
+        "ccc_minus",
+        "cc",
+        "c",
+        "d"
+      ]
+    },
+    "fitch_st": {
+      "description": "Fitch short term credit ratings",
+      "type": "string",
+      "enum": [
+        "f1_plus",
+        "f1",
+        "f2",
+        "f3",
+        "b",
+        "c",
+        "d"
+      ]
+    },
+    "moodys_lt": {
+      "description": "Moody's long term credit ratings",
+      "type": "string",
+      "enum": [
+        "aaa",
+        "aa1",
+        "aa2",
+        "aa3",
+        "a1",
+        "a2",
+        "a3",
+        "baa1",
+        "baa2",
+        "baa3",
+        "ba1",
+        "ba2",
+        "ba3",
+        "b1",
+        "b2",
+        "b3",
+        "caa1",
+        "caa2",
+        "caa3",
+        "ca",
+        "c"
+      ]
+    },
+    "moodys_st": {
+      "description": "Moodys short term credit ratings",
+      "type": "string",
+      "enum": [
+        "p1",
+        "p2",
+        "p3",
+        "np"
+      ]
+    },
+    "snp_lt": {
+      "description": "S&P long term credit ratings",
+      "type": "string",
+      "enum": [
+        "aaa",
+        "aa_plus",
+        "aa",
+        "aa_minus",
+        "a_plus",
+        "a",
+        "a_minus",
+        "bbb_plus",
+        "bbb",
+        "bbb_minus",
+        "bb_plus",
+        "bb",
+        "bb_minus",
+        "b_plus",
+        "b",
+        "b_minus",
+        "ccc_plus",
+        "ccc",
+        "ccc_minus",
+        "cc",
+        "c",
+        "d"
+      ]
+    },
+    "snp_st": {
+      "description": "S&P short term credit ratings",
+      "type": "string",
+      "enum": [
+        "a1",
+        "a2",
+        "a3",
+        "b",
+        "c",
+        "d"
+      ]
+    },
+    "source": {
+      "description": "The source(s) where this data originated. If more than one source needs to be stored for data lineage, it should be separated by a dash. eg. Source1-Source2",
+      "type": "string"
+    },
+    "start_date": {
+      "description": "The timestamp that the trade or financial product commences. YYYY-MM-DDTHH:MM:SSZ in accordance with ISO 8601.",
+      "type": "string",
+      "format": "date-time"
+    },
+    "status": {
+      "description": "Describes if capital has been paid up or has been called up but not paid for.",
+      "type": "string",
+      "enum": [
+        "paid_up",
+        "called_up"
+      ]
+    },
+    "type": {
+      "description": "This is the type of the security with regards to common regulatory classifications.",
+      "type": "string",
+      "enum": [
+        "abs",
+        "abs_auto",
+        "abs_consumer",
+        "abs_other",
+        "abs_sme",
+        "acceptance",
+        "bill_of_exchange",
+        "bond",
+        "cash",
+        "cash_ratio_deposit",
+        "cb_facility",
+        "cb_reserve",
+        "cd",
+        "cmbs",
+        "commercial_paper",
+        "convertible_bond",
+        "covered_bond",
+        "debt",
+        "emtn",
+        "equity",
+        "financial_guarantee",
+        "financial_sloc",
+        "frn",
+        "guarantee",
+        "index_linked",
+        "letter_of_credit",
+        "mbs",
+        "mtn",
+        "other",
+        "performance_bond",
+        "performance_guarantee",
+        "performance_sloc",
+        "pref_share",
+        "rmbs",
+        "rmbs_trans",
+        "share",
+        "share_agg",
+        "spv_mortgages",
+        "spv_other",
+        "struct_note",
+        "treasury",
+        "urp",
+        "warranty"
+      ]
+    },
+    "trade_date": {
+      "description": "The timestamp that the trade or financial product terms are agreed. YYYY-MM-DDTHH:MM:SSZ in accordance with ISO 8601.",
+      "type": "string",
+      "format": "date-time"
+    },
+    "transferable": {
+      "description": "Can the security be transferred between parties or negotiated on the capital market?",
+      "type": "boolean"
+    },
+    "value_date": {
+      "description": "The timestamp that the trade or financial product was valued. YYYY-MM-DDTHH:MM:SSZ in accordance with ISO 8601.",
+      "type": "string",
+      "format": "date-time"
+    },
+    "version_id": {
+      "description": "The version identifier of the data such as the firm's internal batch identifier.",
+      "type": "string"
+    },
+    "next_repricing_date": {
+      "description": "The date on which the interest rate of the security will be re-calculated. YYYY-MM-DDTHH:MM:SSZ in accordance with ISO 8601.",
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "id",
+    "date"
+  ],
+  "additionalProperties": true
+}

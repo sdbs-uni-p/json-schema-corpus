@@ -1,0 +1,415 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "title": "Program Transaction Schema",
+  "description": "Establishes the transaction interface that programs use apply mutations/generate analytics.",
+  "type": "object",
+  "properties": {
+    "programId": {
+      "type": "string",
+      "title": "Program Identifier"
+    },
+    "mutations": {
+      "type": "array",
+      "title": "Mutations",
+      "description": "These are actions we would like to be performed by the program engine (i.e. creating a reward or sending an email)",
+      "items": {
+        "$ref": "#/definitions/mutation"
+      }
+    },
+    "analytics": {
+      "type": "array",
+      "title": "Analytics",
+      "description": "A list of analytics representing activities performed by the program",
+      "items": {
+        "$ref": "#/definitions/analytics"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "programId"
+  ],
+  "definitions": {
+    "user": {
+      "type": "object",
+      "title": "Mutation User",
+      "description": "The mutation will be applied to this user",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "User ID"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "User Account ID"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "accountId"
+      ]
+    },
+    "mutation": {
+      "type": "object",
+      "title": "Program Mutation",
+      "properties": {
+        "type": {
+          "type": "string",
+          "title": "Mutation Type",
+          "description": "The type of mutation to be performed",
+          "enum": [
+            "CREATE_REWARD",
+            "SEND_EMAIL",
+            "MODERATE_GRAPH_NODES"
+          ]
+        }
+      },
+      "dependencies": {
+        "type": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/rewardCreation"
+            },
+            {
+              "$ref": "#/definitions/moderateGraphNodes"
+            },
+            {
+              "$ref": "#/definitions/sendEmail"
+            }
+          ]
+        }
+      }
+    },
+    "rewardCreation": {
+      "properties": {
+        "type": {
+          "enum": [
+            "CREATE_REWARD"
+          ]
+        },
+        "data": {
+          "type": "object",
+          "title": "Reward Data",
+          "properties": {
+            "key": {
+              "type": "string",
+              "title": "Reward Key",
+              "description": "The program template key used to establish the relationship between this reward and the program"
+            },
+            "rewardId": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "title": "Reward ID",
+              "description": "A unique BSON ObjectID used to identify the reward, if not set this will be auto-generated. Use this to link with emails."
+            },
+            "referralId": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "title": "Referral ID",
+              "description": "The referral ID for the event to be marked as a source of this reward"
+            },
+            "status": {
+              "type": "string",
+              "title": "Initial Reward Status",
+              "description": "This status defines the state the reward will be in when immediately after it is created",
+              "enum": [
+                "AVAILABLE",
+                "PENDING",
+                "CANCELLED"
+              ]
+            },
+            "rewardSource": {
+              "type": "string",
+              "title": "Reward Source",
+              "enum": [
+                "FRIEND_SIGNUP",
+                "REFERRED",
+                "ACTIVATION",
+                "ACQUISITION",
+                "RETENTION",
+                "REACTIVATION",
+                "AUTOMATED"
+              ]
+            },
+            "user": {
+              "$ref": "#/definitions/user"
+            },
+            "userEvent": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "key": {
+                  "type": "string",
+                  "title": "Event Key",
+                  "description": "The key of the event to be marked as a source of this reward"
+                },
+                "id": {
+                  "type": "string",
+                  "title": "Event ID",
+                  "description": "The unique identifier of the event to be marked as a source of this reward"
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "key",
+                "id"
+              ]
+            },
+            "dynamicProperties": {
+              "type": "object",
+              "title": "If the reward is marked as dynamic by the program template these properties will be used to dynamically generate the reward. TODO describe user definition precedence?",
+              "$ref": "RewardApiInput.schema.json#"
+            },
+            "overrideProperties": {
+              "type": "object",
+              "title": "Reward Override",
+              "description": "Properties included here will override or be added to properties setup via program reward configuration",
+              "properties": {
+                "dateScheduledFor": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "title": "Scheduled Reward Given Date",
+                  "description": "If the reward is created in a PENDING state this is the date we will attempt to 'give' it"
+                },
+                "dateExpires": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "title": "Reward Expiry Date",
+                  "description": "The date this reward is scheduled to expire if the reward is expirable"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "not": {
+            "required": [
+              "dynamicProperties",
+              "overrideProperties"
+            ]
+          },
+          "additionalProperties": false,
+          "required": [
+            "user",
+            "key"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "data"
+      ]
+    },
+    "moderateGraphNodes": {
+      "properties": {
+        "type": {
+          "enum": [
+            "MODERATE_GRAPH_NODES"
+          ]
+        },
+        "data": {
+          "type": "object",
+          "title": "Reward Data",
+          "properties": {
+            "graphNodeType": {
+              "type": "string",
+              "title": "Graph Node Type",
+              "description": "The type of the graph node(s) to be moderated",
+              "enum": [
+                "REWARD",
+                "PROGRAM_EMAIL",
+                "REFERRAL",
+                "USER_EVENT",
+                "PAYMENT_ACCOUNT"
+              ]
+            },
+            "filter": {
+              "type": "object",
+              "title": "Moderation Filter",
+              "description": "A GraphQL filter that defines the node(s) to be moderated. See RewardFilterInput, ProgramEmailTransactionFilterInput, ProgramReferralFilterInput, and UserEventDataFilterInput"
+            },
+            "moderationInput": {
+              "type": "object",
+              "properties": {
+                "action": {
+                  "type": "string",
+                  "title": "Moderation Action",
+                  "description": "The moderation action to apply to the filtered graph node(s)",
+                  "enum": [
+                    "APPROVE",
+                    "DENY",
+                    "NOTHING"
+                  ]
+                },
+                "maxDepth": {
+                  "type": "integer",
+                  "title": "Max Depth",
+                  "description": "The maximum depth of child nodes to be moderated"
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "action",
+                "maxDepth"
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "graphNodeType",
+            "filter",
+            "moderationInput"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "data"
+      ]
+    },
+    "sendEmail": {
+      "properties": {
+        "type": {
+          "enum": [
+            "SEND_EMAIL"
+          ]
+        },
+        "data": {
+          "type": "object",
+          "title": "Email Data",
+          "properties": {
+            "key": {
+              "type": "string",
+              "title": "Email Key",
+              "description": "The program template key of the email to send"
+            },
+            "status": {
+              "type": "string",
+              "title": "Email Status",
+              "description": "The initial email status, if not set this will default to QUEUED",
+              "enum": [
+                "PENDING",
+                "QUEUED"
+              ]
+            },
+            "rewardId": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "title": "Email Reward ID",
+              "description": "If included this defines the reward that will be available in the email render context"
+            },
+            "user": {
+              "$ref": "#/definitions/user"
+            },
+            "query": {
+              "type": "string",
+              "title": "Email Query",
+              "description": "The GraphQL query used to build the context for this email"
+            },
+            "queryVariables": {
+              "type": "object",
+              "title": "Email Query Variables",
+              "description": "This variables object parameterizes the GraphQL Email query"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "key",
+            "user",
+            "query",
+            "queryVariables"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "data"
+      ]
+    },
+    "analytics": {
+      "type": "object",
+      "title": "Program Analytic",
+      "properties": {
+        "eventType": {
+          "type": "string",
+          "title": "Event Type",
+          "description": "The type of event to record as an analytic",
+          "enum": [
+            "PROGRAM_EVALUATED",
+            "PROGRAM_GOAL"
+          ]
+        },
+        "data": {
+          "type": "object",
+          "title": "Event Data",
+          "description": "Event data - currently just program which only requires the user",
+          "properties": {
+            "user": {
+              "$ref": "#/definitions/user"
+            },
+            "programType": {
+              "type": "string",
+              "description": "The type of program (i.e. acquisition, loyalty, retention)",
+              "enum": [
+                "ACQUISITION",
+                "RETENTION",
+                "LOYALTY"
+              ]
+            },
+            "analyticsKey": {
+              "type": "string",
+              "description": "The type of analytic recorded (i.e. in program goals this could describe the goal achieved such as 'friendPaid')",
+              "pattern": "^[a-zA-Z0-9_]*$"
+            },
+            "analyticsDedupeId": {
+              "type": "string",
+              "description": "An ID unique in the recording of this analytic that will be used to deduplicate (i.e. with goals this could be the number of times the referrer was rewarded)",
+              "pattern": "^[a-zA-Z0-9_]*$"
+            },
+            "timestamp": {
+              "type": "integer",
+              "exclusiveMinimum": 0,
+              "description": "The date this analytic will be marked as recorded (defaults to current tenant time if not set)"
+            }
+          },
+          "additionalProperties": false,
+          "dependencies": {
+            "analyticsKey": {
+              "required": [
+                "analyticsDedupeId"
+              ]
+            },
+            "analyticsDedupeId": {
+              "required": [
+                "analyticsKey"
+              ]
+            }
+          },
+          "required": [
+            "user"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "eventType",
+        "data"
+      ]
+    }
+  }
+}

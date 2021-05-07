@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "response_post_session",
+  "type": "object",
+  "properties": {
+    "token": {
+      "$ref": "common_uuid"
+    }
+  },
+  "required": [
+    "token"
+  ],
+  "additionalProperties": false
+}

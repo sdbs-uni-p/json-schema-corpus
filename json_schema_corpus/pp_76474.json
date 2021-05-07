@@ -1,0 +1,89 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "get user response",
+  "description": "get user response",
+  "type": "object",
+  "properties": {
+    "userId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "email": {
+      "type": "string",
+      "minLength": 1
+    },
+    "password": {
+      "type": "string",
+      "minLength": 1
+    },
+    "dockerImageName": {
+      "type": "string",
+      "minLength": 1
+    },
+    "credentials": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "minLength": 1
+          },
+          "secret": {
+            "type": "string",
+            "minLength": 1
+          },
+          "createdOn": {
+            "type": "string",
+            "minLength": 1
+          },
+          "expiresOn": {
+            "type": "string",
+            "minLength": 1
+          },
+          "revokedOn": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "key",
+          "secret",
+          "createdOn",
+          "expiresOn"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "links": {
+      "type": "object",
+      "properties": {
+        "self": {
+          "type": "object",
+          "properties": {
+            "href": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "required": [
+            "href"
+          ]
+        }
+      },
+      "required": [
+        "self"
+      ]
+    }
+  },
+  "required": [
+    "userId",
+    "email",
+    "password",
+    "dockerImageName",
+    "credentials",
+    "links"
+  ],
+  "additionalProperties": false
+}

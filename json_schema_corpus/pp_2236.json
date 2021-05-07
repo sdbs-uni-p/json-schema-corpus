@@ -1,0 +1,434 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "musicJson-structural",
+  "title": "Music Score  Notation",
+  "description": "A JSON notation for musical scores.",
+  "type": "object",
+  "definitions": {
+    "nameOrNames": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      ]
+    },
+    "namedObject": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "moreThanOneInteger": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "metadata": {
+      "title": "Information about the music and the file.",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "The name of the composition"
+        },
+        "authors": {
+          "description": "The name(s) of who created this file.",
+          "$ref": "#/definitions/nameOrNames"
+        },
+        "composers": {
+          "$ref": "#/definitions/nameOrNames",
+          "description": "The name(s) of who composed the music."
+        },
+        "composingDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date the music what composed"
+        },
+        "creationDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The data the file was created."
+        }
+      }
+    },
+    "part": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/namedObject"
+        },
+        {
+          "properties": {
+            "clef:": {
+              "$ref": "#/definitions/clef"
+            },
+            "key": {
+              "$ref": "#/definitions/key"
+            }
+          }
+        },
+        {
+          "oneOf": [
+            {
+              "properties": {
+                "staves": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/stave"
+                  }
+                }
+              }
+            },
+            {
+              "$ref": "#/definitions/stave"
+            }
+          ]
+        }
+      ]
+    },
+    "stave": {
+      "oneOf": [
+        {
+          "properties": {
+            "bars": {
+              "type": "array",
+              "items": {
+                "#ref": "#/defintions/bar"
+              }
+            }
+          }
+        },
+        {
+          "type": "array",
+          "items": {
+            "#ref": "#/defintions/bar"
+          }
+        }
+      ]
+    },
+    "score": {
+      "oneOf": [
+        {
+          "properties": {
+            "parts": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/part"
+              }
+            }
+          }
+        },
+        {
+          "$ref": "#/definitions/part"
+        }
+      ]
+    },
+    "barline-start": {
+      "type": "string",
+      "enum": [
+        "normal",
+        "repeat-start"
+      ]
+    },
+    "barline-end": {
+      "type": "string",
+      "enum": [
+        "normal",
+        "repeat-end"
+      ]
+    },
+    "bar": {
+      "allOf": [
+        {
+          "properties": {
+            "signatures": {
+              "$ref": "#/definitions/signatures"
+            },
+            "clef:": {
+              "$ref": "#/definitions/clef"
+            },
+            "barline-start": {
+              "$ref": "#/definitions/barline-start"
+            },
+            "barline-end": {
+              "$ref": "#/definitions/barline-end"
+            }
+          }
+        },
+        {
+          "oneOf": [
+            {
+              "properties": {
+                "voices": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/voice"
+                  }
+                }
+              }
+            },
+            {
+              "$ref": "#/definitions/voice"
+            }
+          ]
+        }
+      ]
+    },
+    "voice-type": {
+      "type": "string",
+      "enum": [
+        "notes",
+        "harmony",
+        "rythm",
+        "lyrics"
+      ]
+    },
+    "voice": {
+      "type": "object"
+    },
+    "key": {
+      "type": "string",
+      "enum": [
+        "A",
+        "A#",
+        "Ab",
+        "B",
+        "B#",
+        "Bb",
+        "C",
+        "C#",
+        "Cb",
+        "D",
+        "D#",
+        "Db",
+        "E",
+        "E#",
+        "Eb",
+        "F",
+        "F#",
+        "Fb",
+        "G",
+        "G#",
+        "Gb"
+      ]
+    },
+    "signatures": {
+      "type": "object",
+      "title": "Time, tempo and key signatures.",
+      "properties": {
+        "timeSignature": {
+          "$ref": "#/definitions/timeSignature",
+          "default": "4/4",
+          "description": "The time signature for the current section."
+        },
+        "tempo": {
+          "$ref": "#/definitions/tempo",
+          "description": "The tempo of the current section."
+        },
+        "key": {
+          "$ref": "#/definitions/key",
+          "description": "The key for the current section."
+        }
+      }
+    },
+    "noteDuration": {
+      "type": "string",
+      "enum": [
+        "double-whole",
+        "breve",
+        "dw",
+        "whole",
+        "semibreve",
+        "w",
+        "half",
+        "minim",
+        "h",
+        "quarter",
+        "crotchet",
+        "1/4",
+        "eighth",
+        "quaver",
+        "1/8",
+        "sixteenth",
+        "semiquaver",
+        "1/16",
+        "thirty-second",
+        "demisemiquaver",
+        "1/32",
+        "sixty-fourth",
+        "hemidemisemiquaver",
+        "1/64",
+        "hundred-twenty-eighth",
+        "semihemidemisemiquaver",
+        "1/128",
+        "two-hundred fifty-sixth",
+        "demisemihemidemisemiquaver",
+        "1/256"
+      ]
+    },
+    "duration": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/noteDuration"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "note": {
+              "$ref": "#/definitions/noteDuration"
+            },
+            "dotted": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        }
+      ]
+    },
+    "tempo": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "unit": {
+              "$ref": "#/definitions/noteDuration",
+              "default": "1/4"
+            },
+            "value": {
+              "$ref": "./helpers.json#/definitions/moreThanOneInteger",
+              "default": 120
+            }
+          },
+          "required": [
+            "unit",
+            "value"
+          ]
+        }
+      ]
+    },
+    "timeSignature": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^([2-9]|(?:(?:1|2)[0-9])|(?:3[0-2]))/(2|4|8|(?:16)|(?:32))$"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "integer",
+              "minimum": 2,
+              "maximum": 32
+            },
+            "beats": {
+              "type": "integer",
+              "enum": [
+                2,
+                4,
+                8,
+                16,
+                32
+              ]
+            }
+          },
+          "required": [
+            "value",
+            "beats"
+          ]
+        }
+      ]
+    },
+    "clefs": {
+      "type": "string",
+      "enum": [
+        "G",
+        "F",
+        "C"
+      ]
+    },
+    "clef": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/clefs"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "note": {
+              "$ref": "#/definitions/clefs"
+            },
+            "line": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 5
+            }
+          }
+        },
+        {
+          "type": "string",
+          "enum": [
+            "G1",
+            "french-violin",
+            "G2",
+            "treble",
+            "C1",
+            "soprano",
+            "C2",
+            "mezzo-soprano",
+            "C3",
+            "alto",
+            "C4",
+            "tenor",
+            "C5",
+            "baritone-c",
+            "F3",
+            "baritone-f",
+            "F4",
+            "bass",
+            "F5",
+            "subbass"
+          ]
+        }
+      ]
+    },
+    "note": {
+      "type": "object"
+    },
+    "system": {
+      "type": "object",
+      "properties": {
+        "parts": {
+          "description": "The parts of the score",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/part"
+          }
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "$ref": "#/definitions/score"
+    },
+    {
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/metadata"
+        },
+        "signatures": {
+          "$ref": "#/definitions/signatures"
+        }
+      }
+    }
+  ]
+}

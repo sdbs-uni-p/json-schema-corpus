@@ -1,0 +1,99 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema#",
+  "type": "object",
+  "title": "HyperSchema for root API",
+  "id": "#root-v1",
+  "properties": {
+    "version": {
+      "type": "string"
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "${base_url}",
+      "mediaType": "application/vnd.orch.root-v1+json",
+      "method": "GET",
+      "title": "API Root"
+    },
+    {
+      "rel": "health",
+      "href": "/health",
+      "mediaType": "application/vnd.totem.health-v1+json",
+      "method": "GET",
+      "title": "Healthcheck API"
+    },
+    {
+      "rel": "github-delete-hook",
+      "href": "/external/hooks/github",
+      "mediaType": "application/json",
+      "method": "POST",
+      "title": "External github post hook for handling deletes.",
+      "encType": "application/json",
+      "schema": {
+        "$ref": "${base_url}/schemas/github-hook-v1"
+      }
+    },
+    {
+      "rel": "github-delete-hook-internal",
+      "href": "/hooks/github",
+      "mediaType": "application/json",
+      "method": "POST",
+      "title": "Internal github post hook for handling deletes.",
+      "encType": "application/json",
+      "schema": {
+        "$ref": "${base_url}/schemas/github-hook-v1"
+      }
+    },
+    {
+      "rel": "external-generic-hook",
+      "href": "/external/hooks/generic",
+      "mediaType": "application/vnd.orch.task.v1+json",
+      "method": "POST",
+      "title": "Generic callback hook (For external services)",
+      "encType": "application/vnd.orch.generic.hook.v1+json",
+      "schema": {
+        "$ref": "${base_url}/schemas/generic-hook-v1"
+      }
+    },
+    {
+      "rel": "internal-generic-hook",
+      "href": "/hooks/github",
+      "mediaType": "application/vnd.orch.task.v1+json",
+      "method": "POST",
+      "title": "Generic callback hook (For internal services w/o auth)",
+      "encType": "application/vnd.orch.generic.hook.v1+json",
+      "schema": {
+        "$ref": "${base_url}/schemas/generic-hook-v1"
+      }
+    },
+    {
+      "rel": "travis-hook",
+      "href": "/external/hooks/travis",
+      "mediaType": "application/vnd.orch.task.v1+json",
+      "method": "POST",
+      "title": "External callback hook for travis",
+      "encType": "application/x-www-form-urlencoded",
+      "schema": {
+        "$ref": "${base_url}/schemas/travis-hook-v1"
+      }
+    },
+    {
+      "rel": "travis-hook-internal",
+      "href": "/hooks/travis",
+      "mediaType": "application/vnd.orch.task.v1+json",
+      "method": "POST",
+      "title": "Internal callback hook for travis",
+      "encType": "application/x-www-form-urlencoded",
+      "schema": {
+        "$ref": "${base_url}/schemas/travis-hook-v1"
+      }
+    },
+    {
+      "rel": "task-result",
+      "href": "/tasks/{task_id}",
+      "mediaType": "application/json",
+      "title": "Gets asyc task result"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "text_field": {
+      "type": "string",
+      "required": true
+    },
+    "date_range": {
+      "$ref": "common/defs.json#/date_range",
+      "required": true
+    },
+    "single_date": {
+      "$ref": "common/defs.json#/date",
+      "required": true
+    },
+    "dates": {
+      "type": "array",
+      "items": {
+        "$ref": "common/defs.json#/date"
+      },
+      "uniqueItems": true
+    },
+    "integers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/positiveInteger"
+      }
+    }
+  },
+  "definitions": {
+    "positiveInteger": {
+      "type": "integer",
+      "minimum": 0,
+      "exclusiveMinimum": true
+    }
+  }
+}

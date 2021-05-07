@@ -1,0 +1,767 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://xray.com/somedomain/course/123/133/activity",
+  "title": "Activity user report",
+  "description": "X-Ray web service activity user method schema",
+  "oneOf": [
+    {
+      "$ref": "base_schema_ref.json#/definitions/base_response"
+    },
+    {
+      "id": "http://xray.com/somedomain/course/123/133/activity/okresponse",
+      "required": [
+        "reportdate",
+        "scheduleid",
+        "forumid",
+        "datapoints_plain",
+        "attachments",
+        "subtype",
+        "courseid",
+        "datecreated",
+        "notifications",
+        "elements",
+        "oldid",
+        "datapoints",
+        "date",
+        "type",
+        "id",
+        "participantid"
+      ],
+      "type": "object",
+      "properties": {
+        "reportdate": {
+          "type": "string"
+        },
+        "scheduleid": {
+          "type": "number"
+        },
+        "forumid": {
+          "type": "number"
+        },
+        "datapoints_plain": {
+          "type": "array"
+        },
+        "attachments": {
+          "type": "array"
+        },
+        "notifications": {
+          "required": [
+            "attributes",
+            "type",
+            "value"
+          ],
+          "type": "object",
+          "properties": {
+            "attributes": {
+              "required": [
+                "class",
+                "names",
+                "row.names"
+              ],
+              "type": "object",
+              "properties": {
+                "row.names": {
+                  "required": [
+                    "attributes",
+                    "type",
+                    "value"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "attributes": {
+                      "type": "object"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "items": {
+                        "type": "number"
+                      },
+                      "type": "array"
+                    }
+                  }
+                },
+                "class": {
+                  "required": [
+                    "attributes",
+                    "type",
+                    "value"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "attributes": {
+                      "type": "object"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    }
+                  }
+                },
+                "names": {
+                  "required": [
+                    "attributes",
+                    "type",
+                    "value"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "attributes": {
+                      "type": "object"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    }
+                  }
+                }
+              }
+            },
+            "type": {
+              "type": "string"
+            },
+            "value": {
+              "items": {
+                "required": [
+                  "attributes",
+                  "type",
+                  "value"
+                ],
+                "type": "object",
+                "properties": {
+                  "attributes": {
+                    "type": "object"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "items": {
+                      "type": [
+                        "string",
+                        "number",
+                        "null",
+                        "boolean"
+                      ]
+                    },
+                    "type": "array"
+                  }
+                }
+              },
+              "type": "array"
+            }
+          }
+        },
+        "courseid": {
+          "type": "number"
+        },
+        "datecreated": {
+          "type": "string"
+        },
+        "subtype": {
+          "type": "string"
+        },
+        "elements": {
+          "required": [
+            "barplotOfActivityWholeWeek",
+            "activityLevelTimeline",
+            "barplotOfActivityByWeekday"
+          ],
+          "type": "object",
+          "properties": {
+            "barplotOfActivityWholeWeek": {
+              "required": [
+                "elementName",
+                "dimensions",
+                "reportId",
+                "title",
+                "contexts",
+                "customData",
+                "mapping",
+                "tooltip",
+                "filename",
+                "plotType",
+                "elementType",
+                "legend",
+                "uuid"
+              ],
+              "type": "object",
+              "properties": {
+                "elementName": {
+                  "type": "string"
+                },
+                "dimensions": {
+                  "required": [
+                    "width",
+                    "height"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "width": {
+                      "type": "number"
+                    },
+                    "height": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "title": {
+                  "type": "string"
+                },
+                "contexts": {
+                  "required": [
+                    "courseContext",
+                    "forumContext",
+                    "timeMachine",
+                    "participantContext"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "courseContext": {
+                      "type": "string"
+                    },
+                    "forumContext": {
+                      "type": "string"
+                    },
+                    "timeMachine": {
+                      "type": "string"
+                    },
+                    "participantContext": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "customData": {
+                  "items": {
+                    "required": [
+                      "activityByWeekday"
+                    ],
+                    "type": "object",
+                    "properties": {
+                      "activityByWeekday": {
+                        "items": [
+                          {
+                            "type": "number"
+                          },
+                          {
+                            "type": "number"
+                          },
+                          {
+                            "type": "number"
+                          },
+                          {
+                            "type": "number"
+                          },
+                          {
+                            "type": "number"
+                          },
+                          {
+                            "type": "number"
+                          },
+                          {
+                            "type": "number"
+                          }
+                        ],
+                        "type": "array"
+                      }
+                    }
+                  },
+                  "type": [
+                    "array",
+                    "null"
+                  ]
+                },
+                "mapping": {
+                  "type": "array"
+                },
+                "tooltip": {
+                  "type": "string"
+                },
+                "filename": {
+                  "type": "string"
+                },
+                "reportId": {
+                  "type": "array"
+                },
+                "uuid": {
+                  "type": "string"
+                },
+                "elementType": {
+                  "type": "string"
+                },
+                "legend": {
+                  "type": "string"
+                },
+                "plotType": {
+                  "type": "string"
+                }
+              }
+            },
+            "barplotOfActivityByWeekday": {
+              "required": [
+                "elementName",
+                "dimensions",
+                "reportId",
+                "title",
+                "contexts",
+                "customData",
+                "mapping",
+                "tooltip",
+                "filename",
+                "plotType",
+                "elementType",
+                "legend",
+                "uuid"
+              ],
+              "type": "object",
+              "properties": {
+                "elementName": {
+                  "type": "string"
+                },
+                "dimensions": {
+                  "required": [
+                    "width",
+                    "height"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "width": {
+                      "type": "number"
+                    },
+                    "height": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "title": {
+                  "type": "string"
+                },
+                "contexts": {
+                  "required": [
+                    "courseContext",
+                    "forumContext",
+                    "timeMachine",
+                    "participantContext"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "courseContext": {
+                      "type": "string"
+                    },
+                    "forumContext": {
+                      "type": "string"
+                    },
+                    "timeMachine": {
+                      "type": "string"
+                    },
+                    "participantContext": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "customData": {
+                  "items": {
+                    "required": [
+                      "activityByWeekday"
+                    ],
+                    "type": "object",
+                    "properties": {
+                      "activityByWeekday": {
+                        "items": [
+                          {
+                            "type": "number"
+                          },
+                          {
+                            "type": "number"
+                          },
+                          {
+                            "type": "number"
+                          },
+                          {
+                            "type": "number"
+                          },
+                          {
+                            "type": "number"
+                          },
+                          {
+                            "type": "number"
+                          },
+                          {
+                            "type": "number"
+                          }
+                        ],
+                        "type": "array"
+                      }
+                    }
+                  },
+                  "type": [
+                    "array",
+                    "null"
+                  ]
+                },
+                "mapping": {
+                  "type": "array"
+                },
+                "tooltip": {
+                  "type": "string"
+                },
+                "filename": {
+                  "type": "string"
+                },
+                "reportId": {
+                  "type": "array"
+                },
+                "uuid": {
+                  "type": "string"
+                },
+                "elementType": {
+                  "type": "string"
+                },
+                "legend": {
+                  "type": "string"
+                },
+                "plotType": {
+                  "type": "string"
+                }
+              }
+            },
+            "activityLevelTimeline": {
+              "required": [
+                "elementName",
+                "dimensions",
+                "reportId",
+                "title",
+                "contexts",
+                "customData",
+                "mapping",
+                "tooltip",
+                "filename",
+                "plotType",
+                "elementType",
+                "legend",
+                "uuid"
+              ],
+              "type": "object",
+              "properties": {
+                "elementName": {
+                  "type": "string"
+                },
+                "dimensions": {
+                  "required": [
+                    "width",
+                    "height"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "width": {
+                      "type": "number"
+                    },
+                    "height": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "title": {
+                  "type": "string"
+                },
+                "contexts": {
+                  "required": [
+                    "courseContext",
+                    "forumContext",
+                    "timeMachine",
+                    "participantContext"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "courseContext": {
+                      "type": "string"
+                    },
+                    "forumContext": {
+                      "type": "string"
+                    },
+                    "timeMachine": {
+                      "type": "string"
+                    },
+                    "participantContext": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "customData": {
+                  "items": {
+                    "required": [
+                      "myData"
+                    ],
+                    "type": "object",
+                    "properties": {
+                      "myData": {
+                        "required": [
+                          "dataType",
+                          "timeSpent",
+                          "activityDate"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "dataType": {
+                            "type": "string"
+                          },
+                          "timeSpent": {
+                            "type": "number"
+                          },
+                          "activityDate": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "type": [
+                    "array",
+                    "null"
+                  ]
+                },
+                "mapping": {
+                  "type": "array"
+                },
+                "tooltip": {
+                  "type": "string"
+                },
+                "filename": {
+                  "type": "string"
+                },
+                "reportId": {
+                  "type": "array"
+                },
+                "uuid": {
+                  "type": "string"
+                },
+                "elementType": {
+                  "type": "string"
+                },
+                "legend": {
+                  "type": "string"
+                },
+                "plotType": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "oldid": {
+          "type": "null"
+        },
+        "datapoints": {
+          "required": [
+            "attributes",
+            "type",
+            "value"
+          ],
+          "type": "object",
+          "properties": {
+            "attributes": {
+              "required": [
+                "names"
+              ],
+              "type": "object",
+              "properties": {
+                "names": {
+                  "required": [
+                    "attributes",
+                    "type",
+                    "value"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "attributes": {
+                      "type": "object"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    }
+                  }
+                }
+              }
+            },
+            "type": {
+              "type": "string"
+            },
+            "value": {
+              "items": {
+                "required": [
+                  "attributes",
+                  "type",
+                  "value"
+                ],
+                "type": "object",
+                "properties": {
+                  "attributes": {
+                    "type": "object",
+                    "properties": {
+                      "row.names": {
+                        "required": [
+                          "attributes",
+                          "type",
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "attributes": {
+                            "type": "object"
+                          },
+                          "type": {
+                            "type": "string"
+                          },
+                          "value": {
+                            "items": {
+                              "type": [
+                                "number",
+                                "string",
+                                "null",
+                                "boolean"
+                              ]
+                            },
+                            "type": "array"
+                          }
+                        }
+                      },
+                      "class": {
+                        "required": [
+                          "attributes",
+                          "type",
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "attributes": {
+                            "type": "object"
+                          },
+                          "type": {
+                            "type": "string"
+                          },
+                          "value": {
+                            "items": {
+                              "type": [
+                                "string",
+                                "null",
+                                "number",
+                                "boolean"
+                              ]
+                            },
+                            "type": "array"
+                          }
+                        }
+                      },
+                      "names": {
+                        "required": [
+                          "attributes",
+                          "type",
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "attributes": {
+                            "type": "object"
+                          },
+                          "type": {
+                            "type": "string"
+                          },
+                          "value": {
+                            "items": {
+                              "type": [
+                                "string",
+                                "null",
+                                "number",
+                                "boolean"
+                              ]
+                            },
+                            "type": "array"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "items": {
+                      "required": [
+                        "attributes",
+                        "type",
+                        "value"
+                      ],
+                      "oneOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "attributes": {
+                              "type": "object"
+                            },
+                            "type": {
+                              "type": "string"
+                            },
+                            "value": {
+                              "items": {
+                                "type": [
+                                  "string",
+                                  "null",
+                                  "number",
+                                  "boolean"
+                                ]
+                              },
+                              "type": "array"
+                            }
+                          }
+                        },
+                        {
+                          "type": [
+                            "string",
+                            "number",
+                            "null",
+                            "boolean"
+                          ]
+                        }
+                      ]
+                    },
+                    "type": "array"
+                  }
+                }
+              },
+              "type": "array"
+            }
+          }
+        },
+        "date": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "id": {
+          "type": "number"
+        },
+        "participantid": {
+          "type": "number"
+        }
+      }
+    }
+  ]
+}

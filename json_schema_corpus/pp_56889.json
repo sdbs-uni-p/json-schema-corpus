@@ -1,0 +1,95 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "@type": "PostalAddress",
+  "@context": "http://schema.org/",
+  "description": "Schema.org PostalAddress",
+  "type": "object",
+  "definitions": {
+    "Thing": {
+      "@type": "Thing",
+      "type": "object",
+      "properties": {
+        "additionalType": {
+          "description": "An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.",
+          "type": "string",
+          "format": "uri"
+        },
+        "description": {
+          "description": "A short description of the item.",
+          "type": "string"
+        },
+        "image": {
+          "description": "URL of an image of the item.",
+          "type": "string",
+          "format": "uri"
+        },
+        "name": {
+          "description": "The name of the item.",
+          "type": "string"
+        },
+        "url": {
+          "description": "URL of the item.",
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "ContactPoint": {
+      "@type": "ContactPoint",
+      "type": "object",
+      "properties": {
+        "contactType": {
+          "description": "A person or organization can have different contact points, for different purposes. For example, a sales contact point, a PR contact point and so on. This property is used to specify the kind of contact point.",
+          "type": "string"
+        },
+        "email": {
+          "description": "Email address.",
+          "type": "string"
+        },
+        "faxNumber": {
+          "description": "The fax number.",
+          "type": "string"
+        },
+        "telephone": {
+          "description": "The telephone number.",
+          "type": "string"
+        }
+      }
+    },
+    "PostalAddress": {
+      "@type": "PostalAddress",
+      "type": "object",
+      "properties": {
+        "addressCountry": {
+          "description": "The country. For example, USA. You can also provide the two-letter ISO 3166-1 alpha-2 country code.",
+          "$ref": "Country.json"
+        },
+        "addressLocality": {
+          "description": "The locality. For example, Mountain View.",
+          "type": "string"
+        },
+        "addressRegion": {
+          "description": "The region. For example, CA.",
+          "type": "string"
+        },
+        "postalCode": {
+          "description": "The postal code. For example, 94043.",
+          "type": "string"
+        },
+        "postOfficeBoxNumber": {
+          "description": "The post offce box number for PO box addresses.",
+          "type": "string"
+        },
+        "streetAddress": {
+          "description": "The street address. For example, 1600 Amphitheatre Pkwy.",
+          "type": "string"
+        }
+      }
+    }
+  },
+  "allOf": [
+    "#definitions/Thing",
+    "#definitions/ContactPoint",
+    "#definitions/PostalAddress"
+  ]
+}

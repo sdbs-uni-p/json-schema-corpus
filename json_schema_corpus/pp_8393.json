@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "properties": {
+    "epoch": {
+      "type": "integer"
+    },
+    "key": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string",
+      "enum": [
+        "new",
+        "running",
+        "ok",
+        "error"
+      ]
+    }
+  },
+  "required": [
+    "epoch",
+    "key",
+    "state"
+  ]
+}

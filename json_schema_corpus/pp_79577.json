@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "label": {
+      "type": "string",
+      "description": "label for this job board, e.g. Super grads"
+    },
+    "logo": {
+      "type": "string",
+      "format": "uri",
+      "description": "A url that contains the logo for your app"
+    },
+    "domain": {
+      "type": "string",
+      "description": "e.g. www.supergrads.com - used for source tracking"
+    },
+    "defaultAdvertisementDuration": {
+      "type": "integer",
+      "description": "how many days do advertisement remain open on the site, e.g. 30"
+    },
+    "defaultLegacySourceCode": {
+      "type": "string",
+      "description": "a default for legacy source code when this board is installed, e.g. SK."
+    },
+    "defaultSetupErrorMessage": {
+      "type": "string",
+      "description": "a default value for the installed board's setup error message. If not null, setup required will light up on the app for all new installs."
+    },
+    "applicationURLRules": {
+      "$ref": "validationMeta.json#/definitions/stringValidationMeta"
+    },
+    "titleRules": {
+      "$ref": "validationMeta.json#/definitions/stringValidationMeta"
+    },
+    "referenceCodeRules": {
+      "$ref": "validationMeta.json#/definitions/stringValidationMeta"
+    },
+    "shortSummaryRules": {
+      "$ref": "validationMeta.json#/definitions/stringValidationMeta"
+    },
+    "descriptionRules": {
+      "$ref": "validationMeta.json#/definitions/stringValidationMeta"
+    },
+    "recruiterNameRules": {
+      "$ref": "validationMeta.json#/definitions/stringValidationMeta"
+    },
+    "recruiterEmailRules": {
+      "$ref": "validationMeta.json#/definitions/stringValidationMeta"
+    },
+    "advertisementRules": {
+      "$ref": "advertisementMetas.json"
+    }
+  },
+  "required": [
+    "label",
+    "domain",
+    "defaultAdvertisementDuration",
+    "defaultLegacySourceCode",
+    "advertisementModel"
+  ]
+}

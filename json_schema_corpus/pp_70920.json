@@ -1,0 +1,196 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "title": "Agent",
+  "description": "A Ticketfy Agent",
+  "stability": "prototype",
+  "strictProperties": true,
+  "type": [
+    "object"
+  ],
+  "definitions": {
+    "id": {
+      "description": "unique identifier of agent",
+      "readOnly": true,
+      "format": "uuid",
+      "type": [
+        "string"
+      ]
+    },
+    "name": {
+      "description": "unique name of agent",
+      "readOnly": true,
+      "type": [
+        "string"
+      ]
+    },
+    "email": {
+      "description": "unique email of agent",
+      "readOnly": true,
+      "type": [
+        "string"
+      ]
+    },
+    "password": {
+      "description": "the agent's password",
+      "readOnly": true,
+      "type": [
+        "string"
+      ]
+    },
+    "password_confirmation": {
+      "description": "the agent's password confirmation",
+      "readOnly": true,
+      "type": [
+        "string"
+      ]
+    },
+    "identity": {
+      "anyOf": [
+        {
+          "$ref": "/schemata/agent#/definitions/id"
+        }
+      ]
+    },
+    "created_at": {
+      "description": "when agent was created",
+      "format": "date-time",
+      "type": [
+        "string"
+      ]
+    },
+    "updated_at": {
+      "description": "when agent was updated",
+      "format": "date-time",
+      "type": [
+        "string"
+      ]
+    }
+  },
+  "links": [
+    {
+      "description": "Create a new agent.",
+      "href": "/agents",
+      "method": "POST",
+      "rel": "create",
+      "http_header": {
+        "access-token": "the user's access-token",
+        "client": "the user client's identifier",
+        "uid": "the user's identifier"
+      },
+      "schema": {
+        "properties": {
+          "name": {
+            "$ref": "/schemata/agent#/definitions/name"
+          },
+          "email": {
+            "$ref": "/schemata/agent#/definitions/email"
+          },
+          "password": {
+            "$ref": "/schemata/agent#/definitions/password"
+          },
+          "password_confirmation": {
+            "$ref": "/schemata/agent#/definitions/password_confirmation"
+          }
+        },
+        "required": [
+          "name",
+          "email",
+          "password",
+          "password_confirmation"
+        ],
+        "type": [
+          "object"
+        ]
+      },
+      "title": "Create"
+    },
+    {
+      "description": "Delete an existing agent.",
+      "href": "/agents/{(%2Fschemata%2Fagent%23%2Fdefinitions%2Fidentity)}",
+      "method": "DELETE",
+      "rel": "destroy",
+      "http_header": {
+        "access-token": "the user's access-token",
+        "client": "the user client's identifier",
+        "uid": "the user's identifier"
+      },
+      "title": "Delete"
+    },
+    {
+      "description": "Info for existing agent.",
+      "href": "/agents/{(%2Fschemata%2Fagent%23%2Fdefinitions%2Fidentity)}",
+      "method": "GET",
+      "rel": "self",
+      "http_header": {
+        "access-token": "the user's access-token",
+        "client": "the user client's identifier",
+        "uid": "the user's identifier"
+      },
+      "title": "Info"
+    },
+    {
+      "description": "List existing agents.",
+      "href": "/agents",
+      "method": "GET",
+      "rel": "instances",
+      "http_header": {
+        "access-token": "the user's access-token",
+        "client": "the user client's identifier",
+        "uid": "the user's identifier"
+      },
+      "title": "List"
+    },
+    {
+      "description": "Update an existing agent.",
+      "href": "/agents/{(%2Fschemata%2Fagent%23%2Fdefinitions%2Fidentity)}",
+      "method": "PATCH",
+      "rel": "update",
+      "http_header": {
+        "access-token": "the user's access-token",
+        "client": "the user client's identifier",
+        "uid": "the user's identifier"
+      },
+      "schema": {
+        "properties": {
+          "name": {
+            "$ref": "/schemata/agent#/definitions/name"
+          },
+          "email": {
+            "$ref": "/schemata/agent#/definitions/email"
+          },
+          "password": {
+            "$ref": "/schemata/agent#/definitions/password"
+          }
+        },
+        "type": [
+          "object"
+        ]
+      },
+      "title": "Update"
+    }
+  ],
+  "properties": {
+    "id": {
+      "$ref": "/schemata/agent#/definitions/id"
+    },
+    "name": {
+      "$ref": "/schemata/agent#/definitions/name"
+    },
+    "email": {
+      "$ref": "/schemata/agent#/definitions/email"
+    },
+    "password": {
+      "$ref": "/schemata/agent#/definitions/password"
+    },
+    "password_confirmation": {
+      "$ref": "/schemata/agent#/definitions/password_confirmation"
+    },
+    "created_at": {
+      "$ref": "/schemata/agent#/definitions/created_at"
+    },
+    "updated_at": {
+      "$ref": "/schemata/agent#/definitions/updated_at"
+    }
+  },
+  "id": "/schemata/agent"
+}

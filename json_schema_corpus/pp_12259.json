@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "id": {
+      "type": "number"
+    },
+    "id_eleve": {
+      "type": "string"
+    },
+    "owner": {
+      "type": "string"
+    },
+    "id_cycle": {
+      "type": "number"
+    },
+    "texte": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "id_eleve",
+    "texte"
+  ]
+}

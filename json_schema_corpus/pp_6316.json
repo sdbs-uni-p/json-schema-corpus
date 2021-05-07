@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "endpoint": "/confirm",
+  "description": "confirm setup took place",
+  "methods": [
+    "get"
+  ],
+  "query": {
+    "setup1_token": "${setup1_token}",
+    "setup2_token": "${setup2_token}"
+  },
+  "type": "object",
+  "properties": {
+    "setup1_token": {
+      "type": "string",
+      "enum": [
+        "setup1"
+      ]
+    },
+    "setup2_token": {
+      "type": "string",
+      "enum": [
+        "setup2"
+      ]
+    }
+  },
+  "required": [
+    "setup1_token",
+    "setup2_token"
+  ]
+}

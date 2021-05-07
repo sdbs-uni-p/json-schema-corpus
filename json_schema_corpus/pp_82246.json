@@ -1,0 +1,97 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Transitland Datastore Route",
+  "type": "object",
+  "required": [
+    "onestopId"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "onestopId": {
+      "type": "string",
+      "format": "route-onestop-id"
+    },
+    "newOnestopId": {
+      "type": "string",
+      "format": "route-onestop-id"
+    },
+    "onestopIdsToMerge": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "format": "route-onestop-id"
+      }
+    },
+    "operatedBy": {
+      "type": "string",
+      "format": "operator-onestop-id"
+    },
+    "name": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "object"
+    },
+    "color": {
+      "type": "string"
+    },
+    "geometry": {
+      "type": "object"
+    },
+    "wheelchairAccessible": {
+      "type": "string",
+      "enum": [
+        "unknown",
+        "all_trips",
+        "no_trips",
+        "some_trips"
+      ]
+    },
+    "bikesAllowed": {
+      "type": "string",
+      "enum": [
+        "unknown",
+        "all_trips",
+        "no_trips",
+        "some_trips"
+      ]
+    },
+    "vehicleType": {
+      "type": [
+        "string",
+        "integer"
+      ],
+      "format": "vehicle-type"
+    },
+    "addImportedFromFeeds": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "./imported_from_feed.json"
+      }
+    },
+    "notImportedFromFeeds": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "./imported_from_feed.json"
+      }
+    },
+    "serves": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "stop-onestop-id"
+      }
+    },
+    "doesNotServe": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "stop-onestop-id"
+      }
+    }
+  }
+}

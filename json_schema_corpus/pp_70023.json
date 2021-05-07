@@ -1,0 +1,37 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "required": [
+    "foo"
+  ],
+  "properties": {
+    "foo": {
+      "type": "string",
+      "required": true
+    },
+    "footrue": {
+      "type": "boolean",
+      "required": true
+    },
+    "foofalse": {
+      "type": "boolean",
+      "required": true
+    },
+    "foonull": {
+      "type": "null",
+      "required": true
+    },
+    "fooint": {
+      "type": "integer",
+      "required": true
+    },
+    "foos": {
+      "type": "array",
+      "required": true,
+      "maxItems": 2
+    },
+    "fooo": {
+      "type": "object"
+    }
+  }
+}

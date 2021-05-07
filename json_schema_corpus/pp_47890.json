@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "id": "https://inowas.com/schema/",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+    },
+    "boundary_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_\\-]{3,255}$"
+    },
+    "boundary": {
+      "$ref": "modflow/boundary/boundary.json"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "boundary",
+    "boundary_id"
+  ]
+}

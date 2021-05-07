@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "endpoint": "/cost",
+  "description": "Missing 'transactor' parameter",
+  "methods": [
+    "post"
+  ],
+  "params": {
+    "network": "mpesa",
+    "amount": 5000,
+    "transactionType": "withdrawal"
+  },
+  "statusCode": 400,
+  "type": "object",
+  "properties": {
+    "error": {
+      "$ref": "http://localhost:9667/definitions.json#/error"
+    }
+  },
+  "required": [
+    "error"
+  ]
+}

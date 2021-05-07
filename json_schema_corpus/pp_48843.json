@@ -1,0 +1,63 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://qcif.edu.au",
+  "required": false,
+  "properties": {
+    "storage": {
+      "type": "object",
+      "id": "http://qcif.edu.au/storage",
+      "required": false,
+      "properties": {
+        "fedora3": {
+          "type": "object",
+          "id": "http://qcif.edu.au/storage/fedora3",
+          "required": false,
+          "properties": {
+            "namespace": {
+              "type": "string",
+              "id": "http://qcif.edu.au/storage/fedora3/namespace",
+              "required": false
+            },
+            "password": {
+              "type": "string",
+              "id": "http://qcif.edu.au/storage/fedora3/password",
+              "required": false
+            },
+            "url": {
+              "type": "string",
+              "id": "http://qcif.edu.au/storage/fedora3/url",
+              "required": false
+            },
+            "username": {
+              "type": "string",
+              "id": "http://qcif.edu.au/storage/fedora3/username",
+              "required": false
+            }
+          }
+        },
+        "file-system": {
+          "type": "object",
+          "id": "http://qcif.edu.au/storage/file-system",
+          "required": false,
+          "properties": {
+            "home": {
+              "type": "string",
+              "id": "http://qcif.edu.au/storage/file-system/home",
+              "required": false
+            }
+          }
+        },
+        "type": {
+          "type": "string",
+          "id": "http://qcif.edu.au/storage/type",
+          "required": false,
+          "enum": [
+            "internal",
+            "fedora3"
+          ]
+        }
+      }
+    }
+  }
+}

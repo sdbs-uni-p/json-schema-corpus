@@ -1,0 +1,12 @@
+{
+  "id": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/Components/TextEditorBase/EditMask/NumberEditMask.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "\u041c\u0430\u0441\u043a\u0430 \u0432\u0432\u043e\u0434\u0430 \u0447\u0438\u0441\u043b\u043e\u0432\u043e\u0433\u043e \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u044f",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/Components/TextEditorBase/EditMask/EditMaskBase.json"
+    }
+  ],
+  "properties": {}
+}

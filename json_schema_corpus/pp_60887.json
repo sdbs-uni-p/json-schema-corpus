@@ -1,0 +1,274 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "title": "Court description",
+  "description": "This schema describes the format of a court as sent across the court-api",
+  "type": "object",
+  "required": [
+    "name",
+    "slug",
+    "updated_at",
+    "update_type",
+    "locale",
+    "closed",
+    "areas_of_law",
+    "addresses"
+  ],
+  "properties": {
+    "name": {
+      "description": "the name of a court",
+      "type": "string",
+      "maxLength": 200,
+      "minLength": 1
+    },
+    "slug": {
+      "description": "the slug used for the public uri for this court",
+      "type": "string",
+      "pattern": "^[a-z\\d]+(?:-[a-z\\d]+)*$",
+      "maxLength": 200,
+      "minLength": 1
+    },
+    "updated_at": {
+      "description": "when this court data was last updated",
+      "type": "string",
+      "pattern": "[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.[0-9]+Z"
+    },
+    "update_type": {
+      "description": "type of update. Only 'major' for now",
+      "type": "string",
+      "enum": [
+        "major"
+      ]
+    },
+    "locale": {
+      "description": "language of the content of this court's description",
+      "type": "string",
+      "enum": [
+        "en"
+      ]
+    },
+    "closed": {
+      "description": "true if this court is no longer active",
+      "type": "boolean"
+    },
+    "alert": {
+      "description": "important information about this court",
+      "type": "string",
+      "maxLength": 2000,
+      "minLength": 1
+    },
+    "lat": {
+      "description": "latitude of this court (WGS84)",
+      "type": "number",
+      "maximum": 90,
+      "minimum": -90.0
+    },
+    "lon": {
+      "description": "longitude of this court (WGS84)",
+      "type": "number",
+      "maximum": 90,
+      "minimum": -90
+    },
+    "court_number": {
+      "description": "official number of this court. This is used on various HMCTS documents and forms.",
+      "type": "string",
+      "maxLength": 200,
+      "minLength": 1
+    },
+    "DX": {
+      "description": "directory exchange of this court. This is used for inter-court post, and also by law professionals.",
+      "type": "string",
+      "maxLength": 200,
+      "minLength": 1
+    },
+    "areas_of_law": {
+      "description": "the areas of law that this court covers",
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "maxLength": 200,
+        "minLength": 1
+      }
+    },
+    "facilities": {
+      "description": "facilities available at this court",
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "required": [
+          "type",
+          "description"
+        ],
+        "properties": {
+          "type": {
+            "description": "the type of facility",
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1
+          },
+          "description": {
+            "description": "detailed information for this facility",
+            "type": "string",
+            "maxLength": 2000,
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "parking": {
+      "description": "parking available at this court",
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "required": [
+          "type",
+          "description"
+        ],
+        "properties": {
+          "type": {
+            "description": "the type of parking",
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1
+          },
+          "description": {
+            "description": "detailed information for this type of parking",
+            "type": "string",
+            "maxLength": 2000,
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "opening_times": {
+      "description": "opening times of this court",
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "description"
+        ],
+        "properties": {
+          "name": {
+            "description": "the type of opening time (court building, phone lines, etc)",
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1
+          },
+          "description": {
+            "description": "detailed information for this type of opening time",
+            "type": "string",
+            "maxLength": 2000,
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "addresses": {
+      "description": "an address for this court",
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "required": [
+          "type",
+          "postcode",
+          "town",
+          "lines"
+        ],
+        "properties": {
+          "type": {
+            "description": "the type of address (postal or visiting)",
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1
+          },
+          "town": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1
+          },
+          "county": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1
+          },
+          "postcode": {
+            "type": "string",
+            "maxLength": 20,
+            "minLength": 1
+          },
+          "lines": {
+            "description": "the street address",
+            "type": "array",
+            "uniqueItems": true,
+            "maxItems": 4,
+            "minItems": 1,
+            "items": {
+              "description": "one line of this street address",
+              "type": "string",
+              "maxLength": 200,
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "contacts": {
+      "description": "phone contacts for this court",
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "number"
+        ],
+        "properties": {
+          "name": {
+            "description": "the type of phone number (fax, enquiries, etc)",
+            "type": "string",
+            "maxLength": 2000,
+            "minLength": 1
+          },
+          "number": {
+            "description": "the phone number of this contact",
+            "type": "string",
+            "maxLength": 2000,
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "emails": {
+      "description": "email addresses for this court",
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "address"
+        ],
+        "properties": {
+          "name": {
+            "description": "what this email address is for (enquiries, etc)",
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1
+          },
+          "address": {
+            "description": "email address",
+            "type": "string",
+            "maxLength": 200
+          }
+        }
+      }
+    }
+  }
+}

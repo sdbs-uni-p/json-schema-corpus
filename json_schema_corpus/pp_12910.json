@@ -1,0 +1,477 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "nmap",
+  "type": "object",
+  "properties": {
+    "item": {
+      "id": "item",
+      "type": "object",
+      "properties": {
+        "scanner": {
+          "id": "scanner",
+          "type": "string"
+        },
+        "args": {
+          "id": "args",
+          "type": "string"
+        },
+        "start": {
+          "id": "start",
+          "type": "string"
+        },
+        "startstr": {
+          "id": "startstr",
+          "type": "string"
+        },
+        "version": {
+          "id": "version",
+          "type": "string"
+        },
+        "xmloutputversion": {
+          "id": "xmloutputversion",
+          "type": "string"
+        }
+      },
+      "required": [
+        "scanner",
+        "args",
+        "start",
+        "startstr",
+        "version",
+        "xmloutputversion"
+      ]
+    },
+    "scaninfo": {
+      "id": "scaninfo",
+      "type": "array",
+      "items": {
+        "id": "0",
+        "type": "object",
+        "properties": {
+          "item": {
+            "id": "item",
+            "type": "object",
+            "properties": {
+              "type": {
+                "id": "type",
+                "type": "string"
+              },
+              "protocol": {
+                "id": "protocol",
+                "type": "string"
+              },
+              "numservices": {
+                "id": "numservices",
+                "type": "string"
+              },
+              "services": {
+                "id": "services",
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "verbose": {
+      "id": "verbose",
+      "type": "array",
+      "items": {
+        "id": "0",
+        "type": "object",
+        "properties": {
+          "item": {
+            "id": "item",
+            "type": "object",
+            "properties": {
+              "level": {
+                "id": "level",
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "debugging": {
+      "id": "debugging",
+      "type": "array",
+      "items": {
+        "id": "0",
+        "type": "object",
+        "properties": {
+          "item": {
+            "id": "item",
+            "type": "object",
+            "properties": {
+              "level": {
+                "id": "level",
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "host": {
+      "id": "host",
+      "type": "array",
+      "items": {
+        "id": "0",
+        "type": "object",
+        "properties": {
+          "item": {
+            "id": "item",
+            "type": "object",
+            "properties": {
+              "starttime": {
+                "id": "starttime",
+                "type": "string"
+              },
+              "endtime": {
+                "id": "endtime",
+                "type": "string"
+              }
+            }
+          },
+          "status": {
+            "id": "status",
+            "type": "array",
+            "items": {
+              "id": "0",
+              "type": "object",
+              "properties": {
+                "item": {
+                  "id": "item",
+                  "type": "object",
+                  "properties": {
+                    "state": {
+                      "id": "state",
+                      "type": "string"
+                    },
+                    "reason": {
+                      "id": "reason",
+                      "type": "string"
+                    },
+                    "reason_ttl": {
+                      "id": "reason_ttl",
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "address": {
+            "id": "address",
+            "type": "array",
+            "items": {
+              "id": "0",
+              "type": "object",
+              "properties": {
+                "item": {
+                  "id": "item",
+                  "type": "object",
+                  "properties": {
+                    "addr": {
+                      "id": "addr",
+                      "type": "string"
+                    },
+                    "addrtype": {
+                      "id": "addrtype",
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "hostnames": {
+            "id": "hostnames",
+            "type": "array",
+            "items": {
+              "id": "0",
+              "type": "object",
+              "properties": {
+                "hostname": {
+                  "id": "hostname",
+                  "type": "array",
+                  "items": {
+                    "id": "0",
+                    "type": "object",
+                    "properties": {
+                      "item": {
+                        "id": "item",
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "id": "name",
+                            "type": "string"
+                          },
+                          "type": {
+                            "id": "type",
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "ports": {
+            "id": "ports",
+            "type": "array",
+            "items": {
+              "id": "0",
+              "type": "object",
+              "properties": {
+                "port": {
+                  "id": "port",
+                  "type": "array",
+                  "items": [
+                    {
+                      "id": "0",
+                      "type": "object",
+                      "properties": {
+                        "item": {
+                          "id": "item",
+                          "type": "object",
+                          "properties": {
+                            "protocol": {
+                              "id": "protocol",
+                              "type": "string"
+                            },
+                            "portid": {
+                              "id": "portid",
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "state": {
+                          "id": "state",
+                          "type": "array",
+                          "items": {
+                            "id": "0",
+                            "type": "object",
+                            "properties": {
+                              "item": {
+                                "id": "item",
+                                "type": "object",
+                                "properties": {
+                                  "state": {
+                                    "id": "state",
+                                    "type": "string"
+                                  },
+                                  "reason": {
+                                    "id": "reason",
+                                    "type": "string"
+                                  },
+                                  "reason_ttl": {
+                                    "id": "reason_ttl",
+                                    "type": "string"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "service": {
+                          "id": "service",
+                          "type": "array",
+                          "items": {
+                            "id": "0",
+                            "type": "object",
+                            "properties": {
+                              "item": {
+                                "id": "item",
+                                "type": "object",
+                                "properties": {
+                                  "name": {
+                                    "id": "name",
+                                    "type": "string"
+                                  },
+                                  "method": {
+                                    "id": "method",
+                                    "type": "string"
+                                  },
+                                  "conf": {
+                                    "id": "conf",
+                                    "type": "string"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "id": "1",
+                      "type": "object",
+                      "properties": {
+                        "item": {
+                          "id": "item",
+                          "type": "object",
+                          "properties": {
+                            "protocol": {
+                              "id": "protocol",
+                              "type": "string"
+                            },
+                            "portid": {
+                              "id": "portid",
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "state": {
+                          "id": "state",
+                          "type": "array",
+                          "items": {
+                            "id": "0",
+                            "type": "object",
+                            "properties": {
+                              "item": {
+                                "id": "item",
+                                "type": "object",
+                                "properties": {
+                                  "state": {
+                                    "id": "state",
+                                    "type": "string"
+                                  },
+                                  "reason": {
+                                    "id": "reason",
+                                    "type": "string"
+                                  },
+                                  "reason_ttl": {
+                                    "id": "reason_ttl",
+                                    "type": "string"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "service": {
+                          "id": "service",
+                          "type": "array",
+                          "items": {
+                            "id": "0",
+                            "type": "object",
+                            "properties": {
+                              "item": {
+                                "id": "item",
+                                "type": "object",
+                                "properties": {
+                                  "name": {
+                                    "id": "name",
+                                    "type": "string"
+                                  },
+                                  "method": {
+                                    "id": "method",
+                                    "type": "string"
+                                  },
+                                  "conf": {
+                                    "id": "conf",
+                                    "type": "string"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "runstats": {
+      "id": "runstats",
+      "type": "array",
+      "items": {
+        "id": "0",
+        "type": "object",
+        "properties": {
+          "finished": {
+            "id": "finished",
+            "type": "array",
+            "items": {
+              "id": "0",
+              "type": "object",
+              "properties": {
+                "item": {
+                  "id": "item",
+                  "type": "object",
+                  "properties": {
+                    "time": {
+                      "id": "time",
+                      "type": "string"
+                    },
+                    "timestr": {
+                      "id": "timestr",
+                      "type": "string"
+                    },
+                    "elapsed": {
+                      "id": "elapsed",
+                      "type": "string"
+                    },
+                    "summary": {
+                      "id": "summary",
+                      "type": "string"
+                    },
+                    "exit": {
+                      "id": "exit",
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "hosts": {
+            "id": "hosts",
+            "type": "array",
+            "items": {
+              "id": "0",
+              "type": "object",
+              "properties": {
+                "item": {
+                  "id": "item",
+                  "type": "object",
+                  "properties": {
+                    "up": {
+                      "id": "up",
+                      "type": "string"
+                    },
+                    "down": {
+                      "id": "down",
+                      "type": "string"
+                    },
+                    "total": {
+                      "id": "total",
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "item",
+    "scaninfo",
+    "verbose",
+    "debugging",
+    "host",
+    "runstats"
+  ]
+}

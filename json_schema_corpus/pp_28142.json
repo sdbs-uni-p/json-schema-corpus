@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "serviceDetailRequest",
+  "id": "serviceDetailRequest",
+  "description": "A representation of service capabilities being requested.",
+  "type": "object",
+  "required": [
+    "objectType"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "required": false,
+      "description": "Unique identifier for the Service Detail."
+    },
+    "objectType": {
+      "type": "string",
+      "required": true,
+      "description": "Type of Service Detail",
+      "default": "serviceDetailRequest"
+    },
+    "projectId": {
+      "type": "string",
+      "description": "The project's unique identifier."
+    },
+    "projectServiceSiteListId": {
+      "type": "string",
+      "description": "The Project Service Site List's unique identifier. An identifier that is used to group a list of service sites that have a common set of requested details."
+    },
+    "serviceCategory": {
+      "type": "string",
+      "required": true,
+      "enum": [
+        "Broadband",
+        "Ethernet"
+      ]
+    },
+    "serviceType": {
+      "type": "string",
+      "required": true,
+      "description": "The specific type of service (e.g. Access EPL) being requested.",
+      "enum": [
+        "Access EPL",
+        "Internet",
+        "UNI",
+        "ENNI",
+        "StaticIpTier",
+        "Generic"
+      ]
+    },
+    "serviceDetailItem": {
+      "type": "object",
+      "description": "The specific details to this service.",
+      "oneOf": [
+        {
+          "$ref": "ethernetServiceDetailItemRequest.json#"
+        },
+        {
+          "$ref": "broadbandServiceDetailItemRequest.json#"
+        }
+      ]
+    }
+  }
+}

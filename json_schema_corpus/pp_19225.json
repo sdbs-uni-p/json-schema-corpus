@@ -1,0 +1,502 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "http://www.andrewhoog.com/schemas/ios-app-metadata.json#",
+  "title": "ios-app",
+  "description": "iOS app plist parsed by plist npm module",
+  "type": "object",
+  "properties": {
+    "UIRequiredDeviceCapabilities": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "armv7"
+        ]
+      }
+    },
+    "SBAppTags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "hidden"
+        ]
+      }
+    },
+    "UIRequiresFullScreen": {
+      "type": "boolean"
+    },
+    "CFBundleURLTypes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "CFBundleURLName": {
+            "type": "string"
+          },
+          "CFBundleURLSchemes": {
+            "type": "array"
+          },
+          "CFBundleTypeRole": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "CFBundleInfoDictionaryVersion": {
+      "type": "string"
+    },
+    "DTPlatformVersion": {
+      "type": "string"
+    },
+    "Entitlements": {
+      "type": "object",
+      "properties": {
+        "application-identifier": {
+          "type": "string"
+        },
+        "keychain-access-groups": {
+          "type": "array"
+        },
+        "com.apple.developer.default-data-protection": {
+          "type": "string"
+        },
+        "com.apple.developer.team-identifier": {
+          "type": "string"
+        },
+        "com.apple.security.application-groups": {
+          "type": "array"
+        },
+        "aps-environment": {
+          "type": "string"
+        },
+        "com.apple.private.xpc.launchd.app-server": {
+          "type": "boolean"
+        },
+        "com.apple.private.kernel.jetsam": {
+          "type": "boolean"
+        },
+        "com.apple.CommCenter.Preferences-delete": {
+          "type": "boolean"
+        },
+        "com.apple.authkit.writer.internal": {
+          "type": "boolean"
+        },
+        "com.apple.private.ids.registration-reset": {
+          "type": "boolean"
+        },
+        "allow-obliterate-device": {
+          "type": "boolean"
+        },
+        "com.apple.backboard.client": {
+          "type": "boolean"
+        },
+        "com.apple.QuartzCore.secure-mode": {
+          "type": "boolean"
+        },
+        "com.apple.private.kernel.darkboot": {
+          "type": "boolean"
+        },
+        "com.apple.keystore.stash.access": {
+          "type": "boolean"
+        },
+        "com.apple.private.bmk.allow": {
+          "type": "boolean"
+        },
+        "com.apple.keystore.device": {
+          "type": "boolean"
+        },
+        "com.apple.QuartzCore.displayable-context": {
+          "type": "boolean"
+        },
+        "com.apple.wifi.manager-access": {
+          "type": "boolean"
+        },
+        "com.apple.authkit.client.private": {
+          "type": "boolean"
+        },
+        "com.apple.mobile.deleted.AllowFreeSpace": {
+          "type": "boolean"
+        },
+        "com.apple.security.exception.mach-lookup.global-name": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "com.apple.familycircle.agent",
+              "com.apple.routined.registration"
+            ]
+          }
+        },
+        "com.apple.developer.playable-content": {
+          "type": "boolean"
+        },
+        "com.apple.private.security.container-required": {
+          "type": "boolean"
+        },
+        "com.apple.private.tcc.allow": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "kTCCServiceMediaLibrary"
+            ]
+          }
+        },
+        "com.apple.mobile.keybagd.UserManager.logout": {
+          "type": "boolean"
+        },
+        "com.apple.security.exception.files.absolute-path.read-only": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "/private/var/mobile/Library/Preferences/com.apple.restrictionspassword.plist"
+            ]
+          }
+        },
+        "com.apple.telephony.cupolicy-rw-access": {
+          "type": "boolean"
+        },
+        "platform-application": {
+          "type": "boolean"
+        },
+        "com.apple.springboard.opensensitiveurl": {
+          "type": "boolean"
+        },
+        "com.apple.CoreRoutine.Application": {
+          "type": "boolean"
+        },
+        "com.apple.private.canModifyAppLinkPermissions": {
+          "type": "boolean"
+        },
+        "seatbelt-profiles": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "container2"
+            ]
+          }
+        },
+        "com.apple.developer.pass-type-identifiers": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "*.pass.com.apple.itunes.storecredit"
+            ]
+          }
+        },
+        "com.apple.private.canGetAppLinkInfo": {
+          "type": "boolean"
+        },
+        "com.apple.private.accounts.allaccounts": {
+          "type": "boolean"
+        },
+        "com.apple.private.corespotlight.internal": {
+          "type": "boolean"
+        },
+        "com.apple.accounts.facebook.defaultaccess": {
+          "type": "boolean"
+        },
+        "com.apple.container2": {
+          "type": "boolean"
+        },
+        "com.apple.excludes-extensions": {
+          "type": "boolean"
+        },
+        "com.apple.itunesstored.private": {
+          "type": "boolean"
+        },
+        "fairplay-client": {
+          "type": "string"
+        },
+        "com.apple.private.social.facebook.like": {
+          "type": "boolean"
+        },
+        "com.apple.managedconfiguration.profiled-access": {
+          "type": "boolean"
+        },
+        "com.apple.private.mobileinstall.upgrade-enabled": {
+          "type": "boolean"
+        },
+        "com.apple.CoreTelephony.DataUsageInfo.allow": {
+          "type": "boolean"
+        },
+        "com.apple.private.coreservices.alwaysEligibleEvenWhenInBackground": {
+          "type": "boolean"
+        },
+        "com.apple.springboard.shortcutitems.customimage": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "CFBundleName": {
+      "type": "string"
+    },
+    "DTSDKName": {
+      "type": "string"
+    },
+    "ApplicationType": {
+      "type": "string"
+    },
+    "GroupContainers": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "CFBundleIcons": {
+      "type": "object",
+      "properties": {
+        "CFBundlePrimaryIcon": {
+          "type": "object",
+          "properties": {
+            "CFBundleIconFiles": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "Container": {
+      "type": "string"
+    },
+    "LSRequiresIPhoneOS": {
+      "type": "boolean"
+    },
+    "CFBundleDisplayName": {
+      "type": "string"
+    },
+    "NSLocationWhenInUseUsageDescription": {
+      "type": "string"
+    },
+    "NewRelicApplicationIdKey": {
+      "type": "string"
+    },
+    "DTSDKBuild": {
+      "type": "string"
+    },
+    "HasSettingsBundle": {
+      "type": "boolean"
+    },
+    "CFBundleShortVersionString": {
+      "type": "string"
+    },
+    "CFBundleSupportedPlatforms": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "iPhoneOS"
+        ]
+      }
+    },
+    "UISupportedInterfaceOrientations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "UIInterfaceOrientationPortrait",
+          "UIInterfaceOrientationLandscapeLeft",
+          "UIInterfaceOrientationLandscapeRight",
+          "UIInterfaceOrientationPortraitUpsideDown"
+        ]
+      }
+    },
+    "BuildMachineOSBuild": {
+      "type": "string"
+    },
+    "SignerIdentity": {
+      "type": "string"
+    },
+    "CFBundlePackageType": {
+      "type": "string"
+    },
+    "EnvironmentVariables": {
+      "type": "object",
+      "properties": {
+        "TMPDIR": {
+          "type": "string"
+        },
+        "HOME": {
+          "type": "string"
+        },
+        "CFFIXED_USER_HOME": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "MinimumOSVersion": {
+      "type": "string"
+    },
+    "DTPlatformBuild": {
+      "type": "string"
+    },
+    "CFBundleVersion": {
+      "type": "string"
+    },
+    "CFBundleDevelopmentRegion": {
+      "type": "string"
+    },
+    "UIAppFonts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "SequenceNumber": {
+      "type": "integer"
+    },
+    "ApplicationDSID": {
+      "type": "integer"
+    },
+    "IsUpgradeable": {
+      "type": "boolean"
+    },
+    "DTXcodeBuild": {
+      "type": "string"
+    },
+    "BuildType": {
+      "type": "string"
+    },
+    "UIDeviceFamily": {
+      "type": "array",
+      "items": {
+        "type": "integer"
+      }
+    },
+    "WatchGroupId": {
+      "type": "string"
+    },
+    "CFBundleNumericVersion": {
+      "type": "integer"
+    },
+    "ParseApplicationIdKey": {
+      "type": "string"
+    },
+    "UILaunchStoryboardName": {
+      "type": "string"
+    },
+    "CFBundleIdentifier": {
+      "type": "string"
+    },
+    "DebugAccessibilityLabels": {
+      "type": "boolean"
+    },
+    "Fabric": {
+      "type": "object",
+      "properties": {
+        "APIKey": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "EULAVersion": {
+      "type": "string"
+    },
+    "DTXcode": {
+      "type": "string"
+    },
+    "CrashlyticsApplicationIdKey": {
+      "type": "string"
+    },
+    "ParseClientIdKey": {
+      "type": "string"
+    },
+    "CFBundleExecutable": {
+      "type": "string"
+    },
+    "NSAppTransportSecurity": {
+      "type": "object",
+      "properties": {
+        "NSExceptionDomains": {
+          "type": "object"
+        },
+        "NSAllowsArbitraryLoads": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "CFBundleSignature": {
+      "type": "string"
+    },
+    "Path": {
+      "type": "string"
+    },
+    "DTPlatformName": {
+      "type": "string"
+    },
+    "ITSAppUsesNonExemptEncryption": {
+      "type": "boolean"
+    },
+    "DTCompiler": {
+      "type": "string"
+    },
+    "_LSSupportsRemoval": {
+      "type": "boolean"
+    },
+    "NSUserActivityTypes": {
+      "type": "array"
+    },
+    "SBAppUsesLocalNotifications": {
+      "type": "boolean"
+    },
+    "SKRespectApplicationUserInterfaceLayoutDirection": {
+      "type": "boolean"
+    },
+    "UIViewControllerBasedStatusBarAppearance": {
+      "type": "boolean"
+    },
+    "UIStatusBarStyle": {
+      "type": "string"
+    },
+    "LSApplicationCategoryType": {
+      "type": "null"
+    },
+    "UIRequiresPersistentWiFi": {
+      "type": "boolean"
+    },
+    "MPSupportsExternallyPlayableContent": {
+      "type": "boolean"
+    },
+    "UIBackgroundModes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "audio",
+          "fetch",
+          "notif"
+        ]
+      }
+    },
+    "SBUninstallIconOverrideStringsFile": {
+      "type": "string"
+    },
+    "CFBundleAllowMixedLocalizations": {
+      "type": "boolean"
+    },
+    "UIPrerenderedIcon": {
+      "type": "boolean"
+    },
+    "CoreSpotlightContinuation": {
+      "type": "boolean"
+    },
+    "UIBrowsableContentSupportsSectionedBrowsing": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": false
+}

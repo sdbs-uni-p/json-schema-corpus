@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "object",
+      "$ref": "#/definitions/resource"
+    },
+    "meta": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "jsonapi": {
+      "type": "object"
+    },
+    "links": {
+      "type": "object"
+    },
+    "included": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/includedItems"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "definitions": {
+    "resource": {
+      "$ref": "../../resources/markdown_price.json"
+    },
+    "includedItems": {
+      "oneOf": []
+    }
+  }
+}

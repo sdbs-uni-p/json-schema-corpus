@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "bandwidthProfile",
+  "id": "bandwidthProfile",
+  "description": "Bandwidth Profile parameters. Properties that are not specified must be derivable from the Product that is being ordered, or by a Contract or Implementation Agreement between the Buyer and the Seller.",
+  "type": "object",
+  "required": [
+    "objectType"
+  ],
+  "properties": {
+    "objectType": {
+      "type": "string",
+      "enum": [
+        "bandwidthProfile"
+      ],
+      "description": "The type of the object, bandwidthProfile."
+    },
+    "committedInformationRate": {
+      "$ref": "informationRateQuantity.json#",
+      "description": "Defines the average rate in bits/s of Service or ENNI Frames up to which the network may deliver Service or Network Frames but without any performance objectives."
+    },
+    "committedBurstSize": {
+      "type": "integer",
+      "description": "Limits the maximum number of bytes available for a burst of Service or ENNI Frames sent at the EI speed to remain CIR- onformant. MUST be >= 12176.",
+      "minimum": 12176
+    },
+    "excessInformationRate": {
+      "$ref": "informationRateQuantity.json#",
+      "description": "If specified, defines the average rate in bits/s of Service or ENNI Frames up to which the network may deliver Service or Network Frames but without any performance objectives."
+    },
+    "excessBurstSize": {
+      "type": "integer",
+      "description": "If specified, limits the maximum number of bytes available for a burst of Service or ENNI Frames sent at the EI speed to remain EIR-conformant.",
+      "minimum": 0
+    },
+    "colorMode": {
+      "type": "string",
+      "enum": [
+        "COLOR_AWARE",
+        "COLOR_BLIND"
+      ],
+      "description": "Color Mode parameter indicates whether the color-aware or color-blind property is employed by the Bandwidth Profile."
+    },
+    "couplingFlag": {
+      "type": "boolean",
+      "description": "The Coupling Flag allows the choice between two modes of operation of the Bandwidth Profile algorithm."
+    }
+  }
+}

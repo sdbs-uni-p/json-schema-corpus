@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "startTimeStamp": {
+      "description": "The start timestamp when this turn was created.",
+      "type": "number"
+    },
+    "finishTimeStamp": {
+      "description": "The finish timestamp when this turn was created.",
+      "type": "number"
+    }
+  },
+  "required": [
+    "startTimeStamp",
+    "finishTimeStamp"
+  ]
+}

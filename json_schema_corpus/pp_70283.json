@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "paymenttype",
+  "description": "Payment Type",
+  "type": "string",
+  "enum": [
+    "All Major Cards",
+    "Visa",
+    "Master Card",
+    "Discover",
+    "American Express",
+    "Cash Only",
+    "Diners Club",
+    "Travelers Cheques",
+    "Gift Certificates"
+  ]
+}

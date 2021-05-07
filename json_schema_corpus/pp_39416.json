@@ -1,0 +1,17 @@
+{
+  "id": "http://baseurl.com/schemas",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "patients": {
+    "id": "#/core/patients",
+    "type": "object",
+    "properties": {
+      "size": "integer",
+      "persons": {
+        "type": "array",
+        "items": {
+          "$ref": "schemas/core/patient.json#/core/patient"
+        }
+      }
+    }
+  }
+}

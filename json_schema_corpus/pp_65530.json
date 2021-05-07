@@ -1,0 +1,22 @@
+{
+  "id": "https://opendesk.cc/schemata/quantified_configuration.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Winnow Product",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "https://opendesk.cc/schemata/base/value.json#"
+    },
+    {
+      "$ref": "https://opendesk.cc/schemata/base/options.json#"
+    },
+    {
+      "properties": {
+        "type": {
+          "type": "string",
+          "pattern": "quantified_configuration"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,210 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "http://met.no/llf",
+  "type": "object",
+  "properties": {
+    "header": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "group": {
+          "type": "string"
+        },
+        "locale": {
+          "type": "string"
+        },
+        "ref": {
+          "type": "string",
+          "pattern": "^[0-2][0-9]$"
+        },
+        "start": {
+          "type": "string",
+          "pattern": "^[0-2][0-9]$"
+        },
+        "date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "end": {
+          "type": "string",
+          "pattern": "^[0-2][0-9]$"
+        },
+        "type": {
+          "type": "string"
+        },
+        "areas": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "status",
+        "group",
+        "locale",
+        "ref",
+        "start",
+        "date",
+        "end",
+        "type",
+        "areas"
+      ]
+    },
+    "timesteps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "range": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
+          "valid": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          "forecast": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "FeatureCollection"
+                ]
+              },
+              "features": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "geometry": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "Polygon",
+                            "Multipolygon",
+                            "Point"
+                          ]
+                        },
+                        "coordinates": {
+                          "type": "array",
+                          "items": {
+                            "type": "array",
+                            "items": {
+                              "type": "array",
+                              "items": [
+                                {
+                                  "type": "number",
+                                  "minimum": -180.0,
+                                  "maximum": 180.0,
+                                  "exclusiveMinimum": true
+                                },
+                                {
+                                  "type": "number",
+                                  "minimum": -90.0,
+                                  "maximum": 90.0
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "coordinates"
+                      ]
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "Feature"
+                      ]
+                    },
+                    "properties": {
+                      "type": "object",
+                      "properties": {
+                        "timeStep": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "refTime": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "parameterGroup": {
+                          "type": "string",
+                          "enum": [
+                            "vis-cld",
+                            "ctop",
+                            "zero",
+                            "ice",
+                            "hwnd-tmp",
+                            "wnd",
+                            "gust",
+                            "turb",
+                            "qnh"
+                          ]
+                        },
+                        "valid": {
+                          "type": "object",
+                          "properties": {
+                            "to": {
+                              "type": "string",
+                              "format": "date-time"
+                            },
+                            "from": {
+                              "type": "string",
+                              "format": "date-time"
+                            }
+                          },
+                          "required": [
+                            "to",
+                            "from"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "timeStep",
+                        "refTime",
+                        "parameterGroup",
+                        "valid"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "geometry",
+                    "type",
+                    "properties"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "type",
+              "features"
+            ]
+          }
+        },
+        "required": [
+          "range",
+          "valid",
+          "forecast"
+        ]
+      }
+    }
+  },
+  "required": [
+    "header",
+    "timesteps"
+  ]
+}

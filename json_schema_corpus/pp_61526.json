@@ -1,0 +1,988 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://xray.com/somedomain/course/123/risk",
+  "title": "Risk report",
+  "description": "X-Ray web service risk method schema",
+  "oneOf": [
+    {
+      "$ref": "base_schema_ref.json#/definitions/base_response"
+    },
+    {
+      "id": "http://xray.com/somedomain/course/123/risk/okresponse",
+      "required": [
+        "reportdate",
+        "scheduleid",
+        "forumid",
+        "datapoints_plain",
+        "attachments",
+        "subtype",
+        "courseid",
+        "datecreated",
+        "notifications",
+        "elements",
+        "oldid",
+        "datapoints",
+        "date",
+        "type",
+        "id",
+        "participantid"
+      ],
+      "type": "object",
+      "properties": {
+        "reportdate": {
+          "type": "string"
+        },
+        "scheduleid": {
+          "type": "number"
+        },
+        "forumid": {
+          "type": "number"
+        },
+        "datapoints_plain": {
+          "type": "array"
+        },
+        "attachments": {
+          "type": "array"
+        },
+        "notifications": {
+          "required": [
+            "attributes",
+            "type",
+            "value"
+          ],
+          "type": "object",
+          "properties": {
+            "attributes": {
+              "required": [
+                "class",
+                "names",
+                "row.names"
+              ],
+              "type": "object",
+              "properties": {
+                "row.names": {
+                  "required": [
+                    "attributes",
+                    "type",
+                    "value"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "attributes": {
+                      "type": "object"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "items": {
+                        "type": [
+                          "number",
+                          "null",
+                          "boolean",
+                          "string"
+                        ]
+                      },
+                      "type": "array"
+                    }
+                  }
+                },
+                "class": {
+                  "required": [
+                    "attributes",
+                    "type",
+                    "value"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "attributes": {
+                      "type": "object"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "items": {
+                        "type": [
+                          "number",
+                          "null",
+                          "boolean",
+                          "string"
+                        ]
+                      },
+                      "type": "array"
+                    }
+                  }
+                },
+                "names": {
+                  "required": [
+                    "attributes",
+                    "type",
+                    "value"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "attributes": {
+                      "type": "object"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "items": {
+                        "type": [
+                          "number",
+                          "null",
+                          "boolean",
+                          "string"
+                        ]
+                      },
+                      "type": "array"
+                    }
+                  }
+                }
+              }
+            },
+            "type": {
+              "type": "string"
+            },
+            "value": {
+              "items": {
+                "required": [
+                  "attributes",
+                  "type",
+                  "value"
+                ],
+                "type": "object",
+                "properties": {
+                  "attributes": {
+                    "type": "object"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "items": {
+                      "type": [
+                        "number",
+                        "null",
+                        "boolean",
+                        "string"
+                      ]
+                    },
+                    "type": "array"
+                  }
+                }
+              },
+              "type": "array"
+            }
+          }
+        },
+        "courseid": {
+          "type": "number"
+        },
+        "datecreated": {
+          "type": "string"
+        },
+        "subtype": {
+          "type": "string"
+        },
+        "elements": {
+          "required": [
+            "element1",
+            "riskDensity",
+            "riskMeasures",
+            "riskScatterPlot"
+          ],
+          "type": "object",
+          "properties": {
+            "element1": {
+              "required": [
+                "sectionLevel",
+                "elementName",
+                "title",
+                "courseName",
+                "instructors",
+                "date",
+                "elementType"
+              ],
+              "type": "object",
+              "properties": {
+                "sectionLevel": {
+                  "type": "number"
+                },
+                "elementName": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "courseName": {
+                  "type": "string"
+                },
+                "instructors": {
+                  "type": "string"
+                },
+                "date": {
+                  "type": "string"
+                },
+                "elementType": {
+                  "type": "string"
+                }
+              }
+            },
+            "riskDensity": {
+              "required": [
+                "elementName",
+                "dimensions",
+                "reportId",
+                "title",
+                "contexts",
+                "customData",
+                "mapping",
+                "tooltip",
+                "filename",
+                "plotType",
+                "elementType",
+                "legend",
+                "uuid"
+              ],
+              "type": "object",
+              "properties": {
+                "elementName": {
+                  "type": "string"
+                },
+                "dimensions": {
+                  "required": [
+                    "width",
+                    "height"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "width": {
+                      "type": "number"
+                    },
+                    "height": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "title": {
+                  "type": "string"
+                },
+                "contexts": {
+                  "required": [
+                    "courseContext",
+                    "forumContext",
+                    "timeMachine",
+                    "participantContext"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "courseContext": {
+                      "type": "string"
+                    },
+                    "forumContext": {
+                      "type": "string"
+                    },
+                    "timeMachine": {
+                      "type": "string"
+                    },
+                    "participantContext": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "customData": {
+                  "items": {
+                    "required": [
+                      "cutoff",
+                      "studentList"
+                    ],
+                    "type": "object",
+                    "properties": {
+                      "cutoff": {
+                        "required": [
+                          "high",
+                          "medium"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "high": {
+                            "type": "number"
+                          },
+                          "medium": {
+                            "type": "number"
+                          }
+                        }
+                      },
+                      "studentList": {
+                        "required": [
+                          "timeOnTask",
+                          "participantId",
+                          "firstname",
+                          "courseId",
+                          "lastname",
+                          "DWF",
+                          "DWF.colorCode",
+                          "DW",
+                          "fail",
+                          "fail.colorCode",
+                          "DW.colorCode",
+                          "DWF_code"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "timeOnTask": {
+                            "type": "null"
+                          },
+                          "participantId": {
+                            "type": "string"
+                          },
+                          "firstname": {
+                            "type": "string"
+                          },
+                          "courseId": {
+                            "type": "number"
+                          },
+                          "lastname": {
+                            "type": "string"
+                          },
+                          "DWF": {
+                            "type": "number"
+                          },
+                          "fail.colorCode": {
+                            "type": "null"
+                          },
+                          "DWF.colorCode": {
+                            "type": "string"
+                          },
+                          "DWF_code": {
+                            "type": "string"
+                          },
+                          "fail": {
+                            "type": "null"
+                          },
+                          "DW": {
+                            "type": "number"
+                          },
+                          "DW.colorCode": {
+                            "type": "null"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "type": "array"
+                },
+                "mapping": {
+                  "type": "array"
+                },
+                "tooltip": {
+                  "type": "string"
+                },
+                "filename": {
+                  "type": "string"
+                },
+                "reportId": {
+                  "type": "array"
+                },
+                "uuid": {
+                  "type": "string"
+                },
+                "elementType": {
+                  "type": "string"
+                },
+                "legend": {
+                  "type": "string"
+                },
+                "plotType": {
+                  "type": "string"
+                }
+              }
+            },
+            "riskMeasures": {
+              "required": [
+                "comment",
+                "elementName",
+                "enableGraph",
+                "uuid",
+                "title",
+                "columnOrder",
+                "legend",
+                "inverted",
+                "dataFormat",
+                "colorCodesSpecs",
+                "elementType",
+                "data",
+                "columnHeaders"
+              ],
+              "type": "object",
+              "properties": {
+                "comment": {
+                  "type": "array"
+                },
+                "elementName": {
+                  "type": "string"
+                },
+                "enableGraph": {
+                  "type": "boolean"
+                },
+                "uuid": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "columnOrder": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "inverted": {
+                  "type": "boolean"
+                },
+                "dataFormat": {
+                  "required": [
+                    "timeOnTask"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "timeOnTask": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "colorCodesSpecs": {
+                  "type": "array"
+                },
+                "columnHeaders": {
+                  "required": [
+                    "timeOnTask",
+                    "firstname",
+                    "lastname",
+                    "DWF",
+                    "fail",
+                    "DW"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "timeOnTask": {
+                      "type": "string"
+                    },
+                    "firstname": {
+                      "type": "string"
+                    },
+                    "lastname": {
+                      "type": "string"
+                    },
+                    "DWF": {
+                      "type": "string"
+                    },
+                    "fail": {
+                      "type": "string"
+                    },
+                    "DW": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "elementType": {
+                  "type": "string"
+                },
+                "data": {
+                  "items": {
+                    "required": [
+                      "timeOnTask",
+                      "participantId",
+                      "firstname",
+                      "courseId",
+                      "lastname",
+                      "DWF",
+                      "DWF_code",
+                      "fail",
+                      "DW"
+                    ],
+                    "type": "object",
+                    "properties": {
+                      "timeOnTask": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "participantId": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "firstname": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "courseId": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "type": "number"
+                          }
+                        }
+                      },
+                      "lastname": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "DWF": {
+                        "required": [
+                          "colorCode",
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "colorCode": {
+                            "type": "string"
+                          },
+                          "value": {
+                            "type": "number"
+                          }
+                        }
+                      },
+                      "DW": {
+                        "required": [
+                          "colorCode",
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "colorCode": {
+                            "type": "object"
+                          },
+                          "value": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "fail": {
+                        "required": [
+                          "colorCode",
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "colorCode": {
+                            "type": "object"
+                          },
+                          "value": {
+                            "type": "object"
+                          }
+                        }
+                      },
+                      "DWF_code": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "type": "array"
+                },
+                "legend": {
+                  "type": "string"
+                }
+              }
+            },
+            "riskScatterPlot": {
+              "required": [
+                "elementName",
+                "dimensions",
+                "reportId",
+                "title",
+                "contexts",
+                "customData",
+                "mapping",
+                "tooltip",
+                "filename",
+                "plotType",
+                "elementType",
+                "legend",
+                "uuid"
+              ],
+              "type": "object",
+              "properties": {
+                "elementName": {
+                  "type": "string"
+                },
+                "dimensions": {
+                  "required": [
+                    "width",
+                    "height"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "width": {
+                      "type": "number"
+                    },
+                    "height": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "title": {
+                  "type": "string"
+                },
+                "contexts": {
+                  "required": [
+                    "courseContext",
+                    "forumContext",
+                    "timeMachine",
+                    "participantContext"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "courseContext": {
+                      "type": "string"
+                    },
+                    "forumContext": {
+                      "type": "string"
+                    },
+                    "timeMachine": {
+                      "type": "string"
+                    },
+                    "participantContext": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "customData": {
+                  "items": {
+                    "required": [
+                      "studentList"
+                    ],
+                    "type": "object",
+                    "properties": {
+                      "studentList": {
+                        "required": [
+                          "timeOnTask",
+                          "participantId",
+                          "firstname",
+                          "courseId",
+                          "lastname",
+                          "DWF",
+                          "DWF.colorCode",
+                          "DW",
+                          "fail",
+                          "fail.colorCode",
+                          "DW.colorCode",
+                          "DWF_code"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "timeOnTask": {
+                            "type": "null"
+                          },
+                          "participantId": {
+                            "type": "string"
+                          },
+                          "firstname": {
+                            "type": "string"
+                          },
+                          "courseId": {
+                            "type": "number"
+                          },
+                          "lastname": {
+                            "type": "string"
+                          },
+                          "DWF": {
+                            "type": "number"
+                          },
+                          "fail.colorCode": {
+                            "type": "null"
+                          },
+                          "DWF.colorCode": {
+                            "type": "string"
+                          },
+                          "DWF_code": {
+                            "type": "string"
+                          },
+                          "fail": {
+                            "type": "null"
+                          },
+                          "DW": {
+                            "type": "number"
+                          },
+                          "DW.colorCode": {
+                            "type": "null"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "type": "array"
+                },
+                "mapping": {
+                  "type": "array"
+                },
+                "tooltip": {
+                  "type": "string"
+                },
+                "filename": {
+                  "type": "string"
+                },
+                "reportId": {
+                  "type": "array"
+                },
+                "uuid": {
+                  "type": "string"
+                },
+                "elementType": {
+                  "type": "string"
+                },
+                "legend": {
+                  "type": "string"
+                },
+                "plotType": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "oldid": {
+          "type": "null"
+        },
+        "datapoints": {
+          "required": [
+            "attributes",
+            "type",
+            "value"
+          ],
+          "type": "object",
+          "properties": {
+            "attributes": {
+              "required": [
+                "names"
+              ],
+              "type": "object",
+              "properties": {
+                "names": {
+                  "required": [
+                    "attributes",
+                    "type",
+                    "value"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "attributes": {
+                      "type": "object"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "items": {
+                        "type": [
+                          "number",
+                          "null",
+                          "boolean",
+                          "string"
+                        ]
+                      },
+                      "type": "array"
+                    }
+                  }
+                }
+              }
+            },
+            "type": {
+              "type": "string"
+            },
+            "value": {
+              "items": {
+                "required": [
+                  "attributes",
+                  "type",
+                  "value"
+                ],
+                "type": "object",
+                "properties": {
+                  "attributes": {
+                    "required": [
+                      "class",
+                      "names",
+                      "row.names"
+                    ],
+                    "type": "object",
+                    "properties": {
+                      "row.names": {
+                        "required": [
+                          "attributes",
+                          "type",
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "attributes": {
+                            "type": "object"
+                          },
+                          "type": {
+                            "type": "string"
+                          },
+                          "value": {
+                            "items": {
+                              "type": [
+                                "number",
+                                "null",
+                                "boolean",
+                                "string"
+                              ]
+                            },
+                            "type": "array"
+                          }
+                        }
+                      },
+                      "class": {
+                        "required": [
+                          "attributes",
+                          "type",
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "attributes": {
+                            "type": "object"
+                          },
+                          "type": {
+                            "type": "string"
+                          },
+                          "value": {
+                            "items": {
+                              "type": [
+                                "number",
+                                "null",
+                                "boolean",
+                                "string"
+                              ]
+                            },
+                            "type": "array"
+                          }
+                        }
+                      },
+                      "names": {
+                        "required": [
+                          "attributes",
+                          "type",
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "attributes": {
+                            "type": "object"
+                          },
+                          "type": {
+                            "type": "string"
+                          },
+                          "value": {
+                            "items": {
+                              "type": [
+                                "number",
+                                "null",
+                                "boolean",
+                                "string"
+                              ]
+                            },
+                            "type": "array"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "items": {
+                      "required": [
+                        "attributes",
+                        "type",
+                        "value"
+                      ],
+                      "type": "object",
+                      "properties": {
+                        "attributes": {
+                          "type": "object"
+                        },
+                        "type": {
+                          "type": "string"
+                        },
+                        "value": {
+                          "items": {
+                            "type": [
+                              "number",
+                              "null",
+                              "boolean",
+                              "string"
+                            ]
+                          },
+                          "type": "array"
+                        }
+                      }
+                    },
+                    "type": "array"
+                  }
+                }
+              },
+              "type": "array"
+            }
+          }
+        },
+        "date": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "id": {
+          "type": "number"
+        },
+        "participantid": {
+          "type": "number"
+        }
+      }
+    }
+  ]
+}

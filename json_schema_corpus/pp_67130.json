@@ -1,0 +1,425 @@
+{
+  "title": "Family",
+  "id": "/profiles/family.json",
+  "description": "Schema for storing and using family data",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "required": [
+    "label",
+    "commonDiagnosis"
+  ],
+  "identifyingProperties": [
+    "uuid"
+  ],
+  "additionalProperties": false,
+  "mixinProperties": [
+    {
+      "$ref": "mixins.json#/schema_version"
+    },
+    {
+      "$ref": "mixins.json#/uuid"
+    },
+    {
+      "$ref": "mixins.json#/submitted"
+    }
+  ],
+  "properties": {
+    "schema_version": {
+      "default": "1"
+    },
+    "label": {
+      "title": "Label",
+      "description": "An user entered label for the family",
+      "type": "string"
+    },
+    "commonDiagnosis": {
+      "title": "Common Diagnosis",
+      "description": "List of Orphanet IDs of common diagnosis for the family",
+      "type": "array",
+      "items": {
+        "title": "Orphanet ID",
+        "type": "string",
+        "linkTo": "orphaPhenotype"
+      }
+    },
+    "hpoIdInDiagnosis": {
+      "title": "HPO ID(s)",
+      "description": "List of HPO ID for the disease",
+      "type": "array",
+      "default": [],
+      "items": {
+        "title": "HPO ID",
+        "description": "HPO ID",
+        "type": "string"
+      }
+    },
+    "termsInDiagnosis": {
+      "title": "Non-HPO term(s)",
+      "description": "Non-HPO terms (separated by comma) for the disease",
+      "type": "string",
+      "default": ""
+    },
+    "hpoIdInElimination": {
+      "title": "HPO ID(s) Eliminated",
+      "description": "List of HPO IDs eliminated from the disease",
+      "type": "array",
+      "default": [],
+      "items": {
+        "title": "HPO IDs Eliminated",
+        "description": "HPO ID eliminated",
+        "type": "string"
+      }
+    },
+    "termsInElimination": {
+      "title": "Non-HPO term(s) Eliminated",
+      "description": "Non-HPO terms (separated by comma) eliminated from the disease",
+      "type": "string",
+      "default": ""
+    },
+    "numberOfMale": {
+      "title": "Number of Male",
+      "description": "Count of Male in the family",
+      "type": "integer",
+      "minimum": 0
+    },
+    "numberOfFemale": {
+      "title": "Number of Female",
+      "description": "Count of female in the family",
+      "type": "integer",
+      "minimum": 0
+    },
+    "countryOfOrigin": {
+      "title": "Country Of Origin",
+      "description": "Country in which the family original live",
+      "type": "string",
+      "default": ""
+    },
+    "ethnicity": {
+      "title": "Ethnicity",
+      "description": "Ethnicity",
+      "type": "string",
+      "default": "",
+      "enum": [
+        "",
+        "Hispanic or Latino",
+        "Not Hispanic or Latino"
+      ]
+    },
+    "race": {
+      "title": "Race",
+      "description": "Race",
+      "type": "string",
+      "default": "",
+      "enum": [
+        "",
+        "American Indian or Alaska Native",
+        "Asian",
+        "Black",
+        "Native Hawaiian or Other Pacific Islander",
+        "White",
+        "Mixed",
+        "Unknown"
+      ]
+    },
+    "ageRangeType": {
+      "title": "Type of Age Range",
+      "description": "Type of age range in family",
+      "type": "string",
+      "default": "",
+      "enum": [
+        "",
+        "Onset",
+        "Report",
+        "Diagnosis",
+        "Death"
+      ]
+    },
+    "ageRangeFrom": {
+      "title": "Age Range From",
+      "description": "Yongest age in the family",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 150
+    },
+    "ageRangeTo": {
+      "title": "Age Range To",
+      "description": "Oldest age in the family",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 150
+    },
+    "ageRangeUnit": {
+      "title": "Age Range Unit",
+      "description": "Unit of age",
+      "type": "string",
+      "default": "",
+      "enum": [
+        "",
+        "Days",
+        "Weeks",
+        "Months",
+        "Years"
+      ]
+    },
+    "method": {
+      "title": "Family Method",
+      "type": "object",
+      "default": {},
+      "properties": {
+        "previousTesting": {
+          "title": "Previous Testing",
+          "description": "Previous testing",
+          "type": "boolean"
+        },
+        "previousTestingDescription": {
+          "title": "Previous Testing",
+          "description": "Previous testing",
+          "type": "string",
+          "default": ""
+        },
+        "genomeWideStudy": {
+          "title": "Genome-Wide Study",
+          "description": "Genome-wide study",
+          "type": "boolean"
+        },
+        "genotypingMethods": {
+          "title": "Genotyping Method(s)",
+          "description": "List of genotyping methods",
+          "type": "array",
+          "default": [],
+          "items": {
+            "title": "Genotyping Method",
+            "description": "Genotyping method",
+            "type": "string",
+            "enum": [
+              "Exome sequencing",
+              "Genotyping",
+              "HRM",
+              "PCR",
+              "Sanger",
+              "Whole genome shotgun sequencing"
+            ]
+          }
+        },
+        "entireGeneSequenced": {
+          "title": "Entire Gene Sequenced",
+          "description": "Entire gene sequenced",
+          "type": "boolean"
+        },
+        "copyNumberAssessed": {
+          "title": "Copy Number Assessed",
+          "description": "Copy number assessed",
+          "type": "boolean"
+        },
+        "specificMutationsGenotyped": {
+          "title": "Copy Number Assessed",
+          "description": "Copy number assessed",
+          "type": "boolean"
+        },
+        "specificMutationsGenotypedMethod": {
+          "title": "Specific Mutations Genotyped Method",
+          "description": "Method by which specific mutations genotyped",
+          "type": "string",
+          "default": ""
+        },
+        "additionalInformation": {
+          "title": "Additional Information",
+          "description": "Additional information",
+          "type": "string",
+          "default": ""
+        },
+        "dateTime": {
+          "title": "Date Time",
+          "description": "Time stamp for creation",
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "segregation": {
+      "title": "Segregation",
+      "type": "object",
+      "default": {},
+      "properties": {
+        "dateTime": {
+          "title": "Date Time",
+          "description": "Time stamp for creation",
+          "type": "string",
+          "default": ""
+        },
+        "pedigreeDescription": {
+          "title": "Pedigree Description",
+          "description": "Pedigree Description",
+          "type": "string",
+          "default": ""
+        },
+        "pedigreeSize": {
+          "title": "Pedigree Size",
+          "description": "Pedigree Size",
+          "type": "integer",
+          "minimum": 2
+        },
+        "numberOfGenerationInPedigree": {
+          "title": "# Generations in Pedigree",
+          "description": "Number of generations in pedigree",
+          "type": "integer",
+          "minimum": 0
+        },
+        "consanguineousFamily": {
+          "title": "Consanguineous Family",
+          "description": "Consanguineous Family",
+          "type": "boolean"
+        },
+        "numberOfCases": {
+          "title": "# Cases",
+          "description": "Number of cases (phenotype positive)",
+          "type": "integer",
+          "minimum": 1
+        },
+        "deNovoType": {
+          "title": "de novo type",
+          "description": "de novo type",
+          "type": "string",
+          "default": "",
+          "enum": [
+            "",
+            "Inferred",
+            "Confirmed"
+          ]
+        },
+        "numberOfParentsUnaffectedCarriers": {
+          "title": "# Parents Unaffected",
+          "description": "Number of parents unaffected carriers",
+          "type": "integer",
+          "enum": [
+            0,
+            1,
+            2
+          ]
+        },
+        "numberOfAffectedAlleles": {
+          "title": "# Affected Alleles",
+          "description": "Number of affected alleles",
+          "type": "integer",
+          "minimum": 0
+        },
+        "numberOfAffectedWithOneVariant": {
+          "title": "# Affected with 1 Varaint",
+          "description": "Number of affected with 1 variant",
+          "type": "integer",
+          "minimum": 0
+        },
+        "numberOfAffectedWithTwoVariants": {
+          "title": "# Affected with 2 Variants/Homozygous",
+          "description": "Number of affected with 2 variants or homozygous",
+          "type": "integer",
+          "minimum": 0
+        },
+        "numberOfUnaffectedCarriers": {
+          "title": "# Unaffected Carriers",
+          "description": "Number of unaffected carriers",
+          "type": "integer",
+          "minimum": 0
+        },
+        "numberOfUnaffectedIndividuals": {
+          "title": "# Unaffected Individuals",
+          "description": "Number of unaffected individuals",
+          "type": "integer",
+          "minimum": 0
+        },
+        "probandAssociatedWithBoth": {
+          "title": "Is Proband Associated with Both",
+          "description": "If > 1 variant, is proband associated with both",
+          "type": "boolean"
+        },
+        "additionalInformation": {
+          "title": "Additional Information",
+          "description": "Additional information of the segregation",
+          "type": "string",
+          "default": ""
+        },
+        "variants": {
+          "title": "Variants Associated with Proband",
+          "description": "List of variant uuid(s)",
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "string",
+            "linkTo": "variant"
+          }
+        },
+        "assessments": {
+          "title": "Assessments",
+          "description": "List of assessments added from different curators",
+          "type": "array",
+          "default": [],
+          "items": {
+            "description": "Assessment from one curator",
+            "type": "string",
+            "linkTo": "assessment"
+          }
+        }
+      }
+    },
+    "additionalInformation": {
+      "title": "Additional Information",
+      "description": "List of Additional information of the family",
+      "type": "string",
+      "default": ""
+    },
+    "otherPMIDs": {
+      "title": "Other PMIDs",
+      "description": "List of other PMIDs having evidence about the family",
+      "type": "array",
+      "default": [],
+      "items": {
+        "title": "PMID",
+        "description": "PMID",
+        "type": "string",
+        "linkTo": "article"
+      }
+    },
+    "individualIncluded": {
+      "title": "Individual Included",
+      "description": "List of individuals included in the family",
+      "type": "array",
+      "default": [],
+      "items": {
+        "title": "Individual",
+        "description": "Individual id",
+        "type": "string",
+        "linkTo": "individual"
+      }
+    },
+    "active": {
+      "description": "boolean switch to set if the family avaliable for curation.",
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "columns": {
+    "label": {
+      "title": "Label",
+      "type": "string"
+    },
+    "commonDiagnosis": {
+      "title": "Common Diagnosis",
+      "type": "string"
+    },
+    "individualIncluded": {
+      "title": "Individual",
+      "type": "string"
+    },
+    "submitted_by.uuid": {
+      "title": "Creator",
+      "type": "string"
+    },
+    "date_created": {
+      "title": "Creation Date",
+      "type": "string"
+    }
+  },
+  "boost_values": {
+    "label": 1.0
+  }
+}

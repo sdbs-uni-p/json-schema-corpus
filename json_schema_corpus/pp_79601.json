@@ -1,0 +1,86 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "definitions": {
+    "sessionCreation": {
+      "type": "object",
+      "description": "sourcing event for a user creating a new session at a web app such as a careers site",
+      "properties": {
+        "landingURI": {
+          "type": "string"
+        },
+        "referer": {
+          "type": "string"
+        },
+        "userAgent": {
+          "type": "string"
+        },
+        "ipAddress": {
+          "type": "string"
+        },
+        "acceptLanguage": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "landingURI",
+        "userAgent",
+        "ipAddress",
+        "acceptLanguage"
+      ],
+      "additionalProperties": false
+    },
+    "campaign": {
+      "type": "object",
+      "properties": {
+        "campaignKind": {
+          "enum": [
+            "Employee referral",
+            "Email alert",
+            "Link out",
+            "User defined"
+          ],
+          "description": "Link out is used for job board postings"
+        },
+        "objectType": {
+          "enum": [
+            "Job"
+          ]
+        },
+        "objectID": {
+          "type": "integer"
+        },
+        "referrer": {
+          "type": "string",
+          "format": "uri",
+          "description": "the url (minus protocol) of some third party web site where the campaign is running, e.g. www.seek.co.nz, typically used with campaignKind == link out"
+        },
+        "accessCode": {
+          "$ref": "jobRead.json#/definitions/accessCode"
+        }
+      },
+      "required": [
+        "campaignKind",
+        "objectType",
+        "objectID"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "properties": {
+    "meta": {
+      "$ref": "meta.json"
+    },
+    "sessionCreation": {
+      "$ref": "#/definitions/sessionCreation"
+    },
+    "campaign": {
+      "$ref": "#/definitions/campaign"
+    },
+    "userArea": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}

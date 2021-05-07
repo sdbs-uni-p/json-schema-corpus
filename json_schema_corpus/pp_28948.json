@@ -1,0 +1,279 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "OSVR Device Descriptor",
+  "description": "This schema documents and guides creation of a device descriptor, that both describes the interfaces available, and provides semantic mappings to those interfaces.",
+  "definitions": {
+    "semanticAliasLeaf": {
+      "title": "Alias target (leaf)",
+      "type": "string",
+      "pattern": "^[a-zA-Z]/[1-9][0-9]*$"
+    },
+    "generalSemanticAliasTarget": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/semanticAliasLeaf"
+        },
+        {
+          "$ref": "#/definitions/semanticAliasTransform"
+        }
+      ]
+    },
+    "semanticAliasTransform": {
+      "title": "Alias transform level",
+      "type": "object",
+      "properties": {
+        "child": {
+          "allOf": [
+            {
+              "title": "Nested transform child"
+            },
+            {
+              "$ref": "#/definitions/generalSemanticAliasTarget"
+            }
+          ]
+        }
+      }
+    },
+    "semanticAliasGrouping": {
+      "type": "object",
+      "title": "Grouping for semantic aliases",
+      "description": "A 'directory' on the semantic tree. May also contain an alias at its own level, described by '$target'",
+      "properties": {
+        "$target": {
+          "allOf": [
+            {
+              "title": "Target for the 'directory-level' path"
+            },
+            {
+              "$ref": "#/definitions/generalSemanticAliasTarget"
+            }
+          ]
+        }
+      },
+      "additionalProperties": {
+        "$ref": "#/definitions/semanticAliasNode"
+      }
+    },
+    "semanticAliasNode": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/generalSemanticAliasTarget"
+        },
+        {
+          "$ref": "#/definitions/semanticAliasGrouping"
+        }
+      ]
+    }
+  },
+  "type": "object",
+  "properties": {
+    "deviceVendor": {
+      "title": "Device vendor/manufacturer",
+      "type": "string"
+    },
+    "deviceName": {
+      "title": "Device product name",
+      "type": "string"
+    },
+    "author": {
+      "title": "Descriptor author name and email address",
+      "type": "string"
+    },
+    "version": {
+      "title": "Static descriptor version number",
+      "description": "Increment with each committed change",
+      "type": "integer",
+      "default": 1
+    },
+    "lastModified": {
+      "title": "Static descriptor Last-Modified timestamp",
+      "description": "Should use RFC 3339, section 5.6 format, aka javascript (new Date()).toJSON()",
+      "type": "string",
+      "format": "date-time"
+    },
+    "interfaces": {
+      "title": "Interface descriptions",
+      "type": "object",
+      "properties": {
+        "tracker": {
+          "type": "object",
+          "title": "Tracker interface description",
+          "description": "Describes properties of the tracker interface provided by this device.",
+          "defaultProperties": [
+            "bounded",
+            "position",
+            "orientation",
+            "linearVelocity",
+            "angularVelocity",
+            "linearAcceleration",
+            "angularAcceleration"
+          ],
+          "properties": {
+            "count": {
+              "title": "Number of sensors",
+              "description": "number of tracker sensors, if bounded and known",
+              "type": "integer",
+              "minimum": 1
+            },
+            "bounded": {
+              "title": "Sensor count bounded?",
+              "description": "true if the IDs of sensors reporting are bounded (usually known ahead of time) or false if they are unbounded (new ID for each item tracked, for instance)",
+              "type": "boolean",
+              "default": true
+            },
+            "position": {
+              "title": "Reports position information?",
+              "type": "boolean",
+              "default": true,
+              "format": "checkbox"
+            },
+            "orientation": {
+              "title": "Reports orientation information?",
+              "type": "boolean",
+              "default": true,
+              "format": "checkbox"
+            },
+            "linearVelocity": {
+              "title": "Reports linear velocity?",
+              "type": "boolean",
+              "default": false,
+              "format": "checkbox"
+            },
+            "angularVelocity": {
+              "title": "Reports angular velocity?",
+              "type": "boolean",
+              "default": false,
+              "format": "checkbox"
+            },
+            "linearAcceleration": {
+              "title": "Reports linear acceleration?",
+              "type": "boolean",
+              "default": false,
+              "format": "checkbox"
+            },
+            "angularAcceleration": {
+              "title": "Reports angular acceleration?",
+              "type": "boolean",
+              "default": false,
+              "format": "checkbox"
+            },
+            "traits": {
+              "title": "Per-sensor traits",
+              "description": "Array matching the order of sensors. Any values explicitly specified for a sensor here override the 'global' traits specified for the overall tracker interface. Entries in this array are mapped directly to sensors - entry 0 describes sensor 0, etc. Thus, if you want to describe sensor n, you must describe sensor n-1 (at least trivially with an empty object) down to 0.",
+              "type": "array",
+              "format": "table",
+              "items": {
+                "type": "object",
+                "defaultProperties": [],
+                "properties": {
+                  "position": {
+                    "title": "Reports position information?",
+                    "type": "boolean",
+                    "default": true,
+                    "format": "checkbox"
+                  },
+                  "orientation": {
+                    "title": "Reports orientation information?",
+                    "type": "boolean",
+                    "default": true,
+                    "format": "checkbox"
+                  },
+                  "linearVelocity": {
+                    "title": "Reports linear velocity?",
+                    "type": "boolean",
+                    "default": false,
+                    "format": "checkbox"
+                  },
+                  "angularVelocity": {
+                    "title": "Reports angular velocity?",
+                    "type": "boolean",
+                    "default": false,
+                    "format": "checkbox"
+                  },
+                  "linearAcceleration": {
+                    "title": "Reports linear acceleration?",
+                    "type": "boolean",
+                    "default": false,
+                    "format": "checkbox"
+                  },
+                  "angularAcceleration": {
+                    "title": "Reports angular acceleration?",
+                    "type": "boolean",
+                    "default": false,
+                    "format": "checkbox"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "analog": {
+          "type": "object",
+          "title": "Analog interface description",
+          "description": "Describes properties of the analog interface provided by this device.",
+          "properties": {
+            "count": {
+              "title": "Number of sensors/channels",
+              "description": "number of analog sensors reported",
+              "type": "integer",
+              "minimum": 1
+            },
+            "traits": {
+              "title": "Per-sensor traits",
+              "description": "Entries in this array are mapped directly to analog sensors/channels - entry 0 describes sensor 0, etc. Thus, if you want to describe sensor n, you must describe sensor n-1 (at least trivially with an empty object) down to 0.",
+              "type": "array",
+              "format": "table",
+              "items": {
+                "type": "object",
+                "title": "Analog Sensor Traits",
+                "headerTemplate": "Analog Sensor {{ i0 }}",
+                "description": "Describes relevant properties of the analog data reported on this sensor/channel. In the case of a joystick, the 'rest' will likely be halfway between 'min' and 'max', while an analog button will likely have 'min' equal to 'rest'. These parameters may be used for scaling the data as requested by a client application or analysis module.",
+                "properties": {
+                  "min": {
+                    "title": "Minimum value",
+                    "type": "number"
+                  },
+                  "max": {
+                    "title": "Maximum value",
+                    "type": "number"
+                  },
+                  "rest": {
+                    "title": "Value at rest",
+                    "type": "number"
+                  }
+                },
+                "defaultProperties": []
+              }
+            }
+          }
+        },
+        "button": {
+          "type": "object",
+          "title": "Button interface description",
+          "description": "Describes properties of the button interface provided by this device.",
+          "properties": {
+            "count": {
+              "title": "Number of sensors/channels",
+              "description": "number of button sensors reported",
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        }
+      },
+      "defaultProperties": []
+    },
+    "semantic": {
+      "title": "Semantic alias tree",
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/aliasNode"
+      }
+    },
+    "automaticAliases": {
+      "title": "Automatically-suggested (absolute) aliases",
+      "description": "If no automatic (of greater priority) or user-specified (defaulting to high priority) alias exists at the given path, it will automatically be created. A priority may optionally be specified.",
+      "type": "object"
+    }
+  }
+}

@@ -1,0 +1,236 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Real Estate Listing Schema",
+  "description": "The Real Estate Listing Archetype - Essential properties that define a real estate listing",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "price, listing_address, listing_city, listing_region, listing_postal_code"
+  ],
+  "properties": {
+    "_id": {
+      "type": "string",
+      "description": "Unique identifier for this archetype record",
+      "maxLength": 50,
+      "default": ""
+    },
+    "draft": {
+      "type": "boolean",
+      "description": "Indicates this archetype record is a draft and is not published",
+      "default": false
+    },
+    "created": {
+      "type": "string",
+      "description": "Date and time this archetype record was created in ISO 8601 date standard e.g. YYYY-MM-DDThh:mm:ss.sTZD",
+      "format": "date-time",
+      "default": ""
+    },
+    "updated": {
+      "type": "string",
+      "description": "Date and time this archetype record was updated in ISO 8601 date standard e.g. YYYY-MM-DDThh:mm:ss.sTZD",
+      "format": "date-time",
+      "default": ""
+    },
+    "price": {
+      "type": "integer",
+      "description": "Real estate price in cents as an integer (whole number)",
+      "minimum": 0,
+      "maximum": 99999999999999,
+      "default": 0
+    },
+    "listing_address": {
+      "type": "string",
+      "description": "To add multiple address lines, use \n. For example, 1234 Gl\u00fccklichkeit Stra\u00dfe\nHinterhaus 5. Etage li.",
+      "maxLength": 100,
+      "default": ""
+    },
+    "listing_city": {
+      "type": "string",
+      "maxLength": 100,
+      "default": ""
+    },
+    "listing_region": {
+      "type": "string",
+      "description": "The general region where the listing is located.  Can be a US state, or a province, for instance.",
+      "maxLength": 100,
+      "default": ""
+    },
+    "listing_postal_code": {
+      "type": "string",
+      "maxLength": 30,
+      "default": ""
+    },
+    "listing_neighborhood": {
+      "type": "string",
+      "description": "The neighborhood where the listing is located.",
+      "maxLength": 100,
+      "default": ""
+    },
+    "listing_county": {
+      "type": "string",
+      "description": "The county where the listing is located.",
+      "maxLength": 100,
+      "default": ""
+    },
+    "MLS_number": {
+      "type": "string",
+      "description": "Multiple Listing Service Number",
+      "maxLength": 140,
+      "default": ""
+    },
+    "primary_image_archetype": {
+      "$ref": "image_archetype_schema.json",
+      "description": "Image Archetype ID to use as the primary image of this real estate listing"
+    },
+    "image_archetypes": {
+      "type": "array",
+      "description": "Array of Image Archetype IDs",
+      "uniqueItems": true,
+      "additionalItems": false,
+      "default": [],
+      "maxItems": 15,
+      "items": {
+        "$ref": "image_archetype_schema.json"
+      }
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the real estate listing",
+      "maxLength": 5000,
+      "default": ""
+    },
+    "open_house_date": {
+      "type": "array",
+      "description": "Date and time open house showings occur in ISO 8601 date standard e.g. YYYY-MM-DDThh:mm:ss.sTZD",
+      "maxItems": 10,
+      "uniqueItems": true,
+      "default": [],
+      "items": {
+        "type": "string",
+        "format": "date-time",
+        "default": ""
+      }
+    },
+    "status": {
+      "enum": [
+        "Active",
+        "Cancelled",
+        "Sold",
+        "Option",
+        "Expired",
+        "New",
+        "Pending",
+        "Price Change",
+        "Reduced",
+        "Withdrawn"
+      ],
+      "description": "Status of real estate listing.",
+      "default": "Active"
+    },
+    "listing_date": {
+      "type": "string",
+      "description": "Date and time the real estate listing was published in ISO 8601 date standard e.g. YYYY-MM-DDThh:mm:ss.sTZD",
+      "format": "date-time",
+      "default": ""
+    },
+    "broker": {
+      "type": "string",
+      "description": "The brokerage firm administering the sale.",
+      "maxLength": 140,
+      "default": ""
+    },
+    "broker_info": {
+      "type": "string",
+      "description": "URL to the broker's website",
+      "format": "uri",
+      "maxLength": 1000,
+      "default": ""
+    },
+    "agent": {
+      "type": "string",
+      "description": "The specific agent administering the sale.",
+      "maxLength": 140,
+      "default": ""
+    },
+    "agent_info": {
+      "type": "string",
+      "description": "URL to the agent's website",
+      "format": "uri",
+      "maxLength": 1000,
+      "default": ""
+    },
+    "property_type": {
+      "enum": [
+        "Single-Family Home",
+        "Multiple-Family Home",
+        "Housing Cooperative (Co-op)",
+        "Condominium"
+      ],
+      "description": "The specific type of property the listing can be categorized as.",
+      "default": "Single-Family Home"
+    },
+    "style": {
+      "enum": [
+        "Log Home",
+        "Cape Cod",
+        "Art Deco",
+        "Craftsman",
+        "Contemporary",
+        "Colonial",
+        "Dutch Colonial",
+        "Georgian Colonial",
+        "Federal Colonial",
+        "Mid-Century Modern",
+        "French Provincial",
+        "Greek Revival",
+        "Italianate",
+        "Mediterranean",
+        "Modern",
+        "Neoclassical",
+        "Prairie",
+        "Pueblo Revival",
+        "Ranch",
+        "Townhouse",
+        "Tudor",
+        "Spanish",
+        "Victorian",
+        "Cottage",
+        "Farmhouse",
+        "Oriental"
+      ],
+      "description": "The architectural style of the listing.",
+      "default": "Log Home"
+    },
+    "built": {
+      "type": "string",
+      "description": "Date and time the real estate listing was published in ISO 8601 date standard e.g. YYYY-MM-DDThh:mm:ss.sTZD",
+      "format": "date-time",
+      "default": ""
+    },
+    "home_area": {
+      "type": "integer",
+      "description": "The area of the home in square feet",
+      "minimum": 0,
+      "maximum": 99999999999999,
+      "default": 0
+    },
+    "property_area": {
+      "type": "integer",
+      "description": "The area of the property in acres",
+      "minimum": 0,
+      "maximum": 99999999999999,
+      "default": 0
+    },
+    "tags": {
+      "type": "array",
+      "description": "Array of Tag Archetypes that are used to help categorize this Archetype record",
+      "maxItems": 6,
+      "uniqueItems": true,
+      "additionalItems": false,
+      "default": [],
+      "items": {
+        "$ref": "tag_archetype_schema.json"
+      }
+    }
+  }
+}

@@ -1,0 +1,584 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {},
+  "id": "aurelia.json",
+  "properties": {
+    "build": {
+      "id": "/properties/build",
+      "properties": {
+        "bundles": {
+          "id": "/properties/build/properties/bundles",
+          "items": {
+            "id": "/properties/build/properties/bundles/items",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "id": "/properties/build/properties/bundles/items/properties/name",
+                "type": "string",
+                "title": "Bundle name",
+                "description": "The name of the resulting bundle (with .js extension)"
+              },
+              "source": {
+                "id": "/properties/build/properties/bundles/items/properties/source",
+                "items": {
+                  "id": "/properties/build/properties/bundles/items/properties/source/items",
+                  "type": [
+                    "string",
+                    "array"
+                  ],
+                  "title": "Source path",
+                  "description": "A glob pattern (or array of glob patterns) defining the resources to include in the bundle"
+                },
+                "type": "array",
+                "title": "Source paths",
+                "description": "A collection of glob patterns to include in the bundle"
+              },
+              "prepend": {
+                "id": "/properties/build/properties/bundles/items/properties/prepend",
+                "items": {
+                  "id": "/properties/build/properties/bundles/items/properties/source/items",
+                  "type": [
+                    "string",
+                    "array"
+                  ],
+                  "title": "Source path",
+                  "description": "A glob pattern (or array of glob patterns) defining the resources to prepend in your bundle"
+                },
+                "type": "array",
+                "title": "Files to prepend",
+                "description": "A set of files to prepend to the bundle"
+              },
+              "dependencies": {
+                "id": "/properties/build/properties/bundles/items/properties/dependencies",
+                "type": "array",
+                "items": {
+                  "oneOf": [
+                    {
+                      "id": "/properties/build/properties/bundles/items/properties/dependencies/items",
+                      "type": "string",
+                      "title": "Bundle Dependency",
+                      "description": "If the main field of the library's package.json points to the single file that you need to bundle, then you can opt for a simplified configuration by just adding the package name to your dependencies directly",
+                      "default": "your-dependencies-npm-name"
+                    },
+                    {
+                      "id": "/properties/build/properties/bundles/items/properties/dependencies/items",
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "id": "/properties/build/properties/bundles/items/properties/dependencies/items/properties/name",
+                          "type": "string",
+                          "title": "Dependency name",
+                          "description": "The name of the dependency"
+                        },
+                        "path": {
+                          "id": "/properties/build/properties/bundles/items/properties/dependencies/items/properties/path",
+                          "type": "string",
+                          "title": "Relative path to the dependency",
+                          "description": "This is a path to the single module file itself. This path is relative to your application's src folder. Also, you should not include the file extension. .js will be appended automatically"
+                        },
+                        "main": {
+                          "id": "/properties/build/properties/bundles/items/properties/dependencies/items/properties/main",
+                          "type": [
+                            "string",
+                            "boolean"
+                          ],
+                          "title": "Main entry point",
+                          "description": "This is the main module (entry point) of the package, relative to the path. You should not include the file extension. .js will be appended automatically. Specify false if no main entry point is available for your dependency"
+                        },
+                        "env": {
+                          "id": "/properties/build/properties/bundles/items/properties/dependencies/items/properties/env",
+                          "type": [
+                            "string"
+                          ],
+                          "title": "Environment conditional bundling",
+                          "description": "This can be used on any dependency in the bundle to indicate what environment builds the dependency should be included in. By default, dependencies are included in all builds."
+                        },
+                        "resources": {
+                          "id": "/properties/build/properties/bundles/items/properties/dependencies/items/properties/resources",
+                          "type": [
+                            "array"
+                          ],
+                          "title": "Additional library resources",
+                          "description": "Provide a list of additional files to be included with the bundle"
+                        },
+                        "export": {
+                          "id": "/properties/build/properties/bundles/items/properties/dependencies/items/properties/export",
+                          "type": [
+                            "string"
+                          ],
+                          "title": "Global export",
+                          "description": "This is the name of the global variable that should be used as the exported value of the module"
+                        },
+                        "deps": {
+                          "id": "/properties/build/properties/bundles/items/properties/dependencies/items/properties/deps",
+                          "type": [
+                            "array"
+                          ],
+                          "title": "Legacy library dependencies",
+                          "description": "This is an array of dependencies which must be loaded and available before the legacy library can be evaluated"
+                        }
+                      },
+                      "required": [
+                        "name",
+                        "path"
+                      ],
+                      "title": "Bundle Dependency",
+                      "description": "Complex package"
+                    }
+                  ]
+                },
+                "title": "Bundle dependencies",
+                "description": "A set of dependencies to be included in your bundle\n Get more info at http://aurelia.io/hub.html#/doc/article/aurelia/framework/latest/the-aurelia-cli/10"
+              }
+            },
+            "type": "object"
+          },
+          "type": "array",
+          "title": "Application bundles",
+          "description": "Define bundles created during the build"
+        },
+        "copyFiles": {
+          "id": "/properties/build/properties/copyFiles",
+          "title": "Copy files",
+          "description": "A dictionary (file:destination) specifying files to copy after build",
+          "type": "object"
+        },
+        "loader": {
+          "id": "/properties/build/properties/loader",
+          "title": "Loader configuration",
+          "description": "Configuring the loader (e.g RequireJS) for the CLI",
+          "properties": {
+            "configTarget": {
+              "id": "/properties/build/properties/loader/properties/configTarget",
+              "type": "string",
+              "title": "Configuration target",
+              "description": "The target bundle where additional loader configs will be appended to the bottom of the file"
+            },
+            "includeBundleMetadataInConfig": {
+              "id": "/properties/build/properties/loader/properties/includeBundleMetadataInConfig",
+              "type": "string",
+              "title": "includeBundleMetadataInConfig",
+              "description": "Whether to include a \"bundles\" property in the loader configuration. http://requirejs.org/docs/api.html#config-bundles"
+            },
+            "plugins": {
+              "id": "/properties/build/properties/loader/properties/plugins",
+              "items": {
+                "id": "/properties/build/properties/loader/properties/plugins/items",
+                "properties": {
+                  "extensions": {
+                    "id": "/properties/build/properties/loader/properties/plugins/items/properties/extensions",
+                    "items": {
+                      "id": "/properties/build/properties/loader/properties/plugins/items/properties/extensions/items",
+                      "type": "string"
+                    },
+                    "type": "array",
+                    "title": "Plugin extensions",
+                    "description": "Extensions to be processed by the plugin"
+                  },
+                  "name": {
+                    "id": "/properties/build/properties/loader/properties/plugins/items/properties/name",
+                    "type": "string",
+                    "title": "Plugin name",
+                    "description": "The name of the plugin"
+                  },
+                  "stub": {
+                    "id": "/properties/build/properties/loader/properties/plugins/items/properties/stub",
+                    "type": "boolean",
+                    "title": "Stub",
+                    "description": "If set to true the plugin won't be included in the bundle, resulting in a smaller bundle size. But you can't use the plugin at runtime for files that aren't in the bundle."
+                  }
+                },
+                "type": "object"
+              },
+              "type": "array",
+              "title": "Loader plugins",
+              "description": "Configure additional loader plugins (e.g. text-plugin, json-plugin ...)"
+            },
+            "type": {
+              "id": "/properties/build/properties/loader/properties/type",
+              "type": "string",
+              "title": "Loader type",
+              "description": "The type of the loader to use"
+            },
+            "config": {
+              "id": "/properties/build/properties/loader/properties/config",
+              "type": "object",
+              "title": "Loader configs",
+              "description": "Additional configuration specifically for the selected loader type"
+            }
+          },
+          "type": "object"
+        },
+        "options": {
+          "id": "/properties/build/properties/options",
+          "properties": {
+            "minify": {
+              "id": "/properties/build/properties/options/properties/minify",
+              "type": "string",
+              "title": "Minification",
+              "description": "Minify builds for given environments"
+            },
+            "sourcemaps": {
+              "id": "/properties/build/properties/options/properties/sourcemaps",
+              "type": "string",
+              "title": "Create sourcemaps",
+              "description": "Create sourcemaps for given environments"
+            },
+            "rev": {
+              "id": "/properties/build/properties/options/properties/rev",
+              "type": "boolean",
+              "title": "Build revisions",
+              "description": "To create builds with revision numbers, you must set rev to true. This will cause a unique revision number to be added to the bundled files"
+            }
+          },
+          "type": "object",
+          "title": "Build options",
+          "description": "Setup minification, sourcemaps and revision support"
+        },
+        "targets": {
+          "id": "/properties/build/properties/targets",
+          "items": {
+            "id": "/properties/build/properties/targets/items",
+            "properties": {
+              "baseDir": {
+                "id": "/properties/build/properties/targets/items/properties/baseDir",
+                "type": "string",
+                "title": "BaseDir",
+                "description": "The baseDir for serving the build target"
+              },
+              "displayName": {
+                "id": "/properties/build/properties/targets/items/properties/displayName",
+                "type": "string",
+                "title": "Displayname",
+                "description": "The name to display for the target application"
+              },
+              "id": {
+                "id": "/properties/build/properties/targets/items/properties/id",
+                "type": "string",
+                "title": "Target id",
+                "description": "The id for the target application"
+              },
+              "index": {
+                "id": "/properties/build/properties/targets/items/properties/index",
+                "type": "string",
+                "title": "App start file",
+                "description": "The default start file for the application"
+              },
+              "output": {
+                "id": "/properties/build/properties/targets/items/properties/output",
+                "type": "string",
+                "title": "Output folder",
+                "description": "The folder where the built application will be copied to"
+              }
+            },
+            "type": "object"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "bundler": {
+      "id": "/properties/bundler",
+      "properties": {
+        "displayName": {
+          "id": "/properties/bundler/properties/displayName",
+          "type": "string"
+        },
+        "id": {
+          "id": "/properties/bundler/properties/id",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cssProcessor": {
+      "id": "/properties/cssProcessor",
+      "properties": {
+        "displayName": {
+          "id": "/properties/cssProcessor/properties/displayName",
+          "type": "string",
+          "title": "Display name",
+          "description": "The name to display for the selected css processor"
+        },
+        "fileExtension": {
+          "id": "/properties/cssProcessor/properties/fileExtension",
+          "type": "string",
+          "title": "File extension",
+          "description": "The file extension to use for the preprocessor"
+        },
+        "id": {
+          "id": "/properties/cssProcessor/properties/id",
+          "type": "string",
+          "title": "CSS preprocessor id",
+          "description": "The id of the selected css preprocssor"
+        },
+        "source": {
+          "id": "/properties/cssProcessor/properties/source",
+          "type": [
+            "string",
+            "array"
+          ],
+          "title": "CSS preprocessor sources",
+          "description": "A glob pattern (or array of glob patterns) pointing to the sources to be targeted by the css preprocessor"
+        }
+      },
+      "type": "object",
+      "title": "CSS Processor",
+      "description": "Define the used CSS Pre/processor"
+    },
+    "editor": {
+      "id": "/properties/editor",
+      "properties": {
+        "displayName": {
+          "id": "/properties/editor/properties/displayName",
+          "type": "string"
+        },
+        "id": {
+          "id": "/properties/editor/properties/id",
+          "type": "string"
+        }
+      },
+      "type": "object",
+      "title": "Editor",
+      "description": "The used editor along preconfigured defaults"
+    },
+    "markupProcessor": {
+      "id": "/properties/markupProcessor",
+      "properties": {
+        "displayName": {
+          "id": "/properties/markupProcessor/properties/displayName",
+          "type": "string",
+          "title": "Displayname",
+          "description": "The name to display of the markup processor"
+        },
+        "fileExtension": {
+          "id": "/properties/markupProcessor/properties/fileExtension",
+          "type": "string",
+          "title": "Markup file extensions",
+          "description": "The file extensions to target by the markup processor"
+        },
+        "id": {
+          "id": "/properties/markupProcessor/properties/id",
+          "type": "string",
+          "title": "Markup processor id",
+          "description": "The id of the markup processor"
+        },
+        "source": {
+          "id": "/properties/markupProcessor/properties/source",
+          "type": [
+            "string",
+            "array"
+          ],
+          "title": "Markup source",
+          "description": "A glob pattern (or array of glob patterns) to the markup sources. In case of Webpack this can be an empty string."
+        }
+      },
+      "type": "object",
+      "title": "Markup processor",
+      "description": "Configure the markup processor",
+      "required": [
+        "id",
+        "displayName",
+        "fileExtension",
+        "source"
+      ]
+    },
+    "name": {
+      "id": "/properties/name",
+      "type": "string",
+      "title": "App name",
+      "description": "The name of your app"
+    },
+    "paths": {
+      "id": "/properties/paths",
+      "type": "object",
+      "title": "Path mappings",
+      "description": "Path mappings (key/value) for the loader. These will be included into the loader configuration (RequireJS/SystemJS)."
+    },
+    "platform": {
+      "id": "/properties/platform",
+      "properties": {
+        "baseDir": {
+          "id": "/properties/platform/properties/baseDir",
+          "type": "string",
+          "title": "BaseDir",
+          "description": "Browsersync (au run) will serve from this directory"
+        },
+        "displayName": {
+          "id": "/properties/platform/properties/displayName",
+          "type": "string",
+          "title": "Display name",
+          "description": "The name of the platform specific build"
+        },
+        "id": {
+          "id": "/properties/platform/properties/id",
+          "type": "string",
+          "title": "Platform id",
+          "description": "The id of the platform specific build"
+        },
+        "index": {
+          "id": "/properties/platform/properties/index",
+          "type": "string",
+          "title": "Index file (index.html)",
+          "description": "Path relative from project root to the index.html file. CLI updates script tags in this file on build"
+        },
+        "output": {
+          "id": "/properties/platform/properties/output",
+          "type": "string",
+          "title": "Output",
+          "description": "A folder relative from project root where the bundles will be created"
+        },
+        "hmr": {
+          "id": "/properties/platform/properties/hmr",
+          "type": "boolean",
+          "default": false,
+          "title": "(ONLY WP) Hot Module Reloading",
+          "description": "ONLY FOR WEBPACK. Define whether hot module reloading should be used with the dev server"
+        },
+        "port": {
+          "id": "/properties/platform/properties/port",
+          "type": "integer",
+          "default": 8080,
+          "title": "(ONLY WP) Dev Server Port",
+          "description": "ONLY FOR WEBPACK. Define the default port to be used for the dev server"
+        },
+        "open": {
+          "id": "/properties/platform/properties/open",
+          "type": "boolean",
+          "default": false,
+          "title": "(ONLY WP) Auto open default browser",
+          "description": "ONLY FOR WEBPACK. Should the default browser be opened automatically"
+        }
+      },
+      "type": "object",
+      "title": "Platform",
+      "description": "Settings for the development platform"
+    },
+    "testFramework": {
+      "id": "/properties/testFramework",
+      "properties": {
+        "displayName": {
+          "id": "/properties/testFramework/properties/displayName",
+          "type": "string",
+          "title": "Test framework name",
+          "description": "The name to display for the used test framework"
+        },
+        "id": {
+          "id": "/properties/testFramework/properties/id",
+          "type": "string",
+          "title": "Test framework id",
+          "description": "The id of the used test framework"
+        }
+      },
+      "type": "object",
+      "title": "Test framework",
+      "description": "The used test framework",
+      "required": [
+        "displayName",
+        "id"
+      ]
+    },
+    "transpiler": {
+      "id": "/properties/transpiler",
+      "properties": {
+        "displayName": {
+          "id": "/properties/transpiler/properties/displayName",
+          "type": "string",
+          "title": "Displayname",
+          "description": "The name to display for the selected transpiler"
+        },
+        "dtsSource": {
+          "id": "/properties/transpiler/properties/dtsSource",
+          "items": {
+            "id": "/properties/transpiler/properties/dtsSource/items",
+            "type": "string"
+          },
+          "type": "array",
+          "title": "d.ts source",
+          "description": "Glob pattern to type definitions"
+        },
+        "fileExtension": {
+          "id": "/properties/transpiler/properties/fileExtension",
+          "type": "string",
+          "title": "File extension",
+          "description": "File extensions to be processed by the transpiler"
+        },
+        "id": {
+          "id": "/properties/transpiler/properties/id",
+          "type": "string",
+          "title": "Transpiler id",
+          "description": "The id of the transpiler"
+        },
+        "source": {
+          "id": "/properties/transpiler/properties/source",
+          "type": [
+            "string",
+            "array"
+          ],
+          "title": "Transpiler sources",
+          "description": "A glob pattern (or array of glob patterns) for the sources processed by the transpiler. In case of Webpack this can be an empty string"
+        },
+        "options": {
+          "id": "/properties/transpiler/properties/options",
+          "type": "object",
+          "title": "Transpiler options",
+          "description": "Addtional options to pass to the transpiler"
+        }
+      },
+      "type": "object",
+      "title": "Transpiler",
+      "description": "The transpiler chosen for the app",
+      "required": [
+        "displayName",
+        "id",
+        "fileExtension",
+        "source"
+      ]
+    },
+    "type": {
+      "id": "/properties/type",
+      "type": "string",
+      "title": "Scaffold type",
+      "description": "The CLI application type scaffolded"
+    },
+    "unitTestRunner": {
+      "id": "/properties/unitTestRunner",
+      "properties": {
+        "displayName": {
+          "id": "/properties/unitTestRunner/properties/displayName",
+          "type": "string",
+          "title": "Display name",
+          "description": "The name of the configured testrunner"
+        },
+        "id": {
+          "id": "/properties/unitTestRunner/properties/id",
+          "type": "string",
+          "title": "Testrunner Id",
+          "description": "The id of the configured testrunner"
+        },
+        "source": {
+          "id": "/properties/unitTestRunner/properties/source",
+          "type": "string",
+          "title": "Test source files",
+          "description": "Pointing to the spec files of your application. Can be empty for Webpack",
+          "default": "test/unit/**/*.js"
+        }
+      },
+      "type": [
+        "object",
+        "array"
+      ],
+      "title": "Test runner",
+      "description": "The testrunner used for your application. In case of Webpack this should be an array of testrunner configurations",
+      "required": [
+        "displayName",
+        "id",
+        "source"
+      ]
+    }
+  },
+  "type": "object"
+}

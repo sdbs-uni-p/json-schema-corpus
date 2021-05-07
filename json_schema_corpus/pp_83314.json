@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Person",
+  "type": "object",
+  "properties": {
+    "alias": {
+      "description": "Alias is similar in function to username.",
+      "type": "string"
+    },
+    "name": {
+      "description": "A users full name; first and last.",
+      "type": "string"
+    },
+    "photo": {
+      "description": "URL to an image file displaying the person's face.",
+      "type": "string"
+    },
+    "friends": {
+      "description": "An array of links to other characters.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^/friends/[^/]+$"
+      },
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "alias",
+    "name",
+    "photo"
+  ]
+}

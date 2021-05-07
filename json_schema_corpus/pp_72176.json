@@ -1,0 +1,100 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "TileSpec",
+  "description": "Specification of an image tile",
+  "type": "object",
+  "properties": {
+    "mipmapLevels": {
+      "description": "URLs to mipmap level images and masks",
+      "type": "object",
+      "patternProperties": {
+        "^[0-9]+$": {
+          "type": "object",
+          "properties": {
+            "imageUrl": {
+              "description": "URL to mipmap level image",
+              "type": "string"
+            },
+            "maskUrl": {
+              "description": "URL to mipmap level alpha mask",
+              "type": "string"
+            }
+          },
+          "required": [
+            "imageUrl"
+          ]
+        }
+      }
+    },
+    "tileId": {
+      "description": "unique identifier for tile within the stack",
+      "type": "string"
+    },
+    "layout": {
+      "description": "capture layout data for the tile",
+      "type": "object",
+      "properties": {
+        "temca": {
+          "description": "TEM camera array identifier",
+          "type": "string"
+        },
+        "camera": {
+          "description": "camera identifier",
+          "type": "string"
+        },
+        "imageRow": {
+          "description": "image row identifier",
+          "type": "string"
+        },
+        "imageCol": {
+          "description": "image column identifier",
+          "type": "string"
+        }
+      }
+    },
+    "z": {
+      "description": "z value or layer of this tile within the stack",
+      "type": "number"
+    },
+    "minX": {
+      "description": "left coordinate of the bounding box for this tile",
+      "type": "number"
+    },
+    "minY": {
+      "description": "top coordinate of the bounding box for this tile",
+      "type": "number"
+    },
+    "maxX": {
+      "description": "right coordinate of the bounding box for this tile",
+      "type": "number"
+    },
+    "maxY": {
+      "description": "bottom coordinate of the bounding box for this tile",
+      "type": "number"
+    },
+    "minIntensity": {
+      "description": "minimal intensity (mapped to 0)",
+      "type": "number"
+    },
+    "maxIntensity": {
+      "description": "minimal intensity (mapped to 0)",
+      "type": "number"
+    },
+    "width": {
+      "description": "width of the input image, if not present or set to -1",
+      "type": "number",
+      "default": -1
+    },
+    "height": {
+      "description": "width of the input image, if not present or set to -1",
+      "type": "number",
+      "default": -1
+    },
+    "transforms": {
+      "$ref": "transformSpec.schema.json#/definitions/listTransformSpec"
+    }
+  },
+  "required": [
+    "mipmapLevels"
+  ]
+}

@@ -1,0 +1,1549 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "type": "object",
+  "definitions": {
+    "EmailType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "emailAddress": {
+          "type": "string"
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "RequestorReceiverType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "person": {
+          "$ref": "PersonType"
+        },
+        "userDefinedExtensions": {
+          "$ref": "UserDefinedExtensionsType"
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "requestorReceiverOrganization": {
+          "$ref": "RequestorReceiverOrganizationType"
+        }
+      }
+    },
+    "TranscriptHoldType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "courseTitle": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "releaseDate": {
+          "$ref": "XMLGregorianCalendar"
+        },
+        "sessionName": {
+          "type": "string"
+        },
+        "sessionDesignator": {
+          "$ref": "XMLGregorianCalendar"
+        },
+        "holdType": {
+          "$ref": "HoldTypeType"
+        },
+        "noteMessage": {
+          "type": "string"
+        },
+        "academicAwardTitle": {
+          "type": "string"
+        }
+      }
+    },
+    "PersonType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "residency": {
+          "$ref": "ResidencyType"
+        },
+        "deceased": {
+          "$ref": "DeceasedType"
+        },
+        "gender": {
+          "$ref": "GenderType"
+        },
+        "schoolAssignedPersonID": {
+          "type": "string"
+        },
+        "recipientAssignedID": {
+          "type": "string"
+        },
+        "birth": {
+          "$ref": "BirthType"
+        },
+        "language": {
+          "type": "array",
+          "items": {
+            "$ref": "LanguageType"
+          }
+        },
+        "alternateName": {
+          "type": "array",
+          "items": {
+            "$ref": "NameType"
+          }
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "agencyIdentifier": {
+          "type": "array",
+          "items": {
+            "$ref": "AgencyIdentifierType"
+          }
+        },
+        "agencyAssignedID": {
+          "type": "string"
+        },
+        "partialSSN": {
+          "type": "string"
+        },
+        "highSchool": {
+          "$ref": "HighSchoolType"
+        },
+        "name": {
+          "$ref": "NameType"
+        },
+        "contacts": {
+          "type": "array",
+          "items": {
+            "$ref": "ContactsType"
+          }
+        }
+      }
+    },
+    "NameType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "lastName": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "nameCode": {
+          "$ref": "NameCodeType"
+        },
+        "namePrefix": {
+          "type": "string"
+        },
+        "nameTitle": {
+          "type": "string"
+        },
+        "compositeName": {
+          "type": "string"
+        },
+        "nameSuffix": {
+          "$ref": "NameSuffixType"
+        },
+        "middleName": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "DocumentTypeCodeType": {
+      "enum": [
+        "ACKNOWLEDGMENT",
+        "APPLICATION",
+        "CANCEL",
+        "CERTIFICATION_REQUEST",
+        "CHANGE",
+        "DISBURSEMENT_ACKNOWLEDGEMENT",
+        "DISBURSEMENT_FORECAST",
+        "DISBURSEMENT_ROSTER",
+        "INSTITUTION_REQUEST",
+        "GAINFUL_EMPLOYMENT_STUDENT_RESPONSE_FILE",
+        "GAINFUL_EMPLOYMENT_STUDENT_SUBMITTAL",
+        "IPEDS",
+        "NSLDS_ENROLLMENT_ERROR",
+        "NSLDS_ENROLLMENT_SUBMITTAL",
+        "RECEIPT",
+        "REQUEST",
+        "REQUESTED_RECORD",
+        "RESPONSE",
+        "REVERSE_TRANSFER",
+        "STUDENT_REQUEST",
+        "TERM_ENROLL",
+        "TERM_GRADE",
+        "THIRD_PARTY_REQUEST"
+      ]
+    },
+    "FeeDiscountRequestCodeType": {
+      "enum": [
+        "FIRST_TRANSCRIPT_REQUESTED",
+        "PREPAID_FEE",
+        "FINANCIAL_HARDSHIP"
+      ]
+    },
+    "DocumentOfficialCodeType": {
+      "enum": [
+        "OFFICIAL",
+        "UNOFFICIAL"
+      ]
+    },
+    "LanguageUsageType": {
+      "enum": [
+        "ALWAYS",
+        "FIRST_SPOKEN_LANGUAGE",
+        "NATIVE",
+        "READING",
+        "SOME_SECTIONS",
+        "SOMETIMES",
+        "SPEAKING",
+        "SPOKEN_AT_HOME",
+        "WRITING",
+        "WRITTEN_COMMUNICATION"
+      ]
+    },
+    "ElectronicDeliveryType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "electronicMethod": {
+          "type": "string"
+        },
+        "serviceProvider": {
+          "type": "string"
+        },
+        "userDefinedExtensions": {
+          "$ref": "UserDefinedExtensionsType"
+        },
+        "electronicFormat": {
+          "$ref": "ElectronicFormatType"
+        },
+        "noteMessage": {
+          "type": "string"
+        }
+      }
+    },
+    "AccreditationType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "accreditingBodyName": {
+          "type": "string"
+        },
+        "accreditingBodyCode": {
+          "$ref": "AccreditationTypeType"
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "BirthType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "birthday": {
+          "$ref": "XMLGregorianCalendar"
+        },
+        "birthStateProvinceCode": {
+          "$ref": "StateProvinceCodeType"
+        },
+        "birthYear": {
+          "$ref": "XMLGregorianCalendar"
+        },
+        "birthCountry": {
+          "$ref": "CountryCodeType"
+        },
+        "birthCity": {
+          "type": "string"
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "birthDate": {
+          "$ref": "XMLGregorianCalendar"
+        },
+        "age": {
+          "$ref": "BigInteger"
+        }
+      }
+    },
+    "SchoolLevelType": {
+      "enum": [
+        "ELEMENTARY",
+        "HIGH_SCHOOL",
+        "JUNIOR_HIGH",
+        "MIDDLE",
+        "OTHER",
+        "POSTSECONDARY",
+        "SECONDARY"
+      ]
+    },
+    "SchoolOverrideCodeType": {
+      "enum": [
+        "INSTITUTIONAL",
+        "MULTICAMPUS",
+        "TRANSFER",
+        "STUDY_ABROAD",
+        "COOP",
+        "RECIPROCAL",
+        "INTERNSHIP"
+      ]
+    },
+    "NameSuffixType": {
+      "enum": [
+        "JR",
+        "SR",
+        "I",
+        "II",
+        "III",
+        "IV",
+        "V",
+        "VI",
+        "VII",
+        "VIII",
+        "IX",
+        "X"
+      ]
+    },
+    "HighSchoolType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "mutuallyDefined": {
+          "type": "string"
+        },
+        "organizationName": {
+          "type": "string"
+        }
+      }
+    },
+    "RecipientType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "certificationRequested": {
+          "type": "string"
+        },
+        "recipientTrackingID": {
+          "type": "string"
+        },
+        "receiver": {
+          "$ref": "RequestorReceiverType"
+        },
+        "deliveryMethod": {
+          "type": "array",
+          "items": {
+            "$ref": "DeliveryMethodType"
+          }
+        },
+        "requestTrackingID": {
+          "type": "string"
+        },
+        "updateReason": {
+          "$ref": "UpdateReasonType"
+        },
+        "stampSealEnvelopeIndicator": {
+          "type": "boolean"
+        },
+        "deliveryInstruction": {
+          "type": "string"
+        },
+        "transcriptHold": {
+          "$ref": "TranscriptHoldType"
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "transcriptCopies": {
+          "$ref": "int"
+        },
+        "documentOfficialCode": {
+          "$ref": "DocumentOfficialCodeType"
+        },
+        "transcriptType": {
+          "$ref": "TranscriptTypeType"
+        },
+        "electronicDelivery": {
+          "$ref": "ElectronicDeliveryType"
+        },
+        "transcriptPurpose": {
+          "$ref": "TranscriptPurposeType"
+        },
+        "rushProcessingRequested": {
+          "type": "boolean"
+        },
+        "userDefinedExtensions": {
+          "$ref": "UserDefinedExtensionsType"
+        }
+      }
+    },
+    "XMLGregorianCalendar": {
+      "additionalProperties": false,
+      "type": "object"
+    },
+    "StateProvinceCodeType": {
+      "enum": [
+        "AA",
+        "AB",
+        "AE",
+        "AK",
+        "AL",
+        "AP",
+        "AR",
+        "AS",
+        "AZ",
+        "BC",
+        "CA",
+        "CO",
+        "CT",
+        "CZ",
+        "DC",
+        "DE",
+        "FL",
+        "FM",
+        "GA",
+        "GU",
+        "HI",
+        "IA",
+        "ID",
+        "IL",
+        "IN",
+        "KS",
+        "KY",
+        "LA",
+        "MA",
+        "MB",
+        "MD",
+        "ME",
+        "MH",
+        "MI",
+        "MN",
+        "MO",
+        "MP",
+        "MS",
+        "MT",
+        "NB",
+        "NC",
+        "ND",
+        "NE",
+        "NF",
+        "NH",
+        "NJ",
+        "NL",
+        "NM",
+        "NS",
+        "NT",
+        "NU",
+        "NV",
+        "NY",
+        "OH",
+        "OK",
+        "ON",
+        "OR",
+        "PA",
+        "PE",
+        "PR",
+        "PW",
+        "QC",
+        "RI",
+        "SC",
+        "SD",
+        "SK",
+        "TN",
+        "TX",
+        "UT",
+        "VA",
+        "VI",
+        "VT",
+        "WA",
+        "WI",
+        "WV",
+        "WY",
+        "YT"
+      ]
+    },
+    "UpdateReasonType": {
+      "enum": [
+        "CANCELLED",
+        "REVISED",
+        "DUPLICATE"
+      ]
+    },
+    "PhoneType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "areaCityCode": {
+          "type": "string"
+        },
+        "phoneNumber": {
+          "type": "string"
+        },
+        "phoneNumberExtension": {
+          "type": "string"
+        },
+        "countryPrefixCode": {
+          "type": "string"
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "effectiveDate": {
+          "$ref": "XMLGregorianCalendar"
+        },
+        "expirationDate": {
+          "$ref": "XMLGregorianCalendar"
+        }
+      }
+    },
+    "GenderCodeType": {
+      "enum": [
+        "FEMALE",
+        "MALE",
+        "UNREPORTED"
+      ]
+    },
+    "BigInteger": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "lowestSetBit": {
+          "$ref": "int"
+        }
+      },
+      "required": [
+        "lowestSetBit"
+      ]
+    },
+    "NameCodeType": {
+      "enum": [
+        "CASUAL",
+        "FORMAL",
+        "FORMER",
+        "LAW_SCHOOL_APPLICATION_SOURCE",
+        "LEGAL",
+        "MEDICAL_SCHOOL_APPLICATION_SOURCE",
+        "NICKNAME",
+        "OTHER"
+      ]
+    },
+    "Object": {
+      "additionalProperties": false,
+      "type": "object"
+    },
+    "UpdateContactsInformationType": {
+      "enum": [
+        "UPDATE_CONTACTS",
+        "NO_UPDATE"
+      ]
+    },
+    "ReleaseAuthorizedMethodType": {
+      "enum": [
+        "SIGNATURE",
+        "ELECTRONIC_SIGNATURE",
+        "LEGITIMATE_EDUCATIONAL_INTEREST",
+        "OTHER"
+      ]
+    },
+    "RequestType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "recipient": {
+          "type": "array",
+          "items": {
+            "$ref": "RecipientType"
+          }
+        },
+        "createdDateTime": {
+          "$ref": "XMLGregorianCalendar"
+        },
+        "userDefinedExtensions": {
+          "$ref": "UserDefinedExtensionsType"
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "requestor": {
+          "$ref": "RequestorReceiverType"
+        },
+        "requestedStudent": {
+          "$ref": "RequestedStudentType"
+        }
+      }
+    },
+    "TranscriptPurposeType": {
+      "enum": [
+        "ADMISSION",
+        "REGISTRAR",
+        "ADMISSION_REGISTRAR",
+        "CERTIFICATION_LICENSURE",
+        "EMPLOYMENT",
+        "SCHOLARSHIP",
+        "SELF_MANAGED_PACKAGE",
+        "SELF",
+        "ADMISSION_SERVICE",
+        "GRADUATE_ADMISSIONS",
+        "LAW_SCHOOL_ADMISSIONS",
+        "MEDICAL_SCHOOL_ADMISSIONS",
+        "SCHOLARSHIP_GRANT_FELLOWSHIP",
+        "TRANSFER",
+        "UNDERGRADUATE_ADMISSIONS",
+        "OTHER"
+      ]
+    },
+    "CountryCodeType": {
+      "enum": [
+        "AD",
+        "AE",
+        "AF",
+        "AG",
+        "AI",
+        "AL",
+        "AM",
+        "AN",
+        "AO",
+        "AQ",
+        "AR",
+        "AS",
+        "AT",
+        "AU",
+        "AW",
+        "AX",
+        "AZ",
+        "BA",
+        "BB",
+        "BD",
+        "BE",
+        "BF",
+        "BG",
+        "BH",
+        "BI",
+        "BJ",
+        "BL",
+        "BM",
+        "BN",
+        "BO",
+        "BQ",
+        "BR",
+        "BS",
+        "BT",
+        "BV",
+        "BW",
+        "BY",
+        "BZ",
+        "CA",
+        "CC",
+        "CD",
+        "CF",
+        "CG",
+        "CH",
+        "CI",
+        "CK",
+        "CL",
+        "CM",
+        "CN",
+        "CO",
+        "CR",
+        "CS",
+        "CU",
+        "CV",
+        "CW",
+        "CX",
+        "CY",
+        "CZ",
+        "DE",
+        "DJ",
+        "DK",
+        "DM",
+        "DO",
+        "DZ",
+        "EC",
+        "EE",
+        "EG",
+        "EH",
+        "ER",
+        "ES",
+        "ET",
+        "FI",
+        "FJ",
+        "FK",
+        "FM",
+        "FO",
+        "FR",
+        "GA",
+        "GB",
+        "GD",
+        "GE",
+        "GF",
+        "GG",
+        "GH",
+        "GI",
+        "GL",
+        "GM",
+        "GN",
+        "GP",
+        "GQ",
+        "GR",
+        "GS",
+        "GT",
+        "GU",
+        "GW",
+        "GY",
+        "GZ",
+        "HK",
+        "HM",
+        "HN",
+        "HR",
+        "HT",
+        "HU",
+        "ID",
+        "IE",
+        "IL",
+        "IM",
+        "IN",
+        "IO",
+        "IQ",
+        "IR",
+        "IS",
+        "IT",
+        "JE",
+        "JM",
+        "JO",
+        "JP",
+        "KE",
+        "KG",
+        "KH",
+        "KI",
+        "KM",
+        "KN",
+        "KP",
+        "KR",
+        "KS",
+        "KW",
+        "KY",
+        "KZ",
+        "LA",
+        "LB",
+        "LC",
+        "LI",
+        "LK",
+        "LR",
+        "LS",
+        "LT",
+        "LU",
+        "LV",
+        "LY",
+        "MA",
+        "MC",
+        "MD",
+        "ME",
+        "MF",
+        "MG",
+        "MH",
+        "MK",
+        "ML",
+        "MM",
+        "MN",
+        "MO",
+        "MP",
+        "MQ",
+        "MR",
+        "MS",
+        "MT",
+        "MU",
+        "MV",
+        "MW",
+        "MX",
+        "MY",
+        "MZ",
+        "NA",
+        "NC",
+        "NE",
+        "NF",
+        "NG",
+        "NI",
+        "NL",
+        "NO",
+        "NP",
+        "NR",
+        "NU",
+        "NZ",
+        "OM",
+        "PA",
+        "PE",
+        "PF",
+        "PG",
+        "PH",
+        "PK",
+        "PL",
+        "PM",
+        "PN",
+        "PR",
+        "PS",
+        "PT",
+        "PW",
+        "PY",
+        "QA",
+        "RE",
+        "RO",
+        "RS",
+        "RU",
+        "RW",
+        "SA",
+        "SB",
+        "SC",
+        "SD",
+        "SE",
+        "SG",
+        "SH",
+        "SI",
+        "SJ",
+        "SK",
+        "SL",
+        "SM",
+        "SN",
+        "SO",
+        "SR",
+        "SS",
+        "ST",
+        "SV",
+        "SX",
+        "SY",
+        "SZ",
+        "TC",
+        "TD",
+        "TF",
+        "TG",
+        "TH",
+        "TJ",
+        "TK",
+        "TL",
+        "TM",
+        "TN",
+        "TO",
+        "TR",
+        "TT",
+        "TV",
+        "TW",
+        "TZ",
+        "UA",
+        "UG",
+        "UM",
+        "US",
+        "UY",
+        "UZ",
+        "VA",
+        "VC",
+        "VE",
+        "VG",
+        "VI",
+        "VN",
+        "VU",
+        "WE",
+        "WF",
+        "WS",
+        "YE",
+        "YT",
+        "ZA",
+        "ZM",
+        "ZW"
+      ]
+    },
+    "DeliveryMethodType": {
+      "enum": [
+        "HOLD_FOR_PICKUP",
+        "MAIL",
+        "EXPRESS",
+        "OVERNIGHT",
+        "FAX",
+        "FAX_MAIL",
+        "FAX_EXPRESS",
+        "FAX_OVERNIGHT",
+        "ELECTRONIC",
+        "EXPRESS_INTERNATIONAL",
+        "EXPRESS_CANADA_MEXICO",
+        "EXPRESS_UNITED_STATES"
+      ]
+    },
+    "LanguageProficiencyType": {
+      "enum": [
+        "ENGLISH_ONLY",
+        "EXCELLENT",
+        "FAIR",
+        "FULLY_ENGLISH_PROFICIENT",
+        "GOOD",
+        "LIMITED_ENGLISH_PROFICIENCY",
+        "NON_ENGLISH_SPEAKING",
+        "POOR",
+        "REDESIGNATED_FLUENT_ENGLISH_PROFICIENT",
+        "UNACCEPTABLE",
+        "UNKNOWN"
+      ]
+    },
+    "UserDefinedExtensionsType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "any": {
+          "$ref": "Object"
+        }
+      }
+    },
+    "AgencyCodeType": {
+      "enum": [
+        "DISTRICT",
+        "MIGRANT",
+        "MUTUALLY_DEFINED",
+        "NATIONAL",
+        "PROVINCE",
+        "REGIONAL",
+        "STATE"
+      ]
+    },
+    "LanguageType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "languageProficiency": {
+          "$ref": "LanguageProficiencyType"
+        },
+        "languageUsage": {
+          "$ref": "LanguageUsageType"
+        },
+        "languageCode": {
+          "type": "string"
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "AccreditationTypeType": {
+      "enum": [
+        "MSA",
+        "NCA_CASI",
+        "NCA_HLC",
+        "NEASC_CIHE",
+        "NEASC_CTCI",
+        "NWCCU",
+        "OTHER",
+        "SACS",
+        "WASC_ACCJC",
+        "WASC_ACSCU"
+      ]
+    },
+    "ContactsType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "faxPhone": {
+          "type": "array",
+          "items": {
+            "$ref": "PhoneType"
+          }
+        },
+        "address": {
+          "type": "array",
+          "items": {
+            "$ref": "AddressType"
+          }
+        },
+        "phone": {
+          "type": "array",
+          "items": {
+            "$ref": "PhoneType"
+          }
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "email": {
+          "type": "array",
+          "items": {
+            "$ref": "EmailType"
+          }
+        }
+      }
+    },
+    "TransmissionTypeType": {
+      "enum": [
+        "DUPLICATE",
+        "MUTUALLY_DEFINED",
+        "ORIGINAL",
+        "REISSUE",
+        "REPLACE",
+        "RESUBMISSION"
+      ]
+    },
+    "AgencyIdentifierType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "agencyAssignedID": {
+          "type": "string"
+        },
+        "countryCode": {
+          "$ref": "CountryCodeType"
+        },
+        "agencyCode": {
+          "$ref": "AgencyCodeType"
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "agencyName": {
+          "type": "string"
+        },
+        "stateProvinceCode": {
+          "$ref": "StateProvinceCodeType"
+        }
+      }
+    },
+    "LocalOrganizationIDType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "localOrganizationIDCode": {
+          "type": "string"
+        },
+        "localOrganizationIDQualifier": {
+          "$ref": "LocalOrganizationIDCodeQualifierType"
+        }
+      }
+    },
+    "LocalOrganizationIDCodeQualifierType": {
+      "enum": [
+        "AA",
+        "AB",
+        "AE",
+        "AK",
+        "AL",
+        "AP",
+        "AR",
+        "AS",
+        "AZ",
+        "BC",
+        "CA",
+        "CO",
+        "CT",
+        "CZ",
+        "DC",
+        "DE",
+        "FL",
+        "FM",
+        "GA",
+        "GU",
+        "HI",
+        "IA",
+        "ID",
+        "IL",
+        "IN",
+        "KS",
+        "KY",
+        "LA",
+        "MA",
+        "MB",
+        "MD",
+        "ME",
+        "MH",
+        "MI",
+        "MN",
+        "MO",
+        "MP",
+        "MS",
+        "MT",
+        "NB",
+        "NC",
+        "ND",
+        "NE",
+        "NF",
+        "NH",
+        "NJ",
+        "NL",
+        "NM",
+        "NS",
+        "NT",
+        "NU",
+        "NV",
+        "NY",
+        "OH",
+        "OK",
+        "ON",
+        "OR",
+        "PA",
+        "PE",
+        "PR",
+        "PW",
+        "QC",
+        "RI",
+        "SC",
+        "SD",
+        "SK",
+        "TN",
+        "TX",
+        "UT",
+        "VA",
+        "VI",
+        "VT",
+        "WA",
+        "WI",
+        "WV",
+        "WY",
+        "YT",
+        "ZZ"
+      ]
+    },
+    "RequestedStudentType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "feeDiscountRequestCode": {
+          "$ref": "FeeDiscountRequestCodeType"
+        },
+        "releaseAuthorizedIndicator": {
+          "type": "boolean"
+        },
+        "person": {
+          "$ref": "PersonType"
+        },
+        "userDefinedExtensions": {
+          "$ref": "UserDefinedExtensionsType"
+        },
+        "updateContactsInformation": {
+          "$ref": "UpdateContactsInformationType"
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "attendance": {
+          "type": "array",
+          "items": {
+            "$ref": "AttendanceType"
+          }
+        },
+        "releaseAuthorizedMethod": {
+          "$ref": "ReleaseAuthorizedMethodType"
+        }
+      },
+      "required": [
+        "releaseAuthorizedIndicator"
+      ]
+    },
+    "ResidencyStatusCodeType": {
+      "enum": [
+        "IN_CITY",
+        "IN_COUNTY",
+        "IN_DISTRICT",
+        "IN_STATE",
+        "NON_RESIDENT",
+        "NOT_REPORTED",
+        "OTHER_RESIDENT",
+        "RESIDENT"
+      ]
+    },
+    "OrganizationType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "mutuallyDefined": {
+          "type": "string"
+        },
+        "organizationName": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "localOrganizationID": {
+          "$ref": "LocalOrganizationIDType"
+        },
+        "accreditation": {
+          "$ref": "AccreditationType"
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "contacts": {
+          "type": "array",
+          "items": {
+            "$ref": "ContactsType"
+          }
+        }
+      }
+    },
+    "GenderType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "genderCode": {
+          "$ref": "GenderCodeType"
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "int": {
+      "maximum": 2147483647,
+      "type": "integer",
+      "minimum": -2147483648
+    },
+    "HoldTypeType": {
+      "enum": [
+        "NOW",
+        "AFTER_DEGREE_AWARDED",
+        "AFTER_CERTIFICATE_AWARDED",
+        "AFTER_GRADES_POSTED",
+        "AFTER_DEGREE_COMPLETION_STATEMENT",
+        "AFTER_HONORS_STATEMENT",
+        "AFTER_CURRENT_TERM_ENROLLMENT",
+        "AFTER_SPECIFIED_DATE",
+        "AFTER_SPECIFIED_COURSE_GRADE",
+        "AFTER_GRADES_CHANGED",
+        "AFTER_SPECIFIED_TERM",
+        "AFTER_CORRESPONDENCE_COURSE_COMPLETED",
+        "OTHER"
+      ]
+    },
+    "TransmissionDataType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "documentCompleteCode": {
+          "type": "string"
+        },
+        "documentTypeCode": {
+          "$ref": "DocumentTypeCodeType"
+        },
+        "documentProcessCode": {
+          "$ref": "DocumentProcessCodeType"
+        },
+        "requestTrackingID": {
+          "type": "string"
+        },
+        "destination": {
+          "$ref": "SourceDestinationType"
+        },
+        "createdDateTime": {
+          "$ref": "XMLGregorianCalendar"
+        },
+        "userDefinedExtensions": {
+          "$ref": "UserDefinedExtensionsType"
+        },
+        "transmissionType": {
+          "$ref": "TransmissionTypeType"
+        },
+        "documentID": {
+          "type": "string"
+        },
+        "source": {
+          "$ref": "SourceDestinationType"
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "documentOfficialCode": {
+          "$ref": "DocumentOfficialCodeType"
+        }
+      }
+    },
+    "AcademicAwardsReportedType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "academicAwardDate": {
+          "$ref": "XMLGregorianCalendar"
+        },
+        "academicAwardTitle": {
+          "type": "string"
+        }
+      }
+    },
+    "SchoolType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "schoolLevel": {
+          "$ref": "SchoolLevelType"
+        },
+        "mutuallyDefined": {
+          "type": "string"
+        },
+        "organizationName": {
+          "type": "string"
+        },
+        "localOrganizationID": {
+          "$ref": "LocalOrganizationIDType"
+        },
+        "schoolOverrideCode": {
+          "$ref": "SchoolOverrideCodeType"
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "contacts": {
+          "type": "array",
+          "items": {
+            "$ref": "ContactsType"
+          }
+        }
+      }
+    },
+    "SourceDestinationType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "organization": {
+          "$ref": "OrganizationType"
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "DocumentProcessCodeType": {
+      "enum": [
+        "TEST",
+        "PRODUCTION"
+      ]
+    },
+    "AttendanceType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "currentEnrollmentIndicator": {
+          "type": "boolean"
+        },
+        "school": {
+          "$ref": "SchoolType"
+        },
+        "academicAwardsReported": {
+          "type": "array",
+          "items": {
+            "$ref": "AcademicAwardsReportedType"
+          }
+        },
+        "enrollDate": {
+          "$ref": "XMLGregorianCalendar"
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "exitDate": {
+          "$ref": "XMLGregorianCalendar"
+        }
+      }
+    },
+    "RequestorReceiverOrganizationType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "mutuallyDefined": {
+          "type": "string"
+        },
+        "organizationName": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "contacts": {
+          "type": "array",
+          "items": {
+            "$ref": "ContactsType"
+          }
+        }
+      }
+    },
+    "ElectronicFormatType": {
+      "enum": [
+        "EDI",
+        "OTHER",
+        "PDF",
+        "PDF_WITH_EMBEDDED_DATA",
+        "XML"
+      ]
+    },
+    "DeceasedType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "deceasedIndicator": {
+          "type": "boolean"
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "deceasedIndicator"
+      ]
+    },
+    "AddressType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "any"
+            }
+          }
+        }
+      }
+    },
+    "TranscriptTypeType": {
+      "enum": [
+        "BOTH_CONTINUING_ED_AND_CREDIT_COURSES",
+        "COMPLETE",
+        "CONTINUING_ED_CREDIT_COURSES_ONLY",
+        "CREDIT_COURSES_ONLY",
+        "DENTAL",
+        "GRADUATE",
+        "HEALTH",
+        "LAW",
+        "MANAGEMENT",
+        "MEDICAL",
+        "PHARMACY",
+        "UNDERGRADUATE"
+      ]
+    },
+    "ResidencyType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "country": {
+          "type": "string"
+        },
+        "countyCode": {
+          "type": "string"
+        },
+        "countryCode": {
+          "$ref": "CountryCodeType"
+        },
+        "county": {
+          "type": "string"
+        },
+        "residencyStatusCode": {
+          "$ref": "ResidencyStatusCodeType"
+        },
+        "stateProvince": {
+          "type": "string"
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "stateProvinceCode": {
+          "$ref": "StateProvinceCodeType"
+        }
+      }
+    }
+  },
+  "properties": {
+    "request": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/RequestType"
+      }
+    },
+    "transmissionData": {
+      "$ref": "#/definitions/TransmissionDataType"
+    },
+    "userDefinedExtensions": {
+      "$ref": "#/definitions/UserDefinedExtensionsType"
+    },
+    "noteMessage": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

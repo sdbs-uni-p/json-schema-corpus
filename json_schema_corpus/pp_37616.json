@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "array",
+  "id": "arrayOfPeople",
+  "items": {
+    "type": "object",
+    "properties": {
+      "firstname": {
+        "type": "string"
+      },
+      "lastname": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "firstname",
+      "lastname"
+    ]
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "configuration",
+  "description": "A system configuration that might lead to compromise",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "exploit-target-base.json"
+    },
+    {
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "configuration"
+          ]
+        },
+        "cce_id": {
+          "type": "string",
+          "description": "The CCE ID for this configuration"
+        }
+      }
+    }
+  ],
+  "relationships": {
+    "potential-coa": [
+      "course-of-action"
+    ],
+    "related": [
+      "asset",
+      "attack-pattern",
+      "campaign",
+      "configuration",
+      "course-of-action",
+      "identity",
+      "incident",
+      "indicator",
+      "kill-chain",
+      "kill-chain-phase",
+      "malicious-infrastructure",
+      "malicious-tool",
+      "malware",
+      "observation",
+      "threat-actor",
+      "tool",
+      "victim-targeting",
+      "vulnerability",
+      "weakness"
+    ],
+    "duplicate-of": [
+      "configuration"
+    ],
+    "suggested-update": [
+      "configuration"
+    ],
+    "derived-from": [
+      "configuration"
+    ]
+  }
+}

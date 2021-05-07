@@ -1,0 +1,185 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "oneOf": [
+    {
+      "$ref": "itemRead.json#/definitions/booleanItem"
+    },
+    {
+      "$ref": "itemRead.json#/definitions/stringItem"
+    },
+    {
+      "$ref": "itemRead.json#/definitions/numberItem"
+    },
+    {
+      "$ref": "itemRead.json#/definitions/dateItem"
+    },
+    {
+      "$ref": "#/definitions/fileItem"
+    },
+    {
+      "$ref": "#/definitions/cascadeItem"
+    },
+    {
+      "$ref": "#/definitions/picklistItem"
+    },
+    {
+      "$ref": "#/definitions/tableItem"
+    }
+  ],
+  "definitions": {
+    "fileItem": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [
+            "file"
+          ]
+        },
+        "name": {
+          "$ref": "itemRead.json#/definitions/name"
+        },
+        "value": {
+          "$ref": "fileUpload.json"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "name",
+        "value"
+      ]
+    },
+    "cascadeItem": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [
+            "cascade"
+          ]
+        },
+        "name": {
+          "$ref": "itemRead.json#/definitions/name"
+        },
+        "value": {
+          "$ref": "#/definitions/cascadeChoices"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "name",
+        "value"
+      ]
+    },
+    "cascadeChoices": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/cascadeChoice"
+      }
+    },
+    "cascadeChoice": {
+      "type": "object",
+      "properties": {
+        "choice": {
+          "type": "string",
+          "description": "the name of a choice that the user selected"
+        },
+        "subItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#"
+          },
+          "description": "items unlocked based on a cascade choice"
+        }
+      },
+      "required": [
+        "choice"
+      ],
+      "additionalProperties": false
+    },
+    "picklistItem": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [
+            "picklist"
+          ]
+        },
+        "id": {
+          "type": "integer",
+          "description": "id of the item"
+        },
+        "name": {
+          "$ref": "itemRead.json#/definitions/name"
+        },
+        "value": {
+          "$ref": "#/definitions/pickChoices"
+        },
+        "selectedIds": {
+          "$ref": "#/definitions/selectedIds"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "name",
+        "value"
+      ]
+    },
+    "selectedIds": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/selectedId"
+      }
+    },
+    "pickChoices": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/pickChoice"
+      }
+    },
+    "selectedId": {
+      "type": "integer",
+      "description": "the id of a choice that the user selected"
+    },
+    "pickChoice": {
+      "type": "string",
+      "description": "the name of a choice that the user selected"
+    },
+    "tableItem": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [
+            "table"
+          ]
+        },
+        "name": {
+          "$ref": "itemRead.json#/definitions/name"
+        },
+        "value": {
+          "$ref": "#/definitions/tableRows"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "name",
+        "value"
+      ]
+    },
+    "tableRows": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/tableRow"
+      }
+    },
+    "tableRow": {
+      "type": "array",
+      "items": {
+        "$ref": "#"
+      }
+    }
+  }
+}

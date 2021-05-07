@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Status DTO Schema",
+  "type": "object",
+  "properties": {
+    "status": {
+      "description": "Current status of the job execution",
+      "type": "string",
+      "$ref": "../mod-source-record-manager/status.json"
+    },
+    "errorStatus": {
+      "description": "Status that describe error state of job execution",
+      "type": "string",
+      "$ref": "../mod-source-record-manager/errorStatus.json"
+    }
+  },
+  "required": [
+    "status"
+  ]
+}

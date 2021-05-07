@@ -1,0 +1,9 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "NodeDescriptorList",
+  "description": "List of Nodes",
+  "type": "array",
+  "items": {
+    "$ref": "NodeDescriptor.json"
+  }
+}

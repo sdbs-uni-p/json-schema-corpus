@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "userId": {
+      "type": "string"
+    },
+    "fullname": {
+      "type": "string"
+    },
+    "nickname": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "birthday": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "userId",
+    "fullname",
+    "nickname",
+    "description",
+    "birthday"
+  ]
+}

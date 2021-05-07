@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://atomicbits.io/raml10/link.json#",
+  "type": "object",
+  "description": "A href",
+  "properties": {
+    "href": {
+      "type": "string",
+      "required": true
+    },
+    "method": {
+      "required": true,
+      "$ref": "method.json"
+    },
+    "accept": {
+      "type": "string",
+      "required": false
+    }
+  }
+}

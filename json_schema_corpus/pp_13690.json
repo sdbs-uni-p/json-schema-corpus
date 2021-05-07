@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "",
+  "definitions": {
+    "processing_block": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[0-9]{8}-[\\w|\\d]+-sbi[\\d]+:pb[0-9]{3}$"
+        },
+        "status": {
+          "type": "string"
+        },
+        "workflow": {
+          "$ref": "#definitions/workflow"
+        }
+      },
+      "required": [
+        "id",
+        "workflow"
+      ]
+    },
+    "workflow": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "template": {
+          "type": "object"
+        },
+        "stages": {
+          "type": "array",
+          "items": {
+            "$ref": "#definitions/workflow_stage"
+          }
+        }
+      },
+      "required": [
+        "name"
+      ]
+    },
+    "workflow_stage": {
+      "type": "object"
+    }
+  },
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[0-9]{8}-[\\w|\\d]+-sbi[\\d]+$"
+    },
+    "sub_array_id": {
+      "type": "string"
+    },
+    "processing_blocks": {
+      "type": "array",
+      "items": {
+        "$ref": "#definitions/processing_block"
+      }
+    }
+  },
+  "required": [
+    "id",
+    "sub_array_id",
+    "processing_blocks"
+  ]
+}

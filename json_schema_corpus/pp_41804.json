@@ -1,0 +1,134 @@
+{
+  "id": "test-driver",
+  "name": "myDriver",
+  "description": "This driver ",
+  "version": "0.1.0",
+  "inputDefinitions": [
+    {
+      "type": "apiPushInputDefinition",
+      "id": "push-input-definition",
+      "name": "push input definition",
+      "description": "a push input definition",
+      "schemaNode": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {
+          "hello": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "hello"
+        ]
+      }
+    },
+    {
+      "type": "apiPullInputDefinition",
+      "id": "pull-input-definition",
+      "name": "pull input definition",
+      "description": "a pull input definition",
+      "schemaNode": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {
+          "echo": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "echo"
+        ]
+      },
+      "frequency": 5,
+      "url": "http://localhost:8080/ping",
+      "method": "GET",
+      "headers": {
+        "Authorization": "Basic eW91QXJlQ3VyaW91czpnb29kRm9yWW91"
+      }
+    },
+    {
+      "type": "filesystemInputDefinition",
+      "id": "filesystem-input-definition",
+      "name": "filesystem input definition",
+      "description": "a filesystem input definition",
+      "schemaNode": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {
+          "hello": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "hello"
+        ]
+      },
+      "folder": "/opt/somewhere",
+      "regex": "*.json",
+      "deleteAfterRead": false
+    }
+  ],
+  "outputDefinitions": [
+    {
+      "type": "webhookOutputDefinition",
+      "id": "webhook-output-definition",
+      "name": "webhook output definition",
+      "description": "a webhook output definition",
+      "url": "http://192.168.0.14/toaster_api/heatValue",
+      "method": "POST",
+      "headers": {
+        "Authorization": "Basic eW91QXJlQ3VyaW91czpnb29kRm9yWW91"
+      },
+      "schemaNode": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {
+          "hello": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "hello"
+        ]
+      }
+    },
+    {
+      "type": "pollingOutputDefinition",
+      "id": "polling-output-definition",
+      "name": "polling output definition",
+      "description": "a polling output definition",
+      "ttl": 30,
+      "schemaNode": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {
+          "hello": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "hello"
+        ]
+      }
+    },
+    {
+      "type": "filesystemOutputDefinition",
+      "id": "filesystem-output-definition",
+      "name": "filesystem output definition",
+      "description": "a filesystem output definition",
+      "folder": "/myDropbox",
+      "schemaNode": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {
+          "hello": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "hello"
+        ]
+      }
+    }
+  ]
+}

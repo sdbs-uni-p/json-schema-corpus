@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "global": {
+      "type": "object",
+      "properties": {
+        "kernsysteme": {
+          "items": {
+            "$ref": "kernSystem.json"
+          },
+          "type": "array"
+        },
+        "makrodefinitionen": {
+          "items": {
+            "$ref": "makroDefinition.json"
+          },
+          "type": "array"
+        },
+        "zugangDav": {
+          "$ref": "zugangDav.json"
+        },
+        "usv": {
+          "$ref": "usv.json"
+        },
+        "rechner": {
+          "items": {
+            "$ref": "rechner.json"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "zugangDav"
+      ]
+    },
+    "inkarnationen": {
+      "items": {
+        "$ref": "inkarnation.json"
+      },
+      "type": "array"
+    },
+    "metaDaten": {
+      "additionalProperties": false,
+      "properties": {
+        "aenderungsGrund": {
+          "type": "string"
+        },
+        "erstelltAm": {
+          "type": "string"
+        },
+        "erstelltDurch": {
+          "type": "string"
+        },
+        "versionsNummer": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "required": [
+    "global",
+    "inkarnationen"
+  ]
+}

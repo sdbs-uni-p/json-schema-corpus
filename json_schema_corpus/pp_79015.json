@@ -1,0 +1,252 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "props.json",
+  "type": "object",
+  "definitions": {
+    "refOrSchema": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/reference"
+        },
+        {
+          "$ref": "#/definitions/schema"
+        }
+      ]
+    },
+    "reference": {
+      "type": "object",
+      "required": [
+        "$ref"
+      ],
+      "properties": {
+        "$ref": {
+          "$ref": "#/definitions/referenceObject"
+        }
+      }
+    },
+    "referenceObject": {
+      "type": "string",
+      "format": "uri-reference"
+    },
+    "schema": {
+      "type": "object",
+      "x-go-type": "map[string]interface{}"
+    },
+    "noTypeWithExamples": {
+      "examples": [
+        {
+          "firstName": "John",
+          "lastName": "Doe",
+          "age": 30
+        },
+        {
+          "firstName": "Sarah",
+          "lastName": "Connor",
+          "age": null,
+          "gender": "F"
+        }
+      ]
+    },
+    "noTypeWithExample": {
+      "example": {
+        "firstName": "John",
+        "lastName": "Doe",
+        "age": 30
+      }
+    },
+    "address": {
+      "properties": {
+        "addressStripped": {
+          "type": "string"
+        },
+        "address1": {
+          "type": "string"
+        },
+        "address2": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        }
+      }
+    },
+    "stringedType": {
+      "type": "string",
+      "enum": [
+        "bit",
+        "octet",
+        "short",
+        "long",
+        "longlong",
+        "shortstr",
+        "longstr",
+        "timestamp"
+      ]
+    },
+    "property": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/scalar"
+        },
+        {
+          "$ref": "#/definitions/table"
+        }
+      ]
+    },
+    "scalar": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "$ref": "#/definitions/stringedType"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "value"
+      ],
+      "additionalProperties": false
+    },
+    "table": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "table"
+        },
+        "value": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/property"
+          }
+        }
+      },
+      "required": [
+        "type",
+        "value"
+      ],
+      "additionalProperties": false
+    },
+    "shortStr": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "shortstr"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "value"
+      ],
+      "additionalProperties": false
+    },
+    "propertyOctet": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "octet"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "value"
+      ],
+      "additionalProperties": false
+    },
+    "timestamp": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "timestamp"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "value"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "properties": {
+    "refOrSchema": {
+      "$ref": "#/definitions/refOrSchema"
+    },
+    "noTypeWithExamples": {
+      "$ref": "#/definitions/noTypeWithExamples"
+    },
+    "noTypeWithExample": {
+      "$ref": "#/definitions/noTypeWithExample"
+    },
+    "address": {
+      "$ref": "#/definitions/address"
+    },
+    "headers": {
+      "$ref": "#/definitions/table",
+      "description": "message header field table"
+    },
+    "content-type": {
+      "$ref": "#/definitions/shortStr",
+      "description": "MIME content type"
+    },
+    "content-encoding": {
+      "$ref": "#/definitions/shortStr",
+      "description": "MIME content encoding"
+    },
+    "delivery-mode": {
+      "$ref": "#/definitions/propertyOctet",
+      "description": "non-persistent (1) or persistent (2)"
+    },
+    "priority": {
+      "$ref": "#/definitions/propertyOctet",
+      "description": "message priority, 0 to 9"
+    },
+    "correlation-id": {
+      "$ref": "#/definitions/shortStr",
+      "description": "application correlation identifier"
+    },
+    "reply-to": {
+      "$ref": "#/definitions/shortStr",
+      "description": "address to reply to"
+    },
+    "expiration": {
+      "$ref": "#/definitions/shortStr",
+      "description": "message expiration specification"
+    },
+    "message-id": {
+      "$ref": "#/definitions/shortStr",
+      "description": "application message identifier"
+    },
+    "timestamp": {
+      "$ref": "#/definitions/timestamp",
+      "description": "message timestamp"
+    },
+    "type": {
+      "$ref": "#/definitions/shortStr",
+      "description": "message type name"
+    },
+    "user-id": {
+      "$ref": "#/definitions/shortStr",
+      "description": "creating user id"
+    },
+    "app-id": {
+      "$ref": "#/definitions/shortStr",
+      "description": "creating application id"
+    }
+  },
+  "additionalProperties": {
+    "$ref": "#/definitions/property"
+  },
+  "patternProperties": {
+    "^x-": {}
+  }
+}

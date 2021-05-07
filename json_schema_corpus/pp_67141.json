@@ -1,0 +1,79 @@
+{
+  "title": "Phenotype",
+  "description": "Schema for submitting a human phenotype.",
+  "id": "/profiles/phenotype.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "required": [
+    "label",
+    "phenotype_term_name"
+  ],
+  "identifyingProperties": [
+    "uuid",
+    "label",
+    "aliases"
+  ],
+  "additionalProperties": false,
+  "mixinProperties": [
+    {
+      "$ref": "mixins.json#/schema_version"
+    },
+    {
+      "$ref": "mixins.json#/uuid"
+    },
+    {
+      "$ref": "mixins.json#/aliases"
+    },
+    {
+      "$ref": "mixins.json#/notes"
+    }
+  ],
+  "properties": {
+    "schema_version": {
+      "default": "1"
+    },
+    "phenotype_term_id": {
+      "@type": "@id",
+      "title": "Ontology ID",
+      "description": "Ontology identifier describing phenotype.",
+      "comment": "NTR is a new term request identifier provided by the DCC.",
+      "type": "string",
+      "pattern": "^(HPO):[0-9]{2,8}$"
+    },
+    "phenotype_term_name": {
+      "@id": null,
+      "title": "Ontology term",
+      "description": "Ontology term describing condition or disease.",
+      "type": "string"
+    },
+    "conditions": {
+      "title": "Conditions",
+      "description": "Conditions associated with this phenotype",
+      "type": "array",
+      "default": [],
+      "items": {
+        "title": "Conditions",
+        "description": "Conditions associated with this phenotype",
+        "type": "string",
+        "linkTo": "condition"
+      }
+    },
+    "label": {
+      "title": "Descriptive name of condition or disease",
+      "description": "Common name for the condition or disease",
+      "type": "string",
+      "format": "condition_label"
+    },
+    "status": {
+      "title": "Status",
+      "type": "string",
+      "default": "proposed",
+      "enum": [
+        "proposed",
+        "current",
+        "deleted",
+        "replaced"
+      ]
+    }
+  }
+}

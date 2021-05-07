@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "title": "pyblish-mindbender:container-1.0",
+  "description": "A loaded asset",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema",
+    "name",
+    "path"
+  ],
+  "properties": {
+    "schema": {
+      "type": "string"
+    },
+    "name": {
+      "description": "Full name of application object",
+      "type": "string"
+    },
+    "path": {
+      "description": "Absolute path",
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "#openid",
+  "type": "object",
+  "required": [
+    "openid"
+  ],
+  "properties": {
+    "openid": {
+      "id": "#openid!core",
+      "type": "string",
+      "format": "rfc3986-uri"
+    },
+    "mbox": {
+      "type": "null"
+    },
+    "mbox_sha1sum": {
+      "type": "null"
+    },
+    "account": {
+      "type": "null"
+    }
+  }
+}

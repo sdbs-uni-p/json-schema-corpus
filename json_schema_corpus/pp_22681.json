@@ -1,0 +1,115 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "$license": [
+    "http://www.apache.org/licenses/LICENSE-2.0"
+  ],
+  "id": "#",
+  "javaType": "org.apache.streams.fullcontact.pojo.PersonDetails",
+  "properties": {
+    "age": {
+      "$ref": "./PersonAge.json"
+    },
+    "education": {
+      "type": "array",
+      "items": {
+        "$ref": "./PersonEducationItem.json"
+      }
+    },
+    "emails": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "employment": {
+      "type": "array",
+      "description": "The Employment History Data Add-on returns current and historical employment history for a given contact. This data includes the organization and title during employment and approximate start and end dates.",
+      "items": {
+        "$ref": "./PersonEmploymentItem.json"
+      }
+    },
+    "gender": {
+      "type": "string",
+      "description": "Gender of the contact."
+    },
+    "interests": {
+      "type": "array",
+      "description": "The Affinities Data Add-on enables API consumers to better understand the interests of a contact. The data returned includes a list of interests that have been attributed to the contact, along with the level of affinity for the given interest and the category that the interest is within.",
+      "items": {
+        "$ref": "./PersonInterestItem.json"
+      }
+    },
+    "locations": {
+      "type": "array",
+      "items": {
+        "$ref": "./LocationItem.json"
+      }
+    },
+    "name": {
+      "$ref": "./PersonName.json"
+    },
+    "phones": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "photos": {
+      "type": "array",
+      "description": "Additionally, any profile pictures and URLs to other websites associated width the contact will be returned.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "profiles": {
+      "$ref": "./SocialProfiles.json"
+    },
+    "topics": {
+      "type": "array",
+      "description": "The Topics Data Add-on includes a list of topics or subjects that the contact is associated with. This information is determined based off of several indicators of the contact's online and social presence.",
+      "items": {
+        "$ref": "./PersonInterestItem.json"
+      }
+    },
+    "urls": {
+      "type": "array",
+      "description": "Additionally, any profile pictures and URLs to other websites associated width the contact will be returned.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,270 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "@type": "Person",
+  "@context": "http://schema.org/",
+  "description": "Schema.org Person",
+  "type": "object",
+  "definitions": {
+    "Thing": {
+      "@type": "Thing",
+      "type": "object",
+      "properties": {
+        "additionalType": {
+          "description": "An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.",
+          "type": "string",
+          "format": "uri"
+        },
+        "description": {
+          "description": "A short description of the item.",
+          "type": "string"
+        },
+        "image": {
+          "description": "URL of an image of the item.",
+          "type": "string",
+          "format": "uri"
+        },
+        "name": {
+          "description": "The name of the item.",
+          "type": "string"
+        },
+        "url": {
+          "description": "URL of the item.",
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "Person": {
+      "@type": "Person",
+      "type": "object",
+      "properties": {
+        "additionalName": {
+          "description": "An additional name for a Person, can be used for a middle name.",
+          "type": "string"
+        },
+        "address": {
+          "description": "Physical address of the item.",
+          "$ref": "PostalAddress.json"
+        },
+        "affiliation": {
+          "description": "An organization that this person is affiliated with. For example, a school/university, a club, or a team.",
+          "$ref": "Organization.json"
+        },
+        "alumniOf": {
+          "description": "An educational organizations that the person is an alumni of.",
+          "$ref": "EducationalOrganization.json"
+        },
+        "award": {
+          "description": "An award won by this person or for this creative work.",
+          "type": "string"
+        },
+        "awards": {
+          "description": "Awards won by this person or for this creative work. (legacy spelling; see singular form, award)",
+          "type": "string"
+        },
+        "birthDate": {
+          "description": "Date of birth.",
+          "type": "string",
+          "format": "date"
+        },
+        "brand": {
+          "description": "The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.",
+          "anyOf": [
+            {
+              "$ref": "Brand.json"
+            },
+            {
+              "$ref": "Organization.json"
+            }
+          ]
+        },
+        "children": {
+          "description": "A child of the person.",
+          "$ref": "Person.json"
+        },
+        "colleague": {
+          "description": "A colleague of the person.",
+          "$ref": "Person.json"
+        },
+        "colleagues": {
+          "description": "A colleague of the person (legacy spelling; see singular form, colleague).",
+          "$ref": "Person.json"
+        },
+        "contactPoint": {
+          "description": "A contact point for a person or organization.",
+          "$ref": "ContactPoint.json"
+        },
+        "contactPoints": {
+          "description": "A contact point for a person or organization (legacy spelling; see singular form, contactPoint).",
+          "$ref": "ContactPoint.json"
+        },
+        "deathDate": {
+          "description": "Date of death.",
+          "type": "string",
+          "format": "date"
+        },
+        "duns": {
+          "description": "The Dun & Bradstreet DUNS number for identifying an organization or business person.",
+          "type": "string"
+        },
+        "email": {
+          "description": "Email address.",
+          "type": "string"
+        },
+        "familyName": {
+          "description": "Family name. In the U.S., the last name of an Person. This can be used along with givenName instead of the Name property.",
+          "type": "string"
+        },
+        "faxNumber": {
+          "description": "The fax number.",
+          "type": "string"
+        },
+        "follows": {
+          "description": "The most generic uni-directional social relation.",
+          "$ref": "Person.json"
+        },
+        "gender": {
+          "description": "Gender of the person.",
+          "type": "string"
+        },
+        "givenName": {
+          "description": "Given name. In the U.S., the first name of a Person. This can be used along with familyName instead of the Name property.",
+          "type": "string"
+        },
+        "globalLocationNumber": {
+          "description": "The Global Location Number (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.",
+          "type": "string"
+        },
+        "hasPOS": {
+          "description": "Points-of-Sales operated by the organization or person.",
+          "$ref": "Place.json"
+        },
+        "homeLocation": {
+          "description": "A contact location for a person's residence.",
+          "anyOf": [
+            {
+              "$ref": "ContactPoint.json"
+            },
+            {
+              "$ref": "Place.json"
+            }
+          ]
+        },
+        "honorificPrefix": {
+          "description": "An honorific prefix preceding a Person's name such as Dr/Mrs/Mr.",
+          "type": "string"
+        },
+        "honorificSuffix": {
+          "description": "An honorific suffix preceding a Person's name such as M.D. /PhD/MSCSW.",
+          "type": "string"
+        },
+        "interactionCount": {
+          "description": "A count of a specific user interactions with this item\u2014for example, 20 UserLikes, 5 UserComments, or 300 UserDownloads. The user interaction type should be one of the sub types of UserInteraction.",
+          "type": "string"
+        },
+        "isicV4": {
+          "description": "The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.",
+          "type": "string"
+        },
+        "jobTitle": {
+          "description": "The job title of the person (for example, Financial Manager).",
+          "type": "string"
+        },
+        "knows": {
+          "description": "The most generic bi-directional social/work relation.",
+          "$ref": "Person.json"
+        },
+        "makesOffer": {
+          "description": "A pointer to products or services offered by the organization or person.",
+          "$ref": "Offer.json"
+        },
+        "memberOf": {
+          "description": "An organization to which the person belongs.",
+          "$ref": "Organization.json"
+        },
+        "naics": {
+          "description": "The North American Industry Classification System (NAICS) code for a particular organization or business person.",
+          "type": "string"
+        },
+        "nationality": {
+          "description": "Nationality of the person.",
+          "$ref": "Country.json"
+        },
+        "owns": {
+          "description": "Products owned by the organization or person.",
+          "anyOf": [
+            {
+              "$ref": "OwnershipInfo.json"
+            },
+            {
+              "$ref": "Product.json"
+            }
+          ]
+        },
+        "parent": {
+          "description": "A parent of this person.",
+          "$ref": "Person.json"
+        },
+        "parents": {
+          "description": "A parents of the person (legacy spelling; see singular form, parent).",
+          "$ref": "Person.json"
+        },
+        "performerIn": {
+          "description": "Event that this person is a performer or participant in.",
+          "$ref": "Event.json"
+        },
+        "relatedTo": {
+          "description": "The most generic familial relation.",
+          "$ref": "Person.json"
+        },
+        "seeks": {
+          "description": "A pointer to products or services sought by the organization or person (demand).",
+          "$ref": "Demand.json"
+        },
+        "sibling": {
+          "description": "A sibling of the person.",
+          "$ref": "Person.json"
+        },
+        "siblings": {
+          "description": "A sibling of the person (legacy spelling; see singular form, sibling).",
+          "$ref": "Person.json"
+        },
+        "spouse": {
+          "description": "The person's spouse.",
+          "$ref": "Person.json"
+        },
+        "taxID": {
+          "description": "The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.",
+          "type": "string"
+        },
+        "telephone": {
+          "description": "The telephone number.",
+          "type": "string"
+        },
+        "vatID": {
+          "description": "The Value-added Tax ID of the organisation or person.",
+          "type": "string"
+        },
+        "workLocation": {
+          "description": "A contact location for a person's place of work.",
+          "anyOf": [
+            {
+              "$ref": "ContactPoint.json"
+            },
+            {
+              "$ref": "Place.json"
+            }
+          ]
+        },
+        "worksFor": {
+          "description": "Organizations that the person works for.",
+          "$ref": "Organization.json"
+        }
+      }
+    }
+  },
+  "allOf": [
+    "#definitions/Thing",
+    "#definitions/Person"
+  ]
+}

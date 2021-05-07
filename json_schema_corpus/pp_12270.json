@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "nom": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "id_parent": {
+      "type": "integer"
+    },
+    "id_type": {
+      "type": "integer"
+    },
+    "id_enseignement": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "nom",
+    "id_parent",
+    "id_type",
+    "id_enseignement"
+  ]
+}

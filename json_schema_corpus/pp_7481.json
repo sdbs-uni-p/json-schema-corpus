@@ -1,0 +1,12 @@
+{
+  "id": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/LayoutPanel/TablePanel/Row.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "\u042f\u0447\u0435\u0439\u043a\u0430 \u043f\u0430\u043d\u0435\u043b\u0438 GridPanel",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/Container/Container.json"
+    }
+  ],
+  "properties": {}
+}

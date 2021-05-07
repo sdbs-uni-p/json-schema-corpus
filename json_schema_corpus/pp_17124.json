@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Proverb",
+  "description": "A mixed Proverb, combined from two seperate ones",
+  "type": "object",
+  "properties": {
+    "front": {
+      "description": "The front half of one proverb",
+      "type": "string"
+    },
+    "back": {
+      "description": "The back half of another proverb",
+      "type": "string"
+    },
+    "combined": {
+      "description": "The combined proverb",
+      "type": "string"
+    },
+    "language": {
+      "description": "The Language of the proverbs",
+      "type": "string"
+    }
+  },
+  "required": [
+    "front",
+    "back",
+    "combined",
+    "language"
+  ]
+}

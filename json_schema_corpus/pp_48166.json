@@ -1,0 +1,16 @@
+{
+  "id": "http://schema.myrtana.sk/text/paragraph.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Paragraph",
+  "description": "A paragraph of text. Should work for left-to-right and right-to-left languages.",
+  "type": "object",
+  "properties": {
+    "body": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "body"
+  ]
+}

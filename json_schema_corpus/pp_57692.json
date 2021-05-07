@@ -1,0 +1,170 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "patch": {
+      "type": "object",
+      "additionalProperties": false,
+      "patternProperties": {
+        "^([1-9][0-9]?|[1-4][0-9]{2}|50[0-9]|51[0-2])$": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "cues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "systems": {
+            "$ref": "#/definitions/systems"
+          },
+          "uuid": {
+            "type": "string"
+          },
+          "duration": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "name",
+          "systems",
+          "uuid",
+          "duration"
+        ]
+      }
+    },
+    "live": {
+      "type": "object",
+      "properties": {
+        "level": {
+          "$ref": "#/definitions/percent"
+        },
+        "cue": {
+          "type": "object",
+          "oneOf": [
+            {
+              "properties": {},
+              "additionalProperties": false
+            },
+            {
+              "properties": {
+                "uuid": {
+                  "type": "string"
+                },
+                "percent": {
+                  "$ref": "#/definitions/percent"
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "uuid",
+                "percent"
+              ]
+            },
+            {
+              "properties": {
+                "uuid": {
+                  "type": "string"
+                },
+                "time": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "uuid",
+                "time"
+              ]
+            }
+          ]
+        },
+        "systems": {
+          "$ref": "#/definitions/systems"
+        }
+      },
+      "required": [
+        "level",
+        "cue",
+        "systems"
+      ]
+    }
+  },
+  "required": [
+    "patch",
+    "live"
+  ],
+  "definitions": {
+    "address": {
+      "type": "integer",
+      "maximum": 255,
+      "minimum": 1
+    },
+    "percent": {
+      "type": "number",
+      "maximum": 1,
+      "minimum": 0
+    },
+    "systems": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "level": {
+            "$ref": "#/definitions/percent"
+          },
+          "query": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "object",
+              "oneOf": [
+                {
+                  "properties": {
+                    "address": {
+                      "$ref": "#/definitions/address"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "address"
+                  ]
+                },
+                {
+                  "properties": {
+                    "tag": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "tag"
+                  ]
+                }
+              ]
+            }
+          },
+          "uuid": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "level",
+          "query",
+          "uuid"
+        ]
+      }
+    }
+  }
+}

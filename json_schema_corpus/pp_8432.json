@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "properties": {
+    "enum_homeNum": {
+      "type": "integer",
+      "enum": [
+        1,
+        2,
+        3
+      ]
+    },
+    "enum_parks": {
+      "type": "string",
+      "enum": [
+        "park_a",
+        "park_b"
+      ]
+    },
+    "name": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "enum_homeNum",
+    "enum_parks",
+    "name"
+  ]
+}

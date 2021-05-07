@@ -1,0 +1,243 @@
+{
+  "id": "http://schemas.triniti.io/json-schema/gdbots/iam/mixin/search-users-response/1-0-0.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "response_id": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+      "pbj": {
+        "type": "uuid",
+        "rule": "single"
+      }
+    },
+    "created_at": {
+      "type": "string",
+      "pattern": "^[1-9]{1}[0-9]{12,15}$",
+      "pbj": {
+        "type": "microtime",
+        "rule": "single"
+      }
+    },
+    "ctx_request_ref": {
+      "type": "object",
+      "properties": {
+        "curie": {
+          "type": "string",
+          "pattern": "^([a-z0-9-]+):([a-z0-9\\.-]+):([a-z0-9-]+)?:([a-z0-9-]+)$",
+          "minLength": 0,
+          "maxLength": 146
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9:_\\-]+$",
+          "minLength": 0,
+          "maxLength": 255
+        },
+        "tag": {
+          "type": "string",
+          "pattern": "^([\\w\\/-]|[\\w-][\\w\\/-]*[\\w-])$",
+          "minLength": 0,
+          "maxLength": 255
+        }
+      },
+      "required": [
+        "curie",
+        "id"
+      ],
+      "additionalProperties": false,
+      "pbj": {
+        "type": "message-ref",
+        "rule": "single"
+      }
+    },
+    "ctx_request": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "#/definitions/request"
+        }
+      ],
+      "description": "The \"ctx_request\" is the actual request object that \"ctx_request_ref\" refers to. In some cases it's useful for request handlers to copy the request into the response so the requestor has everything in one message. This will NOT always be populated. A common use case is search request/response cycles where you want to know what the search criteria was so you can render that along with the results.",
+      "pbj": {
+        "type": "message",
+        "rule": "single"
+      }
+    },
+    "ctx_correlator_ref": {
+      "type": "object",
+      "properties": {
+        "curie": {
+          "type": "string",
+          "pattern": "^([a-z0-9-]+):([a-z0-9\\.-]+):([a-z0-9-]+)?:([a-z0-9-]+)$",
+          "minLength": 0,
+          "maxLength": 146
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9:_\\-]+$",
+          "minLength": 0,
+          "maxLength": 255
+        },
+        "tag": {
+          "type": "string",
+          "pattern": "^([\\w\\/-]|[\\w-][\\w\\/-]*[\\w-])$",
+          "minLength": 0,
+          "maxLength": 255
+        }
+      },
+      "required": [
+        "curie",
+        "id"
+      ],
+      "additionalProperties": false,
+      "pbj": {
+        "type": "message-ref",
+        "rule": "single"
+      }
+    },
+    "derefs": {
+      "type": "object",
+      "patternProperties": {
+        "^[a-zA-Z_]{1}[\\w\\.:-]+$": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "description": "Responses can include \"dereferenced\" messages to prevent the consumer from needing to make multiple HTTP requests. It is up to the consumer to make use of the dereferenced messages if/when they are provided.",
+      "pbj": {
+        "type": "message",
+        "rule": "map"
+      }
+    },
+    "links": {
+      "type": "object",
+      "patternProperties": {
+        "^[a-zA-Z_]{1}[\\w\\.:-]+$": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 65535
+        }
+      },
+      "additionalProperties": false,
+      "description": "@link https://en.wikipedia.org/wiki/HATEOAS",
+      "pbj": {
+        "type": "text",
+        "rule": "map"
+      }
+    },
+    "metas": {
+      "type": "object",
+      "patternProperties": {
+        "^[a-zA-Z_]{1}[\\w\\.:-]+$": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 65535
+        }
+      },
+      "additionalProperties": false,
+      "pbj": {
+        "type": "text",
+        "rule": "map"
+      }
+    },
+    "total": {
+      "type": "integer",
+      "default": 0,
+      "minimum": 0,
+      "maximum": 4294967295,
+      "description": "The total number of nodes matching the search.",
+      "pbj": {
+        "type": "int",
+        "rule": "single"
+      }
+    },
+    "has_more": {
+      "type": "boolean",
+      "pbj": {
+        "type": "boolean",
+        "rule": "single"
+      }
+    },
+    "time_taken": {
+      "type": "integer",
+      "default": 0,
+      "minimum": 0,
+      "maximum": 16777215,
+      "description": "How long in milliseconds it took to run the query.",
+      "pbj": {
+        "type": "medium-int",
+        "rule": "single"
+      }
+    },
+    "max_score": {
+      "type": "number",
+      "default": 0,
+      "description": "The maximum score of a matching node from the entire search.",
+      "pbj": {
+        "type": "float",
+        "rule": "single"
+      }
+    },
+    "cursors": {
+      "type": "object",
+      "patternProperties": {
+        "^[a-zA-Z_]{1}[\\w\\.:-]+$": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 255
+        }
+      },
+      "additionalProperties": false,
+      "description": "Cursors are optionally provided by the underlying search system to allow for efficient pagination. In the absense of cursors, paging is done using count and page number.",
+      "pbj": {
+        "type": "string",
+        "rule": "map"
+      }
+    },
+    "nodes": {
+      "type": "array",
+      "items": [
+        {
+          "$ref": "#/definitions/user"
+        }
+      ],
+      "additionalProperties": false,
+      "pbj": {
+        "type": "message",
+        "rule": "list"
+      }
+    }
+  },
+  "required": [
+    "response_id"
+  ],
+  "definitions": {
+    "request": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "http://schemas.triniti.io/json-schema/gdbots/pbjx/mixin/request/1-0-0.json#"
+        },
+        {
+          "$ref": "http://schemas.triniti.io/json-schema/gdbots/pbjx/mixin/request/1-0-1.json#"
+        },
+        {
+          "$ref": "http://schemas.triniti.io/json-schema/gdbots/pbjx/mixin/request/1-0-2.json#"
+        }
+      ]
+    },
+    "user": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "http://schemas.triniti.io/json-schema/gdbots/iam/mixin/user/1-0-0.json#"
+        },
+        {
+          "$ref": "http://schemas.triniti.io/json-schema/gdbots/iam/mixin/user/1-0-1.json#"
+        }
+      ]
+    }
+  },
+  "additionalProperties": true
+}

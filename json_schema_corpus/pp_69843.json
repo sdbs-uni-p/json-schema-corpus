@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://jsonschema.net",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "p",
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "span",
+        "label"
+      ],
+      "required": true
+    },
+    "content": {
+      "type": "string",
+      "required": true
+    },
+    "help": {
+      "type": "string"
+    },
+    "additional-classes": {
+      "type": "string"
+    }
+  }
+}

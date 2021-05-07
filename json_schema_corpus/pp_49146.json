@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "IPAC Presence API",
+  "description": "Common data types used throughout the IPAC Presence API",
+  "type": "object"
+}

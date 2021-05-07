@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "person",
+  "description": "A person resource in this IAM system",
+  "type": "object"
+}

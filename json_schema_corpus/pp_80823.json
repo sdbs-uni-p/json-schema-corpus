@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Claimant basic data",
+  "description": "Service sharing information related to data sets (e.g. Inspire)",
+  "type": "object",
+  "properties": {
+    "name": {
+      "title": "Service Name",
+      "description": "Short name of a service (e.g. CERN)",
+      "type": "string",
+      "minLength": 1
+    },
+    "url": {
+      "title": "Service URL",
+      "description": "HTTP URL addressing the service home page",
+      "type": "string",
+      "minLength": 1
+    },
+    "persistent_identifiers": {
+      "title": "Persistent identifiers",
+      "description": "List of identifiers known by the service (e.g. DOID). They should be all in caps.",
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "static/json/schemas/persistent_id.json"
+      }
+    }
+  },
+  "required": [
+    "name",
+    "url"
+  ],
+  "additionalProperties": false
+}

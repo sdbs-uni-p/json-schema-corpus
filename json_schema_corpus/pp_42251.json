@@ -1,0 +1,668 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://jsonschema.net",
+  "type": "object",
+  "properties": {
+    "rowIndex": {
+      "id": "http://jsonschema.net/rowIndex",
+      "type": "integer",
+      "default": 1,
+      "enum": [
+        null,
+        1
+      ]
+    },
+    "issue": {
+      "id": "http://jsonschema.net/issue",
+      "type": "string",
+      "default": "1.0",
+      "enum": [
+        null,
+        "1.0"
+      ]
+    },
+    "deviceCode": {
+      "id": "http://jsonschema.net/deviceCode",
+      "type": "string",
+      "default": "OSMPDRLNE",
+      "enum": [
+        null,
+        "OSMPDRLNE"
+      ]
+    },
+    "deviceId-UnitMapping": {
+      "id": "http://jsonschema.net/deviceId-UnitMapping",
+      "type": "array",
+      "items": [
+        {
+          "id": "http://jsonschema.net/deviceId-UnitMapping/0",
+          "type": "object",
+          "properties": {
+            "segment": {
+              "id": "http://jsonschema.net/deviceId-UnitMapping/0/segment",
+              "type": "integer",
+              "default": 1,
+              "enum": [
+                null,
+                1
+              ]
+            },
+            "values": {
+              "id": "http://jsonschema.net/deviceId-UnitMapping/0/values",
+              "type": "array",
+              "items": {
+                "id": "http://jsonschema.net/deviceId-UnitMapping/0/values/0",
+                "type": "string",
+                "default": "20",
+                "enum": [
+                  null,
+                  "20"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "http://jsonschema.net/deviceId-UnitMapping/1",
+          "type": "object",
+          "properties": {
+            "segment": {
+              "id": "http://jsonschema.net/deviceId-UnitMapping/1/segment",
+              "type": "integer",
+              "default": 2,
+              "enum": [
+                null,
+                2
+              ]
+            },
+            "values": {
+              "id": "http://jsonschema.net/deviceId-UnitMapping/1/values",
+              "type": "array",
+              "items": [
+                {
+                  "id": "http://jsonschema.net/deviceId-UnitMapping/1/values/0",
+                  "type": "string",
+                  "default": "1-7",
+                  "enum": [
+                    null,
+                    "1-7"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/deviceId-UnitMapping/1/values/1",
+                  "type": "string",
+                  "default": "10-16",
+                  "enum": [
+                    null,
+                    "10-16"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "http://jsonschema.net/deviceId-UnitMapping/2",
+          "type": "object",
+          "properties": {
+            "segment": {
+              "id": "http://jsonschema.net/deviceId-UnitMapping/2/segment",
+              "type": "integer",
+              "default": 3,
+              "enum": [
+                null,
+                3
+              ]
+            },
+            "values": {
+              "id": "http://jsonschema.net/deviceId-UnitMapping/2/values",
+              "type": "array",
+              "items": {
+                "id": "http://jsonschema.net/deviceId-UnitMapping/2/values/0",
+                "type": "string",
+                "default": "1-20",
+                "enum": [
+                  null,
+                  "1-20"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "range": {
+      "id": "http://jsonschema.net/range",
+      "type": "string",
+      "default": "N/A",
+      "enum": [
+        null,
+        "N/A"
+      ]
+    },
+    "unitID-frameData": {
+      "id": "http://jsonschema.net/unitID-frameData",
+      "type": "object",
+      "properties": {
+        "unit": {
+          "id": "http://jsonschema.net/unitID-frameData/unit",
+          "type": "string",
+          "default": "xxyyzz",
+          "enum": [
+            null,
+            "xxyyzz"
+          ]
+        },
+        "shelf": {
+          "id": "http://jsonschema.net/unitID-frameData/shelf",
+          "type": "string",
+          "default": "xx",
+          "enum": [
+            null,
+            "xx"
+          ]
+        },
+        "slot": {
+          "id": "http://jsonschema.net/unitID-frameData/slot",
+          "type": "string",
+          "default": "yy",
+          "enum": [
+            null,
+            "yy"
+          ]
+        },
+        "port": {
+          "id": "http://jsonschema.net/unitID-frameData/port",
+          "type": "string",
+          "default": "zz",
+          "enum": [
+            null,
+            "zz"
+          ]
+        }
+      }
+    },
+    "protectDevId": {
+      "id": "http://jsonschema.net/protectDevId",
+      "type": "string",
+      "default": "",
+      "enum": [
+        null
+      ]
+    },
+    "parentDevId": {
+      "id": "http://jsonschema.net/parentDevId",
+      "type": "string",
+      "default": "",
+      "enum": [
+        null
+      ]
+    },
+    "actions": {
+      "id": "http://jsonschema.net/actions",
+      "type": "array",
+      "items": [
+        {
+          "id": "http://jsonschema.net/actions/0",
+          "type": "object",
+          "properties": {
+            "action": {
+              "id": "http://jsonschema.net/actions/0/action",
+              "type": "string",
+              "default": "Add",
+              "enum": [
+                null,
+                "Add"
+              ]
+            },
+            "commands": {
+              "id": "http://jsonschema.net/actions/0/commands",
+              "type": "array",
+              "items": [
+                {
+                  "id": "http://jsonschema.net/actions/0/commands/0",
+                  "type": "string",
+                  "default": "Transmit",
+                  "enum": [
+                    null,
+                    "Transmit"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/actions/0/commands/1",
+                  "type": "string",
+                  "default": "Undo",
+                  "enum": [
+                    null,
+                    "Undo"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/actions/0/commands/2",
+                  "type": "string",
+                  "default": "Verify Transmit",
+                  "enum": [
+                    null,
+                    "Verify Transmit"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/actions/0/commands/3",
+                  "type": "string",
+                  "default": "Verify",
+                  "enum": [
+                    null,
+                    "Verify"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "http://jsonschema.net/actions/1",
+          "type": "object",
+          "properties": {
+            "action": {
+              "id": "http://jsonschema.net/actions/1/action",
+              "type": "string",
+              "default": "Delete",
+              "enum": [
+                null,
+                "Delete"
+              ]
+            },
+            "commands": {
+              "id": "http://jsonschema.net/actions/1/commands",
+              "type": "array",
+              "items": [
+                {
+                  "id": "http://jsonschema.net/actions/1/commands/0",
+                  "type": "string",
+                  "default": "Transmit",
+                  "enum": [
+                    null,
+                    "Transmit"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/actions/1/commands/1",
+                  "type": "string",
+                  "default": "Undo",
+                  "enum": [
+                    null,
+                    "Undo"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/actions/1/commands/2",
+                  "type": "string",
+                  "default": "Verify Transmit",
+                  "enum": [
+                    null,
+                    "Verify Transmit"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/actions/1/commands/3",
+                  "type": "string",
+                  "default": "Verify",
+                  "enum": [
+                    null,
+                    "Verify"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "http://jsonschema.net/actions/2",
+          "type": "object",
+          "properties": {
+            "action": {
+              "id": "http://jsonschema.net/actions/2/action",
+              "type": "string",
+              "default": "Rearrange",
+              "enum": [
+                null,
+                "Rearrange"
+              ]
+            },
+            "commands": {
+              "id": "http://jsonschema.net/actions/2/commands",
+              "type": "array",
+              "items": [
+                {
+                  "id": "http://jsonschema.net/actions/2/commands/0",
+                  "type": "string",
+                  "default": "Transmit",
+                  "enum": [
+                    null,
+                    "Transmit"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/actions/2/commands/1",
+                  "type": "string",
+                  "default": "Undo",
+                  "enum": [
+                    null,
+                    "Undo"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/actions/2/commands/2",
+                  "type": "string",
+                  "default": "Verify Transmit",
+                  "enum": [
+                    null,
+                    "Verify Transmit"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/actions/2/commands/3",
+                  "type": "string",
+                  "default": "Verify",
+                  "enum": [
+                    null,
+                    "Verify"
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "tl1AID": {
+      "id": "http://jsonschema.net/tl1AID",
+      "type": "array",
+      "items": [
+        {
+          "id": "http://jsonschema.net/tl1AID/0",
+          "type": "object",
+          "properties": {
+            "tl1": {
+              "id": "http://jsonschema.net/tl1AID/0/tl1",
+              "type": "integer",
+              "default": 1,
+              "enum": [
+                null,
+                1
+              ]
+            },
+            "aid": {
+              "id": "http://jsonschema.net/tl1AID/0/aid",
+              "type": "array",
+              "items": [
+                {
+                  "id": "http://jsonschema.net/tl1AID/0/aid/0",
+                  "type": "object",
+                  "properties": {
+                    "segment": {
+                      "id": "http://jsonschema.net/tl1AID/0/aid/0/segment",
+                      "type": "integer",
+                      "default": 1,
+                      "enum": [
+                        null,
+                        1
+                      ]
+                    },
+                    "values": {
+                      "id": "http://jsonschema.net/tl1AID/0/aid/0/values",
+                      "type": "array",
+                      "items": [
+                        {
+                          "id": "http://jsonschema.net/tl1AID/0/aid/0/values/0",
+                          "type": "string",
+                          "default": "OSM2S",
+                          "enum": [
+                            null,
+                            "OSM2S"
+                          ]
+                        },
+                        {
+                          "id": "http://jsonschema.net/tl1AID/0/aid/0/values/1",
+                          "type": "string",
+                          "default": "OSM2C",
+                          "enum": [
+                            null,
+                            "OSM2C"
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "id": "http://jsonschema.net/tl1AID/0/aid/1",
+                  "type": "object",
+                  "properties": {
+                    "segment": {
+                      "id": "http://jsonschema.net/tl1AID/0/aid/1/segment",
+                      "type": "integer",
+                      "default": 2,
+                      "enum": [
+                        null,
+                        2
+                      ]
+                    },
+                    "values": {
+                      "id": "http://jsonschema.net/tl1AID/0/aid/1/values",
+                      "type": "array",
+                      "items": {
+                        "id": "http://jsonschema.net/tl1AID/0/aid/1/values/0",
+                        "type": "string",
+                        "default": "20",
+                        "enum": [
+                          null,
+                          "20"
+                        ]
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "http://jsonschema.net/tl1AID/0/aid/2",
+                  "type": "object",
+                  "properties": {
+                    "segment": {
+                      "id": "http://jsonschema.net/tl1AID/0/aid/2/segment",
+                      "type": "integer",
+                      "default": 3,
+                      "enum": [
+                        null,
+                        3
+                      ]
+                    },
+                    "values": {
+                      "id": "http://jsonschema.net/tl1AID/0/aid/2/values",
+                      "type": "array",
+                      "items": [
+                        {
+                          "id": "http://jsonschema.net/tl1AID/0/aid/2/values/0",
+                          "type": "string",
+                          "default": "1-7",
+                          "enum": [
+                            null,
+                            "1-7"
+                          ]
+                        },
+                        {
+                          "id": "http://jsonschema.net/tl1AID/0/aid/2/values/1",
+                          "type": "string",
+                          "default": "10-16",
+                          "enum": [
+                            null,
+                            "10-16"
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "http://jsonschema.net/tl1AID/1",
+          "type": "object",
+          "properties": {
+            "tl1": {
+              "id": "http://jsonschema.net/tl1AID/1/tl1",
+              "type": "integer",
+              "default": 2,
+              "enum": [
+                null,
+                2
+              ]
+            },
+            "aid": {
+              "id": "http://jsonschema.net/tl1AID/1/aid",
+              "type": "array",
+              "items": [
+                {
+                  "id": "http://jsonschema.net/tl1AID/1/aid/0",
+                  "type": "object",
+                  "properties": {
+                    "segment": {
+                      "id": "http://jsonschema.net/tl1AID/1/aid/0/segment",
+                      "type": "integer",
+                      "default": 1,
+                      "enum": [
+                        null,
+                        1
+                      ]
+                    },
+                    "values": {
+                      "id": "http://jsonschema.net/tl1AID/1/aid/0/values",
+                      "type": "array",
+                      "items": {
+                        "id": "http://jsonschema.net/tl1AID/1/aid/0/values/0",
+                        "type": "string",
+                        "default": "OCH-P",
+                        "enum": [
+                          null,
+                          "OCH-P"
+                        ]
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "http://jsonschema.net/tl1AID/1/aid/1",
+                  "type": "object",
+                  "properties": {
+                    "segment": {
+                      "id": "http://jsonschema.net/tl1AID/1/aid/1/segment",
+                      "type": "integer",
+                      "default": 2,
+                      "enum": [
+                        null,
+                        2
+                      ]
+                    },
+                    "values": {
+                      "id": "http://jsonschema.net/tl1AID/1/aid/1/values",
+                      "type": "array",
+                      "items": {
+                        "id": "http://jsonschema.net/tl1AID/1/aid/1/values/0",
+                        "type": "string",
+                        "default": "20",
+                        "enum": [
+                          null,
+                          "20"
+                        ]
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "http://jsonschema.net/tl1AID/1/aid/2",
+                  "type": "object",
+                  "properties": {
+                    "segment": {
+                      "id": "http://jsonschema.net/tl1AID/1/aid/2/segment",
+                      "type": "integer",
+                      "default": 3,
+                      "enum": [
+                        null,
+                        3
+                      ]
+                    },
+                    "values": {
+                      "id": "http://jsonschema.net/tl1AID/1/aid/2/values",
+                      "type": "array",
+                      "items": [
+                        {
+                          "id": "http://jsonschema.net/tl1AID/1/aid/2/values/0",
+                          "type": "string",
+                          "default": "1-7",
+                          "enum": [
+                            null,
+                            "1-7"
+                          ]
+                        },
+                        {
+                          "id": "http://jsonschema.net/tl1AID/1/aid/2/values/1",
+                          "type": "string",
+                          "default": "10-16",
+                          "enum": [
+                            null,
+                            "10-16"
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "id": "http://jsonschema.net/tl1AID/1/aid/3",
+                  "type": "object",
+                  "properties": {
+                    "segment": {
+                      "id": "http://jsonschema.net/tl1AID/1/aid/3/segment",
+                      "type": "integer",
+                      "default": 4,
+                      "enum": [
+                        null,
+                        4
+                      ]
+                    },
+                    "values": {
+                      "id": "http://jsonschema.net/tl1AID/1/aid/3/values",
+                      "type": "array",
+                      "items": {
+                        "id": "http://jsonschema.net/tl1AID/1/aid/3/values/0",
+                        "type": "string",
+                        "default": "1-20",
+                        "enum": [
+                          null,
+                          "1-20"
+                        ]
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  },
+  "required": [
+    "rowIndex",
+    "issue",
+    "deviceCode",
+    "deviceId-UnitMapping",
+    "range",
+    "unitID-frameData",
+    "protectDevId",
+    "parentDevId",
+    "actions",
+    "tl1AID"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "http://comrade.forma-pro.com/schemas/policy/GracePeriodPolicy.json",
+  "type": "object",
+  "properties": {
+    "period": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "period"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "Period",
+  "properties": {
+    "id": {
+      "title": "ID",
+      "description": "Unique identifier",
+      "type": "string"
+    },
+    "from": {
+      "title": "From date",
+      "description": "Start date for the period",
+      "type": "string",
+      "format": "date"
+    },
+    "to": {
+      "title": "To date",
+      "description": "End date for the period",
+      "type": "string",
+      "format": "date"
+    },
+    "incomes": {
+      "$ref": "self-employment/Incomes.json"
+    },
+    "expenses": {
+      "$ref": "self-employment/Expenses.json"
+    }
+  },
+  "required": [
+    "from",
+    "to"
+  ],
+  "additionalProperties": false
+}

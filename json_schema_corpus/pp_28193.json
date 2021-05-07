@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "idAssignment",
+  "id": "idAssignment",
+  "description": "An assignment made by the Seller of an ID to a UNI, ENNI, or OVC.",
+  "type": "object",
+  "required": [
+    "objectType",
+    "sellerAssignedId"
+  ],
+  "properties": {
+    "objectType": {
+      "type": "string",
+      "enum": [
+        "idAssignment"
+      ],
+      "description": "The type of the object, idAssignment."
+    },
+    "sellerAssignedId": {
+      "type": "string",
+      "description": "The id assigned by the Seller for a UNI, ENNI, or OVC (E.g. circuit id).",
+      "maxLength": 45
+    },
+    "buyerAssignedId": {
+      "type": "string",
+      "description": "The id used by the Buyer for a UNI, ENNI, or OVC (E.g. circuit id), if known. If the buyerAssignedId is not specified, the Order Id (or buyerPurchaseOrderNumber) and orderItemReference must be provided.",
+      "maxLength": 45
+    },
+    "orderItemReference": {
+      "type": "string",
+      "description": "A reference number that can be used to refer to the order item for the service that this Id Assignment applies to.",
+      "maxLength": 4
+    }
+  }
+}

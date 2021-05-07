@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://judkins.house/apis/k2/v1/nodePool.json",
+  "$$target": "nodePool.json",
+  "title": "nodePool Configuration",
+  "description": "Describes a set of one or more nodes which share the same configuration.",
+  "properties": {
+    "name": {
+      "description": "Name of the nodePool.",
+      "type": "string"
+    },
+    "count": {
+      "description": "Number of nodes in the nodePool.",
+      "minimum": 1,
+      "type": "number"
+    },
+    "etcdConfig": {
+      "$ref": "kvStoreConfig.json"
+    },
+    "etcdConfigs": {
+      "items": {
+        "$ref": "kvStoreConfig.json"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "apiServerConfig": {
+      "$ref": "apiServerConfig.json"
+    },
+    "kubeConfig": {
+      "$ref": "kubeConfig.json"
+    },
+    "bastionConfig": {
+      "$ref": "bastionConfig.json"
+    },
+    "containerConfig": {
+      "$ref": "containerConfig.json"
+    },
+    "osConfig": {
+      "$ref": "osConfig.json"
+    },
+    "nodeConfig": {
+      "$ref": "nodeConfig.json"
+    },
+    "keyPair": {
+      "$ref": "keyPair.json"
+    },
+    "autoScalingConfig": {
+      "$ref": "autoScalingConfig.json"
+    },
+    "schedulingConfig": {
+      "$ref": "schedulingConfig.json"
+    },
+    "taints": {
+      "description": "List of AWS taints to associate with the kubernetes node",
+      "items": {
+        "$ref": "kubeNodeTaint.json"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "name",
+    "count",
+    "nodeConfig"
+  ],
+  "additionalProperties": false,
+  "type": "object"
+}

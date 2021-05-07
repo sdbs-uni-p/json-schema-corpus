@@ -1,0 +1,103 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "minConceptItem": {
+      "id": "http://apothesource.com/rxnorm/minConceptItem",
+      "type": "object",
+      "properties": {
+        "rxcui": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "tty": {
+          "$ref": "#/definitions/tty"
+        }
+      }
+    },
+    "tty": {
+      "type": "string",
+      "javaType": "com.apothesource.pillfill.rxnorm.datamodel.TTYNames",
+      "enum": [
+        "IN",
+        "MIN",
+        "PIN",
+        "BN",
+        "SBD",
+        "SBDC",
+        "SBDF",
+        "SBDG",
+        "SCD",
+        "SCDC",
+        "SCDF",
+        "SCDG",
+        "DF",
+        "DFG",
+        "BPCK",
+        "GPCK"
+      ]
+    },
+    "relationship": {
+      "type": "string",
+      "javaType": "com.apothesource.pillfill.rxnorm.datamodel.RelationshipNames",
+      "enum": [
+        "consists_of",
+        "constitutes",
+        "contained_in",
+        "contains",
+        "dose_form_of",
+        "form_of",
+        "has_dose_form",
+        "doseformgroup_of",
+        "has_form",
+        "has_ingredient",
+        "has_ingredients",
+        "has_part",
+        "has_precise_ingredient",
+        "has_quantified_form",
+        "has_tradename",
+        "has_doseformgroup",
+        "ingredient_of",
+        "ingredients_of",
+        "inverse_isa",
+        "isa",
+        "part_of",
+        "precise_ingredient_of",
+        "quantified_form_of",
+        "reformulated_to",
+        "reformulation_of",
+        "tradename_of"
+      ]
+    },
+    "conceptProperties": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "rxcui": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "synonym": {
+            "type": "string"
+          },
+          "tty": {
+            "$ref": "rxnorm-core.json#/definitions/tty"
+          },
+          "language": {
+            "type": "string"
+          },
+          "suppress": {
+            "type": "string"
+          },
+          "umlscui": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

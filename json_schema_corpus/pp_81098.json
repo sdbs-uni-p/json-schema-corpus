@@ -1,0 +1,45 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "#smbg.json",
+  "title": "SMBG",
+  "name": "smbg",
+  "description": "Self monitored blood glucose, eg finger stick",
+  "additionalProperties": false,
+  "definitions": {
+    "type": {
+      "enum": [
+        "smbg"
+      ]
+    }
+  },
+  "properties": {
+    "deviceTime": {
+      "type": "string",
+      "id": "http://jsonschema.net/deviceTime",
+      "required": true
+    },
+    "id": {
+      "type": "string",
+      "id": "http://jsonschema.net/id",
+      "required": false
+    },
+    "type": {
+      "$ref": "#/definitions/type",
+      "required": true
+    },
+    "value": {
+      "type": [
+        "string",
+        "number"
+      ],
+      "id": "http://jsonschema.net/smbg/value",
+      "required": true
+    },
+    "smbg": {
+      "type": "number",
+      "id": "http://jsonschema.net/value",
+      "required": false
+    }
+  }
+}

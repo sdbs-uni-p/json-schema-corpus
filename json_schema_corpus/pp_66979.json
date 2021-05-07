@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "uri://registries/security#systemCredentials",
+  "type": "object",
+  "properties": {
+    "login": {
+      "$ref": "uri://registries/security#login"
+    },
+    "permissions": {
+      "$ref": "uri://registries/security#permissions"
+    },
+    "groups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "registry": "string",
+          "id": "string"
+        }
+      }
+    }
+  }
+}

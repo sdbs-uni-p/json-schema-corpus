@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "select-object-path/select/in",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "add": {
+      "$ref": "http://select-object-path/ref.add.schema.json#"
+    },
+    "not": {
+      "$ref": "http://select-object-path/ref.not.schema.json#"
+    },
+    "object": {
+      "type": "object",
+      "description": "object to analyse",
+      "default": {}
+    },
+    "alias": {
+      "$ref": "http://select-object-path/ref.alias.schema.json#"
+    },
+    "select": {
+      "$ref": "http://select-object-path/ref.select.schema.json#"
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "required": [
+    "credentials"
+  ],
+  "properties": {
+    "credentials": {
+      "type": "object",
+      "required": [
+        "batch",
+        "storage"
+      ],
+      "batch": {
+        "title": "Azure Batch Account Credentials",
+        "type": "object",
+        "required": [
+          "account",
+          "account_key",
+          "account_service_url"
+        ],
+        "properties": {
+          "account": {
+            "type": "string",
+            "description": "The Batch Account Name"
+          },
+          "account_key": {
+            "type": "string",
+            "description": "The Batch Account Key"
+          },
+          "account_service_url": {
+            "type": "string",
+            "description": "The Batch Account Service Url"
+          }
+        }
+      },
+      "storage": {
+        "title": "Azure Storage Account Credentials",
+        "type": "object",
+        "required": [
+          "account",
+          "account_key",
+          "endpoint"
+        ],
+        "properties": {
+          "account": {
+            "type": "string",
+            "description": "The Azure Storage Account Name"
+          },
+          "account_key": {
+            "type": "string",
+            "description": "The Azure Storage Account Key"
+          },
+          "endpoint": {
+            "type": "string",
+            "description": "The Azure Storage Endpoint",
+            "enum": [
+              "core.windows.net"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

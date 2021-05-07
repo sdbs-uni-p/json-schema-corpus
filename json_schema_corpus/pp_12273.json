@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "id_etablissement": {
+      "type": "string"
+    },
+    "id_niveau": {
+      "type": "integer"
+    },
+    "couleur": {
+      "type": "string"
+    },
+    "letter": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "id_etablissement"
+  ]
+}

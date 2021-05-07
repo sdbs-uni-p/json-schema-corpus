@@ -1,0 +1,364 @@
+{
+  "id": "http://schemas.wbeme.com/json-schema/eme/users/node/user/1-0-0.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "_schema": {
+      "type": "string",
+      "pattern": "^pbj:([a-z0-9-]+):([a-z0-9\\.-]+):([a-z0-9-]+)?:([a-z0-9-]+):([0-9]+-[0-9]+-[0-9]+)$",
+      "default": "pbj:eme:users:node:user:1-0-0"
+    },
+    "account_id": {
+      "type": "string",
+      "pattern": "^[\\w\\/\\.:-]+$",
+      "description": "The EME account that this message is associated with.",
+      "pbj": {
+        "type": "identifier",
+        "rule": "single"
+      }
+    },
+    "_id": {
+      "type": "string",
+      "pattern": "^[\\w\\/\\.:-]+$",
+      "pbj": {
+        "type": "identifier",
+        "rule": "single"
+      }
+    },
+    "status": {
+      "type": "string",
+      "default": "draft",
+      "enum": [
+        "unknown",
+        "published",
+        "scheduled",
+        "pending",
+        "draft",
+        "expired",
+        "archived",
+        "deleted"
+      ],
+      "pbj": {
+        "type": "string-enum",
+        "rule": "single"
+      }
+    },
+    "etag": {
+      "type": "string",
+      "pattern": "^[\\w\\.:-]+$",
+      "pbj": {
+        "type": "string",
+        "rule": "single"
+      }
+    },
+    "created_at": {
+      "type": "string",
+      "pattern": "^[1-9]{1}[0-9]{12,15}$",
+      "pbj": {
+        "type": "microtime",
+        "rule": "single"
+      }
+    },
+    "creator_ref": {
+      "type": "object",
+      "properties": {
+        "curie": {
+          "type": "string",
+          "pattern": "^([a-z0-9-]+):([a-z0-9\\.-]+):([a-z0-9-]+)?:([a-z0-9-]+)$",
+          "minLength": 0,
+          "maxLength": 146
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9:_\\-]+$",
+          "minLength": 0,
+          "maxLength": 255
+        },
+        "tag": {
+          "type": "string",
+          "pattern": "^([\\w\\/-]|[\\w-][\\w\\/-]*[\\w-])$",
+          "minLength": 0,
+          "maxLength": 255
+        }
+      },
+      "required": [
+        "curie",
+        "id"
+      ],
+      "additionalProperties": false,
+      "description": "A fully qualified reference to what created this node. This is intentionally a message-ref and not a user id because it is often a program that creates nodes, not a user.",
+      "pbj": {
+        "type": "message-ref",
+        "rule": "single"
+      }
+    },
+    "updated_at": {
+      "type": "string",
+      "pattern": "^[1-9]{1}[0-9]{12,15}$",
+      "pbj": {
+        "type": "microtime",
+        "rule": "single",
+        "useTypeDefault": false
+      }
+    },
+    "updater_ref": {
+      "type": "object",
+      "properties": {
+        "curie": {
+          "type": "string",
+          "pattern": "^([a-z0-9-]+):([a-z0-9\\.-]+):([a-z0-9-]+)?:([a-z0-9-]+)$",
+          "minLength": 0,
+          "maxLength": 146
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9:_\\-]+$",
+          "minLength": 0,
+          "maxLength": 255
+        },
+        "tag": {
+          "type": "string",
+          "pattern": "^([\\w\\/-]|[\\w-][\\w\\/-]*[\\w-])$",
+          "minLength": 0,
+          "maxLength": 255
+        }
+      },
+      "required": [
+        "curie",
+        "id"
+      ],
+      "additionalProperties": false,
+      "description": "A fully qualified reference to what updated this node. This is intentionally a message-ref and not a user id because it is often a program that updates nodes, not a user. E.g. \"acme:iam:node:app:cli-scheduler\" or \"acme:iam:node:user:60c71df0-fda8-11e5-bfb9-30342d363854\"",
+      "pbj": {
+        "type": "message-ref",
+        "rule": "single"
+      }
+    },
+    "last_event_ref": {
+      "type": "object",
+      "properties": {
+        "curie": {
+          "type": "string",
+          "pattern": "^([a-z0-9-]+):([a-z0-9\\.-]+):([a-z0-9-]+)?:([a-z0-9-]+)$",
+          "minLength": 0,
+          "maxLength": 146
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9:_\\-]+$",
+          "minLength": 0,
+          "maxLength": 255
+        },
+        "tag": {
+          "type": "string",
+          "pattern": "^([\\w\\/-]|[\\w-][\\w\\/-]*[\\w-])$",
+          "minLength": 0,
+          "maxLength": 255
+        }
+      },
+      "required": [
+        "curie",
+        "id"
+      ],
+      "additionalProperties": false,
+      "description": "A reference to the last event that changed the state of this node. E.g. \"acme:blog:event:article-published:60c71df0-fda8-11e5-bfb9-30342d363854\"",
+      "pbj": {
+        "type": "message-ref",
+        "rule": "single"
+      }
+    },
+    "title": {
+      "type": "string",
+      "minLength": 0,
+      "maxLength": 255,
+      "pbj": {
+        "type": "string",
+        "rule": "single"
+      }
+    },
+    "tags": {
+      "type": "object",
+      "patternProperties": {
+        "^[a-zA-Z_]{1}[\\w\\.:-]+$": {
+          "type": "string",
+          "pattern": "^[\\w\\/\\.:-]+$"
+        }
+      },
+      "additionalProperties": false,
+      "description": "Tags is a map that categorizes data or tracks references in external systems. The tags names should be consistent and descriptive, e.g. fb_user_id:123, salesforce_customer_id:456.",
+      "pbj": {
+        "type": "string",
+        "rule": "map"
+      }
+    },
+    "first_name": {
+      "type": "string",
+      "minLength": 0,
+      "maxLength": 255,
+      "pbj": {
+        "type": "string",
+        "rule": "single"
+      }
+    },
+    "last_name": {
+      "type": "string",
+      "minLength": 0,
+      "maxLength": 255,
+      "pbj": {
+        "type": "string",
+        "rule": "single"
+      }
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "pbj": {
+        "type": "string",
+        "rule": "single",
+        "format": "email"
+      }
+    },
+    "email_domain": {
+      "type": "string",
+      "format": "hostname",
+      "pbj": {
+        "type": "string",
+        "rule": "single",
+        "format": "hostname"
+      }
+    },
+    "address": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "#/definitions/address"
+        }
+      ],
+      "pbj": {
+        "type": "message",
+        "rule": "single"
+      }
+    },
+    "phone": {
+      "type": "object",
+      "patternProperties": {
+        "^[a-zA-Z_]{1}[\\w\\.:-]+$": {
+          "type": "string",
+          "pattern": "^\\+?[1-9]\\d{1,14}$"
+        }
+      },
+      "additionalProperties": false,
+      "description": "A general format for international telephone numbers. @link https://en.wikipedia.org/wiki/E.164",
+      "pbj": {
+        "type": "string",
+        "rule": "map"
+      }
+    },
+    "dob": {
+      "type": "object",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+      "pbj": {
+        "type": "date",
+        "rule": "single"
+      }
+    },
+    "gender": {
+      "type": "integer",
+      "default": 0,
+      "enum": [
+        0,
+        1,
+        2,
+        9
+      ],
+      "pbj": {
+        "type": "int-enum",
+        "rule": "single"
+      }
+    },
+    "networks": {
+      "type": "object",
+      "patternProperties": {
+        "^[a-zA-Z_]{1}[\\w\\.:-]+$": {
+          "type": "string",
+          "pattern": "^[\\w\\.-]+$"
+        }
+      },
+      "additionalProperties": false,
+      "description": "Networks is a map that contains handles/usernames on a social network. E.g. facebook:homer, twitter:stackoverflow, youtube:coltrane78.",
+      "pbj": {
+        "type": "string",
+        "rule": "map"
+      }
+    },
+    "hashtags": {
+      "type": "array",
+      "items": [
+        {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 255
+        }
+      ],
+      "uniqueItems": true,
+      "additionalProperties": false,
+      "pbj": {
+        "type": "string",
+        "rule": "set",
+        "format": "hashtag"
+      }
+    },
+    "is_blocked": {
+      "type": "boolean",
+      "pbj": {
+        "type": "boolean",
+        "rule": "single"
+      }
+    },
+    "is_staff": {
+      "type": "boolean",
+      "description": "Indicates that the user is a staff member and has access to the dashboard.",
+      "pbj": {
+        "type": "boolean",
+        "rule": "single"
+      }
+    },
+    "roles": {
+      "type": "array",
+      "items": [
+        {
+          "type": "string",
+          "pattern": "^[\\w_]+$"
+        }
+      ],
+      "uniqueItems": true,
+      "additionalProperties": false,
+      "description": "A user's roles determine what permissions they'll have when using the system.",
+      "pbj": {
+        "type": "string",
+        "rule": "set"
+      }
+    }
+  },
+  "required": [
+    "_schema",
+    "_id"
+  ],
+  "definitions": {
+    "address": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "http://schemas.wbeme.com/json-schema/gdbots/geo/address/1-0-0.json#"
+        },
+        {
+          "$ref": "http://schemas.wbeme.com/json-schema/gdbots/geo/address/1-0-1.json#"
+        },
+        {
+          "$ref": "http://schemas.wbeme.com/json-schema/gdbots/geo/address/1-0-2.json#"
+        }
+      ]
+    }
+  },
+  "additionalProperties": false
+}

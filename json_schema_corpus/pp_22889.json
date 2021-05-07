@@ -1,0 +1,98 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "$license": [
+    "http://www.apache.org/licenses/LICENSE-2.0"
+  ],
+  "id": "#",
+  "type": "object",
+  "javaType": "org.apache.streams.twitter.config.TwitterConfiguration",
+  "javaInterfaces": [
+    "java.io.Serializable"
+  ],
+  "properties": {
+    "protocol": {
+      "type": "string",
+      "description": "The protocol"
+    },
+    "host": {
+      "type": "string",
+      "description": "The host"
+    },
+    "port": {
+      "type": "integer",
+      "description": "The port"
+    },
+    "version": {
+      "type": "string",
+      "description": "The version"
+    },
+    "debug": {
+      "type": "boolean",
+      "description": "Whether to enable juneau debug logging"
+    },
+    "endpoint": {
+      "type": "string",
+      "description": "The endpoint"
+    },
+    "environment": {
+      "type": "string",
+      "description": "The environment"
+    },
+    "jsonStoreEnabled": {
+      "type": "boolean"
+    },
+    "oauth": {
+      "type": "object",
+      "dynamic": "true",
+      "javaType": "org.apache.streams.twitter.config.TwitterOAuthConfiguration",
+      "javaInterfaces": [
+        "java.io.Serializable"
+      ],
+      "properties": {
+        "appName": {
+          "type": "string"
+        },
+        "consumerKey": {
+          "type": "string"
+        },
+        "consumerSecret": {
+          "type": "string"
+        },
+        "accessToken": {
+          "type": "string"
+        },
+        "accessTokenSecret": {
+          "type": "string"
+        }
+      }
+    },
+    "basicauth": {
+      "type": "object",
+      "dynamic": "true",
+      "javaType": "org.apache.streams.twitter.TwitterBasicAuthConfiguration",
+      "javaInterfaces": [
+        "java.io.Serializable"
+      ],
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "threadsPerProvider": {
+      "type": "integer",
+      "description": "number of threads per provider"
+    },
+    "retrySleepMs": {
+      "type": "integer",
+      "description": "ms to sleep when hitting a rate limit"
+    },
+    "retryMax": {
+      "type": "integer",
+      "description": "max times to retry"
+    }
+  }
+}

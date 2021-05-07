@@ -1,0 +1,12 @@
+{
+  "id": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/LayoutPanel/TablePanel/TablePanel.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "\u041a\u043e\u043d\u0442\u0435\u0439\u043d\u0435\u0440 \u0432 \u0432\u0438\u0434\u0435 \u043d\u0430\u0431\u043e\u0440\u0430 \u0437\u0430\u043a\u043b\u0430\u0434\u043e\u043a",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/Container/Container.json"
+    }
+  ],
+  "properties": {}
+}

@@ -1,0 +1,55 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://jsonschema.net",
+  "required": false,
+  "properties": {
+    "avatar": {
+      "type": "string",
+      "id": "http://jsonschema.net/avatar",
+      "required": false
+    },
+    "properties": {
+      "type": "array",
+      "id": "http://jsonschema.net/properties",
+      "required": false,
+      "items": {
+        "type": "object",
+        "id": "http://jsonschema.net/properties/0",
+        "required": false,
+        "properties": {
+          "applications": {
+            "type": "array",
+            "id": "http://jsonschema.net/properties/0/applications",
+            "required": false,
+            "items": {
+              "type": "string",
+              "id": "http://jsonschema.net/properties/0/applications/0",
+              "required": false
+            }
+          },
+          "computerName": {
+            "type": "string",
+            "id": "http://jsonschema.net/properties/0/computerName",
+            "required": false
+          },
+          "sshIdentity": {
+            "type": "string",
+            "id": "http://jsonschema.net/properties/0/sshIdentity",
+            "required": false
+          },
+          "userName": {
+            "type": "string",
+            "id": "http://jsonschema.net/properties/0/userName",
+            "required": false
+          }
+        }
+      }
+    },
+    "userName": {
+      "type": "string",
+      "id": "http://jsonschema.net/userName",
+      "required": false
+    }
+  }
+}

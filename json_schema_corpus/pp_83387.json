@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "type": "object",
+  "extends": {
+    "$ref": "extends_base.json"
+  },
+  "additionalProperties": true,
+  "properties": {
+    "other_field": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

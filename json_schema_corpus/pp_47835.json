@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://inowas.com/schema/",
+  "oneOf": [
+    {
+      "$ref": "geojson/linestring.json"
+    },
+    {
+      "$ref": "geojson/point.json"
+    },
+    {
+      "$ref": "geojson/polygon.json"
+    }
+  ]
+}

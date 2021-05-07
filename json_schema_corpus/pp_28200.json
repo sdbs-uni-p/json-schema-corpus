@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "orderList",
+  "id": "orderList",
+  "description": "This represents a list of Order resources.",
+  "type": "object",
+  "required": [
+    "objectType"
+  ],
+  "properties": {
+    "objectType": {
+      "type": "string",
+      "enum": [
+        "orderList"
+      ],
+      "description": "The type of the object, orderList."
+    },
+    "available": {
+      "type": "integer",
+      "description": "The number of items available for this list."
+    },
+    "returned": {
+      "type": "integer",
+      "description": "The number of items returned for this list."
+    },
+    "link": {
+      "$ref": "link.json#",
+      "description": "A self referencing link to the Order list."
+    },
+    "orders": {
+      "type": "array",
+      "items": {
+        "$ref": "order.json#"
+      },
+      "minItems": 1,
+      "uniqueItems": true,
+      "description": "An array of Order."
+    }
+  }
+}

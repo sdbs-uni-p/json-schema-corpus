@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Guice injector graph.",
+  "type": "object",
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "$ref": "injector-node.json"
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "$ref": "injector-edge.json"
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Event type",
+  "type": "object",
+  "properties": {
+    "name": {
+      "description": "A name to identify the event type.",
+      "type": "string"
+    },
+    "description": {
+      "description": "A human description of the event type.",
+      "type": "string"
+    },
+    "public": {
+      "description": "Make the event type available to everybody.",
+      "type": "boolean"
+    },
+    "type": {
+      "description": "Valid URL to define the event type.",
+      "type": "url"
+    },
+    "schema": {
+      "description": "A valid JSON Schema.",
+      "type": "json"
+    }
+  }
+}

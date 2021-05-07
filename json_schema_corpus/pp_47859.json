@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://inowas.com/schema/",
+  "title": "rechargeDateTimeValues",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "date_time": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "values": {
+        "description": "0: Recharge Rate (float)",
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 1,
+        "items": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}

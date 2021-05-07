@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://raw.githubusercontent.com/washingtonpost/ans-schema/master/src/main/resources/schema/ans/v0_3/ans.json",
+  "title": "Root-level ANS schema.",
+  "description": "Holds common attributes of ANS objects.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "trait_typed.json",
+      "properties": {
+        "version": {
+          "type": "string",
+          "description": "The ANS Version of this ANS object"
+        }
+      }
+    }
+  ]
+}

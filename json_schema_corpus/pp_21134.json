@@ -1,0 +1,201 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "properties": {
+    "educationPricing": {
+      "type": "boolean"
+    },
+    "incidentEscalation": {
+      "type": "boolean"
+    },
+    "minimumContractPeriod": {
+      "enum": [
+        "Hour",
+        "Day",
+        "Month",
+        "Year",
+        "Other"
+      ]
+    },
+    "priceInterval": {
+      "enum": [
+        "",
+        "Second",
+        "Minute",
+        "Hour",
+        "Day",
+        "Week",
+        "Month",
+        "Quarter",
+        "6 months",
+        "Year"
+      ]
+    },
+    "priceMax": {
+      "pattern": "^$|^\\d+(?:\\.\\d{1,5})?$",
+      "type": "string"
+    },
+    "priceMin": {
+      "pattern": "^\\d+(?:\\.\\d{1,5})?$",
+      "type": "string"
+    },
+    "priceString": {
+      "type": "string"
+    },
+    "priceUnit": {
+      "enum": [
+        "Unit",
+        "Person",
+        "Licence",
+        "User",
+        "Device",
+        "Instance",
+        "Server",
+        "Virtual machine",
+        "Transaction",
+        "Megabyte",
+        "Gigabyte",
+        "Terabyte"
+      ]
+    },
+    "pricingDocument": {
+      "type": "string"
+    },
+    "pricingDocumentURL": {
+      "format": "uri",
+      "type": "string"
+    },
+    "serviceBenefits": {
+      "items": {
+        "maxLength": 120,
+        "pattern": "^(?:\\S+\\s+){0,9}\\S+$",
+        "type": "string"
+      },
+      "maxItems": 10,
+      "minItems": 1,
+      "type": "array"
+    },
+    "serviceDefinitionDocument": {
+      "type": "string"
+    },
+    "serviceDefinitionDocumentURL": {
+      "format": "uri",
+      "type": "string"
+    },
+    "serviceFeatures": {
+      "items": {
+        "maxLength": 120,
+        "pattern": "^(?:\\S+\\s+){0,9}\\S+$",
+        "type": "string"
+      },
+      "maxItems": 10,
+      "minItems": 1,
+      "type": "array"
+    },
+    "serviceName": {
+      "maxLength": 100,
+      "minLength": 1,
+      "type": "string"
+    },
+    "serviceSummary": {
+      "maxLength": 500,
+      "pattern": "^(?:\\S+\\s+){0,49}\\S+$",
+      "type": "string"
+    },
+    "serviceTypes": {
+      "items": {
+        "enum": [
+          "Implementation",
+          "Ongoing support",
+          "Planning",
+          "Testing",
+          "Training"
+        ]
+      },
+      "maxItems": 5,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "sfiaRateDocument": {
+      "type": "string"
+    },
+    "sfiaRateDocumentURL": {
+      "format": "uri",
+      "type": "string"
+    },
+    "supportAvailability": {
+      "type": "string"
+    },
+    "supportForThirdParties": {
+      "type": "boolean"
+    },
+    "supportResponseTime": {
+      "type": "string"
+    },
+    "supportTypes": {
+      "items": {
+        "enum": [
+          "Service desk",
+          "Email",
+          "Phone",
+          "Live chat",
+          "Onsite"
+        ]
+      },
+      "maxItems": 5,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "terminationCost": {
+      "type": "boolean"
+    },
+    "termsAndConditionsDocument": {
+      "type": "string"
+    },
+    "termsAndConditionsDocumentURL": {
+      "format": "uri",
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "vatIncluded": {
+      "type": "boolean"
+    },
+    "vendorCertifications": {
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 10,
+      "type": "array"
+    }
+  },
+  "required": [
+    "educationPricing",
+    "incidentEscalation",
+    "minimumContractPeriod",
+    "priceMin",
+    "priceString",
+    "priceUnit",
+    "pricingDocument",
+    "pricingDocumentURL",
+    "serviceBenefits",
+    "serviceDefinitionDocument",
+    "serviceDefinitionDocumentURL",
+    "serviceFeatures",
+    "serviceName",
+    "serviceSummary",
+    "serviceTypes",
+    "supportAvailability",
+    "supportForThirdParties",
+    "supportResponseTime",
+    "supportTypes",
+    "terminationCost",
+    "termsAndConditionsDocument",
+    "termsAndConditionsDocumentURL",
+    "title",
+    "vatIncluded"
+  ],
+  "title": "G6 Submissions SCS Schema",
+  "type": "object"
+}

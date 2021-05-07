@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "properties": {
+    "properties": {
+      "type": "object"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "object"
+      ]
+    }
+  },
+  "required": [
+    "properties"
+  ]
+}

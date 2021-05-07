@@ -1,0 +1,10 @@
+{
+  "id": "http://schema.org/MusicVideoObject",
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "extends": {
+    "$ref": "MediaObject.json"
+  },
+  "description": "A music video file. Schema.org: http://schema.org/MusicVideoObject",
+  "type": "object",
+  "additionalProperties": true
+}

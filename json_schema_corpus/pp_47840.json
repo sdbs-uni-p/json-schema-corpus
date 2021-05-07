@@ -1,0 +1,10 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://inowas.com/schema/",
+  "type": "array",
+  "minItems": 1,
+  "items": {
+    "type": "integer"
+  },
+  "additionalProperties": false
+}

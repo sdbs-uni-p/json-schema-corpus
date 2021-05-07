@@ -1,0 +1,34 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://example.com/test/test/test.json#",
+  "title": "test/test",
+  "properties": {
+    "deep": {
+      "type": "string",
+      "required": true
+    },
+    "up_one": {
+      "$ref": "../test3.json#/definitions/up_one"
+    },
+    "up_one_deep": {
+      "type": "object",
+      "properties": {
+        "something": {
+          "type": "string"
+        },
+        "else": {
+          "$ref": "../test3.json#/definitions/up_one"
+        },
+        "deep": {
+          "type": "object",
+          "properties": {
+            "deeper": {
+              "$ref": "../test3.json#/definitions/deep"
+            }
+          }
+        }
+      }
+    }
+  }
+}

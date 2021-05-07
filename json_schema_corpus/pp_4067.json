@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "AccessPermission",
+  "description": "Databook access permission -- PREMIS right",
+  "type": "object",
+  "javaType": "databook.persistence.rule.rdf.ruleset.AccessPermission",
+  "extends": {
+    "$ref": "DataEntity.json"
+  },
+  "properties": {
+    "permission": {
+      "type": "string"
+    },
+    "linkingDataEntity": {
+      "type": "array",
+      "items": {
+        "$ref": "DataEntityLink.json"
+      }
+    },
+    "linkingUser": {
+      "type": "array",
+      "items": {
+        "$ref": "UserLink.json"
+      }
+    }
+  }
+}

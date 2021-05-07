@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "type": "object",
+  "properties": {
+    "urls": {
+      "type": "object",
+      "format": "urls"
+    },
+    "name": {
+      "type": "string",
+      "pattern": "^[^/]+$"
+    },
+    "last_update": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "urls",
+    "name",
+    "last_update"
+  ]
+}

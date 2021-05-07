@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://api.guildwars2.com/v2/continents/{continentId}",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "id": "https://api.guildwars2.com/v2/continents/{continentId}/name",
+      "type": "string",
+      "minLength": 1
+    },
+    "continent_dims": {
+      "id": "https://api.guildwars2.com/v2/continents/{continentId}/continent_dims",
+      "type": "array",
+      "minItems": "2",
+      "uniqueItems": false,
+      "additionalItems": false,
+      "items": {
+        "id": "https://api.guildwars2.com/v2/continents/{continentId}/continent_dims/{dimIndex}"
+      },
+      "maxItems": "2"
+    },
+    "min_zoom": {
+      "id": "https://api.guildwars2.com/v2/continents/{continentId}/min_zoom",
+      "type": "integer",
+      "minimum": 0
+    },
+    "max_zoom": {
+      "id": "https://api.guildwars2.com/v2/continents/{continentId}/max_zoom",
+      "type": "integer",
+      "minimum": 0
+    },
+    "floors": {
+      "id": "https://api.guildwars2.com/v2/continents/{continentId}/floors",
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": false,
+      "additionalItems": true,
+      "items": {
+        "id": "https://api.guildwars2.com/v2/continents/{continentId}/floor",
+        "type": "integer"
+      }
+    },
+    "id": {
+      "id": "https://api.guildwars2.com/v2/continents/{continentId}/id",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "name",
+    "continent_dims",
+    "min_zoom",
+    "max_zoom",
+    "floors",
+    "id"
+  ]
+}

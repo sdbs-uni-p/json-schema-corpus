@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "CreateRepoResponse",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "projectName": {
+      "type": "string"
+    },
+    "repoName": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    }
+  },
+  "javaName": "CreateRepoResponse"
+}

@@ -1,0 +1,97 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "$license": [
+    "http://www.apache.org/licenses/LICENSE-2.0"
+  ],
+  "id": "#",
+  "type": "object",
+  "javaType": "org.apache.streams.urls.LinkDetails",
+  "javaInterfaces": [
+    "java.io.Serializable"
+  ],
+  "properties": {
+    "linkStatus": {
+      "type": "string",
+      "enum": [
+        "SUCCESS",
+        "ERROR",
+        "TIME_OUT",
+        "MALFORMED_URL",
+        "NOT_FOUND",
+        "FORBIDDEN",
+        "REDIRECT_ERROR",
+        "UNAUTHORIZED",
+        "LOOP",
+        "HTTP_ERROR_STATUS",
+        "EXCEPTION",
+        "EMPTY",
+        "TOO_LARGE",
+        "NONE"
+      ]
+    },
+    "originalURL": {
+      "type": "string"
+    },
+    "finalURL": {
+      "type": "string"
+    },
+    "normalizedURL": {
+      "type": "string"
+    },
+    "urlParts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "domain": {
+      "type": "string"
+    },
+    "redirected": {
+      "type": "boolean"
+    },
+    "redirects": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "redirectCount": {
+      "type": "integer",
+      "default": 0
+    },
+    "tracked": {
+      "type": "boolean"
+    },
+    "finalResponseCode": {
+      "type": "integer"
+    },
+    "cookies": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "startTime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "tookInMills": {
+      "type": "integer"
+    },
+    "rawContent": {
+      "type": "string"
+    },
+    "contentType": {
+      "type": "string"
+    },
+    "contentsType": {
+      "type": "string",
+      "enum": [
+        "RAW_HTML",
+        "BASE64"
+      ]
+    }
+  }
+}

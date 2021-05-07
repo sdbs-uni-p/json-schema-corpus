@@ -1,0 +1,26 @@
+{
+  "id": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/Components/ToggleButton/ToggleButton.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "\u041f\u0435\u0440\u0435\u043a\u043b\u044e\u0447\u0430\u0442\u0435\u043b\u044c \u0432 \u0432\u0438\u0434\u0435 \u043a\u043d\u043e\u043f\u043a\u0438",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/Element/Element.json"
+    },
+    {
+      "$ref": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/Components/EditorBase/EditorBase.json"
+    }
+  ],
+  "properties": {
+    "TextOn": {
+      "description": "\u0422\u0435\u043a\u0441\u0442 \u043d\u0430 \u0432\u043a\u043b\u044e\u0447\u0435\u043d\u043d\u043e\u0435 \u0441\u043e\u0441\u0442\u043e\u044f\u043d\u0438\u0435",
+      "type": "string",
+      "default": "ON"
+    },
+    "TextOff": {
+      "description": "\u0422\u0435\u043a\u0441\u0442 \u043d\u0430 \u0432\u044b\u043a\u043b\u044e\u0447\u0435\u043d\u043d\u043e\u0435 \u0441\u043e\u0441\u0442\u043e\u044f\u043d\u0438\u0435",
+      "type": "string",
+      "default": "OFF"
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$ref": "#/definitions/decisionTree",
+  "definitions": {
+    "decisionTree": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/branch"
+        },
+        {
+          "$ref": "#/definitions/result"
+        }
+      ]
+    },
+    "branch": {
+      "type": "object",
+      "properties": {
+        "condition": {
+          "$ref": "./node_modules/boolean-json-schema/index.json"
+        },
+        "true": {
+          "$ref": "#/definitions/decisionTree"
+        },
+        "false": {
+          "$ref": "#/definitions/decisionTree"
+        }
+      },
+      "required": [
+        "condition",
+        "true",
+        "false"
+      ]
+    },
+    "result": {
+      "type": "object",
+      "required": [
+        "result"
+      ]
+    }
+  }
+}

@@ -1,0 +1,275 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "type": "object",
+  "definitions": {
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "comment": {
+          "description": "an optional descriptive comment",
+          "type": "string"
+        },
+        "synonym": {
+          "description": "other keywords in the same vocabulary with identical meaning",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "allow-types": {
+          "description": "allowed types for this keyword",
+          "type": "array",
+          "items": {
+            "$ref": "#/properties/vocabularies/properties/type/items"
+          },
+          "default": [
+            "null",
+            "boolean",
+            "string",
+            "number",
+            "integer",
+            "object",
+            "array",
+            "any"
+          ]
+        },
+        "for-types": {
+          "description": "which types of value this keyword applies to",
+          "type": "array",
+          "items": {
+            "$ref": "#/properties/vocabularies/properties/type/items"
+          },
+          "default": [
+            "null",
+            "boolean",
+            "string",
+            "number",
+            "integer",
+            "object",
+            "array",
+            "any"
+          ]
+        },
+        "as-schema": {
+          "description": "treat the value for this keyword as a schema if possible",
+          "type": "boolean",
+          "default": false
+        },
+        "as-container": {
+          "description": "treat the value for this keyword as containing as-schema values",
+          "type": "boolean",
+          "default": false
+        },
+        "for-undefined": {
+          "description": "whether this keyword should still be processed if the instance is undefined",
+          "type": "boolean",
+          "default": "false"
+        }
+      },
+      "additionalProperties": false
+    },
+    "condition": {
+      "additionalProperties": false
+    }
+  },
+  "properties": {
+    "vocabularies": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "primitive types",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "null",
+              "boolean",
+              "string",
+              "number",
+              "integer",
+              "object",
+              "array",
+              "any"
+            ]
+          }
+        },
+        "format": {
+          "description": "pre-defined formats",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "date-time",
+              "date",
+              "time",
+              "utc-millisec",
+              "regex",
+              "color",
+              "style",
+              "phone",
+              "uri",
+              "uriref",
+              "uri-reference",
+              "uri-template",
+              "json-pointer",
+              "email",
+              "ip-address",
+              "ipv4",
+              "ipv6",
+              "host-name",
+              "hostname"
+            ]
+          }
+        },
+        "core": {
+          "description": "core json-schema keywords",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "$ref",
+              "$schema",
+              "$id",
+              "id"
+            ]
+          }
+        },
+        "metadata": {
+          "description": "metadata keywords, not used for validation",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "definitions",
+              "title",
+              "description",
+              "default",
+              "examples"
+            ]
+          }
+        },
+        "validation": {
+          "description": "validation keywords",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "disallow",
+              "extends",
+              "divisibleBy",
+              "multipleOf",
+              "minimum",
+              "maximum",
+              "exclusiveMinimum",
+              "exclusiveMaximum",
+              "minLength",
+              "maxLength",
+              "pattern",
+              "items",
+              "additionalItems",
+              "minItems",
+              "maxItems",
+              "uniqueItems",
+              "contains",
+              "properties",
+              "patternProperties",
+              "additionalProperties",
+              "minProperties",
+              "maxProperties",
+              "required",
+              "dependencies",
+              "propertyNames",
+              "type",
+              "const",
+              "enum",
+              "allOf",
+              "anyOf",
+              "oneOf",
+              "not",
+              "format"
+            ]
+          }
+        },
+        "implementation": {
+          "description": "implementation rules",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "allowUndefinedTypes",
+              "selfDescriptiveMetaSchema",
+              "allowSimpleDependencies",
+              "formatSchemaURI",
+              "allowSchemaInUnionType",
+              "allowBooleanSchema",
+              "allowIntegerWithFractionalPart"
+            ]
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "object",
+          "propertyNames": {
+            "$ref": "#/properties/vocabularies/properties/type/items"
+          },
+          "additionalProperties": {
+            "$ref": "#/definitions/metadata"
+          }
+        },
+        "format": {
+          "type": "object",
+          "propertyNames": {
+            "$ref": "#/properties/vocabularies/properties/format/items"
+          },
+          "additionalProperties": {
+            "$ref": "#/definitions/metadata"
+          }
+        },
+        "core": {
+          "type": "object",
+          "propertyNames": {
+            "$ref": "#/properties/vocabularies/properties/core/items"
+          },
+          "additionalProperties": {
+            "$ref": "#/definitions/metadata"
+          }
+        },
+        "metadata": {
+          "type": "object",
+          "propertyNames": {
+            "$ref": "#/properties/vocabularies/properties/metadata/items"
+          },
+          "additionalProperties": {
+            "$ref": "#/definitions/metadata"
+          }
+        },
+        "validation": {
+          "type": "object",
+          "propertyNames": {
+            "$ref": "#/properties/vocabularies/properties/validation/items"
+          },
+          "additionalProperties": {
+            "$ref": "#/definitions/metadata"
+          }
+        },
+        "implementation": {
+          "type": "object",
+          "propertyNames": {
+            "$ref": "#/properties/vocabularies/properties/implementation/items"
+          },
+          "additionalProperties": {
+            "$ref": "#/definitions/metadata"
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

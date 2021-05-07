@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "properties": {
+    "basePath": {
+      "description": "Base path of the test suite",
+      "type": "string"
+    },
+    "manifestPath": {
+      "description": "Path of the manifest.jsonld file relative to the validation folder inside the test suite",
+      "type": "string"
+    },
+    "casesToRun": {
+      "description": "IDs of the cases to be run. If the field is not present, all cases are run",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "basePath",
+    "manifestPath"
+  ]
+}

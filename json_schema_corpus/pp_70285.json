@@ -1,0 +1,7 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "phone",
+  "description": "Phone",
+  "type": "string",
+  "pattern": "^(\\([0-9]{3}\\))? [0-9]{3}-[0-9]{4}$"
+}

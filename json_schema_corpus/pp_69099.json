@@ -1,0 +1,72 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "Planification",
+  "type": "array",
+  "items": {
+    "additionalProperties": false,
+    "id": "Planification/items",
+    "type": "object",
+    "required": [
+      "ReferenceExterne",
+      "ReferenceExterneUtilisateur",
+      "ReferenceExterneBail",
+      "DateHeure",
+      "Agence",
+      "TypeEdl"
+    ],
+    "properties": {
+      "ReferenceExterne": {
+        "id": "Planification/items/properties/ReferenceExterne",
+        "type": "string",
+        "title": "The Referenceexterne Schema.",
+        "description": "R\u00e9f\u00e9rence externe de l'objet de planification.",
+        "minLength": 1,
+        "maxLength": 255,
+        "default": "7022-0644-0101"
+      },
+      "ReferenceExterneUtilisateur": {
+        "id": "Planification/items/properties/ReferenceExterneUtilisateur",
+        "type": "string",
+        "title": "The Referenceexterneutilisateur Schema.",
+        "description": "R\u00e9f\u00e9rence externe de l'utilisateur li\u00e9 \u00e0 la planification.",
+        "minLength": 1,
+        "maxLength": 255,
+        "default": "7022"
+      },
+      "ReferenceExterneBail": {
+        "id": "Planification/items/properties/ReferenceExterneBail",
+        "type": "string",
+        "title": "The Referenceexternebail Schema.",
+        "description": "R\u00e9f\u00e9rence externe du bail li\u00e9 \u00e0 la planification.",
+        "minLength": 1,
+        "maxLength": 255,
+        "default": "0644"
+      },
+      "DateHeure": {
+        "id": "Planification/items/properties/DateHeure",
+        "type": "string",
+        "title": "The DateHeure Schema.",
+        "description": "Date et heure du rendez vous au format ISO 8601.",
+        "pattern": "(^\\d{4}-\\d{2}-\\d{2}T\\d{2}\\:\\d{2}\\:\\d{2}[+-]\\d{2}\\:\\d{2}$)",
+        "default": "2017-11-14T10:44:14+01:00"
+      },
+      "Agence": {
+        "id": "Planification/items/properties/Agence",
+        "type": "string",
+        "title": "The Agence Schema.",
+        "description": "Agence du patrimoine.",
+        "minLength": 1,
+        "maxLength": 200,
+        "default": "Tulipe"
+      },
+      "TypeEdl": {
+        "id": "Planification/items/properties/TypeEdl",
+        "type": "number",
+        "title": "The Typeedl Schema.",
+        "description": "les valeurs possibles seront 1 (entrant), 2(sortant) ou 3(visite).",
+        "default": 1
+      }
+    }
+  }
+}

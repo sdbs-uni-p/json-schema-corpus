@@ -1,0 +1,1205 @@
+{
+  "$schema": "http://interagent.github.io/interagent-hyper-schema",
+  "type": [
+    "object"
+  ],
+  "definitions": {
+    "comment": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "Comment",
+      "description": "Comments description",
+      "stability": "prototype",
+      "strictProperties": true,
+      "type": [
+        "object"
+      ],
+      "definitions": {
+        "id": {
+          "description": "unique identifier of comment",
+          "type": [
+            "number"
+          ],
+          "example": "42"
+        },
+        "content": {
+          "description": "unique name of comment",
+          "type": [
+            "string"
+          ],
+          "example": "Some comment"
+        },
+        "user_object": {
+          "description": "short user object",
+          "type": [
+            "object"
+          ],
+          "properties": {
+            "login": {
+              "$ref": "#/definitions/user/definitions/login"
+            }
+          }
+        },
+        "errors_object": {
+          "description": "comment errors object",
+          "type": [
+            "object"
+          ],
+          "properties": {
+            "errors": {
+              "type": [
+                "object"
+              ],
+              "properties": {
+                "content": {
+                  "type": [
+                    "array"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "post_object": {
+          "description": "short post object",
+          "type": [
+            "object"
+          ],
+          "properties": {
+            "id": {
+              "$ref": "#/definitions/post/definitions/identity"
+            }
+          }
+        },
+        "request_object_default": {
+          "description": "default request object",
+          "required": [
+            "comment"
+          ],
+          "properties": {
+            "comment": {
+              "required": [
+                "content"
+              ],
+              "properties": {
+                "content": {
+                  "$ref": "#/definitions/comment/definitions/content"
+                }
+              },
+              "type": [
+                "object"
+              ]
+            }
+          },
+          "type": [
+            "object"
+          ]
+        },
+        "comment_object": {
+          "description": "default comment object",
+          "required": [
+            "content",
+            "id"
+          ],
+          "type": [
+            "object"
+          ],
+          "properties": {
+            "id": {
+              "$ref": "#/definitions/comment/definitions/id"
+            },
+            "content": {
+              "$ref": "#/definitions/comment/definitions/content"
+            },
+            "post": {
+              "$ref": "#/definitions/comment/definitions/post_object"
+            },
+            "user": {
+              "$ref": "#/definitions/comment/definitions/user_object"
+            }
+          }
+        },
+        "response_only_object": {
+          "description": "default response by comment",
+          "type": [
+            "object"
+          ],
+          "required": [
+            "comment"
+          ],
+          "properties": {
+            "comment": {
+              "$ref": "#/definitions/comment"
+            }
+          }
+        },
+        "response_with_single": {
+          "description": "response_with_single",
+          "type": [
+            "object"
+          ],
+          "required": [
+            "comment"
+          ],
+          "properties": {
+            "comment": {
+              "$ref": "#/definitions/comment/definitions/comment_object"
+            }
+          }
+        },
+        "response_with_list": {
+          "description": "response_with_list",
+          "type": [
+            "object"
+          ],
+          "required": [
+            "comments",
+            "meta"
+          ],
+          "properties": {
+            "comments": {
+              "type": [
+                "array"
+              ],
+              "items": {
+                "$ref": "#/definitions/comment/definitions/comment_object"
+              }
+            },
+            "meta": {
+              "$ref": "#/definitions/shared/definitions/default_meta"
+            }
+          }
+        },
+        "identity": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/comment/definitions/id"
+            }
+          ]
+        },
+        "created_at": {
+          "description": "when comment was created",
+          "format": "date-time",
+          "type": [
+            "string"
+          ]
+        },
+        "updated_at": {
+          "description": "when comment was updated",
+          "format": "date-time",
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "links": [
+        {
+          "description": "Info for existing comment.",
+          "href": "/comments/{(%23%2Fdefinitions%2Fcomment%2Fdefinitions%2Fidentity)}",
+          "method": "GET",
+          "rel": "self",
+          "title": "Info",
+          "targetSchema": {
+            "$ref": "#/definitions/comment/definitions/response_with_single"
+          }
+        },
+        {
+          "description": "List existing comments.",
+          "href": "/comments",
+          "method": "GET",
+          "rel": "instances",
+          "title": "List",
+          "targetSchema": {
+            "$ref": "#/definitions/comment/definitions/response_with_list"
+          },
+          "schema": {
+            "$ref": "#/definitions/shared/definitions/request_object_lite"
+          }
+        },
+        {
+          "description": "Update an existing comment.",
+          "href": "/comments/{(%23%2Fdefinitions%2Fcomment%2Fdefinitions%2Fidentity)}",
+          "method": "PUT",
+          "rel": "update",
+          "targetSchema": {
+            "$ref": "#/definitions/comment/definitions/response_only_object"
+          },
+          "schema": {
+            "$ref": "#/definitions/comment/definitions/request_object_default"
+          },
+          "title": "Update"
+        },
+        {
+          "description": "Delete an existing comment.",
+          "href": "/comments/{(%23%2Fdefinitions%2Fcomment%2Fdefinitions%2Fidentity)}",
+          "method": "DELETE",
+          "rel": "destroy",
+          "title": "Delete",
+          "targetSchema": {
+            "$ref": "#/definitions/shared/definitions/default_success_boolean"
+          }
+        },
+        {
+          "description": "List existing comments for existing post.",
+          "href": "/posts/{(%23%2Fdefinitions%2Fpost%2Fdefinitions%2Fidentity)}/comments",
+          "method": "GET",
+          "rel": "instances",
+          "title": "List",
+          "targetSchema": {
+            "$ref": "#/definitions/comment/definitions/response_with_list"
+          },
+          "schema": {
+            "$ref": "#/definitions/shared/definitions/request_object_lite"
+          }
+        },
+        {
+          "description": "Create a new comment for post.",
+          "href": "/posts/{(%23%2Fdefinitions%2Fpost%2Fdefinitions%2Fidentity)}/comments",
+          "method": "POST",
+          "rel": "create",
+          "targetSchema": {
+            "$ref": "#/definitions/comment/definitions/response_only_object"
+          },
+          "schema": {
+            "$ref": "#/definitions/comment/definitions/request_object_default"
+          },
+          "title": "Create"
+        }
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/comment/definitions/id"
+        },
+        "content": {
+          "$ref": "#/definitions/comment/definitions/content"
+        }
+      }
+    },
+    "post": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "FIXME - Post",
+      "description": "FIXME",
+      "stability": "prototype",
+      "strictProperties": true,
+      "type": [
+        "object"
+      ],
+      "definitions": {
+        "id": {
+          "description": "unique identifier of post",
+          "readOnly": true,
+          "type": [
+            "string"
+          ],
+          "example": "some-post"
+        },
+        "title": {
+          "description": "name of the post",
+          "type": [
+            "string"
+          ],
+          "example": "Post title"
+        },
+        "status": {
+          "description": "status of the post",
+          "type": [
+            "string"
+          ],
+          "enum": [
+            "published",
+            "unpublished"
+          ],
+          "example": "published"
+        },
+        "slug": {
+          "description": "name of the post",
+          "type": [
+            "string"
+          ],
+          "example": "post-title"
+        },
+        "meta_keywords": {
+          "description": "post meta keywords",
+          "type": [
+            "string"
+          ],
+          "example": "Meta keywords"
+        },
+        "meta_desc": {
+          "description": "post meta description",
+          "type": [
+            "string"
+          ],
+          "example": "Meta description"
+        },
+        "content": {
+          "description": "post content",
+          "type": [
+            "string"
+          ],
+          "example": "Lorem ipsum dolor sit amet, consectetur adipiscing elit ..."
+        },
+        "content_short": {
+          "description": "post content",
+          "type": [
+            "string"
+          ],
+          "maxLength": 255,
+          "example": "Short content"
+        },
+        "owner_object": {
+          "description": "post owner",
+          "type": [
+            "object"
+          ],
+          "properties": {
+            "login": {
+              "$ref": "#/definitions/user/definitions/login"
+            }
+          }
+        },
+        "post_object": {
+          "description": "post object",
+          "required": [
+            "content",
+            "id"
+          ],
+          "type": [
+            "object"
+          ],
+          "properties": {
+            "id": {
+              "$ref": "#/definitions/post/definitions/id"
+            },
+            "title": {
+              "$ref": "#/definitions/post/definitions/title"
+            },
+            "slug": {
+              "$ref": "#/definitions/post/definitions/slug"
+            },
+            "status": {
+              "$ref": "#/definitions/post/definitions/status"
+            },
+            "content": {
+              "$ref": "#/definitions/post/definitions/content"
+            },
+            "meta_keywords": {
+              "$ref": "#/definitions/post/definitions/meta_keywords"
+            },
+            "meta_desc": {
+              "$ref": "#/definitions/post/definitions/meta_desc"
+            },
+            "owner": {
+              "$ref": "#/definitions/post/definitions/owner_object"
+            }
+          }
+        },
+        "comments_array": {
+          "description": "post comments",
+          "type": [
+            "array"
+          ],
+          "items": {
+            "$ref": "#/definitions/comment"
+          }
+        },
+        "post_list_object": {
+          "description": "post list object",
+          "type": [
+            "object"
+          ],
+          "required": [
+            "content",
+            "title",
+            "slug",
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "$ref": "#/definitions/post/definitions/id"
+            },
+            "title": {
+              "$ref": "#/definitions/post/definitions/title"
+            },
+            "slug": {
+              "$ref": "#/definitions/post/definitions/slug"
+            },
+            "status": {
+              "$ref": "#/definitions/post/definitions/status"
+            },
+            "content": {
+              "$ref": "#/definitions/post/definitions/content_short"
+            },
+            "meta_keywords": {
+              "$ref": "#/definitions/post/definitions/meta_keywords"
+            },
+            "meta_desc": {
+              "$ref": "#/definitions/post/definitions/meta_desc"
+            },
+            "owner": {
+              "$ref": "#/definitions/post/definitions/owner_object"
+            }
+          }
+        },
+        "request_object_default": {
+          "description": "default request object",
+          "required": [
+            "post"
+          ],
+          "properties": {
+            "post": {
+              "required": [
+                "title",
+                "content"
+              ],
+              "type": [
+                "object"
+              ],
+              "properties": {
+                "title": {
+                  "$ref": "#/definitions/post/definitions/title"
+                },
+                "slug": {
+                  "$ref": "#/definitions/post/definitions/slug"
+                },
+                "status": {
+                  "$ref": "#/definitions/post/definitions/status"
+                },
+                "content": {
+                  "$ref": "#/definitions/post/definitions/content"
+                },
+                "meta_keywords": {
+                  "$ref": "#/definitions/post/definitions/meta_keywords"
+                },
+                "meta_desc": {
+                  "$ref": "#/definitions/post/definitions/meta_desc"
+                }
+              }
+            }
+          },
+          "type": [
+            "object"
+          ]
+        },
+        "response_only_object": {
+          "description": "default response by post",
+          "type": [
+            "object"
+          ],
+          "required": [
+            "post"
+          ],
+          "properties": {
+            "post": {
+              "$ref": "#/definitions/post"
+            }
+          }
+        },
+        "response_with_single": {
+          "description": "response_with_single",
+          "type": [
+            "object"
+          ],
+          "required": [
+            "post"
+          ],
+          "properties": {
+            "post": {
+              "$ref": "#/definitions/post/definitions/post_object"
+            }
+          }
+        },
+        "response_with_list": {
+          "description": "response_with_list",
+          "type": [
+            "object"
+          ],
+          "required": [
+            "posts",
+            "meta"
+          ],
+          "properties": {
+            "posts": {
+              "type": [
+                "array"
+              ],
+              "items": {
+                "$ref": "#/definitions/post/definitions/post_list_object"
+              }
+            },
+            "meta": {
+              "$ref": "#/definitions/shared/definitions/default_meta"
+            }
+          }
+        },
+        "identity": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/post/definitions/id"
+            },
+            {
+              "$ref": "#/definitions/post/definitions/slug"
+            }
+          ]
+        },
+        "errors_object": {
+          "description": "post errors object",
+          "type": [
+            "object"
+          ],
+          "properties": {
+            "errors": {
+              "type": [
+                "object"
+              ],
+              "properties": {
+                "content": {
+                  "type": [
+                    "array"
+                  ]
+                },
+                "title": {
+                  "type": [
+                    "array"
+                  ]
+                },
+                "slug": {
+                  "type": [
+                    "array"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "created_at": {
+          "description": "when post was created",
+          "format": "date-time",
+          "type": [
+            "string"
+          ]
+        },
+        "updated_at": {
+          "description": "when post was updated",
+          "format": "date-time",
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "links": [
+        {
+          "description": "Create a new post.",
+          "href": "/posts",
+          "method": "POST",
+          "rel": "create",
+          "targetSchema": {
+            "$ref": "#/definitions/post/definitions/response_only_object"
+          },
+          "schema": {
+            "$ref": "#/definitions/post/definitions/request_object_default"
+          },
+          "title": "Create"
+        },
+        {
+          "description": "Follow post.",
+          "href": "/posts/{(%23%2Fdefinitions%2Fpost%2Fdefinitions%2Fidentity)}/follow",
+          "method": "POST",
+          "rel": "update",
+          "targetSchema": {
+            "$ref": "#/definitions/post/definitions/response_only_object"
+          },
+          "title": "Follow"
+        },
+        {
+          "description": "Unfollow post.",
+          "href": "/posts/{(%23%2Fdefinitions%2Fpost%2Fdefinitions%2Fidentity)}/unfollow",
+          "method": "POST",
+          "rel": "update",
+          "targetSchema": {
+            "$ref": "#/definitions/post/definitions/response_only_object"
+          },
+          "title": "Unfollow"
+        },
+        {
+          "description": "Publish post.",
+          "href": "/posts/{(%23%2Fdefinitions%2Fpost%2Fdefinitions%2Fidentity)}/publish",
+          "method": "POST",
+          "rel": "update",
+          "targetSchema": {
+            "$ref": "#/definitions/post/definitions/response_only_object"
+          },
+          "title": "Publish"
+        },
+        {
+          "description": "Unpublish post.",
+          "href": "/posts/{(%23%2Fdefinitions%2Fpost%2Fdefinitions%2Fidentity)}/unpublish",
+          "method": "POST",
+          "rel": "update",
+          "targetSchema": {
+            "$ref": "#/definitions/post/definitions/response_only_object"
+          },
+          "title": "Unpublish"
+        },
+        {
+          "description": "Delete an existing post.",
+          "href": "/posts/{(%23%2Fdefinitions%2Fpost%2Fdefinitions%2Fidentity)}",
+          "method": "DELETE",
+          "rel": "destroy",
+          "title": "Delete",
+          "targetSchema": {
+            "$ref": "#/definitions/shared/definitions/default_success_boolean"
+          }
+        },
+        {
+          "description": "Info for existing post.",
+          "href": "/posts/{(%23%2Fdefinitions%2Fpost%2Fdefinitions%2Fidentity)}",
+          "method": "GET",
+          "rel": "self",
+          "title": "Info",
+          "targetSchema": {
+            "$ref": "#/definitions/post/definitions/response_with_single"
+          }
+        },
+        {
+          "description": "List existing posts.",
+          "href": "/posts",
+          "method": "GET",
+          "rel": "instances",
+          "title": "List",
+          "targetSchema": {
+            "$ref": "#/definitions/post/definitions/response_with_list"
+          },
+          "schema": {
+            "$ref": "#/definitions/shared/definitions/request_object_lite"
+          }
+        },
+        {
+          "description": "Update an existing post.",
+          "href": "/posts/{(%23%2Fdefinitions%2Fpost%2Fdefinitions%2Fidentity)}",
+          "method": "PUT",
+          "rel": "update",
+          "targetSchema": {
+            "$ref": "#/definitions/post/definitions/response_only_object"
+          },
+          "schema": {
+            "$ref": "#/definitions/post/definitions/request_object_default"
+          },
+          "title": "Update"
+        }
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/post/definitions/id"
+        },
+        "title": {
+          "$ref": "#/definitions/post/definitions/title"
+        },
+        "slug": {
+          "$ref": "#/definitions/post/definitions/slug"
+        },
+        "status": {
+          "$ref": "#/definitions/post/definitions/status"
+        },
+        "content": {
+          "$ref": "#/definitions/post/definitions/content"
+        },
+        "meta_keywords": {
+          "$ref": "#/definitions/post/definitions/meta_keywords"
+        },
+        "meta_desc": {
+          "$ref": "#/definitions/post/definitions/meta_desc"
+        }
+      }
+    },
+    "shared": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "Shared",
+      "description": "Shared data for our schemas",
+      "stability": "prototype",
+      "strictProperties": true,
+      "type": [
+        "object"
+      ],
+      "definitions": {
+        "page": {
+          "description": "page number",
+          "type": [
+            "integer"
+          ],
+          "example": 1
+        },
+        "request_object_lite": {
+          "description": "lite request object",
+          "properties": {
+            "page": {
+              "$ref": "#/definitions/shared/definitions/page"
+            }
+          },
+          "type": [
+            "object"
+          ]
+        },
+        "default_error_string": {
+          "description": "default error wrapper",
+          "type": [
+            "object"
+          ],
+          "required": [
+            "error"
+          ],
+          "properties": {
+            "error": {
+              "type": [
+                "string"
+              ],
+              "example": "Page not found"
+            }
+          }
+        },
+        "default_meta": {
+          "description": "default meta",
+          "type": [
+            "object"
+          ],
+          "properties": {
+            "current_page": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "example": 1
+            },
+            "next_page": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "example": 2
+            },
+            "prev_page": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "example": 1
+            },
+            "total_pages": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "example": 5
+            },
+            "total_count": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "example": 10
+            }
+          }
+        },
+        "default_success_boolean": {
+          "description": "default success wrapper",
+          "type": [
+            "object"
+          ],
+          "required": [
+            "success"
+          ],
+          "properties": {
+            "success": {
+              "type": [
+                "boolean"
+              ],
+              "example": true
+            }
+          }
+        },
+        "identity": {}
+      },
+      "links": [],
+      "properties": {}
+    },
+    "token": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "Token",
+      "description": "Token description",
+      "stability": "prototype",
+      "strictProperties": true,
+      "type": [
+        "object"
+      ],
+      "definitions": {
+        "access_token": {
+          "description": "unique token identifier of user",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "identity": {}
+      },
+      "links": [
+        {
+          "description": "Get a new token.",
+          "href": "/tokens",
+          "method": "PUT",
+          "rel": "update",
+          "schema": {
+            "properties": {},
+            "type": [
+              "object"
+            ]
+          },
+          "title": "Update"
+        }
+      ],
+      "properties": {
+        "access_token": {
+          "$ref": "#/definitions/token/definitions/access_token"
+        }
+      }
+    },
+    "user": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "User",
+      "description": "Something about user resource",
+      "stability": "prototype",
+      "strictProperties": true,
+      "type": [
+        "object"
+      ],
+      "definitions": {
+        "id": {
+          "description": "unique identifier of user",
+          "type": [
+            "integer"
+          ],
+          "readOnly": true,
+          "example": 44
+        },
+        "login": {
+          "description": "unique login of user",
+          "type": [
+            "string"
+          ],
+          "example": "user-login"
+        },
+        "email": {
+          "description": "unique email of user",
+          "type": [
+            "string"
+          ],
+          "format": "email",
+          "example": "aa@bb.ru"
+        },
+        "role": {
+          "description": "role of user",
+          "type": [
+            "string"
+          ],
+          "enum": [
+            "guest",
+            "user",
+            "admin"
+          ],
+          "example": "guest"
+        },
+        "followings_object": {
+          "description": "followed posts",
+          "type": [
+            "object"
+          ],
+          "properties": {
+            "id": {
+              "$ref": "#/definitions/post/definitions/id"
+            },
+            "title": {
+              "$ref": "#/definitions/post/definitions/title"
+            },
+            "slug": {
+              "$ref": "#/definitions/post/definitions/slug"
+            },
+            "status": {
+              "$ref": "#/definitions/post/definitions/status"
+            },
+            "content": {
+              "$ref": "#/definitions/post/definitions/content_short"
+            }
+          }
+        },
+        "user_object": {
+          "description": "user object",
+          "type": [
+            "object"
+          ],
+          "properties": {
+            "id": {
+              "$ref": "#/definitions/user/definitions/id"
+            },
+            "login": {
+              "$ref": "#/definitions/user/definitions/login"
+            },
+            "email": {
+              "$ref": "#/definitions/user/definitions/email"
+            },
+            "role": {
+              "$ref": "#/definitions/user/definitions/role"
+            },
+            "followings": {
+              "type": [
+                "array"
+              ],
+              "items": {
+                "$ref": "#/definitions/user/definitions/followings_object"
+              }
+            }
+          }
+        },
+        "identity": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/user/definitions/id"
+            },
+            {
+              "$ref": "#/definitions/user/definitions/login"
+            }
+          ]
+        },
+        "errors_object": {
+          "description": "user errors object",
+          "type": [
+            "object"
+          ],
+          "properties": {
+            "errors": {
+              "type": [
+                "object"
+              ],
+              "properties": {
+                "email": {
+                  "type": [
+                    "array"
+                  ]
+                },
+                "login": {
+                  "type": [
+                    "array"
+                  ]
+                },
+                "password": {
+                  "type": [
+                    "array"
+                  ]
+                },
+                "password_confirmation": {
+                  "type": [
+                    "array"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "response_only_object": {
+          "description": "default response by user",
+          "type": [
+            "object"
+          ],
+          "required": [
+            "user"
+          ],
+          "properties": {
+            "user": {
+              "$ref": "#/definitions/user"
+            }
+          }
+        },
+        "request_object_default": {
+          "description": "default request object",
+          "required": [
+            "user"
+          ],
+          "properties": {
+            "user": {
+              "required": [
+                "login",
+                "email"
+              ],
+              "type": [
+                "object"
+              ],
+              "properties": {
+                "login": {
+                  "$ref": "#/definitions/user/definitions/login"
+                },
+                "email": {
+                  "$ref": "#/definitions/user/definitions/email"
+                },
+                "role": {
+                  "$ref": "#/definitions/user/definitions/role"
+                }
+              }
+            }
+          },
+          "type": [
+            "object"
+          ]
+        },
+        "response_with_single": {
+          "description": "response_with_single",
+          "type": [
+            "object"
+          ],
+          "required": [
+            "user"
+          ],
+          "properties": {
+            "user": {
+              "$ref": "#/definitions/user/definitions/user_object"
+            }
+          }
+        },
+        "response_with_list": {
+          "description": "response_with_list",
+          "type": [
+            "object"
+          ],
+          "required": [
+            "users",
+            "meta"
+          ],
+          "properties": {
+            "users": {
+              "type": [
+                "array"
+              ],
+              "items": {
+                "$ref": "#/definitions/user"
+              }
+            },
+            "meta": {
+              "$ref": "#/definitions/shared/definitions/default_meta"
+            }
+          }
+        },
+        "created_at": {
+          "description": "when user was created",
+          "format": "date-time",
+          "type": [
+            "string"
+          ]
+        },
+        "updated_at": {
+          "description": "when user was updated",
+          "format": "date-time",
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "links": [
+        {
+          "description": "Create a new user.",
+          "href": "/users",
+          "method": "POST",
+          "rel": "create",
+          "targetSchema": {
+            "$ref": "#/definitions/user/definitions/response_only_object"
+          },
+          "schema": {
+            "$ref": "#/definitions/user/definitions/request_object_default"
+          },
+          "title": "Create"
+        },
+        {
+          "description": "Delete an existing user.",
+          "href": "/users/{(%23%2Fdefinitions%2Fuser%2Fdefinitions%2Fidentity)}",
+          "method": "DELETE",
+          "rel": "destroy",
+          "title": "Delete",
+          "targetSchema": {
+            "$ref": "#/definitions/shared/definitions/default_success_boolean"
+          }
+        },
+        {
+          "description": "Info for existing user.",
+          "href": "/users/{(%23%2Fdefinitions%2Fuser%2Fdefinitions%2Fidentity)}",
+          "method": "GET",
+          "rel": "self",
+          "title": "Info",
+          "targetSchema": {
+            "$ref": "#/definitions/user/definitions/response_with_single"
+          }
+        },
+        {
+          "description": "List existing users.",
+          "href": "/users",
+          "method": "GET",
+          "rel": "instances",
+          "title": "List",
+          "targetSchema": {
+            "$ref": "#/definitions/user/definitions/response_with_list"
+          },
+          "schema": {
+            "$ref": "#/definitions/shared/definitions/request_object_lite"
+          }
+        },
+        {
+          "description": "Update an existing user.",
+          "href": "/users/{(%23%2Fdefinitions%2Fuser%2Fdefinitions%2Fidentity)}",
+          "method": "PUT",
+          "rel": "update",
+          "title": "Update",
+          "targetSchema": {
+            "$ref": "#/definitions/user/definitions/response_only_object"
+          },
+          "schema": {
+            "$ref": "#/definitions/user/definitions/request_object_default"
+          }
+        }
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/user/definitions/id"
+        },
+        "login": {
+          "$ref": "#/definitions/user/definitions/login"
+        },
+        "email": {
+          "$ref": "#/definitions/user/definitions/email"
+        },
+        "role": {
+          "$ref": "#/definitions/user/definitions/role"
+        }
+      }
+    }
+  },
+  "properties": {
+    "comment": {
+      "$ref": "#/definitions/comment"
+    },
+    "post": {
+      "$ref": "#/definitions/post"
+    },
+    "shared": {
+      "$ref": "#/definitions/shared"
+    },
+    "token": {
+      "$ref": "#/definitions/token"
+    },
+    "user": {
+      "$ref": "#/definitions/user"
+    }
+  },
+  "description": "Mysterious Blog API",
+  "id": "mysterious",
+  "links": [
+    {
+      "href": "https://mysterious.com/api/v1",
+      "rel": "self"
+    }
+  ],
+  "title": "Mysterious Blog API"
+}

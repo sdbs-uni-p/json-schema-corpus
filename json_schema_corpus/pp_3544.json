@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Data",
+  "type": "object",
+  "properties": {
+    "SOURCE_NAME": {
+      "type": "number",
+      "constraints": [
+        {
+          "type": "CONSTRAINT_TYPE",
+          "target": "#/TARGET_NAME"
+        }
+      ]
+    },
+    "TARGET_NAME": {
+      "type": "number"
+    }
+  }
+}

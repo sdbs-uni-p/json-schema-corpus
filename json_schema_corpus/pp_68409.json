@@ -1,0 +1,156 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "Assignment Spec schema.",
+  "description": "Format for the assignment specification json for reference repositories.",
+  "properties": {
+    "assignment_name": {
+      "type": "string",
+      "title": "Assignment Name schema",
+      "description": "The identifier for this assignment in your course"
+    },
+    "maximum_group_size": {
+      "type": "integer",
+      "title": "Maximum Group Size schema",
+      "description": "If students are allowed to work in groups, enter the max group size, otherwise enter 1.",
+      "minimum": 1,
+      "default": 1
+    },
+    "ready": {
+      "type": "boolean",
+      "title": "Ready schema",
+      "description": "Whether this assignment is ready for students to start or not.",
+      "default": false
+    },
+    "deadline": {
+      "type": "string",
+      "title": "Deadline schema",
+      "description": "The due date for the assignment",
+      "format": "date-time",
+      "default": "2017-02-14T23:59:00.00Z"
+    },
+    "expected_files": {
+      "type": "array",
+      "title": "Expected Files schema",
+      "description": "Minimum files expected from student submissions",
+      "items": {
+        "type": "string",
+        "title": "Expected File schema.",
+        "description": "Ant-style path to a file or filename pattern, such as **/*.h or resources/foo.c"
+      }
+    },
+    "uneditables": {
+      "type": "array",
+      "title": "Uneditables schema",
+      "description": "Files that, when changed, revert to the given default",
+      "items": {
+        "type": "string",
+        "title": "Uneditable File schema.",
+        "description": "Ant-style path to a file or filename pattern, such as **/*.h or resources/foo.c"
+      }
+    },
+    "testables": {
+      "type": "array",
+      "title": "Testables schema.",
+      "description": "A list of logical test groups with common build outputs",
+      "items": {
+        "type": "object",
+        "title": "Testable schema.",
+        "description": "A group of test cases sharing a common build command",
+        "properties": {
+          "test_name": {
+            "type": "string",
+            "title": "Test Name schema.",
+            "description": "Name of this test group"
+          },
+          "build_command": {
+            "type": "string",
+            "title": "Build Command schema.",
+            "description": "A unix command that compiles/builds the project",
+            "default": "make"
+          },
+          "test_cases": {
+            "type": "array",
+            "title": "Test Cases schema.",
+            "description": "A list of test cases",
+            "items": {
+              "type": "object",
+              "title": "Test Case schema.",
+              "description": "An individual test case worth some amount of points",
+              "properties": {
+                "command": {
+                  "type": "string",
+                  "title": "Command schema.",
+                  "description": "A unix command to inspect output on",
+                  "default": "echo 'Hello World'"
+                },
+                "points": {
+                  "type": "integer",
+                  "title": "Points schema.",
+                  "description": "Point value for this test case",
+                  "default": 100
+                },
+                "kind": {
+                  "type": "string",
+                  "title": "Kind schema.",
+                  "description": "What kind of test case this is",
+                  "enum": [
+                    "diff"
+                  ],
+                  "default": "diff"
+                },
+                "hide_expected": {
+                  "type": "boolean",
+                  "title": "Hide Expected schema.",
+                  "description": "Whether to hide the expected output from students when they fail this test case",
+                  "default": true
+                },
+                "diff_source": {
+                  "type": "string",
+                  "title": "Diff Source schema.",
+                  "description": "The file that contains test output for diff-ing",
+                  "default": "stdout"
+                },
+                "expected": {
+                  "type": "string",
+                  "title": "Expected schema.",
+                  "description": "The path to the solution output, or 'generate' to have it generated",
+                  "default": "generate"
+                },
+                "timeout": {
+                  "type": "integer",
+                  "title": "Timeout schema.",
+                  "description": "How long (in seconds) to let student code run",
+                  "default": 4
+                }
+              },
+              "required": [
+                "command",
+                "points",
+                "kind",
+                "hide_expected",
+                "diff_source",
+                "expected",
+                "timeout"
+              ]
+            }
+          }
+        },
+        "required": [
+          "test_name",
+          "build_command",
+          "test_cases"
+        ]
+      }
+    }
+  },
+  "required": [
+    "assignment_name",
+    "maximum_group_size",
+    "ready",
+    "deadline",
+    "expected_files",
+    "uneditables",
+    "testables"
+  ]
+}

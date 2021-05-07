@@ -1,0 +1,292 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "VaccineTrialParticipant",
+  "description": "An Vaccine Trial Participant",
+  "type": "object",
+  "properties": {
+    "cdcId": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}-[0-9]+$"
+    },
+    "doc_type": {
+      "type": "string",
+      "pattern": "^vaccineTrialParticipant$"
+    },
+    "enrollmentSite": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "enrollmentDate": {
+      "type": "string",
+      "format": "date-time",
+      "faker": "date.past"
+    },
+    "vaccinationDate": {
+      "type": "string",
+      "format": "date-time",
+      "faker": "date.past"
+    },
+    "vaccinationSite": {
+      "type": "string"
+    },
+    "biometrics": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/biometrics"
+      }
+    },
+    "firstName": {
+      "type": "string",
+      "faker": "name.firstName"
+    },
+    "lastName": {
+      "type": "string",
+      "faker": "name.lastName"
+    },
+    "gender": {
+      "enum": [
+        "m",
+        "f"
+      ]
+    },
+    "birthDay": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 31
+    },
+    "birthMonth": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 12
+    },
+    "birthYear": {
+      "type": "number",
+      "minimum": 1900,
+      "maximum": 2020
+    },
+    "paymentPhoneNumber": {
+      "type": "string",
+      "faker": "phoneNumber.phoneNumber"
+    },
+    "phoneNumber": {
+      "type": "string",
+      "faker": "phoneNumber.phoneNumber"
+    },
+    "bestContactTime": {
+      "type": "string"
+    },
+    "studyPhoneNumber": {
+      "type": "string",
+      "faker": "phoneNumber.phoneNumber"
+    },
+    "address": {
+      "$ref": "#/definitions/address"
+    },
+    "alternateContact1": {
+      "$ref": "#/definitions/contact"
+    },
+    "alternateContact2": {
+      "$ref": "#/definitions/contact"
+    },
+    "actions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/action"
+      }
+    },
+    "photograph": {
+      "$ref": "https://schema.ehealthafrica.org/1.0/Image.json#"
+    },
+    "modifiedDate": {
+      "type": "string",
+      "format": "date-time",
+      "faker": "date.past"
+    },
+    "dateSynced": {
+      "type": "string",
+      "format": "date-time",
+      "faker": "date.past"
+    },
+    "synced": {
+      "type": "boolean"
+    },
+    "lastUpdatedBy": {
+      "enum": [
+        "client",
+        "command"
+      ]
+    }
+  },
+  "required": [
+    "firstName",
+    "lastName",
+    "paymentPhoneNumber",
+    "enrollmentSite",
+    "cdcId",
+    "enrollmentDate"
+  ],
+  "definitions": {
+    "biometrics": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [
+            "fingerprint"
+          ]
+        },
+        "meta": {
+          "type": "object",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/biometricsTypeFingerprintMeta"
+            }
+          ]
+        },
+        "iso": {
+          "type": "string"
+        },
+        "ntemplate": {
+          "type": "string"
+        }
+      }
+    },
+    "biometricsTypeFingerprintMeta": {
+      "type": "object",
+      "properties": {
+        "finger": {
+          "enum": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ]
+        },
+        "hand": {
+          "enum": [
+            "left",
+            "right"
+          ]
+        }
+      }
+    },
+    "address": {
+      "type": "object",
+      "properties": {
+        "city": {
+          "type": "string",
+          "faker": "address.city"
+        },
+        "address": {
+          "type": "string",
+          "faker": "address.streetAddress"
+        },
+        "householdHeadFirstName": {
+          "type": "string",
+          "faker": "name.firstName"
+        },
+        "householdHeadSurname": {
+          "type": "string",
+          "faker": "name.lastName"
+        },
+        "landmark": {
+          "type": "string"
+        },
+        "adminDivision1": {
+          "$ref": "#/definitions/adminDivision"
+        },
+        "adminDivision2": {
+          "$ref": "#/definitions/adminDivision"
+        },
+        "adminDivision3": {
+          "$ref": "#/definitions/adminDivision"
+        }
+      },
+      "additionalProperties": false
+    },
+    "contact": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "faker": "name.findName"
+        },
+        "address": {
+          "type": "string",
+          "faker": "address.streetAddress"
+        },
+        "relationship": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string",
+          "faker": "phoneNumber.phoneNumber"
+        },
+        "messageConfirmation": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "adminDivision": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": [
+            "string",
+            "number"
+          ]
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ]
+    },
+    "action": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [
+            "vaccination-payment-activated",
+            "enrollment-payment-activated",
+            "photo-id",
+            "follow-up"
+          ]
+        },
+        "date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "attemptType": {
+          "type": "string"
+        },
+        "reached": {
+          "type": "boolean"
+        },
+        "triaged": {
+          "type": "boolean"
+        },
+        "triageresult": {
+          "type": "string"
+        },
+        "referral": {
+          "type": "string"
+        },
+        "referralDate": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "type",
+        "date"
+      ]
+    }
+  }
+}

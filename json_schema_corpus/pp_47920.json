@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "Eventsource configuration",
+  "properties": {
+    "name": {
+      "propertyOrder": 10,
+      "title": "Name",
+      "type": "string"
+    },
+    "streamKey": {
+      "propertyOrder": 30,
+      "title": "Stream Key",
+      "type": "string"
+    },
+    "tags": {
+      "propertyOrder": 40,
+      "title": "List of tags",
+      "type": "string"
+    },
+    "targetGate": {
+      "propertyOrder": 50,
+      "title": "Gate address",
+      "type": "string",
+      "default": "akka.tcp://hub@localhost:12345/user/gatename"
+    },
+    "maxInFlight": {
+      "propertyOrder": 51,
+      "title": "Message buffer",
+      "type": "integer",
+      "default": 1000
+    },
+    "source": {
+      "propertyOrder": 60,
+      "title": "Source configuration",
+      "type": "object",
+      "oneOf": []
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "source",
+    "targetGate"
+  ],
+  "definitions": {}
+}

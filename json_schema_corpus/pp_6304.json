@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "endpoint": "/body",
+  "description": "testing the sending of body",
+  "methods": [
+    "post",
+    "put"
+  ],
+  "body": {
+    "key": "value"
+  },
+  "type": "object",
+  "properties": {
+    "key": {
+      "type": "string",
+      "enum": [
+        "value"
+      ]
+    }
+  },
+  "required": [
+    "key"
+  ]
+}

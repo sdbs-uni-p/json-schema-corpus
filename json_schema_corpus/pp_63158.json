@@ -1,0 +1,150 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "https://legumefederation.org/schemas/cmap.json",
+  "title": "cmap-js schema",
+  "description": "For more info, see https://github.com/ncgr/cmap-js",
+  "type": "object",
+  "definitions": {
+    "filter": {
+      "type": "object",
+      "properties": {
+        "column": {
+          "type": "string"
+        },
+        "not": {
+          "type": "boolean"
+        },
+        "operator": {
+          "enum": [
+            "equals",
+            "regex"
+          ]
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "column",
+        "operator",
+        "value"
+      ]
+    },
+    "linkout": {
+      "type": "object",
+      "properties": {
+        "featuretype": {
+          "type": "string"
+        },
+        "featuretypePattern": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "isLinkingService": {
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "required": [
+        "url"
+      ],
+      "oneOf": [
+        {
+          "required": [
+            "featuretype"
+          ]
+        },
+        {
+          "required": [
+            "featuretypePattern"
+          ]
+        }
+      ]
+    }
+  },
+  "properties": {
+    "#": {
+      "type": "string"
+    },
+    "header": {
+      "type": "string"
+    },
+    "attribution": {
+      "type": "string"
+    },
+    "initialView": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string"
+          },
+          "map": {
+            "type": "string"
+          },
+          "filters": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/filter"
+            }
+          }
+        },
+        "required": [
+          "source",
+          "map"
+        ]
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "#": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "method": {
+            "type": "string"
+          },
+          "data": {
+            "type": "object"
+          },
+          "url": {
+            "type": "string"
+          },
+          "filters": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/filter"
+            }
+          },
+          "linkouts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/linkout"
+            }
+          }
+        },
+        "required": [
+          "url",
+          "method",
+          "id"
+        ]
+      }
+    }
+  },
+  "required": [
+    "header",
+    "attribution",
+    "sources"
+  ]
+}

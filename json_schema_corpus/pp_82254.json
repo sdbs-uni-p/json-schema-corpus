@@ -1,0 +1,102 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "types",
+  "definitions": {
+    "uuid": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+    },
+    "string": {
+      "type": "string"
+    },
+    "string[]": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/string"
+      }
+    },
+    "text": {
+      "type": "string"
+    },
+    "text[]": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/text"
+      }
+    },
+    "date": {
+      "type": "string",
+      "format": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "date[]": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/date"
+      }
+    },
+    "datetime": {
+      "type": "string",
+      "format": "^\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}$"
+    },
+    "datetime[]": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/datetime"
+      }
+    },
+    "float": {
+      "type": "number"
+    },
+    "float[]": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/float"
+      }
+    },
+    "integer": {
+      "type": "number"
+    },
+    "integer[]": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/integer"
+      }
+    },
+    "boolean": {
+      "type": "boolean"
+    },
+    "boolean[]": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/boolean"
+      }
+    },
+    "json": {
+      "type": "object"
+    },
+    "json[]": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/json"
+      }
+    },
+    "point": {
+      "$ref": "geojson#/definitions/point"
+    },
+    "point[]": {
+      "$ref": "geojson#/definitions/multipoint"
+    },
+    "linestring": {
+      "$ref": "geojson#/definitions/linestring"
+    },
+    "linestring[]": {
+      "$ref": "geojson#/definitions/multilinestring"
+    },
+    "polygon": {
+      "$ref": "geojson#/definitions/polygon"
+    },
+    "polygon[]": {
+      "$ref": "geojson#/definitions/multipolygon"
+    }
+  }
+}

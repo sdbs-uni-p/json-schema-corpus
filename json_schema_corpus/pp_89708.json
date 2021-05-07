@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "title": "com.xcitestudios.schema.Logging.LogMessage",
+  "description": "Minimum required output for a Templated text object",
+  "type": "object",
+  "properties": {
+    "content": {
+      "type": "string",
+      "description": "The template content of this template"
+    },
+    "context": {
+      "type": "object",
+      "description": "Object containing items to be passed in to replace items in the content"
+    }
+  },
+  "required": [
+    "content"
+  ]
+}

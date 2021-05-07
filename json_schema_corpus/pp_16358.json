@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Asymmetric Key Expression",
+  "type": "object",
+  "properties": {
+    "asym_prv_key": {
+      "type": "object",
+      "$ref": "./expression.schema.json"
+    },
+    "asym_pub_key": {
+      "type": "object",
+      "$ref": "./expression.schema.json"
+    }
+  },
+  "required": [
+    "asym_prv_key",
+    "asym_pub_key"
+  ]
+}

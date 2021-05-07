@@ -1,0 +1,2817 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "type": "object",
+  "definitions": {
+    "EmailType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "emailAddress": {
+          "type": "string"
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ParentGuardianType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "NameType"
+        },
+        "relationshipCode": {
+          "$ref": "RelationshipCodeType"
+        }
+      }
+    },
+    "NameType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "lastName": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "nameCode": {
+          "$ref": "NameCodeType"
+        },
+        "namePrefix": {
+          "type": "string"
+        },
+        "nameTitle": {
+          "type": "string"
+        },
+        "compositeName": {
+          "type": "string"
+        },
+        "nameSuffix": {
+          "$ref": "NameSuffixType"
+        },
+        "middleName": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "EthnicityCodeType": {
+      "enum": [
+        "HISPANIC",
+        "NON_HISPANIC"
+      ]
+    },
+    "HighSchoolSubjectAreaCodeType": {
+      "enum": [
+        "ACADEMIC_ELECTIVE",
+        "ARTS",
+        "ENGLISH",
+        "FOREIGN_LANGUAGE",
+        "HISTORY_SOCIAL_SCIENCE",
+        "LAB_SCIENCE",
+        "MATH",
+        "OTHER",
+        "SCIENCE"
+      ]
+    },
+    "DocumentTypeCodeType": {
+      "enum": [
+        "ACKNOWLEDGMENT",
+        "APPLICATION",
+        "CANCEL",
+        "CERTIFICATION_REQUEST",
+        "CHANGE",
+        "DISBURSEMENT_ACKNOWLEDGEMENT",
+        "DISBURSEMENT_FORECAST",
+        "DISBURSEMENT_ROSTER",
+        "INSTITUTION_REQUEST",
+        "GAINFUL_EMPLOYMENT_STUDENT_RESPONSE_FILE",
+        "GAINFUL_EMPLOYMENT_STUDENT_SUBMITTAL",
+        "IPEDS",
+        "NSLDS_ENROLLMENT_ERROR",
+        "NSLDS_ENROLLMENT_SUBMITTAL",
+        "RECEIPT",
+        "REQUEST",
+        "REQUESTED_RECORD",
+        "RESPONSE",
+        "REVERSE_TRANSFER",
+        "STUDENT_REQUEST",
+        "TERM_ENROLL",
+        "TERM_GRADE",
+        "THIRD_PARTY_REQUEST"
+      ]
+    },
+    "EthnicityRaceType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "localEthnicityRaceCode": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "ethnicityCode": {
+          "$ref": "EthnicityCodeType"
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "raceCode": {
+          "type": "array",
+          "items": {
+            "$ref": "RaceCodeType"
+          }
+        }
+      }
+    },
+    "DocumentOfficialCodeType": {
+      "enum": [
+        "OFFICIAL",
+        "UNOFFICIAL"
+      ]
+    },
+    "LanguageUsageType": {
+      "enum": [
+        "ALWAYS",
+        "FIRST_SPOKEN_LANGUAGE",
+        "NATIVE",
+        "READING",
+        "SOME_SECTIONS",
+        "SOMETIMES",
+        "SPEAKING",
+        "SPOKEN_AT_HOME",
+        "WRITING",
+        "WRITTEN_COMMUNICATION"
+      ]
+    },
+    "AcademicSummaryTypeType": {
+      "enum": [
+        "ALL",
+        "SENDER_ONLY",
+        "TRANSFER_ONLY",
+        "ALL_NOT_REPEATED",
+        "SENDER_NOT_REPEATED",
+        "TRANSFER_NOT_REPEATED",
+        "ACADEMIC_RENEWAL",
+        "CARRYOVER_CREDIT",
+        "DEGREE_APPLICABLE",
+        "NON_DEGREE_APPLICABLE",
+        "CONVERTED_FROM",
+        "CONVERTED_TO",
+        "WEIGHTED",
+        "NON_WEIGHTED",
+        "USER_DEFINED",
+        "CUMULATIVE"
+      ]
+    },
+    "DelinquenciesType": {
+      "enum": [
+        "EXCLUSION_ACADEMIC",
+        "EXCLUSION_DISCIPLINE",
+        "GOOD_STANDING",
+        "PROBATION_GPA",
+        "PROBATION_HOURS",
+        "SUSPENSION_GPA",
+        "SUSPENSION_HOURS",
+        "PROBATION_DISCIPLINE",
+        "SUSPENSION_DISCIPLINE",
+        "UNKNOWN",
+        "OTHER"
+      ]
+    },
+    "BirthType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "birthday": {
+          "$ref": "XMLGregorianCalendar"
+        },
+        "birthState": {
+          "$ref": "StateProvinceCodeType"
+        },
+        "birthCountry": {
+          "$ref": "CountryCodeType"
+        },
+        "birthCity": {
+          "type": "string"
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "birthDate": {
+          "$ref": "XMLGregorianCalendar"
+        }
+      }
+    },
+    "AccreditationType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "accreditingBodyName": {
+          "type": "string"
+        },
+        "accreditingBodyCode": {
+          "$ref": "AccreditationTypeType"
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ImmunizationStatusCodeType": {
+      "enum": [
+        "EIGHTH_INNOCULATION",
+        "FIFTH_INNOCULATION",
+        "FIRST_INNOCULATION",
+        "FOURTH_INNOCULATION",
+        "HAD_THE_DISEASE",
+        "MEDICAL_EXEMPTION",
+        "NINTH_INNOCULATION",
+        "PERSONAL_EXEMPTION",
+        "RELIGIOUS_EXEMPTION",
+        "SECOND_INNOCULATION",
+        "SEVENTH_INNOCULATION",
+        "SIXTH_INNOCULATION",
+        "THIRD_INNOCULATION"
+      ]
+    },
+    "AcademicProgramType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "academicProgramType": {
+          "$ref": "AcademicProgramTypeType"
+        },
+        "programLocalCode": {
+          "type": "string"
+        },
+        "programHEGISCode": {
+          "type": "string"
+        },
+        "programSecondarySchoolCode": {
+          "$ref": "ProgramSecondarySchoolCodeType"
+        },
+        "userDefinedExtensions": {
+          "$ref": "UserDefinedExtensionsType"
+        },
+        "programCSISCode": {
+          "type": "string"
+        },
+        "programCIPCode": {
+          "type": "string"
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "academicProgramName": {
+          "type": "string"
+        },
+        "programESISCode": {
+          "type": "string"
+        },
+        "programSummary": {
+          "$ref": "AcademicSummaryE2Type"
+        },
+        "programUSISCode": {
+          "type": "string"
+        }
+      }
+    },
+    "XMLGregorianCalendar": {
+      "additionalProperties": false,
+      "type": "object"
+    },
+    "SubtestsType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "subtestCode": {
+          "type": "string"
+        },
+        "testScores": {
+          "type": "array",
+          "items": {
+            "$ref": "TestScoreType"
+          }
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "educationSubtestCode": {
+          "$ref": "EducationSubtestCodeType"
+        },
+        "subtestName": {
+          "type": "string"
+        }
+      }
+    },
+    "TestScoreType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "scoreRevisedIndicator": {
+          "type": "boolean"
+        },
+        "testScoreMethod": {
+          "$ref": "TestScoreMethodType"
+        },
+        "scoreSelfreportedIndicator": {
+          "type": "boolean"
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "scoreValue": {
+          "type": "string"
+        },
+        "scoreInvalidatedIndicator": {
+          "type": "boolean"
+        }
+      }
+    },
+    "HealthType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "immunizations": {
+          "type": "array",
+          "items": {
+            "$ref": "ImmunizationsType"
+          }
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Object": {
+      "additionalProperties": false,
+      "type": "object"
+    },
+    "HighSchoolSubjectAreaType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "highSchoolSubjectAreaCode": {
+          "$ref": "HighSchoolSubjectAreaCodeType"
+        },
+        "courseCreditEarned": {
+          "$ref": "BigDecimal"
+        },
+        "courseCreditUnits": {
+          "type": "string"
+        },
+        "highSchoolSubjectAreaName": {
+          "type": "string"
+        },
+        "creditHoursDeficient": {
+          "$ref": "BigDecimal"
+        },
+        "creditHoursRequired": {
+          "$ref": "BigDecimal"
+        }
+      }
+    },
+    "ProgramSecondarySchoolCodeType": {
+      "enum": [
+        "CAREER_PREP",
+        "COLLEGE_PREP",
+        "COLLEGE_PREP_OR_COLLEGE_TECH_PREP",
+        "COLLEGE_TECH_PREP",
+        "GENERAL",
+        "OCCUPATIONAL",
+        "VOCATIONAL"
+      ]
+    },
+    "LanguageProficiencyType": {
+      "enum": [
+        "ENGLISH_ONLY",
+        "EXCELLENT",
+        "FAIR",
+        "FULLY_ENGLISH_PROFICIENT",
+        "GOOD",
+        "LIMITED_ENGLISH_PROFICIENCY",
+        "NON_ENGLISH_SPEAKING",
+        "POOR",
+        "REDESIGNATED_FLUENT_ENGLISH_PROFICIENT",
+        "UNACCEPTABLE",
+        "UNKNOWN"
+      ]
+    },
+    "UserDefinedExtensionsType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "any": {
+          "$ref": "Object"
+        }
+      }
+    },
+    "LicensureType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "licensureFulfillmentCode": {
+          "$ref": "LicensureFulfillmentCodeType"
+        },
+        "licensurePassageDate": {
+          "type": "array",
+          "items": {
+            "$ref": "XMLGregorianCalendar"
+          }
+        },
+        "licensureStateProvinceCode": {
+          "$ref": "StateProvinceCodeType"
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "licensureName": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "AgencyCodeType": {
+      "enum": [
+        "DISTRICT",
+        "MIGRANT",
+        "MUTUALLY_DEFINED",
+        "NATIONAL",
+        "PROVINCE",
+        "REGIONAL",
+        "STATE"
+      ]
+    },
+    "AccreditationTypeType": {
+      "enum": [
+        "MSA",
+        "NCA_CASI",
+        "NCA_HLC",
+        "NEASC_CIHE",
+        "NEASC_CTCI",
+        "NWCCU",
+        "OTHER",
+        "SACS",
+        "WASC_ACCJC",
+        "WASC_ACSCU"
+      ]
+    },
+    "RaceEthnicityType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "raceEthnicityCode": {
+          "type": "string"
+        },
+        "localRaceEthnicityCode": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ContactsType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "faxPhone": {
+          "type": "array",
+          "items": {
+            "$ref": "PhoneType"
+          }
+        },
+        "address": {
+          "type": "array",
+          "items": {
+            "$ref": "AddressType"
+          }
+        },
+        "phone": {
+          "type": "array",
+          "items": {
+            "$ref": "PhoneType"
+          }
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "email": {
+          "type": "array",
+          "items": {
+            "$ref": "EmailType"
+          }
+        }
+      }
+    },
+    "EducationSubtestCodeType": {
+      "enum": [
+        "ALGEBRA",
+        "ALGEBRA_1",
+        "ALGEBRA_GEOMETRY_COORDINATE",
+        "ANALYTICAL",
+        "BIOCHEMISTRY",
+        "BIOLOGY",
+        "BIOLOGY_CELL",
+        "BIOLOGY_CELLULAR_AND_MOLECULAR",
+        "BIOLOGY_MOLECULAR_AND_GENETICS",
+        "BIOLOGY_ORGANISMAL",
+        "CHEMISTRY",
+        "COMPOSITE_SCORE",
+        "COMPREHENSION",
+        "COMPUTATION",
+        "CONCEPTS_APPLICATIONS",
+        "ECOLOGY_AND_EVOLUTION",
+        "ENGLISH",
+        "ENGLISH_A",
+        "ENGLISH_B",
+        "ENGLISH_LANGUAGE_ARTS",
+        "ENGLISH_RHETORICAL_SKILLS",
+        "ENGLISH_TEST_OF_STANDARD_WRITTEN",
+        "ENGLISH_USAGE_MECHANICS",
+        "ESSAY",
+        "EXPRESSION",
+        "FIT",
+        "GEOMETRY_TRIGONOMETRY",
+        "HISTORY_AMERICAN",
+        "HISTORY_EUROPEAN",
+        "INFORMATION_LOCATING",
+        "INTEREST_ARTS",
+        "INTEREST_BUSINESS_CONTACT",
+        "INTEREST_BUSINESS_OPERATIONS",
+        "INTEREST_SCIENCE",
+        "INTEREST_SOCIAL_SERVICE",
+        "INTEREST_TECHNICAL",
+        "LANGUAGE_ARTS",
+        "LANGUAGE_FOREIGN_A",
+        "LANGUAGE_FOREIGN_B",
+        "LISTENING",
+        "LISTENING_COMPREHENSION",
+        "LITERARY_RESPONSES",
+        "LITERATURE_AND_ARTS_INTERPRETING",
+        "MATH",
+        "MATH_ALGEBRA_PRE_ALGEBRA",
+        "MATH_APPLIED",
+        "MATH_ELEMENTARY_PRE_ALGEBRA",
+        "MATH_GEOMETRY",
+        "MATH_INTERMEDIATE",
+        "MATH_PLANE_GEOMETRY_TRIGONOMETRY",
+        "MEASUREMENT_AND_GEOMETRY",
+        "MECHANICS",
+        "NUMBER_SENSE",
+        "OBSERVATION",
+        "OTHER_SUBTEST",
+        "PERFORMANCE",
+        "PHYSICS",
+        "PROBABILITY_AND_STATISTICS",
+        "PSYCHOLOGY_EXPERIMENTAL",
+        "PSYCHOLOGY_SOCIAL",
+        "QUANTITATIVE",
+        "READING",
+        "READING_ARTS_LITERATURE",
+        "READING_COMPREHENSION",
+        "READING_INFORMATIONAL",
+        "READING_SOCIAL_STUDIES_SCIENCE",
+        "SCIENCE",
+        "SOCIAL_STUDIES",
+        "SPELLING",
+        "TALENT",
+        "TEAMWORK",
+        "TECHNOLOGY_APPLIED",
+        "TOTAL",
+        "TOTAL_SCORE",
+        "USAGE",
+        "VERBAL",
+        "VOCABULARY",
+        "WORD_ANALYSIS",
+        "WRITING",
+        "WRITING_ANALYTICAL",
+        "WRITING_BUSINESS",
+        "WRITING_CONVENTIONS",
+        "WRITING_ENGLISH",
+        "WRITING_STRATEGIES",
+        "WRITTEN_EXPRESSION_AND_STRUCTURE"
+      ]
+    },
+    "CourseGPAApplicabilityCodeType": {
+      "enum": [
+        "APPLICABLE",
+        "NOT_APPLICABLE",
+        "WEIGHTED"
+      ]
+    },
+    "AgencyIdentifierType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "agencyAssignedID": {
+          "type": "string"
+        },
+        "countryCode": {
+          "$ref": "CountryCodeType"
+        },
+        "agencyCode": {
+          "$ref": "AgencyCodeType"
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "agencyName": {
+          "type": "string"
+        },
+        "stateProvinceCode": {
+          "$ref": "StateProvinceCodeType"
+        }
+      }
+    },
+    "RelationshipCodeType": {
+      "enum": [
+        "ADULT_OTHER",
+        "ADOPTED_CHILD",
+        "ADOPTED_DAUGHTER",
+        "ADOPTED_SON",
+        "ADOPTIVE_FATHER",
+        "ADOPTIVE_MOTHER",
+        "ADOPTIVE_PARENT",
+        "AGENCY_REPRESENTATIVE",
+        "APPLICANT",
+        "AUNT",
+        "AUTHORIZED_DESIGNATE",
+        "BROTHER",
+        "BROTHER_IN_LAW",
+        "BUSINESS",
+        "BUSINESS_ASSOCIATE",
+        "BUSINESS_PARTNER",
+        "CHILD",
+        "COLLATERAL_DEPENDENT",
+        "COMMON_LAW_SPOUSE",
+        "COURT_APPOINTED_GUARDIAN",
+        "COUSIN",
+        "DAUGHTER",
+        "DAUGHTER_IN_LAW",
+        "DEPENDENT",
+        "DEPENDENT_OF_MINOR_DEPENDENT",
+        "DOMESTIC_PARTNER",
+        "EMANCIPATED_MINOR",
+        "EMERGENCY_CONTACT",
+        "EMPLOYEE",
+        "EMPLOYER",
+        "EX_HUSBAND",
+        "EX_SPOUSE",
+        "EX_WIFE",
+        "FATHER",
+        "FATHER_IN_LAW",
+        "FIANCE",
+        "FIANCEE",
+        "FOSTER_CHILD",
+        "FOSTER_DAUGHTER",
+        "FOSTER_FATHER",
+        "FOSTER_MOTHER",
+        "FOSTER_PARENT",
+        "FOSTER_SON",
+        "FRIEND",
+        "GOD_DAUGHTER",
+        "GOD_FATHER",
+        "GOD_MOTHER",
+        "GOD_PARENT",
+        "GOD_SON",
+        "GRAND_CHILD",
+        "GRAND_DAUGHTER",
+        "GRAND_FATHER",
+        "GRAND_MOTHER",
+        "GRAND_PARENT",
+        "GRAND_SON",
+        "GREAT_AUNT",
+        "GREAT_UNCLE",
+        "GUARDIAN",
+        "HALF_BROTHER",
+        "HALF_SISTER",
+        "HANDICAPPED_DEPENDENT",
+        "HUSBAND",
+        "LIFE_PARTNER",
+        "MOTHER",
+        "MOTHER_IN_LAW",
+        "NEIGHBOR",
+        "NEPHEW",
+        "NIECE",
+        "OTHER",
+        "PARENT",
+        "PARENTS",
+        "PARTNER",
+        "RELATIONSHIP_OTHER",
+        "RELATIVE",
+        "SELF",
+        "SIBLING",
+        "SIGNIFICANT_OTHER",
+        "SISTER",
+        "SISTER_IN_LAW",
+        "SON",
+        "SON_IN_LAW",
+        "SPONSOR",
+        "SPONSORED_DEPENDENT",
+        "SPOUSE",
+        "STEP_BROTHER",
+        "STEP_CHILD",
+        "STEP_DAUGHTER",
+        "STEP_FATHER",
+        "STEP_MOTHER",
+        "STEP_PARENT",
+        "STEP_SISTER",
+        "STEP_SON",
+        "STUDENT",
+        "UNCLE",
+        "UNKNOWN",
+        "WARD",
+        "WIDOW",
+        "WIDOWER",
+        "WIFE"
+      ]
+    },
+    "CourseSupplementalAcademicGradeType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "courseSupplementalGrade": {
+          "type": "array",
+          "items": {
+            "$ref": "CourseSupplementalGradeType"
+          }
+        }
+      }
+    },
+    "CourseType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "courseQualityPointsEarned": {
+          "$ref": "BigDecimal"
+        },
+        "courseApplicability": {
+          "$ref": "CourseApplicabilityType"
+        },
+        "courseCreditLevel": {
+          "$ref": "CourseCreditLevelType"
+        },
+        "courseCreditEarned": {
+          "$ref": "BigDecimal"
+        },
+        "courseGPAApplicabilityCode": {
+          "$ref": "CourseGPAApplicabilityCodeType"
+        },
+        "courseSectionNumber": {
+          "type": "string"
+        },
+        "courseCreditBasis": {
+          "$ref": "CourseCreditBasisType"
+        },
+        "courseAcademicGrade": {
+          "type": "string"
+        },
+        "proficiency": {
+          "type": "array",
+          "items": {
+            "$ref": "RAPType"
+          }
+        },
+        "courseTitle": {
+          "type": "string"
+        },
+        "courseRepeatCode": {
+          "$ref": "CourseRepeatCodeType"
+        },
+        "courseAcademicGradeStatusCode": {
+          "$ref": "CourseAcademicGradeStatusCodeType"
+        },
+        "courseLevel": {
+          "$ref": "CourseLevelType"
+        },
+        "courseSupplementalAcademicGrade": {
+          "$ref": "CourseSupplementalAcademicGradeType"
+        },
+        "courseNarrativeExplanationGrade": {
+          "type": "string"
+        },
+        "agencyCourseID": {
+          "type": "string"
+        },
+        "attribute": {
+          "type": "array",
+          "items": {
+            "$ref": "RAPType"
+          }
+        },
+        "courseDropDate": {
+          "$ref": "XMLGregorianCalendar"
+        },
+        "courseOverrideSchool": {
+          "$ref": "SchoolType"
+        },
+        "courseCreditValue": {
+          "$ref": "BigDecimal"
+        },
+        "courseSubjectAbbreviation": {
+          "type": "string"
+        },
+        "licensure": {
+          "type": "array",
+          "items": {
+            "$ref": "LicensureType"
+          }
+        },
+        "courseNumber": {
+          "type": "string"
+        },
+        "courseCIPCode": {
+          "type": "string"
+        },
+        "courseAddDate": {
+          "$ref": "XMLGregorianCalendar"
+        },
+        "courseCreditUnits": {
+          "type": "string"
+        },
+        "overrideSchoolCourseNumber": {
+          "type": "string"
+        },
+        "courseInstructionSiteName": {
+          "type": "string"
+        },
+        "courseSubjectAreaCode": {
+          "$ref": "CourseSubjectAreaCodeType"
+        },
+        "courseFiveDigitSCEDCode": {
+          "type": "string"
+        },
+        "courseInstructionSite": {
+          "$ref": "CourseInstructionSiteType"
+        },
+        "requirement": {
+          "type": "array",
+          "items": {
+            "$ref": "RAPType"
+          }
+        },
+        "courseEndDate": {
+          "$ref": "XMLGregorianCalendar"
+        },
+        "courseBeginDate": {
+          "$ref": "XMLGregorianCalendar"
+        },
+        "courseNCESCode": {
+          "type": "string"
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "courseSCEDCode": {
+          "type": "string"
+        },
+        "courseCSISCode": {
+          "type": "string"
+        },
+        "languageOfInstruction": {
+          "type": "array",
+          "items": {
+            "$ref": "LanguageOfInstructionType"
+          }
+        },
+        "courseUSISCode": {
+          "type": "string"
+        },
+        "userDefinedExtensions": {
+          "$ref": "UserDefinedExtensionsType"
+        },
+        "originalCourseID": {
+          "type": "string"
+        },
+        "courseAcademicGradeScaleCode": {
+          "type": "string"
+        }
+      }
+    },
+    "AcademicRecordType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "additionalStudentAchievements": {
+          "type": "array",
+          "items": {
+            "$ref": "AdditionalStudentAchievementsType"
+          }
+        },
+        "school": {
+          "$ref": "SchoolType"
+        },
+        "studentLevel": {
+          "$ref": "StudentLevelType"
+        },
+        "academicSummary": {
+          "type": "array",
+          "items": {
+            "$ref": "AcademicSummaryFType"
+          }
+        },
+        "course": {
+          "type": "array",
+          "items": {
+            "$ref": "CourseType"
+          }
+        },
+        "userDefinedExtensions": {
+          "$ref": "UserDefinedExtensionsType"
+        },
+        "cohortGraduationYear": {
+          "$ref": "XMLGregorianCalendar"
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "academicSession": {
+          "type": "array",
+          "items": {
+            "$ref": "AcademicSessionType"
+          }
+        },
+        "academicAward": {
+          "type": "array",
+          "items": {
+            "$ref": "AcademicAwardType"
+          }
+        }
+      }
+    },
+    "LanguageOfInstructionType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "languageUsage": {
+          "$ref": "LanguageUsageType"
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "languageCode": {
+          "type": "string"
+        },
+        "instructionUsage": {
+          "$ref": "InstructionUsageType"
+        }
+      }
+    },
+    "EducationTestCodeType": {
+      "enum": [
+        "ACT",
+        "ACT_EXPLORE",
+        "ACT_INTEREST_INVENTORY",
+        "ACT_PLAN",
+        "ACT_WORK_KEYS",
+        "AP_ART_DRAWING",
+        "AP_ART_GENERAL",
+        "AP_BIOLOGY",
+        "AP_CALCULUS_AB",
+        "AP_CALCULUS_BC",
+        "AP_CHEMISTRY",
+        "AP_COMPUTER_SCIENCE_A",
+        "AP_COMPUTER_SCIENCE_B",
+        "AP_ECONOMICS_MACRO",
+        "AP_ECONOMICS_MICRO",
+        "AP_ENGLISH_LANGUAGE_COMPOSITION",
+        "AP_FRENCH_LANGUAGE",
+        "AP_FRENCH_LITERATURE",
+        "AP_GERMAN_LANGUAGE",
+        "AP_GOVERNMENT_POLITICS_COMPARATIVE",
+        "AP_GOVERNMENT_POLITICS_US",
+        "AP_HISTORY_ART",
+        "AP_HISTORY_EUROPE",
+        "AP_HISTORY_US",
+        "AP_LATIN_CAT_HOR",
+        "AP_LATIN_VERGIL",
+        "AP_MUSIC_LISTENING_LITERATURE",
+        "AP_MUSIC_THEORY",
+        "AP_PHYSICS",
+        "AP_PHYSICS_ENGINEERING_MECHANICS",
+        "AP_PHYSICS_MECHANICS",
+        "AP_PSYCHOLOGY",
+        "AP_SPANISH_LANGUAGE",
+        "AP_SPANISH_LITERATURE",
+        "CALIFORNIA_HIGH_SCHOOL_EXIT_EXAM",
+        "CLEP_ACCOUNTING_FINANCIAL",
+        "CLEP_ALGEBRA_COLLEGE",
+        "CLEP_BIOLOGY",
+        "CLEP_BUSINESS_LAW_INTRODUCTION",
+        "CLEP_CALCULUS",
+        "CLEP_CHEMISTRY",
+        "CLEP_COMPOSITION_COLLEGE_FRESHMAN",
+        "CLEP_COMPOSITION_ENGLISH",
+        "CLEP_ECONOMICS_MACRO",
+        "CLEP_ECONOMICS_MICRO",
+        "CLEP_ENGLISH_COMPOSITION",
+        "CLEP_FRENCH_LANGUAGE",
+        "CLEP_GERMAN_LANGUAGE",
+        "CLEP_GOVERNMENT_AMERICAN",
+        "CLEP_HISTORY_US_FROM_1865",
+        "CLEP_HISTORY_US_TO_1877",
+        "CLEP_HUMAN_GROWTH_DEVELOPMENT",
+        "CLEP_HUMANITIES",
+        "CLEP_INFORMATION_SYSTEMS",
+        "CLEP_LANGUAGE_SPANISH",
+        "CLEP_LITERATURE_AMERICAN",
+        "CLEP_LITERATURE_ANALYSIS_AND_INTERPRETING",
+        "CLEP_LITERATURE_ENGLISH",
+        "CLEP_MANAGEMENT",
+        "CLEP_MARKETING",
+        "CLEP_MATH",
+        "CLEP_MATH_COLLEGE",
+        "CLEP_PRE_CALCULUS",
+        "CLEP_PSYCHOLOGY_EDUCATIONAL",
+        "CLEP_PSYCHOLOGY_INTRODUCTORY",
+        "CLEP_SCIENCES_NATURAL",
+        "CLEP_SOCIAL_SCIENCES_AND_HISTORY",
+        "CLEP_SOCIOLOGY_INTRODUCTORY",
+        "CLEP_WESTERN_CIVILIZATION_FROM_1648",
+        "CLEP_WESTERN_CIVILIZATION_TO_1648",
+        "GED",
+        "GMAT",
+        "GRE",
+        "GRE_BIOCHEMISTRY_CELL_MOLECULAR",
+        "GRE_BIOLOGY",
+        "GRE_CHEMISTRY",
+        "GRE_COMPUTER_SCIENCE",
+        "GRE_LITERATURE_ENGLISH",
+        "GRE_MATHEMATICS",
+        "GRE_PHYSICS",
+        "GRE_PSYCHOLOGY",
+        "IELTS",
+        "INTERNATIONAL_BACCALAUREATE",
+        "LSAT",
+        "MCAT",
+        "OTHER_STATE_TEST",
+        "OTHER_TEST",
+        "SAT",
+        "SAT_BIOLOGY",
+        "SAT_CHEMISTRY",
+        "SAT_CHINESE_LISTENING",
+        "SAT_FRENCH_LISTENING",
+        "SAT_GERMAN",
+        "SAT_GERMAN_LISTENING",
+        "SAT_HEBREW",
+        "SAT_HEBREW_MODERN",
+        "SAT_HISTORY_WORLD",
+        "SAT_ITALIAN",
+        "SAT_JAPANESE_WITH_LISTENING",
+        "SAT_KOREAN_LISTENING",
+        "SAT_LATIN",
+        "SAT_LITERATURE",
+        "SAT_MATH_1",
+        "SAT_MATH_2",
+        "SAT_PHYSICS",
+        "SAT_SPANISH",
+        "SAT_SPANISH_LISTENING",
+        "SATUS_HISTORY",
+        "TABE",
+        "TOEFL"
+      ]
+    },
+    "CourseSupplementalGradeType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "courseAcademicSupplementalGrade": {
+          "type": "string"
+        },
+        "supplementalGradeSubSession": {
+          "$ref": "BigInteger"
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "courseAcademicSupplementalGradeStatusCode": {
+          "$ref": "CourseAcademicGradeStatusCodeType"
+        },
+        "courseAcademicSupplementalGradeScaleCode": {
+          "type": "string"
+        },
+        "supplementalGradeCode": {
+          "$ref": "SupplementalGradeCodeType"
+        }
+      }
+    },
+    "GenderType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "genderCode": {
+          "$ref": "GenderCodeType"
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "TransmissionDataType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "documentCompleteCode": {
+          "type": "string"
+        },
+        "documentTypeCode": {
+          "$ref": "DocumentTypeCodeType"
+        },
+        "documentProcessCode": {
+          "$ref": "DocumentProcessCodeType"
+        },
+        "requestTrackingID": {
+          "type": "string"
+        },
+        "destination": {
+          "$ref": "SourceDestinationType"
+        },
+        "createdDateTime": {
+          "$ref": "XMLGregorianCalendar"
+        },
+        "userDefinedExtensions": {
+          "$ref": "UserDefinedExtensionsType"
+        },
+        "transmissionType": {
+          "$ref": "TransmissionTypeType"
+        },
+        "documentID": {
+          "type": "string"
+        },
+        "source": {
+          "$ref": "SourceDestinationType"
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "documentOfficialCode": {
+          "$ref": "DocumentOfficialCodeType"
+        }
+      }
+    },
+    "StudentLevelCodeType": {
+      "enum": [
+        "INFANT",
+        "PRE_KINDERGARTEN",
+        "HALF_DAY_KINDERGARTEN",
+        "KINDERGARTEN",
+        "FIRST_GRADE",
+        "SECOND_GRADE",
+        "THIRD_GRADE",
+        "FOURTH_GRADE",
+        "FIFTH_GRADE",
+        "SIXTH_GRADE",
+        "SEVENTH_GRADE",
+        "EIGHTH_GRADE",
+        "NINTH_GRADE",
+        "TENTH_GRADE",
+        "ELEVENTH_GRADE",
+        "TWELFTH_GRADE",
+        "GRADE_13",
+        "POSTSECONDARY",
+        "POSTSECONDARY_BACHELOR_PRELIMINARY_YEAR",
+        "NON_DEGREE",
+        "COLLEGE_FIRST_YEAR",
+        "COLLEGE_FIRST_YEAR_ATTENDED_BEFORE",
+        "COLLEGE_SOPHOMORE",
+        "COLLEGE_JUNIOR",
+        "COLLEGE_SENIOR",
+        "COLLEGE_FIFTH_YEAR",
+        "POST_BACCALAUREATE",
+        "GRADUATE_NON_DEGREE",
+        "GRADUATE_FIRST_YEAR",
+        "GRADUATE_SECOND_YEAR",
+        "GRADUATE_THIRD_YEAR",
+        "GRADUATE_BEYOND_THIRD_YEAR",
+        "PROFESSIONAL",
+        "PROFESSIONAL_FIRST_YEAR",
+        "PROFESSIONAL_SECOND_YEAR",
+        "PROFESSIONAL_THIRD_YEAR",
+        "PROFESSIONAL_BEYOND_THIRD_YEAR",
+        "MASTERS_QUALIFYING",
+        "MASTERS",
+        "DOCTORAL",
+        "POSTDOCTORAL",
+        "UNGRADED",
+        "NO_FORMAL_SCHOOL"
+      ]
+    },
+    "DeceasedType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "deceasedIndicator": {
+          "type": "boolean"
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "deceasedIndicator"
+      ]
+    },
+    "AddressType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "any"
+            }
+          }
+        }
+      }
+    },
+    "TestScoreMethodType": {
+      "enum": [
+        "SCALED",
+        "GRADED",
+        "STANDARD",
+        "RAW",
+        "PERCENT",
+        "MASTERY",
+        "ADJECTIVE",
+        "STANINE",
+        "PERCENTILE",
+        "NORMAL_CURVE",
+        "EQUATED",
+        "LOCAL"
+      ]
+    },
+    "AcademicSummaryE2Type": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "classSize": {
+          "$ref": "int"
+        },
+        "highSchoolCreditSummary": {
+          "$ref": "HighSchoolCreditSummaryType"
+        },
+        "academicSummaryType": {
+          "$ref": "AcademicSummaryTypeType"
+        },
+        "academicHonors": {
+          "type": "array",
+          "items": {
+            "$ref": "AcademicHonorsType"
+          }
+        },
+        "userDefinedExtensions": {
+          "$ref": "UserDefinedExtensionsType"
+        },
+        "delinquencies": {
+          "type": "array",
+          "items": {
+            "$ref": "DelinquenciesType"
+          }
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "classRank": {
+          "$ref": "int"
+        },
+        "academicSummaryLevel": {
+          "$ref": "CourseCreditLevelType"
+        },
+        "exitDate": {
+          "$ref": "XMLGregorianCalendar"
+        }
+      }
+    },
+    "AcademicAwardType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "academicAwardDate": {
+          "$ref": "XMLGregorianCalendar"
+        },
+        "academicAwardLevel": {
+          "type": "string"
+        },
+        "academicAwardProgram": {
+          "type": "array",
+          "items": {
+            "$ref": "AcademicProgramType"
+          }
+        },
+        "academicHonors": {
+          "type": "array",
+          "items": {
+            "$ref": "AcademicHonorsType"
+          }
+        },
+        "academicCompletionIndicator": {
+          "type": "boolean"
+        },
+        "academicSummary": {
+          "type": "array",
+          "items": {
+            "$ref": "AcademicSummaryE1Type"
+          }
+        },
+        "academicCompletionDate": {
+          "$ref": "XMLGregorianCalendar"
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "academicDegreeRequirement": {
+          "type": "array",
+          "items": {
+            "$ref": "AcademicDegreeRequirementType"
+          }
+        },
+        "academicAwardTitle": {
+          "type": "string"
+        }
+      }
+    },
+    "AdditionalStudentAchievementsType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "licensure": {
+          "type": "array",
+          "items": {
+            "$ref": "LicensureType"
+          }
+        },
+        "language": {
+          "type": "array",
+          "items": {
+            "$ref": "LanguageType"
+          }
+        },
+        "requirement": {
+          "type": "array",
+          "items": {
+            "$ref": "RAPType"
+          }
+        },
+        "attribute": {
+          "type": "array",
+          "items": {
+            "$ref": "RAPType"
+          }
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "proficiency": {
+          "type": "array",
+          "items": {
+            "$ref": "RAPType"
+          }
+        }
+      }
+    },
+    "AcademicSummaryFType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "classRankYear": {
+          "$ref": "XMLGregorianCalendar"
+        },
+        "academicProgram": {
+          "$ref": "AcademicProgramType"
+        },
+        "classRankDate": {
+          "$ref": "XMLGregorianCalendar"
+        },
+        "entryDate": {
+          "$ref": "XMLGregorianCalendar"
+        },
+        "highSchoolCreditSummary": {
+          "$ref": "HighSchoolCreditSummaryType"
+        },
+        "academicSummaryType": {
+          "$ref": "AcademicSummaryTypeType"
+        },
+        "exitReasonCode": {
+          "type": "string"
+        },
+        "classRankSessionCount": {
+          "$ref": "int"
+        },
+        "delinquencies": {
+          "type": "array",
+          "items": {
+            "$ref": "DelinquenciesType"
+          }
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "classRank": {
+          "$ref": "int"
+        },
+        "academicSummaryLevel": {
+          "$ref": "CourseCreditLevelType"
+        },
+        "classSize": {
+          "$ref": "int"
+        },
+        "academicHonors": {
+          "type": "array",
+          "items": {
+            "$ref": "AcademicHonorsType"
+          }
+        },
+        "userDefinedExtensions": {
+          "$ref": "UserDefinedExtensionsType"
+        },
+        "classRankYearMonth": {
+          "$ref": "XMLGregorianCalendar"
+        },
+        "exitDate": {
+          "$ref": "XMLGregorianCalendar"
+        }
+      }
+    },
+    "AcademicHonorsType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "honorsTitle": {
+          "type": "string"
+        },
+        "honorsLevel": {
+          "$ref": "HonorsRecognitionLevelType"
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "CourseSubjectAreaCodeType": {
+      "enum": [
+        "ENGLISH_LANGUAGE_LITERATURE",
+        "MATHEMATICS",
+        "LIFE_PHYSICAL_SCIENCES",
+        "SOCIAL_SCIENCES_HISTORY",
+        "FINE_PERFORMING_ARTS",
+        "FOREIGN_LANGUAGE_LITERATURE",
+        "RELIGIOUS_EDUCATION_THEOLOGY",
+        "PHYSICAL_HEALTH_SAFETY_EDUCATION",
+        "MILITARY_SCIENCE",
+        "COMPUTER_INFORMATION_SCIENCES",
+        "COMMUNICATIONS_AUDIO_VISUAL_TECHNOLOGY",
+        "BUSINESS_MARKETING",
+        "MANUFACTURING",
+        "HEALTH_CARE_SCIENCES",
+        "PUBLIC_PROTECTIVE_GOVERNMENT_SERVICE",
+        "HOSPITALITY_TOURISM",
+        "ARCHITECTURE_CONSTRUCTION",
+        "AGRICULTURE_FOOD_NATURAL_RESOURCES",
+        "HUMAN_SERVICES",
+        "TRANSPORTATION_DISTRIBUTION_LOGISTICS",
+        "ENGINEERING_TECHNOLOGY",
+        "MISCELLANEOUS",
+        "SPECIAL_EXCEPTIONAL_EDUCATION_SERVICES"
+      ]
+    },
+    "ConditionsMetCodeType": {
+      "enum": [
+        "YES",
+        "NO",
+        "CONDITIONAL",
+        "MUTUALLY_DEFINED"
+      ]
+    },
+    "SupplementalGradeCodeType": {
+      "enum": [
+        "BI_COURSE_GRADE",
+        "BLENDED_FINAL_GRADE",
+        "EXAM_GRADE",
+        "INSTRUCTOR_ASSIGNED_GRADE",
+        "SUB_SESSION_GRADE",
+        "TRI_COURSE_GRADE"
+      ]
+    },
+    "StudentLevelType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "studentLevelCode": {
+          "$ref": "StudentLevelCodeType"
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "AcademicDegreeRequirementType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "thesisDissertationAdvisor": {
+          "type": "string"
+        },
+        "thesisDissertationTitle": {
+          "type": "string"
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "AcademicSessionDetailType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "sessionBeginDate": {
+          "$ref": "XMLGregorianCalendar"
+        },
+        "sessionSchoolYear": {
+          "type": "string"
+        },
+        "sessionName": {
+          "type": "string"
+        },
+        "sessionDesignator": {
+          "$ref": "XMLGregorianCalendar"
+        },
+        "sessionDesignatorSuffix": {
+          "type": "string"
+        },
+        "sessionType": {
+          "$ref": "SessionTypeType"
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "sessionEndDate": {
+          "$ref": "XMLGregorianCalendar"
+        }
+      }
+    },
+    "SchoolLevelType": {
+      "enum": [
+        "ELEMENTARY",
+        "HIGH_SCHOOL",
+        "JUNIOR_HIGH",
+        "MIDDLE",
+        "OTHER",
+        "POSTSECONDARY",
+        "SECONDARY"
+      ]
+    },
+    "HighSchoolCreditSummaryType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "highSchoolSubjectArea": {
+          "type": "array",
+          "items": {
+            "$ref": "HighSchoolSubjectAreaType"
+          }
+        }
+      }
+    },
+    "SchoolOverrideCodeType": {
+      "enum": [
+        "INSTITUTIONAL",
+        "MULTICAMPUS",
+        "TRANSFER",
+        "STUDY_ABROAD",
+        "COOP",
+        "RECIPROCAL",
+        "INTERNSHIP"
+      ]
+    },
+    "CourseApplicabilityType": {
+      "enum": [
+        "NOT_APPLICABLE",
+        "FIRST_PROGRAM",
+        "SECOND_PROGRAM",
+        "BOTH_PROGRAMS"
+      ]
+    },
+    "NameSuffixType": {
+      "enum": [
+        "JR",
+        "SR",
+        "I",
+        "II",
+        "III",
+        "IV",
+        "V",
+        "VI",
+        "VII",
+        "VIII",
+        "IX",
+        "X"
+      ]
+    },
+    "CourseCreditBasisType": {
+      "enum": [
+        "REGULAR",
+        "ACADEMIC_RENEWAL",
+        "ADVANCED_PLACEMENT",
+        "ADVANCED_STANDING",
+        "CONTINUING_EDUCATION",
+        "CORRESPONDENCE",
+        "EXEMPTION",
+        "EQUIVALENCE",
+        "INTERNATIONAL_BACCALAUREATE",
+        "MILITARY",
+        "REMEDIAL",
+        "CREDIT_BY_EXAM",
+        "HIGH_SCHOOL_TRANSFER_CREDIT",
+        "HIGH_SCHOOL_CREDIT_ONLY",
+        "HIGH_SCHOOL_DUAL_CREDIT",
+        "JUNIOR_HIGH_SCHOOL_CREDIT",
+        "LIFE_EXPERIENCE",
+        "MAJOR",
+        "ADULT_BASIC"
+      ]
+    },
+    "K12PersonType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "deceased": {
+          "$ref": "DeceasedType"
+        },
+        "gender": {
+          "$ref": "GenderType"
+        },
+        "schoolAssignedPersonID": {
+          "type": "string"
+        },
+        "parentGuardian": {
+          "$ref": "ParentGuardianType"
+        },
+        "recipientAssignedID": {
+          "type": "string"
+        },
+        "birth": {
+          "$ref": "BirthType"
+        },
+        "language": {
+          "type": "array",
+          "items": {
+            "$ref": "LanguageType"
+          }
+        },
+        "alternateName": {
+          "type": "array",
+          "items": {
+            "$ref": "NameType"
+          }
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "ethnicityRace": {
+          "$ref": "EthnicityRaceType"
+        },
+        "raceEthnicity": {
+          "$ref": "RaceEthnicityType"
+        },
+        "agencyIdentifier": {
+          "type": "array",
+          "items": {
+            "$ref": "AgencyIdentifierType"
+          }
+        },
+        "parentGuardianName": {
+          "$ref": "NameType"
+        },
+        "agencyAssignedID": {
+          "type": "string"
+        },
+        "partialSSN": {
+          "type": "string"
+        },
+        "name": {
+          "$ref": "NameType"
+        },
+        "contacts": {
+          "type": "array",
+          "items": {
+            "$ref": "ContactsType"
+          }
+        }
+      }
+    },
+    "StateProvinceCodeType": {
+      "enum": [
+        "AA",
+        "AB",
+        "AE",
+        "AK",
+        "AL",
+        "AP",
+        "AR",
+        "AS",
+        "AZ",
+        "BC",
+        "CA",
+        "CO",
+        "CT",
+        "CZ",
+        "DC",
+        "DE",
+        "FL",
+        "FM",
+        "GA",
+        "GU",
+        "HI",
+        "IA",
+        "ID",
+        "IL",
+        "IN",
+        "KS",
+        "KY",
+        "LA",
+        "MA",
+        "MB",
+        "MD",
+        "ME",
+        "MH",
+        "MI",
+        "MN",
+        "MO",
+        "MP",
+        "MS",
+        "MT",
+        "NB",
+        "NC",
+        "ND",
+        "NE",
+        "NF",
+        "NH",
+        "NJ",
+        "NL",
+        "NM",
+        "NS",
+        "NT",
+        "NU",
+        "NV",
+        "NY",
+        "OH",
+        "OK",
+        "ON",
+        "OR",
+        "PA",
+        "PE",
+        "PR",
+        "PW",
+        "QC",
+        "RI",
+        "SC",
+        "SD",
+        "SK",
+        "TN",
+        "TX",
+        "UT",
+        "VA",
+        "VI",
+        "VT",
+        "WA",
+        "WI",
+        "WV",
+        "WY",
+        "YT"
+      ]
+    },
+    "PhoneType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "areaCityCode": {
+          "type": "string"
+        },
+        "phoneNumber": {
+          "type": "string"
+        },
+        "phoneNumberExtension": {
+          "type": "string"
+        },
+        "countryPrefixCode": {
+          "type": "string"
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "effectiveDate": {
+          "$ref": "XMLGregorianCalendar"
+        },
+        "expirationDate": {
+          "$ref": "XMLGregorianCalendar"
+        }
+      }
+    },
+    "K12StudentType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "tests": {
+          "type": "array",
+          "items": {
+            "$ref": "TestsType"
+          }
+        },
+        "person": {
+          "$ref": "K12PersonType"
+        },
+        "userDefinedExtensions": {
+          "$ref": "UserDefinedExtensionsType"
+        },
+        "health": {
+          "$ref": "HealthType"
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "academicRecord": {
+          "type": "array",
+          "items": {
+            "$ref": "AcademicRecordType"
+          }
+        }
+      }
+    },
+    "GenderCodeType": {
+      "enum": [
+        "FEMALE",
+        "MALE",
+        "UNREPORTED"
+      ]
+    },
+    "NameCodeType": {
+      "enum": [
+        "CASUAL",
+        "FORMAL",
+        "FORMER",
+        "LAW_SCHOOL_APPLICATION_SOURCE",
+        "LEGAL",
+        "MEDICAL_SCHOOL_APPLICATION_SOURCE",
+        "NICKNAME",
+        "OTHER"
+      ]
+    },
+    "BigInteger": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "lowestSetBit": {
+          "$ref": "int"
+        }
+      },
+      "required": [
+        "lowestSetBit"
+      ]
+    },
+    "CourseInstructionSiteType": {
+      "enum": [
+        "ON_CAMPUS",
+        "OFF_CAMPUS",
+        "EXTENSION",
+        "STUDY_ABROAD",
+        "CORRECTIONAL",
+        "MILLITARY",
+        "TELECOMMUNICATION",
+        "AUXILIARY",
+        "CLINIC_HOSPITAL"
+      ]
+    },
+    "AcademicSessionType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "academicProgram": {
+          "type": "array",
+          "items": {
+            "$ref": "AcademicProgramType"
+          }
+        },
+        "attendanceCount": {
+          "$ref": "AttendanceCountType"
+        },
+        "academicSessionDetail": {
+          "$ref": "AcademicSessionDetailType"
+        },
+        "school": {
+          "$ref": "SchoolType"
+        },
+        "studentLevel": {
+          "$ref": "StudentLevelType"
+        },
+        "academicSummary": {
+          "type": "array",
+          "items": {
+            "$ref": "AcademicSummaryFType"
+          }
+        },
+        "userDefinedExtensions": {
+          "$ref": "UserDefinedExtensionsType"
+        },
+        "course": {
+          "type": "array",
+          "items": {
+            "$ref": "CourseType"
+          }
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "academicAward": {
+          "type": "array",
+          "items": {
+            "$ref": "AcademicAwardType"
+          }
+        }
+      }
+    },
+    "InstructionUsageType": {
+      "enum": [
+        "INSTRUCTION",
+        "EXAMINATION",
+        "WRITTEN_EXAM"
+      ]
+    },
+    "CountryCodeType": {
+      "enum": [
+        "AD",
+        "AE",
+        "AF",
+        "AG",
+        "AI",
+        "AL",
+        "AM",
+        "AN",
+        "AO",
+        "AQ",
+        "AR",
+        "AS",
+        "AT",
+        "AU",
+        "AW",
+        "AX",
+        "AZ",
+        "BA",
+        "BB",
+        "BD",
+        "BE",
+        "BF",
+        "BG",
+        "BH",
+        "BI",
+        "BJ",
+        "BL",
+        "BM",
+        "BN",
+        "BO",
+        "BQ",
+        "BR",
+        "BS",
+        "BT",
+        "BV",
+        "BW",
+        "BY",
+        "BZ",
+        "CA",
+        "CC",
+        "CD",
+        "CF",
+        "CG",
+        "CH",
+        "CI",
+        "CK",
+        "CL",
+        "CM",
+        "CN",
+        "CO",
+        "CR",
+        "CS",
+        "CU",
+        "CV",
+        "CW",
+        "CX",
+        "CY",
+        "CZ",
+        "DE",
+        "DJ",
+        "DK",
+        "DM",
+        "DO",
+        "DZ",
+        "EC",
+        "EE",
+        "EG",
+        "EH",
+        "ER",
+        "ES",
+        "ET",
+        "FI",
+        "FJ",
+        "FK",
+        "FM",
+        "FO",
+        "FR",
+        "GA",
+        "GB",
+        "GD",
+        "GE",
+        "GF",
+        "GG",
+        "GH",
+        "GI",
+        "GL",
+        "GM",
+        "GN",
+        "GP",
+        "GQ",
+        "GR",
+        "GS",
+        "GT",
+        "GU",
+        "GW",
+        "GY",
+        "GZ",
+        "HK",
+        "HM",
+        "HN",
+        "HR",
+        "HT",
+        "HU",
+        "ID",
+        "IE",
+        "IL",
+        "IM",
+        "IN",
+        "IO",
+        "IQ",
+        "IR",
+        "IS",
+        "IT",
+        "JE",
+        "JM",
+        "JO",
+        "JP",
+        "KE",
+        "KG",
+        "KH",
+        "KI",
+        "KM",
+        "KN",
+        "KP",
+        "KR",
+        "KS",
+        "KW",
+        "KY",
+        "KZ",
+        "LA",
+        "LB",
+        "LC",
+        "LI",
+        "LK",
+        "LR",
+        "LS",
+        "LT",
+        "LU",
+        "LV",
+        "LY",
+        "MA",
+        "MC",
+        "MD",
+        "ME",
+        "MF",
+        "MG",
+        "MH",
+        "MK",
+        "ML",
+        "MM",
+        "MN",
+        "MO",
+        "MP",
+        "MQ",
+        "MR",
+        "MS",
+        "MT",
+        "MU",
+        "MV",
+        "MW",
+        "MX",
+        "MY",
+        "MZ",
+        "NA",
+        "NC",
+        "NE",
+        "NF",
+        "NG",
+        "NI",
+        "NL",
+        "NO",
+        "NP",
+        "NR",
+        "NU",
+        "NZ",
+        "OM",
+        "PA",
+        "PE",
+        "PF",
+        "PG",
+        "PH",
+        "PK",
+        "PL",
+        "PM",
+        "PN",
+        "PR",
+        "PS",
+        "PT",
+        "PW",
+        "PY",
+        "QA",
+        "RE",
+        "RO",
+        "RS",
+        "RU",
+        "RW",
+        "SA",
+        "SB",
+        "SC",
+        "SD",
+        "SE",
+        "SG",
+        "SH",
+        "SI",
+        "SJ",
+        "SK",
+        "SL",
+        "SM",
+        "SN",
+        "SO",
+        "SR",
+        "SS",
+        "ST",
+        "SV",
+        "SX",
+        "SY",
+        "SZ",
+        "TC",
+        "TD",
+        "TF",
+        "TG",
+        "TH",
+        "TJ",
+        "TK",
+        "TL",
+        "TM",
+        "TN",
+        "TO",
+        "TR",
+        "TT",
+        "TV",
+        "TW",
+        "TZ",
+        "UA",
+        "UG",
+        "UM",
+        "US",
+        "UY",
+        "UZ",
+        "VA",
+        "VC",
+        "VE",
+        "VG",
+        "VI",
+        "VN",
+        "VU",
+        "WE",
+        "WF",
+        "WS",
+        "YE",
+        "YT",
+        "ZA",
+        "ZM",
+        "ZW"
+      ]
+    },
+    "RaceCodeType": {
+      "enum": [
+        "AMERICAN_INDIAN_ALASKA_NATIVE",
+        "ASIAN",
+        "BLACK_AFRICAN_AMERICAN",
+        "NATIVE_HAWAIIAN_PACIFIC_ISLANDER",
+        "WHITE"
+      ]
+    },
+    "LanguageType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "languageProficiency": {
+          "$ref": "LanguageProficiencyType"
+        },
+        "languageUsage": {
+          "$ref": "LanguageUsageType"
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "languageCode": {
+          "type": "string"
+        }
+      }
+    },
+    "HonorsRecognitionLevelType": {
+      "enum": [
+        "FIRST_HIGHEST",
+        "SECOND_HIGHEST",
+        "THIRD_HIGHEST"
+      ]
+    },
+    "AcademicProgramTypeType": {
+      "enum": [
+        "CONCENTRATION",
+        "FOCUS",
+        "MAJOR",
+        "MINOR",
+        "SECOND_MAJOR",
+        "SPECIALIZATION"
+      ]
+    },
+    "SessionTypeType": {
+      "enum": [
+        "FULL_YEAR",
+        "SEMESTER",
+        "TRIMESTER",
+        "QUARTER",
+        "QUINMESTER",
+        "MINI_TERM",
+        "SUMMER_SESSION",
+        "INTERSESSION",
+        "LONG_SESSION",
+        "FALL_SESSION",
+        "FOUR_ONE_FOUR_PLAN",
+        "CONTINUOUS",
+        "DIFFERS_BY_PROGRAM",
+        "OTHER",
+        "TWELVE_MONTH"
+      ]
+    },
+    "CourseCreditLevelType": {
+      "enum": [
+        "SEVENTH_GRADE",
+        "EIGHTH_GRADE",
+        "NINTH_GRADE",
+        "TENTH_GRADE",
+        "ELEVENTH_GRADE",
+        "TWELFTH_GRADE",
+        "GRADE_13",
+        "DUAL",
+        "DUAL_GRADUATE_UNDERGRADUATE",
+        "DUAL_HIGH_SCHOOL_COLLEGE",
+        "GRADUATE",
+        "GRADUATE_PROFESSIONAL",
+        "LOWER_DIVISION",
+        "PROFESSIONAL",
+        "SECONDARY",
+        "TECHNICAL_PREPARATORY",
+        "UNDERGRADUATE",
+        "UNGRADED",
+        "UPPER_DIVISION",
+        "VOCATIONAL"
+      ]
+    },
+    "TransmissionTypeType": {
+      "enum": [
+        "DUPLICATE",
+        "MUTUALLY_DEFINED",
+        "ORIGINAL",
+        "REISSUE",
+        "REPLACE",
+        "RESUBMISSION"
+      ]
+    },
+    "AttendanceCountType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "daysPresent": {
+          "$ref": "BigDecimal"
+        },
+        "daysAbsent": {
+          "$ref": "BigDecimal"
+        }
+      }
+    },
+    "ImmunizationsType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "immunizationDate": {
+          "$ref": "XMLGregorianCalendar"
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "immunizationStatusCode": {
+          "$ref": "ImmunizationStatusCodeType"
+        },
+        "immunizationCode": {
+          "type": "string"
+        }
+      }
+    },
+    "CourseRepeatCodeType": {
+      "enum": [
+        "REPEAT_COUNTED",
+        "REPEAT_NOT_COUNTED",
+        "REPLACEMENT_COUNTED",
+        "REPLACED_NOT_COUNTED",
+        "REPEAT_OTHER_INSTITUTION",
+        "NOT_COUNTED_OTHER"
+      ]
+    },
+    "LocalOrganizationIDType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "localOrganizationIDCode": {
+          "type": "string"
+        },
+        "localOrganizationIDQualifier": {
+          "$ref": "LocalOrganizationIDCodeQualifierType"
+        }
+      }
+    },
+    "LocalOrganizationIDCodeQualifierType": {
+      "enum": [
+        "AA",
+        "AB",
+        "AE",
+        "AK",
+        "AL",
+        "AP",
+        "AR",
+        "AS",
+        "AZ",
+        "BC",
+        "CA",
+        "CO",
+        "CT",
+        "CZ",
+        "DC",
+        "DE",
+        "FL",
+        "FM",
+        "GA",
+        "GU",
+        "HI",
+        "IA",
+        "ID",
+        "IL",
+        "IN",
+        "KS",
+        "KY",
+        "LA",
+        "MA",
+        "MB",
+        "MD",
+        "ME",
+        "MH",
+        "MI",
+        "MN",
+        "MO",
+        "MP",
+        "MS",
+        "MT",
+        "NB",
+        "NC",
+        "ND",
+        "NE",
+        "NF",
+        "NH",
+        "NJ",
+        "NL",
+        "NM",
+        "NS",
+        "NT",
+        "NU",
+        "NV",
+        "NY",
+        "OH",
+        "OK",
+        "ON",
+        "OR",
+        "PA",
+        "PE",
+        "PR",
+        "PW",
+        "QC",
+        "RI",
+        "SC",
+        "SD",
+        "SK",
+        "TN",
+        "TX",
+        "UT",
+        "VA",
+        "VI",
+        "VT",
+        "WA",
+        "WI",
+        "WV",
+        "WY",
+        "YT",
+        "ZZ"
+      ]
+    },
+    "LicensureFulfillmentCodeType": {
+      "enum": [
+        "COMPLETE",
+        "PARTIAL",
+        "CONTRIBUTE"
+      ]
+    },
+    "RAPType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "conditionsMetDate": {
+          "type": "array",
+          "items": {
+            "$ref": "XMLGregorianCalendar"
+          }
+        },
+        "conditionsMetCode": {
+          "type": "array",
+          "items": {
+            "$ref": "ConditionsMetCodeType"
+          }
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "CourseAcademicGradeStatusCodeType": {
+      "enum": [
+        "AUDITED_COURSE",
+        "COMPLETED",
+        "HONORS_GRADE",
+        "INCOMPLETE",
+        "INCOMPLETE_NOT_RESOLVED_FAIL",
+        "IN_PROGRESS",
+        "NOT_YET_REPORTED",
+        "OTHER_FAIL",
+        "OTHER_PASS",
+        "PASS_FAIL_FAIL",
+        "PASS_FAIL_PASS",
+        "PLANNING_TO_TAKE",
+        "TRANSFER_NO_GRADE",
+        "WITHDREW",
+        "WITHDREW_FAILING",
+        "WITHDREW_NO_PENALTY",
+        "WITHDREW_PASSING"
+      ]
+    },
+    "CourseLevelType": {
+      "enum": [
+        "ACCELERATED",
+        "ADULT_BASIC",
+        "ADVANCED_PLACEMENT",
+        "BASIC",
+        "COLLEGE_LEVEL",
+        "COLLEGE_PREPARATORY",
+        "DUAL",
+        "DUAL_GRAD_UPPER",
+        "DUAL_HS_UNDERGRAD",
+        "GIFTED_TALENTED",
+        "GRADUATE_PROFESSIONAL",
+        "HONORS",
+        "INTERNATIONAL_BACCALAUREATE",
+        "LOWER_DIVISION",
+        "NON_ACADEMIC",
+        "REGENTS",
+        "REMEDIAL",
+        "SPECIAL_EDUCATION",
+        "TECHNICAL_PREPARATORY",
+        "UPPER_DIVISION",
+        "VOCATIONAL"
+      ]
+    },
+    "OrganizationType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "mutuallyDefined": {
+          "type": "string"
+        },
+        "organizationName": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "localOrganizationID": {
+          "$ref": "LocalOrganizationIDType"
+        },
+        "accreditation": {
+          "$ref": "AccreditationType"
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "contacts": {
+          "type": "array",
+          "items": {
+            "$ref": "ContactsType"
+          }
+        }
+      }
+    },
+    "int": {
+      "maximum": 2147483647,
+      "type": "integer",
+      "minimum": -2147483648
+    },
+    "AcademicSummaryE1Type": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "classSize": {
+          "$ref": "int"
+        },
+        "academicProgram": {
+          "$ref": "AcademicProgramType"
+        },
+        "highSchoolCreditSummary": {
+          "$ref": "HighSchoolCreditSummaryType"
+        },
+        "academicSummaryType": {
+          "$ref": "AcademicSummaryTypeType"
+        },
+        "academicHonors": {
+          "type": "array",
+          "items": {
+            "$ref": "AcademicHonorsType"
+          }
+        },
+        "userDefinedExtensions": {
+          "$ref": "UserDefinedExtensionsType"
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "classRank": {
+          "$ref": "int"
+        },
+        "academicSummaryLevel": {
+          "$ref": "CourseCreditLevelType"
+        }
+      }
+    },
+    "BigDecimal": {
+      "additionalProperties": false,
+      "type": "object"
+    },
+    "SchoolType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "schoolLevel": {
+          "$ref": "SchoolLevelType"
+        },
+        "mutuallyDefined": {
+          "type": "string"
+        },
+        "organizationName": {
+          "type": "string"
+        },
+        "localOrganizationID": {
+          "$ref": "LocalOrganizationIDType"
+        },
+        "schoolOverrideCode": {
+          "$ref": "SchoolOverrideCodeType"
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "contacts": {
+          "type": "array",
+          "items": {
+            "$ref": "ContactsType"
+          }
+        }
+      }
+    },
+    "SourceDestinationType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "organization": {
+          "$ref": "OrganizationType"
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "DocumentProcessCodeType": {
+      "enum": [
+        "TEST",
+        "PRODUCTION"
+      ]
+    },
+    "TestsType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "testYearMonth": {
+          "$ref": "XMLGregorianCalendar"
+        },
+        "testCode": {
+          "type": "string"
+        },
+        "educationTestCode": {
+          "$ref": "EducationTestCodeType"
+        },
+        "studentLevel": {
+          "$ref": "StudentLevelType"
+        },
+        "testYear": {
+          "$ref": "XMLGregorianCalendar"
+        },
+        "noteMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "subtest": {
+          "type": "array",
+          "items": {
+            "$ref": "SubtestsType"
+          }
+        },
+        "testDate": {
+          "$ref": "XMLGregorianCalendar"
+        },
+        "testName": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "properties": {
+    "transmissionData": {
+      "$ref": "#/definitions/TransmissionDataType"
+    },
+    "student": {
+      "$ref": "#/definitions/K12StudentType"
+    },
+    "userDefinedExtensions": {
+      "$ref": "#/definitions/UserDefinedExtensionsType"
+    },
+    "noteMessage": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

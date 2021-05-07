@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Page",
+  "description": "Page consists of a collection of Elements. The order of Elements in the collection is significant, those elements will be rendered in the specified order (from bottom to top).",
+  "type": "object",
+  "properties": {
+    "bc": {
+      "description": "Background color, the default is `white` ",
+      "type": "string"
+    },
+    "fpt": {
+      "description": "Frame per second, the default is `60` ",
+      "type": "integer"
+    },
+    "transition": {
+      "description": "Inter-page transition style, `scroll` (default), `fadeIn` or `replace` ",
+      "type": "string"
+    },
+    "play": {
+      "description": "Play(animation) control, `auto` (default), `pause`, `always` or `scroll` ",
+      "type": "string"
+    },
+    "duration": {
+      "description": "Duration of the animation in seconds, the default is `0.2` seconds ",
+      "type": "number"
+    },
+    "repeat": {
+      "description": "Repeat rule of the animation, default is `false` ",
+      "type": "boolean"
+    },
+    "rewind": {
+      "description": "Rewind rule of the animation when the user leaves the page, defaul is `false` ",
+      "type": "boolean"
+    },
+    "scene": {
+      "description": "Name of the scene, default is `*` ",
+      "type": "string"
+    },
+    "audio": {
+      "description": "Specifies the sound effect to be played in sync with the animation ",
+      "type": "string"
+    },
+    "speech": {
+      "description": "Specifies the text-to-speech to be played in sync with the animation ",
+      "$ref": "http://www.swipe.net/schema/swipe/speech_info.json"
+    },
+    "vibrate": {
+      "description": "Specifies the vibration in sync with the animation, the default is `false` ",
+      "type": "boolean"
+    },
+    "elements": {
+      "description": "Collection of _Elements_",
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "$ref": "http://www.swipe.net/schema/swipe/element.json"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "required": []
+}

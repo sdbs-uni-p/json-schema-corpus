@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "GET /current_action",
+  "type": "object",
+  "properties": {
+    "action": {
+      "enum": [
+        "water",
+        "nothing"
+      ]
+    },
+    "unixTimestamp": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "action",
+    "unixTimestamp"
+  ]
+}

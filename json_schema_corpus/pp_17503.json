@@ -1,0 +1,7 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "name",
+  "id": "name.json",
+  "type": "string",
+  "description": "The name of the item/object"
+}

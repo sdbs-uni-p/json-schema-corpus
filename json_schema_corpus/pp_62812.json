@@ -1,0 +1,81 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "id": "urn:x-jubatus:api:weight",
+  "definitions": {
+    "feature": {
+      "title": "feature",
+      "description": "Represents a dimension of feature vector.",
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": [
+        {
+          "title": "key",
+          "description": "Represents a name for the dimension of the feature vector.",
+          "type": "string"
+        },
+        {
+          "title": "value",
+          "description": "Represents a weight for the dimension of the feature vector.",
+          "type": "number"
+        }
+      ],
+      "additionalItems": false
+    }
+  },
+  "title": "weight",
+  "properties": {
+    "update": {
+      "title": "update",
+      "description": "Updates the weight using d, then returns the result of feature conversion of d using updated weight.",
+      "properties": {
+        "return": {
+          "description": "Extarcted feature vector",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/feature"
+          }
+        },
+        "arguments": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1,
+          "items": [
+            {
+              "title": "d",
+              "description": "datum to extract feature",
+              "$ref": "urn:x-jubatus:api:common#/definitions/datum"
+            }
+          ],
+          "additionalItems": false
+        }
+      }
+    },
+    "calc_weight": {
+      "title": "calc_weight",
+      "description": "Returns the result of feature conversion of d without updating the weight.",
+      "properties": {
+        "return": {
+          "description": "Extarcted feature vector",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/feature"
+          }
+        },
+        "arguments": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1,
+          "items": [
+            {
+              "title": "d",
+              "description": "datum to extract feature",
+              "$ref": "urn:x-jubatus:api:common#/definitions/datum"
+            }
+          ],
+          "additionalItems": false
+        }
+      }
+    }
+  }
+}

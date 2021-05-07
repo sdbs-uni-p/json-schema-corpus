@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://www.psibitdev.com/schemas/vagrant/config.schema.json",
+  "type": "object",
+  "properties": {
+    "vagrant": {
+      "$ref": "definitions.schema.json#/definitions/vagrant"
+    },
+    "servers": {
+      "title": "Server Definitions and overrides",
+      "type": "array",
+      "items": {
+        "allOf": [
+          {
+            "$ref": "definitions.schema.json#/definitions/server"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "hostname": {
+                "title": "Server Host Name",
+                "type": "string"
+              },
+              "enabled": {
+                "title": "Is Server Enabled?",
+                "type": "boolean",
+                "default": true
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

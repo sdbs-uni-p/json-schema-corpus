@@ -1,0 +1,24 @@
+{
+  "id": "Account",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "group": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "offline",
+        "online"
+      ]
+    }
+  },
+  "required": [
+    "group"
+  ]
+}

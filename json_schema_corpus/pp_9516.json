@@ -1,0 +1,82 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "id": "/schemata/organization",
+  "title": "Organization",
+  "stability": "production",
+  "description": "An applicant applies to a **program** at an **organization**.",
+  "links": [
+    {
+      "description": "List existing organizations for this **user identity**.",
+      "href": "/api/v1/user_identities/:user_identity_id/organizations",
+      "method": "GET",
+      "rel": "self",
+      "title": "List",
+      "http_header": {
+        "x-api-key": "0123456789abcdef0123456789abcdef"
+      }
+    }
+  ],
+  "type": "object",
+  "strictProperties": true,
+  "properties": {
+    "href": {
+      "type": "string",
+      "description": "Hypertext reference to this resource.",
+      "pattern": "/api/v1/user_identities/\\d+/organizations",
+      "example": "/api/v1/user_identities/1/organizations"
+    },
+    "organizations": {
+      "type": "array",
+      "items": {
+        "required": [
+          "id",
+          "name",
+          "cycle_name",
+          "association_name",
+          "cas3",
+          "config_portal_identifier"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique identifier of this organization.",
+            "example": 42023191739237
+          },
+          "name": {
+            "type": "string",
+            "description": "Human-readable name of this organization.",
+            "example": "Demo University School of Public Health"
+          },
+          "cycle_name": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Academic cycle of this organization, or `null` if not applicable.",
+            "pattern": "^\\d{4} - \\d{4}$",
+            "example": "2014 - 2015"
+          },
+          "association_name": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Human-readable name of the association that this organization belongs to, or `null` if not applicable.",
+            "example": "SOPHAS"
+          },
+          "cas3": {
+            "type": "boolean",
+            "description": "Whether or not this organization is using CAS3 (as opposed to the older CAS2, for example).",
+            "example": true
+          },
+          "config_portal_identifier": {
+            "type": "string",
+            "description": "Organization identifier that is specific to Config Portal.  May not be unique if `cas3` is `false`.",
+            "example": "2235"
+          }
+        }
+      }
+    }
+  }
+}

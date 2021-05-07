@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "DataEntityLink",
+  "description": "Databook data entity link",
+  "type": "object",
+  "javaType": "databook.persistence.rule.rdf.ruleset.DataEntityLink",
+  "extends": {
+    "$ref": "DataEntity.json"
+  },
+  "properties": {
+    "dataEntity": {
+      "$ref": "DataEntity.json"
+    },
+    "dataEntityRole": {
+      "type": "string"
+    }
+  }
+}

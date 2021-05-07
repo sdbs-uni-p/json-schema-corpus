@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "endpoint": "/query/${ELBOW_ENV_VAR}",
+  "description": "testing variables",
+  "methods": [
+    "get",
+    "post",
+    "put",
+    "delete"
+  ],
+  "query": {
+    "ELBOW_ENV_VAR": "${ELBOW_ENV_VAR}",
+    "VARIABLE": "${VARIABLE}",
+    "variable": "${variable}",
+    "multiple_variables": "${variable}${variable}",
+    "unexpanded": "${unexpanded}"
+  },
+  "status": 200,
+  "type": "object",
+  "properties": {
+    "ELBOW_ENV_VAR": {
+      "type": "string",
+      "enum": [
+        "elbow"
+      ]
+    },
+    "VARIABLE": {
+      "type": "string",
+      "enum": [
+        "VALUE"
+      ]
+    },
+    "variable": {
+      "type": "string",
+      "enum": [
+        "value"
+      ]
+    },
+    "multiple_variables": {
+      "type": "string",
+      "enum": [
+        "valuevalue"
+      ]
+    },
+    "unexpanded": {
+      "type": "string",
+      "enum": [
+        "${unexpanded}"
+      ]
+    }
+  },
+  "required": [
+    "ELBOW_ENV_VAR",
+    "VARIABLE",
+    "variable",
+    "multiple_variables",
+    "unexpanded"
+  ]
+}

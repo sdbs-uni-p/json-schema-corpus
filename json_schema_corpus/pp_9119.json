@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "ATLAS Publications",
+  "description": "Information concerning the publications related to a dataset",
+  "type": "object",
+  "properties": {
+    "access": {
+      "title": "Access Level",
+      "type": "string",
+      "enum": [
+        "public",
+        "internal"
+      ]
+    },
+    "persistent_identifiers": {
+      "title": "Identifiers",
+      "description": "Identifier numbers for the publication, e.g. arXiv ID or CDS ID",
+      "type": "array",
+      "items": {
+        "$ref": "https://analysispreservation.cern.ch/app/schemas/definitions/identifiers-v0.0.1.json"
+      }
+    },
+    "url": {
+      "title": "URL",
+      "type": "string"
+    },
+    "document_type": {
+      "title": "Document Type",
+      "type": "string"
+    },
+    "comment": {
+      "title": "Comment",
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "https://digitallinguistics.github.io/spec/person.json",
+  "title": "Person",
+  "type": "object"
+}

@@ -1,0 +1,322 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Event Schema",
+  "description": "The Event Archetype - Essential properties that define an event",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "title, start_date"
+  ],
+  "properties": {
+    "_id": {
+      "type": "string",
+      "description": "Unique identifier for this archetype record",
+      "maxLength": 50,
+      "default": ""
+    },
+    "draft": {
+      "type": "boolean",
+      "description": "Indicates this archetype record is a draft and is not published",
+      "default": false
+    },
+    "created": {
+      "type": "string",
+      "description": "Date and time this archetype record was created in ISO 8601 date standard e.g. YYYY-MM-DDThh:mm:ss.sTZD",
+      "format": "date-time",
+      "default": ""
+    },
+    "updated": {
+      "type": "string",
+      "description": "Date and time this archetype record was updated in ISO 8601 date standard e.g. YYYY-MM-DDThh:mm:ss.sTZD",
+      "format": "date-time",
+      "default": ""
+    },
+    "title": {
+      "type": "string",
+      "description": "Title of the event",
+      "maxLength": 140,
+      "default": ""
+    },
+    "start_date": {
+      "type": "string",
+      "description": "Date and time event starts in ISO 8601 date standard e.g. YYYY-MM-DDThh:mm:ss.sTZD",
+      "format": "date-time",
+      "default": ""
+    },
+    "online": {
+      "type": "boolean",
+      "description": "Is the event online?",
+      "default": false
+    },
+    "event_location": {
+      "type": "string",
+      "description": "Name of location event e.g. Tom's Sports Bar",
+      "maxLength": 140,
+      "default": ""
+    },
+    "event_address": {
+      "type": "string",
+      "description": "To add multiple address lines, use \n. For example, 1234 Gl\u00fccklichkeit Stra\u00dfe\nHinterhaus 5. Etage li.",
+      "maxLength": 100,
+      "default": ""
+    },
+    "event_city": {
+      "type": "string",
+      "maxLength": 100,
+      "default": ""
+    },
+    "event_region": {
+      "type": "string",
+      "description": "The general region where the event takes place.  Can be a US state, or a province, for instance.",
+      "maxLength": 100,
+      "default": ""
+    },
+    "end_date": {
+      "type": "string",
+      "description": "Date and time event ends in ISO 8601 date standard e.g. YYYY-MM-DDThh:mm:ss.sTZD",
+      "format": "date-time",
+      "default": ""
+    },
+    "timezone": {
+      "enum": [
+        "ACDT",
+        "ACST",
+        "ADT",
+        "AEDT",
+        "AEST",
+        "AFT",
+        "AKDT",
+        "AKST",
+        "ALMT",
+        "AMST",
+        "AMT",
+        "ANAST",
+        "ANAT",
+        "AQTT",
+        "ART",
+        "AST",
+        "AWDT",
+        "AWST",
+        "AZOST",
+        "AZOT",
+        "AZST",
+        "AZT",
+        "BNT",
+        "BOT",
+        "BRT",
+        "BST",
+        "BTT",
+        "CAST",
+        "CAT",
+        "CCT",
+        "CDT",
+        "CET",
+        "CHAST",
+        "CKT",
+        "CLT",
+        "COT",
+        "CST",
+        "CVT",
+        "CXT",
+        "ChST",
+        "DAVT",
+        "EAST",
+        "EAT",
+        "ECT",
+        "EET",
+        "EGT",
+        "EST",
+        "ET",
+        "FJT",
+        "FKT",
+        "FNT",
+        "GALT",
+        "GAMT",
+        "GET",
+        "GFT",
+        "GILT",
+        "GMT",
+        "GST",
+        "GYT",
+        "HAA",
+        "HAC",
+        "HAE",
+        "HAP",
+        "HAR",
+        "HAST",
+        "HAT",
+        "HAY",
+        "HKT",
+        "HLV",
+        "HNA",
+        "HNC",
+        "HNE",
+        "HNP",
+        "HNR",
+        "HNT",
+        "HNY",
+        "HOVT",
+        "ICT",
+        "IOT",
+        "IRKT",
+        "IRST",
+        "IST",
+        "JST",
+        "KGT",
+        "KRAT",
+        "KST",
+        "KUYT",
+        "LHST",
+        "LINT",
+        "MAGT",
+        "MART",
+        "MAWT",
+        "MDT",
+        "MESZ",
+        "MEZ",
+        "MHT",
+        "MMT",
+        "MSK",
+        "MST",
+        "MUT",
+        "MVT",
+        "MYT",
+        "NCT",
+        "NFT",
+        "NOVT",
+        "NPT",
+        "NST",
+        "NUT",
+        "NZST",
+        "OMST",
+        "PET",
+        "PETT",
+        "PGT",
+        "PHOT",
+        "PHT",
+        "PKT",
+        "PMST",
+        "PONT",
+        "PST",
+        "PWT",
+        "PYT",
+        "RET",
+        "SAMT",
+        "SAST",
+        "SBT",
+        "SCT",
+        "SGT",
+        "SRT",
+        "SST",
+        "TAHT",
+        "TFT",
+        "TJT",
+        "TKT",
+        "TLT",
+        "TMT",
+        "TVT",
+        "ULAT",
+        "UYT",
+        "UZT",
+        "VET",
+        "VLAT",
+        "VUT",
+        "WAST",
+        "WAT",
+        "WET",
+        "WFT",
+        "WGT",
+        "WIB",
+        "WIT",
+        "WITA",
+        "WST",
+        "YAKT",
+        "YAPT",
+        "YEKT"
+      ],
+      "description": "Timezone abbreviation e.g. GMT, EST, PST.",
+      "default": "GMT"
+    },
+    "event_logo": {
+      "$ref": "image_archetype_schema.json",
+      "description": "Image Archetype ID to use as the event logo of this event"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the event",
+      "maxLength": 5000,
+      "default": ""
+    },
+    "admission_price": {
+      "type": "integer",
+      "description": "Admission price in cents as an integer (whole number)",
+      "minimum": 0,
+      "maximum": 999999999999999,
+      "default": 0
+    },
+    "ticket_quantity": {
+      "type": "integer",
+      "description": "Amount of tickets available for the event",
+      "minimum": 1,
+      "maximum": 99999999999999,
+      "default": 1
+    },
+    "category": {
+      "type": "string",
+      "description": "General category of the event, e.g. Music",
+      "maxLength": 40,
+      "default": ""
+    },
+    "organizer_name": {
+      "type": "string",
+      "description": "Name of the individual or company that organized the event",
+      "maxLength": 140,
+      "default": ""
+    },
+    "organizer_info": {
+      "type": "string",
+      "description": "URL to the organizer's website",
+      "format": "uri",
+      "maxLength": 1000,
+      "default": ""
+    },
+    "recurring": {
+      "type": "boolean",
+      "description": "Does the event take places on multiple occasions?",
+      "default": false
+    },
+    "recurrence_date_start": {
+      "type": "array",
+      "maxItems": 10,
+      "uniqueItems": true,
+      "default": [],
+      "items": {
+        "type": "string",
+        "format": "date-time",
+        "default": ""
+      }
+    },
+    "recurrence_date_end": {
+      "type": "array",
+      "maxItems": 10,
+      "uniqueItems": true,
+      "default": [],
+      "items": {
+        "type": "string",
+        "format": "date-time",
+        "default": ""
+      }
+    },
+    "tags": {
+      "type": "array",
+      "description": "Array of Tag Archetypes that are used to help categorize this Archetype record",
+      "maxItems": 6,
+      "uniqueItems": true,
+      "additionalItems": false,
+      "default": [],
+      "items": {
+        "$ref": "tag_archetype_schema.json"
+      }
+    }
+  }
+}

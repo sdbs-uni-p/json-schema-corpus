@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/BaseSchema",
+  "definitions": {
+    "userLight": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "callsign": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "admin": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "callsign",
+        "email",
+        "admin"
+      ]
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "name": "shopping-cart-widget",
+  "description": "A shopping cart with a list of articles, lets the user add articles and change their quantity.",
+  "integration": {
+    "technology": "angular",
+    "type": "widget"
+  },
+  "features": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "required": [
+      "article",
+      "order"
+    ],
+    "properties": {
+      "article": {
+        "type": "object",
+        "required": [
+          "resource",
+          "onActions"
+        ],
+        "properties": {
+          "resource": {
+            "type": "string",
+            "format": "topic",
+            "axRole": "inlet",
+            "description": "ID of the article resource to add to the cart."
+          },
+          "onActions": {
+            "type": "array",
+            "description": "Adds the article to the cart.",
+            "items": {
+              "type": "string",
+              "format": "topic",
+              "axRole": "inlet"
+            }
+          }
+        }
+      },
+      "order": {
+        "type": "object",
+        "required": [
+          "target"
+        ],
+        "properties": {
+          "target": {
+            "type": "string",
+            "description": "The target to be used in the navigateRequest event after placing the order."
+          }
+        }
+      }
+    }
+  }
+}

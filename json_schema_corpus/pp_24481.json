@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://atomicbits.io/raml10/method.json#",
+  "enum": [
+    "GET",
+    "PUT",
+    "POST",
+    "DELETE",
+    "HEAD",
+    "CONNECT",
+    "TRACE",
+    "OPTIONS",
+    "new",
+    "8Trees",
+    "hy-phen",
+    "spa ce"
+  ]
+}

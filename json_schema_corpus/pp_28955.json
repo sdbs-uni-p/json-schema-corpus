@@ -1,0 +1,204 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://jsonschema.net",
+  "required": false,
+  "properties": {
+    "bonus_stats": {
+      "type": "array",
+      "title": "Bonus Statistics",
+      "description": "array of bonus stat objects",
+      "minitems": "2",
+      "maxitems": "2",
+      "id": "http://jsonschema.net/bonus_stats",
+      "required": true,
+      "items": {
+        "type": "object",
+        "title": "Bonus Statistics Object",
+        "id": "http://jsonschema.net/bonus_stats/0",
+        "required": true,
+        "properties": {
+          "hrd": {
+            "type": "number",
+            "title": "Bonuses Heard",
+            "id": "http://jsonschema.net/bonus_stats/0/hrd",
+            "required": true
+          },
+          "ppb": {
+            "type": "number",
+            "title": "Points Per Bonus",
+            "id": "http://jsonschema.net/bonus_stats/0/ppb",
+            "required": true
+          },
+          "pts": {
+            "type": "number",
+            "title": "Bonus Points earned",
+            "id": "http://jsonschema.net/bonus_stats/0/pts",
+            "required": true
+          }
+        }
+      }
+    },
+    "event": {
+      "type": "string",
+      "title": "Event Name",
+      "id": "http://jsonschema.net/event",
+      "required": true
+    },
+    "json_class": {
+      "type": "string",
+      "title": "Optional reserialization class",
+      "id": "http://jsonschema.net/json_class",
+      "required": false
+    },
+    "moderator": {
+      "type": "string",
+      "title": "Round Moderator name or email",
+      "id": "http://jsonschema.net/moderator",
+      "required": false
+    },
+    "players": {
+      "type": "array",
+      "title": "Array of player arrays",
+      "minitems": "2",
+      "maxitems": "2",
+      "id": "http://jsonschema.net/players",
+      "required": true,
+      "items": {
+        "type": "array",
+        "title": "Player array",
+        "minitems": "1",
+        "id": "http://jsonschema.net/players/0",
+        "required": true
+      }
+    },
+    "room": {
+      "type": "string",
+      "title": "Name or number of game room",
+      "id": "http://jsonschema.net/room",
+      "required": false
+    },
+    "round": {
+      "type": [
+        "number",
+        "array"
+      ],
+      "title": "Round Identifier",
+      "description": "round number, or [Round Number,Packet Name]",
+      "id": "http://jsonschema.net/round",
+      "required": true
+    },
+    "score": {
+      "type": "array",
+      "title": "Team Scores",
+      "minitems": "2",
+      "maxitems": "2",
+      "id": "http://jsonschema.net/score",
+      "required": true,
+      "items": {
+        "type": "number",
+        "title": "Team Score",
+        "id": "http://jsonschema.net/score/0",
+        "required": true
+      }
+    },
+    "stat_lines": {
+      "type": "array",
+      "title": "Array of player stat lines",
+      "minitems": "2",
+      "maxitems": "2",
+      "id": "http://jsonschema.net/stat_lines",
+      "required": true,
+      "items": {
+        "type": "array",
+        "title": "Player stat lines",
+        "minitems": "1",
+        "id": "http://jsonschema.net/stat_lines/0",
+        "required": true,
+        "items": {
+          "type": "object",
+          "title": "Player statline",
+          "id": "http://jsonschema.net/stat_lines/0/0",
+          "required": true,
+          "properties": {
+            "tuh": {
+              "type": "number",
+              "title": "Tossups Heard",
+              "required": true
+            },
+            "negs": {
+              "type": "number",
+              "title": "Neg fives docked",
+              "required": true
+            },
+            "points": {
+              "type": "number",
+              "title": "Points earned",
+              "required": true
+            },
+            "powers": {
+              "type": "number",
+              "title": "Powers earned",
+              "required": true
+            },
+            "tens": {
+              "type": "number",
+              "title": "Regular questions answered",
+              "required": true
+            }
+          }
+        }
+      }
+    },
+    "teams": {
+      "type": "array",
+      "minitems": "2",
+      "maxitems": "2",
+      "id": "http://jsonschema.net/teams",
+      "required": true,
+      "items": {
+        "type": "string",
+        "title": "Team Name",
+        "id": "http://jsonschema.net/teams/0",
+        "required": false
+      }
+    },
+    "tossups": {
+      "type": "array",
+      "title": "Array of Tossup objects",
+      "id": "http://jsonschema.net/tossups",
+      "required": false,
+      "items": {
+        "type": "object",
+        "title": "Tossup",
+        "id": "http://jsonschema.net/tossups/0",
+        "required": true,
+        "properties": {
+          "bpts": {
+            "type": "array",
+            "title": "Array of bonus points earned by each team",
+            "id": "http://jsonschema.net/tossups/0/bpts",
+            "required": true,
+            "items": {
+              "type": "number",
+              "id": "http://jsonschema.net/tossups/0/bpts/0",
+              "required": false
+            }
+          },
+          "buzzes": {
+            "type": "array",
+            "title": "Array of buzz arrays for each team",
+            "id": "http://jsonschema.net/tossups/0/buzzes",
+            "required": true,
+            "items": {
+              "type": "array",
+              "title": "Array of points earned on buzz for each player",
+              "id": "http://jsonschema.net/tossups/0/buzzes/0",
+              "required": true
+            }
+          }
+        }
+      }
+    }
+  }
+}

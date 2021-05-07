@@ -1,0 +1,71 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "resource_id": {
+    "anyOf": [
+      {
+        "type": "string",
+        "maxLength": 127,
+        "pattern": "^[\\w\\-]+(\\.[\\w\\-^#]+)+$"
+      },
+      {
+        "type": "string",
+        "maxLength": 127,
+        "pattern": "^[\\w\\-]+@[\\w\\-]+(\\.[\\w\\-^#]+)+$"
+      }
+    ]
+  },
+  "resource": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "cells": {
+        "type": "array",
+        "items": {
+          "$ref": "common.json#/cell"
+        },
+        "minItems": 0
+      },
+      "pattern": {
+        "anyOf": [
+          {
+            "type": "string",
+            "pattern": "^[\\w\\-]+\\..+$"
+          },
+          {
+            "type": "string",
+            "pattern": "^[\\w\\-]+\\@[\\w\\-]+\\..+$"
+          }
+        ]
+      },
+      "pending": {
+        "type": "integer",
+        "minimum": 30
+      },
+      "exit": {
+        "type": "array",
+        "items": {
+          "enum": [
+            "non-zero",
+            "aborted",
+            "oom"
+          ]
+        },
+        "minItems": 1
+      },
+      "mismatch": {
+        "type": "integer",
+        "minimum": 0
+      }
+    }
+  },
+  "verbs": {
+    "create": {
+      "required": [
+        "pattern"
+      ]
+    },
+    "update": {
+      "required": []
+    }
+  }
+}

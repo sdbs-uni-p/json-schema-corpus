@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "https://github.com/empirefox/node-private-tools/blob/master/src/schemas/to-mpeg4.json#",
+  "title": "to-mpeg4 Config",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "$tool": {
+      "type": "string",
+      "description": "Must be set to to-mpeg4.",
+      "const": "to-mpeg4"
+    },
+    "src": {
+      "description": "Input go files(Glob), expand with env first. ie ~/movie/non-mp4/&#42;&#42;/&#42;.{mp4,mkv,avi,flv}",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "preproccess": "env"
+      }
+    },
+    "dist": {
+      "description": "The output dir (relative to the pwd).",
+      "type": "string"
+    },
+    "history": {
+      "description": "The history dir (relative to the pwd).",
+      "type": "string",
+      "default": ".history/"
+    },
+    "outputOptions": {
+      "description": "Ffmpeg output options, in k-v mode ie '-vf scale=640:360'.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "$tool",
+    "src",
+    "dist",
+    "history"
+  ],
+  "additionalProperties": false
+}

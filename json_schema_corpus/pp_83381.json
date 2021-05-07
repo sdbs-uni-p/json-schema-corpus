@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "additionalProperties": true,
+  "type": "object",
+  "properties": {
+    "text_field": {
+      "type": "string",
+      "required": true
+    },
+    "type": {
+      "enum": [
+        "TestTypeV1.2"
+      ],
+      "type": "string",
+      "pattern": "^[A-Z]{1}\\w+V\\d+\\.\\d+$",
+      "required": true
+    },
+    "id": {
+      "type": "string",
+      "required": true
+    },
+    "other_field": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

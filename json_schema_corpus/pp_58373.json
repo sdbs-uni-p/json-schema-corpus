@@ -1,0 +1,86 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://jsonschema.net",
+  "required": false,
+  "properties": {
+    "authors": {
+      "type": "array",
+      "id": "http://jsonschema.net/authors",
+      "required": true,
+      "items": {
+        "type": "string",
+        "id": "http://jsonschema.net/authors/0",
+        "required": true
+      }
+    },
+    "date": {
+      "type": "string",
+      "id": "http://jsonschema.net/date",
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "id": "http://jsonschema.net/name",
+      "required": true
+    },
+    "nt": {
+      "type": "string",
+      "id": "http://jsonschema.net/nt",
+      "required": true
+    },
+    "tableList": {
+      "type": "array",
+      "id": "http://jsonschema.net/tableList",
+      "required": true,
+      "items": {
+        "type": "object",
+        "id": "http://jsonschema.net/tableList/0",
+        "required": true,
+        "properties": {
+          "headers": {
+            "type": "array",
+            "minitems": "1",
+            "id": "http://jsonschema.net/tableList/0/headers",
+            "required": true,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "id": "http://jsonschema.net/tableList/0/headers/0",
+              "required": true
+            }
+          },
+          "matrix": {
+            "type": "array",
+            "id": "http://jsonschema.net/tableList/0/matrix",
+            "required": true,
+            "items": {
+              "type": "object",
+              "id": "http://jsonschema.net/tableList/0/matrix/0",
+              "required": true,
+              "properties": {
+                "area": {
+                  "type": "number",
+                  "minimum": 1,
+                  "maximum": 47,
+                  "id": "http://jsonschema.net/tableList/0/matrix/0/area",
+                  "required": true
+                },
+                "data": {
+                  "type": "array",
+                  "id": "http://jsonschema.net/tableList/0/matrix/0/data",
+                  "required": true,
+                  "items": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/tableList/0/matrix/0/data/0",
+                    "required": false
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

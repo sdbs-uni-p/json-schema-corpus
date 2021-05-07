@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "description": "Page doesn't have any special properties.",
+  "definitions": {
+    "Item_Page": {
+      "description": "Web page"
+    }
+  },
+  "type": "object",
+  "required": [
+    "Item"
+  ],
+  "properties": {
+    "Item": {
+      "$ref": "Item.json#/definitions/Item"
+    },
+    "Item_Page": {
+      "$ref": "Item.json#/definitions/Item_Page"
+    }
+  }
+}

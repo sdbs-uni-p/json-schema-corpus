@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://atomicbits.io/sche-ma/strange-chars.json#",
+  "type": "object",
+  "javaType": "",
+  "description": "A href",
+  "properties": {
+    "with space": {
+      "type": "string",
+      "required": true
+    },
+    "with/slash": {
+      "required": true,
+      "type": "string"
+    },
+    "with~tilde": {
+      "type": "string",
+      "required": false
+    }
+  }
+}

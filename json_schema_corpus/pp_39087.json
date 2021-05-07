@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "https://github.com/empirefox/node-private-tools/blob/master/src/schemas/tools-loader.json#",
+  "title": "tools-loader Config",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "tasks": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "$ref": "arukas.json"
+          },
+          {
+            "$ref": "city-mobile-sections.json"
+          },
+          {
+            "$ref": "go-const-ts.json"
+          },
+          {
+            "$ref": "go-tag-apis.json"
+          },
+          {
+            "$ref": "json2ts.json"
+          },
+          {
+            "$ref": "kuaidi100.json"
+          },
+          {
+            "$ref": "svg-patterns.json"
+          },
+          {
+            "$ref": "to-mpeg4.json"
+          },
+          {
+            "$ref": "ts-trans.json"
+          },
+          {
+            "$ref": "generic-tool.json"
+          }
+        ]
+      }
+    },
+    "ajv": {
+      "type": "object"
+    },
+    "additionRunners": {
+      "description": "Addition RunnerWithSchema[].",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "version",
+    "tasks"
+  ],
+  "additionalProperties": false
+}

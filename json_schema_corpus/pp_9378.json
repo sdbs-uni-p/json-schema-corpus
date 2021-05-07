@@ -1,0 +1,13 @@
+{
+  "name": "vue-hello-world-widget",
+  "description": "A hello world widget using the vue widget adapter.",
+  "integration": {
+    "technology": "vue",
+    "type": "widget"
+  },
+  "features": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {}
+  }
+}

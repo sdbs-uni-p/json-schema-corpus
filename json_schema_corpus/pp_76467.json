@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "get spider metadata response",
+  "description": "get spider metadata response",
+  "type": "object",
+  "properties": {
+    "spider_metadata_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "base64_encoded_spider_metadata": {
+      "type": "string",
+      "minLength": 1
+    },
+    "links": {
+      "type": "object",
+      "properties": {
+        "self": {
+          "type": "object",
+          "properties": {
+            "href": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "required": [
+            "href"
+          ]
+        }
+      },
+      "required": [
+        "self"
+      ]
+    }
+  },
+  "required": [
+    "spider_metadata_id",
+    "base64_encoded_spider_metadata",
+    "links"
+  ],
+  "additionalProperties": true
+}

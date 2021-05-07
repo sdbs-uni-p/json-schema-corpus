@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "",
+  "type": "object",
+  "properties": {
+    "calendar": {
+      "id": "/calendar",
+      "type": "object",
+      "properties": {
+        "summary": {
+          "id": "/calendar/name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ]
+    }
+  },
+  "required": [
+    "calendar"
+  ]
+}

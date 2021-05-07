@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "menusection",
+  "description": "Menu Section for the data marshal system",
+  "type": "object",
+  "properties": {
+    "id": {
+      "$ref": "/schema/id"
+    },
+    "name": {
+      "$ref": "/schema/name"
+    },
+    "description": {
+      "$ref": "/schema/description"
+    },
+    "order_num": {
+      "type": "integer"
+    },
+    "subsections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "/schema/id"
+          },
+          "name": {
+            "$ref": "/schema/name"
+          },
+          "description": {
+            "$ref": "/schema/description"
+          },
+          "order_num": {
+            "type": "integer"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "/schema/menuitem"
+            }
+          }
+        }
+      }
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "$ref": "/schema/menuitem"
+      }
+    }
+  },
+  "required": [
+    "id"
+  ]
+}

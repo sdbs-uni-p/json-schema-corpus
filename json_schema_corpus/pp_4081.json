@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Session",
+  "description": "Databook session",
+  "type": "object",
+  "javaType": "databook.persistence.rule.rdf.ruleset.Session",
+  "extends": {
+    "$ref": "DataEntity.json"
+  },
+  "properties": {
+    "sessionPart": {
+      "$ref": "Access.json"
+    }
+  }
+}

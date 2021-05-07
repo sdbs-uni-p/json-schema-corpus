@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "_app_collections",
+  "title": "App Collections",
+  "description": "Info on user created collections",
+  "type": "object",
+  "properties": {
+    "_$id": {
+      "type": "string",
+      "description": "Name of a user created collection's schema"
+    },
+    "fields": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "app_title": {
+            "type": "string"
+          },
+          "app_type": {
+            "type": "string"
+          },
+          "app_values": {
+            "type": "object",
+            "additionalProperties": {
+              "type": [
+                "string",
+                "number"
+              ]
+            }
+          }
+        },
+        "required": [
+          "app_title",
+          "app_type"
+        ]
+      }
+    }
+  }
+}

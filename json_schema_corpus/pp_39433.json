@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "GetFullProfileResponse",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "userName": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "displayName": {
+      "type": "string"
+    }
+  },
+  "javaName": "GetFullProfileResponse"
+}

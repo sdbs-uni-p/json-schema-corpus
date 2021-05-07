@@ -1,0 +1,14 @@
+{
+  "title": "API Updater Schema",
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "updated_by": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "updated_by"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Answer",
+  "description": "Google form driven interview's answer",
+  "type": "object",
+  "properties": {
+    "doc_type": {
+      "type": "string",
+      "pattern": "^answer$"
+    },
+    "interviewId": {
+      "description": "an answer belongs to an interview",
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "result": {
+      "type": "string"
+    },
+    "reason": {
+      "enum": [
+        "burial",
+        "suspect"
+      ]
+    },
+    "createdOn": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "itemType": {
+      "description": "the available answer types as described here https://developers.google.com/apps-script/reference/forms/item-type",
+      "enum": [
+        "CHECKBOX",
+        "DATE",
+        "DATETIME",
+        "DURATION",
+        "LIST",
+        "MULTIPLE_CHOICE",
+        "PARAGRAPH_TEXT",
+        "SCALE",
+        "TEXT",
+        "TIME"
+      ]
+    }
+  },
+  "required": [
+    "doc_type",
+    "createdOn",
+    "interviewId",
+    "title",
+    "reason",
+    "result",
+    "itemType"
+  ]
+}

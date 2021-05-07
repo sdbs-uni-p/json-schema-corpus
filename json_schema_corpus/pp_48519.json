@@ -1,0 +1,109 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "version": "0.01",
+  "title": "N-dimensional Image Data",
+  "description": "Supplies the meta data necessary to interpret N-dimensional image data returned by DVID",
+  "type": "object",
+  "definitions": {
+    "axis": {
+      "description": "Defines an axis of the image",
+      "type": "object",
+      "properties": {
+        "Label": {
+          "type": "string",
+          "description": "What to call this dimension."
+        },
+        "Resolution": {
+          "type": "number",
+          "description": "The length of a voxel in this dimension.",
+          "minimum": 0
+        },
+        "Units": {
+          "type": "string",
+          "description": "The units of length of a voxel in this dimension.",
+          "enum": [
+            "nanometers",
+            "micrometers",
+            "millimeters",
+            ""
+          ]
+        },
+        "Size": {
+          "type": "integer",
+          "description": "The span of the image (i.e., the number of voxels) in this dimension.",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "Label",
+        "Resolution",
+        "Units",
+        "Size"
+      ]
+    },
+    "channel": {
+      "description": "Describes the value type for a channel of data",
+      "type": "object",
+      "properties": {
+        "DataType": {
+          "type": "string",
+          "description": "The fixed-size data type for the value.",
+          "enum": [
+            "uint8",
+            "int8",
+            "uint16",
+            "int16",
+            "uint32",
+            "int32",
+            "uint64",
+            "int64",
+            "float32",
+            "float64"
+          ]
+        },
+        "Label": {
+          "type": "string",
+          "description": "The name of this value."
+        }
+      },
+      "required": [
+        "DataType"
+      ]
+    }
+  },
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "Axes": {
+      "description": "Specifies the dimensions of the image. Order of the axes within the list specifies the ordering of the data. The first object in the list corresponds to the dimension whose index varies most rapidly as we move through the data bytes. The second object in the list corresponds to the 2nd most rapidly changing index, and so on.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/axis"
+      },
+      "uniqueItems": true
+    },
+    "Properties": {
+      "type": "object",
+      "description": "Properties for datatype instance",
+      "properties": {
+        "Values": {
+          "description": "Specifies the interleaved values within one voxel of the n-D array. For example, a RGBA image would have four values, one for each of the colors and a fourth for the alpha channel.",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/channel"
+          }
+        }
+      },
+      "required": [
+        "Values"
+      ]
+    }
+  },
+  "required": [
+    "Axes",
+    "Properties"
+  ]
+}

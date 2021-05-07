@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "AppStatus",
+  "type": "object",
+  "properties": {
+    "phase": {
+      "type": "string",
+      "enum": [
+        "creating",
+        "error",
+        "launched",
+        "planning"
+      ]
+    },
+    "service_count": {
+      "type": "integer"
+    },
+    "pod_count": {
+      "type": "integer"
+    },
+    "container_count": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "phase"
+  ]
+}

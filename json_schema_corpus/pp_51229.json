@@ -1,0 +1,97 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "announcement",
+  "description": "A bundle of STIX content not explicitly solicited by another party.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "message-base.json"
+    },
+    {
+      "properties": {
+        "contents": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "../stix/asset.json"
+              },
+              {
+                "$ref": "../stix/attack-pattern.json"
+              },
+              {
+                "$ref": "../stix/campaign.json"
+              },
+              {
+                "$ref": "../stix/configuration.json"
+              },
+              {
+                "$ref": "../stix/course-of-action.json"
+              },
+              {
+                "$ref": "../stix/exploit.json"
+              },
+              {
+                "$ref": "../stix/identity.json"
+              },
+              {
+                "$ref": "../stix/incident.json"
+              },
+              {
+                "$ref": "../stix/indicator.json"
+              },
+              {
+                "$ref": "../stix/malicious-infrastructure.json"
+              },
+              {
+                "$ref": "../stix/kill-chain.json"
+              },
+              {
+                "$ref": "../stix/malware.json"
+              },
+              {
+                "$ref": "../cybox/observation.json"
+              },
+              {
+                "$ref": "../stix/opinion.json"
+              },
+              {
+                "$ref": "../stix/persona.json"
+              },
+              {
+                "$ref": "../stix/report.json"
+              },
+              {
+                "$ref": "../stix/threat-actor.json"
+              },
+              {
+                "$ref": "../stix/malicious-tool.json"
+              },
+              {
+                "$ref": "../stix/victim-targeting.json"
+              },
+              {
+                "$ref": "../stix/vulnerability.json"
+              },
+              {
+                "$ref": "../stix/weakness.json"
+              }
+            ]
+          }
+        },
+        "relationships": {
+          "type": "array",
+          "items": {
+            "$ref": "../stix/relationship.json"
+          }
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "$ref": "../common/information-source.json"
+          }
+        }
+      }
+    }
+  ]
+}

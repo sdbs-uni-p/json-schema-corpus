@@ -1,0 +1,217 @@
+{
+  "id": "http://schemas.triniti.io/json-schema/gdbots/ncr/mixin/node-marked-as-pending/1-0-0.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+      "pbj": {
+        "type": "time-uuid",
+        "rule": "single"
+      }
+    },
+    "occurred_at": {
+      "type": "string",
+      "pattern": "^[1-9]{1}[0-9]{12,15}$",
+      "pbj": {
+        "type": "microtime",
+        "rule": "single"
+      }
+    },
+    "ctx_causator_ref": {
+      "type": "object",
+      "properties": {
+        "curie": {
+          "type": "string",
+          "pattern": "^([a-z0-9-]+):([a-z0-9\\.-]+):([a-z0-9-]+)?:([a-z0-9-]+)$",
+          "minLength": 0,
+          "maxLength": 146
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9:_\\-]+$",
+          "minLength": 0,
+          "maxLength": 255
+        },
+        "tag": {
+          "type": "string",
+          "pattern": "^([\\w\\/-]|[\\w-][\\w\\/-]*[\\w-])$",
+          "minLength": 0,
+          "maxLength": 255
+        }
+      },
+      "required": [
+        "curie",
+        "id"
+      ],
+      "additionalProperties": false,
+      "pbj": {
+        "type": "message-ref",
+        "rule": "single"
+      }
+    },
+    "ctx_correlator_ref": {
+      "type": "object",
+      "properties": {
+        "curie": {
+          "type": "string",
+          "pattern": "^([a-z0-9-]+):([a-z0-9\\.-]+):([a-z0-9-]+)?:([a-z0-9-]+)$",
+          "minLength": 0,
+          "maxLength": 146
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9:_\\-]+$",
+          "minLength": 0,
+          "maxLength": 255
+        },
+        "tag": {
+          "type": "string",
+          "pattern": "^([\\w\\/-]|[\\w-][\\w\\/-]*[\\w-])$",
+          "minLength": 0,
+          "maxLength": 255
+        }
+      },
+      "required": [
+        "curie",
+        "id"
+      ],
+      "additionalProperties": false,
+      "pbj": {
+        "type": "message-ref",
+        "rule": "single"
+      }
+    },
+    "ctx_user_ref": {
+      "type": "object",
+      "properties": {
+        "curie": {
+          "type": "string",
+          "pattern": "^([a-z0-9-]+):([a-z0-9\\.-]+):([a-z0-9-]+)?:([a-z0-9-]+)$",
+          "minLength": 0,
+          "maxLength": 146
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9:_\\-]+$",
+          "minLength": 0,
+          "maxLength": 255
+        },
+        "tag": {
+          "type": "string",
+          "pattern": "^([\\w\\/-]|[\\w-][\\w\\/-]*[\\w-])$",
+          "minLength": 0,
+          "maxLength": 255
+        }
+      },
+      "required": [
+        "curie",
+        "id"
+      ],
+      "additionalProperties": false,
+      "pbj": {
+        "type": "message-ref",
+        "rule": "single"
+      }
+    },
+    "ctx_app": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "#/definitions/app"
+        }
+      ],
+      "description": "The \"ctx_app\" refers to the application used to send the command which in turn resulted in this event being published.",
+      "pbj": {
+        "type": "message",
+        "rule": "single"
+      }
+    },
+    "ctx_cloud": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "#/definitions/cloud"
+        }
+      ],
+      "description": "The \"ctx_cloud\" is usually copied from the command that resulted in this event being published. This means the value most likely refers to the cloud that received the command originally, not the machine processing the event.",
+      "pbj": {
+        "type": "message",
+        "rule": "single"
+      }
+    },
+    "ctx_ip": {
+      "type": "string",
+      "format": "ipv4",
+      "pbj": {
+        "type": "string",
+        "rule": "single",
+        "format": "ipv4",
+        "overridable": true
+      }
+    },
+    "ctx_ipv6": {
+      "type": "string",
+      "format": "ipv6",
+      "pbj": {
+        "type": "string",
+        "rule": "single",
+        "format": "ipv6",
+        "overridable": true
+      }
+    },
+    "ctx_ua": {
+      "type": "string",
+      "minLength": 0,
+      "maxLength": 65535,
+      "pbj": {
+        "type": "text",
+        "rule": "single",
+        "overridable": true
+      }
+    },
+    "node_ref": {
+      "type": "string",
+      "pattern": "^[\\w\\/\\.:-]+$",
+      "pbj": {
+        "type": "identifier",
+        "rule": "single"
+      }
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^([\\w\\/-]|[\\w-][\\w\\/-]*[\\w-])$",
+      "minLength": 0,
+      "maxLength": 255,
+      "pbj": {
+        "type": "string",
+        "rule": "single",
+        "format": "slug"
+      }
+    }
+  },
+  "required": [
+    "event_id",
+    "node_ref"
+  ],
+  "definitions": {
+    "app": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "http://schemas.triniti.io/json-schema/gdbots/contexts/app/1-0-0.json#"
+        }
+      ]
+    },
+    "cloud": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "http://schemas.triniti.io/json-schema/gdbots/contexts/cloud/1-0-0.json#"
+        }
+      ]
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://acmepay.local/schema/transaction.json#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "timestamp": {
+      "type": "date-time"
+    },
+    "wallet": {
+      "$ref": "http://acmepay.local/schema/wallet.json#"
+    },
+    "currency": {
+      "$ref": "http://acmepay.local/schema/currency.json#"
+    },
+    "amount": {
+      "type": "integer"
+    },
+    "balance_change": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "id",
+    "timestamp",
+    "amount",
+    "balance_change"
+  ],
+  "additionalProperties": false
+}

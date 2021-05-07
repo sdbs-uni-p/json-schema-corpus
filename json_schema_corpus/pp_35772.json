@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema-location": "Entity-Schema.json",
+  "name": "AWS-Provider-Schema",
+  "version": "1",
+  "author": "denis",
+  "description": "Represent the AWS-EC2 as the deployment Environment",
+  "associated-tool": "Juju-CLI",
+  "type": "object",
+  "properties": {
+    "$schema-location": {
+      "type": {
+        "enum": [
+          "AWS-Provider-Schema.json"
+        ]
+      }
+    },
+    "id": {
+      "type": "string",
+      "required": true
+    },
+    "type": {
+      "type": "string",
+      "default-value": "",
+      "required": true,
+      "description": ""
+    },
+    "region": {
+      "type": "string",
+      "default-value": "us-east-1",
+      "required": false,
+      "description": ""
+    },
+    "access-key": {
+      "type": "string",
+      "default-value": "",
+      "required": true,
+      "description": ""
+    },
+    "secret-key": {
+      "type": "string",
+      "default-value": "",
+      "required": true,
+      "description": ""
+    }
+  }
+}

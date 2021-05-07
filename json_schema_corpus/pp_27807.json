@@ -1,0 +1,96 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "output": {
+      "id": "output",
+      "type": "object",
+      "properties": {
+        "filename": {
+          "id": "filename",
+          "type": "string"
+        }
+      },
+      "required": [
+        "filename"
+      ]
+    },
+    "datasets": {
+      "id": "datasets",
+      "type": "array",
+      "items": {
+        "id": "0",
+        "type": "object",
+        "properties": {
+          "filename": {
+            "id": "filename",
+            "type": "string"
+          },
+          "data_type": {
+            "id": "data_type",
+            "type": "string"
+          },
+          "maps": {
+            "id": "maps",
+            "type": "array",
+            "items": {
+              "id": "0",
+              "type": "object",
+              "properties": {
+                "path": {
+                  "id": "path",
+                  "type": "string"
+                },
+                "channels": {
+                  "id": "channels",
+                  "type": "array",
+                  "items": {
+                    "id": "2",
+                    "type": "string"
+                  }
+                },
+                "shared_group": {
+                  "id": "shared_group",
+                  "type": "integer"
+                },
+                "meta": {
+                  "id": "meta",
+                  "type": "array",
+                  "items": {
+                    "id": "2",
+                    "type": "object",
+                    "properties": {
+                      "channels": {
+                        "id": "channels",
+                        "type": "array",
+                        "items": {
+                          "id": "0",
+                          "type": "string"
+                        }
+                      },
+                      "info": {
+                        "id": "info",
+                        "type": "object",
+                        "properties": {
+                          "comment": {
+                            "id": "comment",
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "output",
+    "datasets"
+  ]
+}

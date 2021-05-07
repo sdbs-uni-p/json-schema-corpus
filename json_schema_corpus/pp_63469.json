@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "tit",
+  "definitions": {
+    "string": {
+      "type": "string"
+    }
+  },
+  "type": "object",
+  "properties": {
+    "a": {
+      "type": "string"
+    },
+    "b": {
+      "$ref": "#/sub/subrefd.json"
+    }
+  }
+}

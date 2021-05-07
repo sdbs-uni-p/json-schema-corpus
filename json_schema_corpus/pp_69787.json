@@ -1,0 +1,100 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "DataObjectSchema",
+  "type": "object",
+  "anyOf": [
+    {
+      "$ref": "#/MessageDataObjectSchema"
+    },
+    {
+      "$ref": "#/HypertyDataObjectSchema"
+    }
+  ],
+  "properties": {},
+  "MessageDataObjectSchema": {
+    "type": "object",
+    "properties": {}
+  },
+  "HypertyDataObjectSchema": {
+    "type": "object",
+    "required": [
+      "scheme",
+      "accessControlPolicy"
+    ],
+    "anyOf": [
+      {
+        "$ref": "#/CommunicationDataObjectSchema"
+      },
+      {
+        "$ref": "#/ConnectionDataObjectSchema"
+      },
+      {
+        "$ref": "#/IdentityDataObjectSchema"
+      },
+      {
+        "$ref": "#/ContextDataObjectSchema"
+      }
+    ],
+    "properties": {
+      "scheme": {
+        "enum": [
+          "comm",
+          "connection",
+          "context",
+          "identity"
+        ]
+      },
+      "accessControlPolicy": {
+        "type": "string"
+      }
+    }
+  },
+  "AccessControlPolicy": {
+    "type": "object",
+    "properties": {}
+  },
+  "CommunicationDataObjectSchema": {
+    "type": "object",
+    "required": [
+      "scheme"
+    ],
+    "properties": {
+      "scheme": {
+        "constant": "comm"
+      }
+    }
+  },
+  "ConnectionDataObjectSchema": {
+    "type": "object",
+    "required": [
+      "scheme"
+    ],
+    "properties": {
+      "scheme": {
+        "constant": "connection"
+      }
+    }
+  },
+  "IdentityDataObjectSchema": {
+    "type": "object",
+    "required": [
+      "scheme"
+    ],
+    "properties": {
+      "scheme": {
+        "constant": "identity"
+      }
+    }
+  },
+  "ContextDataObjectSchema": {
+    "type": "object",
+    "required": [
+      "scheme"
+    ],
+    "properties": {
+      "scheme": {
+        "constant": "context"
+      }
+    }
+  }
+}

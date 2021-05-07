@@ -1,0 +1,73 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "type": "object",
+  "description": "Ghost Post",
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "published"
+      ]
+    },
+    "id": {
+      "type": "number"
+    },
+    "uuid": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "markdown": {
+      "type": "string"
+    },
+    "html": {
+      "type": "string"
+    },
+    "image": {
+      "type": "string"
+    },
+    "featured": {
+      "type": "boolean"
+    },
+    "page": {
+      "type": "boolean"
+    },
+    "language": {
+      "type": "string"
+    },
+    "meta_title": {
+      "type": "string"
+    },
+    "meta_description": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "created_by": {
+      "type": "number"
+    },
+    "updated_at": {
+      "type": "string"
+    },
+    "updated_by": {
+      "type": "number"
+    },
+    "published_at": {
+      "type": "string"
+    },
+    "published_by": {
+      "type": "number"
+    },
+    "author": {
+      "type": "number"
+    },
+    "url": {
+      "type": "string"
+    }
+  }
+}

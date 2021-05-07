@@ -1,0 +1,113 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "shipcloud identifier for this pickup request"
+    },
+    "carrier": {
+      "type": "string",
+      "description": "carrier used for this pickup request"
+    },
+    "carrier_pickup_number": {
+      "type": "string",
+      "description": "carrier identifier for this pickup request"
+    },
+    "pickup_time": {
+      "type": "object",
+      "properties": {
+        "earliest": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "latest": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "description": "defined time window when the carrier should pickup shipments",
+      "required": [
+        "earliest",
+        "latest"
+      ],
+      "additionalProperties": false
+    },
+    "pickup_address": {
+      "type": "object",
+      "description": "address where the carrier should pick up shipments",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "identifier of a previously created address"
+        },
+        "company": {
+          "type": "string"
+        },
+        "first_name": {
+          "type": "string"
+        },
+        "last_name": {
+          "type": "string"
+        },
+        "care_of": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        },
+        "street_no": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "zip_code": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string",
+          "description": "Country as uppercase ISO 3166-1 alpha-2 code"
+        },
+        "phone": {
+          "type": "string",
+          "description": "telephone number (mandatory when using UPS and the following terms apply: service is one_day or one_day_early or ship to country is different than ship from country)"
+        }
+      },
+      "required": [
+        "last_name",
+        "street",
+        "street_no",
+        "city",
+        "zip_code",
+        "country"
+      ],
+      "additionalProperties": false
+    },
+    "shipments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "id of the shipment included in this pickup request"
+          }
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "id",
+    "carrier",
+    "pickup_time"
+  ],
+  "additionalProperties": false
+}

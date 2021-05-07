@@ -1,0 +1,99 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "malware",
+  "description": "Software designed with a malicious purpose and installed without the user being aware",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "../stix/ttp-base.json"
+    },
+    {
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "malware"
+          ]
+        },
+        "kind": {
+          "type": "array",
+          "description": "The type of malware being described",
+          "items": {
+            "allOf": [
+              {
+                "$ref": "../common/statement.json"
+              },
+              {
+                "properties": {
+                  "value": {
+                    "enum": [
+                      "Automated Transfer Scripts",
+                      "Adware",
+                      "Dialer",
+                      "Credential Theft",
+                      "DDoS",
+                      "Loader",
+                      "Spam",
+                      "Exploit Kit",
+                      "POS",
+                      "ATM",
+                      "Ransomware",
+                      "RAT",
+                      "Rogue Antivirus",
+                      "Rootkit"
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "maec": {
+          "type": "object",
+          "description": "MAEC characterization of this malware"
+        }
+      }
+    }
+  ],
+  "relationships": {
+    "related": [
+      "asset",
+      "attack-pattern",
+      "campaign",
+      "configuration",
+      "course-of-action",
+      "identity",
+      "incident",
+      "indicator",
+      "kill-chain",
+      "kill-chain-phase",
+      "malicious-infrastructure",
+      "malicious-tool",
+      "malware",
+      "observation",
+      "threat-actor",
+      "tool",
+      "victim-targeting",
+      "vulnerability",
+      "weakness"
+    ],
+    "kill-chain-phases": [
+      "kill-chain-phase"
+    ],
+    "exploits": [
+      "asset"
+    ],
+    "duplicate-of": [
+      "exploit"
+    ],
+    "suggested-update": [
+      "exploit"
+    ],
+    "derived-from": [
+      "exploit"
+    ]
+  },
+  "required": [
+    "type"
+  ]
+}

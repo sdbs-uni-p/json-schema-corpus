@@ -1,0 +1,194 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "Foo": {
+      "title": "Foo",
+      "type": "GRAPHQL_SCALAR"
+    },
+    "MyUnion": {
+      "title": "MyUnion",
+      "type": "GRAPHQL_UNION",
+      "oneOf": [
+        {
+          "$ref": "#/definitions/Foo"
+        },
+        {
+          "type": "string",
+          "required": false
+        },
+        {
+          "type": "number",
+          "required": false
+        }
+      ]
+    },
+    "MyEnum": {
+      "title": "MyEnum",
+      "type": "GRAPHQL_ENUM",
+      "enum": [
+        "FIRST_ITEM",
+        "SECOND_ITEM",
+        "THIRD_ITEM"
+      ]
+    },
+    "Stuff": {
+      "title": "Stuff",
+      "type": "object",
+      "properties": {
+        "my_field": {
+          "type": "integer",
+          "required": false,
+          "title": "my_field",
+          "arguments": []
+        },
+        "req_field": {
+          "type": "string",
+          "required": true,
+          "title": "req_field",
+          "arguments": []
+        },
+        "recursion": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/MoreStuff"
+            },
+            {
+              "title": "recursion"
+            }
+          ]
+        },
+        "custom_scalar": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/Foo"
+            },
+            {
+              "title": "custom_scalar"
+            }
+          ]
+        },
+        "enum": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/MyEnum"
+            },
+            {
+              "title": "enum"
+            }
+          ]
+        }
+      },
+      "required": [
+        "req_field"
+      ]
+    },
+    "MoreStuff": {
+      "title": "MoreStuff",
+      "type": "object",
+      "properties": {
+        "first": {
+          "type": "array",
+          "items": {
+            "type": {
+              "type": "number",
+              "required": false
+            }
+          },
+          "title": "first",
+          "arguments": []
+        },
+        "identifier": {
+          "type": "array",
+          "items": {
+            "type": {
+              "type": "string",
+              "required": false
+            }
+          },
+          "required": true,
+          "title": "identifier",
+          "arguments": []
+        },
+        "reference": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/Stuff",
+              "required": true
+            },
+            {
+              "title": "reference"
+            }
+          ]
+        },
+        "bool": {
+          "type": "boolean",
+          "required": true,
+          "title": "bool",
+          "arguments": []
+        },
+        "union": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/MyUnion"
+            },
+            {
+              "title": "union"
+            }
+          ]
+        },
+        "with_params": {
+          "type": "integer",
+          "required": false,
+          "title": "with_params",
+          "arguments": [
+            {
+              "title": "param1",
+              "type": {
+                "type": "integer",
+                "required": false
+              },
+              "defaultValue": null
+            },
+            {
+              "title": "param2",
+              "type": {
+                "type": "array",
+                "items": {
+                  "type": {
+                    "type": "number",
+                    "required": false
+                  }
+                }
+              },
+              "defaultValue": null
+            }
+          ]
+        }
+      },
+      "required": [
+        "identifier",
+        "bool"
+      ]
+    },
+    "InputType": {
+      "title": "InputType",
+      "type": "object",
+      "input": true,
+      "properties": {
+        "an_int": {
+          "type": "integer",
+          "required": true,
+          "title": "an_int"
+        },
+        "a_string": {
+          "type": "string",
+          "required": false,
+          "title": "a_string"
+        }
+      },
+      "required": [
+        "an_int"
+      ]
+    }
+  }
+}

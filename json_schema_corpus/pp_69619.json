@@ -1,0 +1,10 @@
+{
+  "id": "http://schema.org/Intangible",
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "extends": {
+    "$ref": "Thing.json"
+  },
+  "description": "A utility class that serves as the umbrella for a number of 'intangible' things such as quantities, structured values, etc. Schema.org: http://schema.org/Intangible",
+  "type": "object",
+  "additionalProperties": true
+}

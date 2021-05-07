@@ -1,0 +1,28 @@
+{
+  "id": "https://opendesk.cc/schemata/formats/colour.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Winnow Colour",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "https://opendesk.cc/schemata/base/value.json#"
+    },
+    {
+      "properties": {
+        "type": {
+          "type": "string",
+          "pattern": "colour"
+        },
+        "r": {
+          "type": "number"
+        },
+        "g": {
+          "type": "number"
+        },
+        "b": {
+          "type": "number"
+        }
+      }
+    }
+  ]
+}

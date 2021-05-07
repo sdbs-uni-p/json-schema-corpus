@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Well Known Info",
+  "type": "object",
+  "properties": {
+    "public_key": {
+      "description": "The RSA public key in PEM format.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "public_key"
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Data",
+  "type": "object",
+  "properties": {
+    "a": {
+      "type": "array"
+    },
+    "b": {
+      "type": "string",
+      "constraints": [
+        {
+          "type": "inArray",
+          "target": "#/a"
+        }
+      ]
+    },
+    "c": {
+      "type": "number",
+      "constraints": [
+        {
+          "type": "inArray",
+          "target": "#/a"
+        }
+      ]
+    },
+    "d": {
+      "type": "number",
+      "constraints": [
+        {
+          "type": "notInArray",
+          "target": "#/a"
+        }
+      ]
+    }
+  }
+}

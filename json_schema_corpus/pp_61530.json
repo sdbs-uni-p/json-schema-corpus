@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://xray.com/accesstoken",
+  "title": "Accesstoken",
+  "description": "X-Ray web service accesstoken method schema",
+  "oneOf": [
+    {
+      "$ref": "base_schema_ref.json#/definitions/base_response"
+    },
+    {
+      "$ref": "base_schema_ref.json#/definitions/accesstoken_ok"
+    }
+  ]
+}

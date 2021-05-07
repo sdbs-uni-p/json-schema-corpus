@@ -1,0 +1,86 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "swev",
+  "type": "object",
+  "properties": {
+    "city": {
+      "type": "string"
+    },
+    "latLng": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      }
+    },
+    "styles": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "Lindy Hop",
+          "Balboa",
+          "Charleston",
+          "Shag",
+          "Blues"
+        ]
+      }
+    },
+    "socials": {
+      "type": "boolean"
+    },
+    "parties": {
+      "type": "boolean"
+    },
+    "classes": {
+      "type": "boolean"
+    },
+    "calendarUrl": {
+      "type": "string"
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "groups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "society",
+              "school"
+            ]
+          },
+          "calendarUrl": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "city",
+    "latLng",
+    "styles",
+    "socials",
+    "parties",
+    "classes",
+    "groups"
+  ]
+}

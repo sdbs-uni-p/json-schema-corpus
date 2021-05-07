@@ -1,0 +1,15 @@
+{
+  "type": "object",
+  "properties": {
+    "rsstype": {
+      "type": "string",
+      "enum": [
+        "ASYMMETRIC",
+        "SYMMETRIC"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "rsskeytype",
+  "title": "rsskeytype"
+}

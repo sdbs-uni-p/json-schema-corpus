@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "role": {
+      "type": "string",
+      "description": "role held by a principal"
+    }
+  },
+  "type": "array",
+  "items": {
+    "$ref": "#/definitions/role"
+  }
+}

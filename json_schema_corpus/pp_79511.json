@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "action": {
+      "enum": [
+        "update",
+        "expire"
+      ]
+    },
+    "applicationURL": {
+      "type": "string",
+      "format": "uri"
+    },
+    "title": {
+      "type": "string"
+    },
+    "referenceCode": {
+      "type": "string"
+    },
+    "shortSummary": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "recruiterName": {
+      "type": "string"
+    },
+    "recruiterEmail": {
+      "type": "string"
+    },
+    "advertisementFields": {
+      "$ref": "itemsWrite.json"
+    }
+  },
+  "additionalProperties": false
+}

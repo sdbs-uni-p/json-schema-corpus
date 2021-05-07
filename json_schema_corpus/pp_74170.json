@@ -1,0 +1,217 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "analysis-input-adhoc": {
+      "type": "object",
+      "properties": {
+        "inputs": {
+          "type": "array",
+          "items": {
+            "$ref": "file.json#/definitions/file-reference"
+          }
+        },
+        "notes": {
+          "$ref": "note.json#/definitions/notes-list-input"
+        },
+        "description": {
+          "$ref": "common.json#/definitions/description"
+        },
+        "label": {
+          "$ref": "common.json#/definitions/label"
+        }
+      },
+      "additionalProperties": false,
+      "x-sdk-model": "analysis-input"
+    },
+    "analysis-input-job": {
+      "type": "object",
+      "properties": {
+        "job": {
+          "$ref": "job.json#/definitions/job-input"
+        },
+        "notes": {
+          "$ref": "note.json#/definitions/notes-list-input"
+        },
+        "description": {
+          "$ref": "common.json#/definitions/description"
+        },
+        "label": {
+          "$ref": "common.json#/definitions/label"
+        }
+      },
+      "additionalProperties": false,
+      "x-sdk-model": "analysis-input"
+    },
+    "analysis-input-legacy": {
+      "type": "object",
+      "properties": {
+        "inputs": {
+          "type": "array",
+          "items": {
+            "$ref": "file.json#/definitions/file-input"
+          }
+        },
+        "outputs": {
+          "type": "array",
+          "items": {
+            "$ref": "file.json#/definitions/file-input"
+          }
+        },
+        "notes": {
+          "$ref": "note.json#/definitions/notes-list-input"
+        },
+        "description": {
+          "$ref": "common.json#/definitions/description"
+        },
+        "label": {
+          "$ref": "common.json#/definitions/label"
+        }
+      },
+      "additionalProperties": false
+    },
+    "analysis-input-any": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/analysis-input-adhoc"
+        },
+        {
+          "$ref": "#/definitions/analysis-input-job"
+        }
+      ],
+      "x-sdk-schema": {
+        "$ref": "#/definitions/analysis-input-adhoc"
+      }
+    },
+    "analysis-update": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "$ref": "common.json#/definitions/label"
+        }
+      },
+      "additionalProperties": false
+    },
+    "analysis-output": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "$ref": "common.json#/definitions/objectid"
+        },
+        "inputs": {
+          "type": "array",
+          "items": {
+            "$ref": "file.json#/definitions/file-entry"
+          }
+        },
+        "files": {
+          "type": "array",
+          "items": {
+            "$ref": "file.json#/definitions/file-entry"
+          }
+        },
+        "job": {
+          "oneOf": [
+            {
+              "$ref": "common.json#/definitions/objectid"
+            },
+            {
+              "$ref": "job.json#/definitions/job-output"
+            }
+          ],
+          "x-sdk-schema": {
+            "$ref": "job.json#/definitions/job-output"
+          }
+        },
+        "notes": {
+          "$ref": "note.json#/definitions/notes-list-output"
+        },
+        "description": {
+          "$ref": "common.json#/definitions/description"
+        },
+        "label": {
+          "$ref": "common.json#/definitions/label"
+        },
+        "created": {
+          "$ref": "created-modified.json#/definitions/created"
+        },
+        "modified": {
+          "$ref": "created-modified.json#/definitions/modified"
+        }
+      },
+      "required": [
+        "_id",
+        "label",
+        "created",
+        "modified"
+      ]
+    },
+    "analysis-list-entry": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "$ref": "common.json#/definitions/objectid"
+        },
+        "inputs": {
+          "type": "array",
+          "items": {
+            "$ref": "file.json#/definitions/file-entry"
+          }
+        },
+        "files": {
+          "type": "array",
+          "items": {
+            "$ref": "file.json#/definitions/file-entry"
+          }
+        },
+        "job": {
+          "$ref": "common.json#/definitions/objectid"
+        },
+        "notes": {
+          "$ref": "note.json#/definitions/notes-list-output"
+        },
+        "description": {
+          "$ref": "common.json#/definitions/description"
+        },
+        "label": {
+          "$ref": "common.json#/definitions/label"
+        },
+        "created": {
+          "$ref": "created-modified.json#/definitions/created"
+        },
+        "modified": {
+          "$ref": "created-modified.json#/definitions/modified"
+        }
+      },
+      "required": [
+        "_id",
+        "label",
+        "created",
+        "modified"
+      ]
+    },
+    "analysis-files-create-ticket-output": {
+      "type": "object",
+      "properties": {
+        "ticket": {
+          "type": "string"
+        },
+        "filename": {
+          "type": "string"
+        },
+        "file_cnt": {
+          "type": "integer"
+        },
+        "size": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "ticket",
+        "filename",
+        "file_cnt",
+        "size"
+      ]
+    }
+  }
+}

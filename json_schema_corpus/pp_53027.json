@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Graph steps reference schema",
+  "description": "Description of the steps for initialising a Graph.",
+  "type": "object",
+  "properties": {
+    "graph_id": {
+      "$ref": "common.json#/graph_id"
+    },
+    "steps": {
+      "type": "array",
+      "items": {
+        "$ref": "references.json#/graph_step"
+      },
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "graph_id",
+    "steps"
+  ],
+  "additionalProperties": false
+}

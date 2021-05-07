@@ -1,0 +1,10 @@
+{
+  "id": "http://schema.org/StructuredValue",
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "extends": {
+    "$ref": "Intangible.json"
+  },
+  "description": "Structured values are strings\u2014for example, addresses\u2014that have certain constraints on their structure. Schema.org: http://schema.org/StructuredValue",
+  "type": "object",
+  "additionalProperties": true
+}

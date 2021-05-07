@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "User Custom Fields Schema",
+  "description": "Defines how custom fields can be specified on a user. Allows alphanumeric numbers and underscores.",
+  "type": "object",
+  "patternProperties": {
+    "^[a-zA-Z0-9_]{1,64}$": {
+      "$ref": "user/fields/DefaultCustomField.schema.json#"
+    }
+  },
+  "additionalProperties": false,
+  "maxProperties": 100
+}

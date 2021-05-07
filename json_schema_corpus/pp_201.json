@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://jsonschema.net",
+  "type": "object",
+  "properties": {
+    "streamType": {
+      "id": "http://jsonschema.net/streamType",
+      "type": "string"
+    },
+    "streamName": {
+      "id": "http://jsonschema.net/streamName",
+      "type": "string"
+    },
+    "streamAge": {
+      "id": "http://jsonschema.net/streamAge",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "streamType",
+    "streamName",
+    "streamAge"
+  ]
+}

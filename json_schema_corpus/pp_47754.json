@@ -1,0 +1,16 @@
+{
+  "id": "http://www.example.com/json-schema/v2/tpl/example-template",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Example",
+  "description": "An example recipe",
+  "type": "object",
+  "properties": {
+    "msg": {
+      "type": "string",
+      "default": "default msg"
+    }
+  },
+  "required": [
+    "msg"
+  ]
+}

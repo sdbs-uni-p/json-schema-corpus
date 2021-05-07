@@ -1,0 +1,86 @@
+{
+  "title": "test/shiporderSchema.xsd",
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "properties": {
+    "shiporder": {
+      "properties": {
+        "orderperson": {
+          "type": "string"
+        },
+        "shipto": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "address": {
+              "type": "string"
+            },
+            "city": {
+              "type": "string"
+            },
+            "country": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "name",
+            "address",
+            "city",
+            "country"
+          ],
+          "additionalProperties": false
+        },
+        "item": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string"
+              },
+              "note": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "quantity": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "price": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "title",
+              "quantity",
+              "price"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "orderid": {
+          "type": "string"
+        },
+        "invoiceid": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "orderperson",
+        "shipto",
+        "item",
+        "orderid"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "shiporder"
+  ],
+  "additionalProperties": false
+}

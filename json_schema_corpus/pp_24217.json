@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "Loan",
+  "description": "Links the item with the patron and applies certain conditions based on policies",
+  "properties": {
+    "tag": {
+      "description": "tag of record",
+      "type": "string"
+    },
+    "subfields": {
+      "description": "subfields of record field",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "subfield.json"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "metadata": {
+    "description": "Metadata about creation and changes to subfields, provided by the server (client should not provide)",
+    "type": "object",
+    "$ref": "../raml-storage/raml-util/schemas/metadata.schema"
+  }
+}

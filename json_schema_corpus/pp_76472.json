@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "get spiders response",
+  "description": "get spiders response",
+  "type": "object",
+  "properties": {
+    "spiders": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": true
+    },
+    "links": {
+      "type": "object",
+      "properties": {
+        "self": {
+          "type": "object",
+          "properties": {
+            "href": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "required": [
+            "href"
+          ]
+        }
+      },
+      "required": [
+        "self"
+      ]
+    }
+  },
+  "required": [
+    "spiders",
+    "links"
+  ],
+  "additionalProperties": false
+}

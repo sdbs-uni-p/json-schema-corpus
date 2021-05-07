@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "id_domaine": {
+      "type": "integer"
+    },
+    "id_eleve": {
+      "type": "string"
+    },
+    "owner": {
+      "type": "string"
+    },
+    "id_etablissement": {
+      "type": "string"
+    },
+    "valeur": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "id_eleve",
+    "id_etablissement",
+    "id",
+    "id_domaine"
+  ]
+}

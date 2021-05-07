@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Collection",
+  "description": "A collection of Databook entities",
+  "type": "object",
+  "javaType": "databook.persistence.rule.rdf.ruleset.Collection",
+  "extends": {
+    "$ref": "DataEntity.json"
+  },
+  "properties": {}
+}

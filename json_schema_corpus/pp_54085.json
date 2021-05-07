@@ -1,0 +1,203 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://schema.org/DonateAction",
+  "required": [],
+  "title": "DonateAction",
+  "name": "DonateAction",
+  "description": "The act of providing goods, services, or money without compensation, often for philanthropic reasons.",
+  "type": "object",
+  "properties": {
+    "recipient": {
+      "id": "http://schema.org/recipient",
+      "title": "recipient",
+      "description": "A sub property of participant. The participant who is at the receiving end of the action.",
+      "type": "object",
+      "properties": {
+        "recipient": {
+          "$ref": "Person.json#/properties"
+        }
+      }
+    },
+    "": {
+      "title": "",
+      "description": "",
+      "type": null
+    },
+    "price": {
+      "id": "http://schema.org/price",
+      "title": "price",
+      "description": "The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.\n\n\n      Usage guidelines:\n\n\nUse the priceCurrency property (with ISO 4217 codes e.g. \"USD\") instead of\n      including ambiguous symbols such as '$' in the value.\n\n\n      Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.\n\n\n      Note that both RDFa and Microdata syntax allow the use of a \"content=\" attribute for publishing simple machine-readable values\n      alongside more human-friendly formatting.\n\n\n      Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.\n\n\n\n      ",
+      "type": "number"
+    },
+    "actionStatus": {
+      "id": "http://schema.org/actionStatus",
+      "title": "actionStatus",
+      "description": "Indicates the current disposition of the Action.",
+      "type": "object",
+      "properties": {
+        "actionStatus": {
+          "$ref": "ActionStatusType.json#/properties"
+        }
+      }
+    },
+    "agent": {
+      "id": "http://schema.org/agent",
+      "title": "agent",
+      "description": "The direct performer or driver of the action (animate or inanimate). e.g. *John* wrote a book.",
+      "type": "object",
+      "properties": {
+        "agent": {
+          "$ref": "Person.json#/properties"
+        }
+      }
+    },
+    "endTime": {
+      "id": "http://schema.org/endTime",
+      "title": "endTime",
+      "description": "The endTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to end. For actions that span a period of time, when the action was performed. e.g. John wrote a book from January to *December*.\n\nNote that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.\n",
+      "type": "string",
+      "format": "date-time"
+    },
+    "error": {
+      "id": "http://schema.org/error",
+      "title": "error",
+      "description": "For failed actions, more information on the cause of the failure.",
+      "type": "object",
+      "properties": {
+        "error": {
+          "$ref": "Thing.json#/properties"
+        }
+      }
+    },
+    "instrument": {
+      "id": "http://schema.org/instrument",
+      "title": "instrument",
+      "description": "The object that helped the agent perform the action. e.g. John wrote a book with *a pen*.",
+      "type": "object",
+      "properties": {
+        "instrument": {
+          "$ref": "Thing.json#/properties"
+        }
+      }
+    },
+    "location": {
+      "id": "http://schema.org/location",
+      "title": "location",
+      "description": "The location of the event, organization or action.",
+      "type": "object",
+      "properties": {
+        "location": {
+          "$ref": "PostalAddress.json#/properties"
+        }
+      }
+    },
+    "object": {
+      "id": "http://schema.org/object",
+      "title": "object",
+      "description": "The object upon the action is carried out, whose state is kept intact or changed. Also known as the semantic roles patient, affected or undergoer (which change their state) or theme (which doesn't). e.g. John read *a book*.",
+      "type": "object",
+      "properties": {
+        "object": {
+          "$ref": "Thing.json#/properties"
+        }
+      }
+    },
+    "participant": {
+      "id": "http://schema.org/participant",
+      "title": "participant",
+      "description": "Other co-agents that participated in the action indirectly. e.g. John wrote a book with *Steve*.",
+      "type": "object",
+      "properties": {
+        "participant": {
+          "$ref": "Person.json#/properties"
+        }
+      }
+    },
+    "result": {
+      "id": "http://schema.org/result",
+      "title": "result",
+      "description": "The result produced in the action. e.g. John wrote *a book*.",
+      "type": "object",
+      "properties": {
+        "result": {
+          "$ref": "Thing.json#/properties"
+        }
+      }
+    },
+    "startTime": {
+      "id": "http://schema.org/startTime",
+      "title": "startTime",
+      "description": "The startTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to start. For actions that span a period of time, when the action was performed. e.g. John wrote a book from *January* to December.\n\nNote that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.\n",
+      "type": "string",
+      "format": "date-time"
+    },
+    "target": {
+      "id": "http://schema.org/target",
+      "title": "target",
+      "description": "Indicates a target EntryPoint for an Action.",
+      "type": "object",
+      "properties": {
+        "target": {
+          "$ref": "EntryPoint.json#/properties"
+        }
+      }
+    },
+    "additionalType": {
+      "id": "http://schema.org/additionalType",
+      "title": "additionalType",
+      "description": "An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.",
+      "type": "string",
+      "format": "uri"
+    },
+    "alternateName": {
+      "id": "http://schema.org/alternateName",
+      "title": "alternateName",
+      "description": "An alias for the item.",
+      "type": "string"
+    },
+    "description": {
+      "id": "http://schema.org/description",
+      "title": "description",
+      "description": "A short description of the item.",
+      "type": "string"
+    },
+    "image": {
+      "id": "http://schema.org/image",
+      "title": "image",
+      "description": "An image of the item. This can be a URL or a fully described ImageObject.",
+      "type": "string",
+      "format": "uri"
+    },
+    "name": {
+      "id": "http://schema.org/name",
+      "title": "name",
+      "description": "The name of the item.",
+      "type": "string"
+    },
+    "potentialAction": {
+      "id": "http://schema.org/potentialAction",
+      "title": "potentialAction",
+      "description": "Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.",
+      "type": "object",
+      "properties": {
+        "potentialAction": {
+          "$ref": "Action.json#/properties"
+        }
+      }
+    },
+    "sameAs": {
+      "id": "http://schema.org/sameAs",
+      "title": "sameAs",
+      "description": "URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.",
+      "type": "string",
+      "format": "uri"
+    },
+    "url": {
+      "id": "http://schema.org/url",
+      "title": "url",
+      "description": "URL of the item.",
+      "type": "string",
+      "format": "uri"
+    }
+  }
+}

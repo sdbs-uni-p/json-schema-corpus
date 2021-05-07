@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "properties": {
+    "command": {
+      "type": "string"
+    },
+    "payload": {
+      "$ref": "object_schema.json"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "command",
+    "payload",
+    "tags"
+  ]
+}

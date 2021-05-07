@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "Publisher schema.",
+  "description": "Describes a data publisher.",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "title": "Id schema.",
+      "description": "Optional ID of this publisher in a network.",
+      "id": "id"
+    },
+    "type": {
+      "enum": [
+        "IMB"
+      ],
+      "title": "Type schema.",
+      "description": "Publisher type.",
+      "id": "type"
+    },
+    "host": {
+      "type": "string",
+      "title": "Host schema.",
+      "description": "URL of the server.",
+      "id": "host"
+    },
+    "port": {
+      "type": "integer",
+      "title": "Port schema.",
+      "description": "Port of the server.",
+      "id": "port"
+    },
+    "federation": {
+      "type": "string",
+      "title": "Federation schema.",
+      "description": "Name of the federation.",
+      "id": "federation"
+    },
+    "name": {
+      "type": "string",
+      "title": "Name schema.",
+      "description": "Name of the instance.",
+      "id": "name"
+    }
+  },
+  "id": "/",
+  "required": [
+    "type",
+    "host"
+  ]
+}

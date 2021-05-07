@@ -1,0 +1,8 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "type": "array",
+  "description": "the fields that the job board wants the hub to capture data for",
+  "items": {
+    "$ref": "postingFieldMetaGroup.json"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "api": {
+      "type": "string",
+      "description": "the API's URI template"
+    }
+  },
+  "type": "array",
+  "items": {
+    "$ref": "#/definitions/api"
+  }
+}

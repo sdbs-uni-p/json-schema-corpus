@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Token response for user authentication",
+  "type": "object",
+  "properties": {
+    "token": {
+      "id": "token",
+      "type": "string"
+    }
+  },
+  "required": [
+    "token"
+  ]
+}

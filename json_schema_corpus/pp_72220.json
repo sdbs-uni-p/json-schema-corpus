@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "title": "Classic User Created Webhook Schema",
+  "description": "Sent whenever a new user is created in SaaSquatch program where the classic program is enabled.",
+  "type": "object",
+  "oneOf": [
+    {
+      "$ref": "UserCreatedClassic.schema.json#"
+    },
+    {
+      "$ref": "UserCreatedClassicDisabled.schema.json#"
+    }
+  ]
+}

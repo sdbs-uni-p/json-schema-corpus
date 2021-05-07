@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "uuid": {
+      "type": "string",
+      "pattern": "[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}"
+    }
+  },
+  "type": "object",
+  "properties": {
+    "uuid": {
+      "$ref": "#/definitions/uuid",
+      "description": "the unitque identifier for this thing"
+    },
+    "name": {
+      "type": "string",
+      "description": "what is the name of this thing"
+    },
+    "description": {
+      "type": "string",
+      "maxlength": 255,
+      "description": "ermmm, the description of this thing"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "url of this thing"
+    },
+    "updated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "date and time the record was last updated"
+    }
+  },
+  "required": [
+    "uuid",
+    "name",
+    "updated"
+  ]
+}

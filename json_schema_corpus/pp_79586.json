@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "type": "object",
+  "properties": {
+    "status": {
+      "$ref": "jobRead.json#/definitions/status"
+    },
+    "availability": {
+      "$ref": "jobRead.json#/definitions/availability"
+    },
+    "code": {
+      "$ref": "jobRead.json#/definitions/code"
+    },
+    "externalId": {
+      "$ref": "jobRead.json#/definitions/externalId"
+    },
+    "accessCode": {
+      "$ref": "jobRead.json#/definitions/accessCode"
+    },
+    "title": {
+      "$ref": "jobRead.json#/definitions/title"
+    },
+    "shortSummary": {
+      "$ref": "jobRead.json#/definitions/shortSummary"
+    },
+    "company": {
+      "$ref": "jobRead.json#/definitions/company"
+    },
+    "country": {
+      "$ref": "jobRead.json#/definitions/country"
+    },
+    "manager": {
+      "$ref": "userRead.json"
+    },
+    "categories": {
+      "$ref": "categoriesActual.json"
+    },
+    "items": {
+      "$ref": "itemsWrite.json"
+    },
+    "description": {
+      "$ref": "jobRead.json#/definitions/description"
+    },
+    "recruiter": {
+      "$ref": "userRead.json"
+    },
+    "workflow": {
+      "$ref": "jobRead.json#/definitions/workflow"
+    }
+  },
+  "additionalProperties": false
+}

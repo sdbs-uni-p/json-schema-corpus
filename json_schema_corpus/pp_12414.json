@@ -1,0 +1,191 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "CodeList",
+  "x-otm-library": {
+    "LibraryName": "CodeList",
+    "LibraryVersion": "0.0.0",
+    "LibraryStatus": "FINAL",
+    "SourceFile": "/CodeList_0_0_0.otm",
+    "CompilerVersion": "4.0-SNAPSHOT",
+    "CompileDate": "2016-05-18T16:11:12.235-0400"
+  },
+  "definitions": {
+    "DocumentType_Enum": {
+      "x-otm-entity": {
+        "EntityType": "EnumerationOpen",
+        "EntityName": "DocumentType_Enum"
+      },
+      "description": "Defines the specific type of identification or certification document.",
+      "properties": {
+        "value": {
+          "$ref": "#/definitions/DocumentType_Enum_Base"
+        },
+        "extension": {
+          "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/String_EnumExtension"
+        }
+      }
+    },
+    "DocumentType_Enum_Base": {
+      "x-otm-entity": {
+        "EntityType": "EnumerationOpen",
+        "EntityName": "DocumentType_Enum"
+      },
+      "description": "Defines the specific type of identification or certification document.",
+      "type": "string",
+      "enum": [
+        "NaturalizationCertificate",
+        "PassportCard",
+        "CrewMemberCertificate",
+        "AirNexusCard",
+        "MerchantMariner",
+        "Non-standard",
+        "KnownTravelerNumber",
+        "RedressNumber",
+        "PermanentResidentCard",
+        "PilotsLicense",
+        "RefugeeTravelDocument",
+        "BorderCrossingCard",
+        "VerhicleRegistrationNumber",
+        "TaxexEmptionNumber",
+        "InsurancePolicyNumber",
+        "AlienRegistrationNumber",
+        "VaccinationCertificate",
+        "NationalIdentityDocument",
+        "DriversLicense",
+        "MilitaryIdentification",
+        "Passport",
+        "Visa",
+        "Other_"
+      ]
+    },
+    "Gender_Enum": {
+      "x-otm-entity": {
+        "EntityType": "EnumerationClosed",
+        "EntityName": "Gender_Enum"
+      },
+      "type": "string",
+      "enum": [
+        "Male",
+        "Female",
+        "Unknown"
+      ]
+    },
+    "MaritalStatus_Enum": {
+      "x-otm-entity": {
+        "EntityType": "EnumerationClosed",
+        "EntityName": "MaritalStatus_Enum"
+      },
+      "description": "The marital status of a person.",
+      "type": "string",
+      "enum": [
+        "Annulled",
+        "Co-habiting",
+        "Divorced",
+        "Engaged",
+        "Married",
+        "Separated",
+        "Single",
+        "Widowed",
+        "Unknown"
+      ]
+    },
+    "PhoneLocation_Enum": {
+      "x-otm-entity": {
+        "EntityType": "EnumerationOpen",
+        "EntityName": "PhoneLocation_Enum"
+      },
+      "description": "Where the phone is located.",
+      "properties": {
+        "value": {
+          "$ref": "#/definitions/PhoneLocation_Enum_Base"
+        },
+        "extension": {
+          "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/String_EnumExtension"
+        }
+      }
+    },
+    "PhoneLocation_Enum_Base": {
+      "x-otm-entity": {
+        "EntityType": "EnumerationOpen",
+        "EntityName": "PhoneLocation_Enum"
+      },
+      "description": "Where the phone is located.",
+      "type": "string",
+      "enum": [
+        "Brand reservations office",
+        "Central reservations office",
+        "Home",
+        "Managing company",
+        "Mobile",
+        "Office",
+        "Property direct",
+        "Property reservation Office",
+        "Sales office",
+        "Other_"
+      ]
+    },
+    "PhoneUseType_Enum": {
+      "x-otm-entity": {
+        "EntityType": "EnumerationOpen",
+        "EntityName": "PhoneUseType_Enum"
+      },
+      "properties": {
+        "value": {
+          "$ref": "#/definitions/PhoneUseType_Enum_Base"
+        },
+        "extension": {
+          "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/String_EnumExtension"
+        }
+      }
+    },
+    "PhoneUseType_Enum_Base": {
+      "x-otm-entity": {
+        "EntityType": "EnumerationOpen",
+        "EntityName": "PhoneUseType_Enum"
+      },
+      "type": "string",
+      "enum": [
+        "Contact",
+        "Daytime contact",
+        "Emergency contact",
+        "Evening contact",
+        "Guest use",
+        "Mobile",
+        "Pickup contact",
+        "Toll free number",
+        "Travel arranger",
+        "Other_"
+      ]
+    },
+    "PhoneTechType_Enum": {
+      "x-otm-entity": {
+        "EntityType": "EnumerationOpen",
+        "EntityName": "PhoneTechType_Enum"
+      },
+      "description": "Defines the technology associated with this phone number.",
+      "properties": {
+        "value": {
+          "$ref": "#/definitions/PhoneTechType_Enum_Base"
+        },
+        "extension": {
+          "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/String_EnumExtension"
+        }
+      }
+    },
+    "PhoneTechType_Enum_Base": {
+      "x-otm-entity": {
+        "EntityType": "EnumerationOpen",
+        "EntityName": "PhoneTechType_Enum"
+      },
+      "description": "Defines the technology associated with this phone number.",
+      "type": "string",
+      "enum": [
+        "Voice",
+        "Fax",
+        "Pager",
+        "TTY",
+        "Other_"
+      ]
+    }
+  }
+}

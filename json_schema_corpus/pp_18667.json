@@ -1,0 +1,31 @@
+{
+  "type": "object",
+  "title": "Product schema",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "_public_fields": [
+    "name",
+    "amount"
+  ],
+  "properties": {
+    "id": {
+      "_db_settings": {
+        "required": true,
+        "type": "id_field",
+        "primary_key": true
+      }
+    },
+    "amount": {
+      "_db_settings": {
+        "required": true,
+        "type": "float"
+      }
+    },
+    "name": {
+      "_db_settings": {
+        "required": true,
+        "unique": true,
+        "type": "text"
+      }
+    }
+  }
+}

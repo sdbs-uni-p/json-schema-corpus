@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "properties": {
+    "argname": {
+      "type": "string"
+    },
+    "auto": {
+      "type": "boolean"
+    },
+    "max": {
+      "type": "integer"
+    },
+    "min": {
+      "type": "integer"
+    },
+    "role": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "argname",
+    "auto",
+    "max",
+    "min",
+    "role"
+  ]
+}

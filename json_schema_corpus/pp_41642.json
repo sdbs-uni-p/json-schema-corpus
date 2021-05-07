@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "pets": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string"
+        },
+        "@value": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "value"
+      ]
+    }
+  }
+}

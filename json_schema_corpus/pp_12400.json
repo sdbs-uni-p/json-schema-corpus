@@ -1,0 +1,1757 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Common",
+  "x-otm-library": {
+    "LibraryName": "Common",
+    "LibraryVersion": "0.0.0",
+    "LibraryStatus": "FINAL",
+    "SourceFile": "/Common_0_0_0.otm",
+    "CompilerVersion": "4.0-SNAPSHOT",
+    "CompileDate": "2016-05-18T14:45:07.323-0400"
+  },
+  "definitions": {
+    "Country_Code_ISO3166": {
+      "x-otm-entity": {
+        "EntityType": "Simple",
+        "EntityName": "Country_Code_ISO3166"
+      },
+      "description": "Specifies a 2 character country code as defined in ISO3166.",
+      "x-otm-annotations": {
+        "documentation": {
+          "implementers": [
+            "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string"
+          ]
+        },
+        "equivalents": [
+          {
+            "context": "Common",
+            "value": "ISO3166"
+          }
+        ],
+        "examples": [
+          {
+            "context": "Common",
+            "value": "IR"
+          }
+        ]
+      },
+      "type": "string",
+      "pattern": "[a-zA-Z]{2}"
+    },
+    "GUID": {
+      "$ref": "OTA_SimpleTypes_0_0_0_Trim.schema.json#/definitions/String_Short"
+    },
+    "NameType": {
+      "x-otm-entity": {
+        "EntityType": "EnumerationClosed",
+        "EntityName": "NameType"
+      },
+      "description": "OTA Code list: Name Type\tNAM\t\n\t1\tFormer\n\t2\tNickname\n\t3\tAlternate\n\t4\tMaiden",
+      "type": "string",
+      "enum": [
+        "Alternate",
+        "Former",
+        "Maiden",
+        "Nickname"
+      ]
+    },
+    "OptInStatus_Enum": {
+      "x-otm-entity": {
+        "EntityType": "EnumerationClosed",
+        "EntityName": "OptInStatus_Enum"
+      },
+      "type": "string",
+      "enum": [
+        "OptedIn",
+        "OptedOut",
+        "Unknown"
+      ]
+    },
+    "RuralRouteNumber": {
+      "x-otm-entity": {
+        "EntityType": "Simple",
+        "EntityName": "RuralRouteNumber"
+      },
+      "x-otm-annotations": {
+        "documentation": {
+          "implementers": [
+            "Example value: Imported5 = 2564",
+            "Example value: Imported4 = 2564",
+            "Example value: Imported2 = 2564",
+            "Example value: Imported67 = 2564",
+            "Example value: Imported123 = 2564",
+            "Example value: Imported34 = 2564",
+            "Example value: ca1 = 25645"
+          ]
+        },
+        "examples": [
+          {
+            "context": "Common",
+            "value": "2564"
+          }
+        ]
+      },
+      "type": "string",
+      "pattern": "[0-9]{1,5}"
+    },
+    "StateProv_Code": {
+      "x-otm-entity": {
+        "EntityType": "Simple",
+        "EntityName": "StateProv_Code"
+      },
+      "description": "The standard code or abbreviation for the state, province, or region.",
+      "x-otm-annotations": {
+        "documentation": {
+          "implementers": [
+            "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to8"
+          ]
+        },
+        "equivalents": [
+          {
+            "context": "Common",
+            "value": "StateProvCodeType"
+          }
+        ]
+      },
+      "type": "string",
+      "maxLength": 8,
+      "minLength": 2
+    },
+    "Telephone_Extension": {
+      "x-otm-entity": {
+        "EntityType": "Simple",
+        "EntityName": "Telephone_Extension"
+      },
+      "description": "Extension to reach a specific party at the phone number",
+      "x-otm-annotations": {
+        "documentation": {
+          "implementers": [
+            "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string"
+          ]
+        },
+        "equivalents": [
+          {
+            "context": "Common",
+            "value": "NumericStringLength1to5"
+          }
+        ]
+      },
+      "type": "string",
+      "pattern": "[0-9]{1,5}"
+    },
+    "Telephone_AreaCityCode": {
+      "x-otm-entity": {
+        "EntityType": "Simple",
+        "EntityName": "Telephone_AreaCityCode"
+      },
+      "description": "Code assigned for telephones in a specific region, city, or area.",
+      "x-otm-annotations": {
+        "documentation": {
+          "implementers": [
+            "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string"
+          ]
+        },
+        "equivalents": [
+          {
+            "context": "Common",
+            "value": "NumericStringLength1to8"
+          }
+        ]
+      },
+      "type": "string",
+      "pattern": "[0-9]{1,8}"
+    },
+    "Telephone_Number": {
+      "x-otm-entity": {
+        "EntityType": "Simple",
+        "EntityName": "Telephone_Number"
+      },
+      "description": "Central office and subscriber number.",
+      "x-otm-annotations": {
+        "documentation": {
+          "implementers": [
+            "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string"
+          ]
+        },
+        "examples": [
+          {
+            "context": "Common",
+            "value": "2358878"
+          }
+        ]
+      },
+      "type": "string",
+      "pattern": "[0-9]{7,20}"
+    },
+    "Telephone_CountryAccessCode": {
+      "x-otm-entity": {
+        "EntityType": "Simple",
+        "EntityName": "Telephone_CountryAccessCode"
+      },
+      "description": "Used for Numeric Strings length 1 to 3.",
+      "x-otm-annotations": {
+        "documentation": {
+          "implementers": [
+            "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string"
+          ]
+        },
+        "equivalents": [
+          {
+            "context": "Common",
+            "value": "NumericStringLength1to3"
+          }
+        ]
+      },
+      "type": "string",
+      "pattern": "[0-9]{1,3}"
+    },
+    "YesNoInherit_Enum": {
+      "x-otm-entity": {
+        "EntityType": "EnumerationClosed",
+        "EntityName": "YesNoInherit_Enum"
+      },
+      "type": "string",
+      "enum": [
+        "Yes",
+        "No",
+        "Inherit"
+      ]
+    },
+    "Address_BldgRoom": {
+      "x-otm-entity": {
+        "EntityType": "ValueWithAttributes",
+        "EntityName": "Address_BldgRoom"
+      },
+      "description": "A string with a minimum length of 0 and a maximum length of 512.",
+      "properties": {
+        "value": {
+          "$ref": "OTA_SimpleTypes_0_0_0_Trim.schema.json#/definitions/String"
+        },
+        "buldingInd": {
+          "description": "When true, the information is a building name.",
+          "type": "boolean"
+        }
+      }
+    },
+    "Address_StreetNumber": {
+      "x-otm-entity": {
+        "EntityType": "ValueWithAttributes",
+        "EntityName": "Address_StreetNumber"
+      },
+      "x-otm-annotations": {
+        "documentation": {
+          "implementers": [
+            "Extension: StreetNmbrType"
+          ]
+        }
+      },
+      "properties": {
+        "value": {
+          "$ref": "OTA_SimpleTypes_0_0_0_Trim.schema.json#/definitions/String_Short"
+        },
+        "streetNmbrSuffix": {
+          "description": "Usually a letter right after the street number (A in 66-A, B in 123-B etc).",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to8"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "Common",
+                "value": "StreetNmbrSuffix"
+              }
+            ],
+            "examples": [
+              {
+                "context": "Common",
+                "value": "B"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0_Trim.schema.json#/definitions/String_Tiny"
+        },
+        "streetDirection": {
+          "description": "Street direction of an address (e.g., N, E, S, NW, SW).",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to8"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "Common",
+                "value": "StreetDirection"
+              }
+            ],
+            "examples": [
+              {
+                "context": "Common",
+                "value": "NNW"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0_Trim.schema.json#/definitions/String_Tiny"
+        },
+        "ruralRouteNmbr": {
+          "description": "Numerical equivalent of a rural township as defined within a given area (e.g., 12, 99).",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}NumericStringLength1to5"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "Common",
+                "value": "RuralRouteNmbr"
+              }
+            ],
+            "examples": [
+              {
+                "context": "Common",
+                "value": "88"
+              }
+            ]
+          },
+          "$ref": "#/definitions/RuralRouteNumber"
+        },
+        "pO_Box": {
+          "description": "Defines a Post Office Box number.",
+          "x-otm-annotations": {
+            "examples": [
+              {
+                "context": "Common",
+                "value": "98567499"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0_Trim.schema.json#/definitions/String_Short"
+        }
+      }
+    },
+    "Country": {
+      "x-otm-entity": {
+        "EntityType": "ValueWithAttributes",
+        "EntityName": "Country"
+      },
+      "description": "ISO 3166 code for a country.",
+      "x-otm-annotations": {
+        "documentation": {
+          "implementers": [
+            "Assigned XSD Type: {http://chameleon.anonymous/ns}ISO3166"
+          ]
+        }
+      },
+      "properties": {
+        "value": {
+          "$ref": "#/definitions/Country_Code_ISO3166"
+        },
+        "name": {
+          "description": "The name or code of a country (e.g. as used in an address or to specify citizenship of a traveller).",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength0to64"
+              ]
+            },
+            "examples": [
+              {
+                "context": "Common",
+                "value": "Ireland"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0_Trim.schema.json#/definitions/String_Short"
+        }
+      }
+    },
+    "Email": {
+      "x-otm-entity": {
+        "EntityType": "ValueWithAttributes",
+        "EntityName": "Email"
+      },
+      "description": "Electronic email addresses, in IETF specified format.",
+      "x-otm-annotations": {
+        "documentation": {
+          "implementers": [
+            "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to128"
+          ]
+        }
+      },
+      "properties": {
+        "value": {
+          "$ref": "OTA_SimpleTypes_0_0_0_Trim.schema.json#/definitions/String"
+        },
+        "emailType": {
+          "description": "Defines the purpose of the e-mail address (e.g. personal, business, listserve). Refer to OpenTravel Code List Email Address Type (EAT).",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}OTA_CodeType"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "Common",
+                "value": "EmailType"
+              }
+            ]
+          },
+          "$ref": "#/definitions/Code_OTA"
+        },
+        "remark": {
+          "description": "A remark associated with the e-mail address.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to128"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "Common",
+                "value": "Remark"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0_Trim.schema.json#/definitions/String_Text"
+        },
+        "textFormat": {
+          "description": "Example: text/plain",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "LocalAnonymousType: EmailType_TextFormat"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "Common",
+                "value": "TextFormat"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0_Trim.schema.json#/definitions/String_Short"
+        },
+        "shareMarketInd": {
+          "description": "Permission for sharing data for marketing purposes.",
+          "$ref": "#/definitions/YesNoInherit_Enum"
+        },
+        "shareSyncInd": {
+          "description": "Permission for sharing data for synchronization of information held by other travel service providers.",
+          "$ref": "#/definitions/YesNoInherit_Enum"
+        },
+        "optInStatus": {
+          "description": "If present and set to opt out, a customer has explicitly opted out of marketing communication. When set to opt out it overrides the ShareMarketInd.",
+          "$ref": "#/definitions/OptInStatus_Enum"
+        },
+        "optInDate": {
+          "description": "The date and time of opt in.",
+          "type": "string",
+          "format": "date-time"
+        },
+        "optOutDate": {
+          "description": "The date and time of opt out.",
+          "type": "string",
+          "format": "date-time"
+        },
+        "validInd": {
+          "description": "If true, this is a valid email address that has been system verified via a successful email transmission.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}boolean"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "Common",
+                "value": "ValidInd"
+              }
+            ]
+          },
+          "type": "boolean"
+        },
+        "defaultInd": {
+          "description": "If true, this identifies this is the default email address.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "AttributeGroup: DefaultIndGroup"
+              ]
+            }
+          },
+          "type": "boolean"
+        }
+      }
+    },
+    "Identifier": {
+      "x-otm-entity": {
+        "EntityType": "ValueWithAttributes",
+        "EntityName": "Identifier"
+      },
+      "description": "Identifier provides the ability to create a globally unique identifier. For the identifier to be globally unique it must have a system provided identifier and the system must be identified using a global naming authority. System identification uses the domain naming system (DNS) to assure they are globally unique and should be an URL. The system provided ID will typically be a primary or surrogate key in a database.\n\nThe URL, system and company attributes can be omitted only when the system context can be implied by a parent or ancestor element.",
+      "properties": {
+        "value": {
+          "$ref": "#/definitions/GUID"
+        },
+        "url": {
+          "description": "Uri of the creating system. The URI should be an URL and be globally unique. Should only be omitted when the context is clearly implied for the containing document.",
+          "type": "string"
+        },
+        "system": {
+          "description": "Name or identifier for the creating system.",
+          "x-otm-annotations": {
+            "examples": [
+              {
+                "context": "Common",
+                "value": "sysABC3344"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0_Trim.schema.json#/definitions/String_Short"
+        },
+        "company": {
+          "description": "Name of the company that manages the reference system.",
+          "x-otm-annotations": {
+            "examples": [
+              {
+                "context": "Common",
+                "value": "Acme"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0_Trim.schema.json#/definitions/String_Short"
+        },
+        "instance": {
+          "description": "The identification of a record as it exists at a point in time. An instance is used in update messages where the sender must assure the server that the update sent refers to the most recent modification level of the object being updated.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to32"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "Common",
+                "value": "Instance"
+              }
+            ],
+            "examples": [
+              {
+                "context": "Common",
+                "value": "i0987654321"
+              }
+            ]
+          },
+          "$ref": "#/definitions/GUID"
+        }
+      }
+    },
+    "Person_Name_Simple": {
+      "description": "Full name.",
+      "$ref": "OTA_SimpleTypes_0_0_0_Trim.schema.json#/definitions/String"
+    },
+    "Person_Name_Simple_List": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Person_Name_Simple"
+      }
+    },
+    "Person_Name": {
+      "x-otm-entity": {
+        "EntityType": "CoreObject",
+        "EntityName": "Person_Name"
+      },
+      "properties": {
+        "@type": {
+          "type": "string"
+        },
+        "type": {
+          "description": "Type of name of the individual, such as former, nickname, alternate or alias name. Refer to OpenTravel Code List Name Type (NAM).",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}OTA_CodeType"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "Common",
+                "value": "NameType"
+              }
+            ]
+          },
+          "$ref": "#/definitions/NameType"
+        },
+        "language": {
+          "description": "The language the name is represented in, e.g. an Eastern name versus a Western name.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}language"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "Common",
+                "value": "Language"
+              }
+            ]
+          },
+          "type": "string"
+        },
+        "Prefix": {
+          "type": "array",
+          "items": {
+            "$ref": "OTA_SimpleTypes_0_0_0_Trim.schema.json#/definitions/String_Tiny"
+          },
+          "maxItems": 3
+        },
+        "Given": {
+          "type": "array",
+          "items": {
+            "$ref": "OTA_SimpleTypes_0_0_0_Trim.schema.json#/definitions/String_Short"
+          },
+          "maxItems": 5
+        },
+        "Middle": {
+          "type": "array",
+          "items": {
+            "$ref": "OTA_SimpleTypes_0_0_0_Trim.schema.json#/definitions/String_Short"
+          },
+          "maxItems": 5
+        },
+        "SurnamePrefix": {
+          "description": "The surname prefix, e.g \"van der\", \"von\", \"de\".",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to16"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "Common",
+                "value": "SurnamePrefix"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0_Trim.schema.json#/definitions/String_Tiny"
+        },
+        "Surname": {
+          "description": "Family name, last name. \nNote: Simple form of person name should be used for the full name.\nMay also be used for full name if the sending system does not have the ability to separate a full name into its parts, e.g. the surname element may be used to pass the full name.",
+          "x-otm-annotations": {
+            "examples": [
+              {
+                "context": "Common",
+                "value": "Smith"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0_Trim.schema.json#/definitions/String_Short"
+        },
+        "Suffix": {
+          "type": "array",
+          "items": {
+            "$ref": "OTA_SimpleTypes_0_0_0_Trim.schema.json#/definitions/String_Tiny"
+          },
+          "maxItems": 3
+        },
+        "Title": {
+          "type": "array",
+          "items": {
+            "$ref": "OTA_SimpleTypes_0_0_0_Trim.schema.json#/definitions/String_Tiny"
+          },
+          "maxItems": 3
+        },
+        "Person_Document": {
+          "description": "Document  information for verification purposes and also used for additional filtering for common names.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}Document"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "Common",
+                "value": "Document"
+              }
+            ]
+          },
+          "$ref": "#/definitions/Person_Document"
+        },
+        "Privacy": {
+          "description": "Allows for control of the sharing of data between parties.",
+          "$ref": "#/definitions/Privacy"
+        },
+        "defaultInd": {
+          "description": "If true, this is the default or primary name within a collection of names.",
+          "type": "boolean"
+        },
+        "ExtensionPoint": {
+          "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint"
+        }
+      },
+      "required": [
+        "@type",
+        "Surname"
+      ],
+      "discriminator": "@type"
+    },
+    "RelatedTraveler_Simple_Person_Name": {
+      "$ref": "#/definitions/Person_Name"
+    },
+    "Privacy": {
+      "x-otm-entity": {
+        "EntityType": "ValueWithAttributes",
+        "EntityName": "Privacy"
+      },
+      "description": "Allows for control of the sharing of data between parties.",
+      "properties": {
+        "shareMarketInd": {
+          "description": "Permission for sharing data for marketing purposes.",
+          "$ref": "#/definitions/YesNoInherit_Enum"
+        },
+        "shareSyncInd": {
+          "description": "Permission for sharing data for synchronization of information held by other travel service providers.",
+          "$ref": "#/definitions/YesNoInherit_Enum"
+        },
+        "optInStatus": {
+          "description": "If present and set to opt out, a customer has explicitly opted out of marketing communication. When set to opt out it overrides the ShareMarketInd.",
+          "$ref": "#/definitions/OptInStatus_Enum"
+        },
+        "optInDate": {
+          "description": "The date and time of opt in.",
+          "type": "string",
+          "format": "date-time"
+        },
+        "optOutDate": {
+          "description": "The date and time of opt out.",
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "StateProv": {
+      "x-otm-entity": {
+        "EntityType": "ValueWithAttributes",
+        "EntityName": "StateProv"
+      },
+      "description": "The standard code or abbreviation for the state, province, or region.",
+      "x-otm-annotations": {
+        "documentation": {
+          "implementers": [
+            "Assigned XSD Type: {http://chameleon.anonymous/ns}StateProvCodeType"
+          ]
+        }
+      },
+      "properties": {
+        "value": {
+          "$ref": "#/definitions/StateProv_Code"
+        },
+        "name": {
+          "description": "State, province, or region name or code needed to identify location.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength0to64"
+              ]
+            },
+            "examples": [
+              {
+                "context": "Common",
+                "value": "Texas"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0_Trim.schema.json#/definitions/String_Short"
+        }
+      }
+    },
+    "Telephone_Simple": {
+      "description": "A short string  \nMinimum length of 0 and a maximum length of 128",
+      "$ref": "OTA_SimpleTypes_0_0_0_Trim.schema.json#/definitions/String_Short"
+    },
+    "Telephone_Simple_List": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Telephone_Simple"
+      }
+    },
+    "Telephone": {
+      "x-otm-entity": {
+        "EntityType": "CoreObject",
+        "EntityName": "Telephone"
+      },
+      "description": "Information about a telephone number, including the actual number and its usage.",
+      "properties": {
+        "@type": {
+          "type": "string"
+        },
+        "countryAccessCode": {
+          "description": "Code assigned by telecommunications authorities for international country access identifier.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}NumericStringLength1to3"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "Common",
+                "value": "CountryAccessCode"
+              }
+            ]
+          },
+          "$ref": "#/definitions/Telephone_CountryAccessCode"
+        },
+        "areaCityCode": {
+          "description": "Code assigned for telephones in a specific region, city, or area.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}NumericStringLength1to8"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "Common",
+                "value": "AreaCityCode"
+              }
+            ]
+          },
+          "$ref": "#/definitions/Telephone_AreaCityCode"
+        },
+        "phoneNumber": {
+          "description": "Telephone number assigned to a single location.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to32"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "Common",
+                "value": "PhoneNumber"
+              }
+            ]
+          },
+          "$ref": "#/definitions/Telephone_Number"
+        },
+        "extension": {
+          "description": "Extension to reach a specific party at the phone number.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}NumericStringLength1to5"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "Common",
+                "value": "Extension"
+              }
+            ]
+          },
+          "$ref": "#/definitions/Telephone_Extension"
+        },
+        "id": {
+          "description": "Used elsewhere in the message to reference a specific telephone number (including faxes).",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}RPH_Type"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "Common",
+                "value": "RPH"
+              }
+            ]
+          },
+          "$ref": "built-ins/XMLSchema.schema.json#/definitions/ID"
+        },
+        "role": {
+          "$ref": "#/definitions/Enum_TelephoneRole"
+        },
+        "ExtensionPoint_Summary": {
+          "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint_Summary"
+        }
+      },
+      "required": [
+        "@type",
+        "phoneNumber"
+      ],
+      "discriminator": "@type"
+    },
+    "TelephoneDetail": {
+      "x-otm-entity": {
+        "EntityType": "CoreObject",
+        "EntityName": "Telephone"
+      },
+      "description": "Information about a telephone number, including the actual number and its usage.",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Telephone"
+        },
+        {
+          "properties": {
+            "pIN": {
+              "description": "Additional codes used for pager or telephone access rights.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to8"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "Common",
+                    "value": "PIN"
+                  }
+                ]
+              },
+              "$ref": "OTA_SimpleTypes_0_0_0_Trim.schema.json#/definitions/String_Tiny"
+            },
+            "remark": {
+              "description": "A remark associated with the telephone number.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to128"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "Common",
+                    "value": "Remark"
+                  }
+                ]
+              },
+              "$ref": "OTA_SimpleTypes_0_0_0_Trim.schema.json#/definitions/String_Text"
+            },
+            "Privacy": {
+              "description": "Allows for control of the sharing of data between parties.",
+              "$ref": "#/definitions/Privacy"
+            },
+            "PhoneLocationType": {
+              "description": "Describes the location of the phone, such as Home, Office, Property Reservation Office, etc.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://chameleon.anonymous/ns}OTA_CodeType"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "Common",
+                    "value": "PhoneLocationType"
+                  }
+                ]
+              },
+              "$ref": "CodeList_0_0_0_Trim.schema.json#/definitions/PhoneLocation_Enum"
+            },
+            "PhoneTechType": {
+              "description": "Indicates type of technology associated with this telephone number, such as Voice, Data, Fax, Pager, Mobile, TTY, etc.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://chameleon.anonymous/ns}OTA_CodeType"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "Common",
+                    "value": "PhoneTechType"
+                  }
+                ]
+              },
+              "$ref": "CodeList_0_0_0_Trim.schema.json#/definitions/PhoneTechType_Enum"
+            },
+            "PhoneUseType": {
+              "description": "Describes the type of telephone number, in the context of its general use (e.g. Home, Business, Emergency Contact, Travel Arranger, Day, Evening). Refer to OpenTravel Code List Phone Use Type (PUT).",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://chameleon.anonymous/ns}OTA_CodeType"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "Common",
+                    "value": "PhoneUseType"
+                  }
+                ]
+              },
+              "$ref": "CodeList_0_0_0_Trim.schema.json#/definitions/PhoneUseType_Enum"
+            },
+            "defaultInd": {
+              "description": "When true, indicates a default value should be used.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}boolean"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "Common",
+                    "value": "DefaultInd"
+                  }
+                ]
+              },
+              "type": "boolean"
+            },
+            "ExtensionPoint_Detail": {
+              "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint_Detail"
+            }
+          }
+        }
+      ]
+    },
+    "Enum_TelephoneRole": {
+      "properties": {
+        "value": {
+          "$ref": "#/definitions/Enum_TelephoneRole_Open"
+        },
+        "extension": {
+          "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/String_EnumExtension"
+        }
+      }
+    },
+    "Enum_TelephoneRole_Base": {
+      "type": "string",
+      "enum": [
+        "Home",
+        "Office",
+        "Mobile",
+        "Other"
+      ]
+    },
+    "Enum_TelephoneRole_Open": {
+      "type": "string",
+      "enum": [
+        "Home",
+        "Office",
+        "Mobile",
+        "Other",
+        "Other_"
+      ]
+    },
+    "Text_Free": {
+      "x-otm-entity": {
+        "EntityType": "ValueWithAttributes",
+        "EntityName": "Text_Free"
+      },
+      "description": "Textual information to provide descriptions and/or additional information.",
+      "x-otm-annotations": {
+        "documentation": {
+          "implementers": [
+            "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string"
+          ]
+        }
+      },
+      "properties": {
+        "value": {
+          "$ref": "OTA_SimpleTypes_0_0_0_Trim.schema.json#/definitions/String_Text"
+        },
+        "language": {
+          "description": "Language of the text.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "AttributeGroup: LanguageGroup"
+              ]
+            },
+            "examples": [
+              {
+                "context": "Common",
+                "value": "en"
+              }
+            ]
+          },
+          "type": "string"
+        }
+      }
+    },
+    "Person_Document_Simple": {
+      "description": "A string with a minimum length of 0 and a maximum length of 512.",
+      "$ref": "OTA_SimpleTypes_0_0_0_Trim.schema.json#/definitions/String"
+    },
+    "Person_Document_Simple_List": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Person_Document_Simple"
+      }
+    },
+    "Person_Document": {
+      "x-otm-entity": {
+        "EntityType": "CoreObject",
+        "EntityName": "Person_Document"
+      },
+      "x-otm-annotations": {
+        "documentation": {
+          "implementers": [
+            "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to32",
+            "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to32"
+          ]
+        }
+      },
+      "properties": {
+        "@type": {
+          "type": "string"
+        },
+        "DocType": {
+          "description": "Indicates the type of document (e.g. Passport, Military ID, Drivers License, national ID, Vaccination Certificate). Refer to OpenTravel Code List Document Type (DOC).",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}OTA_CodeType"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "Common",
+                "value": "DocType"
+              }
+            ]
+          },
+          "$ref": "CodeList_0_0_0_Trim.schema.json#/definitions/DocumentType_Enum"
+        },
+        "ExtensionPoint": {
+          "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint"
+        }
+      },
+      "required": [
+        "@type"
+      ],
+      "discriminator": "@type"
+    },
+    "Code_OTA": {
+      "x-otm-entity": {
+        "EntityType": "Simple",
+        "EntityName": "Code_OTA"
+      },
+      "description": "Used for codes in the OpenTravel Code tables. Possible values of this pattern are 1, 101, 1001, 101.EQP, 1001.EQP or 1001.EQP.X.",
+      "x-otm-annotations": {
+        "documentation": {
+          "implementers": [
+            "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string"
+          ]
+        },
+        "equivalents": [
+          {
+            "context": "Common",
+            "value": "OTA_CodeType"
+          }
+        ],
+        "examples": [
+          {
+            "context": "Common",
+            "value": "2"
+          }
+        ]
+      },
+      "type": "string",
+      "pattern": "[0-9A-Z]{1,4}(\\.[A-Z]{3}(\\.X){0,1}){0,1}"
+    },
+    "PersonID": {
+      "x-otm-entity": {
+        "EntityType": "BusinessObject",
+        "EntityName": "Person"
+      },
+      "properties": {
+        "@type": {
+          "type": "string"
+        },
+        "id": {
+          "description": "Provides a unique reference to this contact person.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}RPH_Type"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "Common",
+                "value": "RPH"
+              }
+            ]
+          },
+          "$ref": "built-ins/XMLSchema.schema.json#/definitions/ID"
+        },
+        "Identifier": {
+          "description": "An identifier used to uniquely reference an object in a system (e.g. an airline reservation reference, customer profile reference, booking confirmation number, or a reference to a previous availability quote).",
+          "$ref": "Common_0_0_0_Trim.schema.json#/definitions/Identifier"
+        },
+        "OtherID": {
+          "type": "array",
+          "items": {
+            "$ref": "Common_0_0_0_Trim.schema.json#/definitions/Identifier"
+          },
+          "maxItems": 5
+        }
+      },
+      "required": [
+        "@type",
+        "Identifier"
+      ],
+      "discriminator": "@type"
+    },
+    "Person": {
+      "x-otm-entity": {
+        "EntityType": "BusinessObject",
+        "EntityName": "Person"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/PersonID"
+        },
+        {
+          "properties": {
+            "gender": {
+              "description": "The gender of the person.",
+              "$ref": "CodeList_0_0_0_Trim.schema.json#/definitions/Gender_Enum"
+            },
+            "maritalStatus_Enum": {
+              "description": "Specifies the marital status of the person.",
+              "$ref": "CodeList_0_0_0_Trim.schema.json#/definitions/MaritalStatus_Enum"
+            },
+            "birthDate": {
+              "description": "The birth date of the person.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "AttributeGroup: BirthDateGroup"
+                  ]
+                }
+              },
+              "type": "string",
+              "format": "date"
+            },
+            "Person_Name": {
+              "description": "Name information for a person.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://chameleon.anonymous/ns}PersonNameType"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "Common",
+                    "value": "PersonName"
+                  }
+                ]
+              },
+              "$ref": "#/definitions/Person_Name"
+            },
+            "Address": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Address"
+              },
+              "maxItems": 5
+            },
+            "Telephone": {
+              "description": "Information about a telephone number, including the actual number and its usage.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Example value: p = 555-555-5555"
+                  ]
+                },
+                "examples": [
+                  {
+                    "context": "Common",
+                    "value": "555-555-5555"
+                  }
+                ]
+              },
+              "$ref": "#/definitions/Telephone"
+            },
+            "Email": {
+              "type": "array",
+              "items": {
+                "$ref": "Common_0_0_0_Trim.schema.json#/definitions/Email"
+              },
+              "maxItems": 5
+            },
+            "Privacy": {
+              "description": "Allows for control of the sharing of data between parties.",
+              "$ref": "Common_0_0_0_Trim.schema.json#/definitions/Privacy"
+            },
+            "Comments": {
+              "description": "Textual information about the person.",
+              "$ref": "Common_0_0_0_Trim.schema.json#/definitions/Text_Free"
+            },
+            "ExtensionPoint": {
+              "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint"
+            }
+          },
+          "required": [
+            "Person_Name"
+          ]
+        }
+      ]
+    },
+    "Address_Simple": {
+      "description": "When the address is unformatted (FormattedInd=\"false\") these lines will contain free form address details. When the address is formatted and street number and street name must be sent independently, the street number will be sent using StreetNmbr, and the street name will be sent in the first AddressLine occurrence.",
+      "x-otm-annotations": {
+        "documentation": {
+          "implementers": [
+            "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to255"
+          ]
+        }
+      },
+      "$ref": "OTA_SimpleTypes_0_0_0_Trim.schema.json#/definitions/String_Long"
+    },
+    "Address_Simple_List": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Address_Simple"
+      }
+    },
+    "Address": {
+      "x-otm-entity": {
+        "EntityType": "CoreObject",
+        "EntityName": "Address"
+      },
+      "description": "Provides address information. Unformatted addresses are captured using the simple facet.",
+      "properties": {
+        "@type": {
+          "type": "string"
+        },
+        "AddressLine": {
+          "type": "array",
+          "items": {
+            "$ref": "OTA_SimpleTypes_0_0_0_Trim.schema.json#/definitions/String_Short"
+          },
+          "maxItems": 4
+        },
+        "BldgRoom": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Address_BldgRoom"
+          },
+          "maxItems": 2
+        },
+        "Number": {
+          "description": "May contain the street number and optionally the street name.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}StreetNmbr"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "Common",
+                "value": "StreetNmbr"
+              }
+            ],
+            "examples": [
+              {
+                "context": "Common",
+                "value": "111"
+              }
+            ]
+          },
+          "$ref": "#/definitions/Address_StreetNumber"
+        },
+        "Street": {
+          "description": "May contain the street number when the Street number element is missing.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to255"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "Common",
+                "value": "AddressLine"
+              }
+            ],
+            "examples": [
+              {
+                "context": "Common",
+                "value": "Travers Street"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0_Trim.schema.json#/definitions/String_Short"
+        },
+        "City": {
+          "description": "City (e.g., Dublin), town, or postal station (i.e., a postal service territory, often used in a military address).",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to64"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "Common",
+                "value": "CityName"
+              }
+            ],
+            "examples": [
+              {
+                "context": "Common",
+                "value": "Dublin"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0_Trim.schema.json#/definitions/String_Short"
+        },
+        "County": {
+          "description": "County or Region Name (e.g., Fairfax).",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to32"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "Common",
+                "value": "County"
+              }
+            ],
+            "examples": [
+              {
+                "context": "Common",
+                "value": "Fairfax"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0_Trim.schema.json#/definitions/String_Short"
+        },
+        "StateProv": {
+          "description": "State or Province name (e.g., Texas).",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}StateProvType"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "Common",
+                "value": "StateProv"
+              }
+            ],
+            "examples": [
+              {
+                "context": "Common",
+                "value": "Texas"
+              }
+            ]
+          },
+          "$ref": "#/definitions/StateProv"
+        },
+        "Country": {
+          "description": "Country name (e.g., Ireland).",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}CountryNameType"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "Common",
+                "value": "CountryName"
+              }
+            ],
+            "examples": [
+              {
+                "context": "Common",
+                "value": "IE"
+              }
+            ]
+          },
+          "$ref": "#/definitions/Country"
+        },
+        "PostalCode": {
+          "description": "Post Office Code number.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to16"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "Common",
+                "value": "PostalCode"
+              }
+            ],
+            "examples": [
+              {
+                "context": "Common",
+                "value": "32165-9999"
+              }
+            ]
+          },
+          "$ref": "OTA_SimpleTypes_0_0_0_Trim.schema.json#/definitions/String_Short"
+        },
+        "role": {
+          "$ref": "#/definitions/Enum_AddressRole"
+        },
+        "ExtensionPoint_Summary": {
+          "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint_Summary"
+        }
+      },
+      "required": [
+        "@type"
+      ],
+      "discriminator": "@type"
+    },
+    "AddressDetail": {
+      "x-otm-entity": {
+        "EntityType": "CoreObject",
+        "EntityName": "Address"
+      },
+      "description": "Provides address information. Unformatted addresses are captured using the simple facet.",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Address"
+        },
+        {
+          "properties": {
+            "language": {
+              "description": "Example: en",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}language"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "Common",
+                    "value": "Language"
+                  }
+                ],
+                "examples": [
+                  {
+                    "context": "Common",
+                    "value": "en"
+                  }
+                ]
+              },
+              "type": "string"
+            },
+            "type": {
+              "description": "Defines the type of address (e.g. home, business, other). Refer to OpenTravel Code List Communication Location Type (CLT).",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://chameleon.anonymous/ns}OTA_CodeType"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "Common",
+                    "value": "Type"
+                  }
+                ],
+                "examples": [
+                  {
+                    "context": "Common",
+                    "value": "CLT"
+                  }
+                ]
+              },
+              "$ref": "#/definitions/Code_OTA"
+            },
+            "use": {
+              "description": "Describes the use of the address (e.g. mailing, delivery, billing, etc.). Refer to OpenTravel Code List Address Use Type (AUT).",
+              "x-otm-annotations": {
+                "examples": [
+                  {
+                    "context": "Common",
+                    "value": "AUT"
+                  }
+                ]
+              },
+              "$ref": "#/definitions/Code_OTA"
+            },
+            "Remark": {
+              "description": "A remark associated with this address.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to128"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "Common",
+                    "value": "Remark"
+                  }
+                ],
+                "examples": [
+                  {
+                    "context": "Common",
+                    "value": "This address should be used for all official correspondences."
+                  }
+                ]
+              },
+              "$ref": "OTA_SimpleTypes_0_0_0_Trim.schema.json#/definitions/String_Text"
+            },
+            "Privacy": {
+              "description": "Allows for control of the sharing of address information between parties.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "AttributeGroup: PrivacyGroup"
+                  ]
+                }
+              },
+              "$ref": "#/definitions/Privacy"
+            },
+            "validInd": {
+              "description": "If true, this is a valid and complete mailing address that has been verified through an address verification service or previously mailed materials have not been returned.",
+              "type": "boolean"
+            },
+            "ExtensionPoint_Detail": {
+              "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint_Detail"
+            }
+          }
+        }
+      ]
+    },
+    "Enum_AddressRole": {
+      "properties": {
+        "value": {
+          "$ref": "#/definitions/Enum_AddressRole_Open"
+        },
+        "extension": {
+          "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/String_EnumExtension"
+        }
+      }
+    },
+    "Enum_AddressRole_Base": {
+      "type": "string",
+      "enum": [
+        "Home",
+        "Business",
+        "Destination",
+        "Other"
+      ]
+    },
+    "Enum_AddressRole_Open": {
+      "type": "string",
+      "enum": [
+        "Home",
+        "Business",
+        "Destination",
+        "Other",
+        "Other_"
+      ]
+    }
+  },
+  "oneOf": [
+    {
+      "properties": {
+        "Person_Name": {
+          "$ref": "#/definitions/Person_Name"
+        }
+      },
+      "required": [
+        "Person_Name"
+      ]
+    },
+    {
+      "properties": {
+        "RelatedTraveler_Simple_Person_Name": {
+          "$ref": "#/definitions/RelatedTraveler_Simple_Person_Name"
+        }
+      },
+      "required": [
+        "RelatedTraveler_Simple_Person_Name"
+      ]
+    },
+    {
+      "properties": {
+        "TelephoneSummary": {
+          "$ref": "#/definitions/Telephone"
+        }
+      },
+      "required": [
+        "TelephoneSummary"
+      ]
+    },
+    {
+      "properties": {
+        "TelephoneDetail": {
+          "$ref": "#/definitions/TelephoneDetail"
+        }
+      },
+      "required": [
+        "TelephoneDetail"
+      ]
+    },
+    {
+      "properties": {
+        "Person_Document": {
+          "$ref": "#/definitions/Person_Document"
+        }
+      },
+      "required": [
+        "Person_Document"
+      ]
+    },
+    {
+      "properties": {
+        "PersonIdentifier": {
+          "$ref": "#/definitions/PersonID"
+        }
+      },
+      "required": [
+        "PersonIdentifier"
+      ]
+    },
+    {
+      "properties": {
+        "PersonSummary": {
+          "$ref": "#/definitions/Person"
+        }
+      },
+      "required": [
+        "PersonSummary"
+      ]
+    },
+    {
+      "properties": {
+        "AddressSummary": {
+          "$ref": "#/definitions/Address"
+        }
+      },
+      "required": [
+        "AddressSummary"
+      ]
+    },
+    {
+      "properties": {
+        "AddressDetail": {
+          "$ref": "#/definitions/AddressDetail"
+        }
+      },
+      "required": [
+        "AddressDetail"
+      ]
+    }
+  ]
+}

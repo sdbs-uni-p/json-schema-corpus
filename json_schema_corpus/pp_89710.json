@@ -1,0 +1,251 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "title": "com.xcitestudios.schema.Network.Email",
+  "description": "Minimum required output for an Email",
+  "type": "object",
+  "allOf": [
+    {
+      "type": "object",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "from": {
+              "type": "array",
+              "description": "Who is the email from? Can be multiple people.",
+              "minItems": 1,
+              "maxItems": 1,
+              "items": {
+                "type": "object",
+                "$ref": "#/definitions/contact"
+              }
+            },
+            "sender": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "description": "Optional where From is one person.",
+                  "$ref": "#/definitions/contact"
+                }
+              ]
+            }
+          },
+          "required": [
+            "from"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "from": {
+              "type": "array",
+              "description": "Who is the email from? Can be multiple people.",
+              "minItems": 2,
+              "items": {
+                "type": "object",
+                "$ref": "#/definitions/contact"
+              }
+            },
+            "sender": {
+              "description": "Required where From is multiple people.",
+              "$ref": "#/definitions/contact"
+            }
+          },
+          "required": [
+            "from",
+            "sender"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "customHeaders": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "description": "Any non standard headers here - these should never overwrite the explicit headers.",
+          "additionalProperties": {
+            "type": "string",
+            "description": "string values"
+          }
+        },
+        "replyTo": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Optional. When hitting reply, who should the emails go to?",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/contact"
+          }
+        },
+        "to": {
+          "type": "array",
+          "minItems": 1,
+          "description": "Recipients of the email.",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/contact"
+          }
+        },
+        "cc": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Optional. CC Recipients of the email.",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/contact"
+          }
+        },
+        "bcc": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Optional. BCC Recipients of the email.",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/contact"
+          }
+        },
+        "date": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "The time the email was 'sent' (finished by a person/system). This is not necessarily the time the email entered a mail server.",
+          "format": "date-time"
+        },
+        "subject": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Subject of the email."
+        },
+        "inReplyTo": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Which unique MessageID this is in reply to."
+        },
+        "bodyParts": {
+          "type": "array",
+          "description": "Body of the email. For a single content-type email, just put one in this array. It is presumed if you add multiple items to this array then it must be multipart. For multipart/alternative (multiple versions of the body such as text / html) add in one body part of type multipart/alternative which has multiple body parts.",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/bodyPart"
+          }
+        }
+      },
+      "required": [
+        "to",
+        "bodyParts"
+      ]
+    }
+  ],
+  "definitions": {
+    "contact": {
+      "description": "Minimum required output for a Contact",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Name identifying the contact."
+        },
+        "email": {
+          "type": "string",
+          "description": "Email address of the contact.",
+          "format": "email"
+        }
+      },
+      "required": [
+        "email"
+      ]
+    },
+    "bodyPart": {
+      "description": "Body part of an email",
+      "type": "object",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "contentTransferEncoding": {
+              "type": "string",
+              "description": "Encoding of this body part. For a singular email this should go into the headers of the original email."
+            },
+            "contentType": {
+              "type": "string",
+              "description": "RawContent type of the body. A single type such as text/plain, text/html."
+            },
+            "contentID": {
+              "type": "string",
+              "description": "An ID used to link/inline this content body (e.g.) an image into a HTML body for example."
+            },
+            "bodyParts": {
+              "type": "null"
+            },
+            "rawContent": {
+              "type": "string",
+              "description": "Raw content of this body part. Use this OR bodyParts."
+            }
+          },
+          "required": [
+            "contentTransferEncoding",
+            "contentType",
+            "rawContent"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "contentTransferEncoding": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "description": "Encoding of this body part. For a singular email this should go into the headers of the original email."
+            },
+            "contentType": {
+              "type": "string",
+              "description": "Multipart type",
+              "enum": [
+                "multipart/alternative",
+                "multipart/mixed",
+                "multipart/related"
+              ]
+            },
+            "bodyParts": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "#/definitions/bodyPart"
+              }
+            },
+            "rawContent": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "contentTransferEncoding",
+            "contentType",
+            "bodyParts"
+          ]
+        }
+      ]
+    }
+  }
+}

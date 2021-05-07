@@ -1,0 +1,47 @@
+{
+  "description": "lax ingest+publish response schema",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://lax.elifesciences.org/ingest-publish-response-schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "requested-action": {
+      "enum": [
+        "ingest",
+        "publish",
+        "ingest+publish"
+      ]
+    },
+    "status": {
+      "enum": [
+        "ingested",
+        "published",
+        "invalid",
+        "error"
+      ]
+    },
+    "message": {
+      "description": "elaborates on the status. if invalid, what is invalid. if in error, what failed.",
+      "type": "string"
+    },
+    "id": {
+      "description": "the article identifier, potentially without leading zeroes. if original request could not be parsed, a null value will be returned",
+      "type": "string"
+    },
+    "token": {
+      "description": "data from original request to be returned to the sender once action complete. if original request could not be parsed, a null value will be returned",
+      "type": "string"
+    },
+    "datetime": {
+      "description": "the date and time in ISO 8601 UTC when this message was sent. if 'status' is either 'ingested' or 'published', then this is the date and time recorded in lax",
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "status",
+    "id",
+    "token",
+    "datetime"
+  ]
+}

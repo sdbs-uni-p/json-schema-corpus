@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "properties": {
+    "ids": {
+      "type": "string",
+      "pattern": "^[a-z0-9:]+$"
+    },
+    "metrics": {
+      "type": "string"
+    },
+    "filters": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "metrics"
+  ],
+  "title": "Google Analytics Realtime Collector Query",
+  "type": "object",
+  "additionalProperties": false
+}

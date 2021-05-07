@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Deregistration response provided to a CBSD",
+  "type": "object",
+  "required": [
+    "response"
+  ],
+  "properties": {
+    "cbsdId": {
+      "type": "string",
+      "description": "Unique designator for the CBSD as provided in the deregistration request."
+    },
+    "response": {
+      "$ref": "file:Response.schema.json"
+    }
+  }
+}

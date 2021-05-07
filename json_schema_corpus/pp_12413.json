@@ -1,0 +1,192 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "library_hackathon",
+  "x-otm-library": {
+    "ProjectName": "project.otp",
+    "LibraryName": "library_hackathon",
+    "LibraryVersion": "0.0.0",
+    "LibraryStatus": "DRAFT",
+    "SourceFile": "/library1",
+    "CompilerVersion": "4.0-SNAPSHOT",
+    "CompileDate": "2016-05-18T16:11:08.432-0400"
+  },
+  "definitions": {
+    "MarriottCustomerID": {
+      "x-otm-entity": {
+        "EntityType": "BusinessObject",
+        "EntityName": "MarriottCustomer"
+      },
+      "description": "Marriott's extension of the Open Travel Customer",
+      "properties": {
+        "@type": {
+          "type": "string"
+        },
+        "id": {
+          "description": "Provides a unique reference to this contact person.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Assigned XSD Type: {http://chameleon.anonymous/ns}RPH_Type"
+              ]
+            },
+            "equivalents": [
+              {
+                "context": "Common",
+                "value": "RPH"
+              }
+            ]
+          },
+          "$ref": "built-ins/XMLSchema.schema.json#/definitions/ID"
+        },
+        "Identifier": {
+          "description": "An identifier used to uniquely reference an object in a system (e.g. an airline reservation reference, customer profile reference, booking confirmation number, or a reference to a previous availability quote).",
+          "$ref": "#/definitions/Identifier"
+        },
+        "OtherID": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Identifier"
+          },
+          "maxItems": 5
+        }
+      },
+      "required": [
+        "@type",
+        "Identifier"
+      ],
+      "discriminator": "@type"
+    },
+    "MarriottCustomer": {
+      "x-otm-entity": {
+        "EntityType": "BusinessObject",
+        "EntityName": "MarriottCustomer"
+      },
+      "description": "Marriott's extension of the Open Travel Customer",
+      "allOf": [
+        {
+          "$ref": "#/definitions/MarriottCustomerID"
+        },
+        {
+          "properties": {
+            "gender": {
+              "description": "The gender of the person.",
+              "$ref": "CodeList_0_0_0.schema.json#/definitions/Gender_Enum"
+            },
+            "maritalStatus_Enum": {
+              "description": "Specifies the marital status of the person.",
+              "$ref": "CodeList_0_0_0.schema.json#/definitions/MaritalStatus_Enum"
+            },
+            "birthDate": {
+              "description": "The birth date of the person.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "AttributeGroup: BirthDateGroup"
+                  ]
+                }
+              },
+              "type": "string",
+              "format": "date"
+            },
+            "Person_Name": {
+              "description": "Name information for a person.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Assigned XSD Type: {http://chameleon.anonymous/ns}PersonNameType"
+                  ]
+                },
+                "equivalents": [
+                  {
+                    "context": "Common",
+                    "value": "PersonName"
+                  }
+                ]
+              },
+              "$ref": "#/definitions/Person_Name"
+            },
+            "Address": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Address"
+              },
+              "maxItems": 5
+            },
+            "Telephone": {
+              "description": "Information about a telephone number, including the actual number and its usage.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Example value: p = 555-555-5555"
+                  ]
+                },
+                "examples": [
+                  {
+                    "context": "Common",
+                    "value": "555-555-5555"
+                  }
+                ]
+              },
+              "$ref": "#/definitions/Telephone"
+            },
+            "Email": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Email"
+              },
+              "maxItems": 5
+            },
+            "Privacy": {
+              "description": "Allows for control of the sharing of data between parties.",
+              "$ref": "#/definitions/Privacy"
+            },
+            "Comments": {
+              "description": "Textual information about the person.",
+              "$ref": "#/definitions/Text_Free"
+            },
+            "LoyaltyProgram": {
+              "description": "Identifies a membership or loyalty program offered by the company by name of the program.",
+              "$ref": "Profile_0_0_0.schema.json#/definitions/LoyaltyProgram"
+            },
+            "MINumber": {
+              "description": "Marriott Rewards Number",
+              "$ref": "#/definitions/MINumber"
+            },
+            "ExtensionPoint": {
+              "$ref": "built-ins/OTM_BuiltIns.schema.json#/definitions/ExtensionPoint"
+            }
+          },
+          "required": [
+            "Person_Name",
+            "MINumber"
+          ]
+        }
+      ]
+    },
+    "MINumber": {
+      "$ref": "built-ins/XMLSchema.schema.json#/definitions/string"
+    }
+  },
+  "oneOf": [
+    {
+      "properties": {
+        "MarriottCustomerIdentifier": {
+          "$ref": "#/definitions/MarriottCustomerID"
+        }
+      },
+      "required": [
+        "MarriottCustomerIdentifier"
+      ]
+    },
+    {
+      "properties": {
+        "MarriottCustomerSummary": {
+          "$ref": "#/definitions/MarriottCustomer"
+        }
+      },
+      "required": [
+        "MarriottCustomerSummary"
+      ]
+    }
+  ]
+}

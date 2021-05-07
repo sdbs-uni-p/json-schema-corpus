@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Code Request Schema",
+  "description": "Schema to send a code for evaluation.",
+  "type": "object",
+  "properties": {
+    "Code": {
+      "type": "string",
+      "description": "Your entry code"
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "resourceReference",
+  "id": "resourceReference",
+  "description": "A reference to a resource, including it's ID, type, and a link to retrieve the resource.",
+  "type": "object",
+  "required": [
+    "objectType",
+    "id",
+    "type",
+    "link"
+  ],
+  "properties": {
+    "objectType": {
+      "type": "string",
+      "enum": [
+        "resourceReference"
+      ],
+      "description": "The type of the object, resourceReference."
+    },
+    "id": {
+      "type": "string",
+      "description": "The resource's unique identifier.",
+      "maxLength": 45
+    },
+    "type": {
+      "type": "string",
+      "description": "Specifies the type for the referenced resource.",
+      "maxLength": 25
+    },
+    "link": {
+      "$ref": "link.json#",
+      "description": "A link for accessing the resource."
+    }
+  }
+}

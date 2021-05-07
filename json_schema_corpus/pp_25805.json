@@ -1,0 +1,122 @@
+{
+  "type": "object",
+  "$id": "{host}/model/schema/streams",
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "properties": {
+    "version": {
+      "type": "integer",
+      "$id": "/properties/version",
+      "title": "Version",
+      "description": "Stream version",
+      "readOnly": true,
+      "default": 1
+    },
+    "file_name": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "$id": "/properties/file_name",
+      "title": "File Name",
+      "description": "Original file name"
+    },
+    "url": {
+      "type": "string",
+      "readOnly": true
+    },
+    "mime_type": {
+      "type": "string",
+      "$id": "/properties/mime_type",
+      "title": "Mime Type",
+      "description": "Mime-type of file",
+      "maxLength": 255,
+      "default": "application/octet-stream"
+    },
+    "file_size": {
+      "type": "integer",
+      "$id": "/properties/file_size",
+      "title": "File Size",
+      "description": "File size (in bytes)",
+      "readOnly": true
+    },
+    "hash_md5": {
+      "type": "string",
+      "$id": "/properties/hash_md5",
+      "title": "Hash Md5",
+      "description": "MD5 hash",
+      "readOnly": true,
+      "maxLength": 255
+    },
+    "hash_sha1": {
+      "type": "string",
+      "$id": "/properties/hash_sha1",
+      "title": "Hash Sha1",
+      "description": "SHA1 hash",
+      "readOnly": true,
+      "maxLength": 255,
+      "default": ""
+    },
+    "width": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "integer"
+        }
+      ],
+      "$id": "/properties/width",
+      "title": "Width",
+      "description": "Width (if applicable)",
+      "readOnly": true
+    },
+    "height": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "integer"
+        }
+      ],
+      "$id": "/properties/height",
+      "title": "Height",
+      "description": "Height (if applicable)",
+      "readOnly": true
+    },
+    "duration": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "integer"
+        }
+      ],
+      "$id": "/properties/duration",
+      "title": "Duration",
+      "description": "Duration (if applicable)",
+      "readOnly": true
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time",
+      "$id": "/properties/created",
+      "title": "Created",
+      "description": "Creation time",
+      "readOnly": true
+    },
+    "modified": {
+      "type": "string",
+      "format": "date-time",
+      "$id": "/properties/modified",
+      "title": "Modified",
+      "description": "Last modification time",
+      "readOnly": true
+    }
+  }
+}

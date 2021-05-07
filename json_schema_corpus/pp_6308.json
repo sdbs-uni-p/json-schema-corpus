@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "endpoint": "/query",
+  "description": "testing $ref",
+  "methods": [
+    "get",
+    "post",
+    "put",
+    "delete"
+  ],
+  "query": {
+    "key": "value"
+  },
+  "type": "object",
+  "properties": {
+    "key": {
+      "$ref": "http://localhost:9095/ref"
+    }
+  },
+  "required": [
+    "key"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "synonym",
+  "id": "synonym.json",
+  "type": "string",
+  "description": "A word with the same meaning"
+}

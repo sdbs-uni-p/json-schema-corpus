@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://www.ortolang.fr/schemas/1/pdf#",
+  "description": "Schema for metadata extracted from PDF files",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "pdf:PDFVersion": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "http://schema.org/AudioObject",
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "extends": {
+    "$ref": "MediaObject.json"
+  },
+  "description": "An audio file. Schema.org: http://schema.org/AudioObject",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "transcript": {
+      "description": "If this MediaObject is an AudioObject or VideoObject, the transcript of that object.",
+      "type": "string"
+    }
+  }
+}

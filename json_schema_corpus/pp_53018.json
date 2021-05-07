@@ -1,0 +1,29 @@
+{
+  "id": "stat.json",
+  "title": "stat",
+  "description": "Schema definition of a Stat from a pokemon",
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "properties": {
+    "base_stat": {
+      "type": "integer"
+    },
+    "effort": {
+      "type": "integer"
+    },
+    "stat": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "url"
+        }
+      },
+      "required": []
+    }
+  },
+  "required": []
+}

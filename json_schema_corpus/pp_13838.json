@@ -1,0 +1,64 @@
+{
+  "type": "object",
+  "title": "Customer",
+  "id": "/customer",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "represents a customers details",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Client customer id"
+    },
+    "salutation": {
+      "type": "string",
+      "description": "Salutation"
+    },
+    "name": {
+      "$ref": "/name"
+    },
+    "phone": {
+      "$ref": "/phone"
+    },
+    "optIn": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "boolean",
+          "description": "Whether customer is opted in for emails or not"
+        },
+        "phone": {
+          "type": "boolean",
+          "description": "whether customer is opted in for phone marketing"
+        }
+      }
+    },
+    "address": {
+      "$ref": "/address"
+    },
+    "interests": {
+      "$ref": "/interests"
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "type": "object"
+          },
+          {
+            "type": "string"
+          },
+          {
+            "type": "integer"
+          }
+        ]
+      },
+      "minItems": 1
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "name"
+  ]
+}

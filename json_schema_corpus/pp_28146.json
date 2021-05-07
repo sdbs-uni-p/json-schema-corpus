@@ -1,0 +1,74 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "c",
+  "id": "serviceabilityRequest-create-update",
+  "description": "A request by an organization (buyer) to  another ogranization (seller) to determine Serviceability at a specific location. This schema should used for CREATE and UPDATE operations.",
+  "type": "object",
+  "required": [
+    "objectType",
+    "buyerId",
+    "sellerId",
+    "serviceSite",
+    "serviceDetail"
+  ],
+  "properties": {
+    "objectType": {
+      "type": "string",
+      "enum": [
+        "serviceabilityRequest-create-update"
+      ],
+      "description": "The type of the object, serviceabilityRequest-create-update."
+    },
+    "buyerId": {
+      "type": "string",
+      "description": "A Party Role played by an Individual or an Organization that buys products and services from a Seller. Specifically, the ID of the Service Provider (Buyer) organization placing the serviceability request.",
+      "maxLength": 25
+    },
+    "sellerId": {
+      "type": "string",
+      "description": "An organization that provides products and services to a buyer. Specifically, the ID of the Partner/Access Provider (Seller) organization receiving the serviceability request.",
+      "maxLength": 25
+    },
+    "projectId": {
+      "type": "string",
+      "description": "An identifier that is used to group Orders that represent a unit of functionality that is important to a Buyer. A Project can be used to relate multiple Orders together.",
+      "maxLength": 16
+    },
+    "pricingMethod": {
+      "type": "string",
+      "enum": [
+        "CONTRACT",
+        "TARIFF",
+        "ICB",
+        "OTHER"
+      ],
+      "description": "The pricing authority to be used to price the service details on this serviceability request. Choice of Tariff, Contract, Individual Case Basis (ICB), Other."
+    },
+    "pricingReference": {
+      "type": "string",
+      "description": "The value associated with the Pricing Method selected (e.g. a contract or tariff id).",
+      "maxLength": 25
+    },
+    "serviceSite": {
+      "$ref": "serviceSiteInformation.json#",
+      "description": "The service site information for the serviceability request."
+    },
+    "primarySiteContact": {
+      "$ref": "contact.json#",
+      "description": "The primary site contact for the serviceability request."
+    },
+    "alternateSiteContact": {
+      "$ref": "contact.json#",
+      "description": "The secondary site contact for the serviceability request."
+    },
+    "desiredResponseDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The desired date for a response to the serviceability request formatted as  YYYY-MM-DD (eg 1997-07-16) or YYYY-MM-DDThh:mmTZD (eg 1997-07-16T19:20+01:00)."
+    },
+    "serviceDetail": {
+      "$ref": "serviceDetailRequest.json#",
+      "description": "Details of the service capabilities being requested."
+    }
+  }
+}

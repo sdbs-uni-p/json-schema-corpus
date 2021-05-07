@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "namedResource": {
+      "type": "object",
+      "required": [
+        "name",
+        "resource_uri"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "resource_uri": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "type": "object",
+  "required": [
+    "name",
+    "id",
+    "resource_uri",
+    "created",
+    "modified",
+    "pokemon",
+    "image"
+  ],
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "id": {
+      "type": "integer"
+    },
+    "resource_uri": {
+      "type": "string"
+    },
+    "created": {
+      "type": "string",
+      "pattern": "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}.\\d{6}"
+    },
+    "modified": {
+      "type": "string",
+      "pattern": "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}.\\d{6}"
+    },
+    "pokemon": {
+      "$ref": "#/definitions/namedResource"
+    },
+    "image": {
+      "type": "string"
+    }
+  }
+}

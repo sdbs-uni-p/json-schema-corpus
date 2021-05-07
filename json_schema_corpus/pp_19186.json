@@ -1,0 +1,242 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "definitions": {},
+  "id": "trace",
+  "properties": {
+    "traces": {
+      "id": "trace/properties/traces",
+      "items": {
+        "additionalProperties": false,
+        "id": "trace/properties/traces/items",
+        "properties": {
+          "avg_alloc_resources": {
+            "additionalProperties": false,
+            "id": "trace/properties/traces/items/properties/avg_alloc_resources",
+            "properties": {
+              "avg_norm_alloc_cores": {
+                "id": "trace/properties/traces/items/properties/avg_alloc_resources/properties/avg_norm_alloc_cores",
+                "type": "number"
+              },
+              "avg_norm_alloc_disk": {
+                "id": "trace/properties/traces/items/properties/avg_alloc_resources/properties/avg_norm_alloc_disk",
+                "type": "number"
+              },
+              "avg_norm_alloc_ram": {
+                "id": "trace/properties/traces/items/properties/avg_alloc_resources/properties/avg_norm_alloc_ram",
+                "type": "number"
+              }
+            },
+            "type": "object"
+          },
+          "events": {
+            "id": "trace/properties/traces/items/properties/events",
+            "items": {
+              "additionalProperties": false,
+              "id": "trace/properties/traces/items/properties/events/items",
+              "properties": {
+                "constraints": {
+                  "description": "Indicates that a task must be scheduled to execute on a different machine than any other currently running task in the job.",
+                  "id": "trace/properties/traces/items/properties/events/items/properties/constraints",
+                  "title": "Different Machine Constraint",
+                  "type": "boolean"
+                },
+                "event_type": {
+                  "description": "Value of the type of event.",
+                  "id": "trace/properties/traces/items/properties/events/items/properties/event_type",
+                  "maximum": 8,
+                  "minimum": 0,
+                  "title": "Event Type",
+                  "type": "integer"
+                },
+                "job_id": {
+                  "description": "Integer representing the Job ID which the trace belongs to.",
+                  "id": "trace/properties/traces/items/properties/events/items/properties/job_id",
+                  "maximum": 36893488147419103000,
+                  "minimum": 0,
+                  "title": "Job ID",
+                  "type": "integer"
+                },
+                "machine_id": {
+                  "description": "Indicates the machine onto which the task was scheduled.",
+                  "id": "trace/properties/traces/items/properties/events/items/properties/machine_id",
+                  "maximum": 36893488147419103000,
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "missing_info": {
+                  "default": 0,
+                  "description": "Field that represents if there is missing info. Typically if resource request fields are empty",
+                  "id": "trace/properties/traces/items/properties/events/items/properties/missing_info",
+                  "title": "Missing info",
+                  "type": "integer"
+                },
+                "norm_req_cores": {
+                  "description": "The normalized CPU cores resource request, from 0 to 1.",
+                  "id": "trace/properties/traces/items/properties/events/items/properties/norm_req_cores",
+                  "maximum": 1,
+                  "minimum": 0,
+                  "title": "Resource request for CPU",
+                  "type": "number"
+                },
+                "norm_req_disk": {
+                  "description": "The normalized disk resource request, from 0 to 1.",
+                  "id": "trace/properties/traces/items/properties/events/items/properties/norm_req_disk",
+                  "maximum": 1,
+                  "minimum": 0,
+                  "title": "Resource request for local disk space",
+                  "type": "number"
+                },
+                "norm_req_ram": {
+                  "description": "The normalized RAM resource request, from 0 to 1.",
+                  "id": "trace/properties/traces/items/properties/events/items/properties/norm_req_ram",
+                  "maximum": 1,
+                  "minimum": 0,
+                  "title": "Resource request for RAM",
+                  "type": "number"
+                },
+                "priority": {
+                  "description": "Normalized priority starting from 0, 0 being the lowest priority.",
+                  "id": "trace/properties/traces/items/properties/events/items/properties/priority",
+                  "minimum": 0,
+                  "title": "Priority",
+                  "type": "integer"
+                },
+                "scheduling_class": {
+                  "description": "Roughtly represents how latency-sensitive a job is. The higher the value the more sensitive it is.",
+                  "id": "trace/properties/traces/items/properties/events/items/properties/scheduling_class",
+                  "maximum": 3,
+                  "minimum": 0,
+                  "title": "Scheduling class",
+                  "type": "integer"
+                },
+                "task_index": {
+                  "description": "Task Index Within the Job. A job can have multiple tasks associated with it.",
+                  "id": "trace/properties/traces/items/properties/events/items/properties/task_index",
+                  "maximum": 36893488147419103000,
+                  "minimum": 0,
+                  "title": "Task Index Within the Job",
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "description": "The time in which the event ocurred.",
+                  "id": "trace/properties/traces/items/properties/events/items/properties/timestamp",
+                  "maximum": 36893488147419103000,
+                  "minimum": 0,
+                  "title": "Timestamp",
+                  "type": "integer"
+                },
+                "user_name": {
+                  "description": "An opaque name representing the user which the submitted job belongs to.",
+                  "id": "trace/properties/traces/items/properties/events/items/properties/user_id",
+                  "maxLength": 45,
+                  "minLength": 44,
+                  "title": "User Name",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "scheduling_class",
+                "user_name",
+                "job_id",
+                "timestamp",
+                "task_index",
+                "priority",
+                "event_type"
+              ],
+              "type": "object"
+            },
+            "minItems": 1,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "factors": {
+            "additionalProperties": false,
+            "id": "trace/properties/traces/items/properties/factors",
+            "properties": {
+              "class": {
+                "id": "trace/properties/traces/items/properties/factors/properties/class",
+                "type": "string"
+              },
+              "completion_deadline": {
+                "id": "trace/properties/traces/items/properties/factors/properties/completion_deadline",
+                "type": "integer"
+              },
+              "released_time": {
+                "id": "trace/properties/traces/items/properties/factors/properties/released_time",
+                "type": "integer"
+              },
+              "req_cores": {
+                "id": "trace/properties/traces/items/properties/factors/properties/req_cores",
+                "type": "integer"
+              },
+              "req_disk": {
+                "id": "trace/properties/traces/items/properties/factors/properties/req_disk",
+                "type": "integer"
+              },
+              "req_ram": {
+                "id": "trace/properties/traces/items/properties/factors/properties/req_ram",
+                "type": "integer"
+              },
+              "req_time": {
+                "id": "trace/properties/traces/items/properties/factors/properties/req_time",
+                "type": "integer"
+              },
+              "start_deadline": {
+                "id": "trace/properties/traces/items/properties/factors/properties/start_deadline",
+                "type": "integer"
+              },
+              "system_time": {
+                "id": "trace/properties/traces/items/properties/factors/properties/system_time",
+                "type": "integer"
+              },
+              "waiting_time": {
+                "id": "trace/properties/traces/items/properties/factors/properties/waiting_time",
+                "type": "integer"
+              }
+            },
+            "type": "object"
+          },
+          "job_id": {
+            "description": "Integer representing the Job ID which the trace belongs to.",
+            "id": "trace/properties/traces/items/properties/job_id",
+            "maximum": 36893488147419103000,
+            "minimum": 0,
+            "title": "Job ID",
+            "type": "integer"
+          },
+          "trace_id": {
+            "description": "Result of concatenating task_index to job_id. Custom application identifier.",
+            "id": "trace/properties/traces/items/properties/trace_id",
+            "maxLength": 100,
+            "minLength": 1,
+            "title": "Trace ID",
+            "type": "string"
+          },
+          "user_name": {
+            "description": "An opaque name representing the user which the submitted job belongs to.",
+            "id": "trace/properties/traces/items/properties/user_id",
+            "maxLength": 45,
+            "minLength": 44,
+            "title": "User Name",
+            "type": "string"
+          }
+        },
+        "required": [
+          "user_name",
+          "job_id",
+          "trace_id",
+          "events"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "traces"
+  ],
+  "type": "object"
+}

@@ -1,0 +1,37 @@
+{
+  "id": "http://schema.org/PostalAddress",
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "extends": {
+    "$ref": "ContactPoint.json"
+  },
+  "description": "The mailing address. Schema.org: http://schema.org/PostalAddress",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "addressLocality": {
+      "description": "The locality. For example, Mountain View.",
+      "type": "string"
+    },
+    "addressRegion": {
+      "description": "The region. For example, CA.",
+      "type": "string"
+    },
+    "postOfficeBoxNumber": {
+      "description": "The post office box number for PO box addresses.",
+      "type": "string"
+    },
+    "postalCode": {
+      "description": "The postal code. For example, 94043.",
+      "type": "string"
+    },
+    "streetAddress": {
+      "description": "The street address. For example, 1600 Amphitheatre Pkwy.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "addressLocality",
+    "addressRegion",
+    "streetAddress"
+  ]
+}

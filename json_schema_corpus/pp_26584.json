@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "aenderungsgrund": {
+      "type": "string"
+    },
+    "skript": {
+      "$ref": "startStoppSkript.json"
+    },
+    "veranlasser": {
+      "type": "string"
+    },
+    "passwort": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "aenderungsgrund",
+    "skript",
+    "veranlasser",
+    "passwort"
+  ]
+}

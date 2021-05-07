@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "orderedUniReference",
+  "id": "orderedUniReference",
+  "description": "A reference to an ordered UNI. The UNI is referenced on an Order by customer order number (PON), and order item reference.",
+  "type": "object",
+  "required": [
+    "objectType",
+    "orderItemReference"
+  ],
+  "properties": {
+    "objectType": {
+      "type": "string",
+      "enum": [
+        "orderedUniReference"
+      ],
+      "description": "The type of the object, orderedUniReference."
+    },
+    "orderId": {
+      "type": "string",
+      "description": "An unique identifier for an order.",
+      "maxLength": 45
+    },
+    "buyerPurchaseOrderNumber": {
+      "type": "string",
+      "description": "The purchase order number for the order that contains the referenced UNI. This is required if the ordered UNI is not on the same order as the orderedUniReference.",
+      "maxLength": 16
+    },
+    "orderItemReference": {
+      "type": "string",
+      "description": "The order item reference for the UNI on the referenced order, or on the current order if a buyerPurchaseOrderNumber is not provided.",
+      "maxLength": 4
+    }
+  }
+}

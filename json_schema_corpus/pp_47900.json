@@ -1,0 +1,75 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "id": "https://inowas.com/schema/",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string"
+    },
+    "geometry": {
+      "$ref": "geojson/polygon.json"
+    },
+    "bounding_box": {
+      "$ref": "modflow/boundingBox.json"
+    },
+    "grid_size": {
+      "$ref": "modflow/gridSize.json"
+    },
+    "length_unit": {
+      "description": "0: undefined, 1: feet, 2: meters, 3: centimeters",
+      "enum": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "time_unit": {
+      "description": "0: undefined, 1: seconds, 2: minutes, 3: hours, 4: days, 5: years",
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "public": {
+      "type": "boolean"
+    },
+    "permissions": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 3
+    },
+    "active_cells": {
+      "$ref": "modflow/activeCells.json"
+    },
+    "mt3dms": {},
+    "stress_periods": {
+      "$ref": "modflow/stressPeriods.json"
+    }
+  },
+  "additionalProperties": true,
+  "required": [
+    "id",
+    "name",
+    "description",
+    "geometry",
+    "bounding_box",
+    "grid_size",
+    "length_unit",
+    "time_unit",
+    "public"
+  ]
+}

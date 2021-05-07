@@ -1,0 +1,409 @@
+{
+  "id": "",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "OTA2_Message_v2.0.0",
+  "description": "DRAFT SCHEMA DISCLAIMER: This is an OpenTravel draft specification designed for review by OpenTravel members and other interested parties, and is not designed for implementation in a production environment, nor is it considered an official OpenTravel document. OpenTravel may at any time up to final specification publication change any aspect of this message including, but not limited to, specific elements, element names/labels, annotations or message name. Implementation of this version is done so at the risk of the implementer or implementing company. The current publication schedule can be found here http://wiki.opentravel.org/index.php/Public:2011AB_Publication_Schedule.",
+  "definitions": {
+    "OTA2_Payload": {
+      "description": "Payload base type for declaring message elements. All messages elements must extend this type AND must end with a Extension element.",
+      "type": "object",
+      "discriminator": "@type",
+      "properties": {
+        "type": {
+          "@type": "string"
+        },
+        "DataPolicy": {
+          "description": "Details about data policy(s) that apply to all or a portion of this message.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DataPolicy"
+          }
+        },
+        "Encryption": {
+          "description": "Details about encrypted information within this message.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Encryption"
+          }
+        },
+        "TargetSystem": {
+          "description": "The target (or receiving) processing system.",
+          "$ref": "#/definitions/TargetSystem"
+        },
+        "Transaction": {
+          "description": "Transactional processing information.",
+          "$ref": "#/definitions/Transaction"
+        },
+        "timeStamp": {
+          "description": "A timestamp for when the message was created.",
+          "type": "string",
+          "format": "date-time"
+        },
+        "version": {
+          "description": "The OpenTravel message version indicated by a decimal value.",
+          "type": "number"
+        },
+        "dataPolicyInd": {
+          "description": "If true, data policy information has been specified and is contained in the DataPolicy element.",
+          "type": "boolean"
+        },
+        "encryption": {
+          "description": "If true, all or portions of this message are encrypted and the Encryption element should be parsed.",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "@type",
+        "timeStamp",
+        "version"
+      ]
+    },
+    "OTA2_Request_Payload": {
+      "description": "Base type for SOAP request messages.",
+      "allOf": [
+        {
+          "$ref": "#/definitions/OTA2_Payload"
+        }
+      ]
+    },
+    "OTA2_Response_Payload": {
+      "description": "Base type for SOAP response messages.",
+      "allOf": [
+        {
+          "$ref": "#/definitions/OTA2_Payload"
+        }
+      ]
+    },
+    "OTA2_Notif_Payload": {
+      "description": "Base type for SOAP notification messages.",
+      "allOf": [
+        {
+          "$ref": "#/definitions/OTA2_Payload"
+        }
+      ]
+    },
+    "DataPolicy": {
+      "description": "Summary data policy information.",
+      "properties": {
+        "@type": {
+          "type": "string"
+        },
+        "schemaFieldXPath": {
+          "description": "An xPath to the tag of the schema element or attribute (field) that the data policy(s) applies to.",
+          "x-otm-annotations": {
+            "examples": [
+              {
+                "context": "OTM2",
+                "value": "AirInventoryQueryRQ/Traveler/@birthDate"
+              }
+            ]
+          },
+          "$ref": "#/definitions/String_Medium"
+        },
+        "type": {
+          "description": "An extensible list of data policy types.",
+          "$ref": "#/definitions/Enum_DataPolicyType"
+        }
+      },
+      "required": [
+        "@type",
+        "schemaFieldXPath",
+        "type"
+      ],
+      "discriminator": "@type"
+    },
+    "DataPolicy_Detail": {
+      "description": "Detail data policy information.",
+      "allOf": [
+        {
+          "$ref": "#/definitions/DataPolicy"
+        },
+        {
+          "properties": {
+            "description": {
+              "description": "A brief description of the data policy intended to be used for logging and compliance purposes.",
+              "x-otm-annotations": {
+                "examples": [
+                  {
+                    "context": "OTM2",
+                    "value": "Restricted to internal sharing as needed-no third party sharing."
+                  }
+                ]
+              },
+              "$ref": "#/definitions/String_Medium"
+            },
+            "url": {
+              "description": "A URL to a source that describes the data policy.",
+              "x-otm-annotations": {
+                "examples": [
+                  {
+                    "context": "OTM2",
+                    "value": "http://www.BTCCO.com/datapolicy.aspx"
+                  }
+                ]
+              },
+              "$ref": "#/definitions/URL"
+            }
+          }
+        }
+      ]
+    },
+    "Enum_DataPolicyType": {
+      "description": "An extensible list of identifiers for a type of data usage policy and/or restriction.",
+      "x-otm-annotations": {
+        "documentation": {
+          "implementers": [
+            "Note that any data use, sharing or retention policies MUST be agreed upon by trading partners. Exchanging a warning and/or data restriction policy content in an electronic message does indicate policy compliance awareness by the receiving party. This functionality is typically used for privacy compliance and log auditing purposes only."
+          ]
+        }
+      },
+      "properties": {
+        "value": {
+          "$ref": "#/definitions/Enum_DataPolicyType_Base"
+        },
+        "extension": {
+          "type": "string"
+        }
+      }
+    },
+    "Enum_DataPolicyType_Base": {
+      "description": "An extensible list of identifiers for a type of data usage policy and/or restriction.",
+      "x-otm-annotations": {
+        "documentation": {
+          "implementers": [
+            "Note that any data use, sharing or retention policies MUST be agreed upon by trading partners. Exchanging a warning and/or data restriction policy content in an electronic message does indicate policy compliance awareness by the receiving party. This functionality is typically used for privacy compliance and log auditing purposes only."
+          ]
+        }
+      },
+      "type": "string",
+      "enum": [
+        "Retention",
+        "Sharing",
+        "Use",
+        "Retention, Sharing and Use",
+        "Other_"
+      ]
+    },
+    "Encryption": {
+      "description": "Summary payload information.",
+      "properties": {
+        "@type": {
+          "type": "string"
+        },
+        "schemaFieldXPath": {
+          "description": "An xPath to the tag of the schema element or attribute (field) that is encrypted.",
+          "x-otm-annotations": {
+            "examples": [
+              {
+                "context": "OTM2",
+                "value": "AirInventoryQueryRQ/Traveler/@birthDate"
+              }
+            ]
+          },
+          "$ref": "#/definitions/String_Medium"
+        },
+        "value": {
+          "description": "The encrypted value.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "@type",
+        "schemaFieldXPath",
+        "value"
+      ],
+      "discriminator": "@type"
+    },
+    "Encryption_Detail": {
+      "description": "Detail encryption information.",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Encryption"
+        },
+        {
+          "properties": {
+            "method": {
+              "description": "The encryption method being used.",
+              "x-otm-annotations": {
+                "documentation": {
+                  "implementers": [
+                    "Note that if you do not specify the encryption method, it should be known to your trading partners."
+                  ]
+                },
+                "examples": [
+                  {
+                    "context": "OTM2",
+                    "value": "Triple DES"
+                  }
+                ]
+              },
+              "$ref": "#/definitions/String_Short"
+            }
+          }
+        }
+      ]
+    },
+    "TargetSystem": {
+      "description": "Metadata that describes a target (or receiving) processing system.",
+      "properties": {
+        "value": {
+          "description": "An extensible list of target message processing system types..",
+          "$ref": "#/definitions/Enum_TargetProcessingSystem"
+        },
+        "extension": {
+          "$ref": "built-ins/OTA2_BuiltIns_v2.0.0.otm#/definitions/String_EnumExtension"
+        },
+        "systemName": {
+          "description": "The name of the target system that may be specified if there are more than one system for the specified system type.",
+          "x-otm-annotations": {
+            "examples": [
+              {
+                "context": "OTM2",
+                "value": "Server3"
+              }
+            ]
+          },
+          "$ref": "#/definitions/String_Short"
+        }
+      }
+    },
+    "Enum_TargetProcessingSystem": {
+      "description": "An extensible list of target processing system types.",
+      "type": "string",
+      "enum": [
+        "Production",
+        "Staging",
+        "Test",
+        "Other_"
+      ]
+    },
+    "Transaction": {
+      "description": "Metadata that describes a message transaction.",
+      "x-otm-annotations": {},
+      "properties": {
+        "value": {
+          "description": "The transaction ID.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Unique identifier to relate all messages within a transaction (e.g. this would be sent in all request and response messages that are part of an on-going transaction).",
+                "This would be sent in all request and response messages that are part of an on-going transaction."
+              ]
+            }
+          },
+          "$ref": "#/definitions/String_Short"
+        },
+        "correlationID": {
+          "description": "An ID for end-to-end correlation of log messages with the corresponding Web service message throughout the processing of the Web service message.",
+          "x-otm-annotations": {
+            "examples": [
+              {
+                "context": "OTM2",
+                "value": "6712"
+              }
+            ]
+          },
+          "$ref": "#/definitions/String_Short"
+        },
+        "sequenceNumber": {
+          "description": "The sequence number of the transaction assigned by the sending system for ordered message processing or message resynchronization.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "Message resynchronization typically is required if a system has been off-line and needs to retrieve messages that were missed."
+              ]
+            },
+            "examples": [
+              {
+                "context": "OTM2",
+                "value": "6"
+              }
+            ]
+          },
+          "type": "integer",
+          "format": "int32"
+        },
+        "status": {
+          "description": "Where this message falls within a sequence of messages.",
+          "x-otm-annotations": {
+            "examples": [
+              {
+                "context": "OTM2",
+                "value": "Start"
+              }
+            ]
+          },
+          "$ref": "#/definitions/Enum_TransactionStatus"
+        },
+        "retransmissionInd": {
+          "description": "If true, the message is being re-sent after a failure.",
+          "x-otm-annotations": {
+            "documentation": {
+              "implementers": [
+                "It is recommended that this attribute is used (i.e., set to TRUE) only when a message is retransmitted."
+              ]
+            }
+          },
+          "type": "boolean"
+        }
+      }
+    },
+    "Enum_TransactionStatus": {
+      "description": "An identifier for where this message falls within a sequence of messages.",
+      "type": "string",
+      "enum": [
+        "Start",
+        "End",
+        "Rollback",
+        "InSeries",
+        "Continuation",
+        "Subsequent"
+      ]
+    },
+    "String_Short": {
+      "description": "A string with a minimum length of 1 and a maximum length of 128.",
+      "x-otm-annotations": {
+        "examples": [
+          {
+            "context": "OTM2",
+            "value": "I am a short string."
+          }
+        ]
+      },
+      "type": "string",
+      "maxLength": 128,
+      "minLength": 1
+    },
+    "String_Medium": {
+      "description": "A string with a minimum length of 1 and a maximum length of 512.",
+      "x-otm-annotations": {
+        "examples": [
+          {
+            "context": "OTM2",
+            "value": "I am a medium string."
+          }
+        ]
+      },
+      "type": "string",
+      "maxLength": 512,
+      "minLength": 1
+    },
+    "URL": {
+      "description": "A URL in W3C recommended format.",
+      "x-otm-annotations": {
+        "documentation": {
+          "references": [
+            "http://www.w3.org/Addressing/URL/url-spec.txt"
+          ]
+        },
+        "examples": [
+          {
+            "context": "OTM2",
+            "value": "http://www.opentravel.org"
+          }
+        ]
+      },
+      "type": "string"
+    }
+  }
+}

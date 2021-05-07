@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Scenario Reasoner output for scenarios.allfirsts method",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "minItems": 4,
+        "maxItems": 4,
+        "items": [
+          {
+            "description": "The unique identifier for the statement",
+            "type": "string",
+            "example": "gmd4.computer.edit.29"
+          },
+          {
+            "type": "string",
+            "enum": [
+              "[]"
+            ]
+          },
+          {
+            "type": "array",
+            "maxItems": 0,
+            "additionalItems": false
+          },
+          {
+            "$ref": "state.schema.json#"
+          }
+        ],
+        "additionalItems": false
+      },
+      "additionalItems": false
+    },
+    "id": {
+      "description": "A value identifying this response, equal to the id of the request or null"
+    },
+    "error": {
+      "type": "null"
+    },
+    "version": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "result",
+    "error",
+    "id",
+    "version"
+  ],
+  "additionalProperties": false
+}

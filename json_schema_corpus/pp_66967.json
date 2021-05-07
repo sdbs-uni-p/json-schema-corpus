@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "uri://registries/security#group",
+  "title": "Security group",
+  "type": "object",
+  "table": "groups",
+  "_security": {
+    "_create": {
+      "_static": [
+        "System Admin"
+      ]
+    },
+    "_read": {
+      "_static": [
+        "System Admin"
+      ]
+    },
+    "_modify": {
+      "_static": [
+        "System Admin"
+      ]
+    }
+  },
+  "listFields": [
+    {
+      "field": "id",
+      "title": "ID"
+    },
+    {
+      "field": "name",
+      "title": "Nazov skupiny"
+    }
+  ],
+  "properties": {
+    "baseData": {
+      "title": "Z\u00e1kladn\u00e9 \u00fadaje",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "Identifik\u00e1tor",
+          "type": "string",
+          "required": true
+        },
+        "name": {
+          "title": "Nazov skupiny",
+          "type": "string",
+          "required": true
+        },
+        "parent": {
+          "title": "Parent group",
+          "required": false,
+          "objectLink": {
+            "registry": "groups",
+            "name": "baseData.name"
+          }
+        }
+      }
+    },
+    "security": {
+      "title": "Security",
+      "type": "object",
+      "properties": {
+        "permissions": {
+          "$ref": "uri://registries/security#permissions"
+        }
+      }
+    }
+  }
+}

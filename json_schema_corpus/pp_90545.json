@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://localhost:8080/schemas/gelfMessage.json",
+  "type": "object",
+  "description": "Messaggio GELF di log",
+  "properties": {
+    "version": {
+      "id": "version",
+      "type": "string"
+    },
+    "host": {
+      "id": "host",
+      "type": "string"
+    },
+    "short_message": {
+      "id": "short_message",
+      "type": "string"
+    },
+    "full_message": {
+      "id": "full_message",
+      "type": "string"
+    },
+    "timestamp": {
+      "$ref": "iso8601.json"
+    },
+    "level": {
+      "id": "level",
+      "type": "integer"
+    },
+    "_http_status": {
+      "id": "_http_status",
+      "type": "integer"
+    },
+    "_http_url": {
+      "id": "_http_url",
+      "type": "string"
+    },
+    "_correlation_id": {
+      "id": "_correlation_id",
+      "type": "string"
+    },
+    "_user_id": {
+      "id": "_user_id",
+      "type": "string"
+    },
+    "_link": {
+      "id": "_link",
+      "type": "string"
+    }
+  },
+  "required": [
+    "host",
+    "_http_status",
+    "_http_url",
+    "level",
+    "message",
+    "_link",
+    "version",
+    "_userId",
+    "_correlationId",
+    "timestamp",
+    "full"
+  ]
+}

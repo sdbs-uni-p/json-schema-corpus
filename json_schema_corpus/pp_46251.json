@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Category",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "_id": {
+      "type": "integer",
+      "description": "A unique ID for Category"
+    },
+    "classificationId": {
+      "type": "integer"
+    },
+    "level": {
+      "type": "integer"
+    },
+    "name": {
+      "type": "string"
+    },
+    "parentId": {
+      "type": "integer"
+    }
+  }
+}

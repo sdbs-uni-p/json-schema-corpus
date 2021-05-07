@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "temperature",
+  "description": "measure from the user",
+  "type": "object",
+  "properties": {
+    "value": {
+      "description": "the measured value",
+      "type": "number"
+    }
+  },
+  "required": [
+    "value"
+  ]
+}

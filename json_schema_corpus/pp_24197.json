@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Record DTO Schema",
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "UUID",
+      "type": "string"
+    },
+    "snapshotId": {
+      "description": "Corresponding snapshot id, which is the same as jobExecutionId",
+      "type": "string"
+    },
+    "matchedProfileId": {
+      "description": "Id of the matcher profile which is applied for the record",
+      "type": "string"
+    },
+    "matchedId": {
+      "description": "Represents relations with another matched records, necessary for saving the history of applying changes for inventory/holding/etc records",
+      "type": "string"
+    },
+    "generation": {
+      "description": "Generation from the last record with the same matchedId incremented by 1",
+      "type": "string"
+    },
+    "recordType": {
+      "description": "Type of record, e.g. MARC",
+      "type": "string",
+      "$ref": "../mod-source-record-storage/recordType.json"
+    },
+    "sourceRecord": {
+      "description": "Source record",
+      "type": "object",
+      "$ref": "../mod-source-record-storage/sourceRecord.json"
+    },
+    "parsedRecord": {
+      "description": "Parsed record",
+      "type": "object",
+      "$ref": "../mod-source-record-storage/parsedRecord.json"
+    },
+    "errorRecord": {
+      "description": "Error record",
+      "type": "object",
+      "$ref": "../mod-source-record-storage/errorRecord.json"
+    },
+    "metadata": {
+      "description": "Metadata provided by the server",
+      "type": "object",
+      "$ref": "../../raml-util/schemas/metadata.schema",
+      "readonly": true
+    }
+  },
+  "required": [
+    "snapshotId",
+    "recordType",
+    "sourceRecord"
+  ]
+}

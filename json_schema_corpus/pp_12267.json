@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "id_eleve": {
+      "type": "string"
+    },
+    "id_devoir": {
+      "type": "integer"
+    },
+    "id_annotation": {
+      "type": [
+        "string",
+        "integer"
+      ]
+    }
+  },
+  "required": [
+    "id_eleve",
+    "id_devoir",
+    "id_annotation"
+  ]
+}

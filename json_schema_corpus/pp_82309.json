@@ -1,0 +1,40 @@
+{
+  "id": "http://schemas.triniti.io/json-schema/gdbots/enrichments/mixin/ua-parser/1-0-0.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "ctx_ua": {
+      "type": "string",
+      "minLength": 0,
+      "maxLength": 65535,
+      "pbj": {
+        "type": "text",
+        "rule": "single",
+        "overridable": true
+      }
+    },
+    "ctx_ua_parsed": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "#/definitions/user-agent"
+        }
+      ],
+      "pbj": {
+        "type": "message",
+        "rule": "single"
+      }
+    }
+  },
+  "definitions": {
+    "user-agent": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "http://schemas.triniti.io/json-schema/gdbots/contexts/user-agent/1-0-0.json#"
+        }
+      ]
+    }
+  },
+  "additionalProperties": true
+}

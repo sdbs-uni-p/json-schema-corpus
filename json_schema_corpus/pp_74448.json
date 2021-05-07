@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "properties": {
+    "result": {
+      "required": true,
+      "type": "array"
+    }
+  },
+  "required": true,
+  "type": "object"
+}

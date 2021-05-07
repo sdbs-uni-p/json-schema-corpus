@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "array",
+  "items": {
+    "allOf": [
+      {
+        "$ref": "evaluation.json"
+      },
+      {
+        "type": "object",
+        "required": [
+          "quarter_id",
+          "professor",
+          "course"
+        ],
+        "properties": {
+          "quarter_id": {
+            "type": "integer"
+          },
+          "professor": {
+            "$ref": "professor.json"
+          },
+          "course": {
+            "$ref": "course.json"
+          }
+        }
+      }
+    ]
+  }
+}

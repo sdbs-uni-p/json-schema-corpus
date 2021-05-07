@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Adjustments",
+  "description": "Adjustments",
+  "type": "object",
+  "properties": {
+    "lossBroughtForward": {
+      "title": "Loss brought forward",
+      "description": "Loss brought forward from earlier years set off against this year\u2019s profits",
+      "type": "number",
+      "multipleOf": 0.01,
+      "minimum": 0
+    },
+    "privateUseAdjustment": {
+      "title": "Private use adjustment",
+      "description": "Any expenses incurred not solely for the property business",
+      "type": "number",
+      "multipleOf": 0.01,
+      "minimum": 0
+    },
+    "balancingCharge": {
+      "title": "Balancing charge",
+      "description": "If an item for which capital allowance was claimed has been sold, given away or is no longer in use",
+      "type": "number",
+      "multipleOf": 0.01,
+      "minimum": 0
+    }
+  },
+  "additionalProperties": false
+}

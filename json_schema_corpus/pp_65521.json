@@ -1,0 +1,80 @@
+{
+  "id": "https://opendesk.cc/schemata/license.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Winnow License",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "https://opendesk.cc/schemata/base/value.json#"
+    },
+    {
+      "$ref": "https://opendesk.cc/schemata/base/options.json#"
+    },
+    {
+      "$ref": "https://opendesk.cc/schemata/base/canonical.json#"
+    },
+    {
+      "properties": {
+        "images": {},
+        "changes": {},
+        "name": {},
+        "description": {},
+        "public_description": {},
+        "short_description": {},
+        "schema": {},
+        "source": {},
+        "path": {},
+        "aliases": {},
+        "base": {},
+        "version": {},
+        "acronym": {},
+        "icon": {
+          "properties": {
+            "asset": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "asset"
+          ]
+        },
+        "is_non_commercial": {
+          "type": "boolean"
+        },
+        "url": {
+          "properties": {
+            "asset": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "asset"
+          ]
+        },
+        "type": {
+          "type": "string",
+          "pattern": "license"
+        },
+        "options": {}
+      },
+      "additionalProperties": false,
+      "requiredProperties": [
+        "name",
+        "description",
+        "short_description",
+        "is_non_commercial",
+        "type",
+        "source",
+        "path",
+        "version",
+        "changes"
+      ]
+    }
+  ]
+}

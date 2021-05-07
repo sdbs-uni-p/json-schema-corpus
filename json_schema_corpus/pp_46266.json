@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Transaction Xfer",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "fromTransactionId": {
+      "type": "integer"
+    },
+    "toTransactionId": {
+      "type": "integer"
+    }
+  }
+}

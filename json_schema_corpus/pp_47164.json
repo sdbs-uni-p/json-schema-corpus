@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "https://raw.githubusercontent.com/evoldoers/machineboss/master/schema/params.json",
+  "description": "MachineBoss function definitions schema",
+  "type": "object",
+  "patternProperties": {
+    ".*": {
+      "$ref": "https://raw.githubusercontent.com/evoldoers/machineboss/master/schema/expr.json"
+    }
+  }
+}

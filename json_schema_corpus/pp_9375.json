@@ -1,0 +1,13 @@
+{
+  "name": "angular2-hello-world-widget",
+  "description": "A hello world widget using the angular2 adapter.",
+  "integration": {
+    "technology": "angular2",
+    "type": "widget"
+  },
+  "features": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {}
+  }
+}

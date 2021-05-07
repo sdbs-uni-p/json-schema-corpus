@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://sample.trajano.net/horse.json#",
+  "type": "object",
+  "title": "Horse",
+  "description": "Jackson data binding is done on this project for now, this avoids requiring it in the core doxdb",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "passport": {
+      "type": "string"
+    },
+    "fei": {
+      "type": "string"
+    },
+    "usef": {
+      "type": "string"
+    },
+    "ec": {
+      "type": "string"
+    },
+    "dateOfBirth": {
+      "type": "string",
+      "format": "date"
+    },
+    "countryOfBirth": {
+      "$ref": "country.json#"
+    },
+    "gender": {
+      "enum": [
+        "mare",
+        "gelding"
+      ]
+    },
+    "color": {
+      "type": "string"
+    },
+    "breed": {
+      "type": "string"
+    },
+    "sire": {
+      "type": "string"
+    },
+    "sireDam": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "patternProperties": {
+    "_[a-z]+": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

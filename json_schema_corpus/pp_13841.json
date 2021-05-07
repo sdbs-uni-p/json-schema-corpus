@@ -1,0 +1,24 @@
+{
+  "type": "object",
+  "title": "Phone",
+  "id": "/phone",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "properties": {
+    "landline": {
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 25,
+      "description": "landline phone number, +6589784344"
+    },
+    "mobile": {
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 25,
+      "description": "mobile phone number, +6589784344"
+    },
+    "tagBag": {
+      "$ref": "/shared/tagBag"
+    }
+  },
+  "additionalProperties": false
+}

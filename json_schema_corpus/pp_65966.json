@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Item list",
+  "description": "PayPal item_list json schema",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "item.json"
+          }
+        ]
+      }
+    },
+    "shipping_address": {
+      "$ref": "shipping_address.json"
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "id": "/schemata/program",
+  "title": "Program",
+  "description": "An applicant applies to a **program** at an **organization**.",
+  "links": [
+    {
+      "description": "List existing programs.",
+      "href": "/api/v1/user_identities/:user_identity_id/programs",
+      "method": "GET",
+      "rel": "self",
+      "title": "List",
+      "http_header": {
+        "x-api-key": "0123456789abcdef0123456789abcdef"
+      }
+    }
+  ],
+  "type": "object",
+  "strictProperties": true,
+  "properties": {
+    "href": {
+      "type": "string",
+      "description": "Hypertext reference to this resource.",
+      "pattern": "/api/v1/user_identities/\\d+/programs",
+      "example": "/api/v1/user_identities/1/programs"
+    },
+    "programs": {
+      "type": "array",
+      "items": {
+        "required": [
+          "id",
+          "name",
+          "organization_name"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique identifier of this program.",
+            "example": 42023191739237
+          },
+          "name": {
+            "type": "string",
+            "description": "Human-readable name of this program.  Likely to be repeated between organizations.",
+            "example": "Potions"
+          },
+          "organization_name": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Human-readable name of organization whose program this is.",
+            "example": "Hogwarts School of Witchcraft and Wizardry"
+          }
+        }
+      }
+    }
+  }
+}

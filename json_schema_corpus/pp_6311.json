@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "endpoint": "/timeout",
+  "description": "testing test case timeouts",
+  "methods": [
+    "get"
+  ],
+  "type": "object",
+  "properties": {
+    "timeout": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "timeout"
+  ]
+}

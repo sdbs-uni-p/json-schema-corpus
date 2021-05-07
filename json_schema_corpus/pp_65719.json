@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Capacity plan results with plan status",
+  "type": "object",
+  "properties": {
+    "results": {
+      "type": "array",
+      "items": [
+        {
+          "$ref": "capacity-plan-result.json"
+        }
+      ]
+    },
+    "status": {
+      "type": "string"
+    },
+    "status_message": {
+      "type": "string"
+    }
+  }
+}

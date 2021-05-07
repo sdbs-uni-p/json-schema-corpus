@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "alyle-ui-ng-add",
+  "title": "Alyle UI ng-add schematic",
+  "type": "object",
+  "properties": {
+    "project": {
+      "type": "string",
+      "description": "Name of the project.",
+      "$default": {
+        "$source": "projectName"
+      }
+    },
+    "gestures": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether gesture support should be set up.",
+      "x-prompt": "Set up HammerJS for gesture recognition?"
+    },
+    "themes": {
+      "description": "Themes that will be added to project.",
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      },
+      "x-prompt": {
+        "message": "What themes should be added?",
+        "type": "list",
+        "multiselect": true,
+        "items": [
+          "minima-light",
+          "minima-deep-dark",
+          "minima-dark"
+        ]
+      },
+      "default": [
+        "minima-light"
+      ]
+    }
+  },
+  "required": []
+}

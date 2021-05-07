@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Data",
+  "type": "object",
+  "properties": {
+    "firstNumber": {
+      "type": "number",
+      "constraints": [
+        {
+          "type": "UNKNOWN",
+          "target": "#/secondNumber"
+        }
+      ]
+    },
+    "secondNumber": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "firstNumber",
+    "secondNumber"
+  ]
+}

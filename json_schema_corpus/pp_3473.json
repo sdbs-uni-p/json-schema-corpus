@@ -1,0 +1,127 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Election",
+  "description": "ClearElection Election definition, v0.0",
+  "type": "object",
+  "properties": {
+    "clearelection": {
+      "enum": [
+        "v0.0"
+      ]
+    },
+    "name": {
+      "type": "string"
+    },
+    "agents": {
+      "type": "object",
+      "properties": {
+        "signin": {
+          "$ref": "#/definitions/agent"
+        },
+        "booth": {
+          "$ref": "#/definitions/agent"
+        }
+      }
+    },
+    "schedule": {
+      "type": "object",
+      "properties": {
+        "pollsOpen": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "pollsClose": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "contests": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "contestId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "ranked": {
+            "type": "boolean",
+            "default": false
+          },
+          "multiplicity": {
+            "type": "integer",
+            "default": 1,
+            "minimum": 1
+          },
+          "writeIn": {
+            "type": "boolean",
+            "default": false
+          },
+          "candidates": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "candidateId": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "candidateId",
+                "name"
+              ]
+            }
+          }
+        },
+        "required": [
+          "contestId",
+          "name",
+          "candidates"
+        ]
+      }
+    },
+    "results": {
+      "type": "object",
+      "properties": {
+        "ballots": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ballot"
+          }
+        },
+        "voters": {
+          "type": "object"
+        }
+      }
+    }
+  },
+  "required": [
+    "clearelection",
+    "name",
+    "schedule",
+    "contests"
+  ],
+  "definitions": {
+    "agent": {
+      "type": "object",
+      "properties": {
+        "uri": {
+          "type": "string",
+          "format": "uri"
+        }
+      },
+      "required": [
+        "uri"
+      ]
+    },
+    "ballot": {
+      "$ref": "file:ballot-0.0.schema.json"
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#4",
+  "title": "Collection",
+  "description": "Contains multiple elements of another type",
+  "type": "object",
+  "properties": {
+    "contentSchema": {
+      "description": "URI of the schema describing elements of the collection",
+      "type": "string"
+    },
+    "data": {
+      "description": "array of elements",
+      "type": "array",
+      "items": {
+        "description": "element of the collection",
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "city.json#"
+          },
+          {
+            "$ref": "errordata.json#"
+          },
+          {
+            "$ref": "event.json#"
+          },
+          {
+            "$ref": "price.json#"
+          },
+          {
+            "$ref": "pump.json#"
+          },
+          {
+            "$ref": "revenue.json#"
+          },
+          {
+            "$ref": "station.json#"
+          },
+          {
+            "$ref": "tank.json#"
+          }
+        ]
+      }
+    }
+  },
+  "required": [
+    "data"
+  ]
+}

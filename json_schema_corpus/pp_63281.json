@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "type": "object",
+  "description": "Ingest Log",
+  "properties": {
+    "ingest": {
+      "type": "string",
+      "required": true
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "new",
+        "running",
+        "success",
+        "fail"
+      ],
+      "default": "new",
+      "required": true
+    }
+  }
+}

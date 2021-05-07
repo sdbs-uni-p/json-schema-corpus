@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "common_clientIdentity",
+  "type": "object",
+  "properties": {
+    "server": {
+      "$ref": "common_publicCert"
+    },
+    "clientPublic": {
+      "$ref": "common_publicCert"
+    },
+    "clientPrivate": {
+      "$ref": "common_privateCert"
+    }
+  },
+  "required": [
+    "server",
+    "clientPublic",
+    "clientPrivate"
+  ],
+  "additionalProperties": false
+}

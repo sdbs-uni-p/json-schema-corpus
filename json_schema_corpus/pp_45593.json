@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "title": "Message",
+  "description": "A single chat message sent by a single user.",
+  "properties": {
+    "message": {
+      "type": "string"
+    }
+  }
+}

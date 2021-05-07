@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Source Record data model",
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "UUID",
+      "type": "string"
+    },
+    "source": {
+      "description": "Raw data",
+      "type": "string"
+    }
+  },
+  "required": [
+    "source"
+  ]
+}

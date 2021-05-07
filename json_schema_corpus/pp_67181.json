@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "http://comrade.forma-pro.com/schemas/message/CreateJob.json",
+  "type": "object",
+  "properties": {
+    "jobTemplate": {
+      "$ref": "../JobTemplate.json"
+    },
+    "triggers": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "../trigger/SimpleTrigger.json"
+          },
+          {
+            "$ref": "../trigger/CronTrigger.json"
+          },
+          {
+            "$ref": "../trigger/NowTrigger.json"
+          }
+        ]
+      }
+    }
+  },
+  "required": [
+    "jobTemplate"
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "enniLocationResponse",
+  "id": "enniLocationResponse",
+  "description": "The location of the ENNI.",
+  "type": "object",
+  "required": [
+    "objectType",
+    "enniLocationAddressType",
+    "enniLocationAddress"
+  ],
+  "properties": {
+    "objectType": {
+      "type": "string",
+      "enum": [
+        "enniLocationResponse"
+      ],
+      "description": "The type of the object, enniLocationResponse."
+    },
+    "id": {
+      "type": "string",
+      "description": "The ENNI Location's unique identifier",
+      "maxLength": 15
+    },
+    "link": {
+      "$ref": "link.json#",
+      "description": "A link to the ENNI Location."
+    },
+    "locationName": {
+      "type": "string",
+      "description": "Name of Data Center or Colocation Facility where NNI is established (i.e., A Location).",
+      "maxLength": 60
+    },
+    "enniLocationAddressType": {
+      "type": "string",
+      "enum": [
+        "FIELDED_ADDRESS",
+        "FORMATTED_ADDRESS",
+        "ADDRESS_REFERENCE",
+        "GEOGRAPHIC_POINT"
+      ],
+      "description": "Identifies the type of address to be provided for the service location."
+    },
+    "enniLocationAddress": {
+      "type": "object",
+      "oneOf": [
+        {
+          "$ref": "formattedAddress.json#"
+        },
+        {
+          "$ref": "fieldedAddress.json#"
+        },
+        {
+          "$ref": "geographicPoint.json#"
+        },
+        {
+          "$ref": "addressReference.json#"
+        }
+      ],
+      "description": "A site address of the site address type."
+    }
+  }
+}

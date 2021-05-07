@@ -1,0 +1,112 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "menuitem",
+  "description": "Menu item structure for the data marshal system",
+  "type": "object",
+  "properties": {
+    "id": {
+      "$ref": "/schema/id"
+    },
+    "name": {
+      "$ref": "/schema/name"
+    },
+    "description": {
+      "$ref": "/schema/description"
+    },
+    "order_num": {
+      "type": "integer"
+    },
+    "choices": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "$ref": "/schema/name"
+          },
+          "unit": {
+            "type": "string"
+          },
+          "calories": {
+            "type": "object",
+            "properties": {
+              "min": {
+                "type": "number"
+              },
+              "max": {
+                "type": "number"
+              }
+            }
+          },
+          "prices": {
+            "type": "object",
+            "properties": {
+              "min": {
+                "type": "number"
+              },
+              "max": {
+                "type": "number"
+              }
+            }
+          },
+          "order_num": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "attributes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "gluten-free",
+          "vegan",
+          "vegetarian",
+          "spicy",
+          "shellfish",
+          "kosher",
+          "soy-free",
+          "dairy",
+          "egg",
+          "dairy-free",
+          "tree-nut",
+          "egg-free",
+          "peanut-free",
+          "soy",
+          "halal",
+          "shellfish-free",
+          "wheat",
+          "tree-nut-free",
+          "peanut",
+          "organic",
+          "fish",
+          "fish-free"
+        ]
+      }
+    },
+    "photos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "photo_id": {
+            "$ref": "/schema/id"
+          },
+          "title": {
+            "$ref": "/schema/name"
+          },
+          "photo_type": {
+            "$ref": "/schema/phototype"
+          },
+          "url": {
+            "$ref": "/schema/url"
+          },
+          "source": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

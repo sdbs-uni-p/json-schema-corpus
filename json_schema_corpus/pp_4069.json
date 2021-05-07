@@ -1,0 +1,132 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "DataEntity",
+  "description": "Root class for all Databook entities",
+  "type": "object",
+  "javaType": "databook.persistence.rule.rdf.ruleset.DataEntity",
+  "extends": {
+    "$ref": "RDFEntity.json"
+  },
+  "properties": {
+    "id": {
+      "description": "The identifier for the Databook entity",
+      "$ref": "Identifier.json"
+    },
+    "type": {
+      "description": "The type of the Databook entity",
+      "type": "string"
+    },
+    "description": {
+      "description": "A description of the Databook entity",
+      "type": "string"
+    },
+    "title": {
+      "description": "A title of the Databook entity. This is the canonical name of the entity. For example, for a collection/data object, this is the path, and for a user this is the user name",
+      "type": "string"
+    },
+    "created": {
+      "description": "Create time of the Databook entity",
+      "type": "string",
+      "format": "date-time"
+    },
+    "submitted": {
+      "description": "Submission time of the Databook entity",
+      "type": "string",
+      "format": "date-time"
+    },
+    "related": {
+      "description": "A related Databook entity to the Databook entity",
+      "type": "array",
+      "items": {
+        "$ref": "#"
+      }
+    },
+    "hasPart": {
+      "description": "A part of the Databook entity",
+      "type": "array",
+      "items": {
+        "$ref": "#"
+      }
+    },
+    "partOf": {
+      "description": "A part of which the Databook entity is",
+      "type": "array",
+      "items": {
+        "$ref": "#"
+      }
+    },
+    "accessHistory": {
+      "description": "A history of accesses to the Databook entitiy",
+      "$ref": "Access.json"
+    },
+    "accessPermission": {
+      "description": "The access permission of the Databook entity",
+      "type": "array",
+      "items": {
+        "$ref": "AccessPermission.json"
+      }
+    },
+    "metadata": {
+      "type": "array",
+      "items": {
+        "$ref": "AVU.json"
+      }
+    },
+    "discussion": {
+      "type": "array",
+      "items": {
+        "$ref": "Post.json"
+      }
+    },
+    "owner": {
+      "description": "The owner of the Databook entity",
+      "$ref": "User.json"
+    },
+    "contributor": {
+      "description": "The contributors of the Databook entity",
+      "type": "array",
+      "itmes": {
+        "$ref": "User.json"
+      }
+    },
+    "likedBy": {
+      "type": "array",
+      "items": {
+        "$ref": "User.json"
+      }
+    },
+    "dislikedBy": {
+      "type": "array",
+      "items": {
+        "$ref": "User.json"
+      }
+    },
+    "tempInputStream": {
+      "description": "Temporary input stream",
+      "type": "object",
+      "javaType": "java.io.InputStream"
+    },
+    "storageLocationRequest": {
+      "description": "Request for where this entity is stored",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "irods",
+          "tripleStore"
+        ]
+      }
+    },
+    "storageLocation": {
+      "description": "Where this entity is stored",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "irods",
+          "tripleStore"
+        ]
+      }
+    }
+  }
+}

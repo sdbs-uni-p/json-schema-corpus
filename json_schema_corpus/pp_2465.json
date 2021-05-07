@@ -1,0 +1,2639 @@
+{
+  "id": "https://cdn.brytecore.com/packages/realestate/schema.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "A Brytescore API package schema to track real estate events",
+  "definitions": {
+    "geo": {
+      "description": "A geographical coordinate",
+      "type": "object",
+      "properties": {
+        "latitude": {
+          "type": "number"
+        },
+        "longitude": {
+          "type": "number"
+        }
+      }
+    },
+    "listing": {
+      "description": "A real estate listing",
+      "type": "object",
+      "properties": {
+        "address": {
+          "oneOf": [
+            {
+              "$ref": "https://cdn.brytecore.com/packages/schemas/address.json#"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "bedrooms": {
+          "type": "integer"
+        },
+        "features": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "fullBaths": {
+          "type": "integer"
+        },
+        "geoLocation": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/geo"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "halfBaths": {
+          "type": "integer"
+        },
+        "isAcreage": {
+          "type": "boolean"
+        },
+        "isCondo": {
+          "type": "boolean"
+        },
+        "isForeclosure": {
+          "type": "boolean"
+        },
+        "isLot": {
+          "type": "boolean"
+        },
+        "isMultiFamily": {
+          "type": "boolean"
+        },
+        "isRental": {
+          "type": "boolean"
+        },
+        "isSingleFamily": {
+          "type": "boolean"
+        },
+        "mlsId": {
+          "type": "string"
+        },
+        "listingURL": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        },
+        "photoURL": {
+          "oneOf": [
+            {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uri"
+            },
+            {
+              "enum": [
+                ""
+              ]
+            }
+          ]
+        },
+        "price": {
+          "type": "number"
+        },
+        "schoolElementary": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "schoolHigh": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "schoolMiddle": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "squareFeet": {
+          "type": "number"
+        },
+        "subdivision": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "price",
+        "mlsId"
+      ]
+    },
+    "neighborhood": {
+      "description": "Neighborhoods are geographic communities within a town, suburb, city or rural area. Generally considered more social than legal, neighborhood boundaries may not be agreed upon by its residents.\nNeighborhoods are not the same as MLS-defined subdivisions, which are comprised of legally subdivided lots of land.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "boundaries": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/definitions/geo"
+          }
+        }
+      },
+      "required": [
+        "name"
+      ]
+    },
+    "realEstateForm": {
+      "description": "A user-submitted data entry form with real estate fields",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/schemas/form.json#"
+        },
+        {
+          "properties": {
+            "agentName": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "isPrequalified": {
+              "type": "boolean"
+            },
+            "isWorkingWithAgent": {
+              "type": "boolean"
+            },
+            "relatedListing": {
+              "oneOf": [
+                {
+                  "$ref": "#/definitions/listing"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "search": {
+      "description": "A real estate listing search",
+      "type": "object",
+      "properties": {
+        "address": {
+          "oneOf": [
+            {
+              "$ref": "https://cdn.brytecore.com/packages/schemas/address.json#"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "bedroomsMin": {
+          "type": "integer"
+        },
+        "bedroomsMax": {
+          "type": "integer"
+        },
+        "cities": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "counties": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "features": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "fullBathsMax": {
+          "type": "integer"
+        },
+        "fullBathsMin": {
+          "type": "integer"
+        },
+        "halfBathsMax": {
+          "type": "integer"
+        },
+        "halfBathsMin": {
+          "type": "integer"
+        },
+        "id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "isAcreage": {
+          "type": "boolean"
+        },
+        "isCondo": {
+          "type": "boolean"
+        },
+        "isForeclosure": {
+          "type": "boolean"
+        },
+        "isLot": {
+          "type": "boolean"
+        },
+        "isMultiFamily": {
+          "type": "boolean"
+        },
+        "isRadiusSearch": {
+          "type": "boolean"
+        },
+        "isRental": {
+          "type": "boolean"
+        },
+        "isSingleFamily": {
+          "type": "boolean"
+        },
+        "mlsIds": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "postalCodes": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "priceMax": {
+          "type": "number"
+        },
+        "priceMin": {
+          "type": "number"
+        },
+        "radiusGeoLocation": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/geo"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "radiusInMiles": {
+          "type": "number"
+        },
+        "radiusSearchAddress": {
+          "oneOf": [
+            {
+              "$ref": "https://cdn.brytecore.com/packages/schemas/address.json#"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "resultsCount": {
+          "type": "number"
+        },
+        "schoolElementary": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "schoolHigh": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "schoolMiddle": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "searchURL": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        },
+        "subdivision": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "yearBuiltMax": {
+          "type": "number"
+        },
+        "yearBuiltMin": {
+          "type": "number"
+        }
+      }
+    },
+    "authenticated": {
+      "title": "authenticated",
+      "description": "User authenticated against website database",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/authenticated"
+        },
+        {
+          "properties": {
+            "data": {
+              "type": "object",
+              "properties": {
+                "userClassification": {
+                  "enum": [
+                    "agent",
+                    "staff",
+                    "visitor"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "calculatedMortgagePayment": {
+      "title": "calculatedMortgagePayment",
+      "description": "Calculated a mortgage payment",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.calculatedMortgagePayment"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "downPayment": {
+                  "type": "number"
+                },
+                "listing": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/listing"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "payment": {
+                  "type": "number"
+                },
+                "price": {
+                  "type": "number"
+                },
+                "rate": {
+                  "type": "number"
+                },
+                "term": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "calculatedPropertyValuation": {
+      "title": "calculatedPropertyValuation",
+      "description": "Calculated a property valuation",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.calculatedPropertyValuation"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "address": {
+                  "oneOf": [
+                    {
+                      "$ref": "https://cdn.brytecore.com/packages/schemas/address.json#"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "value": {
+                  "type": "number"
+                },
+                "valueRangeLow": {
+                  "type": "number"
+                },
+                "valueRangeHigh": {
+                  "type": "number"
+                },
+                "zestimate": {
+                  "type": "number"
+                },
+                "valuationURL": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "format": "uri"
+                },
+                "valuationModel": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "deletedSavedListing": {
+      "title": "deletedSavedListing",
+      "description": "Deleted a saved listing",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.deletedSavedListing"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "listing": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/listing"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "deletedSavedSearch": {
+      "title": "deletedSavedSearch",
+      "description": "Deleted a saved search",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.deletedSavedSearch"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "search": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/search"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "dislikedListing": {
+      "title": "dislikedListing",
+      "description": "Disliked a listing",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.dislikedListing"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "listing": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/listing"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "reason": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "hidListing": {
+      "title": "hidListing",
+      "description": "Hid a listing from search results",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.hidListing"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "listing": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/listing"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "likedListing": {
+      "title": "likedListing",
+      "description": "Liked a listing",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.likedListing"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "listing": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/listing"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "reason": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "listingImpression": {
+      "title": "listingImpression",
+      "description": "Listing displayed in search results",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.listingImpression"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "listing": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/listing"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "searchURL": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "listingImpressionBulk": {
+      "title": "listingImpressionBulk",
+      "description": "Multiple Listing Impressions displayed in search results",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.listingImpressionBulk"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "listings": {
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "$ref": "#/definitions/listing"
+                  }
+                },
+                "searchURL": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "playedListingVideo": {
+      "title": "playedListingVideo",
+      "description": "The user played a video about a listing.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.playedListingVideo"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "listing": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/listing"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "videoUrl": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "format": "uri"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "playedNeighborhoodVideo": {
+      "title": "playedNeighborhoodVideo",
+      "description": "The user played a video about a listing.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.playedNeighborhoodVideo"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "listing": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/listing"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "videoUrl": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "format": "uri"
+                },
+                "neighborhood": {
+                  "$ref": "#/definitions/neighborhood"
+                }
+              },
+              "required": [
+                "neighborhood"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "printedDrivingDirections": {
+      "title": "printedDrivingDirections",
+      "description": "Printed driving directions",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.printedDrivingDirections"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "listing": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/listing"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "startAddress": {
+                  "oneOf": [
+                    {
+                      "$ref": "https://cdn.brytecore.com/packages/schemas/address.json#"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "printedListing": {
+      "title": "printedListing",
+      "description": "Printed a listing",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.printedListing"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "listing": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/listing"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "printedListingFlyer": {
+      "title": "printedListingFlyer",
+      "description": "Printed a listing flyer",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.printedListingFlyer"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "listing": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/listing"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "printedSearchResults": {
+      "title": "printedSearchResults",
+      "description": "Printed search results",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.printedSearchResults"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "search": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/search"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "ratedListing": {
+      "title": "ratedListing",
+      "description": "Rated a listing",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.ratedListing"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "listing": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/listing"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "rating": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "rating"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "requestedCMA": {
+      "title": "requestedCMA",
+      "description": "Requested Comparative Market Analysis",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.requestedCMA"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "address": {
+                  "oneOf": [
+                    {
+                      "$ref": "https://cdn.brytecore.com/packages/schemas/address.json#"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "form": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/realEstateForm"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "requestedHomeAppraisal": {
+      "title": "requestedHomeAppraisal",
+      "description": "Requested home appraisal",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.requestedHomeAppraisal"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "address": {
+                  "oneOf": [
+                    {
+                      "$ref": "https://cdn.brytecore.com/packages/schemas/address.json#"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "form": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/realEstateForm"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "requestedInfo": {
+      "title": "requestedInfo",
+      "description": "Requested more information on a listing",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.requestedInfo"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "form": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/realEstateForm"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "requestedShowing": {
+      "title": "requestedShowing",
+      "description": "Requested a showing",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.requestedShowing"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "form": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/realEstateForm"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "requestedDateTime": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "format": "date-time"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "quickSearchedListings": {
+      "title": "quickSearchedListings",
+      "description": "Ran a quick search",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.quickSearchedListings"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "search": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/search"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "searchedAgents": {
+      "title": "searchedAgents",
+      "description": "Searched for an agent",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.searchedAgents"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "allOf": [
+                {
+                  "$ref": "https://cdn.brytecore.com/packages/schemas/person.json#"
+                },
+                {
+                  "properties": {
+                    "expertise": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "language": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "officeName": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "searchURL": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "format": "uri"
+                    },
+                    "serviceArea": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "searchedListings": {
+      "title": "searchedListings",
+      "description": "Ran a listing search",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.searchedListings"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "search": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/search"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "searchedOffices": {
+      "title": "searchedOffices",
+      "description": "Searched for an office",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.searchedOffices"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "officeName": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "serviceArea": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "savedListing": {
+      "title": "savedListing",
+      "description": "Saved a listing",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.savedListing"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "listing": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/listing"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "savedSearch": {
+      "title": "savedSearch",
+      "description": "Saved a search",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.savedSearch"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "search": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/search"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "sharedListingEmail": {
+      "title": "sharedListingEmail",
+      "description": "Shared a listing by email",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.sharedListingEmail"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "form": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/realEstateForm"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "sharedListingFacebook": {
+      "title": "sharedListingFacebook",
+      "description": "Shared a listing with Facebook",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.sharedListingFacebook"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "listing": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/listing"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "sharedListingTwitter": {
+      "title": "sharedListingTwitter",
+      "description": "Shared a listing with Twitter",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.sharedListingTwitter"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "listing": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/listing"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "submittedAgentContactForm": {
+      "title": "submittedAgentContactForm",
+      "description": "Submitted agent contact form",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.submittedAgentContactForm"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "agentId": {
+                  "type": [
+                    "string",
+                    "number",
+                    "null"
+                  ]
+                },
+                "form": {
+                  "oneOf": [
+                    {
+                      "$ref": "https://cdn.brytecore.com/packages/schemas/form.json#"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "subscribedListingUpdates": {
+      "title": "subscribedListingUpdates",
+      "description": "Subscribed to listing updates",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.subscribedListingUpdates"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "frequency": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "listing": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/listing"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "subscribedSearch": {
+      "title": "subscribedSearch",
+      "description": "Subscribed to a search",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.subscribedSearch"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "frequency": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "search": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/search"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "unhidListing": {
+      "title": "unhidListing",
+      "description": "Unhid listing from search results",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.unhidListing"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "listing": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/listing"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "unsubscribedListingUpdates": {
+      "title": "unsubscribedListingUpdates",
+      "description": "Unsubscribed from listing updates",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.unsubscribedListingUpdates"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "listing": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/listing"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "unsubscribedSearch": {
+      "title": "unsubscribedSearch",
+      "description": "Unsubscribed from a search",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.unsubscribedSearch"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "search": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/search"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "updatedSavedSearch": {
+      "title": "updatedSavedSearch",
+      "description": "Updated a saved search",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.updatedSavedSearch"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "search": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/search"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "viewedAgentProfile": {
+      "title": "viewedAgentProfile",
+      "description": "Viewed an agent profile",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.viewedAgentProfile"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "agent": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "https://cdn.brytecore.com/packages/schemas/person.json#"
+                    },
+                    {
+                      "properties": {
+                        "agentId": {
+                          "type": [
+                            "string",
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "email": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "viewedDriveTime": {
+      "title": "viewedDriveTime",
+      "description": "The user viewed the drive time from one address to another.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.viewedDriveTime"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "listing": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/listing"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "address1": {
+                  "$ref": "https://cdn.brytecore.com/packages/schemas/address.json#"
+                },
+                "address2": {
+                  "$ref": "https://cdn.brytecore.com/packages/schemas/address.json#"
+                },
+                "timeOfDay": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "address1ToAddress2Time": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "address2ToAddress1Time": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "address1",
+                "address2"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "viewedDrivingDirections": {
+      "title": "viewedDrivingDirections",
+      "description": "Viewed driving directions",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.viewedDrivingDirections"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "listing": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/listing"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "startAddress": {
+                  "oneOf": [
+                    {
+                      "$ref": "https://cdn.brytecore.com/packages/schemas/address.json#"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "viewedListing": {
+      "title": "viewedListing",
+      "description": "Viewed a listing",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.viewedListing"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "listing": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/listing"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "viewedListing3DTour": {
+      "title": "viewedListing3DTour",
+      "description": "Viewed a 3D tour",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.viewedListing3DTour"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "listing": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/listing"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "tourURL": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "format": "uri"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "viewedListingFlyer": {
+      "title": "viewedListingFlyer",
+      "description": "Viewed a listing flyer",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.viewedListingFlyer"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "listing": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/listing"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "viewedListingMap": {
+      "title": "viewedListingMap",
+      "description": "Viewed a listing map",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.viewedListingMap"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "listing": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/listing"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "viewedListingPhoto": {
+      "title": "viewedListingPhoto",
+      "description": "Viewed a listing photo",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.viewedListingPhoto"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "listing": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/listing"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "viewedPhotoURL": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "format": "uri"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "viewedListingVirtualTour": {
+      "title": "viewedListingVirtualTour",
+      "description": "Viewed a virtual tour",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.viewedListingVirtualTour"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "listing": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/listing"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "tourURL": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "format": "uri"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "viewedNeighborhoodProfile": {
+      "title": "viewedNeighborhoodProfile",
+      "description": "The user viewed a profile of a neighborhood.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.viewedNeighborhoodProfile"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "listing": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/listing"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "neighborhood": {
+                  "$ref": "#/definitions/neighborhood"
+                }
+              },
+              "required": [
+                "neighborhood"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "viewedOfficeProfile": {
+      "title": "viewedOfficeProfile",
+      "description": "Viewed an office profile",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.viewedOfficeProfile"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "address": {
+                  "oneOf": [
+                    {
+                      "$ref": "https://cdn.brytecore.com/packages/schemas/address.json#"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "officeId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "officeName": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "officeName"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "viewedSavedListing": {
+      "title": "viewedSavedListing",
+      "description": "Viewed a saved listing",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.viewedSavedListing"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "listing": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/listing"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "viewedSavedSearch": {
+      "title": "viewedSavedSearch",
+      "description": "Viewed a saved search",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.viewedSavedSearch"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "search": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/search"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "viewedSchoolProfile": {
+      "title": "viewedSchoolProfile",
+      "description": "A user viewed the profile of a school.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.viewedSchoolProfile"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "listing": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/listing"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "name": {
+                  "type": "string"
+                },
+                "address": {
+                  "oneOf": [
+                    {
+                      "$ref": "https://cdn.brytecore.com/packages/schemas/address.json#"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "isElementarySchool": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "isMiddleSchool": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "isHighSchool": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "name"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "viewedSubdivisionProfile": {
+      "title": "viewedSubdivisionProfile",
+      "description": "A user viewed the profile of a subdivision.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "realestate.viewedSubdivisionProfile"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "listing": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/listing"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "name"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  },
+  "oneOf": [
+    {
+      "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/brytescoreUUIDCreated"
+    },
+    {
+      "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/heartBeat"
+    },
+    {
+      "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/pageView"
+    },
+    {
+      "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/registeredAccount"
+    },
+    {
+      "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/sessionStarted"
+    },
+    {
+      "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/submittedForm"
+    },
+    {
+      "$ref": "https://cdn.brytecore.com/packages/analytics/schema.json#/definitions/updatedUserInfo"
+    },
+    {
+      "$ref": "#/definitions/authenticated"
+    },
+    {
+      "$ref": "#/definitions/calculatedMortgagePayment"
+    },
+    {
+      "$ref": "#/definitions/calculatedPropertyValuation"
+    },
+    {
+      "$ref": "#/definitions/deletedSavedListing"
+    },
+    {
+      "$ref": "#/definitions/deletedSavedSearch"
+    },
+    {
+      "$ref": "#/definitions/dislikedListing"
+    },
+    {
+      "$ref": "#/definitions/hidListing"
+    },
+    {
+      "$ref": "#/definitions/likedListing"
+    },
+    {
+      "$ref": "#/definitions/listingImpression"
+    },
+    {
+      "$ref": "#/definitions/listingImpressionBulk"
+    },
+    {
+      "$ref": "#/definitions/playedListingVideo"
+    },
+    {
+      "$ref": "#/definitions/playedNeighborhoodVideo"
+    },
+    {
+      "$ref": "#/definitions/printedDrivingDirections"
+    },
+    {
+      "$ref": "#/definitions/printedListing"
+    },
+    {
+      "$ref": "#/definitions/printedListingFlyer"
+    },
+    {
+      "$ref": "#/definitions/printedSearchResults"
+    },
+    {
+      "$ref": "#/definitions/ratedListing"
+    },
+    {
+      "$ref": "#/definitions/requestedCMA"
+    },
+    {
+      "$ref": "#/definitions/requestedHomeAppraisal"
+    },
+    {
+      "$ref": "#/definitions/requestedInfo"
+    },
+    {
+      "$ref": "#/definitions/requestedShowing"
+    },
+    {
+      "$ref": "#/definitions/quickSearchedListings"
+    },
+    {
+      "$ref": "#/definitions/searchedAgents"
+    },
+    {
+      "$ref": "#/definitions/searchedListings"
+    },
+    {
+      "$ref": "#/definitions/searchedOffices"
+    },
+    {
+      "$ref": "#/definitions/savedListing"
+    },
+    {
+      "$ref": "#/definitions/savedSearch"
+    },
+    {
+      "$ref": "#/definitions/sharedListingEmail"
+    },
+    {
+      "$ref": "#/definitions/sharedListingFacebook"
+    },
+    {
+      "$ref": "#/definitions/sharedListingTwitter"
+    },
+    {
+      "$ref": "#/definitions/submittedAgentContactForm"
+    },
+    {
+      "$ref": "#/definitions/subscribedListingUpdates"
+    },
+    {
+      "$ref": "#/definitions/subscribedSearch"
+    },
+    {
+      "$ref": "#/definitions/unhidListing"
+    },
+    {
+      "$ref": "#/definitions/unsubscribedListingUpdates"
+    },
+    {
+      "$ref": "#/definitions/unsubscribedSearch"
+    },
+    {
+      "$ref": "#/definitions/updatedSavedSearch"
+    },
+    {
+      "$ref": "#/definitions/viewedAgentProfile"
+    },
+    {
+      "$ref": "#/definitions/viewedDriveTime"
+    },
+    {
+      "$ref": "#/definitions/viewedDrivingDirections"
+    },
+    {
+      "$ref": "#/definitions/viewedListing"
+    },
+    {
+      "$ref": "#/definitions/viewedListing3DTour"
+    },
+    {
+      "$ref": "#/definitions/viewedListingFlyer"
+    },
+    {
+      "$ref": "#/definitions/viewedListingMap"
+    },
+    {
+      "$ref": "#/definitions/viewedListingPhoto"
+    },
+    {
+      "$ref": "#/definitions/viewedListingVirtualTour"
+    },
+    {
+      "$ref": "#/definitions/viewedNeighborhoodProfile"
+    },
+    {
+      "$ref": "#/definitions/viewedOfficeProfile"
+    },
+    {
+      "$ref": "#/definitions/viewedSavedListing"
+    },
+    {
+      "$ref": "#/definitions/viewedSavedSearch"
+    },
+    {
+      "$ref": "#/definitions/viewedSchoolProfile"
+    },
+    {
+      "$ref": "#/definitions/viewedSubdivisionProfile"
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "title": "Integration Template",
+  "description": "The integration template supported by Contentful",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "title": "Name",
+      "description": "The name of this integration"
+    },
+    "clientId": {
+      "type": "string",
+      "title": "Client Id",
+      "description": "The Auth0 client Id corresponding to this integration"
+    },
+    "configUrl": {
+      "type": "string",
+      "title": "Config Url",
+      "format": "url",
+      "description": "A URL to the UI to be presented for configuring this integration"
+    },
+    "description": {
+      "type": "string",
+      "title": "Description",
+      "description": "A description of what this integration supports (presented on the integrations page)"
+    },
+    "integrationConfig": {
+      "type": "object",
+      "title": "Integration Config",
+      "description": "Common integration JSON configuration to reflect how this integration interacts with SaaSquatch",
+      "$ref": "IntegrationConfig.schema.json#"
+    },
+    "logo": {
+      "type": "string",
+      "title": "Logo",
+      "description": "A logo representing this integration (presented on the integrations page)"
+    },
+    "panelHeading": {
+      "type": "string",
+      "title": "Panel Heading",
+      "description": "A descriptive heading title for this integration (presented on the integrations page)"
+    },
+    "globallyInstallable": {
+      "type": "boolean",
+      "title": "Globally Installable",
+      "description": "Indicates whether this integration can be installed by any tenant"
+    },
+    "installableByTenants": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "title": "Installable by Tenants",
+      "description": "The tenants that can install this integration if it's not globally installable",
+      "items": {
+        "type": "string",
+        "title": "Tenant Alias",
+        "description": "The tenant alias for a tenant that can install this integration"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "clientId",
+    "configUrl",
+    "description",
+    "logo",
+    "panelHeading"
+  ]
+}

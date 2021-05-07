@@ -1,0 +1,37 @@
+{
+  "id": "http://github.com/alisle/Penella",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "type": "object",
+  "description": "Wrapper for query",
+  "required": [
+    "query"
+  ],
+  "properties": {
+    "query": {
+      "type": "object",
+      "description": "Query for triples",
+      "required": [
+        "variables",
+        "triples"
+      ],
+      "properties": {
+        "variables": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "triples": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "triple.schema.json"
+          },
+          "uniqueItems": true
+        }
+      }
+    }
+  }
+}

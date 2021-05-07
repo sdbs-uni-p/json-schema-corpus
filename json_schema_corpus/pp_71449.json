@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "javaType": "com.massisframework.massis3.stream.PositionUpdate",
+  "title": "Position update",
+  "description": "Defines a change of position of an entity in the simulation environment",
+  "type": "object",
+  "properties": {
+    "entity": {
+      "description": "Referenced entity",
+      "$ref": "http://schemas.massisframework.com/simsilica/EntityId.json"
+    },
+    "position": {
+      "description": "Position of the entity",
+      "$ref": "http://schemas.massisframework.com/jme3/Vector3f.json"
+    },
+    "time": {
+      "type": "integer",
+      "description": "simulation time when the event was produced in ms",
+      "javaType": "java.lang.Long",
+      "minimum": 0
+    }
+  }
+}

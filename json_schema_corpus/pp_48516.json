@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "version": "0.01",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "Cores": {
+      "type": "string"
+    },
+    "DVID datastore": {
+      "type": "string"
+    },
+    "Maximum Cores": {
+      "type": "string"
+    },
+    "Server uptime": {
+      "type": "string"
+    },
+    "Storage backend": {
+      "type": "string"
+    },
+    "Storage driver": {
+      "type": "string"
+    }
+  }
+}

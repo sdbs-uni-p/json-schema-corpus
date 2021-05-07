@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Multi level references",
+  "description": "Multi level references example",
+  "type": "object",
+  "properties": {
+    "person": {
+      "$ref": "jsdb:person#"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "person"
+  ]
+}

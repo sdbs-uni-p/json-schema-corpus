@@ -1,0 +1,155 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "candidateMessage": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "description": "a text message to the candidate regarding their proposed edit, may include links"
+        },
+        "level": {
+          "enum": [
+            "info",
+            "warning",
+            "error"
+          ]
+        }
+      },
+      "required": [
+        "message",
+        "level"
+      ],
+      "additionalProperties": false
+    },
+    "resumeRule": {
+      "type": "object",
+      "properties": {
+        "visible": {
+          "description": "can a resume be uploaded at all, and can existing resume be seen",
+          "type": "boolean"
+        },
+        "mandatory": {
+          "description": "is the resume mandatory - implies visible == true",
+          "type": "boolean"
+        },
+        "message": {
+          "description": "a message to help the candidate understand about uploading a resume - e.g. 'resume optional when a video is provided'",
+          "type": "string"
+        },
+        "accept": {
+          "type": "array",
+          "description": "the allowable internet media types (mime types) for the resume, e.g. word and pdf files",
+          "items": {
+            "$ref": "fileDownload.json#/definitions/mediaType"
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "visible",
+        "mandatory",
+        "accept"
+      ]
+    },
+    "notificationRule": {
+      "type": "object",
+      "properties": {
+        "visible": {
+          "description": "is the candidate offered job notifications",
+          "type": "boolean"
+        },
+        "selectedByDefault": {
+          "description": "sets the initial state of job notifications for new candidates",
+          "type": "boolean"
+        },
+        "message": {
+          "description": "a message describing the job notification behavior that the candidate can expect",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "vCardRule": {
+      "type": "object",
+      "properties": {
+        "someMandatory": {
+          "description": "a simple way to hint that key vcard fields (first name, last name, email address) are mandatory - probably will get replaced by more fine-grained scheme in the future",
+          "type": "boolean"
+        },
+        "showPrefixField": {
+          "description": "a simple way to hint that key vcard title field should be displayed",
+          "type": "boolean"
+        },
+        "allowedPrefixes": {
+          "type": "array",
+          "description": "the allowable titles from the ATS. E.g.: [ Mr., Mrs., Ms., Dr. ]",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "someMandatory",
+        "showPrefixField"
+      ],
+      "additionalProperties": false
+    },
+    "applicationModel": {
+      "type": "object",
+      "description": "rules specific to a single job application (i.e., not candidate-scoped)",
+      "properties": {
+        "job": {
+          "type": "integer",
+          "description": "the job application these rules apply to"
+        },
+        "itemsRule": {
+          "$ref": "itemMetas.json"
+        }
+      },
+      "additionalProperties": false
+    },
+    "candidateModel": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "requiredCategoryValues": {
+          "$ref": "categoriesActual.json"
+        },
+        "resumeRule": {
+          "$ref": "#/definitions/resumeRule"
+        },
+        "vCardRule": {
+          "$ref": "#/definitions/vCardRule"
+        },
+        "itemsRule": {
+          "$ref": "itemMetas.json"
+        }
+      },
+      "required": [
+        "resumeRule",
+        "vCardRule"
+      ]
+    }
+  },
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "tracker": {
+      "type": "integer",
+      "description": "just the same tracker that was passed in with the intent"
+    },
+    "candidateMessage": {
+      "$ref": "#/definitions/candidateMessage"
+    },
+    "notificationRule": {
+      "$ref": "#/definitions/notificationRule"
+    },
+    "candidateModel": {
+      "$ref": "#/definitions/candidateModel"
+    },
+    "applicationModel": {
+      "$ref": "#/definitions/applicationModel"
+    }
+  }
+}

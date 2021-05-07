@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://flynn.io/schema/examples/controller/app_log#",
+  "title": "Get app log",
+  "description": "Returns JSON for each log entry per line.",
+  "definitions": {
+    "params": {
+      "type": "object",
+      "properties": {
+        "follow": {
+          "description": "Send new log lines as they come in",
+          "type": "boolean"
+        },
+        "job_id": {
+          "$ref": "/schema/controller/common#/definitions/id"
+        },
+        "lines": {
+          "description": "Number of lines from buffer to return",
+          "type": "integer"
+        },
+        "process_type": {
+          "description": "Only return log lines for given process type",
+          "type": "string"
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "$ref": "/schema/examples/base#"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "request": {
+          "type": "object",
+          "properties": {
+            "method": {
+              "type": "string",
+              "enum": [
+                "GET"
+              ]
+            },
+            "params": {
+              "$ref": "#/definitions/params"
+            }
+          }
+        }
+      }
+    }
+  ]
+}

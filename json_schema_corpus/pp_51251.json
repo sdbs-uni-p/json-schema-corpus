@@ -1,0 +1,179 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "victim-targeting",
+  "description": "The types of victims that a particular threat targets",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "../common/core.json"
+    },
+    {
+      "$ref": "../common/referenceable.json"
+    },
+    {
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "victim-targeting"
+          ]
+        },
+        "targets": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "properties": {
+                  "type": {
+                    "enum": [
+                      "identity"
+                    ]
+                  },
+                  "target": {
+                    "$ref": "../common/identity-characteristics.json",
+                    "description": "A non-technical target (e.g. industry sector, nationality)"
+                  }
+                },
+                "required": [
+                  "type",
+                  "target"
+                ]
+              },
+              {
+                "properties": {
+                  "type": {
+                    "enum": [
+                      "system"
+                    ]
+                  },
+                  "target": {
+                    "description": "Describes a technical target",
+                    "allOf": [
+                      {
+                        "$ref": "../common/statement.json"
+                      },
+                      {
+                        "properties": {
+                          "value": {
+                            "enum": [
+                              "Enterprise Systems",
+                              "Enterprise Systems - Application Layer",
+                              "Enterprise Systems - Database Layer",
+                              "Enterprise Systems - Enterprise Technologies and Support Infrastructure",
+                              "Enterprise Systems - Network Systems",
+                              "Enterprise Systems - Networking Devices",
+                              "Enterprise Systems - Web Layer",
+                              "Enterprise Systems - VoIP",
+                              "Industrial Control Systems",
+                              "Industrial Control Systems - Equipment Under Control",
+                              "Industrial Control Systems - Operations Management",
+                              "Industrial Control Systems - Safety, Protection and Local Control",
+                              "Industrial Control Systems - Supervisory Control",
+                              "Mobile Systems",
+                              "Mobile Systems - Mobile Operating Systems",
+                              "Mobile Systems - Near Field Communications",
+                              "Mobile Systems - Mobile Devices",
+                              "Third-Party Services",
+                              "Third-Party Services - Application Stores",
+                              "Third-Party Services - Cloud Services",
+                              "Third-Party Services - Security Vendors",
+                              "Third-Party Services - Social Media",
+                              "Third-Party Services - Software Update",
+                              "Users",
+                              "Users - Application And Software",
+                              "Users - Workstation",
+                              "Users - Removable Media"
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "type",
+                  "target"
+                ]
+              },
+              {
+                "properties": {
+                  "type": {
+                    "enum": [
+                      "information"
+                    ]
+                  },
+                  "target": {
+                    "description": "Describes an information asset target",
+                    "allOf": [
+                      {
+                        "$ref": "../common/statement.json"
+                      },
+                      {
+                        "properties": {
+                          "value": {
+                            "enum": [
+                              "Corporate Employee Information",
+                              "Customer PII",
+                              "Email Lists / Archives",
+                              "Financial Data",
+                              "Intellectual Property",
+                              "Mobile Phone Contacts",
+                              "User Credentials",
+                              "Authentication Cookies"
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "type",
+                  "target"
+                ]
+              }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "relationships": {
+    "related": [
+      "asset",
+      "attack-pattern",
+      "campaign",
+      "configuration",
+      "course-of-action",
+      "identity",
+      "incident",
+      "indicator",
+      "kill-chain",
+      "kill-chain-phase",
+      "malicious-infrastructure",
+      "malicious-tool",
+      "malware",
+      "observation",
+      "threat-actor",
+      "tool",
+      "victim-targeting",
+      "vulnerability",
+      "weakness"
+    ],
+    "kill-chain-phases": [
+      "kill-chain-phase"
+    ],
+    "exploits": [
+      "exploit-target"
+    ],
+    "duplicate-of": [
+      "victim-targeting"
+    ],
+    "suggested-update": [
+      "victim-targeting"
+    ],
+    "derived-from": [
+      "victim-targeting"
+    ]
+  }
+}

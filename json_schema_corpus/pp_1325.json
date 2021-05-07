@@ -1,0 +1,912 @@
+{
+  "description": "Starting point for a json schema derived from the CT.gov xsd.",
+  "title": "Clinical Trials JSON Schema",
+  "properties": {
+    "firstreceived_date": {
+      "additionalProperties": false,
+      "required": true,
+      "type": "object",
+      "properties": {
+        "attributes": {
+          "type": "object"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "is_fda_regulated": {
+      "type": "string"
+    },
+    "reference": {
+      "minItems": 0,
+      "items": {
+        "additionalProperties": false,
+        "type": "object",
+        "properties": {
+          "PMID": {
+            "type": "string"
+          },
+          "citation": {
+            "type": "string"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "overall_contact_backup": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "first_name": {
+          "type": "string"
+        },
+        "last_name": {
+          "type": "string"
+        },
+        "middle_name": {
+          "type": "string"
+        },
+        "phone_ext": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "degrees": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        }
+      }
+    },
+    "completion_date": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "attributes": {
+          "type": "object"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "responsible_party": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "investigator_title": {
+          "type": "string"
+        },
+        "name_title": {
+          "type": "string"
+        },
+        "investigator_affiliation": {
+          "type": "string"
+        },
+        "investigator_full_name": {
+          "type": "string"
+        },
+        "organization": {
+          "type": "string"
+        },
+        "responsible_party_type": {
+          "type": "string"
+        }
+      }
+    },
+    "firstreceived_results_date": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "attributes": {
+          "type": "object"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "is_section_801": {
+      "type": "string"
+    },
+    "detailed_description": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "textblock": {
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "link": {
+      "minItems": 0,
+      "items": {
+        "additionalProperties": false,
+        "type": "object",
+        "properties": {
+          "url": {
+            "required": true,
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "has_expanded_access": {
+      "type": "string"
+    },
+    "intervention": {
+      "minItems": 0,
+      "items": {
+        "additionalProperties": false,
+        "type": "object",
+        "properties": {
+          "intervention_name": {
+            "required": true,
+            "type": "string"
+          },
+          "other_name": {
+            "minItems": 0,
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "description": {
+            "type": "string"
+          },
+          "arm_group_label": {
+            "minItems": 0,
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "intervention_type": {
+            "required": true,
+            "type": "string"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "source": {
+      "required": true,
+      "type": "string"
+    },
+    "eligibility": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "gender": {
+          "required": true,
+          "type": "string"
+        },
+        "maximum_age": {
+          "required": true,
+          "type": "string"
+        },
+        "sampling_method": {
+          "type": "string"
+        },
+        "minimum_age": {
+          "required": true,
+          "type": "string"
+        },
+        "study_pop": {
+          "additionalProperties": false,
+          "type": "object",
+          "properties": {
+            "textblock": {
+              "required": true,
+              "type": "string"
+            }
+          }
+        },
+        "criteria": {
+          "additionalProperties": false,
+          "type": "object",
+          "properties": {
+            "textblock": {
+              "required": true,
+              "type": "string"
+            }
+          }
+        },
+        "healthy_volunteers": {
+          "type": "string"
+        }
+      }
+    },
+    "removed_countries": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "country": {
+          "minItems": 0,
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      }
+    },
+    "other_outcome": {
+      "minItems": 0,
+      "items": {
+        "additionalProperties": false,
+        "type": "object",
+        "properties": {
+          "safety_issue": {
+            "type": "string"
+          },
+          "time_frame": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "measure": {
+            "required": true,
+            "type": "string"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "primary_completion_date": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "attributes": {
+          "type": "object"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "last_injected": {
+      "required": true,
+      "type": "string",
+      "description": "TODO: Validate the date! String representing last injected date"
+    },
+    "intervention_browse": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "mesh_term": {
+          "minItems": 0,
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      }
+    },
+    "_meta": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "score": {
+          "type": "number"
+        }
+      }
+    },
+    "_resolved": {
+      "type": "object",
+      "descrption": "linked documents resolved by wds+json"
+    },
+    "_links": {
+      "additionalProperties": false,
+      "type": "object",
+      "description": "Object containng representations of all relationships",
+      "properties": {
+        "self": {
+          "description": "link containing URI of object",
+          "type": "object",
+          "properties": {
+            "href": {
+              "type": "string",
+              "required": true,
+              "format": "uri"
+            }
+          },
+          "additionalProperties": false
+        },
+        "site": {
+          "minItems": 0,
+          "items": {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+              "href": {
+                "required": true,
+                "type": "string",
+                "format": "uri"
+              },
+              "class": {
+                "enum": [
+                  "child",
+                  "parent",
+                  "sibling"
+                ],
+                "required": true
+              }
+            }
+          },
+          "type": "array",
+          "description": "Array of site resources"
+        },
+        "target-profile": {
+          "minItems": 0,
+          "items": {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+              "href": {
+                "type": "string",
+                "format": "uri"
+              },
+              "class": {
+                "enum": [
+                  "child",
+                  "parent",
+                  "sibling"
+                ]
+              }
+            }
+          },
+          "type": "array",
+          "description": "Array of site resources"
+        }
+      }
+    },
+    "target_duration": {
+      "type": "string"
+    },
+    "number_of_arms": {
+      "type": "string"
+    },
+    "start_date": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "attributes": {
+          "type": "object"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "why_stopped": {
+      "type": "string"
+    },
+    "id_info": {
+      "additionalProperties": false,
+      "required": true,
+      "type": "object",
+      "properties": {
+        "org_study_id": {
+          "required": true,
+          "type": "string"
+        },
+        "secondary_id": {
+          "minItems": 0,
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "nct_alias": {
+          "minItems": 0,
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "nct_id": {
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "end_date": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "attributes": {
+          "type": "object"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "acronym": {
+      "type": "string"
+    },
+    "arm_group": {
+      "minItems": 0,
+      "items": {
+        "additionalProperties": false,
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "arm_group_label": {
+            "required": true,
+            "type": "string"
+          },
+          "arm_group_type": {
+            "type": "string"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "sponsors": {
+      "additionalProperties": false,
+      "required": true,
+      "type": "object",
+      "properties": {
+        "collaborator": {
+          "minItems": 0,
+          "items": {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+              "agency": {
+                "required": true,
+                "type": "string"
+              },
+              "agency_class": {
+                "required": true,
+                "type": "string"
+              }
+            }
+          },
+          "type": "array"
+        },
+        "lead_sponsor": {
+          "additionalProperties": false,
+          "required": true,
+          "type": "object",
+          "properties": {
+            "agency": {
+              "required": true,
+              "type": "string"
+            },
+            "agency_class": {
+              "required": true,
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "secondary_outcome": {
+      "minItems": 0,
+      "items": {
+        "additionalProperties": false,
+        "type": "object",
+        "properties": {
+          "safety_issue": {
+            "type": "string"
+          },
+          "time_frame": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "measure": {
+            "required": true,
+            "type": "string"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "study_type": {
+      "required": true,
+      "type": "string"
+    },
+    "biospec_retention": {
+      "type": "string"
+    },
+    "overall_status": {
+      "required": true,
+      "type": "string"
+    },
+    "primary_outcome": {
+      "minItems": 0,
+      "items": {
+        "additionalProperties": false,
+        "type": "object",
+        "properties": {
+          "safety_issue": {
+            "type": "string"
+          },
+          "time_frame": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "measure": {
+            "required": true,
+            "type": "string"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "overall_official": {
+      "minItems": 0,
+      "items": {
+        "additionalProperties": false,
+        "type": "object",
+        "properties": {
+          "first_name": {
+            "type": "string"
+          },
+          "last_name": {
+            "required": true,
+            "type": "string"
+          },
+          "middle_name": {
+            "type": "string"
+          },
+          "affiliation": {
+            "type": "string"
+          },
+          "degrees": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "phase": {
+      "required": true,
+      "type": "string"
+    },
+    "location_countries": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "country": {
+          "minItems": 0,
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      }
+    },
+    "condition": {
+      "minItems": 0,
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "clinical_results": {
+      "type": "object",
+      "description": "deferring validation of the ok corral of clinical results"
+    },
+    "study_design": {
+      "required": true,
+      "type": "string"
+    },
+    "keyword": {
+      "minItems": 0,
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "results_reference": {
+      "minItems": 0,
+      "items": {
+        "additionalProperties": false,
+        "type": "object",
+        "properties": {
+          "PMID": {
+            "type": "string"
+          },
+          "citation": {
+            "type": "string"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "oversight_info": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "has_dmc": {
+          "type": "string"
+        },
+        "authority": {
+          "minItems": 0,
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      }
+    },
+    "number_of_groups": {
+      "type": "string"
+    },
+    "location": {
+      "minItems": 0,
+      "items": {
+        "additionalProperties": false,
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "contact": {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+              "first_name": {
+                "type": "string"
+              },
+              "last_name": {
+                "type": "string"
+              },
+              "middle_name": {
+                "type": "string"
+              },
+              "phone_ext": {
+                "type": "string"
+              },
+              "phone": {
+                "type": "string"
+              },
+              "degrees": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              }
+            }
+          },
+          "contact_backup": {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+              "first_name": {
+                "type": "string"
+              },
+              "last_name": {
+                "type": "string"
+              },
+              "middle_name": {
+                "type": "string"
+              },
+              "phone_ext": {
+                "type": "string"
+              },
+              "phone": {
+                "type": "string"
+              },
+              "degrees": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              }
+            }
+          },
+          "investigator": {
+            "minItems": 0,
+            "items": {
+              "additionalProperties": false,
+              "type": "object",
+              "properties": {
+                "first_name": {
+                  "type": "string"
+                },
+                "last_name": {
+                  "required": true,
+                  "type": "string"
+                },
+                "middle_name": {
+                  "type": "string"
+                },
+                "affiliation": {
+                  "type": "string"
+                },
+                "degrees": {
+                  "type": "string"
+                },
+                "role": {
+                  "type": "string"
+                }
+              }
+            },
+            "type": "array"
+          },
+          "facility": {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "address": {
+                "additionalProperties": false,
+                "type": "object",
+                "properties": {
+                  "city": {
+                    "required": true,
+                    "type": "string"
+                  },
+                  "state": {
+                    "type": "string"
+                  },
+                  "zip": {
+                    "type": "string"
+                  },
+                  "country": {
+                    "required": true,
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "type": "array"
+    },
+    "official_title": {
+      "type": "string"
+    },
+    "verification_date": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "attributes": {
+          "type": "object"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "required_header": {
+      "additionalProperties": false,
+      "required": true,
+      "type": "object",
+      "properties": {
+        "url": {
+          "required": true,
+          "type": "string"
+        },
+        "link_text": {
+          "required": true,
+          "type": "string"
+        },
+        "download_date": {
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "overall_contact": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "first_name": {
+          "type": "string"
+        },
+        "last_name": {
+          "type": "string"
+        },
+        "middle_name": {
+          "type": "string"
+        },
+        "phone_ext": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "degrees": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        }
+      }
+    },
+    "brief_title": {
+      "required": true,
+      "type": "string"
+    },
+    "biospec_descr": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "textblock": {
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "condition_browse": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "mesh_term": {
+          "minItems": 0,
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      }
+    },
+    "brief_summary": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "textblock": {
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "enrollment": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "attributes": {
+          "type": "object"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "lastchanged_date": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "attributes": {
+          "type": "object"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "version": {
+      "type": "number"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "type": "object",
+  "id": "http://api.lillycoi.com/trial_schema.json"
+}

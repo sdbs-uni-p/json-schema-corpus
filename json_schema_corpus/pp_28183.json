@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "addressReference",
+  "id": "addressReference",
+  "description": "This represents a reference to an address. The reference should be an address id from an address inventory, a geocoded reference from a geospatial system, etc.",
+  "type": "object",
+  "required": [
+    "objectType"
+  ],
+  "properties": {
+    "objectType": {
+      "type": "string",
+      "enum": [
+        "addressReference"
+      ],
+      "description": "The type of the object, addressReference."
+    },
+    "referenceType": {
+      "type": "string",
+      "description": "The type of the reference.",
+      "maxLength": 25
+    },
+    "reference": {
+      "type": "string",
+      "description": "The reference can be used to identify an address.",
+      "maxLength": 60
+    }
+  }
+}

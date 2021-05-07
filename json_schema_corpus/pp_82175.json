@@ -1,0 +1,81 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://toyatech.net/cmsapp/contacts/Person",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "givenName": {
+      "type": "string"
+    },
+    "additionalName": {
+      "type": "string"
+    },
+    "familyName": {
+      "type": "string"
+    },
+    "suffix": {
+      "type": "string"
+    },
+    "gender": {
+      "type": "string",
+      "enum": [
+        "Male",
+        "Female"
+      ]
+    },
+    "address": {
+      "$ref": "#/defiitions/PostalAddress"
+    },
+    "homePhone": {
+      "type": "string"
+    },
+    "mobilePhone": {
+      "type": "string"
+    },
+    "workPhone": {
+      "type": "string"
+    },
+    "emailAddress": {
+      "type": "string",
+      "format": "email"
+    },
+    "family": {
+      "$ref": "http://toyatech.net/cmsapp/contacts/Family"
+    },
+    "familyRole": {
+      "$ref": "http://toyatech.net/cmsapp/contacts/FamilyRole"
+    },
+    "birthDayOfMonth": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 31
+    },
+    "birthMonth": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 12
+    },
+    "birthYear": {
+      "type": "integer"
+    },
+    "firstContactDate": {
+      "type": "string",
+      "format": "data-time"
+    },
+    "membershipDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "classification": {
+      "$ref": "http://toyatech.net/cmsapp/contacts/Classification"
+    }
+  },
+  "required": [
+    "givenName",
+    "gender",
+    "family",
+    "familyRole"
+  ]
+}

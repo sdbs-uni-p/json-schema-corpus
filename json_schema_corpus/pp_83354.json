@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "/root/temperature",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "/root/genericSensor"
+    },
+    {
+      "properties": {
+        "unit": {
+          "enum": [
+            "cel",
+            "far",
+            "kel"
+          ]
+        }
+      }
+    }
+  ]
+}

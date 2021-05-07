@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Sane-Scanner",
+  "description": "Sane Scanner options",
+  "type": "object",
+  "properties": {
+    "host": {
+      "description": "The host of the scanner",
+      "type": "string"
+    },
+    "model": {
+      "description": "The model of the scanner",
+      "type": "string"
+    },
+    "name": {
+      "description": "The name of the scanner",
+      "type": "String"
+    },
+    "optionGroups": {
+      "description": "The unique identifier for a product",
+      "type": "array",
+      "items": {
+        "title": "optionGroup",
+        "type": "object",
+        "properties": {
+          "options": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "properties": {
+              "name": "string",
+              "range": "string",
+              "title": "string",
+              "type": "string",
+              "units": "string",
+              "value": "number"
+            }
+          },
+          "title": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "type": {
+      "description": "The type of the device, SANE can connect with some otrer peripherals besides scanners",
+      "type": "string"
+    },
+    "vendor": {
+      "description": "The vendor of the scanner",
+      "type": "string"
+    }
+  },
+  "required": [
+    "host",
+    "model",
+    "name",
+    "optionGroups",
+    "vendor"
+  ]
+}

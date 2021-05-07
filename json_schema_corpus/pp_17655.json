@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "result": {
+      "enum": [
+        "",
+        "abort",
+        "fail",
+        "ok"
+      ],
+      "type": "string"
+    }
+  },
+  "properties": {
+    "bar": {
+      "type": "string"
+    },
+    "foo": {
+      "$ref": "#/definitions/result"
+    }
+  },
+  "required": [
+    "bar",
+    "foo"
+  ],
+  "type": "object"
+}

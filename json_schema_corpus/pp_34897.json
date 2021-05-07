@@ -1,0 +1,344 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "properties": {
+    "service": {
+      "properties": {
+        "name": {
+          "description": "Name for this Restreamer-Edge application",
+          "type": "string",
+          "default": "restreamer-edge"
+        },
+        "instances": {
+          "description": "Number of instances to run.",
+          "type": "integer",
+          "default": 1,
+          "minimum": 1
+        },
+        "cpus": {
+          "description": "CPU shares to allocate to each Restreamer-Edge instance. Currently the RTMP server got problems with multithreading. Therefore only one cpu is recommended",
+          "type": "number",
+          "default": 1
+        },
+        "mem": {
+          "description": "Memory (MB) to allocate to each Restreamer-Edge task.",
+          "type": "number",
+          "default": 1024.0,
+          "minimum": 256.0
+        },
+        "minimumHealthCapacity": {
+          "description": "Minimum health capacity.",
+          "type": "number",
+          "default": 0.5,
+          "minimum": 0
+        },
+        "maximumOverCapacity": {
+          "description": "Maximum over capacity.",
+          "type": "number",
+          "default": 0.2,
+          "minimum": 0
+        },
+        "role": {
+          "description": "Deploy Restreamer-Edge only on nodes with this role.",
+          "type": "string",
+          "default": "*"
+        },
+        "bridge": {
+          "description": "Whether to use BRIDGE networking mode for Docker container. By default, this is false and HOST mode networking is used by virtue of lower latency",
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "required": [
+        "name",
+        "instances",
+        "cpus",
+        "mem"
+      ],
+      "type": "object"
+    },
+    "general": {
+      "properties": {
+        "worker_processes": {
+          "description": "Number of NGINX worker processes. Currently the RTMP server has problems with multithreading. Therefore we recommend only one process",
+          "type": "integer",
+          "default": 1
+        },
+        "worker_connections": {
+          "description": "Max. connections per worker",
+          "type": "integer",
+          "default": 1024
+        }
+      }
+    },
+    "rtmp": {
+      "properties": {
+        "publish_token": {
+          "description": "",
+          "type": "string",
+          "default": "datarhei"
+        },
+        "max_streams": {
+          "description": "",
+          "type": "integer",
+          "default": 32
+        },
+        "access_log": {
+          "description": "",
+          "type": "string",
+          "default": "off"
+        },
+        "port": {
+          "description": "",
+          "type": "integer",
+          "default": 1935
+        },
+        "timeout": {
+          "description": "",
+          "type": "string",
+          "default": "60s"
+        },
+        "ping": {
+          "description": "",
+          "type": "string",
+          "default": "3m"
+        },
+        "ping_timeout": {
+          "description": "",
+          "type": "string",
+          "default": "30s"
+        },
+        "ack_window": {
+          "description": "",
+          "type": "integer",
+          "default": 5000000
+        },
+        "chunk_size": {
+          "description": "",
+          "type": "integer",
+          "default": 4096
+        },
+        "max_message": {
+          "description": "",
+          "type": "string",
+          "default": "1M"
+        },
+        "buflen": {
+          "description": "",
+          "type": "string",
+          "default": "5s"
+        }
+      }
+    },
+    "hls": {
+      "properties": {
+        "interleave": {
+          "description": "",
+          "type": "string",
+          "default": "on"
+        },
+        "meta": {
+          "description": "",
+          "type": "string",
+          "default": "copy"
+        },
+        "wait_key": {
+          "description": "",
+          "type": "string",
+          "default": "on"
+        },
+        "wait_video": {
+          "description": "",
+          "type": "string",
+          "default": "on"
+        },
+        "drop_idle_publisher": {
+          "description": "",
+          "type": "string",
+          "default": "10s"
+        },
+        "sync": {
+          "description": "",
+          "type": "string",
+          "default": "10ms"
+        },
+        "idle_streams": {
+          "description": "",
+          "type": "string",
+          "default": "off"
+        },
+        "hls_fragment": {
+          "description": "",
+          "type": "string",
+          "default": "2s"
+        },
+        "hls_playlist_lenght": {
+          "description": "",
+          "type": "integer",
+          "default": 60
+        },
+        "hls_sync": {
+          "description": "",
+          "type": "string",
+          "default": "1ms"
+        },
+        "hls_continous": {
+          "description": "",
+          "type": "string",
+          "default": "off"
+        },
+        "hls_nested": {
+          "description": "",
+          "type": "string",
+          "default": "off"
+        },
+        "hls_cleanup": {
+          "description": "",
+          "type": "string",
+          "default": "on"
+        },
+        "hls_fragment_naming": {
+          "description": "",
+          "type": "string",
+          "default": "sequential"
+        },
+        "hls_fragment_naming_granularity": {
+          "description": "",
+          "type": "integer",
+          "default": 0
+        },
+        "hls_fragment_slicing": {
+          "description": "",
+          "type": "string",
+          "default": "plain"
+        },
+        "hls_type": {
+          "description": "",
+          "type": "string",
+          "default": "live"
+        },
+        "hls_key": {
+          "description": "",
+          "type": "string",
+          "default": "off"
+        },
+        "hls_fragments_per_key": {
+          "description": "",
+          "type": "integer",
+          "default": 0
+        }
+      }
+    },
+    "encoding": {
+      "properties": {
+        "snapshot_interval": {
+          "description": "",
+          "type": "integer",
+          "default": 60
+        },
+        "bitrates": {
+          "properties": {
+            "enable": {
+              "description": "",
+              "type": "boolean",
+              "default": false
+            },
+            "240p": {
+              "description": "",
+              "type": "boolean",
+              "default": true
+            },
+            "360p": {
+              "description": "",
+              "type": "boolean",
+              "default": true
+            },
+            "480p": {
+              "description": "",
+              "type": "boolean",
+              "default": true
+            },
+            "720p": {
+              "description": "",
+              "type": "boolean",
+              "default": true
+            }
+          }
+        }
+      }
+    },
+    "http": {
+      "properties": {
+        "sendfile": {
+          "description": "",
+          "type": "string",
+          "default": "on"
+        },
+        "tcp_nopush": {
+          "description": "",
+          "type": "string",
+          "default": "on"
+        },
+        "tcp_nodelay": {
+          "description": "",
+          "type": "string",
+          "default": "on"
+        },
+        "access_log": {
+          "description": "",
+          "type": "string",
+          "default": "off"
+        },
+        "port": {
+          "description": "",
+          "type": "integer",
+          "default": 80
+        },
+        "access_control_allow_origin": {
+          "description": "",
+          "type": "string",
+          "default": "*"
+        },
+        "auth_username": {
+          "description": "",
+          "type": "string",
+          "default": "admin"
+        },
+        "auth_password": {
+          "description": "",
+          "type": "string",
+          "default": "datarhei"
+        }
+      }
+    },
+    "https": {
+      "properties": {
+        "enable": {
+          "description": "",
+          "type": "boolean",
+          "default": false
+        },
+        "port": {
+          "description": "",
+          "type": "integer",
+          "default": 443
+        },
+        "cert_create": {
+          "description": "",
+          "type": "boolean",
+          "default": false
+        },
+        "cert_email": {
+          "description": "",
+          "type": "string",
+          "default": "admin@example.org"
+        },
+        "cert_domain": {
+          "description": "",
+          "type": "string",
+          "default": "example.org"
+        }
+      }
+    }
+  },
+  "type": "object"
+}

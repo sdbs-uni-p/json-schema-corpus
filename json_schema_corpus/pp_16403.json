@@ -1,0 +1,155 @@
+{
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "properties": {
+    "data": {
+      "$id": "/properties/data",
+      "type": "array",
+      "items": {
+        "$id": "/properties/data/items",
+        "type": "object",
+        "properties": {
+          "id": {
+            "$id": "/properties/data/items/properties/id",
+            "type": "integer",
+            "title": "The Id Schema ",
+            "default": 0,
+            "examples": [
+              712096
+            ]
+          },
+          "country": {
+            "$id": "/properties/data/items/properties/country",
+            "type": "string",
+            "title": "The Country Schema ",
+            "default": "",
+            "examples": [
+              "Poland"
+            ]
+          },
+          "iso_code3": {
+            "$id": "/properties/data/items/properties/iso_code3",
+            "type": "string",
+            "title": "The Iso_code3 Schema ",
+            "default": "",
+            "examples": [
+              "POL"
+            ]
+          },
+          "indicator": {
+            "$id": "/properties/data/items/properties/indicator",
+            "type": "string",
+            "title": "The Indicator Schema ",
+            "default": "",
+            "examples": [
+              "NDC summary"
+            ]
+          },
+          "value": {
+            "$id": "/properties/data/items/properties/value",
+            "type": "string",
+            "title": "The Value Schema ",
+            "default": "",
+            "examples": [
+              "<p>The European Union and its 28 Member States submitted a joint NDC.</p>"
+            ]
+          },
+          "source": {
+            "$id": "/properties/data/items/properties/source",
+            "type": "string",
+            "title": "The Source Schema ",
+            "default": "",
+            "examples": [
+              "CAIT"
+            ]
+          },
+          "categories": {
+            "$id": "/properties/data/items/properties/categories",
+            "type": "string",
+            "title": "The Categories Schema ",
+            "default": "",
+            "examples": [
+              "NDC, Overview"
+            ]
+          },
+          "label": {
+            "$id": "/properties/data/items/properties/label",
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "The Label Schema ",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "sector": {
+            "$id": "/properties/data/items/properties/sector",
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "The Sector Schema ",
+            "default": null,
+            "examples": [
+              null
+            ]
+          }
+        }
+      }
+    },
+    "meta": {
+      "$id": "/properties/meta",
+      "type": "object",
+      "properties": {
+        "sorting": {
+          "$id": "/properties/meta/properties/sorting",
+          "type": "object",
+          "properties": {
+            "sort_col": {
+              "$id": "/properties/meta/properties/sorting/properties/sort_col",
+              "type": "string",
+              "title": "The Sort_col Schema ",
+              "default": "",
+              "examples": [
+                "indicator"
+              ]
+            },
+            "sort_dir": {
+              "$id": "/properties/meta/properties/sorting/properties/sort_dir",
+              "type": "string",
+              "title": "The Sort_dir Schema ",
+              "default": "",
+              "examples": [
+                "ASC"
+              ]
+            }
+          }
+        },
+        "columns": {
+          "$id": "/properties/meta/properties/columns",
+          "type": "array",
+          "items": {
+            "$id": "/properties/meta/properties/columns/items",
+            "type": "string",
+            "title": "The 0th Schema ",
+            "default": "",
+            "examples": [
+              "id",
+              "iso_code3",
+              "country",
+              "indicator",
+              "source",
+              "label",
+              "sector",
+              "value"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

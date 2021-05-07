@@ -1,0 +1,645 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Person",
+  "description": "TODO",
+  "type": "object",
+  "properties": {
+    "doc_type": {
+      "type": "string",
+      "pattern": "^person$"
+    },
+    "version": {
+      "type": "string",
+      "format": "semver"
+    },
+    "otherIds": {
+      "type": "object"
+    },
+    "surname": {
+      "type": "string",
+      "minLength": 1,
+      "faker": "name.firstName"
+    },
+    "otherNames": {
+      "type": "string",
+      "minLength": 1,
+      "faker": "name.firstName"
+    },
+    "occupation": {
+      "type": "string",
+      "faker": "company.bs"
+    },
+    "age": {
+      "type": "object",
+      "properties": {
+        "years": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 121
+        },
+        "months": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 11
+        },
+        "category": {
+          "enum": [
+            "infant",
+            "child",
+            "adult"
+          ]
+        }
+      }
+    },
+    "birthDay": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 31
+    },
+    "birthMonth": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 12
+    },
+    "birthYear": {
+      "type": "number",
+      "minimum": 1900,
+      "maximum": 2020
+    },
+    "gender": {
+      "enum": [
+        "m",
+        "f"
+      ]
+    },
+    "status": {
+      "enum": [
+        "alive",
+        "dead"
+      ]
+    },
+    "currentLocation": {
+      "type": "string"
+    },
+    "phoneNumber": {
+      "type": "string",
+      "chance": {
+        "phone": {
+          "country": "uk"
+        }
+      }
+    },
+    "phoneOwner": {
+      "type": "string",
+      "faker": "name.findName"
+    },
+    "address": {
+      "$ref": "#/definitions/address"
+    },
+    "leader": {
+      "$ref": "#/definitions/connectedPerson"
+    },
+    "createdDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "modifiedDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "duplicateOf": {
+      "type": "string"
+    },
+    "duplicates": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "changeLog": {
+      "$ref": "#/definitions/changeLog"
+    },
+    "case": {
+      "$ref": "#/definitions/case"
+    },
+    "labResults": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/labResult"
+      }
+    },
+    "contact": {
+      "$ref": "#/definitions/contact"
+    },
+    "calls": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/call"
+      }
+    },
+    "actions": {
+      "type": "array"
+    },
+    "comments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "text": {
+            "type": "string",
+            "chance": {
+              "sentence": {
+                "words": 10
+              }
+            }
+          }
+        }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "healthWorker": {
+      "isHealthWorker": {
+        "type": "boolean"
+      },
+      "facilityName": {
+        "type": "string"
+      }
+    },
+    "isHeadOfHousehold": {
+      "type": "boolean"
+    },
+    "relative": {
+      "$ref": "#/definitions/connectedPerson"
+    }
+  },
+  "definitions": {
+    "address": {
+      "type": "object",
+      "properties": {
+        "adminDivision1": {
+          "type": [
+            "string",
+            "number"
+          ]
+        },
+        "adminDivision2": {
+          "type": [
+            "string",
+            "number"
+          ]
+        },
+        "adminDivision3": {
+          "type": [
+            "string",
+            "number"
+          ]
+        },
+        "adminDivision4": {
+          "type": [
+            "string",
+            "number"
+          ]
+        },
+        "city": {
+          "type": "string",
+          "faker": "address.city"
+        },
+        "address": {
+          "type": "string",
+          "faker": "address.streetAddress"
+        },
+        "countryCode": {
+          "type": "string",
+          "pattern": "^(gn|ml|lr|mg|sl)$",
+          "description": "country code following ISO_3166-1_alpha-2 in lowercase"
+        },
+        "ward": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 999
+        }
+      },
+      "additionalProperties": false
+    },
+    "changeLog": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "rev": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "integer"
+          },
+          "user": {
+            "type": "string",
+            "faker": "name.findName"
+          }
+        }
+      }
+    },
+    "labResult": {
+      "type": "object",
+      "properties": {
+        "minRequirementStatus": {
+          "enum": [
+            "accepted",
+            "pending",
+            "rejected"
+          ]
+        },
+        "collectedBy": {
+          "type": "object",
+          "properties": {
+            "contact1": {
+              "type": "object"
+            },
+            "contact2": {
+              "type": "object"
+            },
+            "facilityName": {
+              "type": "string"
+            }
+          }
+        },
+        "labName": {
+          "type": "string"
+        },
+        "caseId": {
+          "type": "string"
+        },
+        "sampleId": {
+          "type": "string"
+        },
+        "sampleType": {
+          "type": "string"
+        },
+        "sampledDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "testedDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "initialSymptomOnsetDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "statusAtSampleCollection": {
+          "enum": [
+            "alive",
+            "dead"
+          ]
+        },
+        "addressOnset": {
+          "$ref": "#/definitions/address"
+        },
+        "collectionType": {
+          "enum": [
+            "initial",
+            "repeat"
+          ]
+        },
+        "importedDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "result": {
+          "enum": [
+            "positive",
+            "negative",
+            "indeterminate"
+          ]
+        },
+        "ctValue": {
+          "type": "string"
+        },
+        "cdcTest": {
+          "type": "string"
+        },
+        "ms2Control": {
+          "type": "string"
+        }
+      }
+    },
+    "contact": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "enum": [
+            "unknown",
+            "active",
+            "complete",
+            "lost"
+          ]
+        },
+        "sourceCases": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "personId": {
+                "type": "string"
+              },
+              "lastContactDate": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "exposures": {
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "slept-ate",
+                    "physical-contact",
+                    "touch-fluids",
+                    "objects",
+                    "breastfeeding",
+                    "funeral",
+                    "other"
+                  ]
+                },
+                "relationToCase": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "personId"
+            ]
+          }
+        },
+        "followUps": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "status": {
+                "enum": [
+                  "incomplete",
+                  "complete"
+                ]
+              },
+              "incompleteReason": {
+                "enum": [
+                  "food-distribution-incomplete",
+                  "no-food-distribution",
+                  "gone-to-work",
+                  "resistance",
+                  "travelling",
+                  "other"
+                ]
+              },
+              "dateOfVisit": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "interviewer": {
+                "$ref": "#/definitions/connectedPerson"
+              },
+              "comment": {
+                "type": "string"
+              },
+              "isSymptomatic": {
+                "type": "boolean"
+              },
+              "symptoms": {
+                "$ref": "#/definitions/symptoms"
+              },
+              "geoInfo": {
+                "type": "object",
+                "properties": {
+                  "coords": {
+                    "type": "object",
+                    "properties": {
+                      "longitude": {
+                        "type": "number"
+                      },
+                      "latitude": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "required": [
+        "status"
+      ]
+    },
+    "case": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "unknown",
+            "suspect",
+            "probable",
+            "confirmed",
+            "not a case"
+          ]
+        },
+        "onsetDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "interviewer": {
+          "$ref": "#/definitions/connectedPerson"
+        },
+        "hadContactWith": {
+          "deadPerson": {
+            "type": "boolean"
+          },
+          "sickPerson": {
+            "type": "boolean"
+          },
+          "healthWorker": {
+            "type": "boolean"
+          },
+          "homeQuarantine": {
+            "type": "boolean"
+          }
+        },
+        "symptoms": {
+          "$ref": "#/definitions/symptoms"
+        }
+      },
+      "required": [
+        "status"
+      ]
+    },
+    "call": {
+      "type": "object",
+      "properties": {
+        "createdBy": {
+          "type": "string",
+          "faker": "name.findName"
+        },
+        "createdDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "name": {
+          "type": "string",
+          "faker": "name.findName"
+        },
+        "address": {
+          "$ref": "#/definitions/address"
+        },
+        "phoneNumber": {
+          "type": "string",
+          "chance": {
+            "phone": {
+              "country": "uk"
+            }
+          }
+        },
+        "otherPhoneNumber": {
+          "type": "string",
+          "chance": {
+            "phone": {
+              "country": "uk"
+            }
+          }
+        },
+        "callNature": {
+          "enum": [
+            "death",
+            "suspect",
+            "sick",
+            "health information",
+            "quarantine",
+            "security threat",
+            "prank call",
+            "other"
+          ]
+        },
+        "callDetails": {
+          "type": "string"
+        },
+        "isFollowUp": {
+          "type": "boolean"
+        }
+      }
+    },
+    "symptoms": {
+      "type": "object",
+      "properties": {
+        "temperature": {
+          "type": "number"
+        },
+        "fever": {
+          "type": "boolean"
+        },
+        "abdominal_pains": {
+          "type": "boolean"
+        },
+        "articular_pain": {
+          "type": "boolean"
+        },
+        "cough": {
+          "type": "boolean"
+        },
+        "diarrhea": {
+          "type": "boolean"
+        },
+        "difficulty_breathing": {
+          "type": "boolean"
+        },
+        "difficulty_swallowing": {
+          "type": "boolean"
+        },
+        "headache": {
+          "type": "boolean"
+        },
+        "hiccups": {
+          "type": "boolean"
+        },
+        "intense_fatigue": {
+          "type": "boolean"
+        },
+        "loss_of_appetite": {
+          "type": "boolean"
+        },
+        "muscular_pain": {
+          "type": "boolean"
+        },
+        "nausea_vomiting": {
+          "type": "boolean"
+        },
+        "neck_rigidity": {
+          "type": "boolean"
+        },
+        "sore_throat": {
+          "type": "boolean"
+        },
+        "thoracic_pain": {
+          "type": "boolean"
+        },
+        "unexplained_bleedings": {
+          "type": "boolean"
+        },
+        "rash": {
+          "type": "boolean"
+        },
+        "red_eyes": {
+          "type": "boolean"
+        },
+        "jaundice": {
+          "type": "boolean"
+        },
+        "bruises": {
+          "type": "boolean"
+        },
+        "back_pain": {
+          "type": "boolean"
+        },
+        "other_symptoms": {
+          "type": "boolean"
+        },
+        "other": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "connectedPerson": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "faker": "name.findName"
+        },
+        "phone": {
+          "type": "string",
+          "chance": {
+            "phone": {
+              "country": "uk"
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "doc_type",
+    "version",
+    "createdDate"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "http://comrade.forma-pro.com/schemas/trigger/NowTrigger.json",
+  "allOf": [
+    {
+      "$ref": "Trigger.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "type": "string",
+          "enum": [
+            "http://comrade.forma-pro.com/schemas/trigger/NowTrigger.json"
+          ]
+        },
+        "payload": {
+          "type": [
+            "null",
+            "string",
+            "number",
+            "object",
+            "array"
+          ]
+        }
+      }
+    }
+  ]
+}

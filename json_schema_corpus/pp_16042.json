@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Scenario Reasoner input for examples method",
+  "type": "object",
+  "properties": {
+    "method": {
+      "description": "The method of the scenario reasoner being called",
+      "type": "string",
+      "enum": [
+        "examples"
+      ]
+    },
+    "params": {
+      "$ref": "id.input.schema.json#"
+    },
+    "encoding": {
+      "description": "The encoding of the data",
+      "type": "string",
+      "enum": [
+        "json"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "method",
+    "params",
+    "encoding"
+  ]
+}

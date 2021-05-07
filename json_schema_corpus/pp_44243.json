@@ -1,0 +1,24 @@
+{
+  "id": "controller-gamepad",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "ControllerGamepadConfig",
+  "description": "An instance of <a href=\"#controller-gamepad\">a controller gamepad.</a>",
+  "type": "object",
+  "properties": {
+    "orientation": {
+      "$ref": "controller-options-orientation"
+    },
+    "zoom": {
+      "$ref": "controller-options-zoom"
+    },
+    "default": {
+      "type": "boolean",
+      "title": "Default",
+      "description": "Loads the default controller bindings if not set to false.",
+      "default": true
+    },
+    "bindings": {
+      "$ref": "controller-gamepad-binding"
+    }
+  }
+}

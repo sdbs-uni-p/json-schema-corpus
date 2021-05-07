@@ -1,0 +1,47 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "$license": [
+    "http://www.apache.org/licenses/LICENSE-2.0"
+  ],
+  "id": "#",
+  "javaType": "org.apache.streams.pipl.pojo.Name",
+  "properties": {
+    "@type": {
+      "type": "string",
+      "description": "Either one of \u2018present\u2019, 'maiden\u2019, 'former\u2019 or 'alias\u2019. Default is 'present\u2019"
+    },
+    "@valid_since": {
+      "type": "string",
+      "description": "Valid since (YYYY-mm-DD)"
+    },
+    "first": {
+      "type": "string",
+      "description": "First name."
+    },
+    "middle": {
+      "type": "string",
+      "description": "Middle name or middle initial."
+    },
+    "last": {
+      "type": "string",
+      "description": "Last name."
+    },
+    "prefix": {
+      "type": "string",
+      "description": "A person\u2019s title."
+    },
+    "suffix": {
+      "type": "string",
+      "description": "Additional information about a person."
+    },
+    "raw": {
+      "type": "string",
+      "description": "An unparsed person\u2019s full name. Request only."
+    },
+    "display": {
+      "type": "string",
+      "description": "The full name for display purposes. Response only."
+    }
+  }
+}

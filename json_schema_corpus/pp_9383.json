@@ -1,0 +1,25 @@
+{
+  "name": "MyViewerWidget",
+  "description": "A very simple document viewer",
+  "integration": {
+    "technology": "angular",
+    "type": "widget"
+  },
+  "features": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "document": {
+        "type": "object",
+        "required": [
+          "resource"
+        ],
+        "properties": {
+          "resource": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

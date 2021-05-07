@@ -1,0 +1,23 @@
+{
+  "$id": "http://foo.bar/uuid.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "UUID",
+  "description": "Universally Unique Identifier",
+  "type": "object",
+  "required": [
+    "UUID"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "UUID": {
+      "type": "string",
+      "pattern": "[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}"
+    },
+    "label": {
+      "type": "string"
+    },
+    "jugular": {
+      "$ref": "#/examples/images.json"
+    }
+  }
+}

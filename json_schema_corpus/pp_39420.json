@@ -1,0 +1,105 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://data.gouv.fr/schemas/deleted#",
+  "title": "Jeu de donn\u00e9es supprim\u00e9",
+  "description": "Description d'un jeu de donn\u00e9es supprim\u00e9 de la plateforme data.gouv.fr.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "id": "#name",
+      "type": "string",
+      "title": "Nom du jeu de donn\u00e9es supprim\u00e9",
+      "description": "Tel que fourni par l'auteur lors du d\u00e9p\u00f4t."
+    },
+    "author": {
+      "id": "#author",
+      "type": "string",
+      "title": "Nom du d\u00e9posant",
+      "description": "Nom d\u2019utilisateur sur la plateforme data.gouv.fr."
+    },
+    "deliveredAt": {
+      "id": "#deliveredAt",
+      "type": "string",
+      "format": "date-time",
+      "title": "Date de d\u00e9p\u00f4t",
+      "description": "Date de d\u00e9p\u00f4t sur la plateforme data.gouv.fr."
+    },
+    "deletedAt": {
+      "id": "#deletedAt",
+      "type": "string",
+      "format": "date-time",
+      "title": "Date de suppression",
+      "description": "Date d'effacement du jeu de donn\u00e9es sur la plateforme data.gouv.fr."
+    },
+    "reason": {
+      "id": "#reason",
+      "type": "object",
+      "title": "Raison de la suppression",
+      "properties": {
+        "categories": {
+          "id": "#reason/categories",
+          "type": "array",
+          "title": "Cat\u00e9gories des raisons de suppression",
+          "description": "[EXP\u00c9RIMENTAL] Les cat\u00e9gories seront d\u00e9crites au fur et \u00e0 mesure que les raisons s\u2019accumuleront.",
+          "items": {
+            "id": "#reason/categories/0",
+            "type": "string",
+            "pattern": "[a-z_]+"
+          }
+        },
+        "conclusion": {
+          "id": "#reason/conclusion",
+          "type": "string",
+          "title": "Justification de la suppression",
+          "description": "Conclusion du d\u00e9bat ayant men\u00e9 \u00e0 la suppression. Il s'agit d'une forme de jurisprudence."
+        }
+      },
+      "additionalProperties": false
+    },
+    "files": {
+      "id": "#files",
+      "type": "array",
+      "title": "Fichiers d\u00e9pos\u00e9s",
+      "description": "L'objectif de cet objet est de permettre l'identification formelle de l'identit\u00e9 des fichiers d\u00e9pos\u00e9s, par exemple en cas de contestation de la suppression.",
+      "items": {
+        "id": "file",
+        "type": "object",
+        "title": "Description d'un fichier",
+        "description": "Chaque fichier du jeu de donn\u00e9es est caract\u00e9ris\u00e9 par un objet de ce type.",
+        "properties": {
+          "name": {
+            "id": "#name",
+            "type": "string",
+            "title": "Nom du fichier",
+            "description": "Nom du fichier tel que fourni par le d\u00e9posant."
+          },
+          "sha256": {
+            "id": "#sha256",
+            "type": "string",
+            "pattern": "[0-9a-f]{64}",
+            "title": "Empreinte SHA-256",
+            "description": "Empreinte du fichier donn\u00e9e par l'algorithme de hachage SHA-256."
+          },
+          "kilobytes": {
+            "id": "#kilobytes",
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true,
+            "title": "Poids du fichier (kiB)",
+            "description": "Poids du fichier d\u00e9pos\u00e9 en kiB."
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "author",
+    "deliveredAt",
+    "deletedAt",
+    "reason",
+    "files"
+  ]
+}

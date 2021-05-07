@@ -1,0 +1,986 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "https://current.api.vements.org/schema",
+  "type": "object",
+  "title": "vements.io schema",
+  "description": "This is the schema for vements.io.",
+  "definitions": {
+    "achievement": {
+      "title": "Achievement",
+      "parent": "App",
+      "required": [
+        "root",
+        "namespace",
+        "app",
+        "achievement"
+      ],
+      "properties": {
+        "root": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 32
+        },
+        "namespace": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        },
+        "app": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        },
+        "achievement": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        },
+        "display_name": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 128
+        },
+        "description": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 512
+        },
+        "image_url": {
+          "type": "string",
+          "format": "uri",
+          "minLength": 0,
+          "maxLength": 128
+        },
+        "external_url": {
+          "type": "string",
+          "format": "uri",
+          "minLength": 0,
+          "maxLength": 128
+        },
+        "levels": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 0,
+          "maxItems": 10,
+          "items": {
+            "type": "object",
+            "properties": {
+              "slug": {
+                "type": "string"
+              },
+              "display_name": {
+                "type": "string",
+                "minLength": 0,
+                "maxLength": 128
+              },
+              "range_start": {
+                "type": "integer"
+              },
+              "range_finish": {
+                "type": "integer"
+              },
+              "image_url_locked": {
+                "type": "string",
+                "format": "uri",
+                "minLength": 0,
+                "maxLength": 128
+              },
+              "image_url_unlocked": {
+                "type": "string",
+                "format": "uri",
+                "minLength": 0,
+                "maxLength": 128
+              },
+              "when": {
+                "type": "string",
+                "format": "date-time"
+              }
+            }
+          }
+        },
+        "initial_value": {
+          "type": "integer"
+        },
+        "repeat_count": {
+          "type": "integer",
+          "minimum": 0,
+          "exclusiveMinimum": true,
+          "maximum": 10,
+          "exclusiveMaximum": true
+        },
+        "hidden": {
+          "type": "boolean"
+        },
+        "point_label": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 128
+        },
+        "order": {
+          "type": "integer"
+        }
+      },
+      "links": [
+        {
+          "title": "Read Achievement",
+          "href": "/profile/{root}/namespace/{namespace}/app/{app}/achievement/{achievement}",
+          "rel": "self",
+          "resource": {
+            "id": "achievement-read",
+            "type": "achievement",
+            "handler": "AchievementRead"
+          }
+        },
+        {
+          "title": "Update Achievement",
+          "href": "/profile/{root}/namespace/{namespace}/app/{app}/achievement/{achievement}",
+          "rel": "self",
+          "method": "PUT",
+          "resource": {
+            "id": "achievement-update",
+            "type": "achievement",
+            "handler": "AchievementUpdate"
+          }
+        },
+        {
+          "title": "Delete Achievement",
+          "href": "/profile/{root}/namespace/{namespace}/app/{app}/achievement/{achievement}",
+          "rel": "self",
+          "method": "DELETE",
+          "resource": {
+            "id": "achievement-delete",
+            "type": "achievement",
+            "handler": "AchievementDelete"
+          }
+        },
+        {
+          "title": "Create Progress Resource",
+          "href": "/profile/{root}/namespace/{namespace}/app/{app}/achievement/{achievement}/participant/{participant}",
+          "rel": "full",
+          "method": "PUT",
+          "resource": {
+            "id": "progress-create",
+            "type": "achievement",
+            "handler": "ProgressCreate"
+          }
+        },
+        {
+          "title": "Delete Progress Resource",
+          "href": "/profile/{root}/namespace/{namespace}/app/{app}/achievement/{achievement}/participant/{participant}",
+          "rel": "full",
+          "method": "DELETE",
+          "resource": {
+            "id": "progress-delete",
+            "type": "achievement",
+            "handler": "ProgressDelete"
+          }
+        },
+        {
+          "title": "Update Progress Resource",
+          "href": "/profile/{root}/namespace/{namespace}/app/{app}/achievement/{achievement}/participant/{participant}",
+          "rel": "full",
+          "method": "POST",
+          "resource": {
+            "id": "progress-update",
+            "type": "achievement",
+            "handler": "ProgressUpdate"
+          }
+        }
+      ]
+    },
+    "apikey": {
+      "title": "ApiKey",
+      "parent": "Namespace",
+      "required": [
+        "root",
+        "namespace",
+        "apikey"
+      ],
+      "properties": {
+        "root": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 32
+        },
+        "namespace": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        },
+        "apikey": {
+          "type": "string"
+        }
+      },
+      "links": [
+        {
+          "title": "Read ApiKey",
+          "href": "/profile/{root}/namespace/{namespace}/apikey/{apikey}",
+          "rel": "self",
+          "resource": {
+            "id": "apikey-read",
+            "type": "apikey",
+            "handler": "ApiKeyRead"
+          }
+        },
+        {
+          "title": "Delete ApiKey",
+          "href": "/profile/{root}/namespace/{namespace}/apikey/{apikey}",
+          "rel": "self",
+          "method": "DELETE",
+          "resource": {
+            "id": "apikey-delete",
+            "type": "apikey",
+            "handler": "ApiKeyDelete"
+          }
+        }
+      ]
+    },
+    "app": {
+      "title": "App",
+      "parent": "Namespace",
+      "required": [
+        "root",
+        "namespace",
+        "app"
+      ],
+      "properties": {
+        "root": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 32
+        },
+        "namespace": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        },
+        "app": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        },
+        "display_name": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 128
+        },
+        "description": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 512
+        },
+        "image_url": {
+          "type": "string",
+          "format": "uri",
+          "minLength": 0,
+          "maxLength": 128
+        },
+        "external_url": {
+          "type": "string",
+          "format": "uri",
+          "minLength": 0,
+          "maxLength": 128
+        }
+      },
+      "links": [
+        {
+          "title": "Read App",
+          "href": "/profile/{root}/namespace/{namespace}/app/{app}",
+          "rel": "self",
+          "resource": {
+            "id": "app-read",
+            "type": "app",
+            "handler": "AppRead"
+          }
+        },
+        {
+          "title": "Update App",
+          "href": "/profile/{root}/namespace/{namespace}/app/{app}",
+          "rel": "self",
+          "method": "PUT",
+          "resource": {
+            "id": "app-update",
+            "type": "app",
+            "handler": "AppUpdate"
+          }
+        },
+        {
+          "title": "Delete App",
+          "href": "/profile/{root}/namespace/{namespace}/app/{app}",
+          "rel": "self",
+          "method": "DELETE",
+          "resource": {
+            "id": "app-delete",
+            "type": "app",
+            "handler": "AppDelete"
+          }
+        },
+        {
+          "title": "Create Achievement Resource",
+          "href": "/profile/{root}/namespace/{namespace}/app/{app}/achievement",
+          "rel": "self",
+          "method": "POST",
+          "resource": {
+            "id": "achievement-create",
+            "type": "achievement",
+            "handler": "AchievementCreate"
+          }
+        },
+        {
+          "title": "Create ScoreBoard Resource",
+          "href": "/profile/{root}/namespace/{namespace}/app/{app}/scoreboard",
+          "rel": "self",
+          "method": "POST",
+          "resource": {
+            "id": "scoreboard-create",
+            "type": "scoreboard",
+            "handler": "ScoreBoardCreate"
+          }
+        },
+        {
+          "title": "List Achievement Resources",
+          "href": "/profile/{root}/namespace/{namespace}/app/{app}/achievement",
+          "rel": "self",
+          "resource": {
+            "id": "achievement-list",
+            "type": "achievement",
+            "handler": "AchievementList"
+          }
+        },
+        {
+          "title": "List ScoreBoard Resources",
+          "href": "/profile/{root}/namespace/{namespace}/app/{app}/scoreboard",
+          "rel": "self",
+          "resource": {
+            "id": "scoreboard-list",
+            "type": "scoreboard",
+            "handler": "ScoreBoardList"
+          }
+        }
+      ]
+    },
+    "namespace": {
+      "title": "Namespace",
+      "parent": "Profile",
+      "required": [
+        "root",
+        "namespace"
+      ],
+      "properties": {
+        "root": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 32
+        },
+        "namespace": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        },
+        "display_name": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 128
+        },
+        "description": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 512
+        },
+        "image_url": {
+          "type": "string",
+          "format": "uri",
+          "minLength": 0,
+          "maxLength": 128
+        },
+        "external_url": {
+          "type": "string",
+          "format": "uri",
+          "minLength": 0,
+          "maxLength": 128
+        }
+      },
+      "links": [
+        {
+          "title": "Read Namespace",
+          "href": "/profile/{root}/namespace/{namespace}",
+          "rel": "self",
+          "resource": {
+            "id": "namespace-read",
+            "type": "namespace",
+            "handler": "NamespaceRead"
+          }
+        },
+        {
+          "title": "Update Namespace",
+          "href": "/profile/{root}/namespace/{namespace}",
+          "rel": "self",
+          "method": "PUT",
+          "resource": {
+            "id": "namespace-update",
+            "type": "namespace",
+            "handler": "NamespaceUpdate"
+          }
+        },
+        {
+          "title": "Delete Namespace",
+          "href": "/profile/{root}/namespace/{namespace}",
+          "rel": "self",
+          "method": "DELETE",
+          "resource": {
+            "id": "namespace-delete",
+            "type": "namespace",
+            "handler": "NamespaceDelete"
+          }
+        },
+        {
+          "title": "Create App Resource",
+          "href": "/profile/{root}/namespace/{namespace}/app",
+          "rel": "self",
+          "method": "POST",
+          "resource": {
+            "id": "app-create",
+            "type": "app",
+            "handler": "AppCreate"
+          }
+        },
+        {
+          "title": "Create ApiKey Resource",
+          "href": "/profile/{root}/namespace/{namespace}/apikey",
+          "rel": "self",
+          "method": "POST",
+          "resource": {
+            "id": "apikey-create",
+            "type": "apikey",
+            "handler": "ApiKeyCreate"
+          }
+        },
+        {
+          "title": "Create Participant Resource",
+          "href": "/profile/{root}/namespace/{namespace}/participant",
+          "rel": "self",
+          "method": "POST",
+          "resource": {
+            "id": "participant-create",
+            "type": "participant",
+            "handler": "ParticipantCreate"
+          }
+        },
+        {
+          "title": "List App Resources",
+          "href": "/profile/{root}/namespace/{namespace}/app",
+          "rel": "self",
+          "resource": {
+            "id": "app-list",
+            "type": "app",
+            "handler": "AppList"
+          }
+        },
+        {
+          "title": "List ApiKey Resources",
+          "href": "/profile/{root}/namespace/{namespace}/apikey",
+          "rel": "self",
+          "resource": {
+            "id": "apikey-list",
+            "type": "apikey",
+            "handler": "ApiKeyList"
+          }
+        },
+        {
+          "title": "List Participant Resources",
+          "href": "/profile/{root}/namespace/{namespace}/participant",
+          "rel": "self",
+          "resource": {
+            "id": "participant-list",
+            "type": "participant",
+            "handler": "ParticipantList"
+          }
+        },
+        {
+          "title": "Create ACL Update",
+          "href": "/profile/{root}/namespace/{namespace}/acl",
+          "rel": "full",
+          "method": "PUT",
+          "resource": {
+            "id": "namespace-acl-update",
+            "type": "namespace",
+            "handler": "NamespaceUpdateApiKeyAcl"
+          }
+        }
+      ]
+    },
+    "participant": {
+      "title": "Participant",
+      "parent": "Namespace",
+      "required": [
+        "root",
+        "namespace",
+        "participant"
+      ],
+      "properties": {
+        "root": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 32
+        },
+        "namespace": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        },
+        "participant": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        },
+        "display_name": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 128
+        },
+        "image_url": {
+          "type": "string",
+          "format": "uri",
+          "minLength": 0,
+          "maxLength": 128
+        },
+        "external_url": {
+          "type": "string",
+          "format": "uri",
+          "minLength": 0,
+          "maxLength": 128
+        }
+      },
+      "links": [
+        {
+          "title": "Read Participant",
+          "href": "/profile/{root}/namespace/{namespace}/participant/{participant}",
+          "rel": "self",
+          "resource": {
+            "id": "participant-read",
+            "type": "participant",
+            "handler": "ParticipantRead"
+          }
+        },
+        {
+          "title": "Update Participant",
+          "href": "/profile/{root}/namespace/{namespace}/participant/{participant}",
+          "rel": "self",
+          "method": "PUT",
+          "resource": {
+            "id": "participant-update",
+            "type": "participant",
+            "handler": "ParticipantUpdate"
+          }
+        },
+        {
+          "title": "Delete Participant",
+          "href": "/profile/{root}/namespace/{namespace}/participant/{participant}",
+          "rel": "self",
+          "method": "DELETE",
+          "resource": {
+            "id": "participant-delete",
+            "type": "participant",
+            "handler": "ParticipantDelete"
+          }
+        },
+        {
+          "title": "List Participant Scores",
+          "href": "/profile/{root}/namespace/{namespace}/participant/{participant}/score",
+          "rel": "full",
+          "method": "GET",
+          "resource": {
+            "id": "participant-score-list",
+            "type": "participant",
+            "handler": "ParticipantScore"
+          }
+        }
+      ]
+    },
+    "profile": {
+      "title": "Profile",
+      "parent": null,
+      "required": [
+        "profile",
+        "email"
+      ],
+      "properties": {
+        "profile": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 32
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "minLength": 5,
+          "maxLength": 128
+        },
+        "display_name": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 128
+        },
+        "image_url": {
+          "type": "string",
+          "format": "uri",
+          "minLength": 0,
+          "maxLength": 128
+        },
+        "external_url": {
+          "type": "string",
+          "format": "uri",
+          "minLength": 0,
+          "maxLength": 128
+        },
+        "location": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 128
+        }
+      },
+      "links": [
+        {
+          "title": "Read Profile",
+          "href": "/profile/{root}",
+          "rel": "self",
+          "resource": {
+            "id": "profile-read",
+            "type": "profile",
+            "handler": "ProfileRead"
+          }
+        },
+        {
+          "title": "Update Profile",
+          "href": "/profile/{root}",
+          "rel": "self",
+          "method": "PUT",
+          "resource": {
+            "id": "profile-update",
+            "type": "profile",
+            "handler": "ProfileUpdate"
+          }
+        },
+        {
+          "title": "Delete Profile",
+          "href": "/profile/{root}",
+          "rel": "self",
+          "method": "DELETE",
+          "resource": {
+            "id": "profile-delete",
+            "type": "profile",
+            "handler": "ProfileDelete"
+          }
+        },
+        {
+          "title": "Create Namespace Resource",
+          "href": "/profile/{root}/namespace",
+          "rel": "self",
+          "method": "POST",
+          "resource": {
+            "id": "namespace-create",
+            "type": "namespace",
+            "handler": "NamespaceCreate"
+          }
+        },
+        {
+          "title": "List Namespace Resources",
+          "href": "/profile/{root}/namespace",
+          "rel": "self",
+          "resource": {
+            "id": "namespace-list",
+            "type": "namespace",
+            "handler": "NamespaceList"
+          }
+        },
+        {
+          "title": "List Profile Plans",
+          "href": "/profile/{root}/plans",
+          "rel": "full",
+          "method": "GET",
+          "resource": {
+            "id": "profile-plan-get",
+            "type": "profile",
+            "handler": "ProfilePlanRead"
+          }
+        },
+        {
+          "title": "Create Profile Plans",
+          "href": "/profile/{root}/plans",
+          "rel": "full",
+          "method": "PUT",
+          "resource": {
+            "id": "profile-plan-put",
+            "type": "profile",
+            "handler": "ProfilePlanUpdate"
+          }
+        }
+      ]
+    },
+    "progress": {
+      "title": "Progress",
+      "parent": "Achievement",
+      "required": [
+        "root",
+        "namespace",
+        "app",
+        "achievement",
+        "participant"
+      ],
+      "properties": {
+        "root": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 32
+        },
+        "namespace": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        },
+        "app": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        },
+        "achievement": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        },
+        "participant": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        },
+        "value": {
+          "type": "integer"
+        },
+        "delta": {
+          "type": "integer"
+        }
+      },
+      "links": []
+    },
+    "score": {
+      "title": "Score",
+      "parent": "ScoreBoard",
+      "required": [
+        "root",
+        "namespace",
+        "app",
+        "scoreboard",
+        "participant"
+      ],
+      "properties": {
+        "root": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 32
+        },
+        "namespace": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        },
+        "app": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        },
+        "scoreboard": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        },
+        "participant": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        },
+        "value": {
+          "type": "integer"
+        },
+        "delta": {
+          "type": "integer"
+        }
+      },
+      "links": []
+    },
+    "scoreboard": {
+      "title": "ScoreBoard",
+      "parent": "App",
+      "required": [
+        "root",
+        "namespace",
+        "app",
+        "scoreboard"
+      ],
+      "properties": {
+        "root": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 32
+        },
+        "namespace": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        },
+        "app": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        },
+        "scoreboard": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        },
+        "display_name": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 128
+        },
+        "description": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 512
+        },
+        "image_url": {
+          "type": "string",
+          "format": "uri",
+          "minLength": 0,
+          "maxLength": 128
+        },
+        "external_url": {
+          "type": "string",
+          "format": "uri",
+          "minLength": 0,
+          "maxLength": 128
+        },
+        "sort_direction": {
+          "type": "string",
+          "enum": [
+            "asc",
+            "desc"
+          ]
+        },
+        "date_query_ranges": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "maxItems": 5,
+          "items": {
+            "type": "string",
+            "enum": [
+              "all",
+              "today",
+              "yesterday",
+              "week",
+              "month"
+            ]
+          }
+        }
+      },
+      "links": [
+        {
+          "title": "Read ScoreBoard",
+          "href": "/profile/{root}/namespace/{namespace}/app/{app}/scoreboard/{scoreboard}",
+          "rel": "self",
+          "resource": {
+            "id": "scoreboard-read",
+            "type": "scoreboard",
+            "handler": "ScoreBoardRead"
+          }
+        },
+        {
+          "title": "Update ScoreBoard",
+          "href": "/profile/{root}/namespace/{namespace}/app/{app}/scoreboard/{scoreboard}",
+          "rel": "self",
+          "method": "PUT",
+          "resource": {
+            "id": "scoreboard-update",
+            "type": "scoreboard",
+            "handler": "ScoreBoardUpdate"
+          }
+        },
+        {
+          "title": "Delete ScoreBoard",
+          "href": "/profile/{root}/namespace/{namespace}/app/{app}/scoreboard/{scoreboard}",
+          "rel": "self",
+          "method": "DELETE",
+          "resource": {
+            "id": "scoreboard-delete",
+            "type": "scoreboard",
+            "handler": "ScoreBoardDelete"
+          }
+        },
+        {
+          "title": "Create Score Resource",
+          "href": "/profile/{root}/namespace/{namespace}/app/{app}/scoreboard/{scoreboard}/participant/{participant}",
+          "rel": "full",
+          "method": "PUT",
+          "resource": {
+            "id": "score-create",
+            "type": "scoreboard",
+            "handler": "ScoreCreate"
+          }
+        },
+        {
+          "title": "Delete Score Resource",
+          "href": "/profile/{root}/namespace/{namespace}/app/{app}/scoreboard/{scoreboard}/participant/{participant}",
+          "rel": "full",
+          "method": "DELETE",
+          "resource": {
+            "id": "score-delete",
+            "type": "scoreboard",
+            "handler": "ScoreDelete"
+          }
+        },
+        {
+          "title": "Update Score Resource",
+          "href": "/profile/{root}/namespace/{namespace}/app/{app}/scoreboard/{scoreboard}/participant/{participant}",
+          "rel": "full",
+          "method": "POST",
+          "resource": {
+            "id": "score-update",
+            "type": "scoreboard",
+            "handler": "ScoreUpdate"
+          }
+        },
+        {
+          "title": "Read Full Scoreboard",
+          "href": "/profile/{root}/namespace/{namespace}/app/{app}/scoreboard/{scoreboard}/{range}",
+          "rel": "full",
+          "method": "GET",
+          "resource": {
+            "id": "scoreboard-range-read",
+            "type": "scoreboard",
+            "handler": "ScoreBoardFull"
+          }
+        }
+      ]
+    },
+    "schema": {
+      "title": "schema",
+      "parent": null,
+      "required": [],
+      "properties": {},
+      "links": [
+        {
+          "title": "vements.io schema",
+          "href": "/schema",
+          "rel": "self",
+          "resource": {
+            "handler": "TemplateView",
+            "template": "schema-public.json",
+            "content_type": "text/javascript"
+          }
+        }
+      ]
+    }
+  },
+  "links": [],
+  "properties": []
+}

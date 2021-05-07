@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "properties": {
+    "last_run": {
+      "type": "integer"
+    },
+    "period": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "last_run",
+    "period"
+  ]
+}

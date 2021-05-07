@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://localhost:8080/schemas/login.json",
+  "type": "object",
+  "properties": {
+    "username": {
+      "id": "username",
+      "type": "string"
+    },
+    "password": {
+      "id": "password",
+      "type": "string"
+    },
+    "server": {
+      "id": "server",
+      "type": "string"
+    }
+  },
+  "required": [
+    "username",
+    "server"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "Person": {
+      "type": "object",
+      "additionalProperties": true,
+      "title": "Person schema.",
+      "allOf": [
+        {
+          "$ref": "personable.json#/definitions/Personable"
+        },
+        {
+          "properties": {}
+        }
+      ]
+    }
+  }
+}

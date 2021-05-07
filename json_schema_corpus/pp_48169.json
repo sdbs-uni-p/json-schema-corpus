@@ -1,0 +1,9 @@
+{
+  "id": "http://schema.myrtana.sk/support/tag.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Tag",
+  "description": "Tag. Max. 100 bytes.",
+  "type": "string",
+  "minLength": 1,
+  "maxLength": 100
+}

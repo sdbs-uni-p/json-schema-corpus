@@ -1,0 +1,104 @@
+{
+  "id": "https://raw.githubusercontent.com/MailOnline/tap-github-issues/master/schemas/test_case.json#",
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "description": "schema for test case. Failing this schema will cause skipping the test case",
+  "type": "object",
+  "required": [
+    "ok",
+    "id",
+    "name",
+    "diag"
+  ],
+  "properties": {
+    "ok": {
+      "description": "test result",
+      "type": "boolean"
+    },
+    "id": {
+      "description": "test sequential number",
+      "type": "integer",
+      "minLength": 1
+    },
+    "name": {
+      "description": "test name, should be unique accross all tests",
+      "type": "string",
+      "minLength": 1
+    },
+    "diag": {
+      "description": "test diagnostics, includes all information necessary to manage the issue",
+      "type": "object",
+      "required": [
+        "repo",
+        "rule"
+      ],
+      "properties": {
+        "message": {
+          "description": "not used in GitHub issues",
+          "type": "string"
+        },
+        "messages": {
+          "description": "these messages will be used as GitHub issue comments",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "severity": {
+          "description": "severity can be used as GitHub issue label",
+          "type": "string"
+        },
+        "repo": {
+          "description": "full repository name, including organisation",
+          "type\"": "string",
+          "pattern": "^(?:[A-Za-z0-9]+[-]?)+[A-Za-z0-9]\\/[A-Za-z0-9_-]+$"
+        },
+        "rule": {
+          "description": "rule name",
+          "type": "string",
+          "pattern": "^[A-Za-z](?:[A-Za-z0-9]+[-]?)+[A-Za-z0-9]$"
+        },
+        "issue": {
+          "$ref": "#/definitions/issue"
+        }
+      }
+    }
+  },
+  "definitions": {
+    "issue": {
+      "description": "GitHub issue title and action comments (optional). Title and comments will be based on rule name in case this property is absent.",
+      "type": "object",
+      "required": [
+        "title"
+      ],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "remind": {
+          "type": "boolean"
+        },
+        "reopen": {
+          "type": "boolean"
+        },
+        "comments": {
+          "type": "object",
+          "minProperties": 1,
+          "properties": {
+            "create": {
+              "type": "string"
+            },
+            "update": {
+              "type": "string"
+            },
+            "close": {
+              "type": "string"
+            },
+            "reopen": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

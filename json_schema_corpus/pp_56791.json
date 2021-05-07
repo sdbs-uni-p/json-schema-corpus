@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "@type": "GeoCoordinates",
+  "@context": "http://schema.org/",
+  "description": "Schema.org GeoCoordinates",
+  "type": "object",
+  "definitions": {
+    "Thing": {
+      "@type": "Thing",
+      "type": "object",
+      "properties": {
+        "additionalType": {
+          "description": "An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.",
+          "type": "string",
+          "format": "uri"
+        },
+        "description": {
+          "description": "A short description of the item.",
+          "type": "string"
+        },
+        "image": {
+          "description": "URL of an image of the item.",
+          "type": "string",
+          "format": "uri"
+        },
+        "name": {
+          "description": "The name of the item.",
+          "type": "string"
+        },
+        "url": {
+          "description": "URL of the item.",
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "GeoCoordinates": {
+      "@type": "GeoCoordinates",
+      "type": "object",
+      "properties": {
+        "elevation": {
+          "description": "The elevation of a location.",
+          "$ref": "NumberorText.json"
+        },
+        "latitude": {
+          "description": "The latitude of a location. For example 37.42242.",
+          "$ref": "NumberorText.json"
+        },
+        "longitude": {
+          "description": "The longitude of a location. For example -122.08585.",
+          "$ref": "NumberorText.json"
+        }
+      }
+    }
+  },
+  "allOf": [
+    "#definitions/Thing",
+    "#definitions/GeoCoordinates"
+  ]
+}

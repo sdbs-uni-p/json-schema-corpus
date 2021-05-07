@@ -1,0 +1,91 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "app": {
+      "id": "app",
+      "type": "object",
+      "properties": {
+        "name": {
+          "id": "name",
+          "type": "string"
+        },
+        "host": {
+          "id": "host",
+          "type": "string"
+        },
+        "port": {
+          "id": "port",
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 65535
+        },
+        "https": {
+          "id": "https",
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "host",
+        "port",
+        "https"
+      ]
+    },
+    "database": {
+      "id": "database",
+      "type": "object",
+      "properties": {
+        "name": {
+          "id": "name",
+          "type": "string"
+        },
+        "host": {
+          "id": "host",
+          "type": "string"
+        },
+        "user": {
+          "id": "user",
+          "type": "string"
+        },
+        "pass": {
+          "id": "pass",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "redis": {
+      "id": "redis",
+      "type": "object",
+      "properties": {
+        "protocol": {
+          "id": "protocol",
+          "enum": [
+            "unix",
+            "tcp"
+          ]
+        },
+        "host": {
+          "id": "host",
+          "type": "string"
+        },
+        "port": {
+          "id": "port",
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 65535
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": true,
+  "required": [
+    "app",
+    "database",
+    "redis"
+  ]
+}

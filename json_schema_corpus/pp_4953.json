@@ -1,0 +1,118 @@
+{
+  "title": "User",
+  "id": "/profiles/user.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "required": [
+    "email",
+    "first_name",
+    "last_name"
+  ],
+  "identifyingProperties": [
+    "uuid",
+    "email"
+  ],
+  "additionalProperties": false,
+  "mixinProperties": [
+    {
+      "$ref": "mixins.json#/schema_version"
+    },
+    {
+      "$ref": "mixins.json#/uuid"
+    },
+    {
+      "$ref": "mixins.json#/shared_status"
+    }
+  ],
+  "properties": {
+    "schema_version": {
+      "default": "9"
+    },
+    "email": {
+      "title": "Email",
+      "type": "string",
+      "format": "email",
+      "uniqueKey": true
+    },
+    "first_name": {
+      "title": "First name",
+      "description": "The user's first (given) name.",
+      "type": "string"
+    },
+    "last_name": {
+      "title": "Last name",
+      "description": "The user's last (family) name.",
+      "type": "string"
+    },
+    "lab": {
+      "title": "Lab",
+      "description": "Lab user is primarily associated with.",
+      "comment": "See lab.json for available identifiers.",
+      "permission": "import-items",
+      "type": "string",
+      "linkTo": "Lab"
+    },
+    "submits_for": {
+      "title": "Submits for",
+      "description": "Labs user is authorized to submit data for.",
+      "type": "array",
+      "default": [],
+      "uniqueItems": true,
+      "permission": "import-items",
+      "items": {
+        "description": "A lab user is authorized to submit for.",
+        "comment": "See lab.json for available identifiers.",
+        "type": "string",
+        "linkTo": "Lab"
+      }
+    },
+    "groups": {
+      "title": "Groups",
+      "description": "Additional access control groups",
+      "type": "array",
+      "default": [],
+      "uniqueItems": true,
+      "permission": "import-items",
+      "items": {
+        "type": "string",
+        "enum": [
+          "admin",
+          "read-only-admin",
+          "verified"
+        ]
+      }
+    },
+    "viewing_groups": {
+      "title": "View access group",
+      "description": "The group that determines which set of data the user has permission to view.",
+      "type": "array",
+      "uniqueItems": true,
+      "permission": "import-items",
+      "items": {
+        "type": "string",
+        "enum": [
+          "community",
+          "ENCODE3",
+          "ENCODE4",
+          "GGR",
+          "REMC",
+          "ENCORE"
+        ]
+      }
+    },
+    "job_title": {
+      "title": "Job title",
+      "type": "string",
+      "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$"
+    }
+  },
+  "facets": {
+    "lab.title": {
+      "title": "Lab"
+    }
+  },
+  "boost_values": {
+    "title": 1.0
+  },
+  "changelog": "/profiles/changelogs/user.md"
+}

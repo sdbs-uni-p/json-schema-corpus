@@ -1,0 +1,21 @@
+{
+  "id": "Participant",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "required": [
+    "participantStatus",
+    "hypertyResource"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "participantStatus": {
+      "enum": []
+    },
+    "hypertyResource": {
+      "$ref": "HypertyResource"
+    },
+    "communicationInv": {
+      "$ref": "Communication"
+    }
+  }
+}

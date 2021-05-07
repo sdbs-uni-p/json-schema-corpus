@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "$license": [
+    "http://www.apache.org/licenses/LICENSE-2.0"
+  ],
+  "id": "#",
+  "type": "object",
+  "serializable": true,
+  "javaInterfaces": [
+    "java.io.Serializable"
+  ],
+  "javaType": "org.apache.streams.twitter.config.TwitterEngagersProviderConfiguration",
+  "extends": {
+    "$ref": "TwitterTimelineProviderConfiguration.json"
+  }
+}

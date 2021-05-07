@@ -1,0 +1,378 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "singleValueAttributeOp": {
+      "type": "object",
+      "description": "operation on a single (non-array) SAML attribute",
+      "required": [
+        "name",
+        "value"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "multiValueAttributeOp": {
+      "type": "object",
+      "description": "operation on a multi-valued SAML attribute",
+      "required": [
+        "name",
+        "values"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "values": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "attributeOp": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/singleValueAttributeOp"
+        },
+        {
+          "$ref": "#/definitions/multiValueAttributeOp"
+        }
+      ]
+    },
+    "ifMatched": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/attributeOp"
+      }
+    },
+    "attributeOverride": {
+      "type": "object",
+      "required": [
+        "filter",
+        "ifMatched"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "filter": {
+          "type": "string"
+        },
+        "ifMatched": {
+          "$ref": "#/definitions/ifMatched"
+        }
+      }
+    },
+    "attributeOverrides": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/attributeOverride"
+      }
+    },
+    "id": {
+      "type": "integer"
+    },
+    "description": {
+      "type": "string"
+    },
+    "samlIdentitySource": {
+      "type": "object",
+      "required": [
+        "kind",
+        "metadata",
+        "description"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "samlIdentitySource"
+          ],
+          "description": "always set to: samlIdentitySource"
+        },
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "metadata": {
+          "type": "string"
+        },
+        "description": {
+          "$ref": "#/definitions/description"
+        },
+        "attributeOverrides": {
+          "$ref": "#/definitions/attributeOverrides"
+        }
+      }
+    },
+    "emailIdentitySource": {
+      "type": "object",
+      "required": [
+        "kind",
+        "description"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "emailIdentitySource"
+          ],
+          "description": "always set to: emailIdentitySource"
+        },
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "description": {
+          "$ref": "#/definitions/description"
+        },
+        "attributeOverrides": {
+          "$ref": "#/definitions/attributeOverrides"
+        }
+      }
+    },
+    "legacyAppIdentitySource": {
+      "type": "object",
+      "required": [
+        "kind",
+        "apiBase",
+        "description"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "legacyAppIdentitySource"
+          ],
+          "description": "always set to: legacyAppIdentitySource"
+        },
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "apiBase": {
+          "type": "string"
+        },
+        "description": {
+          "$ref": "#/definitions/description"
+        },
+        "attributeOverrides": {
+          "$ref": "#/definitions/attributeOverrides"
+        }
+      }
+    },
+    "socialIdentitySource": {
+      "type": "object",
+      "required": [
+        "kind",
+        "network",
+        "description"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "socialIdentitySource"
+          ],
+          "description": "always set to: socialIdentitySource"
+        },
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "network": {
+          "enum": [
+            "LinkedIn",
+            "Facebook"
+          ]
+        },
+        "description": {
+          "$ref": "#/definitions/description"
+        },
+        "attributeOverrides": {
+          "$ref": "#/definitions/attributeOverrides"
+        }
+      }
+    },
+    "bootstrapIdentitySource": {
+      "type": "object",
+      "required": [
+        "kind"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "bootstrapIdentitySource"
+          ],
+          "description": "always set to: bootstrapIdentitySource"
+        },
+        "description": {
+          "$ref": "#/definitions/description"
+        },
+        "attributeOverrides": {
+          "$ref": "#/definitions/attributeOverrides"
+        }
+      }
+    },
+    "identitySources": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "#/definitions/samlIdentitySource"
+          },
+          {
+            "$ref": "#/definitions/emailIdentitySource"
+          },
+          {
+            "$ref": "#/definitions/legacyAppIdentitySource"
+          },
+          {
+            "$ref": "#/definitions/socialIdentitySource"
+          },
+          {
+            "$ref": "#/definitions/bootstrapIdentitySource"
+          }
+        ]
+      }
+    },
+    "identitySourceSet": {
+      "type": "object",
+      "properties": {
+        "principalType": {
+          "$ref": "samlSubject.json#/definitions/principalType"
+        },
+        "identitySources": {
+          "$ref": "#/definitions/identitySources"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "principalType",
+        "identitySources"
+      ]
+    },
+    "identitySourceSets": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/identitySourceSet"
+      }
+    },
+    "basicAuthCredentials": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "user",
+        "password"
+      ],
+      "properties": {
+        "user": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "server": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "baseUri",
+        "basicAuthCredentials"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "baseUri": {
+          "type": "string"
+        },
+        "basicAuthCredentials": {
+          "$ref": "#/definitions/basicAuthCredentials"
+        }
+      }
+    },
+    "servers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/server"
+      }
+    },
+    "details": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "organizationName": {
+          "type": "string",
+          "description": "The legal name of the organization"
+        },
+        "shortCode": {
+          "type": "string",
+          "description": "a short, alpha only, lower case identifier for the tenant, e.g. acme"
+        },
+        "description": {
+          "type": "string",
+          "description": "a description for this store"
+        },
+        "country": {
+          "type": "string",
+          "description": "the country code for the organization using the store"
+        },
+        "industry": {
+          "enum": [
+            "Banking",
+            "Healthcare",
+            "Hospitality",
+            "IT",
+            "Manufacturing",
+            "Other"
+          ],
+          "description": "The organization's primary industry"
+        }
+      }
+    },
+    "install": {
+      "type": "object",
+      "required": [
+        "app"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "app": {
+          "type": "string"
+        },
+        "servers": {
+          "$ref": "#/definitions/servers"
+        },
+        "status": {
+          "$ref": "tenantInstallsAppStatus.json"
+        }
+      }
+    },
+    "installs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/install"
+      }
+    }
+  },
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "details": {
+      "$ref": "#/definitions/details"
+    },
+    "installs": {
+      "$ref": "#/definitions/installs"
+    },
+    "identitySourceSets": {
+      "$ref": "#/definitions/identitySourceSets"
+    }
+  }
+}

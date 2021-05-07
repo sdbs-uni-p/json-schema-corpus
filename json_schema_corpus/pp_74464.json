@@ -1,0 +1,152 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Product set",
+  "type": "object",
+  "required": [
+    "XenServerConfig",
+    "SelenaMetaInfo",
+    "SelenaManagementNet",
+    "SelenaTemplates"
+  ],
+  "properties": {
+    "XenServerConfig": {
+      "type": "object",
+      "description": "Information required to use the Xen API",
+      "required": [
+        "XCP_url",
+        "XCP_uname",
+        "XCP_passwd"
+      ],
+      "properties": {
+        "XCP_url": {
+          "type": "string",
+          "description": "The URL of the XenServer management interface",
+          "format": "uri"
+        },
+        "XCP_uname": {
+          "type": "string",
+          "description": "The username for Xen API",
+          "pattern": "^[a-z_][a-z0-9_-]*$"
+        },
+        "XCP_passwd": {
+          "type": "string",
+          "description": "The password for Xen API"
+        }
+      }
+    },
+    "SelenaMetaInfo": {
+      "type": "object",
+      "description": "Keywords used to identify deployed Selena VMs / Networks / disks",
+      "required": [
+        "SELENA_VM_KEYWORD",
+        "SELENA_NET_KEYWORD",
+        "SELENA_VDI_KEYWORD",
+        "SELENA_VBD_KEYWORD"
+      ],
+      "properties": {
+        "SELENA_VM_KEYWORD": {
+          "type": "string",
+          "description": "Keyword to add in VM description",
+          "pattern": "^[a-zA-z0-9_-]+$"
+        },
+        "SELENA_NET_KEYWORD": {
+          "type": "string",
+          "description": "Keyword to add in Network description",
+          "pattern": "^[a-zA-z0-9_-]+$"
+        },
+        "SELENA_VDI_KEYWORD": {
+          "type": "string",
+          "description": "Keyword to add in VDI description",
+          "pattern": "^[a-zA-z0-9_-]+$"
+        },
+        "SELENA_VBD_KEYWORD": {
+          "type": "string",
+          "description": "Keyword to add in VBD description",
+          "pattern": "^[a-zA-z0-9_-]+$"
+        }
+      }
+    },
+    "SelenaManagementNet": {
+      "type": "object",
+      "description": "Configuration of the virtual network which Selena uses as a back-channel to manage an experiment's VMs",
+      "required": [
+        "SELENA_MGMT_NET_NAME",
+        "SELENA_MGMT_NET_IP",
+        "SELENA_MGMT_NETADDR",
+        "SELENA_MGMT_NET_MASK"
+      ],
+      "properties": {
+        "SELENA_MGMT_NET_NAME": {
+          "type": "string",
+          "description": "Keyword to add in Selena's management network description",
+          "pattern": "^[a-zA-z0-9_-]+$"
+        },
+        "SELENA_MGMT_NET_IP": {
+          "type": "string",
+          "description": "Domain-0 management net interface: IP address",
+          "format": "ipv4"
+        },
+        "SELENA_MGMT_NETADDR": {
+          "type": "string",
+          "description": "Domain-0 management net interface: network address",
+          "format": "ipv4"
+        },
+        "SELENA_MGMT_NET_MASK": {
+          "type": "string",
+          "description": "Domain-0 management net interface: network mask",
+          "format": "ipv4"
+        }
+      }
+    },
+    "SelenaTemplates": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "description": "VM template definition: used to represent a unique node type in Selena network experiments",
+        "required": [
+          "Name",
+          "PV_kernel",
+          "PV_ramdisk",
+          "PV_args",
+          "PV_bootloader",
+          "PV_bootloader_args",
+          "VDI_UUID"
+        ],
+        "properties": {
+          "Name": {
+            "type": "string",
+            "description": "Name of the template",
+            "pattern": "^[a-zA-z_]+$"
+          },
+          "PV_kernel": {
+            "type": "string",
+            "description": "Location of the VM kernel"
+          },
+          "PV_ramdisk": {
+            "type": "string",
+            "description": "Location of the VM RAM disk"
+          },
+          "PV_args": {
+            "type": "string",
+            "description": "VM kernel boot args"
+          },
+          "PV_bootloader": {
+            "type": "string",
+            "description": "Boot loader selection for PV"
+          },
+          "PV_bootloader_args": {
+            "type": "string",
+            "description": "PV bootloader args"
+          },
+          "VDI_UUID": {
+            "type": "string",
+            "description": "The UUID of Xen VDI, used as a template",
+            "pattern": "(^$)|(^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$)"
+          }
+        }
+      }
+    }
+  }
+}

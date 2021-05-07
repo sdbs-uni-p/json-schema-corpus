@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "https://github.com/empirefox/node-private-tools/blob/master/src/schemas/arukas.json#",
+  "title": "arukas Config",
+  "description": "Retrive attributes of arukas.",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "$tool": {
+      "type": "string",
+      "description": "Must be set to arukas",
+      "const": "arukas"
+    },
+    "token": {
+      "description": "Can be set through ARUKAS_JSON_API_TOKEN env.",
+      "type": "string"
+    },
+    "secret": {
+      "description": "Can be set through ARUKAS_JSON_API_SECRET env.",
+      "type": "string"
+    },
+    "attr": {
+      "description": "Attribute name to fetch, only support host now.",
+      "type": "string",
+      "enum": [
+        "host"
+      ]
+    }
+  },
+  "required": [
+    "$tool",
+    "attr"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,9 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "DeploymentDescriptorList",
+  "description": "Deployment information list",
+  "type": "array",
+  "items": {
+    "$ref": "DeploymentDescriptor.json"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "Income",
+  "properties": {
+    "amount": {
+      "title": "Amount",
+      "description": "Income associated with the running of the business",
+      "type": "number",
+      "multipleOf": 0.01,
+      "minimum": 0
+    }
+  },
+  "required": [
+    "amount"
+  ],
+  "additionalProperties": false
+}

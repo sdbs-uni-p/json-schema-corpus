@@ -1,0 +1,6 @@
+{
+  "type": "object",
+  "title": "TagBag",
+  "id": "/shared/tagBag",
+  "$schema": "http://json-schema.org/draft-04/schema"
+}

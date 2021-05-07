@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Identity Assertion signature",
+  "type": "object",
+  "properties": {
+    "ia_signature": {
+      "description": "The B64 encoded signature.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "ia_signature"
+  ]
+}

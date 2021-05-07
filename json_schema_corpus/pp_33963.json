@@ -1,0 +1,171 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "description": "Auth0 rules context",
+  "definitions": {
+    "geolocalizedIP": {
+      "type": "object",
+      "required": [
+        "country_code",
+        "country_code3",
+        "country_name",
+        "city_name",
+        "latitude",
+        "longitude",
+        "time_zone",
+        "continent_code"
+      ],
+      "properties": {
+        "country_code": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 2
+        },
+        "country_code3": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 3
+        },
+        "country_name": {
+          "type": "string"
+        },
+        "city_name": {
+          "type": "string"
+        },
+        "latitude": {
+          "type": "number"
+        },
+        "longitude": {
+          "type": "number"
+        },
+        "time_zone": {
+          "type": "string"
+        },
+        "continent_code": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "type": "object",
+  "required": [
+    "clientID",
+    "clientName",
+    "connection",
+    "connectionStrategy",
+    "protocol",
+    "sessionID",
+    "request"
+  ],
+  "properties": {
+    "clientID": {
+      "type": "string"
+    },
+    "clientName": {
+      "type": "string"
+    },
+    "clientMetadata": {
+      "type": "object",
+      "default": {}
+    },
+    "connection": {
+      "type": "string"
+    },
+    "connectionStrategy": {
+      "type": "string"
+    },
+    "samlConfiguration": {
+      "type": "object",
+      "default": {}
+    },
+    "jwtConfiguration": {
+      "type": "object",
+      "default": {},
+      "properties": {
+        "lifetimeInSeconds": {
+          "type": "number",
+          "minium": 1
+        },
+        "scopes": {}
+      }
+    },
+    "protocol": {
+      "type": "string",
+      "enum": [
+        "oidc-basic-profile",
+        "oidc-implicit-profile",
+        "oauth2-resource-owner",
+        "oauth2-resource-owner-jwt-bearer",
+        "oauth2-password",
+        "oauth2-refresh-token",
+        "samlp",
+        "wsfed",
+        "wstrust-usernamemixed",
+        "delegation",
+        "redirect-callback"
+      ]
+    },
+    "stats": {
+      "type": "object",
+      "default": {}
+    },
+    "sso": {
+      "type": "object",
+      "default": {},
+      "properties": {
+        "with_auth0": {
+          "type": "boolean"
+        },
+        "with_dbconn": {
+          "type": "boolean"
+        },
+        "current_clients": {
+          "type": "string"
+        }
+      }
+    },
+    "accessToken": {
+      "type": "object",
+      "default": {}
+    },
+    "idToken": {
+      "type": "object",
+      "default": {}
+    },
+    "sessionID": {
+      "type": "string"
+    },
+    "request": {
+      "type": "object",
+      "required": [
+        "userAgent",
+        "ip",
+        "hostname",
+        "geoip"
+      ],
+      "properties": {
+        "userAgent": {
+          "type": "string"
+        },
+        "ip": {
+          "type": "string",
+          "format": "ipv4"
+        },
+        "hostname": {
+          "type": "string",
+          "format": "hostname"
+        },
+        "geoip": {
+          "$ref": "#/definitions/geolocalizedIP"
+        },
+        "query": {
+          "type": "object",
+          "default": {}
+        },
+        "body": {
+          "type": "object",
+          "default": {}
+        }
+      }
+    }
+  }
+}

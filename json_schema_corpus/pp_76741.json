@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "type": "object",
+  "description": "A post.",
+  "properties": {
+    "links": {
+      "type": "object",
+      "properties": {
+        "posts.owner": {
+          "type": "object",
+          "properties": {
+            "href": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "href",
+            "type"
+          ]
+        },
+        "posts.comments": {
+          "type": "object",
+          "properties": {
+            "href": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "href",
+            "type"
+          ]
+        }
+      },
+      "required": [
+        "content"
+      ]
+    },
+    "posts": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "content": {
+          "type": "string"
+        },
+        "links": {
+          "type": "object",
+          "properties": {
+            "owner": {
+              "type": "string"
+            },
+            "comments": {
+              "type": "array"
+            }
+          },
+          "required": [
+            "owner"
+          ]
+        }
+      },
+      "required": [
+        "content"
+      ]
+    }
+  },
+  "required": [
+    "posts"
+  ]
+}

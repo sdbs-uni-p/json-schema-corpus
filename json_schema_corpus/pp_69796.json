@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "UserHypertyAccount",
+  "type": "object",
+  "required": [
+    "id",
+    "account",
+    "hyperty"
+  ],
+  "properties": {
+    "id": {
+      "type": "null"
+    },
+    "account": {
+      "type": "string"
+    },
+    "hyperty": {
+      "type": "string"
+    }
+  },
+  "UserHypertyConfigurationData": {
+    "type": "object",
+    "properties": {}
+  },
+  "UserHypertyPolicy": {
+    "type": "object",
+    "properties": {}
+  }
+}

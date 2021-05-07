@@ -1,0 +1,26 @@
+{
+  "id": "https://raw.githubusercontent.com/eviratec/schema/master/v1/app/client.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "schema for an app client",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "app_id",
+    "label"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "app_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "label": {
+      "type": "string",
+      "maxLength": 64
+    }
+  }
+}

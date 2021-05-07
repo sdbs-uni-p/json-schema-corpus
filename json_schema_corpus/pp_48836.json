@@ -1,0 +1,37 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://qcif.edu.au",
+  "required": false,
+  "properties": {
+    "api": {
+      "type": "object",
+      "id": "http://qcif.edu.au/api",
+      "required": false,
+      "properties": {
+        "clients": {
+          "type": "array",
+          "id": "http://qcif.edu.au/api/clients",
+          "required": false,
+          "items": {
+            "type": "object",
+            "id": "http://qcif.edu.au/api/clients/0",
+            "required": false,
+            "properties": {
+              "apiKey": {
+                "type": "string",
+                "id": "http://qcif.edu.au/api/clients/0/apiKey",
+                "required": false
+              },
+              "username": {
+                "type": "string",
+                "id": "http://qcif.edu.au/api/clients/0/username",
+                "required": false
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

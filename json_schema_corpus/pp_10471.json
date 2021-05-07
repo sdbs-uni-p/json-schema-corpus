@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Response from new user creation",
+  "type": "object",
+  "properties": {
+    "username": {
+      "type": "string"
+    },
+    "id": {
+      "type": "integer"
+    },
+    "email": {
+      "type": "string"
+    }
+  }
+}

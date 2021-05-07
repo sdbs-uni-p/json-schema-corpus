@@ -1,0 +1,109 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "fieldedAddress",
+  "id": "fieldedAddress",
+  "description": "A full representation of an address, as well as geocoding reference for the property.",
+  "type": "object",
+  "required": [
+    "objectType"
+  ],
+  "properties": {
+    "objectType": {
+      "type": "string",
+      "enum": [
+        "fieldedAddress"
+      ],
+      "description": "The type of the object, fieldedAddress."
+    },
+    "streetNr": {
+      "type": "string",
+      "description": "Number identifying a specific property on a public street. It may be combined with streetNrLast for ranged addresses.",
+      "maxLength": 10
+    },
+    "streetNrSuffix": {
+      "type": "string",
+      "description": "The suffix of the first street number (in a street number range) or the suffix for the street number if there is no range.",
+      "maxLength": 10
+    },
+    "streetNrLast": {
+      "type": "string",
+      "description": "Last number in a range of street numbers allocated to an address.",
+      "maxLength": 10
+    },
+    "streetName": {
+      "type": "string",
+      "description": "The name of the street or other street type.",
+      "maxLength": 60
+    },
+    "streetType": {
+      "type": "string",
+      "description": "The type of street (e.g., Street, St., Road, Rd., Alley).",
+      "maxLength": 25
+    },
+    "streetSuffix": {
+      "type": "string",
+      "description": "A modifier denoting a relative direction.",
+      "maxLength": 2
+    },
+    "subUnitType": {
+      "type": "string",
+      "description": "The type of subunit (e.g., Flat, Suite, Tower, Unit).",
+      "maxLength": 25
+    },
+    "subUnitNr": {
+      "type": "string",
+      "description": "The discriminator used for the subunit, often just a sumple number but may also be a range.",
+      "maxLength": 10
+    },
+    "levelType": {
+      "type": "string",
+      "description": "Describes level types within a building (e.g., Floor).",
+      "maxLength": 25
+    },
+    "levelNr": {
+      "type": "string",
+      "description": "Used where a level type may be repeated (e.g., BASEMENT 1, BASEMENT 2).",
+      "maxLength": 25
+    },
+    "buildingName": {
+      "type": "string",
+      "description": "Allows for buildings with well-known names to be used in an address.",
+      "maxLength": 60
+    },
+    "privateStreetName": {
+      "type": "string",
+      "description": "Private streets internal to a property (e.g., a university) with an internal name not recorded by the land title office.",
+      "maxLength": 60
+    },
+    "locality": {
+      "type": "string",
+      "description": "A bounded locality within a city, town or shire principally of urban character.",
+      "maxLength": 50
+    },
+    "city": {
+      "type": "string",
+      "description": "The city that the address is in.",
+      "maxLength": 50
+    },
+    "stateOrProvince": {
+      "type": "string",
+      "description": "The state or province that the address is in.",
+      "maxLength": 50
+    },
+    "postcode": {
+      "type": "string",
+      "description": "A descriptor for a postal delivery area, used to speed and simplify the delivery of mail.",
+      "maxLength": 6
+    },
+    "postcodeExtension": {
+      "type": "string",
+      "description": "The four-digit extension on an American postal code, what comes after the hyphen when specified.",
+      "maxLength": 4
+    },
+    "country": {
+      "type": "string",
+      "description": "The country that the address is in.",
+      "maxLength": 50
+    }
+  }
+}

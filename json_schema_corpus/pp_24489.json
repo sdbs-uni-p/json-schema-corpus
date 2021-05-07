@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://atomicbits.io/raml10/animal.json#",
+  "type": "object",
+  "typeDiscriminator": "_type",
+  "description": "An animal object.",
+  "properties": {
+    "gender": {
+      "required": true,
+      "type": "string"
+    }
+  },
+  "oneOf": [
+    {
+      "$ref": "cat.json"
+    },
+    {
+      "id": "http://atomicbits.io/raml10/dog.json#",
+      "type": "object",
+      "properties": {
+        "_type": {
+          "enum": [
+            "Dog"
+          ]
+        },
+        "name": {
+          "required": false,
+          "type": "string"
+        },
+        "canBark": {
+          "required": true,
+          "type": "boolean"
+        }
+      }
+    },
+    {
+      "id": "http://atomicbits.io/raml10/fish.json#",
+      "type": "object",
+      "properties": {
+        "_type": {
+          "enum": [
+            "Fish"
+          ]
+        }
+      }
+    }
+  ]
+}

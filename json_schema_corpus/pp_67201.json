@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "http://comrade.forma-pro.com/schemas/policy/SubJobPolicy.json",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "type": "string",
+      "enum": [
+        "http://comrade.forma-pro.com/schemas/policy/SubJobPolicy.json"
+      ]
+    },
+    "parentId": {
+      "$ref": "../uuid4.json"
+    }
+  },
+  "required": [
+    "parentId"
+  ]
+}

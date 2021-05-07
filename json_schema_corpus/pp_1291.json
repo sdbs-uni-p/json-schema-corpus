@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "flavor": {
+      "id": "flavor",
+      "type": "object",
+      "properties": {
+        "nodes": {
+          "id": "nodes",
+          "type": "array",
+          "items": {
+            "id": "0",
+            "type": "string"
+          },
+          "required": [
+            "0"
+          ]
+        },
+        "public": {
+          "id": "public",
+          "type": "boolean"
+        },
+        "promoted": {
+          "id": "promoted",
+          "type": "boolean"
+        }
+      },
+      "required": []
+    }
+  },
+  "required": [
+    "flavor"
+  ]
+}

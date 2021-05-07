@@ -1,0 +1,521 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://www.swiss-hotels.com/ota/schema#",
+  "definitions": {
+    "occupancyCode": {
+      "enum": [
+        "SOCC",
+        "DOCC",
+        "TOCC",
+        "QOCC",
+        "RWA",
+        "RWC",
+        "CR"
+      ]
+    },
+    "occupancyCost": {
+      "type": "object",
+      "properties": {
+        "occupancyCode": {
+          "$ref": "#/definitions/occupancyCode"
+        },
+        "cost": {
+          "$ref": "https://www.swiss-hotels.com/schema#/definitions/cost"
+        }
+      }
+    },
+    "occupancyCosts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/occupancyCost"
+      }
+    },
+    "cancellationDeadline": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "relativeToArrival": {
+          "$ref": "http://en.wikipedia.org/wiki/Iso8601#Durations"
+        },
+        "absolute": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "ratePlan": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "numberOfUnits": {
+          "type": "integer"
+        },
+        "code": {
+          "type": "string"
+        },
+        "description": {
+          "$ref": "https://www.swiss-hotels.com/schema#/definitions/multilangText"
+        },
+        "shortDescription": {
+          "$ref": "https://www.swiss-hotels.com/schema#/definitions/multilangText"
+        },
+        "mealPlanCode": {
+          "type": "string"
+        },
+        "occupancyRates": {
+          "$ref": "#/definitions/occupancyCosts"
+        },
+        "occupancyTotals": {
+          "$ref": "#/definitions/occupancyCosts"
+        },
+        "cancellationDeadline": {
+          "$ref": "#/definitions/cancellationDeadline"
+        }
+      }
+    },
+    "ratePlans": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ratePlan"
+      }
+    },
+    "occupancyConstraints": {
+      "type": "object",
+      "properties": {
+        "standardOccupancy": {
+          "type": "integer"
+        },
+        "maxOccupancy": {
+          "type": "integer"
+        },
+        "maxRollaways": {
+          "type": "integer"
+        },
+        "maxCribs": {
+          "type": "integer"
+        }
+      }
+    },
+    "roomType": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "bedTypeCode": {
+          "type": "string"
+        },
+        "shortDescription": {
+          "$ref": "https://www.swiss-hotels.com/schema#/definitions/multilangText"
+        },
+        "longDescription": {
+          "$ref": "https://www.swiss-hotels.com/schema#/definitions/multilangText"
+        },
+        "occupancyConstraints": {
+          "$ref": "#/definitions/occupancyConstraints"
+        },
+        "ratePlans": {
+          "$ref": "#/definitions/ratePlans"
+        },
+        "amenities": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "roomTypes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/roomType"
+      }
+    },
+    "availableHotel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "ratingStars": {
+          "type": "integer"
+        },
+        "isSuperior": {
+          "type": "boolean"
+        },
+        "geolocation": {
+          "$ref": "http://json-schema.org/geo"
+        },
+        "city": {
+          "$ref": "https://www.swiss-hotels.com/schema#/definitions/multilangText"
+        },
+        "description": {
+          "$ref": "https://www.swiss-hotels.com/schema#/definitions/multilangText"
+        },
+        "costsIncludeAllTaxes": {
+          "type": "boolean"
+        },
+        "vendorMessage": {
+          "$ref": "https://www.swiss-hotels.com/schema#/definitions/multilangText"
+        },
+        "roomTypes": {
+          "$ref": "#/definitions/roomTypes"
+        }
+      }
+    },
+    "availableHotels": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/availableHotel"
+      }
+    },
+    "daysInterval": {
+      "type": "object",
+      "properties": {
+        "firstDay": {
+          "type": "string",
+          "format": "date"
+        },
+        "lastDay": {
+          "type": "string",
+          "format": "date"
+        }
+      }
+    },
+    "availabilityPerWeekDay": {
+      "type": "array",
+      "items": "boolean",
+      "minItems": 7,
+      "maxItems": 7
+    },
+    "bookingRules": {
+      "type": "object",
+      "properties": {
+        "minDaysBeforeCheckIn": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 90
+        },
+        "minLengthOfStayDays": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 60
+        },
+        "blockStayDays": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 60
+        },
+        "bookableDaysOfWeek": {
+          "$ref": "#/definitions/availabilityPerWeekDay"
+        },
+        "arrivalDaysOfWeek": {
+          "$ref": "#/definitions/availabilityPerWeekDay"
+        }
+      }
+    },
+    "rateInterval": {
+      "type": "object",
+      "properties": {
+        "daysInterval": {
+          "$ref": "#/definitions/daysInterval"
+        },
+        "roomTypeCode": {
+          "type": "string"
+        },
+        "bookingRules": {
+          "$ref": "#/definitions/bookingRules"
+        },
+        "ratePlan": {
+          "$ref": "#/definitions/ratePlan"
+        }
+      }
+    },
+    "rateIntervals": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/rateInterval"
+      }
+    },
+    "availabilityInterval": {
+      "type": "object",
+      "properties": {
+        "daysInterval": {
+          "$ref": "#/definitions/daysInterval"
+        },
+        "roomTypeCode": {
+          "type": "string"
+        },
+        "ratePlanCode": {
+          "type": "string"
+        },
+        "numberOfUnits": {
+          "type": "integer"
+        }
+      }
+    },
+    "availabilityIntervals": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/availabilityInterval"
+      }
+    },
+    "hotelIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "occupiedRoom": {
+      "type": "object",
+      "properties": {
+        "roomType": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string"
+            },
+            "id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "code",
+            "id"
+          ]
+        },
+        "ratePlan": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string"
+            },
+            "id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "code",
+            "id"
+          ]
+        },
+        "cost": {
+          "$ref": "https://www.swiss-hotels.com/schema#/definitions/cost"
+        },
+        "cancellationDeadline": {
+          "$ref": "#/definitions/cancellationDeadline"
+        },
+        "occupancy": {
+          "$ref": "https://www.swiss-hotels.com/schema#/definitions/occupancyRoom"
+        },
+        "guestNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "guestWishes": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "roomType",
+        "ratePlan",
+        "occupancy",
+        "guestNames"
+      ]
+    },
+    "creditCardAssociation": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "enum": [
+            "AX",
+            "DN",
+            "EC",
+            "JC",
+            "VI"
+          ]
+        }
+      },
+      "required": [
+        "code"
+      ]
+    },
+    "creditCardReference": {
+      "type": "object",
+      "properties": {
+        "association": {
+          "$ref": "#/definitions/creditCardAssociation"
+        },
+        "alias": {
+          "type": "string"
+        },
+        "maskedNumber": {
+          "type": "string"
+        },
+        "validThru": {
+          "type": "object",
+          "properties": {
+            "month": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 12
+            },
+            "year": {
+              "type": "integer",
+              "minimum": 1900
+            }
+          },
+          "required": [
+            "month",
+            "year"
+          ]
+        },
+        "issuedTo": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "association",
+        "alias",
+        "maskedNumber",
+        "validThru",
+        "issuedTo"
+      ]
+    },
+    "bookingOrder": {
+      "type": "object",
+      "properties": {
+        "periodOfStay": {
+          "$ref": "https://www.swiss-hotels.com/schema#/definitions/periodOfStay"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "cancellationDeadline": {
+          "$ref": "#/definitions/cancellationDeadline"
+        },
+        "hotel": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "costsIncludeAllTaxes": {
+              "type": "boolean"
+            },
+            "excludedTaxes": {
+              "type": "array"
+            }
+          },
+          "required": [
+            "id",
+            "name",
+            "costsIncludeAllTaxes",
+            "excludedTaxes"
+          ]
+        },
+        "rooms": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/occupiedRoom"
+          }
+        },
+        "paymentGuarantee": {
+          "type": "object",
+          "properties": {
+            "creditCardReference": {
+              "$ref": "#/definitions/creditCardReference"
+            }
+          },
+          "required": [
+            "creditCardReference"
+          ]
+        },
+        "billingAddress": {
+          "type": "object",
+          "properties": {
+            "namePrefix": {
+              "type": "string"
+            },
+            "firstName": {
+              "type": "string"
+            },
+            "lastName": {
+              "type": "string"
+            },
+            "streetAddress": {
+              "type": "string"
+            },
+            "postalCode": {
+              "type": "string"
+            },
+            "city": {
+              "type": "string"
+            },
+            "country": {
+              "type": "object",
+              "properties": {
+                "isoCode2": {
+                  "type": "string",
+                  "pattern": "^[A-Z]{2}$"
+                }
+              },
+              "required": [
+                "isoCode2"
+              ]
+            },
+            "emailAddress": {
+              "type": "string",
+              "format": "email"
+            },
+            "phoneNumber": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "namePrefix",
+            "firstName",
+            "lastName",
+            "streetAddress",
+            "postalCode",
+            "city",
+            "country",
+            "emailAddress",
+            "phoneNumber"
+          ]
+        },
+        "userProfile": {
+          "type": "object",
+          "properties": {
+            "locale": {
+              "$ref": "https://www.swiss-hotels.com/schema#/definitions/locale"
+            }
+          },
+          "required": [
+            "locale"
+          ]
+        },
+        "sourceUri": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,170 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://xray.com/base",
+  "title": "Base",
+  "description": "X-Ray web service base definitions schema",
+  "definitions": {
+    "errorcode_generic": {
+      "id": "http://xray.com/base/errorcode_generic",
+      "type": "string",
+      "enum": [
+        "courseid_not_found",
+        "no_courseid_given",
+        "report_not_found",
+        "no_report_selected",
+        "no_forumid_given",
+        "report_type_unknown",
+        "instructorid_not_found",
+        "participantid_not_found",
+        "no_reportid_given",
+        "domain_not_ready",
+        "domain_not_ready",
+        "no_access",
+        "unknown_domain",
+        "missing_domain",
+        "missing_ip",
+        "bad_validtime",
+        "no_older_report",
+        "no_forums",
+        "no_instructors",
+        "no_participants",
+        "domain_not_config",
+        "invalid_user_domain",
+        "doc_not_given",
+        "doc_not_saved",
+        "unauth",
+        "session_save_fail",
+        "bad_credential",
+        "login_param_missing",
+        "no_users",
+        "no_courses",
+        "not_found",
+        "not_logged_in",
+        "invalid_data",
+        "unknown_error",
+        "bad_postid",
+        "content_not_found",
+        "data_missing",
+        "server_error",
+        "r_server_error"
+      ],
+      "description": "Error codes - taken from https://stash.bbpd.io/projects/XRAY/repos/xrf/browse/core/errors.js"
+    },
+    "error_generic": {
+      "id": "http://xray.com/base/error_generic",
+      "type": "string",
+      "description": "Error message"
+    },
+    "ok_generic": {
+      "id": "http://xray.com/base/ok_generic",
+      "type": "boolean",
+      "description": "Operation result"
+    },
+    "base_response": {
+      "id": "http://xray.com/base/base_response",
+      "type": "object",
+      "properties": {
+        "ok": {
+          "$ref": "base_schema_ref.json#/definitions/ok_generic"
+        },
+        "errorcode": {
+          "$ref": "base_schema_ref.json#/definitions/errorcode_generic"
+        },
+        "error": {
+          "$ref": "base_schema_ref.json#/definitions/error_generic"
+        }
+      },
+      "required": [
+        "ok"
+      ],
+      "additionalProperties": false
+    },
+    "login_receive": {
+      "id": "http://xray.com/base/login_receive",
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "pass": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "email",
+        "pass"
+      ],
+      "additionalProperties": false
+    },
+    "login_check_error": {
+      "id": "http://xray.com/base/login_check_error",
+      "type": "object",
+      "properties": {
+        "error": {
+          "$ref": "base_schema_ref.json#/definitions/error_generic"
+        },
+        "errorcode": {
+          "$ref": "base_schema_ref.json#/definitions/errorcode_generic"
+        }
+      },
+      "required": [
+        "error",
+        "errorcode"
+      ],
+      "additionalProperties": false
+    },
+    "login_check_ok": {
+      "id": "http://xray.com/base/login_check_ok",
+      "type": "object",
+      "properties": {
+        "ok": {
+          "$ref": "base_schema_ref.json#/definitions/ok_generic"
+        },
+        "account": {
+          "type": "string",
+          "format": "email"
+        }
+      },
+      "required": [
+        "ok",
+        "account"
+      ],
+      "additionalProperties": false
+    },
+    "accesstoken_ok": {
+      "id": "http://xray.com/base/accesstoken_ok",
+      "type": "object",
+      "properties": {
+        "ok": {
+          "$ref": "base_schema_ref.json#/definitions/ok_generic"
+        },
+        "token": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "ok",
+        "token"
+      ],
+      "additionalProperties": false
+    },
+    "accesstoken_request": {
+      "id": "http://xray.com/base/accesstoken_request",
+      "type": "object",
+      "properties": {
+        "domain": {
+          "type": "string"
+        },
+        "validhours": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "domain",
+        "validhours"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

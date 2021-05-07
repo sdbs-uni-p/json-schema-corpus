@@ -1,0 +1,586 @@
+{
+  "title": "TrackingItem",
+  "description": "Schema for internal tracking of Fourfront events, such as downloads",
+  "id": "/profiles/tracking_item.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "required": [
+    "tracking_type"
+  ],
+  "identifyingProperties": [
+    "uuid"
+  ],
+  "additionalProperties": false,
+  "mixinProperties": [
+    {
+      "$ref": "mixins.json#/schema_version"
+    },
+    {
+      "$ref": "mixins.json#/uuid"
+    },
+    {
+      "$ref": "mixins.json#/submitted"
+    },
+    {
+      "$ref": "mixins.json#/modified"
+    },
+    {
+      "$ref": "mixins.json#/status"
+    }
+  ],
+  "properties": {
+    "schema_version": {
+      "default": "2"
+    },
+    "status": {
+      "default": "in review by lab"
+    },
+    "tracking_type": {
+      "title": "Tracking Type",
+      "type": "string",
+      "description": "What this item tracks. Defaults to other",
+      "default": "other",
+      "enum": [
+        "other",
+        "download_tracking",
+        "google_analytics",
+        "jupyterhub_session"
+      ]
+    },
+    "download_tracking": {
+      "title": "Download Tracking",
+      "type": "object",
+      "description": "Subobject to hold download tracking field. Allows additional properties",
+      "additionalProperties": true,
+      "properties": {
+        "user_agent": {
+          "title": "User Agent",
+          "type": "string"
+        },
+        "remote_ip": {
+          "title": "Remote IP",
+          "type": "string"
+        },
+        "geo_country": {
+          "title": "Country",
+          "type": "string"
+        },
+        "geo_city": {
+          "title": "City",
+          "type": "string"
+        },
+        "user_uuid": {
+          "title": "User UUID",
+          "type": "string"
+        },
+        "request_path": {
+          "title": "Request Path",
+          "type": "string"
+        },
+        "filename": {
+          "title": "Filename",
+          "type": "string"
+        },
+        "file_format": {
+          "title": "File Format",
+          "type": "string"
+        },
+        "experiment_type": {
+          "title": "Experiment Type",
+          "type": "string"
+        },
+        "range_query": {
+          "title": "Range Query",
+          "type": "boolean"
+        },
+        "request_headers": {
+          "title": "Request Headers",
+          "type": "string"
+        }
+      }
+    },
+    "google_analytics": {
+      "title": "Google Analytics Data",
+      "type": "object",
+      "description": "A high-level container object containing data from Google Analytics as well as metadata about the report.",
+      "properties": {
+        "for_date": {
+          "type": "string",
+          "format": "date",
+          "description": "The date for which analytics are gathered in reports.",
+          "title": "Analytics Date"
+        },
+        "date_increment": {
+          "title": "Date Increment",
+          "description": "For which date increment does this Item apply.",
+          "type": "string",
+          "enum": [
+            "daily",
+            "monthly",
+            "yearly"
+          ]
+        },
+        "reports": {
+          "type": "object",
+          "title": "Report Data",
+          "description": "The analytics data that is applicable for the start_date to end_date range.",
+          "additionalProperties": true,
+          "properties": {
+            "sessions_by_country": {
+              "type": "array",
+              "title": "User Sessions by Country",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "ga:country": {
+                    "type": "string",
+                    "title": "Country"
+                  },
+                  "ga:sessions": {
+                    "type": "integer",
+                    "title": "Session Count",
+                    "description": "Number of sessions from ga:country for the given start->end date range."
+                  },
+                  "ga:avgSessionDuration": {
+                    "type": "number",
+                    "title": "Avg. Session Duration"
+                  },
+                  "ga:bounceRate": {
+                    "type": "number",
+                    "title": "Bounce Rate"
+                  },
+                  "ga:sessionsPerUser": {
+                    "type": "number",
+                    "title": "Sessions per User",
+                    "description": "Number of sessions divided by number of unique users."
+                  }
+                }
+              }
+            },
+            "views_by_experiment_set": {
+              "type": "array",
+              "title": "Experiment Set Views",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "ga:productName": {
+                    "type": "string",
+                    "title": "ExperimentSet Title"
+                  },
+                  "ga:productSku": {
+                    "type": "string",
+                    "title": "ExperimentSet Accession"
+                  },
+                  "ga:productBrand": {
+                    "type": "string",
+                    "title": "Lab Name"
+                  },
+                  "ga:productCategoryLevel2": {
+                    "type": "string",
+                    "title": "Type of ExperimentSet"
+                  },
+                  "ga:productDetailViews": {
+                    "type": "integer",
+                    "title": "Detail Views",
+                    "description": "Number of times this ExperimentSet has been viewed via its Item page."
+                  },
+                  "ga:productListClicks": {
+                    "type": "integer",
+                    "title": "Clicks from Browse",
+                    "description": "Number of times this ExperimentSet has been clicked on from the Browse page."
+                  },
+                  "ga:productListViews": {
+                    "type": "integer",
+                    "title": "List Views",
+                    "description": "Number of times this ExperimentSet has been seen present in a Browse or Search results page."
+                  }
+                }
+              }
+            },
+            "views_by_file": {
+              "type": "array",
+              "title": "File Views",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "ga:productName": {
+                    "type": "string",
+                    "title": "File Title"
+                  },
+                  "ga:productSku": {
+                    "type": "string",
+                    "title": "File Accession"
+                  },
+                  "ga:productBrand": {
+                    "type": "string",
+                    "title": "Lab Name"
+                  },
+                  "ga:productCategoryLevel2": {
+                    "type": "string",
+                    "title": "Type of File"
+                  },
+                  "ga:uniquePurchases": {
+                    "type": "integer",
+                    "title": "Downloads and Range Queries",
+                    "description": "Combined sum of all download and range query requests."
+                  },
+                  "ga:metric2": {
+                    "type": "integer",
+                    "title": "Downloads",
+                    "description": "All file download requests which are not range queries."
+                  },
+                  "ga:metric1": {
+                    "type": "integer",
+                    "title": "Downloads and Range Queries",
+                    "description": "Cumalitive sum of all files' filesize that was authorized for egress."
+                  },
+                  "ga:productDetailViews": {
+                    "type": "integer",
+                    "title": "Detail Views",
+                    "description": "Number of times this File has been viewed via its Item page."
+                  },
+                  "ga:productListClicks": {
+                    "type": "integer",
+                    "title": "Clicks from Browse",
+                    "description": "Number of times this File has been clicked on from the Browse page."
+                  },
+                  "ga:productListViews": {
+                    "type": "integer",
+                    "title": "List Views",
+                    "description": "Number of times this File has been seen present in a Browse or Search results page."
+                  }
+                }
+              }
+            },
+            "views_by_other_item": {
+              "type": "array",
+              "title": "Item Views",
+              "description": "Item views for Item types which are not File or ExperimentSet.",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "ga:productName": {
+                    "type": "string",
+                    "title": "Item Title"
+                  },
+                  "ga:productSku": {
+                    "type": "string",
+                    "title": "Item Accession"
+                  },
+                  "ga:productBrand": {
+                    "type": "string",
+                    "title": "Lab Name"
+                  },
+                  "ga:productCategoryHierarchy": {
+                    "type": "string",
+                    "title": "Type of File"
+                  },
+                  "ga:productDetailViews": {
+                    "type": "integer",
+                    "title": "Detail Views",
+                    "description": "Number of times this File has been viewed via its Item page."
+                  },
+                  "ga:productListClicks": {
+                    "type": "integer",
+                    "title": "Clicks from Browse",
+                    "description": "Number of times this File has been clicked on from the Browse page."
+                  },
+                  "ga:productListViews": {
+                    "type": "integer",
+                    "title": "List Views",
+                    "description": "Number of times this File has been seen present in a Browse or Search results page."
+                  }
+                }
+              }
+            },
+            "search_search_queries": {
+              "type": "array",
+              "title": "Other Search Queries",
+              "description": "Search query counts which occurred on the /search/ page.",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "ga:searchKeyword": {
+                    "type": "string",
+                    "title": "Search Query",
+                    "description": "Search query which was typed or linked to."
+                  },
+                  "ga:users": {
+                    "type": "integer",
+                    "title": "Users",
+                    "description": "Number of Users who've searched this."
+                  },
+                  "ga:sessions": {
+                    "type": "integer",
+                    "title": "Sessions",
+                    "description": "Number of sessions where this search occurred."
+                  },
+                  "ga:pageviews": {
+                    "type": "integer",
+                    "title": "Pageviews"
+                  }
+                }
+              }
+            },
+            "browse_search_queries": {
+              "type": "array",
+              "title": "Browse Search Queries",
+              "description": "Search query counts which occurred on the /browse/ page.",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "ga:searchKeyword": {
+                    "type": "string",
+                    "title": "Search Query",
+                    "description": "Search query which was typed or linked to."
+                  },
+                  "ga:users": {
+                    "type": "integer",
+                    "title": "Users",
+                    "description": "Number of Users who've searched this."
+                  },
+                  "ga:sessions": {
+                    "type": "integer",
+                    "title": "Sessions",
+                    "description": "Number of sessions where this search occurred."
+                  },
+                  "ga:pageviews": {
+                    "type": "integer",
+                    "title": "Pageviews"
+                  }
+                }
+              }
+            },
+            "fields_faceted": {
+              "type": "array",
+              "title": "Facets",
+              "description": "Counts for fields and terms selected as filters.",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "ga:searchKeyword": {
+                    "type": "string",
+                    "title": "Search Query",
+                    "description": "Search query which was typed or linked to."
+                  },
+                  "ga:users": {
+                    "type": "integer",
+                    "title": "Users",
+                    "description": "Number of Users who've searched this."
+                  },
+                  "ga:sessions": {
+                    "type": "integer",
+                    "title": "Sessions",
+                    "description": "Number of sessions where this search occurred."
+                  },
+                  "ga:pageviews": {
+                    "type": "integer",
+                    "title": "Pageviews"
+                  }
+                }
+              }
+            },
+            "file_downloads_by_country": {
+              "type": "array",
+              "title": "File Downloads",
+              "description": "File Downloads segmented by country",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "ga:country": {
+                    "type": "string",
+                    "title": "Country"
+                  },
+                  "ga:productDetailViews": {
+                    "type": "integer",
+                    "title": "Detail Views",
+                    "description": "Number of times this ExperimentSet has been viewed via its Item page."
+                  },
+                  "ga:productListClicks": {
+                    "type": "integer",
+                    "title": "Clicks from Browse",
+                    "description": "Number of times this ExperimentSet has been clicked on from the Browse page."
+                  },
+                  "ga:productListViews": {
+                    "type": "integer",
+                    "title": "List Views",
+                    "description": "Number of times this ExperimentSet has been seen present in a Browse or Search results page."
+                  },
+                  "ga:metric2": {
+                    "type": "integer",
+                    "title": "Downloads"
+                  },
+                  "ga:metric1": {
+                    "type": "integer",
+                    "title": "Cumalative Filesize"
+                  },
+                  "ga:calcMetric_PercentRangeQueries": {
+                    "type": "integer",
+                    "title": "Range Query Count"
+                  }
+                }
+              }
+            },
+            "file_downloads_by_filetype": {
+              "type": "array",
+              "title": "File Downloads",
+              "description": "File Downloads segmented by country",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "ga:productVariant": {
+                    "type": "string",
+                    "title": "File Type"
+                  },
+                  "ga:productDetailViews": {
+                    "type": "integer",
+                    "title": "Detail Views",
+                    "description": "Number of times this ExperimentSet has been viewed via its Item page."
+                  },
+                  "ga:productListClicks": {
+                    "type": "integer",
+                    "title": "Clicks from Browse",
+                    "description": "Number of times this ExperimentSet has been clicked on from the Browse page."
+                  },
+                  "ga:productListViews": {
+                    "type": "integer",
+                    "title": "List Views",
+                    "description": "Number of times this ExperimentSet has been seen present in a Browse or Search results page."
+                  },
+                  "ga:metric2": {
+                    "type": "integer",
+                    "title": "Downloads"
+                  },
+                  "ga:metric1": {
+                    "type": "integer",
+                    "title": "Cumalative Filesize"
+                  },
+                  "ga:calcMetric_PercentRangeQueries": {
+                    "type": "integer",
+                    "title": "Range Query Count"
+                  }
+                }
+              }
+            },
+            "file_downloads_by_experiment_type": {
+              "type": "array",
+              "title": "File Downloads",
+              "description": "File Downloads segmented by country",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "ga:dimension5": {
+                    "type": "string",
+                    "title": "Experiment Type"
+                  },
+                  "ga:productVariant": {
+                    "type": "integer",
+                    "title": "Detail Views",
+                    "description": "Number of times this ExperimentSet has been viewed via its Item page."
+                  },
+                  "ga:productListClicks": {
+                    "type": "integer",
+                    "title": "Clicks from Browse",
+                    "description": "Number of times this ExperimentSet has been clicked on from the Browse page."
+                  },
+                  "ga:productListViews": {
+                    "type": "integer",
+                    "title": "List Views",
+                    "description": "Number of times this ExperimentSet has been seen present in a Browse or Search results page."
+                  },
+                  "ga:metric2": {
+                    "type": "integer",
+                    "title": "Downloads"
+                  },
+                  "ga:metric1": {
+                    "type": "integer",
+                    "title": "Cumalative Filesize"
+                  },
+                  "ga:calcMetric_PercentRangeQueries": {
+                    "type": "integer",
+                    "title": "Range Query Count"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "jupyterhub_session": {
+      "title": "JupyterHub Session",
+      "type": "object",
+      "description": "Subobject to track a JupyterHub session. Allows additional properties",
+      "additionalProperties": true,
+      "properties": {
+        "user_uuid": {
+          "title": "User UUID",
+          "type": "string"
+        },
+        "date_initialized": {
+          "title": "Date Initialized",
+          "type": "string",
+          "anyOf": [
+            {
+              "format": "date-time"
+            },
+            {
+              "format": "date"
+            }
+          ]
+        },
+        "date_culled": {
+          "title": "Date Culled",
+          "type": "string",
+          "anyOf": [
+            {
+              "format": "date-time"
+            },
+            {
+              "format": "date"
+            }
+          ]
+        },
+        "files_mounted": {
+          "type": "array",
+          "title": "Files Mounted",
+          "description": "UUIDs of files mounted during this session.",
+          "items": {
+            "title": "File UUID",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "other_tracking": {
+      "title": "Other Tracking",
+      "type": "object",
+      "description": "Subobject to misc. tracking fields. Allows additional properties",
+      "additionalProperties": true,
+      "properties": {}
+    }
+  },
+  "facets": {
+    "tracking_type": {
+      "title": "Tracking Type"
+    },
+    "download_tracking.user_agent": {
+      "title": "Download User Agent"
+    },
+    "download_tracking.file_format": {
+      "title": "Download File Format"
+    }
+  },
+  "columns": {
+    "tracking_type": {
+      "title": "Tracking Type"
+    },
+    "google_analytics.for_date": {
+      "title": "Analytics Date",
+      "default_hidden": true
+    }
+  },
+  "excludedColumns": [
+    "lab.display_title"
+  ]
+}

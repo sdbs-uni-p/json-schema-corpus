@@ -1,0 +1,35 @@
+{
+  "type": "object",
+  "title": "Subscription schema",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "_public_fields": [
+    ""
+  ],
+  "properties": {
+    "id": {
+      "_db_settings": {
+        "primary_key": true,
+        "required": true,
+        "type": "id_field"
+      }
+    },
+    "product_id": {
+      "_db_settings": {
+        "type": "foreign_key",
+        "required": true,
+        "ref_document": "Product",
+        "ref_column": "product.id",
+        "ref_column_type": "id_field"
+      }
+    },
+    "order_id": {
+      "_db_settings": {
+        "type": "foreign_key",
+        "required": true,
+        "ref_document": "Order",
+        "ref_column": "order.id",
+        "ref_column_type": "id_field"
+      }
+    }
+  }
+}

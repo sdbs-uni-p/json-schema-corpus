@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Alarma Schema",
+  "type": "object",
+  "required": [
+    "Alarma"
+  ],
+  "properties": {
+    "_id": {
+      "type": "object",
+      "$ref": "#/identificador"
+    },
+    "Alarma": {
+      "type": "string",
+      "$ref": "#/datos"
+    }
+  },
+  "additionalProperties": false,
+  "identificador": {
+    "title": "id",
+    "description": "Id insertado de la Alarma",
+    "type": "object",
+    "properties": {
+      "$oid": {
+        "type": "string"
+      }
+    },
+    "additionalProperties": false
+  },
+  "datos": {
+    "title": "datos",
+    "description": "Info Alarma",
+    "type": "object",
+    "required": [
+      "mensajeAlarma",
+      "procedenciaAlarma",
+      "timestamp"
+    ],
+    "properties": {
+      "mensajeAlarma": {
+        "type": "string"
+      },
+      "mensajeExcepcion": {
+        "type": "string"
+      },
+      "procedenciaAlarma": {
+        "type": "string"
+      },
+      "causa": {
+        "type": "string"
+      },
+      "timestamp": {
+        "type": "object",
+        "required": [
+          "$date"
+        ],
+        "properties": {
+          "$date": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "additionalProperties": false
+  }
+}

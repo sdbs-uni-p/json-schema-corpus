@@ -1,0 +1,147 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "definitions": {
+    "id": {
+      "type": "integer"
+    },
+    "tracker": {
+      "type": "integer",
+      "description": "The tracker, if any, associated with this application. This is fixed at the time that application is made."
+    },
+    "formFactor": {
+      "enum": [
+        "mobile",
+        "desktop",
+        "tablet",
+        "other"
+      ]
+    },
+    "source": {
+      "type": "string"
+    },
+    "bucketMovement": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "bucket.json#/definitions/id"
+        },
+        "landed": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "landed"
+      ]
+    },
+    "bucketMovements": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/bucketMovement"
+      }
+    },
+    "dateLastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "remuneration": {
+      "type": "object",
+      "description": "See HR/XML OnBoardingDeploymentType",
+      "properties": {
+        "amount": {
+          "type": "number",
+          "description": "The monetary value of the object in which the amount is associated"
+        },
+        "rateIntervalCode": {
+          "type": "string",
+          "description": "See HR/XML PayRateIntervalCodeType"
+        },
+        "typeCode": {
+          "type": "string",
+          "description": "A code classifying the type of remuneration (HR/XML)"
+        }
+      },
+      "additionalProperties": false
+    },
+    "dutyEntryDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Per- HR-XML, the date the employee or human resource actually begins work or enters on duty"
+    },
+    "hireDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Per- HR-XML, The date on which the associated person was hired."
+    },
+    "onBoardedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date on which the associated person completed onboarding."
+    },
+    "hireDetails": {
+      "type": "object",
+      "properties": {
+        "remuneration": {
+          "$ref": "#/definitions/remuneration"
+        },
+        "dutyEntryDate": {
+          "$ref": "#/definitions/dutyEntryDate"
+        },
+        "hireDate": {
+          "$ref": "#/definitions/hireDate"
+        },
+        "onBoardedDate": {
+          "$ref": "#/definitions/onBoardedDate"
+        }
+      },
+      "additionalProperties": false
+    },
+    "since": {
+      "type": "string",
+      "format": "date-time",
+      "description": "If this application was fetched via a filter, the date-time when the application satisfied the filter (e.g., in a call to GET /applications/at/interview/ever, this would be the date the application first entered the interview phase"
+    }
+  },
+  "properties": {
+    "id": {
+      "$ref": "#/definitions/id"
+    },
+    "since": {
+      "$ref": "#/definitions/since"
+    },
+    "source": {
+      "$ref": "#/definitions/source"
+    },
+    "formFactor": {
+      "$ref": "#/definitions/formFactor"
+    },
+    "bucketMovements": {
+      "$ref": "#/definitions/bucketMovements"
+    },
+    "candidate": {
+      "$ref": "candidateRead.json"
+    },
+    "job": {
+      "$ref": "jobRead.json"
+    },
+    "bucket": {
+      "$ref": "bucket.json#/definitions/id"
+    },
+    "tracker": {
+      "$ref": "#/definitions/tracker"
+    },
+    "dateLastUpdated": {
+      "$ref": "#/definitions/dateLastUpdated"
+    },
+    "hireDetails": {
+      "$ref": "#/definitions/hireDetails"
+    },
+    "items": {
+      "$ref": "itemPackagesRead.json"
+    }
+  },
+  "additionalProperties": false
+}

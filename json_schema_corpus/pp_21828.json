@@ -1,0 +1,11 @@
+{
+  "id": "http://schema.hyperrest.com/amazon/asin.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "ASIN",
+  "description": "Amazon Standard Identification Number",
+  "type": "string",
+  "minLength": "10",
+  "maxLength": "10",
+  "pattern": "/^[A-Z0-9]{10}$/",
+  "example": "B000J8VLEC"
+}

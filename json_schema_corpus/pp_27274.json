@@ -1,0 +1,83 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Transitland Datastore Changeset",
+  "type": "object",
+  "properties": {
+    "changes": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "required": [
+          "action"
+        ],
+        "oneOf": [
+          {
+            "required": [
+              "feed"
+            ],
+            "properties": {
+              "feed": {
+                "$ref": "./feed.json"
+              }
+            }
+          },
+          {
+            "required": [
+              "stop"
+            ],
+            "properties": {
+              "stop": {
+                "$ref": "./stop.json"
+              }
+            }
+          },
+          {
+            "required": [
+              "operator"
+            ],
+            "properties": {
+              "operator": {
+                "$ref": "./operator.json"
+              }
+            }
+          },
+          {
+            "required": [
+              "route"
+            ],
+            "properties": {
+              "route": {
+                "$ref": "./route.json"
+              }
+            }
+          },
+          {
+            "required": [
+              "scheduleStopPair"
+            ]
+          }
+        ],
+        "properties": {
+          "action": {
+            "type": {
+              "enum": [
+                "createUpdate",
+                "destroy"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "whenToApply": {
+      "type": {
+        "enum": [
+          "holdForReview",
+          "instantlyIfClean"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,203 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "type": [
+    "object"
+  ],
+  "definitions": {
+    "build": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "Build",
+      "description": "A build represents an individual build job for docker image",
+      "stability": "prototype",
+      "strictProperties": true,
+      "type": [
+        "object"
+      ],
+      "definitions": {
+        "identity": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/build/definitions/id"
+            }
+          ]
+        },
+        "id": {
+          "description": "unique identifier of build",
+          "readOnly": true,
+          "format": "uuid",
+          "example": "01234567-89ab-cdef-0123-456789abcdef",
+          "type": [
+            "string"
+          ]
+        },
+        "source_repo": {
+          "description": "source github repositry to build. It must includes Dockerfile",
+          "required": "true,",
+          "example": "wantedly/risu",
+          "type": [
+            "string"
+          ]
+        },
+        "source_branch": {
+          "description": "git branch to use for build.",
+          "required": "true,",
+          "example": "master",
+          "default": "master",
+          "type": [
+            "string"
+          ]
+        },
+        "image_name": {
+          "description": "a repository name (and optionally a tag) to apply to the resulting image in case of success.",
+          "required": "true,",
+          "example": "quay.io/wantedly/risu:latest",
+          "type": [
+            "string"
+          ]
+        },
+        "dockerfile": {
+          "description": "path within the build context to the Dockerfile",
+          "example": "Dockerfile.dev",
+          "default": "Dockerfile",
+          "type": [
+            "string"
+          ]
+        },
+        "cache_directories": {
+          "description": "directory paths that you want to cache",
+          "required": true,
+          "example": [
+            {
+              "source": "vendor/bundle",
+              "container": "/app/vendor/bundle"
+            },
+            {
+              "source": "vendor/assets",
+              "container": "/app/vendor/assets"
+            }
+          ],
+          "type": [
+            "array"
+          ],
+          "items": {
+            "type": [
+              "object"
+            ]
+          }
+        },
+        "status": {
+          "description": "status of build. one of \"building\" or \"build completed and pushing\" or \"failed to build\" or \"build completed and pushed\" or \"failed to push\"",
+          "readOnly": true,
+          "example": "succeeded",
+          "type": [
+            "string"
+          ]
+        },
+        "created_at": {
+          "description": "when build was created",
+          "readOnly": true,
+          "format": "date-time",
+          "type": [
+            "string"
+          ]
+        },
+        "updated_at": {
+          "description": "when build was updated",
+          "readOnly": true,
+          "format": "date-time",
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "links": [
+        {
+          "description": "Create a new build.",
+          "href": "/builds",
+          "method": "POST",
+          "rel": "create",
+          "schema": {
+            "properties": {
+              "source_repo": {
+                "$ref": "#/definitions/build/definitions/source_repo"
+              },
+              "source_branch": {
+                "$ref": "#/definitions/build/definitions/source_branch"
+              },
+              "image_name": {
+                "$ref": "#/definitions/build/definitions/image_name"
+              },
+              "dockerfile": {
+                "$ref": "#/definitions/build/definitions/dockerfile"
+              },
+              "cache_directories": {
+                "$ref": "#/definitions/build/definitions/cache_directories"
+              }
+            },
+            "type": [
+              "object"
+            ]
+          },
+          "title": "Create"
+        },
+        {
+          "description": "Info for existing build.",
+          "href": "/builds/{(%23%2Fdefinitions%2Fbuild%2Fdefinitions%2Fidentity)}",
+          "method": "GET",
+          "rel": "self",
+          "title": "Info"
+        },
+        {
+          "description": "List existing builds.",
+          "href": "/builds",
+          "method": "GET",
+          "rel": "instances",
+          "title": "List"
+        }
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/build/definitions/id"
+        },
+        "source_repo": {
+          "$ref": "#/definitions/build/definitions/source_repo"
+        },
+        "source_branch": {
+          "$ref": "#/definitions/build/definitions/source_branch"
+        },
+        "image_name": {
+          "$ref": "#/definitions/build/definitions/image_name"
+        },
+        "dockerfile": {
+          "$ref": "#/definitions/build/definitions/dockerfile"
+        },
+        "cache_directories": {
+          "$ref": "#/definitions/build/definitions/cache_directories"
+        },
+        "status": {
+          "$ref": "#/definitions/build/definitions/status"
+        },
+        "created_at": {
+          "$ref": "#/definitions/build/definitions/created_at"
+        },
+        "updated_at": {
+          "$ref": "#/definitions/build/definitions/updated_at"
+        }
+      }
+    }
+  },
+  "properties": {
+    "build": {
+      "$ref": "#/definitions/build"
+    }
+  },
+  "description": "Risu API v1 Alpha Document",
+  "id": "risu",
+  "links": [
+    {
+      "href": "https://<your-risu-server>.com",
+      "rel": "self",
+      "title": "Risu API v1 Alpha"
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/Enfernuz/quik-lua-rpc/json/schema/getPortfolioInfoEx.result.scheme.json",
+  "title": "\u0420\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442 \u043f\u0440\u043e\u0446\u0435\u0434\u0443\u0440\u044b getPortfolioInfoEx",
+  "description": "\u0421\u0445\u0435\u043c\u0430 \u043e\u0431\u044a\u0435\u043a\u0442\u0430 \u0440\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442\u0430 \u0443\u0434\u0430\u043b\u0451\u043d\u043d\u043e\u0433\u043e \u0432\u044b\u0437\u043e\u0432\u0430 \u043f\u0440\u043e\u0446\u0435\u0434\u0443\u0440\u044b getPortfolioInfoEx",
+  "type": "object",
+  "properties": {
+    "portfolio_info": {
+      "$ref": "https://github.com/Enfernuz/quik-lua-rpc/json/schema/getPortfolioInfo.result.scheme.json#/definitions/PortfolioInfo"
+    },
+    "init_margin": {
+      "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 init_margin",
+      "type": "string"
+    },
+    "min_margin": {
+      "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 min_margin",
+      "type": "string"
+    },
+    "corrected_margin": {
+      "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 corrected_margin",
+      "type": "string"
+    },
+    "client_type": {
+      "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 client_type",
+      "type": "string"
+    },
+    "portfolio_value": {
+      "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 portfolio_value",
+      "type": "string"
+    },
+    "start_limit_open_pos": {
+      "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 start_limit_open_pos",
+      "type": "string"
+    },
+    "total_limit_open_pos": {
+      "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 total_limit_open_pos",
+      "type": "string"
+    },
+    "limit_open_pos": {
+      "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 limit_open_pos",
+      "type": "string"
+    },
+    "used_lim_open_pos": {
+      "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 used_lim_open_pos",
+      "type": "string"
+    },
+    "acc_var_margin": {
+      "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 acc_var_margin",
+      "type": "string"
+    },
+    "cl_var_margin": {
+      "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 cl_var_margin",
+      "type": "string"
+    },
+    "opt_liquid_cost": {
+      "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 opt_liquid_cost",
+      "type": "string"
+    },
+    "fut_asset": {
+      "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 fut_asset",
+      "type": "string"
+    },
+    "fut_total_asset": {
+      "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 fut_total_asset",
+      "type": "string"
+    },
+    "fut_debt": {
+      "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 fut_debt",
+      "type": "string"
+    },
+    "fut_rate_asset": {
+      "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 fut_rate_asset",
+      "type": "string"
+    },
+    "fut_rate_asset_open": {
+      "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 fut_rate_asset_open",
+      "type": "string"
+    },
+    "fut_rate_go": {
+      "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 fut_rate_go",
+      "type": "string"
+    },
+    "planed_rate_go": {
+      "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 planed_rate_go",
+      "type": "string"
+    },
+    "cash_leverage": {
+      "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 cash_leverage",
+      "type": "string"
+    },
+    "fut_position_type": {
+      "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 fut_position_type",
+      "type": "string"
+    },
+    "fut_accured_int": {
+      "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 fut_accured_int",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "portfolio_info"
+  ]
+}

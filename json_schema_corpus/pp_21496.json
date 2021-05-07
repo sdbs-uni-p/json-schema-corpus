@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "properties": {
+    "downtime": {
+      "description": "Integer",
+      "type": "integer"
+    },
+    "uptime": {
+      "description": "Integer",
+      "type": "integer"
+    }
+  },
+  "title": "Monitoring",
+  "type": "object",
+  "required": [
+    "uptime",
+    "downtime"
+  ]
+}

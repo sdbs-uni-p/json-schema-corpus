@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Vault Collection",
+  "type": "object",
+  "patternProperties": {
+    "^([^/]+)+$": {
+      "type": "object",
+      "$ref": "./vault.schema.json"
+    }
+  },
+  "additionalProperties": false
+}

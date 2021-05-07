@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "_users_auth",
+  "title": "Users Authentication",
+  "description": "Table containing user authentication data",
+  "type": "object",
+  "properties": {
+    "username": {
+      "type": "string",
+      "description": "Username of the user"
+    },
+    "role": {
+      "type": "string",
+      "description": "User role of the user"
+    },
+    "date_created": {
+      "type": "string",
+      "description": "Timestamp of the user account creation time"
+    },
+    "hash": {
+      "type": "string",
+      "descirption": "Hash of the user password"
+    },
+    "models": {
+      "type": "array",
+      "description": "An array with reference to models owned by the user",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "username",
+    "role",
+    "date_created",
+    "hash"
+  ]
+}

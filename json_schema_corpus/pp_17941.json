@@ -1,0 +1,166 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Yunohost application manifest schema",
+  "definitions": {
+    "boolean_string": {
+      "type": "string",
+      "enum": [
+        "true",
+        "false"
+      ]
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "uri": {
+      "type": "string",
+      "format": "uri"
+    },
+    "maintainer": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "$ref": "#/definitions/email"
+        }
+      },
+      "required": [
+        "name",
+        "email"
+      ],
+      "additionalProperties": false
+    },
+    "description": {
+      "type": "object",
+      "properties": {
+        "en": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "en"
+      ],
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "multi_instance": {
+      "$ref": "#/definitions/boolean_string"
+    },
+    "arguments": {
+      "type": "object",
+      "properties": {
+        "install": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/install_item"
+          }
+        }
+      },
+      "required": [
+        "install"
+      ],
+      "additionalProperties": false
+    },
+    "install_item": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "ask": {
+          "$ref": "#/definitions/install_item_ask"
+        },
+        "type": {
+          "$ref": "#/definitions/install_item_type"
+        },
+        "example": {
+          "type": "string"
+        },
+        "default": {
+          "type": "string"
+        },
+        "choices": {
+          "$ref": "#/definitions/install_item_choice"
+        },
+        "pattern": {
+          "type": "string"
+        },
+        "optional": {
+          "$ref": "#/definitions/boolean_string"
+        }
+      },
+      "required": [
+        "name",
+        "ask"
+      ],
+      "additionalProperties": false
+    },
+    "install_item_ask": {
+      "type": "object",
+      "properties": {
+        "en": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "en"
+      ],
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "install_item_type": {
+      "type": "string",
+      "enum": [
+        "domain",
+        "user",
+        "app",
+        "password",
+        "path"
+      ]
+    },
+    "install_item_choice": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string"
+    },
+    "description": {
+      "$ref": "#/definitions/description"
+    },
+    "url": {
+      "$ref": "#/definitions/uri"
+    },
+    "maintainer": {
+      "$ref": "#/definitions/maintainer"
+    },
+    "multi_instance": {
+      "$ref": "#/definitions/multi_instance"
+    },
+    "arguments": {
+      "$ref": "#/definitions/arguments"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "id",
+    "description",
+    "maintainer",
+    "multi_instance",
+    "arguments"
+  ]
+}

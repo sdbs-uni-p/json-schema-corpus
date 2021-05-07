@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Data Privacy",
+  "description": "Defines the format for describing the privacy policy of a data source (TODO)",
+  "type": "object"
+}

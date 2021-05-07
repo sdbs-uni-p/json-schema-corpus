@@ -1,0 +1,182 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://schema.org/BusReservation",
+  "required": [],
+  "title": "BusReservation",
+  "name": "BusReservation",
+  "description": "A reservation for bus travel.",
+  "type": "object",
+  "properties": {
+    "bookingTime": {
+      "id": "http://schema.org/bookingTime",
+      "title": "bookingTime",
+      "description": "The date and time the reservation was booked.",
+      "type": "string",
+      "format": "date-time"
+    },
+    "broker": {
+      "id": "http://schema.org/broker",
+      "title": "broker",
+      "description": "An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred. Supersedes bookingAgent.",
+      "type": "object",
+      "properties": {
+        "broker": {
+          "$ref": "Person.json#/properties"
+        }
+      }
+    },
+    "modifiedTime": {
+      "id": "http://schema.org/modifiedTime",
+      "title": "modifiedTime",
+      "description": "The date and time the reservation was modified.",
+      "type": "string",
+      "format": "date-time"
+    },
+    "priceCurrency": {
+      "id": "http://schema.org/priceCurrency",
+      "title": "priceCurrency",
+      "description": "The currency (in 3-letter ISO 4217 format) of the price or a price component, when attached to PriceSpecification and its subtypes.",
+      "type": "string"
+    },
+    "programMembershipUsed": {
+      "id": "http://schema.org/programMembershipUsed",
+      "title": "programMembershipUsed",
+      "description": "Any membership in a frequent flyer, hotel loyalty program, etc. being applied to the reservation.",
+      "type": "object",
+      "properties": {
+        "programMembershipUsed": {
+          "$ref": "ProgramMembership.json#/properties"
+        }
+      }
+    },
+    "provider": {
+      "id": "http://schema.org/provider",
+      "title": "provider",
+      "description": "The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller. Supersedes carrier.",
+      "type": "object",
+      "properties": {
+        "provider": {
+          "$ref": "Person.json#/properties"
+        }
+      }
+    },
+    "reservationFor": {
+      "id": "http://schema.org/reservationFor",
+      "title": "reservationFor",
+      "description": "The thing -- flight, event, restaurant,etc. being reserved.",
+      "type": "object",
+      "properties": {
+        "reservationFor": {
+          "$ref": "Thing.json#/properties"
+        }
+      }
+    },
+    "reservationId": {
+      "id": "http://schema.org/reservationId",
+      "title": "reservationId",
+      "description": "A unique identifier for the reservation.",
+      "type": "string"
+    },
+    "reservationStatus": {
+      "id": "http://schema.org/reservationStatus",
+      "title": "reservationStatus",
+      "description": "The current status of the reservation.",
+      "type": "object",
+      "properties": {
+        "reservationStatus": {
+          "$ref": "ReservationStatusType.json#/properties"
+        }
+      }
+    },
+    "reservedTicket": {
+      "id": "http://schema.org/reservedTicket",
+      "title": "reservedTicket",
+      "description": "A ticket associated with the reservation.",
+      "type": "object",
+      "properties": {
+        "reservedTicket": {
+          "$ref": "Ticket.json#/properties"
+        }
+      }
+    },
+    "totalPrice": {
+      "id": "http://schema.org/totalPrice",
+      "title": "totalPrice",
+      "description": "The total price for the reservation or ticket, including applicable taxes, shipping, etc.",
+      "type": "number"
+    },
+    "underName": {
+      "id": "http://schema.org/underName",
+      "title": "underName",
+      "description": "The person or organization the reservation or ticket is for.",
+      "type": "object",
+      "properties": {
+        "underName": {
+          "$ref": "Person.json#/properties"
+        }
+      }
+    },
+    "": {
+      "title": "",
+      "description": "",
+      "type": null
+    },
+    "additionalType": {
+      "id": "http://schema.org/additionalType",
+      "title": "additionalType",
+      "description": "An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.",
+      "type": "string",
+      "format": "uri"
+    },
+    "alternateName": {
+      "id": "http://schema.org/alternateName",
+      "title": "alternateName",
+      "description": "An alias for the item.",
+      "type": "string"
+    },
+    "description": {
+      "id": "http://schema.org/description",
+      "title": "description",
+      "description": "A short description of the item.",
+      "type": "string"
+    },
+    "image": {
+      "id": "http://schema.org/image",
+      "title": "image",
+      "description": "An image of the item. This can be a URL or a fully described ImageObject.",
+      "type": "string",
+      "format": "uri"
+    },
+    "name": {
+      "id": "http://schema.org/name",
+      "title": "name",
+      "description": "The name of the item.",
+      "type": "string"
+    },
+    "potentialAction": {
+      "id": "http://schema.org/potentialAction",
+      "title": "potentialAction",
+      "description": "Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.",
+      "type": "object",
+      "properties": {
+        "potentialAction": {
+          "$ref": "Action.json#/properties"
+        }
+      }
+    },
+    "sameAs": {
+      "id": "http://schema.org/sameAs",
+      "title": "sameAs",
+      "description": "URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.",
+      "type": "string",
+      "format": "uri"
+    },
+    "url": {
+      "id": "http://schema.org/url",
+      "title": "url",
+      "description": "URL of the item.",
+      "type": "string",
+      "format": "uri"
+    }
+  }
+}

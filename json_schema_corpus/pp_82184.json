@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://toyatech.net/cmsapp/groups/Group",
+  "type": "object",
+  "definitions": {
+    "GroupMember": {
+      "type": "object",
+      "properties": {
+        "person": {
+          "$ref": "http://toyatech.net/cmsapp/contacts/Person"
+        },
+        "role": {
+          "$ref": "#/definitions/GroupRole"
+        }
+      }
+    },
+    "GroupRole": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ]
+    }
+  },
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "type": {
+      "$ref": "http://toyatech.net/cmsapp/groups/GroupType"
+    },
+    "roles": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/GroupRole"
+      }
+    },
+    "members": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/GroupMember"
+      }
+    }
+  },
+  "required": [
+    "name",
+    "groupRole"
+  ]
+}

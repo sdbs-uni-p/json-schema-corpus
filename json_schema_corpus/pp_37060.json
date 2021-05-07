@@ -1,0 +1,163 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "Activity",
+  "type": "object",
+  "properties": {
+    "desc": {
+      "type": "string"
+    },
+    "bookableItems": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/BookableItem"
+      }
+    }
+  },
+  "required": [
+    "desc",
+    "bookableItems"
+  ],
+  "additionalProperties": false,
+  "definitions": {
+    "BookableItem": {
+      "id": "BookableItem",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "price": {
+          "type": "number"
+        },
+        "quantity": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "name",
+        "price",
+        "quantity"
+      ],
+      "additionalProperties": false
+    },
+    "Activity.ForAllDoc": {
+      "id": "Activity.ForAllDoc",
+      "type": "object",
+      "properties": {
+        "desc": {
+          "type": "string"
+        },
+        "bookableItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BookableItem"
+          }
+        },
+        "_id": {
+          "type": "string"
+        },
+        "owner_name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "desc",
+        "bookableItems",
+        "_id",
+        "owner_name"
+      ],
+      "additionalProperties": false
+    },
+    "Activity.ForProvidersDoc": {
+      "id": "Activity.ForProvidersDoc",
+      "type": "object",
+      "properties": {
+        "desc": {
+          "type": "string"
+        },
+        "bookableItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BookableItem"
+          }
+        },
+        "_id": {
+          "type": "string"
+        },
+        "owner": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "desc",
+        "bookableItems",
+        "_id",
+        "owner"
+      ],
+      "additionalProperties": false
+    },
+    "User": {
+      "id": "User",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "email",
+        "password"
+      ],
+      "additionalProperties": false
+    },
+    "User.Login": {
+      "id": "User.Login",
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "email",
+        "password"
+      ],
+      "additionalProperties": false
+    },
+    "User.Doc": {
+      "id": "User.Doc",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "email",
+        "password",
+        "_id"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

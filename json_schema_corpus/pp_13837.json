@@ -1,0 +1,38 @@
+{
+  "type": "object",
+  "title": "Address",
+  "id": "/address",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "properties": {
+    "line1": {
+      "type": "string",
+      "description": "first line of the address"
+    },
+    "line2": {
+      "type": "string",
+      "description": "second line of the address"
+    },
+    "country": {
+      "type": "string",
+      "description": "the country of origin"
+    },
+    "county": {
+      "type": "string",
+      "description": "the state/county the user is in"
+    },
+    "city": {
+      "type": "string",
+      "description": "city of origin"
+    },
+    "postcode": {
+      "type": "string",
+      "description": "user's zipcode/postcode (or similar)"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "line1",
+    "city",
+    "postcode"
+  ]
+}

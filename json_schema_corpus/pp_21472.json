@@ -1,0 +1,34 @@
+{
+  "id": "/templates/aggregate-base-schema",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "aggregate-base",
+  "description": "common json schema for time-based event aggregation records (datum)",
+  "type": "object",
+  "properties": {
+    "_id": {
+      "description": "unique url-friendly base64 encoded, utf8 endoded concatenation identifier",
+      "type": "string"
+    },
+    "_timestamp": {
+      "description": "ISO8601 combined date and time in UTC e.g. '2014-12-01T00:00:00+00:00'",
+      "type": "string",
+      "format": "date-time"
+    },
+    "period": {
+      "description": "The period covered by each data point from the _timestamp",
+      "enum": [
+        "hour",
+        "day",
+        "week",
+        "month",
+        "quarter"
+      ]
+    }
+  },
+  "required": [
+    "_id",
+    "_timestamp",
+    "period"
+  ],
+  "additionalProperties": false
+}

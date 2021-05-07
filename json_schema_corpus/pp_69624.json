@@ -1,0 +1,77 @@
+{
+  "id": "http://schema.org/Organization",
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "extends": {
+    "$ref": "Thing.json"
+  },
+  "description": "An organization such as a school, NGO, corporation, club, etc. Schema.org: http://schema.org/Organization",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "aggregateRating": {
+      "description": "The overall rating, based on a collection of reviews or ratings, of the item.",
+      "type": "object",
+      "$ref": "AggregateRating.json"
+    },
+    "brand": {
+      "description": "The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.",
+      "type": "object",
+      "$ref": "Brand.json"
+    },
+    "contactPoint": {
+      "description": "A contact point for a person or organization. Supersedes contactPoints.",
+      "type": "object",
+      "$ref": "ContactPoint.json"
+    },
+    "department": {
+      "description": "A relationship between an organization and a department of that organization, also described as an organization (allowing different urls, logos, opening hours). For example: a store with a pharmacy, or a bakery with a cafe.",
+      "type": "object",
+      "$ref": "Organization.json"
+    },
+    "email": {
+      "description": "Email address.",
+      "type": "string",
+      "format": "email"
+    },
+    "faxNumber": {
+      "description": "The fax number. E.123.",
+      "type": "string",
+      "format": "phone"
+    },
+    "legalName": {
+      "description": "The official name of the organization, e.g. the registered company name.",
+      "type": "string"
+    },
+    "telephoneNumber": {
+      "description": "The telephone number. E.123.",
+      "type": "string",
+      "format": "phone"
+    },
+    "founder": {
+      "description": "A person who founded this organization. Supersedes founders.",
+      "type": "object",
+      "$ref": "Person.json"
+    },
+    "location": {
+      "description": "The location of the event, organization or action.",
+      "type": "object",
+      "$ref": "Place.json"
+    },
+    "review": {
+      "description": "Review of the item (legacy spelling; see singular form, review).",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "Review.json"
+      }
+    },
+    "subOrganization": {
+      "description": "A relationship between two organizations where the first includes the second, e.g., as a subsidiary. See also: the more specific 'department' property.",
+      "type": "object",
+      "$ref": "Organization.json"
+    }
+  },
+  "required": [
+    "author"
+  ]
+}

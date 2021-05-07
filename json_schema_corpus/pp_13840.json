@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "title": "Name",
+  "id": "/name",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "properties": {
+    "first": {
+      "type": "string",
+      "description": "user's first name"
+    },
+    "last": {
+      "type": "string",
+      "description": "user's last name"
+    },
+    "middle": {
+      "type": "string",
+      "description": "user's middle name"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "first",
+    "last"
+  ]
+}

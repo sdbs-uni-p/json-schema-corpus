@@ -1,0 +1,169 @@
+{
+  "id": "1.0.0",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "PCN Spec",
+  "description": "Formal JSON-Schema of PCN Spec",
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "author": {
+          "type": "string"
+        }
+      }
+    },
+    "domains": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "subtitle": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "subtitle"
+        ]
+      },
+      "additionalItems": false
+    },
+    "steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "process",
+              "decision",
+              "wait",
+              "divergent_process"
+            ]
+          },
+          "emphasized": {
+            "type": "boolean",
+            "default": false
+          },
+          "value_specific": {
+            "type": "integer",
+            "default": 0
+          },
+          "value_generic": {
+            "type": "integer",
+            "default": 0
+          },
+          "predecessors": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "normal_relationship",
+                    "loose_temporal_relationship"
+                  ]
+                },
+                "title": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "type"
+              ]
+            }
+          },
+          "domain": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "region": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "independent",
+                      "surrogate",
+                      "direct_leading",
+                      "direct_shared"
+                    ]
+                  },
+                  "with_domain": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "type",
+                  "with_domain"
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "region"
+            ]
+          },
+          "problems": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "inconvenient",
+                    "confusing",
+                    "difficult",
+                    "likely_to_fail"
+                  ]
+                },
+                "description": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "type",
+          "domain"
+        ]
+      },
+      "additionalItems": false
+    }
+  },
+  "required": [
+    "domains",
+    "steps"
+  ]
+}

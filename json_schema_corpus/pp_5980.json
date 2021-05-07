@@ -1,0 +1,441 @@
+{
+  "definitions": {
+    "directive": {
+      "name": {
+        "type": "string",
+        "title": "Name",
+        "description": "The name of the directive"
+      }
+    },
+    "sourceDirective": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/directive"
+        },
+        {
+          "properties": {
+            "dataSource": {
+              "type": "string",
+              "title": "Data Source",
+              "description": "Path of source data"
+            },
+            "dataDelimeter": {
+              "type": "string",
+              "title": "Delimiter",
+              "description": "Delimiter used in data source path"
+            }
+          }
+        }
+      ]
+    },
+    "enrich": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/directive"
+        },
+        {
+          "properties": {
+            "type": {
+              "type": "integer",
+              "value": 1
+            },
+            "targetDataName": {
+              "type": "string",
+              "title": "Target",
+              "description": "The path where data will be put"
+            },
+            "targetDataDelimiter": {
+              "type": "string",
+              "title": "Delimiter",
+              "description": "The path delimeter"
+            },
+            "enrichClass": {
+              "type": "string",
+              "title": "Provider Class",
+              "description": "See Config Object for options"
+            },
+            "enrichSource": {
+              "type": "string",
+              "title": "Source",
+              "description": "The name of the data source"
+            },
+            "enrichParameter": {
+              "type": "string",
+              "title": "Parameter",
+              "description": "See Config Object for title and help"
+            },
+            "enrichCommand": {
+              "type": "string",
+              "title": "Command",
+              "description": "See Config Object for help"
+            },
+            "parseFormat": {
+              "type": "integer",
+              "description": "Parse Fromat"
+            },
+            "parseOptions": {
+              "type": "string",
+              "description": "Parse Options"
+            }
+          }
+        }
+      ]
+    },
+    "insert": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/sourceDirective"
+        },
+        {
+          "properties": {
+            "type": {
+              "type": "integer",
+              "value": 2
+            },
+            "ifMissing": {
+              "type": "integer",
+              "title": "If Missing",
+              "description": "Action to take if source is missing, see Config for options"
+            },
+            "ifPrimitive": {
+              "type": "integer",
+              "title": "If Primitive",
+              "description": "Action to take if source is a Primitive, see Config for options"
+            },
+            "ifOperator": {
+              "type": "integer",
+              "title": "If Operator",
+              "description": "operator for Insert If, see Config for options"
+            },
+            "ifValue": {
+              "type": "string",
+              "title": "If Value",
+              "description": "Values used wiht If Operator"
+            },
+            "ifObject": {
+              "type": "integer",
+              "title": "If Object",
+              "description": "Action to take if source is a Object, see Config for options"
+            },
+            "ifList": {
+              "type": "integer",
+              "title": "If List",
+              "description": "Action to take if source is a List, see Config for options"
+            },
+            "bookmarkPattern": {
+              "type": "string",
+              "title": "Variant",
+              "description": "The variant of the template"
+            },
+            "notFirst": {
+              "type": "array",
+              "title": "Not First tags",
+              "description": "Replace tags that will be blank on the first insertion in a list",
+              "items": {
+                "type": "string"
+              }
+            },
+            "notLast": {
+              "type": "array",
+              "title": "Not Last tags",
+              "description": "Replace tags that will be blank on the last insertion in a list",
+              "items": {
+                "type": "string"
+              }
+            },
+            "onlyFirst": {
+              "type": "array",
+              "title": "Only First tags",
+              "description": "Replace tags that will be blank on all but the first insertion in a list",
+              "items": {
+                "type": "string"
+              }
+            },
+            "onlyLast": {
+              "type": "array",
+              "title": "Only Last tags",
+              "description": "Replace tags that will be blank on all but the last insertion in a list",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "parse": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/sourceDirective"
+        },
+        {
+          "properties": {
+            "type": {
+              "type": "integer",
+              "value": 3
+            },
+            "ifMissing": {
+              "type": "integer",
+              "title": "If Missing",
+              "description": "Action to take if source is missing, see Config for options"
+            },
+            "ifPrimitive": {
+              "type": "integer",
+              "title": "If Primitive",
+              "description": "Action to take if source is a Primitive type, see Config for options"
+            },
+            "ifObject": {
+              "type": "integer",
+              "title": "If Object",
+              "description": "Action to take if source is a Object, see Config for options"
+            },
+            "ifList": {
+              "type": "integer",
+              "title": "If List",
+              "description": "Action to take if source is a List, see Config for options"
+            },
+            "dataTarget": {
+              "type": "string",
+              "title": "File Name",
+              "description": "The name of the file to be written to the archive"
+            },
+            "dataTargetDelimiter": {
+              "type": "boolean",
+              "title": "Clear After",
+              "description": "Clear Content afte saving"
+            },
+            "staticData": {
+              "type": "boolean",
+              "title": "Clear After",
+              "description": "Clear Content afte saving"
+            },
+            "parseFormat": {
+              "type": "integer",
+              "description": "Parse Fromat"
+            },
+            "parseOptions": {
+              "type": "string",
+              "description": "Parse Options"
+            }
+          }
+        }
+      ]
+    },
+    "replace": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/sourceDirective"
+        },
+        {
+          "properties": {
+            "type": {
+              "type": "integer",
+              "value": 4
+            },
+            "ifMissing": {
+              "type": "integer",
+              "title": "If Missing",
+              "description": "Action to take if source is missing, see Config for options"
+            },
+            "toValue": {
+              "type": "string",
+              "title": "To Value",
+              "description": "To value to be used if source is missing"
+            },
+            "fromValue": {
+              "type": "string",
+              "title": "From Value",
+              "description": "If provided will override the From value from the source path"
+            },
+            "ifPrimitive": {
+              "type": "integer",
+              "title": "If Primitive",
+              "description": "Action to take if source is a Primitive type, see Config for options"
+            },
+            "ifObject": {
+              "type": "integer",
+              "title": "If Object",
+              "description": "Action to take if source is a Object, see Config for options"
+            },
+            "objectAttrPrimitive": {
+              "type": "integer",
+              "title": "If Attribute Primitive",
+              "description": "Action to take if source is a Object and Attribute is Primitive, see Config for options"
+            },
+            "objectAttrList": {
+              "type": "integer",
+              "title": "If Attribute Primitive",
+              "description": "Action to take if source is a Object and Attribute is List, see Config for options"
+            },
+            "objectAttrObject": {
+              "type": "integer",
+              "title": "If Attribute Object",
+              "description": "Action to take if source is a Object and Attribute is Object, see Config for options"
+            },
+            "ifList": {
+              "type": "integer",
+              "title": "If List",
+              "description": "Action to take if source is a List, see Config for options"
+            },
+            "fromAttribute": {
+              "type": "string",
+              "title": "From Attribute",
+              "description": "Attribute name with From value"
+            },
+            "toAttribute": {
+              "type": "string",
+              "title": "To Attribute",
+              "description": "Attribute name with To value"
+            },
+            "listAttrMissing": {
+              "type": "integer",
+              "title": "If List Attr Missing",
+              "description": "Action to take if a List From / To attribute are missing, see Config for options"
+            },
+            "listAttrNotPrimitive": {
+              "type": "integer",
+              "title": "If List Attr Not Primitive",
+              "description": "Action to take if a List From / To attribute is not a primitive, see Config for options"
+            },
+            "processAfter": {
+              "type": "boolean",
+              "title": "Clear After",
+              "description": "Clear Content afte saving"
+            },
+            "processRequire": {
+              "type": "boolean",
+              "title": "Clear After",
+              "description": "Clear Content afte saving"
+            }
+          }
+        }
+      ]
+    },
+    "save": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/directive"
+        },
+        {
+          "properties": {
+            "type": {
+              "type": "integer",
+              "value": 5
+            },
+            "fileName": {
+              "type": "string",
+              "title": "File Name",
+              "description": "The name of the file to be written to the archive"
+            },
+            "clearAfter": {
+              "type": "boolean",
+              "title": "Clear After",
+              "description": "Clear Content afte saving"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "object",
+      "description": "Unique Template Identifier",
+      "properties": {
+        "group": {
+          "type": "string",
+          "title": "Group",
+          "description": "Defines a group of related templates"
+        },
+        "name": {
+          "type": "string",
+          "title": "Name",
+          "description": "The template name"
+        },
+        "variant": {
+          "type": "string",
+          "title": "Variant",
+          "description": "The variant of the template"
+        }
+      }
+    },
+    "wrapper": {
+      "type": "object",
+      "description": "The strings used to identify a tag/bookmark in content",
+      "properties": {
+        "front": {
+          "type": "string",
+          "title": "Open",
+          "description": "indicates beginning of tag/bookmark"
+        },
+        "back": {
+          "type": "string",
+          "title": "Close",
+          "description": "indicates ending of tag/bookmark"
+        }
+      }
+    },
+    "description": {
+      "type": "string",
+      "title": "Description",
+      "description": "Describes the template, used in error logging"
+    },
+    "content": {
+      "type": "string",
+      "title": "Content",
+      "description": "The tempalte content"
+    },
+    "contentEncoding": {
+      "type": "integer",
+      "title": "The Contentencoding",
+      "description": "Content Encoding , see Config for options"
+    },
+    "contentType": {
+      "type": "integer",
+      "title": "The Content type",
+      "description": "HTTP Content Type used on reply"
+    },
+    "contentDisposition": {
+      "type": "String",
+      "title": "The Content disposition",
+      "description": "HTTP Content Disposition used on reply - such as - attachment;filename=\"FileToReturn.json\""
+    },
+    "contentRedirectUrl": {
+      "type": "string",
+      "title": "Redirect URL",
+      "description": "Provided for Rest API related uses"
+    },
+    "directives": {
+      "type": "array",
+      "title": "Directives",
+      "description": "The directives that drive the merge",
+      "items": {
+        "anyOf": [
+          {
+            "$ref": "#/definitions/enrich"
+          },
+          {
+            "$ref": "#/definitions/replace"
+          },
+          {
+            "$ref": "#/definitions/insert"
+          },
+          {
+            "$ref": "#/definitions/parse"
+          },
+          {
+            "$ref": "#/definitions/save"
+          }
+        ]
+      }
+    }
+  }
+}

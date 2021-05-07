@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Manual Labour Document",
+  "description": "A document describing a set of instructions",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Document title"
+    },
+    "description": {
+      "type": "string",
+      "description": "description of this ml document"
+    },
+    "include": {
+      "type": "object",
+      "patternProperties": {
+        "^([a-zA-Z][0-9a-zA-Z]*)$": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "steps": {
+      "type": "object",
+      "patternProperties": {
+        "^([a-zA-Z][0-9a-zA-Z]*)$": {
+          "$ref": "step.json#/step"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "title",
+    "description",
+    "steps"
+  ],
+  "additionalProperties": false
+}

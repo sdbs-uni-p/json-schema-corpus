@@ -1,0 +1,103 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "title": "Result",
+  "description": "Result from processing a (plugin, instance) pair",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "success": {
+      "description": "Status of processing",
+      "type": "boolean"
+    },
+    "instance": {
+      "description": "Name of processed instance or null if no instance were processed",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "plugin": {
+      "description": "Name of processed plug-in",
+      "type": "string"
+    },
+    "duration": {
+      "description": "Time in milliseconds taken to process a pair",
+      "type": "number"
+    },
+    "error": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/Error"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Record"
+      }
+    }
+  },
+  "definitions": {
+    "Error": {
+      "type": "object",
+      "required": [
+        "message"
+      ],
+      "properties": {
+        "message": {
+          "description": "Message passed to exception",
+          "type": "string"
+        },
+        "line_number": {
+          "description": "Line at which exception occurred",
+          "type": "number"
+        },
+        "func": {
+          "description": "Name of function from which the exception was thrown",
+          "type": "string"
+        },
+        "fname": {
+          "description": "Name of file from which the exception was thrown",
+          "type": "string"
+        },
+        "exc": {
+          "description": "Message from extracted traceback (should be identical to `message`)",
+          "type": "string"
+        }
+      }
+    },
+    "Record": {
+      "type": "object",
+      "required": [
+        "message"
+      ],
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "msecs": {},
+        "args": {},
+        "name": {},
+        "thread": {},
+        "created": {},
+        "process": {},
+        "threadName": {},
+        "module": {},
+        "filename": {},
+        "levelno": {},
+        "processName": {},
+        "pathname": {},
+        "lineno": {},
+        "exc_text": {},
+        "exc_info": {},
+        "funcName": {},
+        "relativeCreated": {},
+        "levelname": {}
+      }
+    }
+  }
+}

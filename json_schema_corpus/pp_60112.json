@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "The value returned by GET /_config",
+  "title": "CouchDB server _config",
+  "type": "object"
+}

@@ -1,0 +1,376 @@
+{
+  "name": "Partner Program Prototype",
+  "rules": {
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "properties": {
+      "minPurchaseValue": {
+        "type": "number",
+        "title": "Set minimum purchase value (optional)"
+      },
+      "referredRewardRules": {
+        "type": "object",
+        "title": "Referred User Reward Rules",
+        "required": [
+          "rewardReferred"
+        ],
+        "properties": {
+          "rewardReferred": {
+            "enum": [
+              "never",
+              "referral",
+              "conversion"
+            ],
+            "type": "string",
+            "title": "Set when referred users should get a reward (required)",
+            "default": "referral",
+            "enumNames": [
+              "Never",
+              "When they are referred",
+              "On their first qualifying purchase"
+            ]
+          }
+        }
+      },
+      "referrerRewardRules": {
+        "type": "object",
+        "title": "Partner Reward Rules",
+        "properties": {
+          "refundWindow": {
+            "type": "string",
+            "title": "Purchase Refund Period",
+            "default": "P0Y0M0D"
+          },
+          "commissionWindow": {
+            "type": "string",
+            "title": "Earnable Reward Period",
+            "default": "P0Y0M0D"
+          },
+          "dynamicCommission": {
+            "type": "object",
+            "title": "",
+            "required": [
+              "isDynamic"
+            ],
+            "properties": {
+              "isDynamic": {
+                "enum": [
+                  true,
+                  false
+                ],
+                "type": "boolean",
+                "title": "Partner will earn commission-based rewards",
+                "default": true
+              }
+            },
+            "dependencies": {
+              "isDynamic": {
+                "oneOf": [
+                  {
+                    "properties": {
+                      "isDynamic": {
+                        "enum": [
+                          false
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "required": [
+                      "commissionPct"
+                    ],
+                    "properties": {
+                      "isDynamic": {
+                        "enum": [
+                          true
+                        ]
+                      },
+                      "commissionPct": {
+                        "type": "number",
+                        "title": "Commission Percentage Value"
+                      },
+                      "defaultCurrency": {
+                        "$ref": "#/definitions/currency"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "currency": {
+        "enum": [
+          "USD",
+          "AED",
+          "AFN",
+          "ALL",
+          "AMD",
+          "ANG",
+          "AOA",
+          "ARS",
+          "AUD",
+          "AWG",
+          "AZN",
+          "BAM",
+          "BBD",
+          "BDT",
+          "BGN",
+          "BHD",
+          "BIF",
+          "BMD",
+          "BND",
+          "BOB",
+          "BOV",
+          "BRL",
+          "BSD",
+          "BTN",
+          "BWP",
+          "BYR",
+          "BZD",
+          "CAD",
+          "CDF",
+          "CHE",
+          "CHF",
+          "CHW",
+          "CLF",
+          "CLP",
+          "CNY",
+          "COP",
+          "COU",
+          "CRC",
+          "CUC",
+          "CUP",
+          "CVE",
+          "CZK",
+          "DJF",
+          "DKK",
+          "DOP",
+          "DZD",
+          "EGP",
+          "ERN",
+          "ETB",
+          "EUR",
+          "FJD",
+          "FKP",
+          "GBP",
+          "GEL",
+          "GHS",
+          "GIP",
+          "GMD",
+          "GNF",
+          "GTQ",
+          "GYD",
+          "HKD",
+          "HNL",
+          "HRK",
+          "HTG",
+          "HUF",
+          "IDR",
+          "ILS",
+          "INR",
+          "IQD",
+          "IRR",
+          "ISK",
+          "JMD",
+          "JOD",
+          "JPY",
+          "KES",
+          "KGS",
+          "KHR",
+          "KMF",
+          "KPW",
+          "KRW",
+          "KWD",
+          "KYD",
+          "KZT",
+          "LAK",
+          "LBP",
+          "LKR",
+          "LRD",
+          "LSL",
+          "LYD",
+          "MAD",
+          "MDL",
+          "MGA",
+          "MKD",
+          "MMK",
+          "MNT",
+          "MOP",
+          "MRU",
+          "MUR",
+          "MVR",
+          "MWK",
+          "MXN",
+          "MXV",
+          "MYR",
+          "MZN",
+          "NAD",
+          "NGN",
+          "NIO",
+          "NOK",
+          "NPR",
+          "NZD",
+          "OMR",
+          "PAB",
+          "PEN",
+          "PGK",
+          "PHP",
+          "PKR",
+          "PLN",
+          "PYG",
+          "QAR",
+          "RON",
+          "RSD",
+          "RUB",
+          "RWF",
+          "SAR",
+          "SBD",
+          "SCR",
+          "SDG",
+          "SEK",
+          "SGD",
+          "SHP",
+          "SLL",
+          "SOS",
+          "SRD",
+          "SSP",
+          "STN",
+          "SVC",
+          "SYP",
+          "SZL",
+          "THB",
+          "TJS",
+          "TMT",
+          "TND",
+          "TOP",
+          "TRY",
+          "TTD",
+          "TWD",
+          "TZS",
+          "UAH",
+          "UGX",
+          "USN",
+          "UYI",
+          "UYU",
+          "UZS",
+          "VEF",
+          "VND",
+          "VUV",
+          "WST",
+          "XAF",
+          "XCD",
+          "XDR",
+          "XOF",
+          "XPF",
+          "XSU",
+          "XUA",
+          "YER",
+          "ZAR",
+          "ZMW",
+          "ZWL"
+        ],
+        "type": "string",
+        "title": "Default Reward Currency",
+        "default": "USD"
+      }
+    }
+  },
+  "emails": [
+    {
+      "key": "referredRewardReceived",
+      "name": "Referred User Rewarded",
+      "defaults": "1PMh2NSCPK08gGAWg6sEqQ",
+      "description": "We send this email when a user has been referred and rewarded."
+    }
+  ],
+  "rewards": [
+    {
+      "key": "partnerReward",
+      "name": "Partner Reward",
+      "description": "The reward given to partners for a qualified purchase."
+    },
+    {
+      "key": "referredReward",
+      "name": "Referred Reward",
+      "description": "The reward given to new users that have been referred."
+    }
+  ],
+  "sharing": {
+    "enabled": true,
+    "linksConfig": {
+      "defaults": "6Axgupg5kQKm4u8kQwAo6A"
+    }
+  },
+  "summary": "Reward people for making referrals",
+  "trigger": {
+    "eventKeys": [
+      "purchase"
+    ]
+  },
+  "widgets": [
+    {
+      "key": "partnerWidget",
+      "name": "Partner Widget",
+      "defaults": "3hf5GW6ZB6YMkiyQ6kuK0c",
+      "description": "Widget displayed to a user who has referred friends"
+    },
+    {
+      "key": "referredWidget",
+      "name": "Referred Widget",
+      "defaults": "5xKkq1FDKECYkEEMy4e6ww",
+      "description": "When you have been referred"
+    }
+  ],
+  "rulesUISchema": {
+    "ui:order": [
+      "referrerRewardRules",
+      "referredRewardRules",
+      "*"
+    ],
+    "minPurchaseValue": {
+      "ui:help": "For referred users to qualify as a conversion,"
+    },
+    "referredRewardRules": {
+      "rewardReferred": {
+        "ui:widget": "radio"
+      }
+    },
+    "referrerRewardRules": {
+      "ui:order": [
+        "dynamicCommission",
+        "refundWindow",
+        "commissionWindow"
+      ],
+      "refundWindow": {
+        "ui:help": "Refund detection does not apply to FuelTank or Gift Card rewards.",
+        "ui:widget": "Duration",
+        "ui:options": {
+          "doNotUseToggle": true
+        }
+      },
+      "commissionWindow": {
+        "ui:help": "The set duration a Partner is eligible to earn rewards.",
+        "ui:widget": "Duration",
+        "ui:options": {
+          "doNotUseToggle": true
+        }
+      },
+      "dynamicCommission": {
+        "ui:order": [
+          "isDynamic",
+          "*"
+        ],
+        "isDynamic": {
+          "ui:widget": "radio",
+          "ui:options": {
+            "inline": true
+          }
+        }
+      }
+    }
+  }
+}

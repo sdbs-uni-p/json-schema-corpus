@@ -1,0 +1,42 @@
+{
+  "title": "date_time",
+  "id": "https://rawgit.com/camshaft/shenu/master/schemas/date_time.json#",
+  "description": "",
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "properties": {
+    "year": {
+      "type": "integer"
+    },
+    "timezone": {
+      "type": "string",
+      "default": "UTC"
+    },
+    "second": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 59
+    },
+    "month": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 12
+    },
+    "minute": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 59
+    },
+    "hour": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 23
+    },
+    "day": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 31
+    }
+  },
+  "additionalProperties": false
+}

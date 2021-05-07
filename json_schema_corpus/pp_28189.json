@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "existingUniReference",
+  "id": "existingUniReference",
+  "description": "A reference to an existing UNI.",
+  "type": "object",
+  "required": [
+    "objectType",
+    "sellerUniId"
+  ],
+  "properties": {
+    "objectType": {
+      "type": "string",
+      "enum": [
+        "existingUniReference"
+      ],
+      "description": "The type of the object, existingUniReference."
+    },
+    "sellerUniId": {
+      "type": "string",
+      "description": "The circuit identifier that the seller uses to refer to this UNI.",
+      "maxLength": 45
+    },
+    "buyerUniId": {
+      "type": "string",
+      "description": "The circuit identifier that the buyer uses to refer to this UNI.",
+      "maxLength": 45
+    }
+  }
+}

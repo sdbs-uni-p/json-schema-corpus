@@ -1,0 +1,134 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "title": "Classic User Created Webhook Schema",
+  "description": "Sent whenever a new user is created in SaaSquatch program where the classic program is enabled.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "title": "User Id",
+      "description": "The user's unique identifier"
+    },
+    "accountId": {
+      "type": "string",
+      "title": "Account Id",
+      "description": "The user's unique account identifier"
+    },
+    "email": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Email",
+      "description": "The user's email address"
+    },
+    "firstName": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "First Name",
+      "description": "The user's first name"
+    },
+    "lastName": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Last Name",
+      "description": "The user's last name"
+    },
+    "imageUrl": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Image Url",
+      "description": "The URL to an image of this user"
+    },
+    "firstSeenIP": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "First Seen IP",
+      "description": "The IP address of this user when they were first seen by SaaSquatch"
+    },
+    "lastSeenIP": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Last Seen IP",
+      "description": "The IP address of this user when they were most recently seen by SaaSquatch"
+    },
+    "dateCreated": {
+      "type": "integer",
+      "title": "Date Created",
+      "description": "A timestamp of the date this user was created"
+    },
+    "locale": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Locale",
+      "description": "This user's unique locale"
+    },
+    "referralCodes": {
+      "$ref": "../ReferralCodes.schema.json#"
+    },
+    "referable": {
+      "type": "boolean",
+      "title": "Referable",
+      "description": "True if this user can be referred in a program by other users"
+    },
+    "referredByCodes": {
+      "type": "array",
+      "title": "Referred By Codes",
+      "description": "Any codes used to refer this user",
+      "items": {
+        "type": "string"
+      }
+    },
+    "cookieId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Anonymous Cookie User Id",
+      "description": "The anonymous cookie user identifier associated with this user if applicable (see anonymous users)"
+    },
+    "dateBlocked": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Date Blocked",
+      "description": "The date the referral was blocked"
+    },
+    "customFields": {
+      "title": "Custom Fields",
+      "description": "Any custom fields set for this user",
+      "$ref": "../UserCustomFields.schema.json#"
+    },
+    "segments": {
+      "type": "array",
+      "title": "User Segments",
+      "description": "Any segments this user belongs to",
+      "items": {
+        "type": "string"
+      }
+    },
+    "programShareLinks": {
+      "$ref": "../ProgramShareLinks.schema.json#"
+    }
+  },
+  "required": [
+    "id",
+    "accountId",
+    "dateCreated",
+    "referable"
+  ],
+  "additionalProperties": false
+}

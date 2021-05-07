@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "properties": {
+    "comments": {
+      "type": "integer",
+      "description": "count of comments across all ratings"
+    },
+    "rating_1": {
+      "type": "integer",
+      "description": "count of 1 star ratings"
+    },
+    "rating_2": {
+      "type": "integer",
+      "description": "count of 2 star ratings"
+    },
+    "rating_3": {
+      "type": "integer",
+      "description": "count of 3 star ratings"
+    },
+    "rating_4": {
+      "type": "integer",
+      "description": "count of 4 star ratings"
+    },
+    "rating_5": {
+      "type": "integer",
+      "description": "count of 5 star ratings"
+    },
+    "slug": {
+      "type": "string",
+      "description": "url slug for the service 'done' page"
+    },
+    "total": {
+      "type": "integer",
+      "description": "Aggregate count of all ratings"
+    }
+  },
+  "title": "Customer Satisfaction",
+  "type": "object",
+  "required": [
+    "comments",
+    "rating_1",
+    "rating_2",
+    "rating_3",
+    "rating_4",
+    "rating_5",
+    "slug",
+    "total"
+  ]
+}

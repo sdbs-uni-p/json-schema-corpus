@@ -1,0 +1,77 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "utilisateur",
+  "type": "array",
+  "title": "Utilisateur",
+  "items": {
+    "id": "utilisateur/items",
+    "type": "object",
+    "properties": {
+      "login": {
+        "id": "utilisateur/items/properties/login",
+        "type": "string",
+        "title": "The Login Schema.",
+        "description": "Login utilis\u00e9 pour la connexion dans l'application Invimmo",
+        "default": "",
+        "maxLength": 50,
+        "minLength": 1
+      },
+      "nomUtilisateur": {
+        "id": "utilisateur/items/properties/nomUtilisateur",
+        "type": "string",
+        "title": "The Nomutilisateur Schema.",
+        "description": "Nom de la personne",
+        "default": "",
+        "maxLength": 50,
+        "minLength": 1
+      },
+      "referenceExterne": {
+        "id": "utilisateur/items/properties/referenceExterne",
+        "type": "string",
+        "title": "The Referenceexterne Schema.",
+        "description": "R\u00e9f\u00e9rence unique du syst\u00e8me externe",
+        "default": "",
+        "maxLength": 255,
+        "minLength": 1
+      },
+      "prenom": {
+        "id": "utilisateur/items/properties/prenom",
+        "type": "string",
+        "title": "The Prenom Schema.",
+        "description": "Pr\u00e9nom de la personne",
+        "default": "",
+        "maxLength": 50
+      },
+      "imeiMobile": {
+        "id": "utilisateur/items/properties/imeiMobile",
+        "type": "null",
+        "title": "The Imeimobile Schema.",
+        "description": "R\u00e9f\u00e9rence unique IMEI de l'appareil mobile qui ex\u00e9cute l'application INVIMMO",
+        "default": null,
+        "maxLength": 100
+      },
+      "telephone": {
+        "id": "utilisateur/items/properties/telephone",
+        "type": "string",
+        "title": "The Telephone Schema.",
+        "description": "Num\u00e9ro de t\u00e9l\u00e9phone de la personne",
+        "default": "",
+        "maxLength": 17
+      },
+      "email": {
+        "id": "utilisateur/items/properties/email",
+        "type": "string",
+        "title": "The Email Schema.",
+        "description": "Adresse email de la personne.",
+        "default": "",
+        "maxLength": 255
+      }
+    },
+    "required": [
+      "login",
+      "nomUtilisateur",
+      "referenceExterne"
+    ]
+  }
+}

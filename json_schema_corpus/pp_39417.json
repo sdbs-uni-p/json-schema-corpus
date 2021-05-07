@@ -1,0 +1,21 @@
+{
+  "id": "http://baseurl.com/schemas",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "errorType": {
+    "id": "#/general/errorType",
+    "type": "object",
+    "properties": {
+      "appErrorString": {
+        "type": "string",
+        "default": ""
+      },
+      "appErrorCode": {
+        "type": "integer",
+        "default": 0
+      }
+    },
+    "required": [
+      "appErrorCode"
+    ]
+  }
+}

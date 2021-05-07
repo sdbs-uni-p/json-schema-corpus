@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "https://github.com/empirefox/node-private-tools/blob/master/src/schemas/go-tag-apis.json#",
+  "title": "go-tag-apis Config",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "$tool": {
+      "type": "string",
+      "description": "Must be set to go-tag-apis.",
+      "const": "go-tag-apis"
+    },
+    "src": {
+      "description": "Input go files(Glob), expand with env first.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "preproccess": "env"
+      }
+    },
+    "structs": {
+      "description": "Go struct names to parse.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "dist": {
+      "description": "The output dir path (relative to the pwd).",
+      "type": "string"
+    }
+  },
+  "required": [
+    "$tool",
+    "src",
+    "structs",
+    "dist"
+  ],
+  "additionalProperties": false
+}

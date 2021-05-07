@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "description": "package of data for an assessment app to update an assessment",
+  "properties": {
+    "status": {
+      "$ref": "assessmentRead.json#/definitions/status"
+    },
+    "passedFlag": {
+      "$ref": "assessmentRead.json#/definitions/passedFlag"
+    },
+    "interactionUris": {
+      "$ref": "assessmentRead.json#/definitions/interactionUris"
+    },
+    "image": {
+      "$ref": "assessmentRead.json#/definitions/imageUrl"
+    }
+  },
+  "additionalProperties": false
+}

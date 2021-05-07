@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "response_get_client_identity_1",
+  "type": "object",
+  "properties": {
+    "clientIdentity": {
+      "$ref": "common_clientIdentity"
+    }
+  },
+  "required": [
+    "clientIdentity"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "properties": {
+    "count": {
+      "description": "The count of the number of events",
+      "type": "integer",
+      "minimum": 0
+    },
+    "consulate": {
+      "description": "The consular level for the number of events",
+      "type": "string"
+    },
+    "period": {
+      "description": "The period described by each data point",
+      "enum": [
+        "second",
+        "minute",
+        "hour",
+        "day",
+        "week",
+        "month",
+        "year"
+      ]
+    }
+  },
+  "required": [
+    "count",
+    "consulate",
+    "period"
+  ],
+  "title": "Number of no-shows for appointments",
+  "type": "object"
+}

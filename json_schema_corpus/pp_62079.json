@@ -1,0 +1,204 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "osm_db": {
+      "id": "osm_db",
+      "type": "object",
+      "properties": {
+        "host": {
+          "id": "host",
+          "type": "string"
+        },
+        "user": {
+          "id": "user",
+          "type": "string"
+        },
+        "password": {
+          "id": "password",
+          "type": "string"
+        },
+        "db_name": {
+          "id": "db_name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "host",
+        "user",
+        "password",
+        "db_name"
+      ]
+    },
+    "map": {
+      "id": "map",
+      "type": "object",
+      "properties": {
+        "bounding_box": {
+          "id": "bounding_box",
+          "type": "array",
+          "items": [
+            {
+              "id": "0",
+              "type": "array",
+              "items": [
+                {
+                  "id": "0",
+                  "type": "number"
+                },
+                {
+                  "id": "1",
+                  "type": "number"
+                }
+              ]
+            },
+            {
+              "id": "1",
+              "type": "array",
+              "items": [
+                {
+                  "id": "0",
+                  "type": "number"
+                },
+                {
+                  "id": "1",
+                  "type": "number"
+                }
+              ]
+            }
+          ]
+        },
+        "image": {
+          "id": "image",
+          "type": "object",
+          "properties": {
+            "scale": {
+              "id": "scale",
+              "type": "integer"
+            }
+          }
+        },
+        "tiles": {
+          "id": "tiles",
+          "type": "object",
+          "properties": {
+            "zoom_level_min": {
+              "id": "zoom_level_min",
+              "type": "integer",
+              "enum": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20
+              ]
+            },
+            "zoom_level_max": {
+              "id": "zoom_level_max",
+              "type": "integer",
+              "enum": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20
+              ]
+            }
+          }
+        },
+        "create_xcf": {
+          "id": "create_xcf",
+          "type": "boolean"
+        }
+      }
+    },
+    "style": {
+      "id": "style",
+      "type": "object",
+      "properties": {
+        "text": {
+          "id": "text",
+          "type": "boolean"
+        },
+        "sketchy": {
+          "id": "sketchy",
+          "type": "boolean"
+        },
+        "style_path": {
+          "id": "style_path",
+          "type": "null"
+        },
+        "style_name": {
+          "id": "style_name",
+          "type": "string"
+        },
+        "polygon_fill": {
+          "id": "polygon_fill",
+          "type": "object",
+          "properties": {
+            "type": {
+              "id": "type",
+              "type": "string",
+              "enum": [
+                "mask",
+                "fill",
+                "hachure"
+              ]
+            },
+            "outline": {
+              "id": "outline",
+              "type": "boolean"
+            }
+          }
+        },
+        "img_tile_span": {
+          "id": "img_tile_span",
+          "type": "integer"
+        }
+      }
+    },
+    "out_dir": {
+      "id": "out_dir",
+      "type": "null"
+    }
+  },
+  "required": [
+    "osm_db",
+    "map",
+    "style",
+    "out_dir"
+  ]
+}

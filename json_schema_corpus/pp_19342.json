@@ -1,0 +1,571 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "description": "SiteService object",
+  "properties": {
+    "SiteService": {
+      "id": "SiteService",
+      "type": "object",
+      "properties": {
+        "ID": {
+          "id": "ID",
+          "type": "string"
+        },
+        "SiteID": {
+          "id": "SiteID",
+          "type": "string"
+        },
+        "ServiceID": {
+          "id": "ServiceID",
+          "type": "string"
+        },
+        "ServiceGroupID": {
+          "id": "ServiceGroupID",
+          "type": "string"
+        },
+        "AgencyID": {
+          "id": "AgencyID",
+          "type": "string"
+        },
+        "Title": {
+          "id": "Title",
+          "type": "string"
+        },
+        "Description": {
+          "id": "Description",
+          "type": "string"
+        },
+        "Phone": {
+          "id": "Phone",
+          "type": "object",
+          "properties": {
+            "Phone": {
+              "id": "Phone",
+              "type": "string"
+            },
+            "Confidential": {
+              "id": "Confidential",
+              "type": "boolean"
+            },
+            "ReasonWithheld": {
+              "id": "ReasonWithheld",
+              "type": "string"
+            },
+            "Description": {
+              "id": "Description",
+              "type": "string"
+            },
+            "Type": {
+              "id": "Type",
+              "type": "string"
+            },
+            "Function": {
+              "id": "Function",
+              "type": "string"
+            },
+            "TollFree": {
+              "id": "TollFree",
+              "type": "boolean"
+            },
+            "Department": {
+              "id": "Department",
+              "type": "string"
+            },
+            "CountryPrefix": {
+              "id": "CountryPrefix",
+              "type": "string"
+            }
+          }
+        },
+        "Contact": {
+          "id": "Contact",
+          "type": "object",
+          "properties": {
+            "ID": {
+              "id": "ID",
+              "type": "integer"
+            },
+            "AgencyID": {
+              "id": "AgencyID",
+              "type": "string"
+            },
+            "ServiceID": {
+              "id": "ServiceID",
+              "type": "string"
+            },
+            "Department": {
+              "id": "Department",
+              "type": "string"
+            },
+            "Title": {
+              "id": "Title",
+              "type": "string"
+            },
+            "Name": {
+              "id": "Name",
+              "type": "string"
+            },
+            "Nickname": {
+              "id": "Nickname",
+              "type": "string"
+            },
+            "ContactEmail": {
+              "id": "ContactEmail",
+              "type": "string"
+            },
+            "ContactPhone": {
+              "id": "ContactPhone",
+              "type": "object",
+              "properties": {
+                "Phone": {
+                  "id": "Phone",
+                  "type": "string"
+                },
+                "Confidential": {
+                  "id": "Confidential",
+                  "type": "boolean"
+                },
+                "ReasonWithheld": {
+                  "id": "ReasonWithheld",
+                  "type": "string"
+                },
+                "Description": {
+                  "id": "Description",
+                  "type": "string"
+                },
+                "Type": {
+                  "id": "Type",
+                  "type": "string"
+                },
+                "Function": {
+                  "id": "Function",
+                  "type": "string"
+                },
+                "TollFree": {
+                  "id": "TollFree",
+                  "type": "boolean"
+                },
+                "Department": {
+                  "id": "Department",
+                  "type": "string"
+                },
+                "CountryPrefix": {
+                  "id": "CountryPrefix",
+                  "type": "string"
+                }
+              }
+            },
+            "ContactType": {
+              "id": "ContactType",
+              "type": "string"
+            }
+          }
+        },
+        "URL": {
+          "id": "URL",
+          "type": "object",
+          "properties": {
+            "Address": {
+              "id": "Address",
+              "type": "string"
+            },
+            "Note": {
+              "id": "Note",
+              "type": "string"
+            }
+          }
+        },
+        "Email": {
+          "id": "Email",
+          "type": "string"
+        },
+        "OpenHours": {
+          "id": "OpenHours",
+          "type": "object",
+          "properties": {
+            "dayOpen": {
+              "id": "dayOpen",
+              "type": "string"
+            },
+            "TimeOpens": {
+              "id": "TimeOpens",
+              "type": "string"
+            },
+            "TimeCloses": {
+              "id": "TimeCloses",
+              "type": "string"
+            }
+          }
+        },
+        "SpecialHours": {
+          "id": "SpecialHours",
+          "type": "object",
+          "properties": {
+            "SpecialHoursStartDate": {
+              "id": "SpecialHoursStartDate",
+              "type": "string"
+            },
+            "SpecialHoursEndDate": {
+              "id": "SpecialHoursEndDate",
+              "type": "string"
+            },
+            "SpecialOpenTime": {
+              "id": "SpecialOpenTime",
+              "type": "string"
+            },
+            "SpecialCloseTime": {
+              "id": "SpecialCloseTime",
+              "type": "string"
+            }
+          }
+        },
+        "Seasonal": {
+          "id": "Seasonal",
+          "type": "object",
+          "properties": {
+            "Description": {
+              "id": "Description",
+              "type": "string"
+            },
+            "SpecialHoursStartDate": {
+              "id": "SpecialHoursStartDate",
+              "type": "string"
+            },
+            "SpecialHoursEndDate": {
+              "id": "SpecialHoursEndDate",
+              "type": "string"
+            },
+            "SpecialOpenTime": {
+              "id": "SpecialOpenTime",
+              "type": "string"
+            },
+            "SpecialCloseTime": {
+              "id": "SpecialCloseTime",
+              "type": "string"
+            }
+          }
+        },
+        "Taxonomy": {
+          "id": "Taxonomy",
+          "type": "object",
+          "properties": {
+            "TaxonomyCode": {
+              "id": "TaxonomyCode",
+              "type": "string"
+            },
+            "TaxonomyTerm": {
+              "id": "TaxonomyTerm",
+              "type": "string"
+            }
+          }
+        },
+        "Languages": {
+          "id": "Languages",
+          "type": "object",
+          "properties": {
+            "LanguageName": {
+              "id": "LanguageName",
+              "type": "string"
+            },
+            "LanguageHours": {
+              "id": "LanguageHours",
+              "type": "object",
+              "properties": {
+                "dayOpen": {
+                  "id": "dayOpen",
+                  "type": "string"
+                },
+                "TimeOpens": {
+                  "id": "TimeOpens",
+                  "type": "string"
+                },
+                "TimeCloses": {
+                  "id": "TimeCloses",
+                  "type": "string"
+                }
+              }
+            },
+            "Notes": {
+              "id": "Notes",
+              "type": "string"
+            }
+          }
+        },
+        "TranslationService": {
+          "id": "TranslationService",
+          "type": "string"
+        },
+        "ServiceArea": {
+          "id": "ServiceArea",
+          "type": "object",
+          "properties": {
+            "Name": {
+              "id": "Name",
+              "type": "string"
+            },
+            "PostalCode": {
+              "id": "PostalCode",
+              "type": "string"
+            },
+            "CensusTract": {
+              "id": "CensusTract",
+              "type": "string"
+            },
+            "City": {
+              "id": "City",
+              "type": "string"
+            },
+            "County": {
+              "id": "County",
+              "type": "string"
+            },
+            "State": {
+              "id": "State",
+              "type": "string"
+            },
+            "Country": {
+              "id": "Country",
+              "type": "string"
+            },
+            "Description": {
+              "id": "Description",
+              "type": "string"
+            },
+            "CustomAreaLabel": {
+              "id": "CustomAreaLabel",
+              "type": "string"
+            }
+          }
+        },
+        "InternetResource": {
+          "id": "InternetResource",
+          "type": "object",
+          "properties": {
+            "Url": {
+              "id": "Url",
+              "type": "string"
+            },
+            "Description": {
+              "id": "Description",
+              "type": "string"
+            }
+          }
+        },
+        "DocumentsRequired": {
+          "id": "DocumentsRequired",
+          "type": "object",
+          "properties": {
+            "Title": {
+              "id": "Title",
+              "type": "string"
+            },
+            "Description": {
+              "id": "Description",
+              "type": "string"
+            }
+          }
+        },
+        "ApplicationProcess": {
+          "id": "ApplicationProcess",
+          "type": "object",
+          "properties": {
+            "Title": {
+              "id": "Title",
+              "type": "string"
+            },
+            "Description": {
+              "id": "Description",
+              "type": "string"
+            }
+          }
+        },
+        "FeeStructure": {
+          "id": "FeeStructure",
+          "type": "string"
+        },
+        "PaymentMethodAccepted": {
+          "id": "PaymentMethodAccepted",
+          "type": "string"
+        },
+        "GeneralEligibility": {
+          "id": "GeneralEligibility",
+          "type": "string"
+        },
+        "AgeRequirement": {
+          "id": "AgeRequirement",
+          "type": "object",
+          "properties": {
+            "MinimumAge": {
+              "id": "MinimumAge",
+              "type": "integer"
+            },
+            "MaximumAge": {
+              "id": "MaximumAge",
+              "type": "integer"
+            }
+          }
+        },
+        "GenderRequirement": {
+          "id": "GenderRequirement",
+          "type": "object",
+          "properties": {
+            "Gender": {
+              "id": "Gender",
+              "type": "string"
+            },
+            "MinimumAge": {
+              "id": "MinimumAge",
+              "type": "integer"
+            },
+            "MaximumAge": {
+              "id": "MaximumAge",
+              "type": "integer"
+            }
+          }
+        },
+        "FamilyRequirements": {
+          "id": "FamilyRequirements",
+          "type": "string"
+        },
+        "IncomeRequirements": {
+          "id": "IncomeRequirements",
+          "type": "string"
+        },
+        "ResidencyRequirements": {
+          "id": "ResidencyRequirements",
+          "type": "string"
+        },
+        "Status": {
+          "id": "Status",
+          "type": "string"
+        },
+        "ServiceNotAlwaysAvailable": {
+          "id": "ServiceNotAlwaysAvailable",
+          "type": "boolean"
+        },
+        "ResourceInfo": {
+          "id": "ResourceInfo",
+          "type": "object",
+          "properties": {
+            "Contact": {
+              "id": "Contact",
+              "type": "object",
+              "properties": {
+                "ID": {
+                  "id": "ID",
+                  "type": "integer"
+                },
+                "AgencyID": {
+                  "id": "AgencyID",
+                  "type": "string"
+                },
+                "ServiceID": {
+                  "id": "ServiceID",
+                  "type": "string"
+                },
+                "Department": {
+                  "id": "Department",
+                  "type": "string"
+                },
+                "Title": {
+                  "id": "Title",
+                  "type": "string"
+                },
+                "Name": {
+                  "id": "Name",
+                  "type": "string"
+                },
+                "Nickname": {
+                  "id": "Nickname",
+                  "type": "string"
+                },
+                "ContactEmail": {
+                  "id": "ContactEmail",
+                  "type": "string"
+                },
+                "ContactPhone": {
+                  "id": "ContactPhone",
+                  "type": "object",
+                  "properties": {
+                    "Phone": {
+                      "id": "Phone",
+                      "type": "string"
+                    },
+                    "Confidential": {
+                      "id": "Confidential",
+                      "type": "boolean"
+                    },
+                    "ReasonWithheld": {
+                      "id": "ReasonWithheld",
+                      "type": "string"
+                    },
+                    "Description": {
+                      "id": "Description",
+                      "type": "string"
+                    },
+                    "Type": {
+                      "id": "Type",
+                      "type": "string"
+                    },
+                    "Function": {
+                      "id": "Function",
+                      "type": "string"
+                    },
+                    "TollFree": {
+                      "id": "TollFree",
+                      "type": "boolean"
+                    },
+                    "Department": {
+                      "id": "Department",
+                      "type": "string"
+                    },
+                    "CountryPrefix": {
+                      "id": "CountryPrefix",
+                      "type": "string"
+                    }
+                  }
+                },
+                "ContactType": {
+                  "id": "ContactType",
+                  "type": "string"
+                }
+              }
+            },
+            "ResourceSpecialist": {
+              "id": "ResourceSpecialist",
+              "type": "string"
+            },
+            "AvailableForDirectory": {
+              "id": "AvailableForDirectory",
+              "type": "boolean"
+            },
+            "AvailableForReferral": {
+              "id": "AvailableForReferral",
+              "type": "boolean"
+            },
+            "AvailableForResearch": {
+              "id": "AvailableForResearch",
+              "type": "boolean"
+            },
+            "DateAdded": {
+              "id": "DateAdded",
+              "type": "string"
+            },
+            "DateLastVerified": {
+              "id": "DateLastVerified",
+              "type": "string"
+            },
+            "DateOfLastAction": {
+              "id": "DateOfLastAction",
+              "type": "string"
+            },
+            "LastActionType": {
+              "id": "LastActionType",
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

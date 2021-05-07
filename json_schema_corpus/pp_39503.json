@@ -1,0 +1,44 @@
+{
+  "id": "https://raw.githubusercontent.com/eviratec/schema/master/v1/customer/account.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "schema for a customer account",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "customer_id",
+    "balance"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "customer_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "balance": {
+      "type": "object",
+      "allOf": [
+        {
+          "type": "object",
+          "required": [
+            "in"
+          ],
+          "properties": {
+            "in": {
+              "enum": [
+                "cr",
+                "dr"
+              ]
+            }
+          }
+        },
+        {
+          "$ref": "https://raw.githubusercontent.com/eviratec/schema/master/v1/currency/amount.json#"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "http://schema.org/WebPage",
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "extends": {
+    "$ref": "CreativeWork.json"
+  },
+  "description": "A web page. Every web page is implicitly assumed to be declared to be of type WebPage, so the various properties about that webpage, such as breadcrumb may be used. We recommend explicit declaration if these properties are specified, but if they are found outside of an itemscope, they will be assumed to be about the page. Schema.org: http://schema.org/WebPage",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "relatedLink": {
+      "description": "A link related to this web page, for example to other related web pages.",
+      "type": "string",
+      "format": "uri"
+    },
+    "significantLink": {
+      "description": "One of the more significant URLs on the page. Typically, these are the non-navigation links that are clicked on the most. Supercedes significantLinks.",
+      "type": "string",
+      "format": "uri"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "title": "This document describes the structure of linterhub output",
+  "description": "Linterhub output is an array of engines results",
+  "type": "array",
+  "items": {
+    "$ref": "#/definitions/result"
+  },
+  "definitions": {
+    "result": {
+      "type": "object",
+      "description": "The engine result",
+      "properties": {
+        "engine": {
+          "type": "string",
+          "description": "The engine name that performed analysis"
+        },
+        "result": {
+          "type": "array",
+          "description": "The analysis result",
+          "items": {
+            "$ref": "engine.output.json"
+          }
+        },
+        "error": {
+          "description": "The problem definition if analysis is not possible",
+          "$ref": "linterhub.error.json"
+        }
+      },
+      "required": [
+        "engine",
+        "results"
+      ]
+    }
+  }
+}

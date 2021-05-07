@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "description": "details of a single assessment type that can be used for sorting",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "the id of the assessment type"
+    },
+    "image": {
+      "$ref": "assessmentRead.json#/definitions/imageUrl"
+    },
+    "userTitle": {
+      "$ref": "assessmentType.json#/definitions/userTitle"
+    },
+    "sortable": {
+      "$ref": "assessmentType.json#/definitions/sortable"
+    }
+  },
+  "required": [
+    "id",
+    "userTitle",
+    "image",
+    "sortable"
+  ]
+}

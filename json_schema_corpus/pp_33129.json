@@ -1,0 +1,181 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "Hardware Modules Configuration",
+  "description": "Lists additional hardare modules configuration",
+  "limited": true,
+  "strictProps": false,
+  "definitions": {
+    "module_none": {
+      "title": " ",
+      "options": {
+        "hidden": true,
+        "remove_empty_properties": true,
+        "collapsed": true
+      }
+    },
+    "slot": {
+      "type": "object",
+      "title": "Slot",
+      "headerTemplate": "{{self.name}}",
+      "id": "slot_item",
+      "options": {
+        "disable_collapse": true
+      },
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Slot ID",
+          "minLength": 1,
+          "options": {
+            "hidden": true
+          }
+        },
+        "name": {
+          "type": "string",
+          "title": "Name",
+          "minLength": 1,
+          "propertyOrder": 1,
+          "options": {
+            "hidden": true
+          }
+        },
+        "compatible": {
+          "type": "array",
+          "title": "Slot capabilities",
+          "minLength": 1,
+          "options": {
+            "hidden": true
+          }
+        },
+        "module": {
+          "title": "Module type",
+          "description": "Type of the module plugged to the slot",
+          "type": "string",
+          "watch": {
+            "all_modules": "modules",
+            "slot_compatible": "slot_item.compatible"
+          },
+          "enumSource": [
+            {
+              "source": [
+                {
+                  "title": "None",
+                  "value": ""
+                }
+              ],
+              "title": "{{item.title}}",
+              "value": "{{item.value}}"
+            },
+            {
+              "source": "all_modules",
+              "filter": "{{if watched.slot_compatible intersect item.compatible_slots}}1{{endif}}",
+              "title": "{{item.description}}",
+              "value": "{{item.id}}"
+            }
+          ],
+          "propertyOrder": 2
+        },
+        "options": {
+          "type": "object",
+          "title": " ",
+          "options": {
+            "disable_collapse": true
+          },
+          "watch": {
+            "all_modules": "modules",
+            "module_type": "slot_item.module"
+          },
+          "links": [
+            {
+              "rel": "describedBy",
+              "href": "#/definitions/module_{{if all_modules.[module_type] == \"\"}}none{{else}}{{module_type}}{{endif}}"
+            }
+          ],
+          "propertyOrder": 3
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "compatible",
+        "module"
+      ],
+      "defaultProperties": [
+        "id",
+        "name",
+        "compatible",
+        "module",
+        "options"
+      ]
+    },
+    "module": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "compatible_slots": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "required": [
+        "id",
+        "description",
+        "compatible_slots"
+      ]
+    }
+  },
+  "properties": {
+    "slots": {
+      "type": "array",
+      "title": "List of extension slots",
+      "description": "Lists available extension slots",
+      "options": {
+        "disable_collapse": true,
+        "disable_array_add": true,
+        "disable_array_delete": true,
+        "disable_array_reorder": true
+      },
+      "items": {
+        "$ref": "#/definitions/slot"
+      },
+      "_format": "tabs",
+      "propertyOrder": 1
+    },
+    "modules": {
+      "type": "array",
+      "options": {
+        "hidden": true
+      },
+      "items": {
+        "$ref": "#/definitions/module"
+      }
+    }
+  },
+  "required": [
+    "slots"
+  ],
+  "configFile": {
+    "path": "/etc/wb-hardware.conf",
+    "needReload": true,
+    "service": "wb-hwconf-manager",
+    "toJSON": [
+      "wb-hwconf-helper",
+      "confed-tojson"
+    ],
+    "fromJSON": [
+      "wb-hwconf-helper",
+      "confed-fromjson"
+    ]
+  }
+}

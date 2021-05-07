@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Messages",
+  "description": "Databook messages",
+  "type": "object",
+  "javaType": "databook.persistence.rule.rdf.ruleset.Messages",
+  "extends": {
+    "$ref": "DataEntity.json"
+  },
+  "properties": {
+    "messages": {
+      "type": "array",
+      "items": {
+        "$ref": "Message.json"
+      }
+    }
+  }
+}

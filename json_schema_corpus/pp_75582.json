@@ -1,0 +1,310 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "id": "http://schema.cardwirth.org/character_card",
+  "required": true,
+  "additionalProperties": false,
+  "properties": {
+    "type": {
+      "enum": [
+        "characterCard"
+      ],
+      "required": true
+    },
+    "id": {
+      "type": "integer",
+      "minimum": 0,
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    },
+    "image": {
+      "type": "string",
+      "format": "uri",
+      "required": true
+    },
+    "physicsproof": {
+      "type": "boolean",
+      "required": true
+    },
+    "magicproof": {
+      "type": "boolean",
+      "required": true
+    },
+    "bodyproof": {
+      "type": "boolean",
+      "required": true
+    },
+    "mindproof": {
+      "type": "boolean",
+      "required": true
+    },
+    "holyproof": {
+      "type": "boolean",
+      "required": true
+    },
+    "spellproof": {
+      "type": "boolean",
+      "required": true
+    },
+    "fireproof": {
+      "type": "boolean",
+      "required": true
+    },
+    "iceproof": {
+      "type": "boolean",
+      "required": true
+    },
+    "fireWeakness": {
+      "type": "boolean",
+      "required": true
+    },
+    "iceWeakness": {
+      "type": "boolean",
+      "required": true
+    },
+    "level": {
+      "type": "integer",
+      "maximum": 99,
+      "minimum": 1,
+      "required": true
+    },
+    "money": {
+      "type": "integer",
+      "minimum": 0,
+      "required": true
+    },
+    "life": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 999,
+      "required": true
+    },
+    "maxLife": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 999,
+      "required": true
+    },
+    "dex": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 15,
+      "required": true
+    },
+    "agl": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 15,
+      "required": true
+    },
+    "int": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 15,
+      "required": true
+    },
+    "str": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 15,
+      "required": true
+    },
+    "vit": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 15,
+      "required": true
+    },
+    "min": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 15,
+      "required": true
+    },
+    "aggressiveness": {
+      "type": "integer",
+      "minimum": -5,
+      "maximum": 5,
+      "required": true
+    },
+    "cheerfulness": {
+      "type": "integer",
+      "minimum": -5,
+      "maximum": 5,
+      "required": true
+    },
+    "braveness": {
+      "type": "integer",
+      "minimum": -5,
+      "maximum": 5,
+      "required": true
+    },
+    "carefulness": {
+      "type": "integer",
+      "minimum": -5,
+      "maximum": 5,
+      "required": true
+    },
+    "craftiness": {
+      "type": "integer",
+      "minimum": -5,
+      "maximum": 5,
+      "required": true
+    },
+    "mentality": {
+      "required": true,
+      "enum": [
+        "normal",
+        "panic",
+        "brave",
+        "overheat",
+        "confusion",
+        "sleep"
+      ]
+    },
+    "mentalityCounter": {
+      "type": "integer",
+      "minimum": 0,
+      "required": true
+    },
+    "paralysisCounter": {
+      "type": "integer",
+      "minimum": 0,
+      "required": true
+    },
+    "poisonCounter": {
+      "type": "integer",
+      "minimum": 0,
+      "required": true
+    },
+    "bindCounter": {
+      "type": "integer",
+      "minimum": 0,
+      "required": true
+    },
+    "silenceCounter": {
+      "type": "integer",
+      "minimum": 0,
+      "required": true
+    },
+    "revealCounter": {
+      "type": "integer",
+      "minimum": 0,
+      "required": true
+    },
+    "magicproofCounter": {
+      "type": "integer",
+      "minimum": 0,
+      "required": true
+    },
+    "evasion": {
+      "type": "integer",
+      "minimum": -10,
+      "maximum": 10,
+      "required": true
+    },
+    "resistance": {
+      "type": "integer",
+      "minimum": -10,
+      "maximum": 10,
+      "required": true
+    },
+    "defense": {
+      "type": "integer",
+      "minimum": -10,
+      "maximum": 10,
+      "required": true
+    },
+    "actionLevelBonus": {
+      "type": "integer",
+      "minimum": -10,
+      "maximum": 10,
+      "required": true
+    },
+    "actionLevelBonusCounter": {
+      "type": "integer",
+      "minimum": 0,
+      "required": true
+    },
+    "evasionBonus": {
+      "type": "integer",
+      "minimum": -10,
+      "maximum": 10,
+      "required": true
+    },
+    "evasionBonusCounter": {
+      "type": "integer",
+      "minimum": 0,
+      "required": true
+    },
+    "resistanceBonus": {
+      "type": "integer",
+      "minimum": -10,
+      "maximum": 10,
+      "required": true
+    },
+    "resistanceBonusCounter": {
+      "type": "integer",
+      "minimum": 0,
+      "required": true
+    },
+    "defenseBonus": {
+      "type": "integer",
+      "minimum": -10,
+      "maximum": 10,
+      "required": true
+    },
+    "defenseBonusCounter": {
+      "type": "integer",
+      "minimum": 0,
+      "required": true
+    },
+    "itemCards": {
+      "type": "array",
+      "required": true,
+      "items": {
+        "$ref": "http://schema.cardwirth.org/item_card"
+      }
+    },
+    "skillCards": {
+      "type": "array",
+      "required": true,
+      "items": {
+        "$ref": "http://schema.cardwirth.org/skill_card#"
+      }
+    },
+    "beastCards": {
+      "type": "array",
+      "required": true,
+      "items": {
+        "$ref": "http://schema.cardwirth.org/beast_card"
+      }
+    },
+    "achievements": {
+      "type": "array",
+      "required": true,
+      "items": {
+        "type": "object",
+        "id": "http://schema.cardwirth.org/character_card#achievement",
+        "required": true,
+        "properties": {
+          "name": {
+            "type": "string",
+            "required": true
+          },
+          "score": {
+            "type": "integer",
+            "required": true
+          }
+        }
+      }
+    }
+  }
+}

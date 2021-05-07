@@ -1,0 +1,52 @@
+{
+  "id": "https://opendesk.cc/schemata/base/options.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Winnow Options",
+  "type": "object",
+  "properties": {
+    "errors": {},
+    "options": {
+      "type": "object",
+      "patternProperties": {
+        "^(([*]/)?[_0-9a-zA-Z-]{1,}((/([_0-9a-zA-Z-]){1,}))*)$": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "boolean"
+              }
+            },
+            {
+              "$ref": "https://opendesk.cc/schemata/base/set_string.json#"
+            },
+            {
+              "$ref": "https://opendesk.cc/schemata/base/set_resource.json#"
+            },
+            {
+              "$ref": "https://opendesk.cc/schemata/base/numeric.json#"
+            },
+            {
+              "$ref": "https://opendesk.cc/schemata/base/exception.json#"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            },
+            {
+              "type": "boolean"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

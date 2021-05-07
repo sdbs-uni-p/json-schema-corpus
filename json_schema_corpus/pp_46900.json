@@ -1,0 +1,37 @@
+{
+  "description": "Hypercharge void Transaction request",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "additionalProperties": false,
+  "properties": {
+    "payment_transaction": {
+      "type": "object",
+      "required": true,
+      "additionalProperties": false,
+      "properties": {
+        "transaction_type": {
+          "description": "Type of the Transaction => static 'void'",
+          "required": true,
+          "type": "string",
+          "pattern": "^void$"
+        },
+        "transaction_id": {
+          "required": false,
+          "extends": "types.json#/transaction_id"
+        },
+        "usage": {
+          "required": false,
+          "extends": "types.json#/usage"
+        },
+        "reference_id": {
+          "required": true,
+          "extends": "types.json#/reference_id"
+        },
+        "meta": {
+          "required": false,
+          "extends": "types.json#/meta"
+        }
+      }
+    }
+  }
+}

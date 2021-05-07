@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "type": "object",
+  "description": "Pickup",
+  "properties": {
+    "description": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "start": {
+      "type": "string"
+    },
+    "end": {
+      "type": "string"
+    },
+    "location": {
+      "oneOf": [
+        {
+          "type": "string",
+          "required": true
+        },
+        {
+          "type": "object",
+          "required": true
+        }
+      ]
+    }
+  }
+}

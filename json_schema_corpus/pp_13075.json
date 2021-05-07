@@ -1,0 +1,145 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://ffdn.org/ispschema/draft-01/schema#",
+  "title": "ISP",
+  "description": "Object describing a local ISP",
+  "type": "object",
+  "required": [
+    "name",
+    "email",
+    "memberCount",
+    "subscriberCount",
+    "coveredAreas",
+    "version"
+  ],
+  "properties": {
+    "name": {
+      "description": "The ISP's name",
+      "type": "string"
+    },
+    "shortname": {
+      "description": "Shorter name",
+      "type": "string",
+      "maxLength": 15
+    },
+    "description": {
+      "description": "Short text describing the project",
+      "type": "string"
+    },
+    "logoURL": {
+      "description": "HTTP(S) URL of the ISP's logo",
+      "type": "string",
+      "format": "uri"
+    },
+    "website": {
+      "description": "URL to the official website",
+      "type": "string",
+      "format": "uri"
+    },
+    "otherWebsites": {
+      "description": "Additional websites hosted by the ISP (wiki, etherpad, ..)",
+      "type": "object",
+      "patternProperties": {
+        "^.+$": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "email": {
+      "description": "Contact email address",
+      "type": "string",
+      "format": "email"
+    },
+    "mainMailingList": {
+      "description": "Main public mailing-list",
+      "type": "string",
+      "format": "email"
+    },
+    "creationDate": {
+      "description": "Date of creation for legal structure, in ISO8601 format",
+      "type": "string"
+    },
+    "ffdnMemberSince": {
+      "description": "Date at wich the ISP joined the Federation, in ISO8601 format",
+      "type": "string"
+    },
+    "progressStatus": {
+      "description": "Progression status of the ISP",
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 7
+    },
+    "memberCount": {
+      "description": "Number of members",
+      "type": "integer",
+      "minimum": 0
+    },
+    "subscriberCount": {
+      "description": "Number of subscribers to an internet access",
+      "type": "integer",
+      "minimum": 0
+    },
+    "chatrooms": {
+      "description": "URIs to the various chat-rooms",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "uniqueItems": true
+    },
+    "registeredOffice": {
+      "description": "address of the registered office (si\u00e8ge social)",
+      "$ref": "http://json-schema.org/address"
+    },
+    "coordinates": {
+      "description": "Coordinates of the registered office",
+      "$ref": "http://json-schema.org/geo"
+    },
+    "coveredAreas": {
+      "description": "Array of covered area in GeoJSON format",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/coveredArea"
+      }
+    },
+    "version": {
+      "description": "Version of the specification implemented",
+      "type": "number",
+      "enum": [
+        0.1
+      ]
+    }
+  },
+  "definitions": {
+    "coveredArea": {
+      "type": "object",
+      "required": [
+        "name",
+        "technologies"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "technologies": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "ftth",
+              "fttb",
+              "dsl",
+              "wifi",
+              "vpn",
+              "cube"
+            ]
+          }
+        },
+        "area": {
+          "$ref": "http://json-schema.org/geojson/geojson.json#"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "$license": [
+    "http://www.apache.org/licenses/LICENSE-2.0"
+  ],
+  "id": "#",
+  "type": "object",
+  "javaType": "org.apache.streams.config.StreamsConfiguration",
+  "javaInterfaces": [
+    "java.io.Serializable"
+  ],
+  "properties": {
+    "pipeline": {
+      "type": "string",
+      "default": "No-name Stream"
+    },
+    "broadcastURI": {
+      "type": "string"
+    },
+    "broadcastIntervalMs": {
+      "type": "integer"
+    },
+    "timeoutMs": {
+      "type": "integer",
+      "default": "1440000",
+      "description": "Kill the stream if all providers supply nothing for this long."
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "type": "object",
+  "description": "Supplier Order",
+  "properties": {
+    "supplierId": {
+      "type": "string",
+      "required": true,
+      "descripiton": "external order id, should be unique"
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "Stock object",
+        "properties": {
+          "productId": {
+            "type": "string",
+            "required": true
+          },
+          "quantity": {
+            "type": "integer",
+            "required": true
+          },
+          "purchasePaid": {
+            "type": "number",
+            "required": true
+          }
+        }
+      }
+    },
+    "pickup": {
+      "oneOf": [
+        {
+          "type": "string",
+          "description": "Pickup object id"
+        },
+        {
+          "type": "object",
+          "description": "Pickup object"
+        }
+      ]
+    },
+    "deliveryAddress": {
+      "type": "string",
+      "required": true
+    },
+    "deliveryMessage": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://judkins.house/apis/k2/v1/bastionConfig.json",
+  "$$target": "bastionConfig.json",
+  "title": "A Bastion configuration",
+  "description": "Properties pertaining to a Bastion.",
+  "oneOf": [
+    {
+      "$ref": "bastionConfigSimple.json"
+    },
+    {
+      "$ref": "bastionConfigLoadBalanced.json"
+    }
+  ],
+  "type": "object"
+}

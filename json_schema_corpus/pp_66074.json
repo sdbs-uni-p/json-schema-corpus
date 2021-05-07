@@ -1,0 +1,74 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "UpdateHub package metadata schema",
+  "description": "This schema formalizes the package metadata used by UpdateHub services",
+  "type": "object",
+  "properties": {
+    "product": {
+      "description": "The id of the product that will be updated. It must be a hexadecimal number of 64 digits",
+      "$ref": "definitions.json#/sha256sum"
+    },
+    "version": {
+      "description": "Version of the software installed on device AFTER updating",
+      "type": "string",
+      "minLength": 1
+    },
+    "supported-hardware": {
+      "description": "A list of hardware identifiers compatible with this package. You can provide a string 'any' to specify that any hardware is compatible.",
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        {
+          "type": "string",
+          "enum": [
+            "any"
+          ]
+        }
+      ]
+    },
+    "objects": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "oneOf": [
+            {
+              "$ref": "copy-object.json"
+            },
+            {
+              "$ref": "flash-object.json"
+            },
+            {
+              "$ref": "imxkobs-object.json"
+            },
+            {
+              "$ref": "raw-object.json"
+            },
+            {
+              "$ref": "tarball-object.json"
+            },
+            {
+              "$ref": "ubifs-object.json"
+            }
+          ]
+        },
+        "minItems": 1
+      },
+      "minItems": 1,
+      "maxItems": 2
+    }
+  },
+  "required": [
+    "objects",
+    "product",
+    "supported-hardware",
+    "version"
+  ],
+  "additionalProperties": false
+}

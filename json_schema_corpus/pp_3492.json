@@ -1,0 +1,713 @@
+{
+  "title": "Experimental Data Analysis",
+  "description": "Schema for storing and using experimental data.",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "required": [
+    "evidenceType"
+  ],
+  "identifyingProperties": [
+    "uuid"
+  ],
+  "additionalProperties": false,
+  "mixinProperties": [
+    {
+      "$ref": "mixins.json#/schema_version"
+    },
+    {
+      "$ref": "mixins.json#/uuid"
+    },
+    {
+      "$ref": "mixins.json#/submitted"
+    },
+    {
+      "$ref": "mixins.json#/standard_status"
+    }
+  ],
+  "properties": {
+    "schema_version": {
+      "default": "8"
+    },
+    "label": {
+      "title": "Label",
+      "description": "A user entered label for the experiment",
+      "type": "string",
+      "maxLength": 60
+    },
+    "active": {
+      "title": "Active",
+      "description": "Switch to set if the experimental data is avaliable for curation",
+      "type": "boolean",
+      "default": true
+    },
+    "evidenceType": {
+      "title": "Type of Evidence",
+      "description": "One of six evidence types",
+      "type": "string",
+      "enum": [
+        "Biochemical Function",
+        "Protein Interactions",
+        "Expression",
+        "Functional Alteration",
+        "Model Systems",
+        "Rescue"
+      ]
+    },
+    "biochemicalFunction": {
+      "title": "Biochemical Function",
+      "description": "Items in biochemical function type",
+      "type": "object",
+      "default": {},
+      "properties": {
+        "identifiedFunction": {
+          "title": "Identified Function",
+          "description": "GO_ID (required if free text for identified function is not provided)",
+          "type": "string"
+        },
+        "identifiedFunctionFreeText": {
+          "title": "Identified Function Alternative Terms (Free text)",
+          "description": "Free text (required if GO_ID is not provided)",
+          "type": "string"
+        },
+        "evidenceForFunction": {
+          "title": "Evidence for Function",
+          "description": "Evidence for function (required)",
+          "type": "string"
+        },
+        "evidenceForFunctionInPaper": {
+          "title": "Evidence Location in Article",
+          "description": "Where in article to find evidence",
+          "type": "string"
+        },
+        "geneWithSameFunctionSameDisease": {
+          "title": "Option A",
+          "description": "Gene(s) with Same Function Implicated in Same Disease",
+          "type": "object",
+          "default": {},
+          "properties": {
+            "genes": {
+              "title": "Genes",
+              "description": "List of genes (HGNC symbols separated by comma) involved in the evidence (required)",
+              "type": "array",
+              "items": {
+                "title": "Gene Symbol",
+                "type": "string",
+                "linkTo": "gene"
+              }
+            },
+            "evidenceForOtherGenesWithSameFunction": {
+              "title": "Evidence for Other Genes with Same Function",
+              "description": "Evidence for other genes (required)",
+              "type": "string"
+            },
+            "geneImplicatedWithDisease": {
+              "title": "Gene implicated in the disease",
+              "description": "Has this gene or genes been implicated in the above disease",
+              "type": "boolean"
+            },
+            "explanationOfOtherGenes": {
+              "title": "Explanation of Other Genes",
+              "description": "Explanation of relationship of other genes to the diasease (optional)",
+              "type": "string"
+            },
+            "evidenceInPaper": {
+              "title": "Explanation in Paper",
+              "description": "Where explanation can be found in paper (optional)",
+              "type": "string"
+            }
+          }
+        },
+        "geneFunctionConsistentWithPhenotype": {
+          "title": "Option B",
+          "description": "Gene(s) with Same Function Implicated in Same Disease",
+          "type": "object",
+          "default": {},
+          "properties": {
+            "phenotypeHPO": {
+              "title": "Phenotype (HPO)",
+              "description": "List of HPO ids",
+              "type": "array",
+              "default": [],
+              "items": {
+                "title": "HPO ID",
+                "description": "HPO id",
+                "type": "string"
+              }
+            },
+            "phenotypeFreeText": {
+              "title": "Phenotype (Free Text)",
+              "description": "Free text if HPO is not avaliable for the phenotype",
+              "type": "string"
+            },
+            "explanation": {
+              "title": "Consistent with Disease",
+              "description": "Explanation of how phenotype is consistent with disease",
+              "type": "string"
+            },
+            "evidenceInPaper": {
+              "title": "Consistent in Paper",
+              "description": "Where to find the explantion in paper",
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "proteinInteractions": {
+      "title": "Interactions",
+      "description": "Items in interactions type",
+      "type": "object",
+      "default": {},
+      "properties": {
+        "interactingGenes": {
+          "title": "Interacting Gene(s)",
+          "description": "List of HGNC symbols",
+          "type": "array",
+          "items": {
+            "title": "Gene",
+            "description": "HGNC sumbol",
+            "type": "string",
+            "linkTo": "gene"
+          }
+        },
+        "interactionType": {
+          "title": "Interaction Type",
+          "description": "Interaction type",
+          "type": "string",
+          "enum": [
+            "physical association (MI:0915)",
+            "genetic interaction (MI:0208)",
+            "negative genetic interaction (MI:0933)",
+            "positive genetic interaction (MI:0935)"
+          ]
+        },
+        "experimentalInteractionDetection": {
+          "title": "Experimental Interaction Detection",
+          "description": "Experimental Interaction Detection",
+          "type": "string",
+          "enum": [
+            "affinity chromatography technology (MI:0004)",
+            "coimmunoprecipitation (MI:0019)",
+            "comigration in gel electrophoresis (MI:0807)",
+            "electron microscopy (MI:0040)",
+            "protein cross-linking with a bifunctional reagent (MI:0031)",
+            "pull down (MI:0096)",
+            "synthetic genetic analysis (MI:0441)",
+            "two hybrid (MI:0018)",
+            "x-ray crystallography (MI:0114)"
+          ]
+        },
+        "geneImplicatedInDisease": {
+          "title": "Gene Expressed in Tissue",
+          "description": "Is gene normally expressed in tissue",
+          "type": "boolean"
+        },
+        "relationshipOfOtherGenesToDisese": {
+          "title": "Raltionship of Other Gene(s) to the Disease",
+          "description": "Explanation of relationship of other gene(s) to the disease",
+          "type": "string"
+        },
+        "evidenceInPaper": {
+          "title": "Evidence in Paper",
+          "description": "Where evidence can be found in paper",
+          "type": "string"
+        }
+      }
+    },
+    "expression": {
+      "title": "Expression",
+      "description": "Items in expression type",
+      "type": "object",
+      "default": {},
+      "properties": {
+        "organOfTissue": {
+          "title": "Organ of Tissue",
+          "description": "List of Uberon ID (required if free text for organ of tissue is not provided)",
+          "type": "array",
+          "default": [],
+          "items": {
+            "title": "Uberon ID",
+            "description": "Uberon id",
+            "type": "string"
+          }
+        },
+        "organOfTissueFreeText": {
+          "title": "Organ of Tissue (Free text)",
+          "description": "Free text (required if no Uberon ID is provided)",
+          "type": "string"
+        },
+        "normalExpression": {
+          "title": "Option A",
+          "description": "Gene normally expressed in tissues relevant to the disease",
+          "type": "object",
+          "default": {},
+          "properties": {
+            "expressedInTissue": {
+              "title": "Is gene normally expressed in tissue",
+              "description": "Is the gene normally expressed in the tissue",
+              "type": "boolean"
+            },
+            "evidence": {
+              "title": "Evidence for Normal Expression",
+              "description": "Evidence for normal expression in tissue",
+              "type": "string"
+            },
+            "evidenceInPaper": {
+              "title": "Evidence in Paper",
+              "description": "Where evidence can be found in paper",
+              "type": "string"
+            }
+          }
+        },
+        "alteredExpression": {
+          "title": "Option B",
+          "description": "Altered expressed in Patients",
+          "type": "object",
+          "default": {},
+          "properties": {
+            "expressedInPatients": {
+              "title": "Is expression altered in patients with disease",
+              "description": "Is expression altered in patients who have the disease",
+              "type": "boolean"
+            },
+            "evidence": {
+              "title": "Evidence for Altered Expression",
+              "description": "Evidence for altered expression in patients",
+              "type": "string"
+            },
+            "evidenceInPaper": {
+              "title": "Evidence Location in Paper",
+              "description": "Information about where evidence can be found in paper",
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "functionalAlteration": {
+      "title": "Functional Alteration",
+      "description": "Items in Functional Alteration type",
+      "type": "object",
+      "default": {},
+      "properties": {
+        "cellMutationOrEngineeredEquivalent": {
+          "title": "Cell Mutation Or Engineered Equivalent",
+          "description": "Patient cell mutation or engineered equivalent",
+          "type": "string",
+          "enum": [
+            "Patient cells",
+            "Engineered equivalent"
+          ]
+        },
+        "patientCellType": {
+          "title": "Patient Cell Type",
+          "description": "CL Ontology ID (required if free text for patient cell type is not provided)",
+          "type": "string"
+        },
+        "patientCellTypeFreeText": {
+          "title": "Patient Cell Type (Free text)",
+          "description": "Free text (required if CL Ontology ID is not provided)",
+          "type": "string"
+        },
+        "engineeredEquivalentCellType": {
+          "title": "Engineered Equivalent Cell Type",
+          "description": "EFO or CL Ontology ID (required if free text for engineered equivalent cell type is not provided)",
+          "type": "string"
+        },
+        "engineeredEquivalentCellTypeFreeText": {
+          "title": "Engineered Equivalent Cell Type (Free text)",
+          "description": "Free text (required if EFO ID is not provided)",
+          "type": "string"
+        },
+        "functionalAlterationType": {
+          "title": "Patient cells or non-patient cells",
+          "description": "Cultured patient or non-patient cells carrying candidate variants",
+          "type": "string",
+          "enum": [
+            "Patient cells",
+            "Non-patient cells"
+          ]
+        },
+        "patientCells": {
+          "title": "Patient cell type",
+          "description": "CL Ontology ID (required if free text for patient cell type is not provided)",
+          "type": "string"
+        },
+        "patientCellsFreeText": {
+          "title": "Patient cell type (free text)",
+          "description": "Free text (required if CL Ontology ID is not provided)",
+          "type": "string"
+        },
+        "nonPatientCells": {
+          "title": "Non-patient cell type",
+          "description": "EFO or CL Ontology ID (required if free text for non-patient cell type is not provided)",
+          "type": "string"
+        },
+        "nonPatientCellsFreeText": {
+          "title": "Non-patient cell type (free text)",
+          "description": "Free text (required if EFO ID is not provided)",
+          "type": "string"
+        },
+        "descriptionOfGeneAlteration": {
+          "title": "Gene Alteration",
+          "description": "Description of gene alteration in engineered equivalent",
+          "type": "string"
+        },
+        "normalFunctionOfGene": {
+          "title": "Normal Function of Gene/Gene Procution",
+          "description": "GO_ID (required if free text term is not provided)",
+          "type": "string"
+        },
+        "normalFunctionOfGeneFreeText": {
+          "title": "Normal Function of Gene/Gene Procution (Free text)",
+          "description": "Free text (required if GO_ID is not provided)",
+          "type": "string"
+        },
+        "evidenceForNormalFunction": {
+          "title": "Evidence for Normal Function",
+          "description": "Evidence for normal function of gene/gene product",
+          "type": "string"
+        },
+        "evidenceInPaper": {
+          "title": "Evidence in Paper",
+          "description": "Where evidence can be found in paper",
+          "type": "string"
+        }
+      }
+    },
+    "modelSystems": {
+      "title": "Model System",
+      "description": "Items in Model System",
+      "type": "object",
+      "default": {},
+      "properties": {
+        "animalOrCellCulture": {
+          "title": "Animal or Cell Culture Model",
+          "description": "Non-human animal or cell-culture model",
+          "type": "string",
+          "enum": [
+            "Animal model",
+            "Engineered equivalent"
+          ]
+        },
+        "animalModel": {
+          "title": "Animal Model",
+          "description": "NCBI Taxon id for animal model",
+          "type": "string",
+          "enum": [
+            "",
+            "Cat (Felis catus) 9685",
+            "Chicken (Gallus gallus) 9031",
+            "Chimpanzee (Pan troglodytes) 9598",
+            "Cow (Bos taurus) 9913",
+            "Dog (Canis lupus familiaris) 9615",
+            "Frog (Xenopus) 262014",
+            "Fruit fly (Drosophila) 7215",
+            "Gerbil (Gerbillinae) 10045",
+            "Guinea pig (Cavia porcellus) 10141",
+            "Hamster (Cricetinae) 10026",
+            "Macaque (Macaca) 9539",
+            "Mouse (Mus musculus) 10090",
+            "Pig (Sus scrofa) 9823",
+            "Rabbit (Oryctolagus cuniculus) 9986",
+            "Rat (Rattus norvegicus) 10116",
+            "Round worm (Caenorhabditis elegans) 6239",
+            "Sheep (Ovis aries) 9940",
+            "Zebra finch (Taeniopygia guttata) 59729",
+            "Zebrafish (Danio rerio) 7955"
+          ]
+        },
+        "modelSystemsType": {
+          "title": "Non-human model or cell culture model",
+          "description": "Non-human model organism or cell culture model (previously Engineered equivalent)",
+          "type": "string",
+          "enum": [
+            "Non-human model organism",
+            "Cell culture model"
+          ]
+        },
+        "nonHumanModel": {
+          "title": "Non-human model organism",
+          "description": "NCBI Taxon id for non-human model organism (previously Animal model)",
+          "type": "string",
+          "enum": [
+            "",
+            "Budding yeast (Saccharomyces cerevisiae) 4932",
+            "Cat (Felis catus) 9685",
+            "Chicken (Gallus gallus) 9031",
+            "Chimpanzee (Pan troglodytes) 9598",
+            "Chlamydomonas (Chlamydomonas reinhardtii) 3055",
+            "Cow (Bos taurus) 9913",
+            "Dog (Canis lupus familiaris) 9615",
+            "Fission yeast (Schizosaccharomyces pombe) 4896",
+            "Frog (Xenopus) 262014",
+            "Fruit fly (Drosophila) 7215",
+            "Gerbil (Gerbillinae) 10045",
+            "Guinea pig (Cavia porcellus) 10141",
+            "Hamster (Cricetinae) 10026",
+            "Macaque (Macaca) 9539",
+            "Mouse (Mus musculus) 10090",
+            "Pig (Sus scrofa) 9823",
+            "Rabbit (Oryctolagus cuniculus) 9986",
+            "Rat (Rattus norvegicus) 10116",
+            "Round worm (Caenorhabditis elegans) 6239",
+            "Sheep (Ovis aries) 9940",
+            "Zebra finch (Taeniopygia guttata) 59729",
+            "Zebrafish (Danio rerio) 7955"
+          ]
+        },
+        "cellCulture": {
+          "title": "Cell culture type",
+          "description": "EFO or CL Ontology ID (required if free text for cell culture is not provided)",
+          "type": "string"
+        },
+        "cellCultureFreeText": {
+          "title": "Cell culture type (free text)",
+          "description": "Free text (required if EFO ID is not provided)",
+          "type": "string"
+        },
+        "descriptionOfGeneAlteration": {
+          "title": "Gene Alteration",
+          "description": "Description of gene alteration in model system",
+          "type": "string"
+        },
+        "phenotypeHPO": {
+          "title": "Phenotype (HPO)",
+          "description": "HPO id of patient phenotype",
+          "type": "string"
+        },
+        "phenotypeFreeText": {
+          "title": "Phenotype (Free text)",
+          "description": "Other terms of phenotype if HPO not avaliable",
+          "type": "string"
+        },
+        "phenotypeHPOObserved": {
+          "title": "Phenotype (HPO or MP) Observed in Model System",
+          "description": "HPO/MP (Mammalian Phenotype) term",
+          "type": "string"
+        },
+        "phenotypeFreetextObserved": {
+          "title": "Phenotype (Free text) Observed in Model System",
+          "description": "Free text",
+          "type": "string"
+        },
+        "explanation": {
+          "title": "Explanation",
+          "description": "Explanation",
+          "type": "string"
+        },
+        "evidenceInPaper": {
+          "title": "Evidence in Paper",
+          "description": "Where evidence can be found in paper",
+          "type": "string"
+        }
+      }
+    },
+    "rescue": {
+      "title": "Rescue",
+      "description": "Items in rescue type",
+      "type": "object",
+      "default": {},
+      "properties": {
+        "patientCellOrEngineeredEquivalent": {
+          "title": "Cell Mutation Or Engineered Equivalent",
+          "description": "Patient cell mutation or engineered equivalent",
+          "type": "string",
+          "enum": [
+            "Patient cells",
+            "Engineered equivalent"
+          ]
+        },
+        "patientCellType": {
+          "title": "Patient Cell Type",
+          "description": "CL Ontology ID (required if free text for patient cell type is not provided)",
+          "type": "string"
+        },
+        "patientCellTypeFreeText": {
+          "title": "Patient Cell Type (Free text)",
+          "description": "Free text (required if CL Ontology ID is not provided)",
+          "type": "string"
+        },
+        "engineeredEquivalentCellType": {
+          "title": "Engineered Equivalent Cell Type",
+          "description": "EFO or CL Ontology ID (required if free text for engineered equivalent cell type is not provided)",
+          "type": "string"
+        },
+        "engineeredEquivalentCellTypeFreeText": {
+          "title": "Engineered Equivalent Cell Type (Free text)",
+          "description": "Free text (required if EFO ID is not provided)",
+          "type": "string"
+        },
+        "rescueType": {
+          "title": "Rescue observed",
+          "description": "Human, Non-human model organism, Cell-culture model (previously Engineered equivalent), Patient cells.",
+          "type": "string",
+          "enum": [
+            "Human",
+            "Non-human model organism",
+            "Cell culture model",
+            "Patient cells"
+          ]
+        },
+        "humanModel": {
+          "title": "Human type",
+          "description": "Proband label for the human type",
+          "type": "string"
+        },
+        "nonHumanModel": {
+          "title": "Non-human model type",
+          "description": "NCBI Taxon id for non-human model organism",
+          "type": "string",
+          "enum": [
+            "",
+            "Budding yeast (Saccharomyces cerevisiae) 4932",
+            "Cat (Felis catus) 9685",
+            "Chicken (Gallus gallus) 9031",
+            "Chimpanzee (Pan troglodytes) 9598",
+            "Chlamydomonas (Chlamydomonas reinhardtii) 3055",
+            "Cow (Bos taurus) 9913",
+            "Dog (Canis lupus familiaris) 9615",
+            "Fission yeast (Schizosaccharomyces pombe) 4896",
+            "Frog (Xenopus) 262014",
+            "Fruit fly (Drosophila) 7215",
+            "Gerbil (Gerbillinae) 10045",
+            "Guinea pig (Cavia porcellus) 10141",
+            "Hamster (Cricetinae) 10026",
+            "Macaque (Macaca) 9539",
+            "Mouse (Mus musculus) 10090",
+            "Pig (Sus scrofa) 9823",
+            "Rabbit (Oryctolagus cuniculus) 9986",
+            "Rat (Rattus norvegicus) 10116",
+            "Round worm (Caenorhabditis elegans) 6239",
+            "Sheep (Ovis aries) 9940",
+            "Zebra finch (Taeniopygia guttata) 59729",
+            "Zebrafish (Danio rerio) 7955"
+          ]
+        },
+        "cellCulture": {
+          "title": "Cell culture model (previously Engineered equivalent)",
+          "description": "EFO or CL Ontology ID (required if free text for cell culture model is not provided)",
+          "type": "string"
+        },
+        "cellCultureFreeText": {
+          "title": "Cell culture model (free text)",
+          "description": "Free text (required if EFO ID is not provided)",
+          "type": "string"
+        },
+        "patientCells": {
+          "title": "Patient cell type",
+          "description": "CL Ontology ID (required if free text for patient cell type is not provided)",
+          "type": "string"
+        },
+        "patientCellsFreeText": {
+          "title": "Patient cell type (free text)",
+          "description": "Free text (required if CL Ontology ID is not provided)",
+          "type": "string"
+        },
+        "descriptionOfGeneAlteration": {
+          "title": "Description of Cell (Patient or Engineered Equivalent)",
+          "description": "Free text for description of cell",
+          "type": "string"
+        },
+        "phenotypeHPO": {
+          "title": "Phenotype Being rescued (HPO)",
+          "description": "HPO term",
+          "type": "string"
+        },
+        "phenotypeFreeText": {
+          "title": "Phenotype Being rescued (Free text)",
+          "description": "Free text if no HPO",
+          "type": "string"
+        },
+        "rescueMethod": {
+          "title": "Method",
+          "description": "Method used to rescue",
+          "type": "string"
+        },
+        "wildTypeRescuePhenotype": {
+          "title": "Wild-type Rescue the Phenotype",
+          "description": "Does the wild-type rescue the above phenotype?",
+          "type": "boolean"
+        },
+        "patientVariantRescue": {
+          "title": "Does Patient Variant Rescue",
+          "description": "Does Patient Variant Rescue?",
+          "type": "boolean"
+        },
+        "explanation": {
+          "title": "Explanation",
+          "description": "Explanation",
+          "type": "string"
+        },
+        "evidenceInPaper": {
+          "title": "Evidence Location in Paper",
+          "description": "Where can evidence be found in paper",
+          "type": "string"
+        }
+      }
+    },
+    "variants": {
+      "title": "Variants",
+      "description": "List of variant ids associated",
+      "type": "array",
+      "items": {
+        "title": "Variant ID",
+        "description": "Variant id",
+        "type": "string",
+        "linkTo": "variant"
+      }
+    },
+    "assessments": {
+      "title": "Assessments",
+      "description": "List of assessments added from different curators",
+      "type": "array",
+      "default": [],
+      "items": {
+        "description": "Assessment from one curator",
+        "type": "string",
+        "linkTo": "assessment"
+      }
+    },
+    "scores": {
+      "title": "Scores",
+      "description": "List of scores for this experimental evidence",
+      "type": "array",
+      "items": {
+        "title": "Score",
+        "description": "Score assigned by user. Limited to one per user",
+        "type": "string",
+        "linkTo": "evidenceScore"
+      }
+    },
+    "affiliation": {
+      "title": "Affiliation",
+      "description": "The affiliation this evidence is associated with.",
+      "type": "string"
+    }
+  },
+  "columns": {
+    "label": {
+      "title": "Label",
+      "type": "string"
+    },
+    "uuid": {
+      "title": "ExperimentalData",
+      "type": "string"
+    },
+    "date_created": {
+      "title": "Creation Date",
+      "type": "string"
+    },
+    "evidenceType": {
+      "title": "Type",
+      "type": "string"
+    },
+    "submitted_by.uuid": {
+      "title": "Submitted by",
+      "type": "string"
+    }
+  },
+  "boost_values": {
+    "evidenceType": 1.0
+  }
+}

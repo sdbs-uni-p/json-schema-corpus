@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "inkarnation": {
+      "$ref": "inkarnation.json",
+      "description": "die Inkarnation"
+    },
+    "rechner": {
+      "type": "string"
+    },
+    "letzteStartzeit": {
+      "type": "string",
+      "description": "die letzte Startzeit der Inkarnation"
+    },
+    "letzteInitialisierung": {
+      "type": "string",
+      "description": "die letzte Initialisierungszeit der Inkarnation"
+    },
+    "letzteStoppzeit": {
+      "type": "string",
+      "description": "die letzte Stoppzeit der Inkarnation"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "installiert",
+        "startenwarten",
+        "gestartet",
+        "initialisiert",
+        "stoppenwarten",
+        "gestoppt"
+      ],
+      "description": "der Status der Inkarnation in StartStopp"
+    },
+    "startMeldung": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "inkarnation",
+    "status",
+    "startMeldung"
+  ]
+}

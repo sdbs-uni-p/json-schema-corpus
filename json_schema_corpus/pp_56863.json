@@ -1,0 +1,96 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "@type": "NutritionInformation",
+  "@context": "http://schema.org/",
+  "description": "Schema.org NutritionInformation",
+  "type": "object",
+  "definitions": {
+    "Thing": {
+      "@type": "Thing",
+      "type": "object",
+      "properties": {
+        "additionalType": {
+          "description": "An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.",
+          "type": "string",
+          "format": "uri"
+        },
+        "description": {
+          "description": "A short description of the item.",
+          "type": "string"
+        },
+        "image": {
+          "description": "URL of an image of the item.",
+          "type": "string",
+          "format": "uri"
+        },
+        "name": {
+          "description": "The name of the item.",
+          "type": "string"
+        },
+        "url": {
+          "description": "URL of the item.",
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "NutritionInformation": {
+      "@type": "NutritionInformation",
+      "type": "object",
+      "properties": {
+        "calories": {
+          "description": "The number of calories",
+          "$ref": "Energy.json"
+        },
+        "carbohydrateContent": {
+          "description": "The number of grams of carbohydrates.",
+          "$ref": "Mass.json"
+        },
+        "cholesterolContent": {
+          "description": "The number of milligrams of cholesterol.",
+          "$ref": "Mass.json"
+        },
+        "fatContent": {
+          "description": "The number of grams of fat.",
+          "$ref": "Mass.json"
+        },
+        "fiberContent": {
+          "description": "The number of grams of fiber.",
+          "$ref": "Mass.json"
+        },
+        "proteinContent": {
+          "description": "The number of grams of protein.",
+          "$ref": "Mass.json"
+        },
+        "saturatedFatContent": {
+          "description": "The number of grams of saturated fat.",
+          "$ref": "Mass.json"
+        },
+        "servingSize": {
+          "description": "The serving size, in terms of the number of volume or mass",
+          "type": "string"
+        },
+        "sodiumContent": {
+          "description": "The number of milligrams of sodium.",
+          "$ref": "Mass.json"
+        },
+        "sugarContent": {
+          "description": "The number of grams of sugar.",
+          "$ref": "Mass.json"
+        },
+        "transFatContent": {
+          "description": "The number of grams of trans fat.",
+          "$ref": "Mass.json"
+        },
+        "unsaturatedFatContent": {
+          "description": "The number of grams of unsaturated fat.",
+          "$ref": "Mass.json"
+        }
+      }
+    }
+  },
+  "allOf": [
+    "#definitions/Thing",
+    "#definitions/NutritionInformation"
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "Root schema.",
+  "description": "",
+  "properties": {
+    "imports": {
+      "type": "object",
+      "description": "Specifies all imported GeoJSON files.",
+      "patternProperties": {
+        "^\\w+$": {
+          "$ref": "./import-schema.json"
+        }
+      },
+      "additionalProperties": false
+    },
+    "subscribers": {
+      "type": "object",
+      "description": "Specifies all subscribers.",
+      "patternProperties": {
+        "^\\w+$": {
+          "$ref": "./subscriber-schema.json"
+        }
+      },
+      "additionalProperties": false
+    },
+    "publishers": {
+      "type": "object",
+      "description": "Specifies all publishers",
+      "patternProperties": {
+        "^\\w+$": {
+          "$ref": "./publisher-schema.json"
+        }
+      },
+      "additionalProperties": false
+    },
+    "rules": {
+      "type": "array",
+      "description": "Specifies all rules.",
+      "minItems": 1,
+      "items": {
+        "$ref": "./rule-schema.json"
+      },
+      "uniqueItems": true
+    }
+  },
+  "id": "/",
+  "required": [
+    "subscribers",
+    "publishers",
+    "rules"
+  ]
+}

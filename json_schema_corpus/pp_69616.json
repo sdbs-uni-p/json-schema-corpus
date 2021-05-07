@@ -1,0 +1,10 @@
+{
+  "id": "http://schema.org/DataDownload",
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "extends": {
+    "$ref": "MediaObject.json"
+  },
+  "description": "A dataset in downloadable form. Schema.org: http://schema.org/DataDownload",
+  "type": "object",
+  "additionalProperties": true
+}

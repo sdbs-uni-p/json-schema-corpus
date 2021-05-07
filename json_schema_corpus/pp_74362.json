@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Beschreibung fehlt",
+  "properties": {
+    "element_kind": {
+      "description": "Beschreibung fehlt",
+      "enum": [
+        "event",
+        "group",
+        "section",
+        "url"
+      ],
+      "title": "Element_kind schema.",
+      "type": "string"
+    },
+    "elements": {
+      "description": "Beschreibung fehlt",
+      "items": {
+        "type": "object"
+      },
+      "title": "Elements schema.",
+      "type": "array"
+    },
+    "kind": {
+      "description": "Beschreibung fehlt",
+      "title": "Kind schema.",
+      "type": "string"
+    }
+  },
+  "title": "Root schema.",
+  "type": "object"
+}

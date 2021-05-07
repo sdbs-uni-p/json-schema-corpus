@@ -1,0 +1,103 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "SyncDataObject",
+  "type": "object",
+  "required": [
+    "url",
+    "reporter",
+    "schema",
+    "name"
+  ],
+  "anyOf": [
+    {
+      "$ref": "#/SyncObjectParent"
+    },
+    {
+      "$ref": "#/SyncObjectChild"
+    }
+  ],
+  "properties": {
+    "url": {
+      "type": "string"
+    },
+    "reporter": {
+      "type": "string"
+    },
+    "schema": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "SyncObjectParent": {
+    "type": "object",
+    "properties": {
+      "children": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "childUrls": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "SyncObjectChildren": {
+    "type": "object",
+    "stereotype": "children",
+    "required": [
+      "parent",
+      "listener",
+      "type"
+    ],
+    "properties": {
+      "parent": {
+        "type": "string"
+      },
+      "listener": {
+        "type": "string"
+      },
+      "type": {
+        "$ref": "#/SyncObjectChild"
+      },
+      "childrenUrls": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "observerPermissions": {
+        "enum": [
+          "write",
+          "write_read",
+          "read"
+        ]
+      }
+    }
+  },
+  "SyncObjectChild": {
+    "type": "object",
+    "required": [
+      "parent"
+    ],
+    "properties": {
+      "parent": {
+        "type": "string"
+      }
+    }
+  }
+}

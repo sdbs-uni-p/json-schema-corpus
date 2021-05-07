@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://www.ortolang.fr/schemas/1/text#",
+  "description": "Schema for metadata extracted from text files",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "Content-Encoding": {
+      "type": "string"
+    }
+  }
+}

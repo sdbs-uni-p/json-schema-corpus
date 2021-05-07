@@ -1,0 +1,17 @@
+{
+  "id": "https://opendesk.cc/schemata/resource.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Winnow Resource",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "https://opendesk.cc/schemata/base/value.json#"
+    },
+    {
+      "$ref": "https://opendesk.cc/schemata/base/options.json#"
+    },
+    {
+      "$ref": "https://opendesk.cc/schemata/base/canonical.json#"
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "serviceSiteInformation",
+  "id": "serviceSiteInformation",
+  "description": "Information about an ENNI or UNI service site.",
+  "type": "object",
+  "required": [
+    "objectType",
+    "siteAddress"
+  ],
+  "properties": {
+    "objectType": {
+      "type": "string",
+      "enum": [
+        "serviceSiteInformation"
+      ],
+      "description": "The type of the object, serviceSiteInformation."
+    },
+    "siteCompanyName": {
+      "type": "string",
+      "description": "The name of the company that is located at the Service location. This may be different from the name of the Customer that ordered services at that Service Site.",
+      "maxLength": 25
+    },
+    "customerName": {
+      "type": "string",
+      "description": "The name of the end (retail) customer for the UNI.",
+      "maxLength": 25
+    },
+    "siteAddressType": {
+      "type": "string",
+      "enum": [
+        "FIELDED_ADDRESS",
+        "FORMATTED_ADDRESS",
+        "ADDRESS_REFERENCE",
+        "GEOGRAPHIC_POINT"
+      ]
+    },
+    "siteAddress": {
+      "type": "object",
+      "oneOf": [
+        {
+          "$ref": "formattedAddress.json#"
+        },
+        {
+          "$ref": "fieldedAddress.json#"
+        },
+        {
+          "$ref": "geographicPoint.json#"
+        },
+        {
+          "$ref": "addressReference.json#"
+        }
+      ],
+      "description": "A property address for the site. Either a Site Address, a Site Code or a Site Geographic Point must be specified.",
+      "title": "Address"
+    },
+    "additionalSiteInformation": {
+      "type": "string",
+      "description": "Additional information about the Site. Equates to the ASR AAI field.",
+      "maxLength": 100
+    }
+  }
+}

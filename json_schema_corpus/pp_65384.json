@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Metaschema for validating against any of the schemata",
+  "description": "Metaschema for validating against any of the schemata",
+  "type": "object",
+  "anyOf": [
+    {
+      "$ref": "file:///json/athlete.json#"
+    },
+    {
+      "$ref": "file:///json/combined_performance.json#"
+    },
+    {
+      "$ref": "file:///json/competition.json#"
+    },
+    {
+      "$ref": "file:///json/event.json#"
+    },
+    {
+      "$ref": "file:///json/performance.json#"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$ref": "vechicle",
+  "id": "car",
+  "title": "Car Schema",
+  "type": "object",
+  "properties": {
+    "four_wheel_drive": {
+      "type": "boolean"
+    },
+    "insurance": {
+      "$ref": "insurance"
+    }
+  }
+}

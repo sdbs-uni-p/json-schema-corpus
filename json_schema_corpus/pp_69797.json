@@ -1,0 +1,90 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "Communication",
+  "type": "object",
+  "required": [
+    "scheme",
+    "startingTime",
+    "lastModified",
+    "status",
+    "children"
+  ],
+  "properties": {
+    "scheme": {
+      "constant": "comm"
+    },
+    "startingTime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastModified": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "duration": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "status": {
+      "enum": [
+        "open",
+        "pending",
+        "closed",
+        "paused",
+        "failed"
+      ]
+    },
+    "participants": {
+      "type": "array",
+      "items": {
+        "$ref": "#/Participant"
+      }
+    },
+    "qos": {
+      "$ref": "#/CommunicationQuality"
+    },
+    "resources": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "children": {
+      "constant": [
+        "resources"
+      ]
+    }
+  },
+  "Resources": {
+    "type": "object",
+    "stereotype": "children",
+    "required": [
+      "parent",
+      "listener",
+      "type"
+    ],
+    "properties": {
+      "parent": {
+        "constant": "communication"
+      },
+      "listener": {
+        "constant": "resources"
+      },
+      "type": {
+        "constant": "HypertyResource"
+      }
+    }
+  },
+  "Participant": {
+    "type": "object",
+    "properties": {
+      "status": {
+        "enum": []
+      }
+    }
+  },
+  "CommunicationQuality": {
+    "type": "object",
+    "properties": {}
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "title": "This document describes the structure of linterhub configuration",
+  "description": "The configuration for linterhub engines",
+  "type": "object",
+  "properties": {
+    "engines": {
+      "type": "array",
+      "description": "List of engines configurations",
+      "items": {
+        "$ref": "#/definitions/configuration",
+        "anyOf": [
+          {
+            "$ref": "./../csslint/args.json#/definitions/section"
+          },
+          {
+            "$ref": "./../coffeelint/args.json#/definitions/section"
+          },
+          {
+            "$ref": "./../colorguard/args.json#/definitions/section"
+          },
+          {
+            "$ref": "./../eslint/args.json#/definitions/section"
+          },
+          {
+            "$ref": "./../htmlhint/args.json#/definitions/section"
+          },
+          {
+            "$ref": "./../jshint/args.json#/definitions/section"
+          },
+          {
+            "$ref": "./../jslint/args.json#/definitions/section"
+          },
+          {
+            "$ref": "./../jsonlint/args.json#/definitions/section"
+          },
+          {
+            "$ref": "./../sass-lint/args.json#/definitions/section"
+          },
+          {
+            "$ref": "./../standard/args.json#/definitions/section"
+          },
+          {
+            "$ref": "./../stylelint/args.json#/definitions/section"
+          },
+          {
+            "$ref": "./../tslint/args.json#/definitions/section"
+          },
+          {
+            "$ref": "./../pug/args.json#/definitions/section"
+          }
+        ]
+      }
+    },
+    "ignore": {
+      "type": "array",
+      "description": "The list of global ignore rules",
+      "items": {
+        "$ref": "#/definitions/ignore"
+      }
+    }
+  },
+  "definitions": {
+    "configuration": {
+      "type": "object",
+      "description": "The engine configuration",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The engine name"
+        },
+        "active": {
+          "type": "boolean",
+          "description": "Whether engine is enabled",
+          "default": true
+        },
+        "locally": {
+          "type": "boolean",
+          "description": "Whether engine is installed locally or globally",
+          "default": true
+        },
+        "config": {
+          "description": "The engine specific configuration",
+          "type": "object"
+        },
+        "ignore": {
+          "type": "array",
+          "description": "The list of rules for ignoring engine results",
+          "items": {
+            "$ref": "#/definitions/ignore"
+          }
+        }
+      },
+      "required": [
+        "name"
+      ]
+    },
+    "ignore": {
+      "type": "object",
+      "description": "The configuration for ignoring engine results",
+      "properties": {
+        "mask": {
+          "type": "string",
+          "description": "The path mask"
+        },
+        "line": {
+          "type": "integer",
+          "description": "The line nubmer"
+        },
+        "ruleId": {
+          "type": "string",
+          "description": "The rule id"
+        }
+      }
+    }
+  }
+}

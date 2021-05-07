@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://flynn.io/schema/router/route#",
+  "title": "Route",
+  "description": "",
+  "type": "object",
+  "examples": [
+    "schema/examples/router/route_create#",
+    "schema/examples/router/route_update#",
+    "schema/examples/router/route_get#",
+    "schema/examples/router/route_list#",
+    "schema/examples/router/route_delete#"
+  ],
+  "sortIndex": 0,
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "$ref": "/schema/common#/definitions/id"
+    },
+    "parent_ref": {
+      "$ref": "/schema/common#/definitions/id"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "http",
+        "tcp"
+      ]
+    },
+    "service": {
+      "$ref": "/schema/common#/definitions/id"
+    },
+    "domain": {
+      "type": "string",
+      "description": "Domain name of this Route. It is only used for HTTP routes."
+    },
+    "tls_cert": {
+      "type": "string",
+      "description": "Optional TLS public certificate of this Route. It is only used for HTTP routes."
+    },
+    "tls_key": {
+      "type": "string",
+      "description": "Optional TLS private key of this Route. It is only used for HTTP routes."
+    },
+    "sticky": {
+      "type": "boolean",
+      "description": "Whether or not to use sticky sessions for this route. It is only used for HTTP routes."
+    },
+    "port": {
+      "type": "integer",
+      "description": "The TCP port to listen on for TCP Routes."
+    },
+    "created_at": {
+      "$ref": "/schema/common#/definitions/created_at"
+    },
+    "updated_at": {
+      "$ref": "/schema/common#/definitions/updated_at"
+    }
+  }
+}

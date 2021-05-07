@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema",
+  "type": "object",
+  "properties": {
+    "domain": {
+      "type": "string",
+      "pattern": "^([a-z0-9]+(-[a-z0-9]+)*\\.)+[a-z]{2,}$"
+    },
+    "url": {
+      "type": "string",
+      "format": "url"
+    },
+    "selector": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "domain",
+    "url",
+    "selector"
+  ],
+  "additionalProperties": false
+}

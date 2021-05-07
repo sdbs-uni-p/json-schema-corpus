@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "Comment",
+  "type": "object",
+  "properties": {
+    "article": {
+      "type": "string"
+    },
+    "body": {
+      "type": "string"
+    },
+    "createdAt": {
+      "type": "number"
+    },
+    "id": {
+      "type": "string"
+    },
+    "parent": {
+      "type": "string"
+    },
+    "user": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "article",
+    "body",
+    "user"
+  ]
+}

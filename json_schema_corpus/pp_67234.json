@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://apothesource.com/rxnorm/interaction/interactionResponses",
+  "javaType": "com.apothesource.pillfill.rxnorm.datamodel.interaction.InteractionResponses",
+  "type": "object",
+  "properties": {
+    "interactionDrugResponses": {
+      "type": "object",
+      "javaType": "com.apothesource.pillfill.rxnorm.datamodel.interaction.InteractionDrugResponse",
+      "extends": {
+        "$ref": "interaction-core.json#/definitions/interactionBaseResponse"
+      },
+      "properties": {
+        "interactionTypeGroup": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "sourceDisclaimer": {
+                "type": "string"
+              },
+              "sourceName": {
+                "type": "string"
+              },
+              "interactionType": {
+                "$ref": "interaction-core.json#/definitions/interactionType"
+              }
+            }
+          }
+        }
+      }
+    },
+    "interactionListResponses": {
+      "type": "object",
+      "javaType": "com.apothesource.pillfill.rxnorm.datamodel.interaction.InteractionListResponse",
+      "extends": {
+        "$ref": "interaction-core.json#/definitions/interactionBaseResponse"
+      },
+      "properties": {
+        "fullInteractionTypeGroup": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "sourceDisclaimer": {
+                "type": "string"
+              },
+              "sourceName": {
+                "type": "string"
+              },
+              "fullInteractionType": {
+                "$ref": "interaction-core.json#/definitions/fullInteractionType"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

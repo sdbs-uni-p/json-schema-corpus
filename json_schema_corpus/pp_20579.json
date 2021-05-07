@@ -1,0 +1,78 @@
+{
+  "id": "https://raw.githubusercontent.com/allingeek/microservices-team-spec/master/spec.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Open Microservices Team Specification Schema",
+  "type": "object",
+  "properties": {
+    "organization": {
+      "type": "string"
+    },
+    "team": {
+      "description": "A team definition.",
+      "$ref": "https://raw.githubusercontent.com/allingeek/microservices-team-spec/master/team.json#"
+    },
+    "services": {
+      "type": "array",
+      "items": {
+        "title": "Service",
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "repository": {
+            "title": "Repository",
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "type",
+              "url"
+            ]
+          },
+          "keywords": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 3,
+            "uniqueItems": true
+          },
+          "dependencies": {
+            "type": "array",
+            "items": {
+              "title": "dependency",
+              "type": "object",
+              "properties": {},
+              "required": []
+            },
+            "minItems": 0,
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "name",
+          "keywords"
+        ]
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "team",
+    "services"
+  ]
+}

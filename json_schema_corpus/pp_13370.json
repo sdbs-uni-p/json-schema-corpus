@@ -1,0 +1,111 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "icestats": {
+      "id": "icestats",
+      "type": "object",
+      "properties": {
+        "admin": {
+          "id": "admin",
+          "type": "string"
+        },
+        "host": {
+          "id": "host",
+          "type": "string"
+        },
+        "location": {
+          "id": "location",
+          "type": "string"
+        },
+        "server_id": {
+          "id": "server_id",
+          "type": "string"
+        },
+        "server_start": {
+          "id": "server_start",
+          "type": "string"
+        },
+        "server_start_iso8601": {
+          "id": "server_start_iso8601",
+          "type": "string"
+        },
+        "source": {
+          "id": "source",
+          "type": "array",
+          "items": {
+            "id": "0",
+            "type": "object",
+            "properties": {
+              "bitrate": {
+                "id": "bitrate",
+                "type": "integer"
+              },
+              "genre": {
+                "id": "genre",
+                "type": "string"
+              },
+              "listener_peak": {
+                "id": "listener_peak",
+                "type": "integer"
+              },
+              "listeners": {
+                "id": "listeners",
+                "type": "integer"
+              },
+              "listenurl": {
+                "id": "listenurl",
+                "type": "string"
+              },
+              "server_description": {
+                "id": "server_description",
+                "type": "string"
+              },
+              "server_name": {
+                "id": "server_name",
+                "type": "string"
+              },
+              "server_type": {
+                "id": "server_type",
+                "type": "string"
+              },
+              "server_url": {
+                "id": "server_url",
+                "type": "string"
+              },
+              "stream_start": {
+                "id": "stream_start",
+                "type": "string"
+              },
+              "stream_start_iso8601": {
+                "id": "stream_start_iso8601",
+                "type": "string"
+              },
+              "title": {
+                "id": "title",
+                "type": "string"
+              },
+              "yp_currently_playing": {
+                "id": "yp_currently_playing",
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "required": [
+        "admin",
+        "host",
+        "location",
+        "server_id",
+        "server_start",
+        "server_start_iso8601",
+        "source"
+      ]
+    }
+  },
+  "required": [
+    "icestats"
+  ]
+}

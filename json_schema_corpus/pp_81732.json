@@ -1,0 +1,160 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "uri://registries/stadium#",
+  "new": {
+    "table": "stadium",
+    "listFields": [
+      {
+        "field": "baseData.name",
+        "title": "N\u00e1zov \u0161tadi\u00f3na"
+      },
+      {
+        "field": "additionalData.overallCapacity",
+        "title": "Celkov\u00e1 kapacita"
+      }
+    ],
+    "properties": {
+      "baseData": {
+        "title": "Z\u00e1kladn\u00e9 \u00fadaje o \u0161tadi\u00f3ne",
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "N\u00e1zov \u0161tadi\u00f3na",
+            "type": "string",
+            "required": true
+          },
+          "street": {
+            "title": "Ulica",
+            "type": "string",
+            "required": true
+          },
+          "houseNumber": {
+            "title": "\u010c\u00edslo domu",
+            "type": "number",
+            "required": true
+          },
+          "town": {
+            "title": "obec",
+            "type": "string",
+            "required": true
+          },
+          "postcode": {
+            "title": "PS\u010c",
+            "type": "string",
+            "required": true
+          },
+          "state": {
+            "title": "\u0160t\u00e1t",
+            "type": "string",
+            "required": true
+          }
+        }
+      },
+      "additionalData": {
+        "title": "Z\u00e1kladn\u00e9 \u00fadaje o \u0161tadi\u00f3ne",
+        "type": "object",
+        "properties": {
+          "overallCapacity": {
+            "title": "Celkov\u00e1 kapacita",
+            "type": "number",
+            "required": false
+          },
+          "numberOfSeats": {
+            "title": "Kapacita na sedenie",
+            "type": "number",
+            "required": false
+          },
+          "capacityOfHostSector": {
+            "title": "Kapacita sektoru host\u00ed",
+            "type": "number",
+            "required": false
+          },
+          "sizeAndSuface": {
+            "title": "Rozmery a povrch ihriska",
+            "type": "string",
+            "required": false
+          },
+          "VIPSeats": {
+            "title": "VIP sedadl\u00e1",
+            "type": "number",
+            "required": false
+          },
+          "Illumination": {
+            "title": "Osvetlenie (lux)",
+            "type": "string",
+            "enum": [
+              "\u00c1no",
+              "Nie"
+            ],
+            "required": false
+          },
+          "runningFrom": {
+            "title": "V prev\u00e1dzke od",
+            "type": "string",
+            "required": false,
+            "render": {
+              "component": "psui-datepicker"
+            }
+          },
+          "dateOfLastIlluminationRevision": {
+            "title": "D\u00e1tum poslednej rev\u00edzie osvetlenia",
+            "type": "string",
+            "required": false,
+            "render": {
+              "component": "psui-datepicker"
+            }
+          },
+          "dateOfLastElectricDeviceRevision": {
+            "title": "D\u00e1tum poslednej rev\u00edzie elektrick\u00fdch zariaden\u00ed",
+            "type": "string",
+            "required": false,
+            "render": {
+              "component": "psui-datepicker"
+            }
+          },
+          "dateOfSecurityCertificatePublication": {
+            "title": "D\u00e1tum vydania bezp\u010dnostn\u00e9ho certifik\u00e1tu",
+            "type": "string",
+            "required": false,
+            "render": {
+              "component": "psui-datepicker"
+            }
+          },
+          "owner": {
+            "title": "Vlastn\u00edk",
+            "type": "string",
+            "required": false
+          },
+          "manager": {
+            "title": "Mana\u017e\u00e9r",
+            "type": "string",
+            "required": false
+          },
+          "managersContact": {
+            "title": "Kontakt na Mana\u017e\u00e9ra",
+            "type": "string",
+            "required": false
+          }
+        }
+      }
+    }
+  },
+  "view": {
+    "$ref": "uri://registries/stadium#new"
+  },
+  "search": {
+    "table": "stadium",
+    "title": "\u0161tadi\u00f3n",
+    "listFields": {
+      "$ref": "uri://registries/stadium#new/listFields"
+    },
+    "properties": {
+      "baseData": {
+        "$ref": "uri://registries/stadium#new/properties/baseData"
+      },
+      "additionalData": {
+        "$ref": "uri://registries/stadium#new/properties/additionalData"
+      }
+    }
+  }
+}

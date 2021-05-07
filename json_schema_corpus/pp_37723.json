@@ -1,0 +1,182 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "FollowUp",
+  "description": "A single follow up of a person",
+  "type": "object",
+  "properties": {
+    "_id": {
+      "type": "string",
+      "pattern": "^[^/]+:[^:]+$"
+    },
+    "doc_type": {
+      "type": "string",
+      "pattern": "^followup$"
+    },
+    "version": {
+      "type": "string",
+      "format": "semver"
+    },
+    "status": {
+      "enum": [
+        "incomplete",
+        "complete"
+      ]
+    },
+    "incompleteReason": {
+      "enum": [
+        "food-distribution-incomplete",
+        "no-food-distribution",
+        "gone-to-work",
+        "resistance",
+        "travelling",
+        "other"
+      ]
+    },
+    "interviewer": {
+      "$ref": "#/definitions/connectedPerson"
+    },
+    "comment": {
+      "type": "string"
+    },
+    "isSymptomatic": {
+      "type": "boolean"
+    },
+    "symptoms": {
+      "$ref": "#/definitions/symptoms"
+    },
+    "geoInfo": {
+      "type": "object",
+      "properties": {
+        "coords": {
+          "type": "object",
+          "properties": {
+            "longitude": {
+              "type": "number"
+            },
+            "latitude": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    },
+    "deviceId": {
+      "type": "string"
+    },
+    "dateOfVisit": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "personId": {
+      "type": "string"
+    }
+  },
+  "definitions": {
+    "symptoms": {
+      "type": "object",
+      "properties": {
+        "temperature": {
+          "type": "number"
+        },
+        "fever": {
+          "type": "boolean"
+        },
+        "abdominal_pains": {
+          "type": "boolean"
+        },
+        "articular_pain": {
+          "type": "boolean"
+        },
+        "cough": {
+          "type": "boolean"
+        },
+        "diarrhea": {
+          "type": "boolean"
+        },
+        "difficulty_breathing": {
+          "type": "boolean"
+        },
+        "difficulty_swallowing": {
+          "type": "boolean"
+        },
+        "headache": {
+          "type": "boolean"
+        },
+        "hiccups": {
+          "type": "boolean"
+        },
+        "intense_fatigue": {
+          "type": "boolean"
+        },
+        "loss_of_appetite": {
+          "type": "boolean"
+        },
+        "muscular_pain": {
+          "type": "boolean"
+        },
+        "neck_rigidity": {
+          "type": "boolean"
+        },
+        "nausea_vomiting": {
+          "type": "boolean"
+        },
+        "sore_throat": {
+          "type": "boolean"
+        },
+        "thoracic_pain": {
+          "type": "boolean"
+        },
+        "unexplained_bleedings": {
+          "type": "boolean"
+        },
+        "rash": {
+          "type": "boolean"
+        },
+        "red_eyes": {
+          "type": "boolean"
+        },
+        "jaundice": {
+          "type": "boolean"
+        },
+        "bruises": {
+          "type": "boolean"
+        },
+        "back_pain": {
+          "type": "boolean"
+        },
+        "other_symptoms": {
+          "type": "boolean"
+        },
+        "other": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "connectedPerson": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "faker": "name.findName"
+        },
+        "phone": {
+          "type": "string",
+          "chance": {
+            "phone": {
+              "country": "uk"
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "_id",
+    "doc_type",
+    "version",
+    "dateOfVisit",
+    "personId",
+    "status"
+  ]
+}

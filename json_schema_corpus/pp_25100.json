@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://jsonschema.net",
+  "type": "object",
+  "properties": {
+    "id": {
+      "id": "http://jsonschema.net/id",
+      "type": "string",
+      "default": "MySensor"
+    },
+    "value": {
+      "id": "http://jsonschema.net/value",
+      "type": "integer",
+      "default": 1
+    },
+    "timestamp": {
+      "id": "http://jsonschema.net/timestamp",
+      "type": "string",
+      "default": "Apr 16, 2015 2:08:39 PM"
+    }
+  },
+  "required": [
+    "id",
+    "value",
+    "timestamp"
+  ]
+}

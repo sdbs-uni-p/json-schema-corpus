@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema#",
+  "type": "object",
+  "title": "Schema for Travis Hook payload",
+  "id": "#travis-hook-v1",
+  "properties": {
+    "repository": {
+      "$ref": "#/definitions/repository"
+    },
+    "branch": {
+      "description": "Name of the branch",
+      "type": "string",
+      "maxLength": 100
+    },
+    "commit": {
+      "title": "Git SHA Commit ID",
+      "type": "string",
+      "maxLength": 100
+    },
+    "status": {
+      "description": "Status of the build. 0: success  1: failed",
+      "enum": [
+        0,
+        1
+      ]
+    }
+  },
+  "additionalProperties": true,
+  "required": [
+    "repository",
+    "branch",
+    "commit",
+    "status"
+  ],
+  "definitions": {
+    "repository": {
+      "properties": {
+        "owner_name": {
+          "title": "Owner/Organization of the SCM repository (e.g. totem)",
+          "type": "string",
+          "maxLength": 100
+        },
+        "name": {
+          "title": "SCM repository name (e.g.: spec-python)",
+          "type": "string",
+          "maxLength": 100
+        }
+      },
+      "additionalProperties": true,
+      "required": [
+        "owner_name",
+        "name"
+      ]
+    }
+  }
+}

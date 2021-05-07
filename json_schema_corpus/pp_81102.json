@@ -1,0 +1,75 @@
+{
+  "title": "Combination",
+  "name": "Animas combination bolus",
+  "description": "Animas combination bolus records from Diasend.",
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "id": "http://tidepool-org.github.io/data-model/schemas/vendors/animas/combination.json",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "deviceTime": {
+      "type": "string",
+      "id": "http://jsonschema.net/bolus/animas/deviceTime",
+      "required": true
+    },
+    "duration": {
+      "type": "string",
+      "id": "http://jsonschema.net/bolus/animas/duration",
+      "required": true
+    },
+    "extended": {
+      "type": "string",
+      "id": "http://jsonschema.net/bolus/animas/extendedDelivery",
+      "description": "Extended volume, buggy via Diasend",
+      "required": true
+    },
+    "immediate": {
+      "type": "string",
+      "id": "http://jsonschema.net/bolus/animas/immediate",
+      "description": "Immediate volume, buggy via Diasend",
+      "required": true
+    },
+    "id": {
+      "type": "string",
+      "id": "http://jsonschema.net/bolus/animas/id",
+      "required": false
+    },
+    "reason": {
+      "type": "string",
+      "id": "http://jsonschema.net/bolus/animas/reason",
+      "required": true
+    },
+    "units": {
+      "type": "string",
+      "id": "http://jsonschema.net/bolus/animas/units",
+      "required": true
+    },
+    "notes": {
+      "type": "string",
+      "id": "http://jsonschema.net/bolus/animas/notes",
+      "required": false
+    },
+    "type": {
+      "enum": [
+        "bolus-x-animas"
+      ],
+      "id": "http://jsonschema.net/bolus/animas/type",
+      "required": true
+    },
+    "bolus": {
+      "type": "number",
+      "id": "http://jsonschema.net/bolus/animas/bolus",
+      "description": "Bolus volume as float",
+      "required": true
+    },
+    "value": {
+      "type": [
+        "string",
+        "number"
+      ],
+      "id": "http://jsonschema.net/bolus/animas/value",
+      "description": "Bolus volume",
+      "required": true
+    }
+  }
+}

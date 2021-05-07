@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Data Action",
+  "description": "The action for the given data set",
+  "type": "string",
+  "enum": [
+    "create",
+    "update",
+    "delete"
+  ]
+}

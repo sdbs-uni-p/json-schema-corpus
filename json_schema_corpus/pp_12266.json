@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "id_titulaire": {
+      "type": "string"
+    },
+    "id_remplacant": {
+      "type": "string"
+    },
+    "date_debut": {
+      "type": "string"
+    },
+    "date_fin": {
+      "type": "string"
+    },
+    "id_etablissement": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "id_titulaire",
+    "id_remplacant",
+    "date_debut",
+    "date_fin",
+    "id_etablissement"
+  ]
+}

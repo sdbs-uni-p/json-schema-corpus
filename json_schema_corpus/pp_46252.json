@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Currency",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "_id": {
+      "type": "integer",
+      "description": "A unique ID for Currency"
+    },
+    "isoCode": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    }
+  }
+}

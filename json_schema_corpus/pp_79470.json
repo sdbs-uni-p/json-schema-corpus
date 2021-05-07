@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "developer": {
+      "type": "string"
+    },
+    "uriTemplate": {
+      "type": "string"
+    },
+    "principalType": {
+      "$ref": "samlSubject.json#/definitions/principalType",
+      "description": "the principal type of this API (not present if this is not an on-behalf API)"
+    },
+    "raml": {
+      "type": "string",
+      "format": "uri",
+      "description": "link to a RAML document describing this API (if any)"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "developer",
+    "uriTemplate"
+  ]
+}

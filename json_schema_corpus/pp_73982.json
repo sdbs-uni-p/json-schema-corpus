@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "referenced multi types",
+  "description": "Test model with top-level referenced model files",
+  "definitions": {
+    "incident": {
+      "$ref": "./incident.json#/incident"
+    },
+    "user": {
+      "$ref": "./user.json#/user"
+    }
+  },
+  "type": "object",
+  "version": 1
+}

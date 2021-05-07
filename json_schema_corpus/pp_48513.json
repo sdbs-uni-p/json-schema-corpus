@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "version": "0.01",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "DatasetsUUID": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "NewDatasetID": {
+      "type": "number"
+    }
+  }
+}

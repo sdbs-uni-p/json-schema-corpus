@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "A fake schema returned by HEAD /{db}/_design/{ddoc}",
+  "title": "CouchDB HEAD of design document",
+  "type": "object"
+}

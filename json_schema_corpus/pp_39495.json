@@ -1,0 +1,37 @@
+{
+  "id": "https://raw.githubusercontent.com/eviratec/schema/master/v1/app/user.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "schema for an app user",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "app_id",
+    "contact",
+    "username",
+    "password"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "app_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "contact": {
+      "$ref": "https://raw.githubusercontent.com/eviratec/schema/master/v1/contact/person.json#"
+    },
+    "username": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9-._]+$",
+      "minLength": 4,
+      "maxLength": 30
+    },
+    "password": {
+      "type": "string",
+      "minLength": 7
+    }
+  }
+}

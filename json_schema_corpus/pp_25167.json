@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "type": "object",
+  "definitions": {
+    "bar": {
+      "type": "object",
+      "properties": {
+        "baz": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,202 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://schema.org/Flight",
+  "required": [],
+  "title": "Flight",
+  "name": "Flight",
+  "description": "An airline flight.",
+  "type": "object",
+  "properties": {
+    "aircraft": {
+      "id": "http://schema.org/aircraft",
+      "title": "aircraft",
+      "description": "The kind of aircraft (e.g., \"Boeing 747\").",
+      "type": "object",
+      "properties": {
+        "aircraft": {
+          "$ref": "Vehicle.json#/properties"
+        }
+      }
+    },
+    "arrivalAirport": {
+      "id": "http://schema.org/arrivalAirport",
+      "title": "arrivalAirport",
+      "description": "The airport where the flight terminates.",
+      "type": "object",
+      "properties": {
+        "arrivalAirport": {
+          "$ref": "Airport.json#/properties"
+        }
+      }
+    },
+    "arrivalGate": {
+      "id": "http://schema.org/arrivalGate",
+      "title": "arrivalGate",
+      "description": "Identifier of the flight's arrival gate.",
+      "type": "string"
+    },
+    "arrivalTerminal": {
+      "id": "http://schema.org/arrivalTerminal",
+      "title": "arrivalTerminal",
+      "description": "Identifier of the flight's arrival terminal.",
+      "type": "string"
+    },
+    "arrivalTime": {
+      "id": "http://schema.org/arrivalTime",
+      "title": "arrivalTime",
+      "description": "The expected arrival time.",
+      "type": "string",
+      "format": "date-time"
+    },
+    "departureAirport": {
+      "id": "http://schema.org/departureAirport",
+      "title": "departureAirport",
+      "description": "The airport where the flight originates.",
+      "type": "object",
+      "properties": {
+        "departureAirport": {
+          "$ref": "Airport.json#/properties"
+        }
+      }
+    },
+    "departureGate": {
+      "id": "http://schema.org/departureGate",
+      "title": "departureGate",
+      "description": "Identifier of the flight's departure gate.",
+      "type": "string"
+    },
+    "departureTerminal": {
+      "id": "http://schema.org/departureTerminal",
+      "title": "departureTerminal",
+      "description": "Identifier of the flight's departure terminal.",
+      "type": "string"
+    },
+    "departureTime": {
+      "id": "http://schema.org/departureTime",
+      "title": "departureTime",
+      "description": "The expected departure time.",
+      "type": "string",
+      "format": "date-time"
+    },
+    "estimatedFlightDuration": {
+      "id": "http://schema.org/estimatedFlightDuration",
+      "title": "estimatedFlightDuration",
+      "description": "The estimated time the flight will take.",
+      "type": "object",
+      "properties": {
+        "estimatedFlightDuration": {
+          "$ref": "Duration.json#/properties"
+        }
+      }
+    },
+    "flightDistance": {
+      "id": "http://schema.org/flightDistance",
+      "title": "flightDistance",
+      "description": "The distance of the flight.",
+      "type": "string"
+    },
+    "flightNumber": {
+      "id": "http://schema.org/flightNumber",
+      "title": "flightNumber",
+      "description": "The unique identifier for a flight including the airline IATA code. For example, if describing United flight 110, where the IATA code for United is 'UA', the flightNumber is 'UA110'.",
+      "type": "string"
+    },
+    "mealService": {
+      "id": "http://schema.org/mealService",
+      "title": "mealService",
+      "description": "Description of the meals that will be provided or available for purchase.",
+      "type": "string"
+    },
+    "provider": {
+      "id": "http://schema.org/provider",
+      "title": "provider",
+      "description": "The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller. Supersedes carrier.",
+      "type": "object",
+      "properties": {
+        "provider": {
+          "$ref": "Person.json#/properties"
+        }
+      }
+    },
+    "seller": {
+      "id": "http://schema.org/seller",
+      "title": "seller",
+      "description": "An entity which offers (sells / leases / lends / loans) the services / goods.  A seller may also be a provider. Supersedes merchant, vendor.",
+      "type": "object",
+      "properties": {
+        "seller": {
+          "$ref": "Person.json#/properties"
+        }
+      }
+    },
+    "webCheckinTime": {
+      "id": "http://schema.org/webCheckinTime",
+      "title": "webCheckinTime",
+      "description": "The time when a passenger can check into the flight online.",
+      "type": "string",
+      "format": "date-time"
+    },
+    "": {
+      "title": "",
+      "description": "",
+      "type": null
+    },
+    "additionalType": {
+      "id": "http://schema.org/additionalType",
+      "title": "additionalType",
+      "description": "An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.",
+      "type": "string",
+      "format": "uri"
+    },
+    "alternateName": {
+      "id": "http://schema.org/alternateName",
+      "title": "alternateName",
+      "description": "An alias for the item.",
+      "type": "string"
+    },
+    "description": {
+      "id": "http://schema.org/description",
+      "title": "description",
+      "description": "A short description of the item.",
+      "type": "string"
+    },
+    "image": {
+      "id": "http://schema.org/image",
+      "title": "image",
+      "description": "An image of the item. This can be a URL or a fully described ImageObject.",
+      "type": "string",
+      "format": "uri"
+    },
+    "name": {
+      "id": "http://schema.org/name",
+      "title": "name",
+      "description": "The name of the item.",
+      "type": "string"
+    },
+    "potentialAction": {
+      "id": "http://schema.org/potentialAction",
+      "title": "potentialAction",
+      "description": "Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.",
+      "type": "object",
+      "properties": {
+        "potentialAction": {
+          "$ref": "Action.json#/properties"
+        }
+      }
+    },
+    "sameAs": {
+      "id": "http://schema.org/sameAs",
+      "title": "sameAs",
+      "description": "URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.",
+      "type": "string",
+      "format": "uri"
+    },
+    "url": {
+      "id": "http://schema.org/url",
+      "title": "url",
+      "description": "URL of the item.",
+      "type": "string",
+      "format": "uri"
+    }
+  }
+}

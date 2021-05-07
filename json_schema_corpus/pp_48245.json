@@ -1,0 +1,430 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/containers/(id)/json",
+  "type": "object",
+  "properties": {
+    "AppArmorProfile": {
+      "id": "AppArmorProfile",
+      "type": "string"
+    },
+    "Args": {
+      "id": "Args",
+      "type": "array",
+      "items": {}
+    },
+    "Config": {
+      "id": "Config",
+      "type": "object",
+      "properties": {
+        "AttachStderr": {
+          "id": "AttachStderr",
+          "type": "boolean"
+        },
+        "AttachStdin": {
+          "id": "AttachStdin",
+          "type": "boolean"
+        },
+        "AttachStdout": {
+          "id": "AttachStdout",
+          "type": "boolean"
+        },
+        "Cmd": {
+          "id": "Cmd",
+          "type": "array",
+          "items": {
+            "id": "0",
+            "type": "string"
+          }
+        },
+        "CpuShares": {
+          "id": "CpuShares",
+          "type": "integer"
+        },
+        "Cpuset": {
+          "id": "Cpuset",
+          "type": "string"
+        },
+        "Domainname": {
+          "id": "Domainname",
+          "type": "string"
+        },
+        "Entrypoint": {
+          "id": "Entrypoint",
+          "type": "null"
+        },
+        "Env": {
+          "id": "Env",
+          "type": "array",
+          "items": {
+            "id": "11",
+            "type": "string"
+          }
+        },
+        "ExposedPorts": {
+          "id": "ExposedPorts",
+          "type": "object"
+        },
+        "Hostname": {
+          "id": "Hostname",
+          "type": "string"
+        },
+        "Image": {
+          "id": "Image",
+          "type": "string"
+        },
+        "MacAddress": {
+          "id": "MacAddress",
+          "type": "string"
+        },
+        "Memory": {
+          "id": "Memory",
+          "type": "integer"
+        },
+        "MemorySwap": {
+          "id": "MemorySwap",
+          "type": "integer"
+        },
+        "NetworkDisabled": {
+          "id": "NetworkDisabled",
+          "type": "boolean"
+        },
+        "OnBuild": {
+          "id": "OnBuild",
+          "type": "null"
+        },
+        "OpenStdin": {
+          "id": "OpenStdin",
+          "type": "boolean"
+        },
+        "PortSpecs": {
+          "id": "PortSpecs",
+          "type": "null"
+        },
+        "StdinOnce": {
+          "id": "StdinOnce",
+          "type": "boolean"
+        },
+        "Tty": {
+          "id": "Tty",
+          "type": "boolean"
+        },
+        "User": {
+          "id": "User",
+          "type": "string"
+        },
+        "Volumes": {
+          "id": "Volumes",
+          "type": "object"
+        },
+        "WorkingDir": {
+          "id": "WorkingDir",
+          "type": "string"
+        }
+      }
+    },
+    "Created": {
+      "id": "Created",
+      "type": "string",
+      "format": "date-time"
+    },
+    "Driver": {
+      "id": "Driver",
+      "type": "string"
+    },
+    "ExecDriver": {
+      "id": "ExecDriver",
+      "type": "string"
+    },
+    "ExecIDs": {
+      "id": "ExecIDs",
+      "type": "array",
+      "items": {
+        "id": "0",
+        "type": "string"
+      }
+    },
+    "HostConfig": {
+      "id": "HostConfig",
+      "type": "object",
+      "properties": {
+        "Binds": {
+          "id": "Binds",
+          "type": "array",
+          "items": {
+            "description": "Colon separated value denoting hostPath:containerPath",
+            "type": "string"
+          }
+        },
+        "CapAdd": {
+          "id": "CapAdd",
+          "type": "null"
+        },
+        "CapDrop": {
+          "id": "CapDrop",
+          "type": "null"
+        },
+        "ContainerIDFile": {
+          "id": "ContainerIDFile",
+          "type": "string"
+        },
+        "Devices": {
+          "id": "Devices",
+          "type": "array",
+          "items": {}
+        },
+        "Dns": {
+          "id": "Dns",
+          "type": "null"
+        },
+        "DnsSearch": {
+          "id": "DnsSearch",
+          "type": "null"
+        },
+        "ExtraHosts": {
+          "id": "ExtraHosts",
+          "type": "null"
+        },
+        "IpcMode": {
+          "id": "IpcMode",
+          "type": "string"
+        },
+        "Links": {
+          "id": "Links",
+          "type": "null"
+        },
+        "LxcConf": {
+          "id": "LxcConf",
+          "type": "array",
+          "items": {}
+        },
+        "NetworkMode": {
+          "id": "NetworkMode",
+          "type": "string"
+        },
+        "PidMode": {
+          "id": "PidMode",
+          "type": "string"
+        },
+        "PortBindings": {
+          "id": "PortBindings",
+          "type": "object"
+        },
+        "Privileged": {
+          "id": "Privileged",
+          "type": "boolean"
+        },
+        "PublishAllPorts": {
+          "id": "PublishAllPorts",
+          "type": "boolean"
+        },
+        "ReadonlyRootfs": {
+          "id": "ReadonlyRootfs",
+          "type": "boolean"
+        },
+        "RestartPolicy": {
+          "id": "RestartPolicy",
+          "type": "object",
+          "properties": {
+            "MaximumRetryCount": {
+              "id": "MaximumRetryCount",
+              "type": "integer"
+            },
+            "Name": {
+              "id": "Name",
+              "type": "string"
+            }
+          }
+        },
+        "SecurityOpt": {
+          "id": "SecurityOpt",
+          "type": "null"
+        },
+        "VolumesFrom": {
+          "id": "VolumesFrom",
+          "type": "null"
+        }
+      }
+    },
+    "HostnamePath": {
+      "id": "HostnamePath",
+      "type": "string"
+    },
+    "HostsPath": {
+      "id": "HostsPath",
+      "type": "string"
+    },
+    "Id": {
+      "id": "Id",
+      "type": "string"
+    },
+    "Image": {
+      "id": "Image",
+      "type": "string"
+    },
+    "MountLabel": {
+      "id": "MountLabel",
+      "type": "string"
+    },
+    "Name": {
+      "id": "Name",
+      "type": "string"
+    },
+    "NetworkSettings": {
+      "id": "NetworkSettings",
+      "type": "object",
+      "properties": {
+        "Bridge": {
+          "id": "Bridge",
+          "type": "string"
+        },
+        "Gateway": {
+          "id": "Gateway",
+          "type": "string"
+        },
+        "GlobalIPv6Address": {
+          "id": "GlobalIPv6Address",
+          "type": "string"
+        },
+        "GlobalIPv6PrefixLen": {
+          "id": "GlobalIPv6PrefixLen",
+          "type": "integer"
+        },
+        "IPAddress": {
+          "id": "IPAddress",
+          "type": "string"
+        },
+        "IPPrefixLen": {
+          "id": "IPPrefixLen",
+          "type": "integer"
+        },
+        "IPv6Gateway": {
+          "id": "IPv6Gateway",
+          "type": "string"
+        },
+        "LinkLocalIPv6Address": {
+          "id": "LinkLocalIPv6Address",
+          "type": "string"
+        },
+        "LinkLocalIPv6PrefixLen": {
+          "id": "LinkLocalIPv6PrefixLen",
+          "type": "integer"
+        },
+        "MacAddress": {
+          "id": "MacAddress",
+          "type": "string"
+        },
+        "PortMapping": {
+          "id": "PortMapping",
+          "type": "null"
+        },
+        "Ports": {
+          "id": "Ports",
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "HostIp": {
+                  "type": "string"
+                },
+                "HostPort": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "Path": {
+      "id": "Path",
+      "type": "string"
+    },
+    "ProcessLabel": {
+      "id": "ProcessLabel",
+      "type": "string"
+    },
+    "ResolvConfPath": {
+      "id": "ResolvConfPath",
+      "type": "string"
+    },
+    "RestartCount": {
+      "id": "RestartCount",
+      "type": "integer"
+    },
+    "State": {
+      "id": "State",
+      "type": "object",
+      "properties": {
+        "Error": {
+          "id": "Error",
+          "type": "string"
+        },
+        "ExitCode": {
+          "id": "ExitCode",
+          "type": "integer"
+        },
+        "FinishedAt": {
+          "id": "FinishedAt",
+          "type": "string"
+        },
+        "OOMKilled": {
+          "id": "OOMKilled",
+          "type": "boolean"
+        },
+        "Paused": {
+          "id": "Paused",
+          "type": "boolean"
+        },
+        "Pid": {
+          "id": "Pid",
+          "type": "integer"
+        },
+        "Restarting": {
+          "id": "Restarting",
+          "type": "boolean"
+        },
+        "Running": {
+          "id": "Running",
+          "type": "boolean"
+        },
+        "StartedAt": {
+          "id": "StartedAt",
+          "type": "string"
+        }
+      }
+    },
+    "Volumes": {
+      "id": "Volumes",
+      "type": "object"
+    },
+    "VolumesRW": {
+      "id": "VolumesRW",
+      "type": "object"
+    }
+  },
+  "required": [
+    "AppArmorProfile",
+    "Args",
+    "Config",
+    "Created",
+    "Driver",
+    "ExecDriver",
+    "ExecIDs",
+    "HostConfig",
+    "HostnamePath",
+    "HostsPath",
+    "Id",
+    "Image",
+    "MountLabel",
+    "Name",
+    "NetworkSettings",
+    "Path",
+    "ProcessLabel",
+    "ResolvConfPath",
+    "RestartCount",
+    "State",
+    "Volumes"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "description": "Collection of coverages",
+  "properties": {
+    "coverages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "coverage.json"
+      }
+    },
+    "resultInfo": {
+      "$ref": "../resultInfo.schema"
+    }
+  },
+  "required": [
+    "coverages",
+    "resultInfo"
+  ]
+}

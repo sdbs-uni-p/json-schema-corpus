@@ -1,0 +1,592 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "#",
+  "javaType": "org.apache.streams.twitter.pojo.Tweet",
+  "javaInterfaces": [
+    "java.io.Serializable"
+  ],
+  "properties": {
+    "text": {
+      "type": "string"
+    },
+    "retweeted": {
+      "type": "boolean"
+    },
+    "in_reply_to_screen_name": {
+      "type": "string"
+    },
+    "truncated": {
+      "type": "boolean"
+    },
+    "retweeted_status": {
+      "type": "object",
+      "required": false,
+      "description": "Describes the tweet being retweeted.",
+      "$ref": "tweet.json"
+    },
+    "filter_level": {
+      "type": "string"
+    },
+    "contributors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "javaType": "org.apache.streams.twitter.pojo.Contributor",
+        "javaInterfaces": [
+          "java.io.Serializable"
+        ],
+        "properties": {
+          "id": {
+            "ignore_malformed": false,
+            "type": "integer"
+          },
+          "id_str": {
+            "type": "string"
+          },
+          "screen_name": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "coordinates": {
+      "type": "object",
+      "javaType": "org.apache.streams.twitter.pojo.Coordinates",
+      "javaInterfaces": [
+        "java.io.Serializable"
+      ],
+      "items": {
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "coordinates": {
+            "type": "array",
+            "items": [
+              {
+                "type": "integer"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "extended_entities": {
+      "dynamic": "true",
+      "javaInterfaces": [
+        "java.io.Serializable"
+      ],
+      "javaType": "org.apache.streams.twitter.pojo.ExtendedEntities",
+      "properties": {
+        "media": {
+          "items": {
+            "javaInterfaces": [
+              "java.io.Serializable"
+            ],
+            "javaType": "org.apache.streams.twitter.pojo.ExtendedEntitiesMedia",
+            "properties": {
+              "display_url": {
+                "required": false,
+                "type": "string"
+              },
+              "expanded_url": {
+                "required": false,
+                "type": "string"
+              },
+              "id": {
+                "ignore_malformed": false,
+                "type": "integer"
+              },
+              "id_str": {
+                "required": false,
+                "type": "string"
+              },
+              "indices": {
+                "items": {
+                  "required": false,
+                  "type": "number"
+                },
+                "required": false,
+                "type": "array"
+              },
+              "media_url": {
+                "required": false,
+                "type": "string"
+              },
+              "media_url_https": {
+                "required": false,
+                "type": "string"
+              },
+              "sizes": {
+                "properties": {
+                  "large": {
+                    "javaInterfaces": [
+                      "java.io.Serializable"
+                    ],
+                    "javaType": "org.apache.streams.twitter.pojo.ExtendedEntitiesMediaSize",
+                    "properties": {
+                      "h": {
+                        "ignore_malformed": false,
+                        "type": "integer"
+                      },
+                      "resize": {
+                        "required": false,
+                        "type": "string"
+                      },
+                      "w": {
+                        "ignore_malformed": false,
+                        "type": "integer"
+                      }
+                    },
+                    "required": false,
+                    "type": "object"
+                  },
+                  "medium": {
+                    "javaInterfaces": [
+                      "java.io.Serializable"
+                    ],
+                    "javaType": "org.apache.streams.twitter.pojo.ExtendedEntitiesMediaSize",
+                    "properties": {
+                      "h": {
+                        "ignore_malformed": false,
+                        "type": "integer"
+                      },
+                      "resize": {
+                        "required": false,
+                        "type": "string"
+                      },
+                      "w": {
+                        "ignore_malformed": false,
+                        "type": "integer"
+                      }
+                    },
+                    "required": false,
+                    "type": "object"
+                  },
+                  "small": {
+                    "javaInterfaces": [
+                      "java.io.Serializable"
+                    ],
+                    "javaType": "org.apache.streams.twitter.pojo.ExtendedEntitiesMediaSize",
+                    "properties": {
+                      "h": {
+                        "ignore_malformed": false,
+                        "type": "integer"
+                      },
+                      "resize": {
+                        "required": false,
+                        "type": "string"
+                      },
+                      "w": {
+                        "ignore_malformed": false,
+                        "type": "integer"
+                      }
+                    },
+                    "required": false,
+                    "type": "object"
+                  },
+                  "thumb": {
+                    "javaInterfaces": [
+                      "java.io.Serializable"
+                    ],
+                    "javaType": "org.apache.streams.twitter.pojo.ExtendedEntitiesMediaSize",
+                    "properties": {
+                      "h": {
+                        "ignore_malformed": false,
+                        "type": "integer"
+                      },
+                      "resize": {
+                        "required": false,
+                        "type": "string"
+                      },
+                      "w": {
+                        "ignore_malformed": false,
+                        "type": "integer"
+                      }
+                    },
+                    "required": false,
+                    "type": "object"
+                  }
+                },
+                "required": false,
+                "type": "object"
+              },
+              "source_status_id": {
+                "required": false,
+                "type": "number"
+              },
+              "source_status_id_str": {
+                "required": false,
+                "type": "string"
+              },
+              "type": {
+                "required": false,
+                "type": "string"
+              },
+              "url": {
+                "required": false,
+                "type": "string"
+              }
+            },
+            "required": false,
+            "type": "object"
+          },
+          "required": false,
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "entities": {
+      "type": "object",
+      "dynamic": "true",
+      "javaType": "org.apache.streams.twitter.pojo.Entities",
+      "javaInterfaces": [
+        "java.io.Serializable"
+      ],
+      "properties": {
+        "user_mentions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "javaType": "org.apache.streams.twitter.pojo.UserMentions",
+            "javaInterfaces": [
+              "java.io.Serializable"
+            ],
+            "properties": {
+              "id": {
+                "ignore_malformed": false,
+                "type": "integer"
+              },
+              "name": {
+                "type": "string"
+              },
+              "indices": {
+                "type": "array",
+                "items": [
+                  {
+                    "type": "integer"
+                  }
+                ]
+              },
+              "screen_name": {
+                "type": "string"
+              },
+              "id_str": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "hashtags": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "javaType": "org.apache.streams.twitter.pojo.Hashtag",
+            "javaInterfaces": [
+              "java.io.Serializable"
+            ],
+            "properties": {
+              "text": {
+                "type": "string"
+              },
+              "indices": {
+                "type": "array",
+                "items": [
+                  {
+                    "type": "integer"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "urls": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "javaType": "org.apache.streams.twitter.Url",
+            "javaInterfaces": [
+              "java.io.Serializable"
+            ],
+            "properties": {
+              "expanded_url": {
+                "type": "string"
+              },
+              "indices": {
+                "type": "array",
+                "items": [
+                  {
+                    "type": "integer"
+                  }
+                ]
+              },
+              "display_url": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "in_reply_to_status_id_str": {
+      "type": "string"
+    },
+    "id": {
+      "ignore_malformed": false,
+      "type": "integer"
+    },
+    "in_reply_to_user_id_str": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string"
+    },
+    "lang": {
+      "type": "string"
+    },
+    "favorited": {
+      "type": "boolean"
+    },
+    "favorite_count": {
+      "ignore_malformed": false,
+      "type": "integer"
+    },
+    "possibly_sensitive": {
+      "type": "boolean"
+    },
+    "in_reply_to_status_id": {
+      "ignore_malformed": false,
+      "type": "integer"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "in_reply_to_user_id": {
+      "ignore_malformed": false,
+      "type": "integer"
+    },
+    "retweet_count": {
+      "ignore_malformed": false,
+      "type": "integer"
+    },
+    "id_str": {
+      "type": "string"
+    },
+    "user": {
+      "id": "user",
+      "type": "object",
+      "javaType": "org.apache.streams.twitter.pojo.User",
+      "javaInterfaces": [
+        "java.io.Serializable"
+      ],
+      "dynamic": "true",
+      "properties": {
+        "location": {
+          "type": "string"
+        },
+        "default_profile": {
+          "type": "boolean"
+        },
+        "statuses_count": {
+          "ignore_malformed": false,
+          "type": "integer"
+        },
+        "profile_background_tile": {
+          "type": "boolean"
+        },
+        "lang": {
+          "type": "string"
+        },
+        "profile_link_color": {
+          "type": "string"
+        },
+        "entities": {
+          "type": "object",
+          "dynamic": "true",
+          "javaInterfaces": [
+            "java.io.Serializable"
+          ],
+          "javaType": "org.apache.streams.twitter.pojo.UserEntities",
+          "properties": {
+            "description": {
+              "type": "object",
+              "javaInterfaces": [
+                "java.io.Serializable"
+              ],
+              "javaType": "org.apache.streams.twitter.pojo.UserDescriptionEntity",
+              "properties": {
+                "urls": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "javaType": "org.apache.streams.twitter.Url",
+                    "javaInterfaces": [
+                      "java.io.Serializable"
+                    ],
+                    "properties": {
+                      "expanded_url": {
+                        "type": "string"
+                      },
+                      "indices": {
+                        "type": "array",
+                        "items": [
+                          {
+                            "type": "integer"
+                          }
+                        ]
+                      },
+                      "display_url": {
+                        "type": "string"
+                      },
+                      "url": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "url": {
+              "type": "object",
+              "javaInterfaces": [
+                "java.io.Serializable"
+              ],
+              "javaType": "org.apache.streams.twitter.pojo.UserUrlEntity",
+              "properties": {
+                "urls": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "javaType": "org.apache.streams.twitter.Url",
+                    "javaInterfaces": [
+                      "java.io.Serializable"
+                    ],
+                    "properties": {
+                      "expanded_url": {
+                        "type": "string"
+                      },
+                      "indices": {
+                        "type": "array",
+                        "items": [
+                          {
+                            "type": "integer"
+                          }
+                        ]
+                      },
+                      "display_url": {
+                        "type": "string"
+                      },
+                      "url": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "id": {
+          "ignore_malformed": false,
+          "type": "integer"
+        },
+        "protected": {
+          "type": "boolean"
+        },
+        "favourites_count": {
+          "ignore_malformed": false,
+          "type": "integer"
+        },
+        "profile_text_color": {
+          "type": "string"
+        },
+        "verified": {
+          "type": "boolean"
+        },
+        "description": {
+          "type": "string"
+        },
+        "contributors_enabled": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "profile_sidebar_border_color": {
+          "type": "string"
+        },
+        "profile_background_color": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "default_profile_image": {
+          "type": "boolean"
+        },
+        "followers_count": {
+          "ignore_malformed": false,
+          "type": "integer"
+        },
+        "geo_enabled": {
+          "type": "boolean"
+        },
+        "profile_image_url_https": {
+          "type": "string"
+        },
+        "profile_background_image_url": {
+          "type": "string"
+        },
+        "profile_background_image_url_https": {
+          "type": "string"
+        },
+        "follow_request_sent": {
+          "type": "boolean"
+        },
+        "url": {
+          "type": "string"
+        },
+        "utc_offset": {
+          "ignore_malformed": false,
+          "type": "integer"
+        },
+        "time_zone": {
+          "type": "string"
+        },
+        "profile_use_background_image": {
+          "type": "boolean"
+        },
+        "friends_count": {
+          "ignore_malformed": false,
+          "type": "integer"
+        },
+        "profile_sidebar_fill_color": {
+          "type": "string"
+        },
+        "screen_name": {
+          "type": "string"
+        },
+        "id_str": {
+          "type": "string"
+        },
+        "profile_image_url": {
+          "type": "string"
+        },
+        "is_translator": {
+          "type": "boolean"
+        },
+        "listed_count": {
+          "ignore_malformed": false,
+          "type": "integer"
+        }
+      }
+    }
+  }
+}

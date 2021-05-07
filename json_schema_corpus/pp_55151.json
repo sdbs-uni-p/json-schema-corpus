@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://www.psibitdev.com/schemas/vagrant/config-defaults.schema.json",
+  "type": "object",
+  "properties": {
+    "vagrant": {
+      "$ref": "definitions.schema.json#/definitions/vagrant"
+    },
+    "servers": {
+      "$ref": "definitions.schema.json#/definitions/server"
+    }
+  }
+}

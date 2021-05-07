@@ -1,0 +1,9 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "JobExecution error status Enum",
+  "type": "string",
+  "enum": [
+    "SNAPSHOT_UPDATE_ERROR",
+    "RECORD_UPDATE_ERROR"
+  ]
+}

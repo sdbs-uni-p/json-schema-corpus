@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "properties": {
+    "mappings": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "nb_visits": {
+          "type": "string"
+        },
+        "nb_visits_converted": {
+          "type": "string"
+        },
+        "nb_conversions": {
+          "type": "string"
+        }
+      }
+    },
+    "idMapping": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "additionalFields": {
+      "service_identifier": {
+        "type": "string"
+      },
+      "journey_stage": {
+        "type": "string"
+      },
+      "event_type": {
+        "type": "string"
+      },
+      "event_detail": {
+        "type": "string"
+      }
+    },
+    "filters": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "chunk-size": {
+      "type": "number"
+    },
+    "empty-data-set": {
+      "type": "boolean"
+    }
+  },
+  "title": "Piwik Core Collector Options",
+  "type": "object",
+  "additionalProperties": false
+}

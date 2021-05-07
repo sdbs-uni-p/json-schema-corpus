@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "definitions": {
+    "careerSitesForApp": {
+      "type": "object",
+      "properties": {
+        "app": {
+          "type": "string",
+          "description": "the app that is hosting these career sites"
+        },
+        "careerSites": {
+          "$ref": "careerSites.json"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "app",
+        "careerSites"
+      ]
+    }
+  },
+  "type": "array",
+  "items": {
+    "$ref": "#/definitions/careerSitesForApp"
+  },
+  "description": "An array of career sites rolled up across all producing apps"
+}

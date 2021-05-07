@@ -1,0 +1,87 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "properties": {
+    "humio": {
+      "properties": {
+        "host": {
+          "description": "Humio url. i.e. https://cloud.humio.com:443",
+          "type": "string",
+          "default": "https://cloud.humio.com:443"
+        },
+        "dataspace": {
+          "description": "Name of Humio dataspace",
+          "type": "string"
+        },
+        "ingestToken": {
+          "description": "Humio ingest token",
+          "type": "string"
+        },
+        "globalFields": {
+          "description": "key:value list of global fields added to all events, separated by a semicolon (;). I.e. \"environment:production; owner: Ben\"",
+          "type": "string"
+        },
+        "dcosAuthenticationToken": {
+          "description": "DC/OS authentication token",
+          "type": "string"
+        },
+        "containerMetricsEnabled": {
+          "description": "Enabled pulling container metrics from DC/OS",
+          "type": "boolean"
+        },
+        "agents": {
+          "description": "Agents to deploy on all cluster agents. Comma (,) separated list of \"filebeat\", \"metricbeat\" or simply \"all\"",
+          "type": "string",
+          "default": "all"
+        }
+      },
+      "required": [
+        "host",
+        "dataspace",
+        "ingestToken",
+        "agents"
+      ],
+      "type": "object"
+    },
+    "service": {
+      "properties": {
+        "name": {
+          "default": "humio-agent",
+          "description": "Name for this Humio application",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "type": "object"
+    },
+    "node": {
+      "properties": {
+        "cpus": {
+          "default": 0.1,
+          "description": "CPU shares to allocate to each Filebeat instance.",
+          "minimum": 0.1,
+          "type": "number"
+        },
+        "mem": {
+          "default": 512.0,
+          "description": "Memory (MB) to allocate to each Filebeat task.",
+          "minimum": 128.0,
+          "type": "number"
+        },
+        "datadir": {
+          "default": "/var/humio/data",
+          "description": "Path of directory",
+          "type": "string"
+        }
+      },
+      "required": [
+        "cpus",
+        "mem",
+        "datadir"
+      ],
+      "type": "object"
+    }
+  },
+  "type": "object"
+}

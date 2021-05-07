@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "properties": {
+    "additionalFields": {
+      "type": "object"
+    },
+    "mappings": {
+      "type": "object"
+    },
+    "idMapping": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "row_type_name": {
+      "type": "string"
+    },
+    "chunk-size": {
+      "type": "number"
+    },
+    "empty-data-set": {
+      "type": "boolean"
+    }
+  },
+  "title": "Webtrends Keymetrics Collector Options",
+  "type": "object",
+  "additionalProperties": false
+}

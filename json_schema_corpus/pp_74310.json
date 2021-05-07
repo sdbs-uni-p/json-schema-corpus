@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "../definitions/user.json#/definitions/user-output"
+    }
+  ],
+  "required": [
+    "_id",
+    "firstname",
+    "lastname",
+    "root",
+    "email",
+    "created",
+    "modified"
+  ]
+}

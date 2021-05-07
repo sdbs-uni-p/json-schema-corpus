@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "title": "Namespace Value Collection",
+  "description": "A collection of namespace value resources.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "namespace_value_collection"
+  ],
+  "properties": {
+    "namespace_value_collection": {
+      "type": "array",
+      "minItems": 0,
+      "title": "",
+      "description": "",
+      "items": {
+        "$ref": "http://next.belframework.org/schemas/namespace_value_resource.schema.json"
+      }
+    }
+  }
+}

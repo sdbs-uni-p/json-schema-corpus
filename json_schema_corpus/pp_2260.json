@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://localhost:9999/schemas/workspace.json",
+  "type": "object",
+  "properties": {
+    "title": {
+      "id": "title",
+      "type": "string"
+    },
+    "description": {
+      "id": "description",
+      "type": "string"
+    },
+    "environment": {
+      "id": "environment",
+      "type": "integer"
+    },
+    "team": {
+      "id": "team",
+      "$ref": "team.json"
+    },
+    "parts": {
+      "id": "parts",
+      "type": "array",
+      "items": {
+        "type": "integer"
+      }
+    },
+    "badges": {
+      "id": "badges",
+      "type": "array",
+      "items": {
+        "type": "integer"
+      }
+    }
+  },
+  "required": [
+    "title",
+    "description",
+    "environment",
+    "team"
+  ]
+}

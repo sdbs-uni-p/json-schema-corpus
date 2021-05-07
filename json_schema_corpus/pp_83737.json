@@ -1,0 +1,52 @@
+[
+  {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Person",
+    "description": "Person using multi level references",
+    "id": "jsdb:person",
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string"
+      },
+      "address": {
+        "$ref": "jsdb:address#"
+      }
+    },
+    "required": [
+      "name",
+      "address"
+    ]
+  },
+  {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Address",
+    "description": "Small address",
+    "id": "jsdb:address",
+    "type": "object",
+    "properties": {
+      "city": {
+        "type": "string"
+      },
+      "zipcode": {
+        "$ref": "jsdb:zipcode#/definitions/zipcode"
+      }
+    },
+    "required": [
+      "city",
+      "zipcode"
+    ]
+  },
+  {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Zip code",
+    "description": "Zip code",
+    "id": "jsdb:zipcode",
+    "definitions": {
+      "zipcode": {
+        "type": "string",
+        "pattern": "^[0-9]{5}(-[0-9]{4})?$"
+      }
+    }
+  }
+]

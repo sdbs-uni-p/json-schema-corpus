@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "doi": {
+      "description": "DOI of the reference object",
+      "type": "string"
+    },
+    "id": {
+      "description": "Integer data. Ex: 2673",
+      "type": "integer"
+    },
+    "jstor": {
+      "description": "JSTOR identifier of the reference object",
+      "type": "string"
+    },
+    "owner": {
+      "description": "URI of the profile of the owner. When objects are uploaded from the R package, this field is set automatically.",
+      "type": "string"
+    },
+    "pmid": {
+      "description": "PubMed ID of the reference object",
+      "type": "string"
+    },
+    "resource_uri": {
+      "description": "Unicode string data. Ex: \"Hello World\"",
+      "type": "string"
+    },
+    "url": {
+      "description": "URL of the reference object",
+      "type": "string"
+    }
+  },
+  "required": [
+    "owner"
+  ],
+  "title": "Schema for reference objects",
+  "type": "object"
+}

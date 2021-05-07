@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "https://github.com/empirefox/node-private-tools/blob/master/src/schemas/svg-patterns.json#",
+  "title": "svg-patterns Config",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "$tool": {
+      "type": "string",
+      "description": "Must be set to svg-patterns.",
+      "const": "svg-patterns"
+    },
+    "dist": {
+      "description": "The output file path (relative to the pwd), support .ts .js .json.",
+      "type": "string"
+    },
+    "url": {
+      "description": "Target of raw Patterns-Gallery html page.",
+      "type": "string",
+      "default": "https://gitcdn.xyz/repo/progers/Patterns-Gallery/master/index.html"
+    }
+  },
+  "required": [
+    "$tool",
+    "dist",
+    "url"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Protein",
+  "description": "A protein",
+  "type": "object",
+  "properties": {
+    "fullName": {
+      "description": "The full name of a protein",
+      "type": "string"
+    },
+    "organism": {
+      "description": "The organism which the protein was extracted from",
+      "type": "string"
+    }
+  },
+  "required": [
+    "fullName",
+    "organism"
+  ]
+}

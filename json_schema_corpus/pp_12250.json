@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "id_etablissement": {
+      "type": "string"
+    },
+    "libelle": {
+      "type": "string"
+    },
+    "id": {
+      "type": "integer"
+    },
+    "justifiant": {
+      "type": "boolean"
+    },
+    "commentaire": {
+      "type": "string"
+    },
+    "id_categorie": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "id_etablissement",
+    "id_categorie",
+    "justifiant"
+  ]
+}

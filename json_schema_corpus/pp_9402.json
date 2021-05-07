@@ -1,0 +1,46 @@
+{
+  "name": "article-teaser-widget",
+  "description": "Displays details (description, image) for an article.",
+  "integration": {
+    "technology": "vue",
+    "type": "widget"
+  },
+  "styleSource": "scss/article-teaser-widget.scss",
+  "features": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "required": [
+      "article"
+    ],
+    "properties": {
+      "article": {
+        "type": "object",
+        "required": [
+          "resource"
+        ],
+        "properties": {
+          "resource": {
+            "type": "string",
+            "format": "topic",
+            "axRole": "inlet",
+            "description": "resource representing an article to display"
+          }
+        }
+      },
+      "confirmation": {
+        "type": "object",
+        "required": [
+          "action"
+        ],
+        "properties": {
+          "action": {
+            "type": "string",
+            "format": "topic",
+            "axRole": "outlet",
+            "description": "action to request adding the selected article to cart"
+          }
+        }
+      }
+    }
+  }
+}

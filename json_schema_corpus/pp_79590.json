@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "definitions": {
+    "entityID": {
+      "type": "string",
+      "description": "entity ID for the principal"
+    },
+    "nameID": {
+      "type": "string",
+      "description": "name ID for the principal"
+    }
+  },
+  "type": "object",
+  "properties": {
+    "entityID": {
+      "$ref": "#/definitions/entityID"
+    },
+    "nameID": {
+      "$ref": "#/definitions/nameID"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "entityID",
+    "nameID"
+  ]
+}

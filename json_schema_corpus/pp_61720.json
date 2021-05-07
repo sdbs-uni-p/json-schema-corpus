@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "RandomObject",
+  "type": "object",
+  "required": [
+    "random"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "scheme": {
+      "constant": "random"
+    },
+    "random": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "definitions": {
+    "metadata": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array"
+      }
+    },
+    "replies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "reply": {
+            "type": "string"
+          },
+          "metadata": {
+            "$ref": "#/definitions/metadata"
+          }
+        },
+        "required": [
+          "reply"
+        ]
+      }
+    }
+  },
+  "properties": {
+    "query": {
+      "type": "string"
+    },
+    "feeds": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "replies": {
+            "$ref": "#/definitions/replies"
+          }
+        },
+        "required": [
+          "name",
+          "replies"
+        ]
+      }
+    }
+  },
+  "required": [
+    "query",
+    "feeds"
+  ]
+}

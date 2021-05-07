@@ -1,0 +1,10 @@
+{
+  "id": "https://raw.githubusercontent.com/InfinniPlatform/InfinniUI-schema/master/Components/DateTimePicker/DatePickerMode.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "\u0420\u0435\u0436\u0438\u043c \u0440\u0430\u0431\u043e\u0442\u044b DatePicker",
+  "enum": [
+    "Date",
+    "Time",
+    "DateTime"
+  ]
+}

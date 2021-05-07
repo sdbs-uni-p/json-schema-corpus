@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Enum Investment Sub Type",
+  "type": "string",
+  "enum": [
+    "_403b",
+    "_401k",
+    "IRA",
+    "KEOGH",
+    "RETIREMENT",
+    "NOT_APPLICABLE",
+    "UNKNOWN"
+  ]
+}

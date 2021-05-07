@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "properties": {
+    "site_id": {
+      "type": "string"
+    },
+    "api_method": {
+      "type": "string"
+    },
+    "minutes": {
+      "type": "string",
+      "pattern": "^[0-9]+$"
+    }
+  },
+  "required": [
+    "site_id"
+  ],
+  "title": "Piwik Realtime Collector Query",
+  "type": "object",
+  "additionalProperties": false
+}

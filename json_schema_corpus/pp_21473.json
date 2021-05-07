@@ -1,0 +1,23 @@
+{
+  "id": "/templates/event-base-schema",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "event-base",
+  "description": "common json schema for time-based event records",
+  "type": "object",
+  "properties": {
+    "_id": {
+      "description": "unique url-friendly base64 encoded, utf8 endoded concatenation identifier",
+      "type": "string"
+    },
+    "_timestamp": {
+      "description": "ISO8601 combined date and time in UTC e.g. '2014-12-01T00:00:00+00:00'",
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "_id",
+    "_timestamp"
+  ],
+  "additionalProperties": false
+}

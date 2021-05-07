@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "endpoint": "/networks/mpesa",
+  "description": "Fetching data file for a single network",
+  "methods": [
+    "get"
+  ],
+  "type": "object",
+  "properties": {
+    "network": {
+      "$ref": "http://localhost:9667/definitions.json#/network"
+    }
+  },
+  "required": [
+    "network"
+  ]
+}

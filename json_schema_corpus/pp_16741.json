@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "#/vox/shop/product",
+  "type": "object",
+  "title": "Product Definition Schema",
+  "properties": {
+    "cash": {
+      "$ref": "product.json#/definitions/cash"
+    }
+  },
+  "required": [
+    "cash"
+  ]
+}

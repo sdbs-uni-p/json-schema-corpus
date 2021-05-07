@@ -1,0 +1,8 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "description",
+  "description": "Description",
+  "type": "string",
+  "minLength": 10,
+  "maxLength": 1000
+}

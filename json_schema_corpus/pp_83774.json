@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "properties": {
+    "name": {
+      "first": {
+        "type": "string"
+      },
+      "middle": {
+        "type": "string"
+      },
+      "last": {
+        "type": "string"
+      }
+    },
+    "location": {
+      "type": "string"
+    },
+    "dob": {
+      "type": "string"
+    },
+    "likes": {
+      "type": "number"
+    },
+    "image": {
+      "type": "string"
+    },
+    "current": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "name",
+    "location"
+  ]
+}

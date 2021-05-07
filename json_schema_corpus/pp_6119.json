@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Endpoint",
+  "type": "object",
+  "required": [
+    "path",
+    "method"
+  ],
+  "properties": {
+    "path": {
+      "description": "Request path",
+      "type": "string"
+    },
+    "method": {
+      "description": "Request method",
+      "type": "string",
+      "enum": [
+        "get",
+        "head",
+        "post",
+        "put",
+        "delete",
+        "connect",
+        "options",
+        "trace",
+        "patch"
+      ]
+    },
+    "parameters": {
+      "description": "URL parameters",
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "description": "URL parameter",
+        "$ref": "parameter.schema.json"
+      }
+    },
+    "queryParameters": {
+      "description": "URL parameters",
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "description": "Query parameter",
+        "$ref": "parameter.schema.json"
+      }
+    }
+  }
+}

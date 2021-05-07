@@ -1,0 +1,161 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "processes"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "execId": {
+      "type": "string"
+    },
+    "queue": {
+      "type": "string"
+    },
+    "priority": {
+      "type": "number"
+    },
+    "input": {
+      "type": "array"
+    },
+    "custom_values": {
+      "type": "object"
+    },
+    "retries": {
+      "type": "number"
+    },
+    "retry_delay": {
+      "type": [
+        "number",
+        "string"
+      ]
+    },
+    "triggers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "calendars": {
+            "type": "object",
+            "properties": {
+              "enable": {
+                "type": "string"
+              },
+              "disable": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "depends_chains": {
+      "type": [
+        "array",
+        "object"
+      ]
+    },
+    "notifications": {
+      "type": "object",
+      "properties": {
+        "on_start": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "on_end": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "on_fail": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "on_retry": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "on_waiting_dependencies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "defaults_processes": {
+      "type": "object",
+      "properties": {
+        "notifications": {
+          "$ref": "processSchema#/definitions/notifications_process"
+        },
+        "chain_action_on_fail": {
+          "$ref": "processSchema#/definitions/chain_action_on_fail_process"
+        },
+        "ignore_in_final_chain_status": {
+          "type": "boolean"
+        },
+        "output": {
+          "$ref": "processSchema#/definitions/output_process"
+        }
+      }
+    },
+    "processes": {
+      "$ref": "processSchema"
+    }
+  }
+}

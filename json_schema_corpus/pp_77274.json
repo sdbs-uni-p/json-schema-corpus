@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "title": "Test temperature",
+  "definitions": {
+    "core.temperature": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Friendly device name (e.g. Kitchen Temperature)"
+        },
+        "temperature": {
+          "type": "number",
+          "description": "ReadOnly,Current sensed Temperature"
+        },
+        "failure": {
+          "type": "boolean",
+          "description": "Current failure status"
+        }
+      }
+    }
+  },
+  "type": "object",
+  "required": [
+    "temperature"
+  ]
+}

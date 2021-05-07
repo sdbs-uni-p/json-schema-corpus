@@ -1,0 +1,243 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "",
+  "version": 1.0,
+  "definitions": {
+    "fields": {
+      "name": {
+        "type": "string",
+        "description": "The name of the event, as displayed in Trace Viewer."
+      },
+      "category": {
+        "type": "string",
+        "description": "The event categories. This is a comma separated list of categories for the event. The categories can be used to hide events in the Trace Viewer UI."
+      },
+      "process-id": {
+        "type": "integer"
+      },
+      "durartion": {
+        "type": "integer"
+      },
+      "timestamp": {
+        "type": "integer"
+      },
+      "thread-id": {
+        "type": "integer"
+      },
+      "thread-duration": {
+        "type": "integer"
+      },
+      "thread-timestamp": {
+        "type": "integer"
+      },
+      "durationEvent-phases": {
+        "type": "string",
+        "enum": [
+          "B",
+          "E"
+        ]
+      },
+      "completeEvent-phases": {
+        "type": "string",
+        "enum": [
+          "X"
+        ]
+      },
+      "instantEvent-phases": {
+        "type": "string",
+        "enum": [
+          "I"
+        ]
+      },
+      "counterEvent-phases": {
+        "type": "string",
+        "enum": [
+          "C"
+        ]
+      },
+      "asyncEvent-phases": {
+        "type": "string",
+        "enum": [
+          "b",
+          "n",
+          "e"
+        ]
+      },
+      "flowEvent-phases": {
+        "type": "string",
+        "enum": [
+          "s",
+          "f",
+          "t"
+        ]
+      },
+      "sampleEvent-phases": {
+        "type": "string",
+        "enum": [
+          "P"
+        ]
+      },
+      "objectEvent-phases": {
+        "type": "string",
+        "enum": [
+          "N",
+          "O",
+          "D"
+        ]
+      },
+      "metadataEvent-phases": {
+        "type": "string",
+        "enum": [
+          "M"
+        ]
+      }
+    },
+    "events": {
+      "base-event": {
+        "type": "object",
+        "properties": {
+          "cat": {
+            "$ref": "#/definitions/fields/category"
+          },
+          "name": {
+            "$ref": "#/definitions/fields/name"
+          },
+          "pid": {
+            "$ref": "#/definitions/fields/process-id"
+          },
+          "dur": {
+            "$ref": "#/definitions/fields/duration"
+          },
+          "ts": {
+            "$ref": "#/definitions/fields/timestamp"
+          },
+          "tid": {
+            "$ref": "#/definitions/fields/thread-id"
+          },
+          "tdur": {
+            "$ref": "#/definitions/fields/thread-duration"
+          },
+          "tts": {
+            "$ref": "#/definitions/fields/thread-timestamp"
+          },
+          "ph": {
+            "anyOf": [
+              {
+                "$ref": "#/definitions/fields/durationEvent-phases"
+              },
+              {
+                "$ref": "#/definitions/fields/completeEvent-phases"
+              },
+              {
+                "$ref": "#/definitions/fields/instantEvent-phases"
+              },
+              {
+                "$ref": "#/definitions/fields/counterEvent-phases"
+              },
+              {
+                "$ref": "#/definitions/fields/asyncEvent-phases"
+              },
+              {
+                "$ref": "#/definitions/fields/flowEvent-phases"
+              },
+              {
+                "$ref": "#/definitions/fields/sampleEvent-phases"
+              },
+              {
+                "$ref": "#/definitions/fields/objectEvent-phases"
+              },
+              {
+                "$ref": "#/definitions/fields/metadataEvent-phases"
+              }
+            ]
+          }
+        }
+      },
+      "duration-event": {
+        "required": [
+          "pid",
+          "tid",
+          "ph",
+          "ts"
+        ],
+        "allOf": [
+          {
+            "$ref": "#/definitions/events/base-event"
+          },
+          {
+            "properties": {
+              "ph": {
+                "$ref": "#/definitions/fields/durationEvent-phases"
+              }
+            }
+          }
+        ]
+      },
+      "metadata-event": {
+        "allOf": [
+          {
+            "$ref": "#/definitions/events/base-event"
+          },
+          {
+            "properties": {
+              "name": {
+                "enum": [
+                  "num_cpus",
+                  "process_labels",
+                  "process_name",
+                  "process_sort_index",
+                  "thread_name",
+                  "thread_sort_index",
+                  "overhead"
+                ]
+              },
+              "ph": {
+                "$ref": "#/definitions/fields/metadataEvent-phases"
+              }
+            }
+          }
+        ]
+      },
+      "other-event": {
+        "allOf": [
+          {
+            "$ref": "#/definitions/events/base-event"
+          },
+          {
+            "properties": {
+              "ph": {
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/fields/asyncEvent-phases"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "type": "object",
+  "required": [
+    "traceEvents"
+  ],
+  "properties": {
+    "traceEvents": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "#/definitions/events/duration-event"
+          },
+          {
+            "$ref": "#/definitions/events/other-event"
+          },
+          {
+            "$ref": "#/definitions/events/metadata-event"
+          }
+        ]
+      }
+    }
+  }
+}

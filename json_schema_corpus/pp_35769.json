@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "name": "Registry-Schema",
+  "version": "1.0.0",
+  "author": "denis",
+  "description": "represent a Docker Registry",
+  "associated-tool": "Docker-Rest-API",
+  "properties": [
+    {
+      "name": "id",
+      "type": "string",
+      "default-value": "",
+      "required": "yes",
+      "description": "id of the Docker Registry"
+    },
+    {
+      "name": "url",
+      "type": "string",
+      "default-value": "",
+      "required": "yes",
+      "description": "URL of the Docker Registry"
+    },
+    {
+      "name": "port",
+      "type": "integer",
+      "default-value": "",
+      "required": "yes",
+      "description": "Port of the Docker Registry"
+    }
+  ]
+}

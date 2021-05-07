@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "extends": {
+    "$ref": "file://test.json"
+  },
+  "required": [
+    "abc",
+    "def"
+  ],
+  "properties": {
+    "def": {
+      "type": "number"
+    }
+  }
+}

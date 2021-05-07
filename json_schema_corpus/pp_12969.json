@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Message",
+  "description": "Message validation schema",
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "The unique identifier for a message",
+      "type": "string"
+    },
+    "from": {
+      "description": "Message sender",
+      "type": "string"
+    },
+    "to": {
+      "description": "Message receiver",
+      "type": "string"
+    },
+    "content": {
+      "description": "Message content",
+      "type": "string"
+    },
+    "isSaved": {
+      "description": "Message state",
+      "type": "boolean"
+    },
+    "cnt": {
+      "description": "Message counter",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "id",
+    "from",
+    "to",
+    "content",
+    "isSaved",
+    "cnt"
+  ]
+}

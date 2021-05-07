@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "description": "details of a a single category, identified by id or key (if a well-known category)",
+  "definitions": {
+    "rules": {
+      "type": "object",
+      "properties": {
+        "canMultiSelect": {
+          "type": "boolean",
+          "description": "true if an object can have multiple values for this category"
+        },
+        "leafSelectionOnly": {
+          "type": "boolean",
+          "description": "true if an object can have only leaf selections for this category"
+        },
+        "mandatory": {
+          "description": "whether a value for the category is mandatory",
+          "type": "boolean"
+        },
+        "message": {
+          "type": "string",
+          "description": "a message to help the candidate/user when entering values for the category - e.g. 'tell us the top 4 stores you really want to work at'"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "mandatory",
+        "canMultiSelect",
+        "leafSelectionOnly"
+      ]
+    }
+  },
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "key": {
+      "enum": [
+        "LOCATION"
+      ],
+      "description": "used to identify categories that are well-known, i.e. agreed on by all apps. User-defined categories don't have a key"
+    },
+    "name": {
+      "type": "string",
+      "description": "the user visible name for this category"
+    },
+    "code": {
+      "type": "string",
+      "description": "a code for this category"
+    },
+    "candidateRules": {
+      "$ref": "#/definitions/rules"
+    },
+    "jobRules": {
+      "$ref": "#/definitions/rules"
+    },
+    "values": {
+      "$ref": "categoryValues.json"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "name",
+    "jobRules",
+    "candidateRules"
+  ]
+}

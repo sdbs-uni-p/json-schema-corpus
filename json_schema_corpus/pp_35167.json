@@ -1,0 +1,54 @@
+{
+  "id": "/sms",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Sms",
+  "description": "A message sent via Short Message Service",
+  "type": "object",
+  "definitions": {
+    "body": {
+      "type": "string",
+      "example": "How is it going?",
+      "description": "The text of your sms."
+    },
+    "to": {
+      "type": "string",
+      "example": "+61438000000",
+      "description": "The number you're trying to send an sms to"
+    },
+    "from": {
+      "type": "string",
+      "example": "61438000000",
+      "description": "The number you're trying to send an sms from"
+    }
+  },
+  "required": [
+    "body",
+    "to"
+  ],
+  "properties": {
+    "body": {
+      "$ref": "#/definitions/body"
+    },
+    "to": {
+      "$ref": "#/definitions/to"
+    },
+    "from": {
+      "$ref": "#/definitions/from"
+    }
+  },
+  "links": [
+    {
+      "title": "Create sms",
+      "description": "Create a new Sms",
+      "rel": "self",
+      "href": "/smss",
+      "method": "POST",
+      "targetSchema": {
+        "rel": "self"
+      },
+      "schema": {
+        "rel": "self"
+      }
+    }
+  ]
+}

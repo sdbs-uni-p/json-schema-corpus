@@ -1,0 +1,28 @@
+{
+  "type": "object",
+  "properties": {
+    "count": {
+      "type": "string",
+      "description": "Number of resources in the data object."
+    },
+    "limit": {
+      "type": "string",
+      "description": "The search limit used in request."
+    },
+    "offset": {
+      "type": "string",
+      "description": "The search offset used in request."
+    },
+    "total": {
+      "type": "string",
+      "description": "Total number of search results without limit being applied."
+    }
+  },
+  "required": [
+    "count",
+    "limit",
+    "offset",
+    "total"
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

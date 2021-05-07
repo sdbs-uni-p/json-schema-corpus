@@ -1,0 +1,297 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "uri://registries/organization#",
+  "table": "organizations",
+  "title": "Organizacie",
+  "listFields": [
+    {
+      "field": "id",
+      "title": "ID"
+    },
+    {
+      "field": "baseData.name",
+      "title": "Meno"
+    }
+  ],
+  "properties": {
+    "baseData": {
+      "title": "Z\u00e1kladn\u00e9 \u00fadaje",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "Identifik\u00e1tor",
+          "type": "string",
+          "required": true
+        },
+        "name": {
+          "title": "N\u00e1zov organizacie",
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    "additionalData": {
+      "title": "Dodato\u010dn\u00e9 inform\u00e1cie",
+      "type": "object",
+      "properties": {
+        "typeOfFutbal": {
+          "title": "Typ futbalu",
+          "type": "string",
+          "required": true
+        },
+        "association": {
+          "title": "Zv\u00e4z",
+          "type": "string",
+          "required": false
+        },
+        "birthDate": {
+          "title": "D\u00e1tum zalo\u017eenia",
+          "type": "string",
+          "required": false,
+          "render": {
+            "component": "psui-datepicker"
+          }
+        },
+        "Stadium": {
+          "title": "\u0160tadi\u00f3n",
+          "required": false,
+          "$objectLink": {
+            "registry": "stadium",
+            "name": "baseData.name"
+          }
+        },
+        "stateOfClub": {
+          "title": "Stav klubu",
+          "type": "string",
+          "required": true
+        },
+        "notPaying": {
+          "title": "Neplati\u010d",
+          "type": "string",
+          "enum": [
+            "\u00c1no",
+            "Nie"
+          ],
+          "required": true
+        },
+        "issfActive": {
+          "title": "ISSF akt\u00edvny",
+          "type": "string",
+          "enum": [
+            "\u00c1no",
+            "Nie"
+          ],
+          "required": true
+        },
+        "dateOfRegistration": {
+          "title": "D\u00e1tum registr\u00e1cie",
+          "type": "string",
+          "required": false,
+          "render": {
+            "component": "psui-datepicker"
+          }
+        },
+        "canBeFacturatedOnClub": {
+          "title": "M\u00f4\u017ee sa fakt\u00farova\u0165 na klub",
+          "type": "string",
+          "enum": [
+            "\u00c1no",
+            "Nie"
+          ],
+          "required": true
+        }
+      }
+    },
+    "logoInfo": {
+      "title": "Logo",
+      "type": "object",
+      "properties": {
+        "photo": {
+          "title": "Logo",
+          "type": "string",
+          "required": true,
+          "render": {
+            "component": "psui-uploadable-image",
+            "height": 244,
+            "width": 205
+          }
+        }
+      }
+    },
+    "contactInfo": {
+      "title": "Kontaktn\u00e9 \u00fadaje",
+      "type": "object",
+      "properties": {
+        "street": {
+          "title": "Ulica",
+          "type": "string",
+          "required": true
+        },
+        "houseNumber": {
+          "title": "\u010c\u00edslo domu",
+          "type": "string",
+          "required": true
+        },
+        "city": {
+          "title": "Obec",
+          "type": "string",
+          "required": true
+        },
+        "zipCode": {
+          "title": "PS\u010c",
+          "type": "string",
+          "required": true
+        },
+        "country": {
+          "title": "\u0160t\u00e1t",
+          "type": "string",
+          "required": true
+        },
+        "phoneNumber": {
+          "title": "Telef\u00f3n",
+          "type": "string",
+          "required": false
+        },
+        "mobileNumber": {
+          "title": "Mobil",
+          "type": "string",
+          "required": false
+        },
+        "email": {
+          "title": "E-mail",
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    "bankInfo": {
+      "title": "Faktura\u010dn\u00e9 \u00fadaje",
+      "type": "object",
+      "properties": {
+        "name": {
+          "title": "Obchodn\u00fd n\u00e1zov spolo\u010dnosti",
+          "type": "string",
+          "required": false
+        },
+        "statutarOrganOfClub": {
+          "title": "\u0160tatut\u00e1rny org\u00e1n klubu",
+          "type": "string",
+          "required": false
+        },
+        "ico": {
+          "title": "I\u010cO",
+          "type": "string",
+          "required": false
+        },
+        "dic": {
+          "title": "DI\u010c",
+          "type": "string",
+          "required": false
+        },
+        "icDPH": {
+          "title": "I\u010c DPH",
+          "type": "string",
+          "required": false
+        },
+        "bankAccount": {
+          "title": "\u010c\u00edslo \u00fa\u010dtu",
+          "type": "string",
+          "required": false
+        },
+        "bankCode": {
+          "title": "K\u00f3d banky",
+          "type": "string",
+          "required": false
+        },
+        "iban": {
+          "title": "IBAN",
+          "type": "string",
+          "required": false
+        },
+        "swift": {
+          "title": "SWIFT",
+          "type": "string",
+          "required": false
+        },
+        "street": {
+          "title": "Ulica",
+          "type": "string",
+          "required": false
+        },
+        "houseNumber": {
+          "title": "\u010c\u00edslo domu",
+          "type": "string",
+          "required": false
+        },
+        "city": {
+          "title": "Obec",
+          "type": "string",
+          "required": false
+        },
+        "zipCode": {
+          "title": "PS\u010c",
+          "type": "string",
+          "required": false
+        },
+        "country": {
+          "title": "\u0160t\u00e1t",
+          "type": "string",
+          "required": false
+        }
+      }
+    },
+    "curier": {
+      "title": "Kuri\u00e9r - Dodacia adresa",
+      "type": "object",
+      "properties": {
+        "contactPerson": {
+          "title": "Kontaktn\u00e1 osoba",
+          "type": "string",
+          "required": false
+        },
+        "mobileNumberOfContactPerson": {
+          "title": "Telef\u00f3nne \u010d\u00edslo kontaktnej osoby",
+          "type": "string",
+          "required": false
+        },
+        "street": {
+          "title": "Ulica",
+          "type": "string",
+          "required": false
+        },
+        "houseNumber": {
+          "title": "\u010c\u00edslo domu",
+          "type": "string",
+          "required": false
+        },
+        "city": {
+          "title": "Obec",
+          "type": "string",
+          "required": false
+        },
+        "zipCode": {
+          "title": "PS\u010c",
+          "type": "string",
+          "required": false
+        },
+        "country": {
+          "title": "\u0160t\u00e1t",
+          "type": "string",
+          "required": false
+        }
+      }
+    },
+    "otherInfo": {
+      "title": "Ostatn\u00e9 inform\u00e1cie",
+      "type": "object",
+      "properties": {
+        "note": {
+          "title": "Pozn\u00e1mka",
+          "type": "string",
+          "required": false,
+          "large": true
+        }
+      }
+    }
+  }
+}

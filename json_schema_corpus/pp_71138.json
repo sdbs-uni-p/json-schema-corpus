@@ -1,0 +1,38 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "#",
+  "javaType": "org.apache.streams.elasticsearch.ElasticsearchReaderConfiguration",
+  "extends": {
+    "$ref": "ElasticsearchConfiguration.json"
+  },
+  "javaInterfaces": [
+    "java.io.Serializable"
+  ],
+  "properties": {
+    "indexes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Indexes to read from"
+    },
+    "types": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Types to read from"
+    },
+    "scrollTimeout": {
+      "type": "string",
+      "description": "Scroll Timeout (JodaTime)",
+      "default": "5m"
+    },
+    "_search": {
+      "type": "object",
+      "javaType": "java.util.Map",
+      "description": "Search definition"
+    }
+  }
+}

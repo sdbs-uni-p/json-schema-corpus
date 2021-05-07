@@ -1,0 +1,205 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "title": "Alert",
+  "description": "Working with MMS Alerts",
+  "type": "object",
+  "definitions": {
+    "id": {
+      "description": "Unique identifier",
+      "example": "5196d3628d022db4cbc26d9e",
+      "type": "string"
+    },
+    "groupId": {
+      "description": "ID of the group that this alert was opened for.",
+      "example": "5196d3628d022db4cbc26d9e",
+      "type": "string"
+    },
+    "typeName": {
+      "description": "The type of alert.",
+      "example": "AGENT",
+      "type": "string",
+      "enum": [
+        "AGENT",
+        "BACKUP",
+        "HOST",
+        "HOST_METRIC",
+        "REPLICA_SET"
+      ]
+    },
+    "eventTypeName": {
+      "description": "The name of the event that triggered the alert. The possible values here depend on the typeName.",
+      "example": "MONITORING_AGENT_DOWN",
+      "type": "string"
+    },
+    "status": {
+      "description": "The current state of the alert. Possible values are: OPEN CLOSED",
+      "example": "OPEN",
+      "type": "string",
+      "enum": [
+        "OPEN",
+        "CLOSED"
+      ]
+    },
+    "acknowledgedUntil": {
+      "description": "The date through which the alert has been acknowledged. Will not be present if the alert has never been acknowledged.",
+      "example": "2014-03-01T12:00:00Z",
+      "format": "date-time",
+      "type": "string"
+    },
+    "acknowledgementComment": {
+      "description": "The comment left by the user who acknowledged the alert. Will not be present if the alert has never been acknowledged.",
+      "example": "This is a comment string.",
+      "type": "string"
+    },
+    "acknowledgingUsername": {
+      "description": "The username of the user who acknowledged the alert. Will not be present if the alert has never been acknowledged.",
+      "example": "jane.doe@mongodb.com",
+      "type": "string"
+    },
+    "created": {
+      "description": "When the alert was opened.",
+      "example": "2014-03-01T12:00:00Z",
+      "format": "date-time",
+      "type": "string"
+    },
+    "updated": {
+      "description": "When the alert was last updated.",
+      "example": "2014-03-01T12:00:00Z",
+      "format": "date-time",
+      "type": "string"
+    },
+    "resolved": {
+      "description": "When the alert was closed. Only present if the status is CLOSED.",
+      "example": "2014-03-01T12:00:00Z",
+      "format": "date-time",
+      "type": "string"
+    },
+    "lastNotified": {
+      "description": "When the last notification was sent for this alert. Only present if notifications have been sent.",
+      "example": "2014-03-01T12:00:00Z",
+      "format": "date-time",
+      "type": "string"
+    },
+    "currentValue": {
+      "type": "object",
+      "properties": {
+        "number": {
+          "description": "The value of the metric.",
+          "example": 100.0,
+          "type": "number"
+        },
+        "units": {
+          "$ref": "/schemata/metric#/definitions/units"
+        }
+      }
+    }
+  },
+  "links": [
+    {
+      "description": "Info for existing alert.",
+      "href": "/groups/{(%2Fschemata%2Fgroup%23%2Fdefinitions%2Fid)}/alerts/{(%2Fschemata%2Falert%23%2Fdefinitions%2Fid)}",
+      "method": "GET",
+      "rel": "self",
+      "targetSchema": {
+        "$ref": "/schemata/alert"
+      },
+      "title": "Info"
+    },
+    {
+      "description": "List existing alerts.",
+      "href": "/groups/{(%2Fschemata%2Fgroup%23%2Fdefinitions%2Fid)}/alerts",
+      "method": "GET",
+      "rel": "instances",
+      "targetSchema": {
+        "type": "object",
+        "properties": {
+          "totalCount": {
+            "example": 1,
+            "type": "integer"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "/schemata/alert"
+            }
+          }
+        }
+      },
+      "title": "List"
+    },
+    {
+      "description": "List existing alerts for specified alert config.",
+      "href": "/groups/{(%2Fschemata%2Fgroup%23%2Fdefinitions%2Fid)}/alertConfigs/{(%2Fschemata%2FalertConfig%23%2Fdefinitions%2Fid)}/alerts",
+      "method": "GET",
+      "rel": "instances",
+      "targetSchema": {
+        "type": "object",
+        "properties": {
+          "totalCount": {
+            "example": 1,
+            "type": "integer"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "/schemata/alert"
+            }
+          }
+        }
+      },
+      "title": "List"
+    },
+    {
+      "description": "Update an existing alert.",
+      "href": "/groups/{(%2Fschemata%2Fgroup%23%2Fdefinitions%2Fid)}/alerts/{(%2Fschemata%2Falert%23%2Fdefinitions%2Fid)}",
+      "method": "PATCH",
+      "rel": "update",
+      "schema": {
+        "$ref": "/schemata/alert"
+      },
+      "targetSchema": {
+        "$ref": "/schemata/alert"
+      },
+      "title": "Update"
+    }
+  ],
+  "properties": {
+    "id": {
+      "$ref": "/schemata/alert#/definitions/id"
+    },
+    "groupId": {
+      "$ref": "/schemata/alert#/definitions/groupId"
+    },
+    "typeName": {
+      "$ref": "/schemata/alert#/definitions/typeName"
+    },
+    "eventTypeName": {
+      "$ref": "/schemata/alert#/definitions/eventTypeName"
+    },
+    "status": {
+      "$ref": "/schemata/alert#/definitions/status"
+    },
+    "acknowledgedUntil": {
+      "$ref": "/schemata/alert#/definitions/acknowledgedUntil"
+    },
+    "created": {
+      "$ref": "/schemata/alert#/definitions/created"
+    },
+    "updated": {
+      "$ref": "/schemata/alert#/definitions/updated"
+    },
+    "resolved": {
+      "$ref": "/schemata/alert#/definitions/resolved"
+    },
+    "lastNotified": {
+      "$ref": "/schemata/alert#/definitions/lastNotified"
+    },
+    "metricName": {
+      "$ref": "/schemata/metric#/definitions/metricName"
+    },
+    "currentValue": {
+      "$ref": "/schemata/alert#/definitions/currentValue"
+    }
+  },
+  "id": "schemata/alert"
+}

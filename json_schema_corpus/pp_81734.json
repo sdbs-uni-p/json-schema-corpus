@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "uri://registries/user#",
+  "properties": {
+    "firstName": {
+      "type": "string"
+    },
+    "club": {
+      "objectLink": {
+        "name": "name",
+        "city": "address.city"
+      }
+    },
+    "employer": {
+      "objectLink": {
+        "name": "employer.name",
+        "type": "employer.type"
+      }
+    },
+    "organization": {
+      "objectLink": {
+        "$registry": "organizations"
+      }
+    },
+    "school": {
+      "objectLink": {
+        "registry": "schools",
+        "name": "organization.name"
+      }
+    }
+  }
+}

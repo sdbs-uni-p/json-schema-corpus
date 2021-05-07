@@ -1,0 +1,298 @@
+{
+  "title": "Individual",
+  "id": "/profiles/individual.json",
+  "description": "Schema for storing and using individual data",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "required": [
+    "label",
+    "diagnosis"
+  ],
+  "identifyingProperties": [
+    "uuid"
+  ],
+  "additionalProperties": false,
+  "mixinProperties": [
+    {
+      "$ref": "mixins.json#/schema_version"
+    },
+    {
+      "$ref": "mixins.json#/uuid"
+    },
+    {
+      "$ref": "mixins.json#/submitted"
+    }
+  ],
+  "properties": {
+    "schema_version": {
+      "default": "1"
+    },
+    "label": {
+      "title": "Label",
+      "description": "An user entered label for individual",
+      "type": "string"
+    },
+    "diagnosis": {
+      "title": "Diagnosis",
+      "description": "List of Orphanet IDs to diagnosis",
+      "type": "array",
+      "items": {
+        "title": "Orphanet ID",
+        "type": "string",
+        "linkTo": "orphaPhenotype"
+      }
+    },
+    "sex": {
+      "title": "Sex",
+      "description": "Sex",
+      "type": "string",
+      "default": ""
+    },
+    "hpoIdInDiagnosis": {
+      "title": "HPO ID(s)",
+      "description": "List of HPO ID for the disease",
+      "type": "array",
+      "default": [],
+      "items": {
+        "title": "HPO ID",
+        "description": "HPO ID",
+        "type": "string"
+      }
+    },
+    "termsInDiagnosis": {
+      "title": "Non-HPO term(s)",
+      "description": "Non-HPO terms (separated by comma) for the disease",
+      "type": "string",
+      "default": ""
+    },
+    "hpoIdInElimination": {
+      "title": "HPO ID(s) Eliminated",
+      "description": "List of HPO IDs eliminated from the disease",
+      "type": "array",
+      "default": [],
+      "items": {
+        "title": "HPO IDs Eliminated",
+        "description": "HPO ID eliminated",
+        "type": "string"
+      }
+    },
+    "termsInElimination": {
+      "title": "Non-HPO term(s) Eliminated",
+      "description": "Non-HPO terms (separated by comma) eliminated from the disease",
+      "type": "string",
+      "default": ""
+    },
+    "countryOfOrigin": {
+      "title": "Country Of Origin",
+      "description": "Country in which the family original live",
+      "type": "string",
+      "default": ""
+    },
+    "ethnicity": {
+      "title": "Ethnicity",
+      "description": "Ethnicity",
+      "type": "string",
+      "default": "",
+      "enum": [
+        "",
+        "Hispanic or Latino",
+        "Not Hispanic or Latino"
+      ]
+    },
+    "race": {
+      "title": "Race",
+      "description": "Race",
+      "type": "string",
+      "default": "",
+      "enum": [
+        "",
+        "American Indian or Alaska Native",
+        "Asian",
+        "Black",
+        "Native Hawaiian or Other Pacific Islander",
+        "White",
+        "Mixed",
+        "Unknown"
+      ]
+    },
+    "ageType": {
+      "title": "Type of Age",
+      "description": "Type of age",
+      "type": "string",
+      "default": "",
+      "enum": [
+        "",
+        "Onset",
+        "Report",
+        "Diagnosis",
+        "Death"
+      ]
+    },
+    "ageValue": {
+      "title": "Age Value",
+      "description": "Age value",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 150
+    },
+    "ageUnit": {
+      "title": "Age Unit",
+      "description": "Unit of age",
+      "type": "string",
+      "default": "",
+      "enum": [
+        "",
+        "Days",
+        "Weeks",
+        "Months",
+        "Years"
+      ]
+    },
+    "method": {
+      "title": "Individual Method",
+      "type": "object",
+      "default": {},
+      "properties": {
+        "previousTesting": {
+          "title": "Previous Testing",
+          "description": "Previous testing",
+          "type": "boolean"
+        },
+        "previousTestingDescription": {
+          "title": "Previous Testing",
+          "description": "Previous testing",
+          "type": "string",
+          "default": ""
+        },
+        "genomeWideStudy": {
+          "title": "Genome-Wide Study",
+          "description": "Genome-wide study",
+          "type": "boolean"
+        },
+        "genotypingMethods": {
+          "title": "Genotyping Method(s)",
+          "description": "List of genotyping methods",
+          "type": "array",
+          "default": [],
+          "items": {
+            "title": "Genotyping Method",
+            "description": "Genotyping method",
+            "type": "string",
+            "enum": [
+              "Exome sequencing",
+              "Genotyping",
+              "HRM",
+              "PCR",
+              "Sanger",
+              "Whole genome shotgun sequencing"
+            ]
+          }
+        },
+        "entireGeneSequenced": {
+          "title": "Entire Gene Sequenced",
+          "description": "Entire gene sequenced",
+          "type": "boolean"
+        },
+        "copyNumberAssessed": {
+          "title": "Copy Number Assessed",
+          "description": "Copy number assessed",
+          "type": "boolean"
+        },
+        "specificMutationsGenotyped": {
+          "title": "Copy Number Assessed",
+          "description": "Copy number assessed",
+          "type": "boolean"
+        },
+        "specificMutationsGenotypedMethod": {
+          "title": "Specific Mutations Genotyped Method",
+          "description": "Method by which specific mutations genotyped",
+          "type": "string",
+          "default": ""
+        },
+        "additionalInformation": {
+          "title": "Additional Information",
+          "description": "Additional information",
+          "type": "string",
+          "default": ""
+        },
+        "dateTime": {
+          "title": "Date Time",
+          "description": "Time stamp for creation",
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "additionalInformation": {
+      "title": "Additional Information",
+      "description": "List of Additional information for the individual",
+      "type": "string",
+      "default": ""
+    },
+    "otherPMIDs": {
+      "title": "Other PMIDs",
+      "description": "List of other PMIDs having evidence about the individual",
+      "type": "array",
+      "default": [],
+      "items": {
+        "title": "PMID",
+        "description": "PMID",
+        "type": "string",
+        "linkTo": "article"
+      }
+    },
+    "variants": {
+      "title": "Variant Associated",
+      "description": "List of variant(s) associated to the individual",
+      "type": "array",
+      "default": [],
+      "items": {
+        "title": "Variant",
+        "description": "List of variant ids, see variant.json for detials",
+        "type": "string",
+        "linkTo": "variant"
+      }
+    },
+    "proband": {
+      "title": "Proband",
+      "description": "Whether or not associated with a proband variant to a family",
+      "type": "boolean",
+      "default": false
+    },
+    "active": {
+      "description": "boolean switch to set if the individual avaliable for curation.",
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "columns": {
+    "label": {
+      "title": "Label",
+      "type": "string"
+    },
+    "diagnosis": {
+      "title": "Diagnosis",
+      "type": "string"
+    },
+    "date_created": {
+      "title": "Creation Date",
+      "type": "string"
+    },
+    "sex": {
+      "title": "Sex",
+      "type": "string"
+    },
+    "race": {
+      "title": "Race",
+      "type": "string"
+    },
+    "proband": {
+      "title": "Proband",
+      "type": "boolean"
+    },
+    "submitted_by.uuid": {
+      "title": "Creator",
+      "type": "string"
+    }
+  }
+}

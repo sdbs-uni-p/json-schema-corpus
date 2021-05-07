@@ -1,0 +1,74 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "id": "/schemata/custom_field",
+  "title": "Custom Field",
+  "description": "A **custom field** defines an abstract field that admissions staff can use to store arbitrary data about an applicant.  The data itself is stored in a **custom field answer**.",
+  "links": [
+    {
+      "description": "List existing custom fields.",
+      "href": "/api/v1/user_identities/:user_identity_id/programs/:program_id/custom_fields",
+      "method": "GET",
+      "rel": "self",
+      "title": "List",
+      "http_header": {
+        "x-api-key": "0123456789abcdef0123456789abcdef"
+      }
+    }
+  ],
+  "type": "object",
+  "strictProperties": true,
+  "properties": {
+    "href": {
+      "type": "string",
+      "description": "Hypertext reference to this resource.",
+      "pattern": "/api/v1/user_identities/\\d+/programs/\\d+/custom_fields",
+      "example": "/api/v1/user_identities/1/programs/42023191739237/custom_fields"
+    },
+    "custom_fields": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique identifier for this custom field.",
+            "example": 4
+          },
+          "label": {
+            "type": "string",
+            "description": "Human-readable name of this custom field.",
+            "example": "Preferred house"
+          },
+          "field_type": {
+            "type": "string",
+            "description": "The type of data that this field stores.",
+            "enum": [
+              "boolean",
+              "number",
+              "date",
+              "string",
+              "select"
+            ],
+            "example": "select"
+          },
+          "options": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "description": "When `field_type` is `\"select\"`, this defines the list of allowed values for the field.  Otherwise, this is `null`.",
+            "example": [
+              "Gryffindor",
+              "Hufflepuff",
+              "Ravenclaw",
+              "Slytherin"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

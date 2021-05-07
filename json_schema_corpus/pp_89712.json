@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "title": "com.xcitestudios.schema.Network.Server.Configuration.ServerConfiguration",
+  "description": "Minimum required output for a server configuration object",
+  "type": "object",
+  "properties": {
+    "host": {
+      "type": "string",
+      "description": "Host name, IPv4 or IPv6 address of the server"
+    },
+    "port": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 65535,
+      "description": "Port on the server to connect to"
+    },
+    "ssl": {
+      "type": "boolean",
+      "description": "Whether or not SSL should be used for the connection"
+    },
+    "tls": {
+      "type": "boolean",
+      "description": "Whether or not TLS should be used for the connection"
+    }
+  },
+  "required": [
+    "host",
+    "port"
+  ]
+}

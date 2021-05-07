@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "title": "com.xcitestudios.schema.Network.Server.Configuration.UsernameAuthenticatedServerConfiguration",
+  "description": "Minimum required output for a username authentication based server configuration object",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "ServerConfiguration.json#"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string",
+          "description": "Username used during authentication"
+        },
+        "password": {
+          "type": "string",
+          "description": "Password used during authentication"
+        }
+      },
+      "required": [
+        "host",
+        "port"
+      ]
+    }
+  ]
+}

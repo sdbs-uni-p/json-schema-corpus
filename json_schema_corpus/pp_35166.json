@@ -1,0 +1,101 @@
+{
+  "id": "/email",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Email",
+  "description": "An Electronic Mail Message",
+  "type": "object",
+  "definitions": {
+    "subject": {
+      "type": "string",
+      "description": "The email's subject",
+      "example": "Oh hai there"
+    },
+    "body": {
+      "required": [
+        "text"
+      ],
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string",
+          "example": "How you doing?",
+          "description": "The text body of your email. Used for non-html email clients."
+        },
+        "html": {
+          "type": "string",
+          "example": "Check this out <br> <img src=\"http://i.ytimg.com/vi/J---aiyznGQ/hqdefault.jpg\" alt=\"Logo\" title=\"Logo\" style=\"display:block\" width=\"200\" height=\"87\" />",
+          "description": "The HTML body of your email. Used by marketing people."
+        }
+      }
+    },
+    "to": {
+      "required": [
+        "address"
+      ],
+      "type": "object",
+      "properties": {
+        "address": {
+          "type": "string",
+          "format": "email",
+          "example": "dog@example.com",
+          "description": "The address you're trying to send an email to"
+        },
+        "name": {
+          "type": "string",
+          "example": "Mr Dog",
+          "description": "The name of the entity you're trying to send an email to"
+        }
+      }
+    },
+    "from": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "type": "string",
+          "format": "email",
+          "example": "cat@example.com",
+          "description": "The address you're trying to send an email from"
+        },
+        "name": {
+          "type": "string",
+          "example": "Keyboard Cat",
+          "description": "The name of the entity you're trying to send an email from"
+        }
+      }
+    }
+  },
+  "required": [
+    "subject",
+    "body",
+    "to"
+  ],
+  "properties": {
+    "subject": {
+      "$ref": "#/definitions/subject"
+    },
+    "body": {
+      "$ref": "#/definitions/body"
+    },
+    "to": {
+      "$ref": "#/definitions/to"
+    },
+    "from": {
+      "$ref": "#/definitions/from"
+    }
+  },
+  "links": [
+    {
+      "title": "Create email",
+      "description": "Create a new Email",
+      "rel": "self",
+      "href": "/emails",
+      "method": "POST",
+      "targetSchema": {
+        "rel": "self"
+      },
+      "schema": {
+        "rel": "self"
+      }
+    }
+  ]
+}

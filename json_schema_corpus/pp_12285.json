@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "cldrdateoptions",
+  "properties": {
+    "skeleton": {
+      "type": "string",
+      "description": "String value indicating a skeleton (see description above), eg. { skeleton: \"GyMMMd\" }. Skeleton provides a more flexible formatting mechanism than the predefined list full, long, medium, or short represented by date, time, or datetime. Instead, they are an open-ended list of patterns containing only date field information, and in a canonical order."
+    },
+    "format": {
+      "type": "string",
+      "description": "Predefined list of formatting (One of the following String values: full, long, medium, or short)"
+    },
+    "date": {
+      "type": "string",
+      "description": "Date pattern to use. CLDR resource key."
+    },
+    "emptyPlaceholder": {
+      "type": "string",
+      "description": "Value use in case of null/undefined value"
+    }
+  }
+}

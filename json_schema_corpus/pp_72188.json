@@ -1,0 +1,197 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Program Request",
+  "description": "The requests that will be sent from the backend to the program",
+  "type": "object",
+  "properties": {
+    "messageType": {
+      "type": "string",
+      "title": "Message Type",
+      "description": "The type of request being made to the program",
+      "enum": [
+        "PROGRAM_TRIGGER",
+        "PROGRAM_VALIDATION",
+        "PROGRAM_INTROSPECTION",
+        "PROGRAM_TRIGGER_VARIABLES_SCHEMA_REQUEST"
+      ]
+    },
+    "version": {
+      "type": "string",
+      "title": "RPC Version",
+      "description": "The RPC version for this program request"
+    }
+  },
+  "dependencies": {
+    "messageType": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/programTrigger"
+        },
+        {
+          "$ref": "#/definitions/programValidation"
+        },
+        {
+          "$ref": "#/definitions/programIntrospection"
+        },
+        {
+          "$ref": "#/definitions/programTriggerVariablesSchemaRequest"
+        }
+      ]
+    }
+  },
+  "definitions": {
+    "programTrigger": {
+      "type": "object",
+      "title": "Program Trigger",
+      "description": "A request for the program to evaluate a user for against its criteria (determines whether to reward/email/etc. the user)",
+      "properties": {
+        "messageType": {
+          "enum": [
+            "PROGRAM_TRIGGER"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "programValidation": {
+      "type": "object",
+      "title": "Program Validation",
+      "description": "A request for the program to validate requirement query results",
+      "properties": {
+        "messageType": {
+          "enum": [
+            "PROGRAM_VALIDATION"
+          ]
+        },
+        "validationRequests": {
+          "type": "array",
+          "title": "Validation Requests",
+          "description": "The validations we're asking the program to perform for a given set of requirement keys and associated query results",
+          "items": {
+            "properties": {
+              "key": {
+                "type": "string",
+                "title": "Requirement Key",
+                "description": "The requirement key we're validating"
+              },
+              "queryResult": {
+                "type": "object",
+                "title": "Query Result",
+                "description": "The requests from running the query associated with this requirement key"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    "programIntrospection": {
+      "type": "object",
+      "title": "Program Introspection",
+      "description": "A request for the program to alter its template according to the provided program rules",
+      "properties": {
+        "messageType": {
+          "enum": [
+            "PROGRAM_INTROSPECTION"
+          ]
+        },
+        "template": {
+          "$ref": "ProgramTemplate.schema.json#"
+        },
+        "rules": {
+          "type": "object",
+          "title": "Program Rules (deprecated)",
+          "description": "The rules configured for this program"
+        },
+        "program": {
+          "type": "object",
+          "title": "Program",
+          "properties": {
+            "rules": {
+              "type": "object",
+              "title": "Program Rules",
+              "description": "The rules configured for this program"
+            },
+            "id": {
+              "type": "string",
+              "title": "Program ID",
+              "description": "The unique program ID"
+            },
+            "rewards": {
+              "type": "array",
+              "title": "Program Rewards",
+              "description": "Rewards associated with this program",
+              "items": {
+                "$ref": "PredefinedReward.schema.json#"
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    },
+    "programTriggerVariablesSchemaRequest": {
+      "type": "object",
+      "title": "Program Trigger Variables Schema Request",
+      "description": "A request for the programs trigger variables schema in case it is custom",
+      "properties": {
+        "messageType": {
+          "enum": [
+            "PROGRAM_TRIGGER_VARIABLES_SCHEMA_REQUEST"
+          ]
+        },
+        "triggerType": {
+          "type": "string",
+          "enum": [
+            "AFTER_USER_CREATED_OR_UPDATED",
+            "SCHEDULED",
+            "REWARD_SCHEDULED",
+            "REFERRAL",
+            "AFTER_USER_EVENT_PROCESSED"
+          ]
+        },
+        "schema": {
+          "type": "object",
+          "title": "Default Schema",
+          "description": "The default schema for the request, which will be overridden if necessary"
+        }
+      },
+      "dependencies": {
+        "triggerType": {
+          "oneOf": [
+            {
+              "properties": {
+                "triggerType": {
+                  "enum": [
+                    "SCHEDULED"
+                  ]
+                },
+                "scheduleKey": {
+                  "type": "string",
+                  "title": "Schedule Key",
+                  "description": "Will match on the user schedule variables schema we're requesting"
+                }
+              }
+            },
+            {
+              "properties": {
+                "triggerType": {
+                  "type": "string",
+                  "title": "Trigger Type",
+                  "enum": [
+                    "REWARD_SCHEDULED"
+                  ]
+                },
+                "scheduleKey": {
+                  "type": "string",
+                  "title": "Schedule Key",
+                  "description": "Will match on the reward schedule variables schema we're requesting"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

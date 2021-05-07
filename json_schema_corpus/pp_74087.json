@@ -1,0 +1,10 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Rule",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "../definitions/rule.json#/definitions/rule-input"
+    }
+  ]
+}

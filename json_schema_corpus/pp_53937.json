@@ -1,0 +1,213 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://schema.org/AdministrativeArea",
+  "required": [],
+  "title": "AdministrativeArea",
+  "name": "AdministrativeArea",
+  "description": "A geographical region under the jurisdiction of a particular government.",
+  "type": "object",
+  "properties": {
+    "address": {
+      "id": "http://schema.org/address",
+      "title": "address",
+      "description": "Physical address of the item.",
+      "type": "object",
+      "properties": {
+        "address": {
+          "$ref": "PostalAddress.json#/properties"
+        }
+      }
+    },
+    "aggregateRating": {
+      "id": "http://schema.org/aggregateRating",
+      "title": "aggregateRating",
+      "description": "The overall rating, based on a collection of reviews or ratings, of the item.",
+      "type": "object",
+      "properties": {
+        "aggregateRating": {
+          "$ref": "AggregateRating.json#/properties"
+        }
+      }
+    },
+    "containedIn": {
+      "id": "http://schema.org/containedIn",
+      "title": "containedIn",
+      "description": "The basic containment relation between places.",
+      "type": "object",
+      "properties": {
+        "containedIn": {
+          "$ref": "Place.json#/properties"
+        }
+      }
+    },
+    "event": {
+      "id": "http://schema.org/event",
+      "title": "event",
+      "description": "Upcoming or past event associated with this place, organization, or action. Supersedes events.",
+      "type": "object",
+      "properties": {
+        "event": {
+          "$ref": "Event.json#/properties"
+        }
+      }
+    },
+    "faxNumber": {
+      "id": "http://schema.org/faxNumber",
+      "title": "faxNumber",
+      "description": "The fax number.",
+      "type": "string"
+    },
+    "geo": {
+      "id": "http://schema.org/geo",
+      "title": "geo",
+      "description": "The geo coordinates of the place.",
+      "type": "object",
+      "properties": {
+        "geo": {
+          "$ref": "GeoCoordinates.json#/properties"
+        }
+      }
+    },
+    "globalLocationNumber": {
+      "id": "http://schema.org/globalLocationNumber",
+      "title": "globalLocationNumber",
+      "description": "The Global Location Number (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.",
+      "type": "string"
+    },
+    "hasMap": {
+      "id": "http://schema.org/hasMap",
+      "title": "hasMap",
+      "description": "A URL to a map of the place. Supersedes map, maps.",
+      "type": "object",
+      "properties": {
+        "hasMap": {
+          "$ref": "Map.json#/properties"
+        }
+      }
+    },
+    "interactionCount": {
+      "id": "http://schema.org/interactionCount",
+      "title": "interactionCount",
+      "description": "A count of a specific user interactions with this item\u2014for example, 20 UserLikes, 5 UserComments, or 300 UserDownloads. The user interaction type should be one of the sub types of UserInteraction.",
+      "type": "string"
+    },
+    "isicV4": {
+      "id": "http://schema.org/isicV4",
+      "title": "isicV4",
+      "description": "The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.",
+      "type": "string"
+    },
+    "logo": {
+      "id": "http://schema.org/logo",
+      "title": "logo",
+      "description": "An associated logo.",
+      "type": "string",
+      "format": "uri"
+    },
+    "openingHoursSpecification": {
+      "id": "http://schema.org/openingHoursSpecification",
+      "title": "openingHoursSpecification",
+      "description": "The opening hours of a certain place.",
+      "type": "object",
+      "properties": {
+        "openingHoursSpecification": {
+          "$ref": "OpeningHoursSpecification.json#/properties"
+        }
+      }
+    },
+    "photo": {
+      "id": "http://schema.org/photo",
+      "title": "photo",
+      "description": "A photograph of this place. Supersedes photos.",
+      "type": "object",
+      "properties": {
+        "photo": {
+          "$ref": "Photograph.json#/properties"
+        }
+      }
+    },
+    "review": {
+      "id": "http://schema.org/review",
+      "title": "review",
+      "description": "A review of the item. Supersedes reviews.",
+      "type": "object",
+      "properties": {
+        "review": {
+          "$ref": "Review.json#/properties"
+        }
+      }
+    },
+    "telephone": {
+      "id": "http://schema.org/telephone",
+      "title": "telephone",
+      "description": "The telephone number.",
+      "type": "string"
+    },
+    "": {
+      "title": "",
+      "description": "",
+      "type": null
+    },
+    "additionalType": {
+      "id": "http://schema.org/additionalType",
+      "title": "additionalType",
+      "description": "An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.",
+      "type": "string",
+      "format": "uri"
+    },
+    "alternateName": {
+      "id": "http://schema.org/alternateName",
+      "title": "alternateName",
+      "description": "An alias for the item.",
+      "type": "string"
+    },
+    "description": {
+      "id": "http://schema.org/description",
+      "title": "description",
+      "description": "A short description of the item.",
+      "type": "string"
+    },
+    "image": {
+      "id": "http://schema.org/image",
+      "title": "image",
+      "description": "An image of the item. This can be a URL or a fully described ImageObject.",
+      "type": "object",
+      "properties": {
+        "image": {
+          "$ref": "ImageObject.json#/properties"
+        }
+      }
+    },
+    "name": {
+      "id": "http://schema.org/name",
+      "title": "name",
+      "description": "The name of the item.",
+      "type": "string"
+    },
+    "potentialAction": {
+      "id": "http://schema.org/potentialAction",
+      "title": "potentialAction",
+      "description": "Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.",
+      "type": "object",
+      "properties": {
+        "potentialAction": {
+          "$ref": "Action.json#/properties"
+        }
+      }
+    },
+    "sameAs": {
+      "id": "http://schema.org/sameAs",
+      "title": "sameAs",
+      "description": "URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.",
+      "type": "string",
+      "format": "uri"
+    },
+    "url": {
+      "id": "http://schema.org/url",
+      "title": "url",
+      "description": "URL of the item.",
+      "type": "string",
+      "format": "uri"
+    }
+  }
+}

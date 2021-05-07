@@ -1,0 +1,27 @@
+{
+  "id": "urn:Date.schema.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "A date, with human readable fields.",
+  "name": "Date",
+  "type": "object",
+  "properties": {
+    "year": {
+      "description": "The year, an integer expressing the full year, e.g. 2014",
+      "type": "number"
+    },
+    "month": {
+      "description": "The year, an integer in the range 1-12",
+      "type": "number"
+    },
+    "day": {
+      "description": "The day of the month, an integer in the range 1-31",
+      "type": "number"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "year",
+    "month",
+    "day"
+  ]
+}

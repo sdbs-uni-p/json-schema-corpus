@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Driver",
+  "description": "A vaccine delivery driver",
+  "type": "object",
+  "properties": {
+    "doc_type": {
+      "type": "string",
+      "pattern": "^driver$"
+    },
+    "version": {
+      "type": "string",
+      "format": "semver"
+    },
+    "forename": {
+      "type": "string",
+      "minLength": 1,
+      "faker": "name.firstName"
+    },
+    "surname": {
+      "type": "string",
+      "minLength": 1,
+      "faker": "name.lastName"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "chance": "email"
+    },
+    "phone": {
+      "type": "string",
+      "faker": "phone.phoneNumber"
+    }
+  },
+  "required": [
+    "doc_type",
+    "version",
+    "forename",
+    "surname",
+    "email",
+    "phone"
+  ]
+}

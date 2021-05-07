@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "orientedlayout.json",
+  "definitions": {
+    "orientation": {
+      "type": "string",
+      "enum": [
+        "HORIZONTAL",
+        "VERTICAL",
+        "STACK"
+      ]
+    }
+  }
+}

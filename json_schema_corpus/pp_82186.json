@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://toyatech.net/cmsapp/reports/Report",
+  "definitions": {
+    "Query": {
+      "type": "object",
+      "properties": {
+        "string": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "string"
+      ]
+    }
+  },
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "query": {
+      "$ref": "#/Query"
+    },
+    "source": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

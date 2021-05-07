@@ -1,0 +1,46 @@
+{
+  "id": "http://www.devapt.org/schemas/topology_schema#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "schema for an entire topology",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "nodes",
+    "services",
+    "applications",
+    "security"
+  ],
+  "properties": {
+    "templates": {
+      "$ref": "#/definitions/diskDevice"
+    },
+    "nodes": {
+      "$ref": "#/definitions/diskDevice"
+    },
+    "services": {
+      "$ref": "#/definitions/diskDevice"
+    },
+    "applications": {
+      "$ref": "#/definitions/diskDevice"
+    },
+    "modules": {
+      "$ref": "#/definitions/diskDevice"
+    },
+    "plugins": {
+      "$ref": "#/definitions/diskDevice"
+    },
+    "security": {
+      "$ref": "#/definitions/diskDevice"
+    },
+    "loggers": {
+      "$ref": "#/definitions/diskDevice"
+    },
+    "traces": {
+      "$ref": "#/definitions/diskDevice"
+    }
+  },
+  "patternProperties": {
+    "^(/[^/]+)+$": {}
+  },
+  "definitions": {}
+}

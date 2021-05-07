@@ -1,0 +1,8 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "title": "com.xcitestudios.schema.Parallelisation.EventOutput",
+  "description": "Minimum required output for EventOutput",
+  "type": "object",
+  "properties": {},
+  "required": []
+}

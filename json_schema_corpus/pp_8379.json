@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "required": false,
+  "properties": {
+    "fields": {
+      "type": "object",
+      "required": true
+    },
+    "required": {
+      "type": "array",
+      "required": true
+    },
+    "patterns": {
+      "type": "object",
+      "required": true
+    },
+    "defaults": {
+      "type": "object",
+      "required": true
+    }
+  }
+}

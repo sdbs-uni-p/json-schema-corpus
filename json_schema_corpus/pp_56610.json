@@ -1,0 +1,104 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "title": "Whitelist",
+  "description": "Working with MMS Whitelists",
+  "type": "object",
+  "definitions": {
+    "id": {
+      "description": "Unique identifier",
+      "example": "5196d3628d022db4cbc26d9e",
+      "type": "string"
+    },
+    "ipAddress": {
+      "description": "A whitelisted IP address.",
+      "example": "12.34.56.78",
+      "type": "string"
+    },
+    "created": {
+      "description": "The date this IP address was added to the whitelist.",
+      "example": "2012-01-01T12:00:00Z",
+      "format": "date-time",
+      "type": "string"
+    },
+    "lastUsed": {
+      "description": "The date of the most recent request that originated from this IP address. Note that this field is only updated when a resource that is protected by the whitelist is accessed.",
+      "example": "2012-01-01T12:00:00Z",
+      "format": "date-time",
+      "type": "string"
+    },
+    "count": {
+      "description": "The total number of requests that originated from this IP address. Note that this field is only updated when a resource that is protected by the whitelist is accessed.",
+      "example": 1,
+      "type": "integer"
+    }
+  },
+  "links": [
+    {
+      "description": "Create a new whitelist.",
+      "href": "/users/{(%2Fschemata%2Fuser%23%2Fdefinitions%2Fid)}/whitelist",
+      "method": "POST",
+      "rel": "create",
+      "schema": {
+        "$ref": "/schemata/whitelist"
+      },
+      "targetSchema": {
+        "$ref": "/schemata/whitelist"
+      },
+      "title": "Create"
+    },
+    {
+      "description": "Delete an existing whitelist.",
+      "href": "/users/{(%2Fschemata%2Fuser%23%2Fdefinitions%2Fid)}/whitelist/{(%2Fschemata%2Fwhitelist%23%2Fdefinitions%2Fid)}",
+      "method": "DELETE",
+      "rel": "destroy",
+      "title": "Delete"
+    },
+    {
+      "description": "Info for existing whitelist.",
+      "href": "/users/{(%2Fschemata%2Fuser%23%2Fdefinitions%2Fid)}/whitelist/{(%2Fschemata%2Fwhitelist%23%2Fdefinitions%2Fid)}",
+      "method": "GET",
+      "rel": "self",
+      "targetSchema": {
+        "$ref": "/schemata/whitelist"
+      },
+      "title": "Info"
+    },
+    {
+      "description": "List existing whitelists.",
+      "href": "/users/{(%2Fschemata%2Fuser%23%2Fdefinitions%2Fid)}/whitelist",
+      "method": "GET",
+      "rel": "instances",
+      "targetSchema": {
+        "type": "object",
+        "properties": {
+          "totalCount": {
+            "example": 1,
+            "type": "integer"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "/schemata/whitelist"
+            }
+          }
+        }
+      },
+      "title": "List"
+    }
+  ],
+  "properties": {
+    "ipAddress": {
+      "$ref": "/schemata/whitelist#/definitions/ipAddress"
+    },
+    "created": {
+      "$ref": "/schemata/whitelist#/definitions/created"
+    },
+    "lastUsed": {
+      "$ref": "/schemata/whitelist#/definitions/lastUsed"
+    },
+    "count": {
+      "$ref": "/schemata/whitelist#/definitions/count"
+    }
+  },
+  "id": "schemata/whitelist"
+}

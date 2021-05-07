@@ -1,0 +1,96 @@
+{
+  "title": "Schema for RESTful Open Annotation in JSON-LD",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "listOfUri": {
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      ]
+    },
+    "xsd:dateTime": {
+      "type": "string",
+      "pattern": "^[1-9][0-9]{3}-[0-1][0-9]-[0-3][0-9]T[0-9]{2}:[0-9]{2}:[0-9]{2}(Z?|[+-].+)$"
+    }
+  },
+  "type": "object",
+  "properties": {
+    "@context": {
+      "description": "Used to define the short-hand names that are used throughout a JSON-LD document.",
+      "type": [
+        "object",
+        "string",
+        "array",
+        "null"
+      ]
+    },
+    "@graph": {
+      "type": [
+        "array"
+      ],
+      "items": {
+        "type": [
+          "object"
+        ],
+        "properties": {
+          "body": {
+            "description": "the comment or other descriptive resource",
+            "oneOf": [
+              {
+                "$ref": "#/definitions/listOfUri"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "@id": {
+                    "type": "string",
+                    "format": "uri"
+                  }
+                },
+                "additionalProperties": true
+              }
+            ]
+          },
+          "target": {
+            "description": "the body is somehow about",
+            "$ref": "#/definitions/listOfUri"
+          },
+          "annotatedBy": {
+            "description": "the agent creating the annotation",
+            "$ref": "#/definitions/listOfUri"
+          },
+          "serializedBy": {
+            "description": "the agent serialzing the annotation",
+            "$ref": "#/definitions/listOfUri"
+          },
+          "serializedAt": {
+            "description": "the time when the annotation is serialized",
+            "$ref": "#/definitions/xsd:dateTime"
+          },
+          "annotatedAt": {
+            "description": "the time when the annotation is created",
+            "type": "string",
+            "$ref": "#/definitions/xsd:dateTime"
+          },
+          "@id": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "required": [
+          "target",
+          "@id"
+        ]
+      }
+    }
+  }
+}

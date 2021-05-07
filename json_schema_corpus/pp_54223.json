@@ -1,0 +1,203 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://schema.org/MedicalAudience",
+  "required": [],
+  "title": "MedicalAudience",
+  "name": "MedicalAudience",
+  "description": "Target audiences for medical web pages. Enumerated type.",
+  "type": "object",
+  "properties": {
+    "additionalType": {
+      "id": "http://schema.org/additionalType",
+      "title": "additionalType",
+      "description": "An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.",
+      "type": "string",
+      "format": "uri"
+    },
+    "alternateName": {
+      "id": "http://schema.org/alternateName",
+      "title": "alternateName",
+      "description": "An alias for the item.",
+      "type": "string"
+    },
+    "description": {
+      "id": "http://schema.org/description",
+      "title": "description",
+      "description": "A short description of the item.",
+      "type": "string"
+    },
+    "image": {
+      "id": "http://schema.org/image",
+      "title": "image",
+      "description": "An image of the item. This can be a URL or a fully described ImageObject.",
+      "type": "string",
+      "format": "uri"
+    },
+    "name": {
+      "id": "http://schema.org/name",
+      "title": "name",
+      "description": "The name of the item.",
+      "type": "string"
+    },
+    "potentialAction": {
+      "id": "http://schema.org/potentialAction",
+      "title": "potentialAction",
+      "description": "Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.",
+      "type": "object",
+      "properties": {
+        "potentialAction": {
+          "$ref": "Action.json#/properties"
+        }
+      }
+    },
+    "sameAs": {
+      "id": "http://schema.org/sameAs",
+      "title": "sameAs",
+      "description": "URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.",
+      "type": "string",
+      "format": "uri"
+    },
+    "url": {
+      "id": "http://schema.org/url",
+      "title": "url",
+      "description": "URL of the item.",
+      "type": "string",
+      "format": "uri"
+    },
+    "": {
+      "title": "",
+      "description": "",
+      "type": null
+    },
+    "code": {
+      "id": "http://schema.org/code",
+      "title": "code",
+      "description": "A medical code for the entity, taken from a controlled vocabulary or ontology such as ICD-9, DiseasesDB, MeSH, SNOMED-CT, RxNorm, etc.",
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "MedicalCode.json#/properties"
+        }
+      }
+    },
+    "guideline": {
+      "id": "http://schema.org/guideline",
+      "title": "guideline",
+      "description": "A medical guideline related to this entity.",
+      "type": "object",
+      "properties": {
+        "guideline": {
+          "$ref": "MedicalGuideline.json#/properties"
+        }
+      }
+    },
+    "medicineSystem": {
+      "id": "http://schema.org/medicineSystem",
+      "title": "medicineSystem",
+      "description": "The system of medicine that includes this MedicalEntity, for example 'evidence-based', 'homeopathic', 'chiropractic', etc.",
+      "type": "object",
+      "properties": {
+        "medicineSystem": {
+          "$ref": "MedicineSystem.json#/properties"
+        }
+      }
+    },
+    "recognizingAuthority": {
+      "id": "http://schema.org/recognizingAuthority",
+      "title": "recognizingAuthority",
+      "description": "If applicable, the organization that officially recognizes this entity as part of its endorsed system of medicine.",
+      "type": "object",
+      "properties": {
+        "recognizingAuthority": {
+          "$ref": "Organization.json#/properties"
+        }
+      }
+    },
+    "relevantSpecialty": {
+      "id": "http://schema.org/relevantSpecialty",
+      "title": "relevantSpecialty",
+      "description": "If applicable, a medical specialty in which this entity is relevant.",
+      "type": "object",
+      "properties": {
+        "relevantSpecialty": {
+          "$ref": "MedicalSpecialty.json#/properties"
+        }
+      }
+    },
+    "study": {
+      "id": "http://schema.org/study",
+      "title": "study",
+      "description": "A medical study or trial related to this entity.",
+      "type": "object",
+      "properties": {
+        "study": {
+          "$ref": "MedicalStudy.json#/properties"
+        }
+      }
+    },
+    "healthCondition": {
+      "id": "http://schema.org/healthCondition",
+      "title": "healthCondition",
+      "description": "Expectations for health conditions of target audience",
+      "type": "object",
+      "properties": {
+        "healthCondition": {
+          "$ref": "MedicalCondition.json#/properties"
+        }
+      }
+    },
+    "requiredGender": {
+      "id": "http://schema.org/requiredGender",
+      "title": "requiredGender",
+      "description": "Audiences defined by a person's gender.",
+      "type": "string"
+    },
+    "requiredMaxAge": {
+      "id": "http://schema.org/requiredMaxAge",
+      "title": "requiredMaxAge",
+      "description": "Audiences defined by a person's maximum age.",
+      "type": "number"
+    },
+    "requiredMinAge": {
+      "id": "http://schema.org/requiredMinAge",
+      "title": "requiredMinAge",
+      "description": "Audiences defined by a person's minimum age.",
+      "type": "number"
+    },
+    "suggestedGender": {
+      "id": "http://schema.org/suggestedGender",
+      "title": "suggestedGender",
+      "description": "The gender of the person or audience.",
+      "type": "string"
+    },
+    "suggestedMaxAge": {
+      "id": "http://schema.org/suggestedMaxAge",
+      "title": "suggestedMaxAge",
+      "description": "Maximal age recommended for viewing content.",
+      "type": "number"
+    },
+    "suggestedMinAge": {
+      "id": "http://schema.org/suggestedMinAge",
+      "title": "suggestedMinAge",
+      "description": "Minimal age recommended for viewing content.",
+      "type": "number"
+    },
+    "audienceType": {
+      "id": "http://schema.org/audienceType",
+      "title": "audienceType",
+      "description": "The target group associated with a given audience (e.g. veterans, car owners, musicians, etc.)\n          domain: Audience\n          Range: Text\n        ",
+      "type": "string"
+    },
+    "geographicArea": {
+      "id": "http://schema.org/geographicArea",
+      "title": "geographicArea",
+      "description": "The geographic area associated with the audience.",
+      "type": "object",
+      "properties": {
+        "geographicArea": {
+          "$ref": "AdministrativeArea.json#/properties"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "properties": {
+    "bar": {
+      "type": "integer",
+      "minimum": 10,
+      "exclusiveMinimum": true
+    },
+    "baz": {
+      "type": "integer",
+      "minimum": 10,
+      "exclusiveMinimum": false
+    },
+    "qux": {
+      "type": "integer",
+      "minimum": 10
+    }
+  }
+}

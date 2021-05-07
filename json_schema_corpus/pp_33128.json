@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "Hardware Modules Configuration",
+  "description": "Lists additional hardare modules configuration",
+  "limited": true,
+  "strictProps": false,
+  "definitions": {
+    "module_conf_foo": {
+      "title": "Foo options",
+      "options": {
+        "hidden": false
+      },
+      "properties": {
+        "param1": {
+          "type": "integer",
+          "title": "Foo Param 1"
+        }
+      },
+      "required": [
+        "param1"
+      ]
+    },
+    "module_conf_bar": {
+      "title": "Bar options",
+      "options": {
+        "hidden": false
+      },
+      "properties": {
+        "param1": {
+          "type": "string",
+          "title": "Bar Param 1"
+        },
+        "param2": {
+          "type": "string",
+          "title": "Bar Param 2"
+        }
+      },
+      "required": [
+        "param1",
+        "param2"
+      ]
+    }
+  }
+}

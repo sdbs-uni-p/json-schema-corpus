@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "description": "Response object",
+  "required": [
+    "statusCode"
+  ],
+  "properties": {
+    "template": {
+      "description": "Template file",
+      "type": "string"
+    },
+    "statusCode": {
+      "description": "HTTP status code of the response",
+      "type": "integer"
+    }
+  }
+}

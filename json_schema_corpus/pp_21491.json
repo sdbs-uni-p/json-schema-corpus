@@ -1,0 +1,7 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "properties": {},
+  "title": "Webtrends Keymetrics Collector Query",
+  "type": "object",
+  "additionalProperties": false
+}

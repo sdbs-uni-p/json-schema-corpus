@@ -1,0 +1,57 @@
+{
+  "id": "https://opendesk.cc/schemata/range.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Winnow Product",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "https://opendesk.cc/schemata/base/value.json#"
+    },
+    {
+      "$ref": "https://opendesk.cc/schemata/base/options.json#"
+    },
+    {
+      "$ref": "https://opendesk.cc/schemata/base/canonical.json#"
+    },
+    {
+      "properties": {
+        "images": {},
+        "changes": {},
+        "name": {},
+        "description": {},
+        "long_description": {},
+        "schema": {},
+        "source": {},
+        "path": {},
+        "aliases": {},
+        "base": {},
+        "version": {},
+        "shortcode": {},
+        "royalty_percentage": {
+          "type": "number"
+        },
+        "external_links": {
+          "type": "array"
+        },
+        "type": {
+          "type": "string",
+          "pattern": "range"
+        },
+        "options": {},
+        "errors": {}
+      },
+      "additionalProperties": false,
+      "requiredProperties": [
+        "name",
+        "description",
+        "schema",
+        "type",
+        "images",
+        "source",
+        "path",
+        "version",
+        "changes"
+      ]
+    }
+  ]
+}

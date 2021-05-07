@@ -1,0 +1,340 @@
+{
+  "collection": "reports",
+  "class": "schema",
+  "_id": "reports/schema/childgrowth",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Report Child Growth",
+  "type": "object",
+  "properties": {
+    "type_of_vaccine_by_age": {
+      "line_number": "1",
+      "sw": "Aina ya Chanjo Kwa Umri",
+      "en": "Type of vaccine by age"
+    },
+    "bcg_at_the_age_of_1+_(within_service_area_)": {
+      "line_number": "1b",
+      "sw": "BCG Umri mwaka 1+ (Ndani ya eneo Ia huduma)",
+      "en": "BCG at the age of 1+ (Within service area )"
+    },
+    "bcg_age_<1_year_+_(within_service_area)": {
+      "line_number": "1c",
+      "sw": "BCG Umri mwaka <1 (Nje ya eneo la huduma)",
+      "en": "BCG Age <1 year + (Within service area)"
+    },
+    "bcgat_the_age_of_1_+_(out_of_service_area)": {
+      "line_number": "1d",
+      "sw": "BCG Umri mwaka 1+ (Nje ya eneo la huduma)",
+      "en": "BCGat the Age of 1 + (out of service area)"
+    },
+    "polio_at_the_age_<1_(within_area_service)": {
+      "line_number": "1e",
+      "sw": "Polio Umri mwaka <1 (Ndani ya eneo Ia huduma)",
+      "en": "Polio at the age <1 (within area service)"
+    },
+    "polio_at_the_age_1+_(within_service_area)": {
+      "line_number": "1f",
+      "sw": "Polio Umri mwaka 1+ (Ndani ya eneo Ia huduma)",
+      "en": "Polio at the age 1+ (within service area)"
+    },
+    "polio_at_the_age_<1_(out_of_service_area)": {
+      "line_number": "1k",
+      "sw": "Polio Umri mwaka <1 (Nje ya eneo la huduma)",
+      "en": "Polio at the age <1 (out of service area)"
+    },
+    "polio_at_the_age_of_1_+_(out_of_service_area)": {
+      "line_number": "1l",
+      "sw": "Polio Umri mwaka 1+ (Nje ya eneo la huduma)",
+      "en": "Polio at the age of 1 + (out of service area)"
+    },
+    "penta_at_the_age_<1_(within_service_area)": {
+      "line_number": "1i",
+      "sw": "PENTA Umri mwaka <1 (Ndani ya eneo Ia huduma)",
+      "en": "PENTA at the age <1 (within service area)"
+    },
+    "penta_at_the_age_1+_(within_service_area)": {
+      "line_number": "1j",
+      "sw": "PENTA Umri mwaka 1+ (Ndani ya eneo Ia huduma)",
+      "en": "PENTA at the age 1+ (within service area)"
+    },
+    "measles_at_the_age_<1_(within_service_area)": {
+      "line_number": "1m",
+      "sw": "Surua Umri mwaka <1 (Ndani ya eneo Ia huduma)",
+      "en": "measles at the age <1 (within service area)"
+    },
+    "measles_at_the_age_1+_(within_service_area)": {
+      "line_number": "1n",
+      "sw": "Surua Umri mwaka 1+ (Ndani ya eneo Ia huduma)",
+      "en": "measles at the age 1+ (within service area)"
+    },
+    "measles_at_the_age_<1_(out_of_service_area)": {
+      "line_number": "1p",
+      "sw": "Surua Umri mwaka <1 (Nje ya eneo la huduma)",
+      "en": "measles at the age <1 (out of service area)"
+    },
+    "attendance_growth_of_6_months_old_baby": {
+      "line_number": "3",
+      "sw": "Mahudhurio ya ukuaji wa mtoto umri wa miezi 6",
+      "en": "Attendance growth of 6 months old baby"
+    },
+    "total_attendance": {
+      "line_number": "7a",
+      "sw": "Jumla ya Mahudhurio",
+      "en": "Total attendance"
+    },
+    "the_ratio_of_weight_by_age": {
+      "line_number": "5b",
+      "sw": "Uwaino wa uzito kwa umri",
+      "en": "the ratio of weight by age"
+    },
+    "the_ratio_of_weight_by_height": {
+      "line_number": "7c",
+      "sw": "Uwaino wa uzito kwa urefu",
+      "en": "the ratio of weight by height"
+    },
+    "the_ratio_of_height_by_age": {
+      "line_number": "7d",
+      "sw": "Uwaino wa urefu kwa umri",
+      "en": "the ratio of height by age"
+    },
+    "growth_attendance_of_6_months_old_baby": {
+      "line_number": "4",
+      "sw": "Mahudhurio ya ukuaji wa mtoto umri wa miezi 6",
+      "en": "Growth attendance of 6 months old baby"
+    },
+    "growth_attendance_of_12_months_old_baby": {
+      "line_number": "5",
+      "sw": "Mahudhurio ya ukuaji wa mtoto umri wa miezi 12",
+      "en": "growth attendance of 12 months old baby"
+    },
+    "growth_attendance_of_18_month_old_baby": {
+      "line_number": "6",
+      "sw": "Mahudhurio ya ukuaji wa mtoto umri wa miezi 18",
+      "en": "Growth attendance of 18 month old baby"
+    },
+    "growth_attendance_of_24_month_old_baby": {
+      "line_number": "7",
+      "sw": "Mahudhurio ya ukuaji wa mtoto umri wa miezi 24",
+      "en": "growth attendance of 24 month old baby"
+    },
+    "ratio_of_weight_by_age": {
+      "line_number": "7b",
+      "sw": "Uwaino wa uzito kwa umri",
+      "en": "ratio of weight by age"
+    },
+    "growth_attendance_of_36_month_old_baby": {
+      "line_number": "8",
+      "sw": "Mahudhurio ya ukuaji wa mtoto umri wa miezi 36",
+      "en": "growth attendance of 36 month old baby"
+    },
+    "growth_attendance_of_48_month_old_baby": {
+      "line_number": "9",
+      "sw": "Mahudhurio ya ukuaji wa mtoto umri wa miezi 48",
+      "en": "growth attendance of 48 month old baby"
+    },
+    "growth_attendance_of_59_month_old_baby": {
+      "line_number": "10",
+      "sw": "Mahudhurio ya ukuaji wa mtoto umri wa miezi 59",
+      "en": "growth attendance of 59 month old baby"
+    },
+    "additional_vitamin_a": {
+      "line_number": "11",
+      "sw": "Nyongeza ya Vitamini A",
+      "en": "additional Vitamin A"
+    },
+    "children_of_6-11_months": {
+      "line_number": "11a",
+      "sw": "Watoto umri wa miezi 6-11",
+      "en": "Children of 6-11 months"
+    },
+    "children_of_12-17_months": {
+      "line_number": "11b",
+      "sw": "Watoto umri wa miezi 12-17",
+      "en": "Children of 12-17 months"
+    },
+    "children_of_18-23_months": {
+      "line_number": "11c",
+      "sw": "Watoto umri wa miezi 18-23",
+      "en": "Children of 18-23 months"
+    },
+    "children_of_24-59_months": {
+      "line_number": "11d",
+      "sw": "Watoto umri wa miezi 24-59",
+      "en": "Children of 24-59 months"
+    },
+    "children_given_mebendazole/albendazole": {
+      "line_number": "12",
+      "sw": "Waliopewa Mebendazole/Albendazole",
+      "en": "Children given Mebendazole/Albendazole"
+    },
+    "children_of_12_months": {
+      "line_number": "12a",
+      "sw": "Watoto umri wa miezi 12",
+      "en": "Children of 12 months"
+    },
+    "children_of_18_months": {
+      "line_number": "12b",
+      "sw": "Watoto umri wa miezi 18",
+      "en": "Children of 18 months"
+    },
+    "children_of_24_months": {
+      "line_number": "12c",
+      "sw": "Watoto umri wa miezi 24",
+      "en": "Children of 24 months"
+    },
+    "children_of_30_months": {
+      "line_number": "12d",
+      "sw": "Watoto umri wa miezi 30",
+      "en": "Children of 30 months"
+    },
+    "feeding_infants_born_to_hiv_infected_mothers": {
+      "line_number": "13",
+      "sw": "Ulishaji wa Watoto Wachanga waliozaliwa na mama wenye VVU",
+      "en": "feeding infants born to HIV infected mothers"
+    },
+    "infants_breastfeeding_mothers_milk_only_(ebf)": {
+      "line_number": "13a",
+      "sw": "Watoto wachanga wanaonyonya maziwa ya mama pekee (EBF)",
+      "en": "Infants breastfeeding mothers milk only (EBF)"
+    },
+    "infants_receiving_other_types_of_milk_(rf)": {
+      "line_number": "13b",
+      "sw": "Watoto wachanga wanaopewa maziwa mbadala (RF)",
+      "en": "Infants receiving other types of milk (RF)"
+    },
+    "breastfeeding_infants_born_to_mothers_who_are_hiv_negative": {
+      "line_number": "14",
+      "sw": "Ulishaji wa Watoto Wachanga waliozaliwa na mama wasio na VVU",
+      "en": "breastfeeding infants born to mothers who are HIV negative"
+    },
+    "children_who_breastfeed_their_mothers_milk_only": {
+      "line_number": "14a",
+      "sw": "Watoto wachanga wanaonyonya maziwa ya mama pekee (EBF)",
+      "en": "Children who breastfeed their mothers milk only"
+    },
+    "infants_feeding_on_other_types_of_milk": {
+      "line_number": "14b",
+      "sw": "Watoto wachanga wanaoyweshwa maziwa mbadala (RF)",
+      "en": "Infants feeding on other types of milk"
+    },
+    "mothers_condition": {
+      "line_number": "15",
+      "sw": "Hali ya Mama",
+      "en": "Mothers condition"
+    },
+    "mothers_with_hiv": {
+      "line_number": "15a",
+      "sw": "Mama wenye VVU",
+      "en": "Mothers with HIV"
+    },
+    "mothers_without_hiv": {
+      "line_number": "15b",
+      "sw": "Mama wasio na VVU",
+      "en": "Mothers without HIV"
+    },
+    "mothers_with_unknown_hiv_status": {
+      "line_number": "15c",
+      "sw": "Mama wasiojulikana hali yao ya VVU",
+      "en": "Mothers with unknown HIV status"
+    },
+    "status_of_tetanus_vaccination_of_the_mother_during_delivery": {
+      "line_number": "16",
+      "sw": "Hali ya Chango ya Pepo punda kwa mama wakati wa kujifungua",
+      "en": "Status of Tetanus vaccination of the mother during delivery"
+    },
+    "those_vaccinated": {
+      "line_number": "16a",
+      "sw": "Waliokingwa",
+      "en": "Those Vaccinated"
+    },
+    "those_not_vaccinated": {
+      "line_number": "16b",
+      "sw": "Wasiokuwa na Kinga",
+      "en": "Those Not vaccinated"
+    },
+    "not_known": {
+      "line_number": "16c",
+      "sw": "Haijulikani",
+      "en": "Not known"
+    },
+    "number_of_children_who_received_cotrimoxazole_i_arv_/given_bed_net__vouchers_and_ones_tested_for_hiv": {
+      "line_number": "17",
+      "sw": "Idadi ya Watoto waliopewa Cotrimoxazole I ARV / waliopewa hati punguzo nil waliopimwa VVU",
+      "en": "Number of children who received cotrimoxazole I ARV /given bed net  vouchers and ones tested for HIV"
+    },
+    "children_with_the_possibility_of_hiv_infection": {
+      "line_number": "17a",
+      "sw": "Watoto wenye uwezekano wa uambukizo wa VVU",
+      "en": "Children with the possibility of HIV infection"
+    },
+    "children_who_were_started_on_cotrimoxazole_between_1_month_to_2_months": {
+      "line_number": "17b",
+      "sw": "Watoto walioanzishiwa Cotrimoxazole kati ya mwezi 1 hadi miezi 2 ya umri",
+      "en": "Children who were started on cotrimoxazole between 1 month to 2 months"
+    },
+    "Children who were tested for HIV by PCR within two months from birth": {
+      "line_number": "17e",
+      "sw": "Watoto waliopimwa VVU kwa PCR ndani ya miezi miwili tangu kuzaliwa",
+      "en": "Children who were tested for HIV by PCR within two months from birth"
+    },
+    "Children tested for HIV by PCR 6 weeks after stopping breastfeeding or 18 months": {
+      "line_number": "17f",
+      "sw": "Watoto waliopimwa VVU kwa PCR wiki 6 baada ya kuacha kunyonya maziwa ya mama au miezi 18 ya umri",
+      "en": "Children tested for HIV by PCR 6 weeks after stopping breastfeeding or 18 months"
+    },
+    "children_tested_hiv_pcr_6_weeks_after_stopping_breastfeeding_or_18_months_of_age": {
+      "line_number": "17g",
+      "sw": "Watoto waliopimwa VVU kwa PCR wiki 6 baada ya kuacha kunyonya maziwa ya mama au miezi 18 ya umri",
+      "en": "Children tested HIV PCR 6 weeks after stopping breastfeeding or 18 months of age"
+    },
+    "children_who_were_moved_from_clinic_care_and_treatment_of_hiv-positive_(ctc)": {
+      "line_number": "17h",
+      "sw": "Watoto waliohamishiwa Klinlki ya huduma na matibabu kwa wenye VVU (CTC)",
+      "en": "Children who were moved from clinic care and treatment of HIV-positive (CTC)"
+    },
+    "children_who_received_a_bed_net_voucher": {
+      "line_number": "17i",
+      "sw": "Watoto watiopatiwa hati punguzo ya chandarua",
+      "en": "Children who received a bed net voucher"
+    },
+    "definitions": {
+      "columns": {
+        "lessthan1male": {
+          "title": "Males",
+          "condition": "FIXME && patient.gender == 'male'"
+        },
+        "lessthan1female": {
+          "title": "Less than 1 Month - Females",
+          "condition": "FIXME && patient.gender == 'female'"
+        },
+        "lessthan1total": {
+          "title": "Less than 1 Month - Total",
+          "condition": "FIXME"
+        },
+        "more1momale": {
+          "title": "More than 1 month and less than 1 Year - Male",
+          "condition": "FIXME && patient.gender == 'male'"
+        },
+        "more1mofemale": {
+          "title": "More than 1 month and less than 1 Year - Females",
+          "condition": "FIXME && patient.gender == 'female'"
+        },
+        "more1mototal": {
+          "title": "More than 1 month and less than 1 Year - Total",
+          "condition": "FIXME "
+        },
+        "above1below5male": {
+          "title": "More than 1 year and less than 5 Years - Male",
+          "condition": "patient.approxage > 1 && patient.approxage < 5 && patient.gender == 'male'"
+        },
+        "above1below5female": {
+          "title": "More than 1 year and less than 5 Years - Females",
+          "condition": "patient.approxage > 1 && patient.approxage < 5 && patient.gender == 'female'"
+        },
+        "above1below5total": {
+          "title": "More than 1 year and less than 5 Years - Total",
+          "condition": "patient.approxage > 1 && patient.approxage < 5"
+        }
+      }
+    }
+  }
+}

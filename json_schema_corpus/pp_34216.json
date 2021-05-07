@@ -1,0 +1,103 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://jsonschema.net",
+  "properties": {
+    "animalTypes": {
+      "id": "http://jsonschema.net/animalTypes",
+      "items": {
+        "id": "http://jsonschema.net/animalTypes/0",
+        "required": false,
+        "type": "string"
+      },
+      "required": false,
+      "type": "array"
+    },
+    "city": {
+      "id": "http://jsonschema.net/city",
+      "required": false,
+      "type": "string"
+    },
+    "created": {
+      "id": "http://jsonschema.net/created",
+      "required": false,
+      "type": "string"
+    },
+    "email": {
+      "id": "http://jsonschema.net/email",
+      "required": false,
+      "type": "string"
+    },
+    "enabled": {
+      "id": "http://jsonschema.net/enabled",
+      "required": false,
+      "type": "boolean"
+    },
+    "fullName": {
+      "id": "http://jsonschema.net/fullName",
+      "required": false,
+      "type": "string"
+    },
+    "id": {
+      "id": "http://jsonschema.net/id",
+      "required": false,
+      "type": "string"
+    },
+    "latLon": {
+      "id": "http://jsonschema.net/latLon",
+      "required": false,
+      "type": "string"
+    },
+    "logoUrl": {
+      "id": "http://jsonschema.net/logoUrl",
+      "required": false,
+      "type": "string"
+    },
+    "longDesc": {
+      "id": "http://jsonschema.net/longDesc",
+      "required": false,
+      "type": "string"
+    },
+    "name": {
+      "id": "http://jsonschema.net/name",
+      "required": false,
+      "type": "string"
+    },
+    "note": {
+      "id": "http://jsonschema.net/note",
+      "required": false,
+      "type": "string"
+    },
+    "phone": {
+      "id": "http://jsonschema.net/phone",
+      "required": false,
+      "type": "string"
+    },
+    "postalCode": {
+      "id": "http://jsonschema.net/postalCode",
+      "required": false,
+      "type": "string"
+    },
+    "shortDesc": {
+      "id": "http://jsonschema.net/shortDesc",
+      "required": false,
+      "type": "string"
+    },
+    "street": {
+      "id": "http://jsonschema.net/street",
+      "required": false,
+      "type": "string"
+    },
+    "streetNumber": {
+      "id": "http://jsonschema.net/streetNumber",
+      "required": false,
+      "type": "string"
+    },
+    "url": {
+      "id": "http://jsonschema.net/url",
+      "required": false,
+      "type": "string"
+    }
+  },
+  "required": false,
+  "type": "object"
+}

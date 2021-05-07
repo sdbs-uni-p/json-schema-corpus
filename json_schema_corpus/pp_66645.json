@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "title": "A widget",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

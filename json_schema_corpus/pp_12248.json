@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "titre": {
+      "type": "string"
+    },
+    "id_eleve": {
+      "type": "string"
+    },
+    "id_etablissement": {
+      "type": "string"
+    },
+    "timestamp_dt": {
+      "type": "string"
+    },
+    "timestamp_fn": {
+      "type": "string"
+    },
+    "commentaire": {
+      "type": "string"
+    },
+    "traitee": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "titre",
+    "id_eleve",
+    "id_etablissement",
+    "commentaire",
+    "timestamp_dt",
+    "timestamp_fn"
+  ]
+}

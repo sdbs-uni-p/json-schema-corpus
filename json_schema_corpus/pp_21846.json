@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "required": [
+    "lastBookId",
+    "list"
+  ],
+  "properties": {
+    "lastBookId": {
+      "type": "integer",
+      "minimum": -1
+    },
+    "list": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/definitions/book"
+      }
+    }
+  },
+  "definitions": {
+    "book": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "authors",
+        "url",
+        "tags",
+        "coverFilename"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "authors": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "url": {
+          "type": "string"
+        },
+        "tags": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "coverFilename": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

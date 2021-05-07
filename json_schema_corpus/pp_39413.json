@@ -1,0 +1,26 @@
+{
+  "id": "http://baseurl.com/schemas",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "doctor": {
+    "id": "#/core/doctor",
+    "allof": [
+      {
+        "$ref": "schemas/general/person.json#general/person"
+      },
+      {
+        "ID": {
+          "$ref": "schemas/general/id.json#general/ID"
+        },
+        "properties": {
+          "specialization": {
+            "type": "string",
+            "default": ""
+          }
+        },
+        "required": [
+          "specialization"
+        ]
+      }
+    ]
+  }
+}

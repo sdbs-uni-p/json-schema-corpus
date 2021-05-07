@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "endpoint": "/",
+  "description": "testing if options.query is applied",
+  "methods": [
+    "get",
+    "post",
+    "put",
+    "delete"
+  ],
+  "type": "object",
+  "properties": {
+    "query": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "enum": [
+            "value"
+          ]
+        }
+      },
+      "required": [
+        "key"
+      ]
+    }
+  },
+  "required": [
+    "query"
+  ]
+}

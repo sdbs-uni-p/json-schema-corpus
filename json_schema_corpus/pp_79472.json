@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "description": "details about a specific app",
+  "additionalProperties": false,
+  "properties": {
+    "principalType": {
+      "type": "string",
+      "description": "the app's principal type. Not present if the app does not use SSO"
+    },
+    "principalCookieSecretKey": {
+      "type": "string",
+      "description": "the secret key used by the proxy to encrypt the principal cookie. Not present if the app does not use SSO"
+    }
+  }
+}

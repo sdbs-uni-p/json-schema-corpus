@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "title": "An auction to sell a widget",
+  "additionalProperties": false,
+  "properties": {
+    "bids": {
+      "type": "integer"
+    },
+    "price": {
+      "type": "integer",
+      "required": true
+    }
+  }
+}

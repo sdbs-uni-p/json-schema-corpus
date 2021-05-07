@@ -1,0 +1,37 @@
+{
+  "id": "wit-ai-response",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "schema for a wit.ai response",
+  "type": "array",
+  "minItems": 1,
+  "items": {
+    "type": "#/definitions/outcome"
+  },
+  "definitions": {
+    "outcome": {
+      "type": "object",
+      "required": [
+        "confidence",
+        "entities",
+        "intent",
+        "_text"
+      ],
+      "properties": {
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "entities": {
+          "type": "object"
+        },
+        "intent": {
+          "type": "string"
+        },
+        "_text": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

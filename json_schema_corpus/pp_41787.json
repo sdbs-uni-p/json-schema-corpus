@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "endpoint": "/cost",
+  "description": "Calculating cost of a transaction",
+  "methods": [
+    "post"
+  ],
+  "params": {
+    "network": "mpesa",
+    "amount": 5000,
+    "transactionType": "withdrawal",
+    "transactor": "agent"
+  },
+  "type": "object",
+  "properties": {
+    "cost": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "cost"
+  ]
+}

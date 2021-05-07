@@ -1,0 +1,124 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://api.cloudfeaster.com/v1.00/spider_metadata",
+  "title": "Spider Metadata",
+  "description": "Spider Metadata",
+  "type": "object",
+  "properties": {
+    "url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "ttlInSeconds": {
+      "type": "integer",
+      "minimum": 60,
+      "maximum": 86400
+    },
+    "maxConcurrentCrawls": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 25
+    },
+    "maxCrawlTimeInSeconds": {
+      "type": "integer",
+      "minimum": 5,
+      "maximum": 300
+    },
+    "paranoiaLevel": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "identifyingFactors": {
+      "type": "object",
+      "patternProperties": {
+        "^[A-Za-z0-9_\\-]+$": {
+          "type": "object",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/pattern"
+            },
+            {
+              "$ref": "#/definitions/enum"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "authenticatingFactors": {
+      "type": "object",
+      "patternProperties": {
+        "^[A-Za-z0-9_\\-]+$": {
+          "type": "object",
+          "$ref": "#/definitions/pattern"
+        }
+      },
+      "additionalProperties": false
+    },
+    "factorDisplayOrder": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "factorDisplayNames": {
+      "type": "object",
+      "patternProperties": {
+        "^[A-Za-z0-9_\\-]+$": {
+          "type": "object",
+          "patternProperties": {
+            "^[A-Za-z]{0,2}$": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "url"
+  ],
+  "additionalProperties": false,
+  "definitions": {
+    "pattern": {
+      "type": "object",
+      "properties": {
+        "pattern": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "pattern"
+      ],
+      "additionalProperties": false
+    },
+    "enum": {
+      "type": "object",
+      "properties": {
+        "enum": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "enum"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

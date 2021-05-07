@@ -1,0 +1,40 @@
+{
+  "id": "https://raw.githubusercontent.com/eviratec/schema/master/v1/product/price.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "schema for a product price",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "type",
+    "amount",
+    "is_public",
+    "date_from",
+    "date_thru"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "type": {
+      "type": "string",
+      "maxLength": 18
+    },
+    "amount": {
+      "$ref": "https://raw.githubusercontent.com/eviratec/schema/master/v1/currency/amount.json#"
+    },
+    "is_public": {
+      "type": "boolean",
+      "value": false
+    },
+    "date_from": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "date_thru": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

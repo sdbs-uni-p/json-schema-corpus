@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "title": "Annotation",
+  "description": "A vocabulary of terms for describing nanopub resources.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "annotation"
+  ],
+  "properties": {
+    "annotation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rdf_uri",
+        "name",
+        "prefix",
+        "domain"
+      ],
+      "properties": {
+        "rdf_uri": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "prefix": {
+          "type": "string"
+        },
+        "domain": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

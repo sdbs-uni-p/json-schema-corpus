@@ -1,0 +1,277 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "title": "User",
+  "description": "Something about user resource",
+  "stability": "prototype",
+  "strictProperties": true,
+  "type": [
+    "object"
+  ],
+  "definitions": {
+    "id": {
+      "description": "unique identifier of user",
+      "type": "integer",
+      "readOnly": true,
+      "example": 44
+    },
+    "login": {
+      "description": "unique login of user",
+      "type": "string",
+      "example": "user-login"
+    },
+    "email": {
+      "description": "unique email of user",
+      "type": "string",
+      "format": "email",
+      "example": "aa@bb.ru"
+    },
+    "role": {
+      "description": "role of user",
+      "type": "string",
+      "enum": [
+        "guest",
+        "user",
+        "admin"
+      ],
+      "example": "guest"
+    },
+    "followings_object": {
+      "description": "followed posts",
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "/schemata/post#/definitions/id"
+        },
+        "title": {
+          "$ref": "/schemata/post#/definitions/title"
+        },
+        "slug": {
+          "$ref": "/schemata/post#/definitions/slug"
+        },
+        "status": {
+          "$ref": "/schemata/post#/definitions/status"
+        },
+        "content": {
+          "$ref": "/schemata/post#/definitions/content_short"
+        }
+      }
+    },
+    "user_object": {
+      "description": "user object",
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "/schemata/user#/definitions/id"
+        },
+        "login": {
+          "$ref": "/schemata/user#/definitions/login"
+        },
+        "email": {
+          "$ref": "/schemata/user#/definitions/email"
+        },
+        "role": {
+          "$ref": "/schemata/user#/definitions/role"
+        },
+        "followings": {
+          "type": "array",
+          "items": {
+            "$ref": "/schemata/user#/definitions/followings_object"
+          }
+        }
+      }
+    },
+    "identity": {
+      "anyOf": [
+        {
+          "$ref": "/schemata/user#/definitions/id"
+        },
+        {
+          "$ref": "/schemata/user#/definitions/login"
+        }
+      ]
+    },
+    "errors_object": {
+      "description": "user errors object",
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "object",
+          "properties": {
+            "email": {
+              "type": "array"
+            },
+            "login": {
+              "type": "array"
+            },
+            "password": {
+              "type": "array"
+            },
+            "password_confirmation": {
+              "type": "array"
+            }
+          }
+        }
+      }
+    },
+    "response_only_object": {
+      "description": "default response by user",
+      "type": "object",
+      "required": [
+        "user"
+      ],
+      "properties": {
+        "user": {
+          "$ref": "/schemata/user#"
+        }
+      }
+    },
+    "request_object_default": {
+      "description": "default request object",
+      "required": [
+        "user"
+      ],
+      "properties": {
+        "user": {
+          "required": [
+            "login",
+            "email"
+          ],
+          "type": "object",
+          "properties": {
+            "login": {
+              "$ref": "/schemata/user#/definitions/login"
+            },
+            "email": {
+              "$ref": "/schemata/user#/definitions/email"
+            },
+            "role": {
+              "$ref": "/schemata/user#/definitions/role"
+            }
+          }
+        }
+      },
+      "type": "object"
+    },
+    "response_with_single": {
+      "description": "response_with_single",
+      "type": "object",
+      "required": [
+        "user"
+      ],
+      "properties": {
+        "user": {
+          "$ref": "/schemata/user#/definitions/user_object"
+        }
+      }
+    },
+    "response_with_list": {
+      "description": "response_with_list",
+      "type": "object",
+      "required": [
+        "users",
+        "meta"
+      ],
+      "properties": {
+        "users": {
+          "type": "array",
+          "items": {
+            "$ref": "/schemata/user#"
+          }
+        },
+        "meta": {
+          "$ref": "/schemata/shared#/definitions/default_meta"
+        }
+      }
+    },
+    "created_at": {
+      "description": "when user was created",
+      "format": "date-time",
+      "type": [
+        "string"
+      ]
+    },
+    "updated_at": {
+      "description": "when user was updated",
+      "format": "date-time",
+      "type": [
+        "string"
+      ]
+    }
+  },
+  "links": [
+    {
+      "description": "Create a new user.",
+      "href": "/users",
+      "method": "POST",
+      "rel": "create",
+      "targetSchema": {
+        "$ref": "/schemata/user#/definitions/response_only_object"
+      },
+      "schema": {
+        "$ref": "/schemata/user#/definitions/request_object_default"
+      },
+      "title": "Create"
+    },
+    {
+      "description": "Delete an existing user.",
+      "href": "/users/{(%2Fschemata%2Fuser%23%2Fdefinitions%2Fidentity)}",
+      "method": "DELETE",
+      "rel": "destroy",
+      "title": "Delete",
+      "targetSchema": {
+        "$ref": "/schemata/shared#/definitions/default_success_boolean"
+      }
+    },
+    {
+      "description": "Info for existing user.",
+      "href": "/users/{(%2Fschemata%2Fuser%23%2Fdefinitions%2Fidentity)}",
+      "method": "GET",
+      "rel": "self",
+      "title": "Info",
+      "targetSchema": {
+        "$ref": "/schemata/user#/definitions/response_with_single"
+      }
+    },
+    {
+      "description": "List existing users.",
+      "href": "/users",
+      "method": "GET",
+      "rel": "instances",
+      "title": "List",
+      "targetSchema": {
+        "$ref": "/schemata/user#/definitions/response_with_list"
+      },
+      "schema": {
+        "$ref": "/schemata/shared#/definitions/request_object_lite"
+      }
+    },
+    {
+      "description": "Update an existing user.",
+      "href": "/users/{(%2Fschemata%2Fuser%23%2Fdefinitions%2Fidentity)}",
+      "method": "PUT",
+      "rel": "update",
+      "title": "Update",
+      "targetSchema": {
+        "$ref": "/schemata/user#/definitions/response_only_object"
+      },
+      "schema": {
+        "$ref": "/schemata/user#/definitions/request_object_default"
+      }
+    }
+  ],
+  "properties": {
+    "id": {
+      "$ref": "/schemata/user#/definitions/id"
+    },
+    "login": {
+      "$ref": "/schemata/user#/definitions/login"
+    },
+    "email": {
+      "$ref": "/schemata/user#/definitions/email"
+    },
+    "role": {
+      "$ref": "/schemata/user#/definitions/role"
+    }
+  },
+  "id": "/schemata/user"
+}

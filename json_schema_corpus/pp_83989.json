@@ -1,0 +1,93 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "definitions": {
+    "body": {
+      "type": "string"
+    },
+    "headline": {
+      "type": "string"
+    },
+    "query": {
+      "type": "object",
+      "required": [
+        "TableName"
+      ],
+      "properties": {
+        "TableName": {
+          "type": "string"
+        },
+        "ConsistentRead": {
+          "type": "boolean"
+        },
+        "ExclusiveStartKey": {
+          "type": "object"
+        },
+        "ExpressionAttributeNames": {
+          "type": "object"
+        },
+        "ExpressionAttributeValues": {
+          "type": "object"
+        },
+        "FilterExpression": {
+          "type": "string"
+        },
+        "IndexName": {
+          "type": "string"
+        },
+        "KeyConditionExpression": {
+          "type": "string"
+        },
+        "Limit": {
+          "type": "integer"
+        },
+        "ProjectionExpression": {
+          "type": "string"
+        },
+        "ReturnConsumedCapacity": {
+          "type": "string",
+          "enum": [
+            "INDEXES",
+            "TOTAL",
+            "NONE"
+          ]
+        },
+        "ScanIndexForward": {
+          "type": "boolean"
+        },
+        "Select": {
+          "type": "string",
+          "enum": [
+            "ALL_ATTRIBUTES",
+            "ALL_PROJECTED_ATTRIBUTES",
+            "SPECIFIC_ATTRIBUTES",
+            "COUNT"
+          ]
+        }
+      }
+    },
+    "Item_Page_Catalog": {
+      "type": "object",
+      "properties": {
+        "body": {
+          "$ref": "#definitions/body"
+        },
+        "headline": {
+          "$ref": "#definitions/headline"
+        },
+        "query": {
+          "$ref": "#definitions/query"
+        }
+      }
+    }
+  },
+  "type": "object",
+  "required": [
+    "Item",
+    "Item_Page_Catalog"
+  ],
+  "properties": {
+    "Item_Page_Catalog": {
+      "$ref": "#/definitions/Item_Page_Catalog"
+    }
+  }
+}

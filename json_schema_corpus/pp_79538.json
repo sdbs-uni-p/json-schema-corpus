@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "description": "a sorted set of assessments",
+  "definitions": {
+    "assessmentSortItem": {
+      "type": "object",
+      "description": "a single application/assessment within a larger sorted set",
+      "properties": {
+        "application": {
+          "$ref": "applicationRead.json#/definitions/id"
+        },
+        "assessment": {
+          "$ref": "assessmentMeta.json#/definitions/id"
+        },
+        "assessmentStatus": {
+          "$ref": "assessmentRead.json#/definitions/status"
+        }
+      }
+    },
+    "assessmentSortedSet": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/assessmentSortItem"
+      }
+    }
+  },
+  "properties": {
+    "unsortable": {
+      "$ref": "#/definitions/assessmentSortedSet"
+    },
+    "sorted": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/assessmentSortedSet"
+      }
+    }
+  }
+}

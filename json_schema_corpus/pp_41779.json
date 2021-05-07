@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "title": "An Array of Transports",
+  "type": "object",
+  "properties": {
+    "transports": {
+      "type": "array",
+      "items": {
+        "$ref": "transport-schema.json#"
+      }
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "operatinghours",
+  "description": "Operating Hours of Service Structure",
+  "type": "object",
+  "properties": {
+    "dayofweek": {
+      "$ref": "/schema/dayofweek"
+    },
+    "timeslots": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "open": {
+            "$ref": "/schema/time"
+          },
+          "close": {
+            "$ref": "/schema/time"
+          }
+        },
+        "required": [
+          "open",
+          "close"
+        ]
+      }
+    }
+  },
+  "required": [
+    "dayofweek",
+    "timeslots"
+  ]
+}

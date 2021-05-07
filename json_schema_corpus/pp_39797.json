@@ -1,0 +1,168 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "failed_license_scan": {
+      "type": "object",
+      "description": "Failed automated software copyright license scan",
+      "properties": {
+        "schema": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Name of the schema",
+              "pattern": "^[a-zA-Z0-9_]+$"
+            },
+            "version": {
+              "type": "string",
+              "description": "Version of the schema",
+              "pattern": "^[0-9]+-[0-9]+-[0-9]+$"
+            },
+            "url": {
+              "type": "string",
+              "description": "Full URL of the schema",
+              "format": "uri"
+            }
+          },
+          "required": [
+            "name",
+            "version"
+          ],
+          "additionalProperties": false
+        },
+        "_release": {
+          "type": "string",
+          "description": "Unique release id in form of \"ecosystem:package:version\""
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "error"
+          ]
+        },
+        "summary": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "details": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      },
+      "required": [
+        "status",
+        "summary",
+        "details"
+      ],
+      "additionalProperties": false
+    },
+    "license_scan_details": {
+      "type": "object",
+      "properties": {
+        "files_count": {
+          "type": "integer"
+        },
+        "licenses": {
+          "type": "object"
+        },
+        "scancode_notice": {
+          "type": "string"
+        },
+        "scancode_version": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "files_count",
+        "licenses",
+        "scancode_notice",
+        "scancode_version"
+      ],
+      "additionalProperties": true
+    },
+    "license_scan_summary": {
+      "type": "object",
+      "properties": {
+        "sure_licenses": {
+          "type": "array",
+          "description": "Licenses detected with high match confidence",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "sure_licenses"
+      ],
+      "additionalProperties": false
+    },
+    "successful_license_scan": {
+      "type": "object",
+      "description": "Successful automated software copyright license scan",
+      "properties": {
+        "schema": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Name of the schema",
+              "pattern": "^[a-zA-Z0-9_]+$"
+            },
+            "version": {
+              "type": "string",
+              "description": "Version of the schema",
+              "pattern": "^[0-9]+-[0-9]+-[0-9]+$"
+            },
+            "url": {
+              "type": "string",
+              "description": "Full URL of the schema",
+              "format": "uri"
+            }
+          },
+          "required": [
+            "name",
+            "version"
+          ],
+          "additionalProperties": false
+        },
+        "_release": {
+          "type": "string",
+          "description": "Unique release id in form of \"ecosystem:package:version\""
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "success"
+          ]
+        },
+        "summary": {
+          "$ref": "#/definitions/license_scan_summary"
+        },
+        "details": {
+          "$ref": "#/definitions/license_scan_details"
+        }
+      },
+      "required": [
+        "status",
+        "summary",
+        "details"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "oneOf": [
+    {
+      "$ref": "#/definitions/failed_license_scan"
+    },
+    {
+      "$ref": "#/definitions/successful_license_scan"
+    },
+    {
+      "type": "object",
+      "description": "Successful automated software copyright license scan",
+      "properties": {},
+      "additionalProperties": false
+    }
+  ],
+  "title": "source_licenses-v3-0-0"
+}

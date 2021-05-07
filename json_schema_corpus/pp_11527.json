@@ -1,0 +1,119 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://jsonschema.net",
+  "required": false,
+  "properties": {
+    "name": {
+      "type": "string",
+      "id": "http://jsonschema.net/name",
+      "required": true
+    },
+    "version": {
+      "type": "string",
+      "id": "http://jsonschema.net/version",
+      "required": true
+    },
+    "domain": {
+      "type": "string",
+      "id": "http://jsonschema.net/domain",
+      "required": false
+    },
+    "description": {
+      "type": "string",
+      "id": "http://jsonschema.net/description",
+      "required": false
+    },
+    "enums": {
+      "type": "array",
+      "id": "http://jsonschema.net/enums",
+      "required": false,
+      "items": {
+        "type": "object",
+        "id": "http://jsonschema.net/enums/0",
+        "required": false,
+        "properties": {
+          "description": {
+            "type": "string",
+            "id": "http://jsonschema.net/enums/0/description",
+            "required": false
+          },
+          "name": {
+            "type": "string",
+            "id": "http://jsonschema.net/enums/0/name",
+            "required": true
+          },
+          "values": {
+            "type": "array",
+            "id": "http://jsonschema.net/enums/0/values",
+            "required": true,
+            "items": {
+              "type": "string",
+              "id": "http://jsonschema.net/enums/0/values/0",
+              "required": false
+            }
+          }
+        }
+      }
+    },
+    "dimensions": {
+      "type": "array",
+      "id": "http://jsonschema.net/dimensions",
+      "required": false,
+      "items": {
+        "type": "object",
+        "id": "http://jsonschema.net/dimensions/0",
+        "required": false,
+        "properties": {
+          "description": {
+            "type": "string",
+            "id": "http://jsonschema.net/dimensions/0/description",
+            "required": false
+          },
+          "name": {
+            "type": "string",
+            "id": "http://jsonschema.net/dimensions/0/name",
+            "required": true
+          }
+        }
+      }
+    },
+    "properties": {
+      "type": "array",
+      "id": "http://jsonschema.net/properties",
+      "required": true,
+      "items": {
+        "type": "object",
+        "id": "http://jsonschema.net/properties/0",
+        "required": false,
+        "properties": {
+          "description": {
+            "type": "string",
+            "id": "http://jsonschema.net/properties/0/description",
+            "required": false
+          },
+          "dims": {
+            "type": "string",
+            "id": "http://jsonschema.net/properties/0/dims",
+            "required": false
+          },
+          "name": {
+            "type": "string",
+            "id": "http://jsonschema.net/properties/0/name",
+            "required": true
+          },
+          "type": {
+            "type": "string",
+            "id": "http://jsonschema.net/properties/0/type",
+            "required": true
+          },
+          "unit": {
+            "type": "string",
+            "id": "http://jsonschema.net/properties/0/unit",
+            "required": false
+          }
+        }
+      }
+    }
+  }
+}

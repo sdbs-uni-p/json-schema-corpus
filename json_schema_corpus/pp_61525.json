@@ -1,0 +1,1194 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://xray.com/somedomain/course/123/gradebook",
+  "title": "Grade report",
+  "description": "X-Ray web service gradebook method schema",
+  "oneOf": [
+    {
+      "$ref": "base_schema_ref.json#/definitions/base_response"
+    },
+    {
+      "required": [
+        "reportdate",
+        "scheduleid",
+        "forumid",
+        "datapoints_plain",
+        "participantid",
+        "notifications",
+        "courseid",
+        "datecreated",
+        "subtype",
+        "hsuforumid",
+        "elements",
+        "oldid",
+        "datapoints",
+        "date",
+        "type",
+        "id",
+        "attachments"
+      ],
+      "type": "object",
+      "properties": {
+        "reportdate": {
+          "type": "string"
+        },
+        "scheduleid": {
+          "type": "number"
+        },
+        "forumid": {
+          "type": "number"
+        },
+        "datapoints_plain": {
+          "type": "array"
+        },
+        "participantid": {
+          "type": "number"
+        },
+        "subtype": {
+          "type": "string"
+        },
+        "courseid": {
+          "type": "number"
+        },
+        "datecreated": {
+          "type": "string"
+        },
+        "notifications": {
+          "required": [
+            "attributes",
+            "type",
+            "value"
+          ],
+          "type": "object",
+          "properties": {
+            "attributes": {
+              "required": [
+                "row.names",
+                "class",
+                "names"
+              ],
+              "type": "object",
+              "properties": {
+                "names": {
+                  "required": [
+                    "attributes",
+                    "type",
+                    "value"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "attributes": {
+                      "type": "object"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    }
+                  }
+                },
+                "class": {
+                  "required": [
+                    "attributes",
+                    "type",
+                    "value"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "attributes": {
+                      "type": "object"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    }
+                  }
+                },
+                "row.names": {
+                  "required": [
+                    "attributes",
+                    "type",
+                    "value"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "attributes": {
+                      "type": "object"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "items": {
+                        "type": "number"
+                      },
+                      "type": "array"
+                    }
+                  }
+                }
+              }
+            },
+            "type": {
+              "type": "string"
+            },
+            "value": {
+              "items": {
+                "required": [
+                  "attributes",
+                  "type",
+                  "value"
+                ],
+                "type": "object",
+                "properties": {
+                  "attributes": {
+                    "type": "object"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "items": {
+                      "type": [
+                        "number",
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "type": "array"
+                  }
+                }
+              },
+              "type": "array"
+            }
+          }
+        },
+        "hsuforumid": {
+          "type": "number"
+        },
+        "elements": {
+          "required": [
+            "element1",
+            "scoreDistributionByItem",
+            "studentScoreDistribution",
+            "itemsHeatmap",
+            "scatterPlot",
+            "courseGradeTable",
+            "gradableItemsTable"
+          ],
+          "type": "object",
+          "properties": {
+            "element1": {
+              "required": [
+                "sectionLevel",
+                "elementName",
+                "title",
+                "courseName",
+                "instructors",
+                "date",
+                "elementType"
+              ],
+              "type": "object",
+              "properties": {
+                "sectionLevel": {
+                  "type": "number"
+                },
+                "elementName": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "courseName": {
+                  "type": "string"
+                },
+                "instructors": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "date": {
+                  "type": "string"
+                },
+                "elementType": {
+                  "type": "string"
+                }
+              }
+            },
+            "scoreDistributionByItem": {
+              "required": [
+                "elementName",
+                "uuid",
+                "title",
+                "contexts",
+                "customData",
+                "mapping",
+                "tooltip",
+                "filename",
+                "dimensions",
+                "plotType",
+                "elementType",
+                "legend",
+                "reportId"
+              ],
+              "type": "object",
+              "properties": {
+                "elementName": {
+                  "type": "string"
+                },
+                "uuid": {
+                  "type": "string"
+                },
+                "reportId": {
+                  "type": "array"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "contexts": {
+                  "required": [
+                    "courseContext",
+                    "advancedForumContext",
+                    "forumContext",
+                    "timeMachine",
+                    "participantContext"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "courseContext": {
+                      "type": "string"
+                    },
+                    "advancedForumContext": {
+                      "type": "string"
+                    },
+                    "forumContext": {
+                      "type": "string"
+                    },
+                    "timeMachine": {
+                      "type": "string"
+                    },
+                    "participantContext": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "customData": {
+                  "type": "null"
+                },
+                "mapping": {
+                  "type": "array"
+                },
+                "tooltip": {
+                  "type": "string"
+                },
+                "filename": {
+                  "type": "string"
+                },
+                "plotType": {
+                  "type": "string"
+                },
+                "elementType": {
+                  "type": "string"
+                },
+                "legend": {
+                  "type": "string"
+                },
+                "dimensions": {
+                  "required": [
+                    "width",
+                    "height"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "width": {
+                      "type": "number"
+                    },
+                    "height": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            },
+            "studentScoreDistribution": {
+              "required": [
+                "elementName",
+                "uuid",
+                "title",
+                "contexts",
+                "customData",
+                "mapping",
+                "tooltip",
+                "filename",
+                "dimensions",
+                "plotType",
+                "elementType",
+                "legend",
+                "reportId"
+              ],
+              "type": "object",
+              "properties": {
+                "elementName": {
+                  "type": "string"
+                },
+                "uuid": {
+                  "type": "string"
+                },
+                "reportId": {
+                  "type": "array"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "contexts": {
+                  "required": [
+                    "courseContext",
+                    "advancedForumContext",
+                    "forumContext",
+                    "timeMachine",
+                    "participantContext"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "courseContext": {
+                      "type": "string"
+                    },
+                    "advancedForumContext": {
+                      "type": "string"
+                    },
+                    "forumContext": {
+                      "type": "string"
+                    },
+                    "timeMachine": {
+                      "type": "string"
+                    },
+                    "participantContext": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "customData": {
+                  "type": "null"
+                },
+                "mapping": {
+                  "type": "array"
+                },
+                "tooltip": {
+                  "type": "string"
+                },
+                "filename": {
+                  "type": "string"
+                },
+                "plotType": {
+                  "type": "string"
+                },
+                "elementType": {
+                  "type": "string"
+                },
+                "legend": {
+                  "type": "string"
+                },
+                "dimensions": {
+                  "required": [
+                    "width",
+                    "height"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "width": {
+                      "type": "number"
+                    },
+                    "height": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            },
+            "itemsHeatmap": {
+              "required": [
+                "elementName",
+                "uuid",
+                "title",
+                "contexts",
+                "customData",
+                "mapping",
+                "tooltip",
+                "filename",
+                "dimensions",
+                "plotType",
+                "elementType",
+                "legend",
+                "reportId"
+              ],
+              "type": "object",
+              "properties": {
+                "elementName": {
+                  "type": "string"
+                },
+                "uuid": {
+                  "type": "string"
+                },
+                "reportId": {
+                  "type": "array"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "contexts": {
+                  "required": [
+                    "courseContext",
+                    "advancedForumContext",
+                    "forumContext",
+                    "timeMachine",
+                    "participantContext"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "courseContext": {
+                      "type": "string"
+                    },
+                    "advancedForumContext": {
+                      "type": "string"
+                    },
+                    "forumContext": {
+                      "type": "string"
+                    },
+                    "timeMachine": {
+                      "type": "string"
+                    },
+                    "participantContext": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "customData": {
+                  "type": "null"
+                },
+                "mapping": {
+                  "type": "array"
+                },
+                "tooltip": {
+                  "type": "string"
+                },
+                "filename": {
+                  "type": "string"
+                },
+                "plotType": {
+                  "type": "string"
+                },
+                "elementType": {
+                  "type": "string"
+                },
+                "legend": {
+                  "type": "string"
+                },
+                "dimensions": {
+                  "required": [
+                    "width",
+                    "height"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "width": {
+                      "type": "number"
+                    },
+                    "height": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            },
+            "courseGradeTable": {
+              "required": [
+                "comment",
+                "emptyData",
+                "enableGraph",
+                "uuid",
+                "title",
+                "columnOrder",
+                "elementName",
+                "inverted",
+                "dataFormat",
+                "colorCodesSpecs",
+                "columnHeaders",
+                "elementType",
+                "data",
+                "legend"
+              ],
+              "type": "object",
+              "properties": {
+                "comment": {
+                  "type": "array"
+                },
+                "emptyData": {
+                  "type": "number"
+                },
+                "enableGraph": {
+                  "type": "boolean"
+                },
+                "uuid": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "columnOrder": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "elementName": {
+                  "type": "string"
+                },
+                "inverted": {
+                  "type": "boolean"
+                },
+                "legend": {
+                  "type": "string"
+                },
+                "dataFormat": {
+                  "type": "array"
+                },
+                "colorCodesSpecs": {
+                  "type": "array"
+                },
+                "elementType": {
+                  "type": "string"
+                },
+                "data": {
+                  "items": {
+                    "required": [
+                      "participantId",
+                      "firstname",
+                      "courseId",
+                      "lastname",
+                      "courseGrade",
+                      "meanAssign",
+                      "meanQuiz",
+                      "meanOther",
+                      "meanForum",
+                      "standardScore"
+                    ],
+                    "type": "object",
+                    "properties": {
+                      "participantId": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "type": "number"
+                          }
+                        }
+                      },
+                      "firstname": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "courseId": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "type": "number"
+                          }
+                        }
+                      },
+                      "lastname": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "meanForum": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "type": "null"
+                          }
+                        }
+                      },
+                      "meanOther": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "type": "null"
+                          }
+                        }
+                      },
+                      "meanQuiz": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        }
+                      },
+                      "meanAssign": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "type": "null"
+                          }
+                        }
+                      },
+                      "courseGrade": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        }
+                      },
+                      "standardScore": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "type": [
+                              "number",
+                              "null"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "type": "array"
+                },
+                "columnHeaders": {
+                  "required": [
+                    "firstname",
+                    "lastname",
+                    "courseGrade",
+                    "meanAssign",
+                    "meanQuiz",
+                    "meanOther",
+                    "meanForum"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "firstname": {
+                      "type": "string"
+                    },
+                    "lastname": {
+                      "type": "string"
+                    },
+                    "meanForum": {
+                      "type": "string"
+                    },
+                    "meanOther": {
+                      "type": "string"
+                    },
+                    "meanQuiz": {
+                      "type": "string"
+                    },
+                    "meanAssign": {
+                      "type": "string"
+                    },
+                    "courseGrade": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
+            "scatterPlot": {
+              "required": [
+                "elementName",
+                "uuid",
+                "title",
+                "contexts",
+                "customData",
+                "mapping",
+                "tooltip",
+                "filename",
+                "dimensions",
+                "plotType",
+                "elementType",
+                "legend",
+                "reportId"
+              ],
+              "type": "object",
+              "properties": {
+                "elementName": {
+                  "type": "string"
+                },
+                "uuid": {
+                  "type": "string"
+                },
+                "reportId": {
+                  "type": "array"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "contexts": {
+                  "required": [
+                    "courseContext",
+                    "advancedForumContext",
+                    "forumContext",
+                    "timeMachine",
+                    "participantContext"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "courseContext": {
+                      "type": "string"
+                    },
+                    "advancedForumContext": {
+                      "type": "string"
+                    },
+                    "forumContext": {
+                      "type": "string"
+                    },
+                    "timeMachine": {
+                      "type": "string"
+                    },
+                    "participantContext": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "customData": {
+                  "type": "null"
+                },
+                "mapping": {
+                  "type": "array"
+                },
+                "tooltip": {
+                  "type": "string"
+                },
+                "filename": {
+                  "type": "string"
+                },
+                "plotType": {
+                  "type": "string"
+                },
+                "elementType": {
+                  "type": "string"
+                },
+                "legend": {
+                  "type": "string"
+                },
+                "dimensions": {
+                  "required": [
+                    "width",
+                    "height"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "width": {
+                      "type": "number"
+                    },
+                    "height": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            },
+            "gradableItemsTable": {
+              "required": [
+                "comment",
+                "emptyData",
+                "enableGraph",
+                "uuid",
+                "title",
+                "columnOrder",
+                "elementName",
+                "inverted",
+                "dataFormat",
+                "colorCodesSpecs",
+                "columnHeaders",
+                "elementType",
+                "data",
+                "legend"
+              ],
+              "type": "object",
+              "properties": {
+                "comment": {
+                  "type": "array"
+                },
+                "emptyData": {
+                  "type": "number"
+                },
+                "enableGraph": {
+                  "type": "boolean"
+                },
+                "uuid": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "columnOrder": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "elementName": {
+                  "type": "string"
+                },
+                "inverted": {
+                  "type": "boolean"
+                },
+                "legend": {
+                  "type": "string"
+                },
+                "dataFormat": {
+                  "type": "array"
+                },
+                "colorCodesSpecs": {
+                  "type": "array"
+                },
+                "elementType": {
+                  "type": "string"
+                },
+                "data": {
+                  "items": {
+                    "required": [
+                      "category",
+                      "courseGradeCorrelation",
+                      "activityId",
+                      "nStudents",
+                      "standardScore",
+                      "itemname"
+                    ],
+                    "type": "object",
+                    "properties": {
+                      "category": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "courseGradeCorrelation": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "type": "null"
+                          }
+                        }
+                      },
+                      "activityId": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "type": "number"
+                          }
+                        }
+                      },
+                      "nStudents": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "type": "number"
+                          }
+                        }
+                      },
+                      "standardScore": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "itemname": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "type": "array"
+                },
+                "columnHeaders": {
+                  "required": [
+                    "category",
+                    "standardScore",
+                    "nStudents",
+                    "itemname",
+                    "courseGradeCorrelation"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "category": {
+                      "type": "string"
+                    },
+                    "standardScore": {
+                      "type": "string"
+                    },
+                    "nStudents": {
+                      "type": "string"
+                    },
+                    "itemname": {
+                      "type": "string"
+                    },
+                    "courseGradeCorrelation": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "oldid": {
+          "type": "null"
+        },
+        "datapoints": {
+          "required": [
+            "attributes",
+            "type",
+            "value"
+          ],
+          "type": "object",
+          "properties": {
+            "attributes": {
+              "required": [
+                "names"
+              ],
+              "type": "object",
+              "properties": {
+                "names": {
+                  "required": [
+                    "attributes",
+                    "type",
+                    "value"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "attributes": {
+                      "type": "object"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    }
+                  }
+                }
+              }
+            },
+            "type": {
+              "type": "string"
+            },
+            "value": {
+              "items": {
+                "required": [
+                  "attributes",
+                  "type",
+                  "value"
+                ],
+                "type": "object",
+                "properties": {
+                  "attributes": {
+                    "required": [
+                      "row.names",
+                      "class",
+                      "names"
+                    ],
+                    "type": "object",
+                    "properties": {
+                      "names": {
+                        "required": [
+                          "attributes",
+                          "type",
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "attributes": {
+                            "type": "object"
+                          },
+                          "type": {
+                            "type": "string"
+                          },
+                          "value": {
+                            "items": {
+                              "type": "string"
+                            },
+                            "type": "array"
+                          }
+                        }
+                      },
+                      "class": {
+                        "required": [
+                          "attributes",
+                          "type",
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "attributes": {
+                            "type": "object"
+                          },
+                          "type": {
+                            "type": "string"
+                          },
+                          "value": {
+                            "items": {
+                              "type": "string"
+                            },
+                            "type": "array"
+                          }
+                        }
+                      },
+                      "row.names": {
+                        "required": [
+                          "attributes",
+                          "type",
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "attributes": {
+                            "type": "object"
+                          },
+                          "type": {
+                            "type": "string"
+                          },
+                          "value": {
+                            "items": {
+                              "type": "number"
+                            },
+                            "type": "array"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "items": {
+                      "required": [
+                        "attributes",
+                        "type",
+                        "value"
+                      ],
+                      "type": "object",
+                      "properties": {
+                        "attributes": {
+                          "type": "object"
+                        },
+                        "type": {
+                          "type": "string"
+                        },
+                        "value": {
+                          "items": {
+                            "type": [
+                              "number",
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "type": "array"
+                        }
+                      }
+                    },
+                    "type": "array"
+                  }
+                }
+              },
+              "type": "array"
+            }
+          }
+        },
+        "date": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "id": {
+          "type": "number"
+        },
+        "attachments": {
+          "type": "array"
+        }
+      }
+    }
+  ]
+}

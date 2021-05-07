@@ -1,0 +1,124 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Claim data",
+  "description": "Claim provided by a claimant.",
+  "type": "object",
+  "properties": {
+    "claimant": {
+      "title": "Claimant",
+      "description": "Short name of the claimant that was used during the subscription (e.g. CERN)",
+      "type": "string",
+      "minLength": 1
+    },
+    "subject": {
+      "title": "Subject",
+      "description": "Subject of the claim predicate",
+      "type": "object",
+      "properties": {
+        "type": {
+          "title": "Identifier type",
+          "description": "Type of persistent identifier (e.g. INSPIRE_RECORD_ID)",
+          "type": "string",
+          "minLength": 1
+        },
+        "value": {
+          "title": "Identifier value",
+          "description": "Actual value of the identifier",
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "type",
+        "value"
+      ],
+      "additionalProperties": false
+    },
+    "predicate": {
+      "title": "Predicate",
+      "description": "Type of relation between the subject and the object",
+      "type": "string",
+      "enum": [
+        "is_same_as",
+        "is_variant_of",
+        "is_author_of",
+        "is_contributor_to",
+        "is_erratum_of"
+      ]
+    },
+    "certainty": {
+      "title": "Certainty",
+      "description": "Certainty of the claim. It must be a value between 0 and 1.0, being 1.0 a confident claim",
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "minLength": 1
+    },
+    "object": {
+      "title": "Object",
+      "description": "Object of the claim predicate",
+      "type": "object",
+      "properties": {
+        "type": {
+          "title": "Identifier type",
+          "description": "Type of persistent identifier (e.g. INSPIRE_RECORD_ID)",
+          "type": "string",
+          "minLength": 1
+        },
+        "value": {
+          "title": "Value",
+          "description": "Actual value of the identifier",
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "type",
+        "value"
+      ],
+      "additionalProperties": false
+    },
+    "created": {
+      "title": "Creation datetime",
+      "description": "Datetime in which the claim was created",
+      "type": "string",
+      "format": "date-time",
+      "minLength": 1
+    },
+    "arguments": {
+      "title": "Optional arguments",
+      "description": "Arguments supporting the certainty of the claim",
+      "type": "object",
+      "properties": {
+        "human": {
+          "title": "Human made",
+          "description": "The claim was done by a human (1) or an algorithm (1)",
+          "type": "number",
+          "enum": [
+            0,
+            1
+          ]
+        },
+        "actor": {
+          "title": "Actor",
+          "description": "Person who assessed the certainty",
+          "type": "string"
+        },
+        "role": {
+          "title": "Role",
+          "description": "Role of the actor (e.g. Cataloguer)",
+          "type": "string"
+        }
+      }
+    }
+  },
+  "required": [
+    "claimant",
+    "subject",
+    "predicate",
+    "object",
+    "certainty",
+    "created"
+  ],
+  "additionalProperties": false
+}

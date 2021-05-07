@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "title": "Legacy light",
+  "definitions": {
+    "core.light": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Friendly device name (e.g. Kitchen Light)"
+        },
+        "power": {
+          "type": "integer",
+          "description": "Current sensed or set value for Brightness"
+        },
+        "state": {
+          "type": "boolean",
+          "description": "True if on, False if off"
+        }
+      }
+    }
+  },
+  "type": "object",
+  "required": [
+    "power",
+    "state"
+  ]
+}

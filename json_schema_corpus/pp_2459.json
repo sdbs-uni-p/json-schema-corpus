@@ -1,0 +1,538 @@
+{
+  "id": "https://cdn.brytecore.com/packages/analytics/schema.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "The Brytescore API package to track website and mobile app analytics events",
+  "definitions": {
+    "eventProperties": {
+      "type": "object",
+      "properties": {
+        "anonymousId": {
+          "type": "string"
+        },
+        "apiKey": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "custom": {
+              "type": "object"
+            }
+          },
+          "additionalProperties": true
+        },
+        "date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "event": {
+          "type": "string"
+        },
+        "eventDisplayName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "hostName": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "format": "hostname"
+            },
+            {
+              "type": "string",
+              "format": "ipv4"
+            },
+            {
+              "type": "string",
+              "format": "ipv6"
+            }
+          ]
+        },
+        "impersonatorUserId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "ipAddress": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "format": "ipv4"
+            },
+            {
+              "type": "string",
+              "format": "ipv6"
+            }
+          ]
+        },
+        "isImpersonating": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "library": {
+          "type": "string"
+        },
+        "libraryVersion": {
+          "type": "string"
+        },
+        "pageViewId": {
+          "type": "string"
+        },
+        "referer": {
+          "type": "string",
+          "format": "uri"
+        },
+        "schemaVersion": {
+          "type": "string"
+        },
+        "sessionId": {
+          "type": "string"
+        },
+        "userAgent": {
+          "type": "string"
+        },
+        "userId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "anonymousId",
+        "apiKey",
+        "data",
+        "event",
+        "library",
+        "libraryVersion",
+        "schemaVersion"
+      ],
+      "additionalProperties": false
+    },
+    "authenticated": {
+      "description": "User authenticated against the system",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "authenticated"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "userAccount": {
+                  "oneOf": [
+                    {
+                      "$ref": "https://cdn.brytecore.com/packages/schemas/userAccount.json#"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "address": {
+                  "oneOf": [
+                    {
+                      "$ref": "https://cdn.brytecore.com/packages/schemas/address.json#"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "telephone": {
+                  "oneOf": [
+                    {
+                      "$ref": "https://cdn.brytecore.com/packages/schemas/telephone.json#"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "isLead": {
+                  "type": "boolean"
+                },
+                "userClassification": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "dateRegistered": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "format": "date-time"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "brytescoreUUIDCreated": {
+      "description": "",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "brytescoreUUIDCreated"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "anonymousId": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "anonymousId"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "heartBeat": {
+      "description": "",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "heartBeat"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "elapsedTime": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "impersonate": {
+      "description": "",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "impersonate"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "isImpersonating": {
+                  "type": "boolean"
+                },
+                "impersonatorUserId": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "isImpersonating"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "pageView": {
+      "description": "",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "pageView"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "referrer": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "pageTitle": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "pageURL": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "format": "uri"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "registeredAccount": {
+      "description": "",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "registeredAccount"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "userAccount": {
+                  "oneOf": [
+                    {
+                      "$ref": "https://cdn.brytecore.com/packages/schemas/userAccount.json#"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "address": {
+                  "oneOf": [
+                    {
+                      "$ref": "https://cdn.brytecore.com/packages/schemas/address.json#"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "telephone": {
+                  "oneOf": [
+                    {
+                      "$ref": "https://cdn.brytecore.com/packages/schemas/telephone.json#"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "isLead": {
+                  "type": "boolean"
+                },
+                "userClassification": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "dateRegistered": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "format": "date-time"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "sessionStarted": {
+      "description": "",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "sessionStarted"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "anonymousId": {
+                  "type": "string"
+                },
+                "browserUA": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "sessionId": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "anonymousId",
+                "sessionId"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "submittedForm": {
+      "description": "",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "submittedForm"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "form": {
+                  "oneOf": [
+                    {
+                      "$ref": "https://cdn.brytecore.com/packages/schemas/form.json#"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "updatedUserInfo": {
+      "description": "",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/eventProperties"
+        },
+        {
+          "properties": {
+            "event": {
+              "enum": [
+                "updatedUserInfo"
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "userAccount": {
+                  "$ref": "https://cdn.brytecore.com/packages/schemas/userAccount.json#"
+                },
+                "address": {
+                  "oneOf": [
+                    {
+                      "$ref": "https://cdn.brytecore.com/packages/schemas/address.json#"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "telephone": {
+                  "oneOf": [
+                    {
+                      "$ref": "https://cdn.brytecore.com/packages/schemas/telephone.json#"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "oneOf": [
+    {
+      "$ref": "#/definitions/authenticated"
+    },
+    {
+      "$ref": "#/definitions/brytescoreUUIDCreated"
+    },
+    {
+      "$ref": "#/definitions/heartBeat"
+    },
+    {
+      "$ref": "#/definitions/impersonate"
+    },
+    {
+      "$ref": "#/definitions/pageView"
+    },
+    {
+      "$ref": "#/definitions/registeredAccount"
+    },
+    {
+      "$ref": "#/definitions/sessionStarted"
+    },
+    {
+      "$ref": "#/definitions/submittedForm"
+    },
+    {
+      "$ref": "#/definitions/updatedUserInfo"
+    }
+  ]
+}

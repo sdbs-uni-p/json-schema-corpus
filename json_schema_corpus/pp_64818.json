@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#4",
+  "title": "ErrorData",
+  "description": "Describes information about errors encountered",
+  "type": "object",
+  "properties": {
+    "reason": {
+      "description": "cause of the error",
+      "type": "string"
+    }
+  },
+  "required": [
+    "reason"
+  ]
+}

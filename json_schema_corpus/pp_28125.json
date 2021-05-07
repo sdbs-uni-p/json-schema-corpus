@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "constructionCost",
+  "id": "constructionCost",
+  "description": "The estimated cost for construction.",
+  "type": "object",
+  "required": [
+    "objectType",
+    "quote"
+  ],
+  "properties": {
+    "objectType": {
+      "type": "string",
+      "enum": [
+        "constructionCost"
+      ],
+      "description": "The type of the object, constructionCost."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the construction costs associated with the product.",
+      "maxLength": 300
+    },
+    "quote": {
+      "$ref": "quote.json#",
+      "description": "The quote of the Construction Cost."
+    }
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Special Deal Schema",
+  "description": "The Special Deal Archetype - Essential properties that define a special deal",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "title, price, seller"
+  ],
+  "properties": {
+    "_id": {
+      "type": "string",
+      "description": "Unique identifier for this archetype record",
+      "maxLength": 50,
+      "default": ""
+    },
+    "draft": {
+      "type": "boolean",
+      "description": "Indicates this archetype record is a draft and is not published",
+      "default": false
+    },
+    "created": {
+      "type": "string",
+      "description": "Date and time this archetype record was created in ISO 8601 date standard e.g. YYYY-MM-DDThh:mm:ss.sTZD",
+      "format": "date-time",
+      "default": ""
+    },
+    "updated": {
+      "type": "string",
+      "description": "Date and time this archetype record was updated in ISO 8601 date standard e.g. YYYY-MM-DDThh:mm:ss.sTZD",
+      "format": "date-time",
+      "default": ""
+    },
+    "title": {
+      "type": "string",
+      "description": "Title of the special deal",
+      "maxLength": 250,
+      "default": ""
+    },
+    "price": {
+      "type": "integer",
+      "description": "Product price in cents as an integer (whole number)",
+      "minimum": 0,
+      "maximum": 999999999999999,
+      "default": 0
+    },
+    "seller": {
+      "type": "string",
+      "description": "The person or organization selling the product",
+      "maxLength": 70,
+      "default": ""
+    },
+    "category": {
+      "type": "string",
+      "description": "General category of the product, e.g. Recreation",
+      "maxLength": 40,
+      "default": ""
+    },
+    "subcategory": {
+      "type": "string",
+      "description": "Specific category of the product, e.g. Skydiving",
+      "maxLength": 40,
+      "default": ""
+    },
+    "initial_price": {
+      "type": "integer",
+      "description": "Initial product price (before deal) in cents as an integer (whole number)",
+      "minimum": 0,
+      "maximum": 999999999999999,
+      "default": 0
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the special deal",
+      "maxLength": 5000,
+      "default": ""
+    },
+    "quantity": {
+      "type": "integer",
+      "description": "Specific amount of times special deal can be used in total",
+      "minimum": 1,
+      "maximum": 99999999999999,
+      "default": 1
+    },
+    "expiration_date": {
+      "type": "string",
+      "description": "Date and time of expiration in ISO 8601 date standard e.g. YYYY-MM-DDThh:mm:ss.sTZD",
+      "format": "date-time",
+      "default": ""
+    },
+    "seller_profile": {
+      "type": "string",
+      "description": "URL to seller or organization's website",
+      "format": "uri",
+      "default": ""
+    },
+    "tags": {
+      "type": "array",
+      "description": "Array of Tag Archetypes that are used to help categorize this Archetype record",
+      "maxItems": 6,
+      "uniqueItems": true,
+      "additionalItems": false,
+      "default": [],
+      "items": {
+        "$ref": "tag_archetype_schema.json"
+      }
+    },
+    "audience": {
+      "type": "array",
+      "maxItems": 4,
+      "uniqueItems": true,
+      "default": [],
+      "items": {
+        "type": "string",
+        "maxLength": 30,
+        "default": ""
+      }
+    },
+    "primary_image_archetype": {
+      "$ref": "image_archetype_schema.json",
+      "description": "Image Archetype ID to use as the primary image of this special deal"
+    },
+    "image_archetypes": {
+      "type": "array",
+      "description": "Array of Image Archetype IDs",
+      "uniqueItems": true,
+      "additionalItems": false,
+      "default": [],
+      "maxItems": 15,
+      "items": {
+        "$ref": "image_archetype_schema.json"
+      }
+    }
+  }
+}

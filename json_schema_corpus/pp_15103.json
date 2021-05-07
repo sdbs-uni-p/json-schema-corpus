@@ -1,0 +1,237 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "Rule schema.",
+  "description": "Describes a rule, which consists of zero or more conditions that must be evaluated to true in order to trigger the one or more actions",
+  "properties": {
+    "id": {
+      "type": "string",
+      "title": "Id schema.",
+      "description": "Unique identifier (name) of the rule.",
+      "id": "id"
+    },
+    "description": {
+      "type": "string",
+      "title": "Description schema.",
+      "description": "Description of the rule's purpose. Solely used for documentation purposes.",
+      "id": "description"
+    },
+    "activatedAt": {
+      "description": "The time the rule is activated."
+    },
+    "isGeneric": {
+      "type": "boolean",
+      "description": "If true, indicates that we are dealing with a rule that is not bound to a specific feature, but applied to all."
+    },
+    "featureId": {
+      "type": "string",
+      "description": "Feature (ID) this rule applies too. If the featureId is specified, the rule is not generic."
+    },
+    "activationType": {
+      "enum": [
+        "OnEnter",
+        "OnExit",
+        "OnChange",
+        "Continuous",
+        "Manual"
+      ],
+      "default": "Continuously",
+      "description": "Determines when the rule should be activated / triggered."
+    },
+    "isActive": {
+      "type": "boolean",
+      "default": true,
+      "title": "IsActive schema.",
+      "description": "A rule may start active, meaning it will be evaluated every time, or inactive, waiting for activation to occur.",
+      "id": "isActive"
+    },
+    "recurrence": {
+      "type": "integer",
+      "minimum": -1,
+      "default": -1,
+      "title": "Recurrence schema.",
+      "description": "How often may the rule fire. In case the value is -1, fire continuously.",
+      "id": "recurrence"
+    },
+    "conditions": {
+      "type": "array",
+      "title": "Conditions schema.",
+      "description": "An array of AND conditions: each condition must be evaluated to true in order to trigger the actions in the rule.",
+      "items": {
+        "type": "object",
+        "description": "A single AND condition",
+        "properties": {
+          "method": {
+            "enum": [
+              "evaluate",
+              "inside",
+              "nearby"
+            ],
+            "description": "Type of condition."
+          },
+          "property": {
+            "oneOf": [
+              {
+                "$ref": "#/definitions/evaluate-condition"
+              },
+              {
+                "$ref": "#/definitions/inside-condition"
+              },
+              {
+                "$ref": "#/definitions/nearby-condition"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "actions": {
+      "type": "array",
+      "title": "Actions schema.",
+      "description": "An array of actions: each action is executed when the rule is triggered.",
+      "items": {
+        "type": "object",
+        "description": "A single action",
+        "properties": {
+          "method": {
+            "enum": [
+              "sendImbMessage"
+            ],
+            "description": "Type of action."
+          },
+          "delayInMSec": {
+            "type": "number",
+            "description": "Delay in milliseconds before triggering the action."
+          },
+          "property": {
+            "oneOf": [
+              {
+                "$ref": "#/definitions/sendImbMessage-action"
+              }
+            ]
+          }
+        },
+        "required": [
+          "method",
+          "property"
+        ]
+      },
+      "id": "actions"
+    }
+  },
+  "required": [
+    "id",
+    "recurrence",
+    "isActive",
+    "actions"
+  ],
+  "definitions": {
+    "evaluate-condition": {
+      "type": "string",
+      "description": "Evaluate the properties, e.g. speed > 5. Note that we only support one level of brackets."
+    },
+    "inside-condition": {
+      "type": "object",
+      "properties": {
+        "polyId": {
+          "type": "string",
+          "description": "ID of the feature that represents the polygon area (geo-fence)."
+        },
+        "static": {
+          "type": "boolean",
+          "description": "When true, the polygon ID represents a static area, resulting in slightly optimized code."
+        },
+        "featureId": {
+          "type": "string",
+          "description": "ID of the feature that must be checked whether it is inside the area."
+        }
+      },
+      "required": [
+        "polyId"
+      ],
+      "description": "Geo-fence: check whether the updated feature, or the feature with ID featureId, is inside the area."
+    },
+    "nearby-condition": {
+      "type": "object",
+      "properties": {
+        "distance": {
+          "type": "number",
+          "description": "Distance to the reference location in units"
+        },
+        "units": {
+          "enum": [
+            "kilometers",
+            "radians",
+            "miles",
+            "degrees"
+          ],
+          "default": "kilometers",
+          "description": "Specifies the unit type in which the distance is measured."
+        },
+        "locationId": {
+          "type": "string",
+          "description": "ID of the feature that represents the reference point."
+        },
+        "locationLatLng": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2,
+          "description": "Specifies the reference location in latitude and longitude."
+        },
+        "static": {
+          "type": "boolean",
+          "description": "When true, the polygon ID represents a static area, resulting in slightly optimized code."
+        }
+      },
+      "required": [
+        "distance"
+      ],
+      "description": "Check whether the updated feature is near the point."
+    },
+    "sendImbMessage-action": {
+      "type": "object",
+      "properties": {
+        "publisher": {
+          "type": "string",
+          "description": "The publisher type - may be superfluous after renaming the method to sendImbMessage."
+        },
+        "topic": {
+          "type": "string",
+          "description": "Channel or topic name."
+        },
+        "method": {
+          "type": "string",
+          "description": "Name of the method to execute at the receiver."
+        },
+        "property": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "type": "string",
+              "description": "Message to show in the client."
+            },
+            "attach": {
+              "oneOf": [
+                {
+                  "enum": [
+                    "$feature",
+                    "$properties",
+                    "$geometry"
+                  ],
+                  "description": "Attach either the complete feature, its properties or geometry to the message."
+                },
+                {
+                  "type": "object",
+                  "description": "Alternatively, you can also provide an attached object."
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

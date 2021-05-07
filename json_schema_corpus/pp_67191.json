@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "http://comrade.forma-pro.com/schemas/message/RunnerResult.json",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "type": "string",
+      "enum": [
+        "http://comrade.forma-pro.com/schemas/message/RunnerResult.json"
+      ]
+    },
+    "jobId": {
+      "$ref": "../uuid4.json"
+    },
+    "token": {
+      "$ref": "../uuid4.json"
+    },
+    "action": {
+      "$ref": "../JobAction.json"
+    },
+    "metrics": {
+      "$ref": "../JobResultMetrics.json"
+    },
+    "error": {
+      "$ref": "../throwable.json"
+    },
+    "timestamp": {
+      "type": "integer"
+    },
+    "payload": {
+      "type": [
+        "null",
+        "string",
+        "number",
+        "object",
+        "array"
+      ]
+    },
+    "subJobs": {
+      "type": "array",
+      "item": {
+        "$ref": "part/SubJob.json"
+      }
+    }
+  },
+  "required": [
+    "jobId",
+    "token",
+    "action",
+    "timestamp"
+  ]
+}

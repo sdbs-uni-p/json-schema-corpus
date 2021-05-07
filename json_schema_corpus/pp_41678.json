@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Some annotation.",
+  "type": "object",
+  "properties": {
+    "two": {
+      "type": "string"
+    },
+    "three": {
+      "type": "string"
+    }
+  }
+}

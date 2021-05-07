@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "definitions": {
+    "id": {
+      "type": "integer"
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "open",
+        "closed"
+      ]
+    },
+    "statusMessage": {
+      "type": "string",
+      "description": "e.g. listing expired, job closed, error - missing blah,  etc."
+    },
+    "scheduledCloseDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "when the posting should be closed by the hub."
+    },
+    "actualCloseDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "when the posting in the hub actually was closed"
+    },
+    "linkout": {
+      "type": "string",
+      "format": "uri",
+      "description": "link to the job on the career site with source tracking attached"
+    },
+    "previewLink": {
+      "type": "string",
+      "format": "uri",
+      "description": "link to the posting on the job board"
+    }
+  },
+  "type": "object",
+  "properties": {
+    "id": {
+      "$ref": "#/definitions/id"
+    },
+    "status": {
+      "$ref": "#/definitions/status"
+    },
+    "statusMessage": {
+      "$ref": "#/definitions/statusMessage"
+    },
+    "scheduledCloseDate": {
+      "$ref": "#/definitions/scheduledCloseDate"
+    },
+    "actualCloseDate": {
+      "$ref": "#/definitions/actualCloseDate"
+    },
+    "linkout": {
+      "$ref": "#/definitions/linkout"
+    },
+    "fieldValues": {
+      "$ref": "itemsRead.json"
+    },
+    "categories": {
+      "$ref": "categoriesActual.json"
+    },
+    "previewLink": {
+      "$ref": "postingRead.json#/definitions/previewLink"
+    }
+  }
+}

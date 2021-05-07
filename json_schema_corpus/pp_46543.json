@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "title": "Address",
+  "type": "object",
+  "properties": {
+    "street": {
+      "type": "string"
+    },
+    "number": {
+      "type": "integer"
+    },
+    "city": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    },
+    "zip_code": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "country",
+    "city"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,10 @@
+{
+  "id": "http://schema.org/AdministrativeArea",
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "extends": {
+    "$ref": "Place.json"
+  },
+  "description": "A geographical region under the jurisdiction of a particular government. Schema.org: http://schema.org/AdministrativeArea",
+  "type": "object",
+  "additionalProperties": true
+}

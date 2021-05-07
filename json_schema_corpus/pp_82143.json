@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-04/json-schema#",
+  "type": "object",
+  "title": "Schema for creating deployment",
+  "id": "#app-version-create-v1",
+  "properties": {
+    "meta-info": {
+      "$ref": "${base_url}/schemas/app-version-v1#/properties/meta-info"
+    },
+    "deployment": {
+      "$ref": "${base_url}/schemas/app-version-v1#/properties/deployment"
+    },
+    "proxy": {
+      "$ref": "${base_url}/schemas/app-version-v1#/properties/proxy"
+    },
+    "templates": {
+      "$ref": "${base_url}/schemas/app-version-v1#/properties/templates"
+    },
+    "security": {
+      "$ref": "${base_url}/schemas/app-version-v1#/properties/security"
+    },
+    "notifications": {
+      "$ref": "${base_url}/schemas/app-version-v1#/properties/notifications"
+    },
+    "environment": {
+      "$ref": "${base_url}/schemas/app-version-v1#/properties/environment"
+    },
+    "schedule": {
+      "$ref": "${base_url}/schemas/app-version-v1#/properties/schedule"
+    }
+  },
+  "required": [
+    "meta-info"
+  ],
+  "additionalProperties": false
+}

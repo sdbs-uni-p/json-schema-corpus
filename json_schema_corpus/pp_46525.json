@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Config",
+  "description": "Configuration object",
+  "type": "object",
+  "properties": {
+    "name": {
+      "description": "Name of the application",
+      "type": "string"
+    },
+    "author": {
+      "description": "Author of the application",
+      "type": "string"
+    },
+    "appDirectory": {
+      "description": "Main directory of the application",
+      "type": "string"
+    },
+    "versionDirectory": {
+      "description": "Version directory for the application",
+      "type": "string"
+    },
+    "themes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/file"
+      },
+      "definitions": {
+        "name": {
+          "type": "string"
+        },
+        "file": {
+          "type": "string"
+        }
+      }
+    },
+    "theme": {
+      "description": "Default theme",
+      "type": "string"
+    },
+    "version": {
+      "description": "Version of the application",
+      "type": "string"
+    },
+    "schemaDirectory": {
+      "description": "Schema directory for the application",
+      "type": "string"
+    },
+    "themeDirectory": {
+      "description": "Theme directory for the application",
+      "type": "string"
+    },
+    "projectDirectory": {
+      "description": "Projects directory for the application",
+      "type": "string"
+    },
+    "description": {
+      "description": "Description of the application",
+      "type": "string"
+    }
+  }
+}

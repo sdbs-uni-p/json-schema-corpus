@@ -1,0 +1,130 @@
+{
+  "id": "https://github.com/JavaScriptGraphNotation/jsgn-schema/blob/master/jsgn-graph-schema.json",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "oneOf": [
+    {
+      "type": {
+        "$ref": "#/definitions/graph"
+      }
+    },
+    {
+      "type": "object",
+      "properties": {
+        "graph": {
+          "$ref": "#/definitions/graph"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "graph"
+      ]
+    },
+    {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/graph"
+      }
+    },
+    {
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "metadata": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "graphs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/graph"
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  ],
+  "definitions": {
+    "nodes": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "oneOf": [
+          {
+            "type": {
+              "$ref": "jsgn-node-schema.json#/definitions/node"
+            }
+          },
+          {
+            "type": {
+              "$ref": "jsgn-metanode-schema.json#/definitions/metanode"
+            }
+          }
+        ]
+      }
+    },
+    "edges": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "oneOf": [
+          {
+            "type": {
+              "$ref": "jsgn-edge-schema.json#/definitions/edge"
+            }
+          },
+          {
+            "type": {
+              "$ref": "jsgn-hyperedge-schema.json#/definitions/hyperedge"
+            }
+          }
+        ]
+      }
+    },
+    "graph": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "directed": {
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "default": true
+        },
+        "type": {
+          "type": "string"
+        },
+        "metadata": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "nodes": {
+          "type": {
+            "$ref": "#/definitions/nodes"
+          }
+        },
+        "edges": {
+          "type": {
+            "$ref": "#/definitions/edges"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "nullable": "false",
+  "id": "http://wso2jsonschema.org",
+  "title": "root",
+  "type": "object",
+  "properties": {
+    "contacts": {
+      "id": "http://wso2jsonschema.org/contacts",
+      "type": "object",
+      "nullable": "false",
+      "properties": {
+        "list": {
+          "id": "http://wso2jsonschema.org/contacts/list",
+          "type": "array",
+          "nullable": "false",
+          "items": [
+            {
+              "id": "http://wso2jsonschema.org/contacts/list/0",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "id": "http://wso2jsonschema.org/contacts/list/0/type",
+                  "type": "string",
+                  "nullable": "false"
+                },
+                "FullName": {
+                  "id": "http://wso2jsonschema.org/contacts/list/0/FullName",
+                  "type": "string",
+                  "nullable": "false"
+                },
+                "Email": {
+                  "id": "http://wso2jsonschema.org/contacts/list/0/Email",
+                  "type": "string",
+                  "nullable": "false"
+                }
+              }
+            }
+          ]
+        },
+        "size": {
+          "id": "http://wso2jsonschema.org/contacts/size",
+          "type": "number",
+          "nullable": "false"
+        }
+      }
+    }
+  }
+}

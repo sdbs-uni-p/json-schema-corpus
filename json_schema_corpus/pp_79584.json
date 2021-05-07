@@ -1,0 +1,75 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "A schema for simple jobs, i.e. those that get uploaded in jobSets, typically to a public job board. Removes nuances such as status, internal candidates, etc.",
+  "definitions": {
+    "linkedResource": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "uri": {
+          "type": "string",
+          "format": "uri"
+        }
+      },
+      "required": [
+        "uri"
+      ]
+    }
+  },
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "A short phrase describing the position as it would be listed on a business card or in a company directory"
+    },
+    "code": {
+      "$ref": "jobRead.json#/definitions/code"
+    },
+    "shortSummary": {
+      "type": "string",
+      "description": "A short (up to 75 characters) and enticing call to action for candidates for this job"
+    },
+    "description": {
+      "type": "string",
+      "description": "The job's description. Job descriptions are formatted using the safe subset of markdown (see documentation for GET /jobs/{}/description)"
+    },
+    "viewUri": {
+      "type": "string",
+      "format": "uri",
+      "description": "URI to view the opening - see HR-XML"
+    },
+    "applyUri": {
+      "type": "string",
+      "format": "uri",
+      "description": "URI of the page where a candidate applies - see HR-XML"
+    },
+    "closeDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "the date on which applications are scheduled to close"
+    },
+    "datePosted": {
+      "type": "string",
+      "format": "date-time",
+      "description": "the date on which the job was advertised/posted - downstream job boards may use or ignore"
+    },
+    "categories": {
+      "$ref": "categoriesActual.json"
+    },
+    "links": {
+      "type": "array",
+      "description": "an array of links to resources (videos etc.) that are relevant to the job",
+      "items": {
+        "$ref": "#/definitions/linkedResource"
+      }
+    }
+  },
+  "required": [
+    "code",
+    "description",
+    "title"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,34 @@
+{
+  "id": "test-schema",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Test schema.",
+  "type": "object",
+  "definitions": {
+    "port": {
+      "description": "schema for a port",
+      "type": "integer",
+      "minimum": 1024,
+      "maximum": 65536
+    },
+    "address": {
+      "description": "schema for a host address",
+      "type": "string",
+      "format": "hostname"
+    }
+  },
+  "properties": {
+    "port": {
+      "$ref": "#/definitions/port"
+    },
+    "address": {
+      "$ref": "#/definitions/address"
+    },
+    "str": {
+      "type": "string",
+      "format": "only-a"
+    }
+  },
+  "required": [
+    "port"
+  ]
+}

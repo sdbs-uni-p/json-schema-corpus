@@ -1,0 +1,375 @@
+{
+  "id": "http://schemas.wbeme.com/json-schema/eme/solicits/node/solicit/1-0-0.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "_schema": {
+      "type": "string",
+      "pattern": "^pbj:([a-z0-9-]+):([a-z0-9\\.-]+):([a-z0-9-]+)?:([a-z0-9-]+):([0-9]+-[0-9]+-[0-9]+)$",
+      "default": "pbj:eme:solicits:node:solicit:1-0-0"
+    },
+    "account_id": {
+      "type": "string",
+      "pattern": "^[\\w\\/\\.:-]+$",
+      "description": "The EME account that this message is associated with.",
+      "pbj": {
+        "type": "identifier",
+        "rule": "single"
+      }
+    },
+    "_id": {
+      "type": "string",
+      "pattern": "^[\\w\\/\\.:-]+$",
+      "pbj": {
+        "type": "identifier",
+        "rule": "single"
+      }
+    },
+    "status": {
+      "type": "string",
+      "default": "draft",
+      "enum": [
+        "unknown",
+        "published",
+        "scheduled",
+        "pending",
+        "draft",
+        "expired",
+        "archived",
+        "deleted"
+      ],
+      "pbj": {
+        "type": "string-enum",
+        "rule": "single"
+      }
+    },
+    "etag": {
+      "type": "string",
+      "pattern": "^[\\w\\.:-]+$",
+      "pbj": {
+        "type": "string",
+        "rule": "single"
+      }
+    },
+    "created_at": {
+      "type": "string",
+      "pattern": "^[1-9]{1}[0-9]{12,15}$",
+      "pbj": {
+        "type": "microtime",
+        "rule": "single"
+      }
+    },
+    "creator_ref": {
+      "type": "object",
+      "properties": {
+        "curie": {
+          "type": "string",
+          "pattern": "^([a-z0-9-]+):([a-z0-9\\.-]+):([a-z0-9-]+)?:([a-z0-9-]+)$",
+          "minLength": 0,
+          "maxLength": 146
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9:_\\-]+$",
+          "minLength": 0,
+          "maxLength": 255
+        },
+        "tag": {
+          "type": "string",
+          "pattern": "^([\\w\\/-]|[\\w-][\\w\\/-]*[\\w-])$",
+          "minLength": 0,
+          "maxLength": 255
+        }
+      },
+      "required": [
+        "curie",
+        "id"
+      ],
+      "additionalProperties": false,
+      "description": "A fully qualified reference to what created this node. This is intentionally a message-ref and not a user id because it is often a program that creates nodes, not a user.",
+      "pbj": {
+        "type": "message-ref",
+        "rule": "single"
+      }
+    },
+    "updated_at": {
+      "type": "string",
+      "pattern": "^[1-9]{1}[0-9]{12,15}$",
+      "pbj": {
+        "type": "microtime",
+        "rule": "single",
+        "useTypeDefault": false
+      }
+    },
+    "updater_ref": {
+      "type": "object",
+      "properties": {
+        "curie": {
+          "type": "string",
+          "pattern": "^([a-z0-9-]+):([a-z0-9\\.-]+):([a-z0-9-]+)?:([a-z0-9-]+)$",
+          "minLength": 0,
+          "maxLength": 146
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9:_\\-]+$",
+          "minLength": 0,
+          "maxLength": 255
+        },
+        "tag": {
+          "type": "string",
+          "pattern": "^([\\w\\/-]|[\\w-][\\w\\/-]*[\\w-])$",
+          "minLength": 0,
+          "maxLength": 255
+        }
+      },
+      "required": [
+        "curie",
+        "id"
+      ],
+      "additionalProperties": false,
+      "description": "A fully qualified reference to what updated this node. This is intentionally a message-ref and not a user id because it is often a program that updates nodes, not a user. E.g. \"acme:iam:node:app:cli-scheduler\" or \"acme:iam:node:user:60c71df0-fda8-11e5-bfb9-30342d363854\"",
+      "pbj": {
+        "type": "message-ref",
+        "rule": "single"
+      }
+    },
+    "last_event_ref": {
+      "type": "object",
+      "properties": {
+        "curie": {
+          "type": "string",
+          "pattern": "^([a-z0-9-]+):([a-z0-9\\.-]+):([a-z0-9-]+)?:([a-z0-9-]+)$",
+          "minLength": 0,
+          "maxLength": 146
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9:_\\-]+$",
+          "minLength": 0,
+          "maxLength": 255
+        },
+        "tag": {
+          "type": "string",
+          "pattern": "^([\\w\\/-]|[\\w-][\\w\\/-]*[\\w-])$",
+          "minLength": 0,
+          "maxLength": 255
+        }
+      },
+      "required": [
+        "curie",
+        "id"
+      ],
+      "additionalProperties": false,
+      "description": "A reference to the last event that changed the state of this node. E.g. \"acme:blog:event:article-published:60c71df0-fda8-11e5-bfb9-30342d363854\"",
+      "pbj": {
+        "type": "message-ref",
+        "rule": "single"
+      }
+    },
+    "title": {
+      "type": "string",
+      "minLength": 0,
+      "maxLength": 255,
+      "pbj": {
+        "type": "string",
+        "rule": "single"
+      }
+    },
+    "description": {
+      "type": "string",
+      "minLength": 0,
+      "maxLength": 65535,
+      "description": "A short description (a few sentences) about this form. This field should not have html as it is used in metadata.",
+      "pbj": {
+        "type": "text",
+        "rule": "single"
+      }
+    },
+    "thank_you_header": {
+      "type": "string",
+      "minLength": 0,
+      "maxLength": 255,
+      "pbj": {
+        "type": "string",
+        "rule": "single"
+      }
+    },
+    "thank_you_text": {
+      "type": "string",
+      "minLength": 0,
+      "maxLength": 65535,
+      "description": "A short thank you message (a few sentences) a user will see after they submit this form. This field should have little to no html as it can be used in various contexts.",
+      "pbj": {
+        "type": "text",
+        "rule": "single"
+      }
+    },
+    "thank_you_url": {
+      "type": "string",
+      "pattern": "^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)*\\/?$",
+      "pbj": {
+        "type": "string",
+        "rule": "single",
+        "format": "url"
+      }
+    },
+    "template": {
+      "type": "string",
+      "pattern": "^([\\w\\/-]|[\\w-][\\w\\/-]*[\\w-])$",
+      "minLength": 0,
+      "maxLength": 255,
+      "pbj": {
+        "type": "string",
+        "rule": "single",
+        "format": "slug"
+      }
+    },
+    "custom_code": {
+      "type": "object",
+      "patternProperties": {
+        "^[a-zA-Z_]{1}[\\w\\.:-]+$": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 65535
+        }
+      },
+      "additionalProperties": false,
+      "description": "A map containing (HTML, JavaScript, CSS, etc.) that is injected into a template at a named insertion point, e.g. \"html_head\" or \"footer\".",
+      "pbj": {
+        "type": "text",
+        "rule": "map"
+      }
+    },
+    "fields": {
+      "type": "array",
+      "items": [
+        {
+          "$ref": "#/definitions/field"
+        }
+      ],
+      "additionalProperties": false,
+      "pbj": {
+        "type": "message",
+        "rule": "list"
+      }
+    },
+    "hashtags": {
+      "type": "array",
+      "items": [
+        {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 255
+        }
+      ],
+      "uniqueItems": true,
+      "additionalProperties": false,
+      "pbj": {
+        "type": "string",
+        "rule": "set",
+        "format": "hashtag"
+      }
+    },
+    "disclaimer": {
+      "type": "string",
+      "minLength": 0,
+      "maxLength": 65535,
+      "pbj": {
+        "type": "text",
+        "rule": "single"
+      }
+    },
+    "image_id": {
+      "type": "string",
+      "pattern": "^[\\w\\/\\.:-]+$",
+      "pbj": {
+        "type": "identifier",
+        "rule": "single"
+      }
+    },
+    "pii_impact": {
+      "type": "string",
+      "enum": [
+        "unknown",
+        "high",
+        "moderate",
+        "low"
+      ],
+      "pbj": {
+        "type": "string-enum",
+        "rule": "single"
+      }
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time",
+      "pbj": {
+        "type": "date-time",
+        "rule": "single"
+      }
+    },
+    "published_at": {
+      "type": "string",
+      "format": "date-time",
+      "pbj": {
+        "type": "date-time",
+        "rule": "single"
+      }
+    },
+    "tags": {
+      "type": "object",
+      "patternProperties": {
+        "^[a-zA-Z_]{1}[\\w\\.:-]+$": {
+          "type": "string",
+          "pattern": "^[\\w\\/\\.:-]+$"
+        }
+      },
+      "additionalProperties": false,
+      "description": "Tags is a map that categorizes data or tracks references in external systems. The tags names should be consistent and descriptive, e.g. fb_user_id:123, salesforce_customer_id:456.",
+      "pbj": {
+        "type": "string",
+        "rule": "map"
+      }
+    },
+    "category": {
+      "type": "string",
+      "minLength": 0,
+      "maxLength": 255,
+      "pbj": {
+        "type": "string",
+        "rule": "single"
+      }
+    },
+    "cc_email": {
+      "type": "string",
+      "format": "email",
+      "pbj": {
+        "type": "string",
+        "rule": "single",
+        "format": "email"
+      }
+    }
+  },
+  "required": [
+    "_schema",
+    "_id"
+  ],
+  "definitions": {
+    "field": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "http://schemas.wbeme.com/json-schema/gdbots/forms/mixin/field/1-0-0.json#"
+        },
+        {
+          "$ref": "http://schemas.wbeme.com/json-schema/gdbots/forms/mixin/field/1-0-1.json#"
+        },
+        {
+          "$ref": "http://schemas.wbeme.com/json-schema/gdbots/forms/mixin/field/1-0-2.json#"
+        }
+      ]
+    }
+  },
+  "additionalProperties": false
+}

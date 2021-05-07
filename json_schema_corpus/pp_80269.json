@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "array",
+  "items": {
+    "id": "items",
+    "type": "object",
+    "properties": {
+      "role": {
+        "id": "role",
+        "type": "string",
+        "default": "public"
+      },
+      "paths": {
+        "id": "paths",
+        "type": "array",
+        "items": {
+          "id": "items",
+          "type": "object",
+          "properties": {
+            "path": {
+              "id": "path",
+              "type": "string",
+              "default": "/"
+            },
+            "verbs": {
+              "id": "verbs",
+              "type": "array",
+              "items": {
+                "type": "string",
+                "default": "GET"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

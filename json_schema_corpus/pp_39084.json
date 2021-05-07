@@ -1,0 +1,89 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "https://github.com/empirefox/node-private-tools/blob/master/src/schemas/replace-in-file.json#",
+  "title": "replace-in-file Config",
+  "description": "replace-in-file options.",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "$tool": {
+      "type": "string",
+      "description": "Must be set to replace-in-file",
+      "const": "replace-in-file"
+    },
+    "files": {
+      "oneOf": [
+        {
+          "description": "File(glob) to proccess.",
+          "type": "string"
+        },
+        {
+          "description": "Files(glob) to proccess.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "from": {
+      "description": "RegExp(s) to find from files.",
+      "oneOf": [
+        {
+          "instanceof": "RegExp"
+        },
+        {
+          "type": "string",
+          "preproccess": "regexp"
+        },
+        {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "oneOf": [
+              {
+                "instanceof": "RegExp"
+              },
+              {
+                "type": "string",
+                "preproccess": "regexp"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "to": {
+      "description": "Multiple replacements with same/different strings (replaced sequentially).",
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "allowEmptyPaths": {
+      "description": "Specify if empty/invalid file paths are allowed (defaults to false). If set to true these paths will fail silently and no error will be thrown.",
+      "type": "boolean"
+    },
+    "encoding": {
+      "description": "Character encoding for reading/writing files (defaults to utf-8).",
+      "type": "string"
+    }
+  },
+  "required": [
+    "$tool",
+    "files",
+    "from",
+    "to"
+  ],
+  "additionalProperties": false
+}

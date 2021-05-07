@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "svlanIdAssignment",
+  "id": "svlanIdAssignment",
+  "description": "An assignment made by the Seller of a SVLAN ID to a UNI or ENNI endpoint.",
+  "type": "object",
+  "required": [
+    "objectType",
+    "svlanId"
+  ],
+  "properties": {
+    "objectType": {
+      "type": "string",
+      "enum": [
+        "svlanIdAssignment"
+      ],
+      "description": "The type of the object, svlanIdAssignment."
+    },
+    "sellerEnniId": {
+      "type": "string",
+      "description": "The id assigned by the Seller for the ENNI for this SVLAN ID assignment.",
+      "maxLength": 45
+    },
+    "sellerUniId": {
+      "type": "string",
+      "description": "The id assigned by the Seller for the UNI for this SVLAN ID assignment.",
+      "maxLength": 45
+    },
+    "svlanId": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "The SVLAN ID assigned to this UNI or ENNI"
+    }
+  }
+}

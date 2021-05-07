@@ -1,0 +1,406 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "title": "FIXME - Post",
+  "description": "FIXME",
+  "stability": "prototype",
+  "strictProperties": true,
+  "type": [
+    "object"
+  ],
+  "definitions": {
+    "id": {
+      "description": "unique identifier of post",
+      "readOnly": true,
+      "type": [
+        "string"
+      ],
+      "example": "some-post"
+    },
+    "title": {
+      "description": "name of the post",
+      "type": [
+        "string"
+      ],
+      "example": "Post title"
+    },
+    "status": {
+      "description": "status of the post",
+      "type": "string",
+      "enum": [
+        "published",
+        "unpublished"
+      ],
+      "example": "published"
+    },
+    "slug": {
+      "description": "name of the post",
+      "type": [
+        "string"
+      ],
+      "example": "post-title"
+    },
+    "meta_keywords": {
+      "description": "post meta keywords",
+      "type": [
+        "string"
+      ],
+      "example": "Meta keywords"
+    },
+    "meta_desc": {
+      "description": "post meta description",
+      "type": [
+        "string"
+      ],
+      "example": "Meta description"
+    },
+    "content": {
+      "description": "post content",
+      "type": [
+        "string"
+      ],
+      "example": "Lorem ipsum dolor sit amet, consectetur adipiscing elit ..."
+    },
+    "content_short": {
+      "description": "post content",
+      "type": [
+        "string"
+      ],
+      "maxLength": 255,
+      "example": "Short content"
+    },
+    "owner_object": {
+      "description": "post owner",
+      "type": "object",
+      "properties": {
+        "login": {
+          "$ref": "/schemata/user#/definitions/login"
+        }
+      }
+    },
+    "post_object": {
+      "description": "post object",
+      "required": [
+        "content",
+        "id"
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "/schemata/post#/definitions/id"
+        },
+        "title": {
+          "$ref": "/schemata/post#/definitions/title"
+        },
+        "slug": {
+          "$ref": "/schemata/post#/definitions/slug"
+        },
+        "status": {
+          "$ref": "/schemata/post#/definitions/status"
+        },
+        "content": {
+          "$ref": "/schemata/post#/definitions/content"
+        },
+        "meta_keywords": {
+          "$ref": "/schemata/post#/definitions/meta_keywords"
+        },
+        "meta_desc": {
+          "$ref": "/schemata/post#/definitions/meta_desc"
+        },
+        "owner": {
+          "$ref": "/schemata/post#/definitions/owner_object"
+        }
+      }
+    },
+    "comments_array": {
+      "description": "post comments",
+      "type": "array",
+      "items": {
+        "$ref": "/schemata/comment#"
+      }
+    },
+    "post_list_object": {
+      "description": "post list object",
+      "type": "object",
+      "required": [
+        "content",
+        "title",
+        "slug",
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "/schemata/post#/definitions/id"
+        },
+        "title": {
+          "$ref": "/schemata/post#/definitions/title"
+        },
+        "slug": {
+          "$ref": "/schemata/post#/definitions/slug"
+        },
+        "status": {
+          "$ref": "/schemata/post#/definitions/status"
+        },
+        "content": {
+          "$ref": "/schemata/post#/definitions/content_short"
+        },
+        "meta_keywords": {
+          "$ref": "/schemata/post#/definitions/meta_keywords"
+        },
+        "meta_desc": {
+          "$ref": "/schemata/post#/definitions/meta_desc"
+        },
+        "owner": {
+          "$ref": "/schemata/post#/definitions/owner_object"
+        }
+      }
+    },
+    "request_object_default": {
+      "description": "default request object",
+      "required": [
+        "post"
+      ],
+      "properties": {
+        "post": {
+          "required": [
+            "title",
+            "content"
+          ],
+          "type": "object",
+          "properties": {
+            "title": {
+              "$ref": "/schemata/post#/definitions/title"
+            },
+            "slug": {
+              "$ref": "/schemata/post#/definitions/slug"
+            },
+            "status": {
+              "$ref": "/schemata/post#/definitions/status"
+            },
+            "content": {
+              "$ref": "/schemata/post#/definitions/content"
+            },
+            "meta_keywords": {
+              "$ref": "/schemata/post#/definitions/meta_keywords"
+            },
+            "meta_desc": {
+              "$ref": "/schemata/post#/definitions/meta_desc"
+            }
+          }
+        }
+      },
+      "type": "object"
+    },
+    "response_only_object": {
+      "description": "default response by post",
+      "type": "object",
+      "required": [
+        "post"
+      ],
+      "properties": {
+        "post": {
+          "$ref": "/schemata/post#"
+        }
+      }
+    },
+    "response_with_single": {
+      "description": "response_with_single",
+      "type": "object",
+      "required": [
+        "post"
+      ],
+      "properties": {
+        "post": {
+          "$ref": "/schemata/post#/definitions/post_object"
+        }
+      }
+    },
+    "response_with_list": {
+      "description": "response_with_list",
+      "type": "object",
+      "required": [
+        "posts",
+        "meta"
+      ],
+      "properties": {
+        "posts": {
+          "type": "array",
+          "items": {
+            "$ref": "/schemata/post#/definitions/post_list_object"
+          }
+        },
+        "meta": {
+          "$ref": "/schemata/shared#/definitions/default_meta"
+        }
+      }
+    },
+    "identity": {
+      "anyOf": [
+        {
+          "$ref": "/schemata/post#/definitions/id"
+        },
+        {
+          "$ref": "/schemata/post#/definitions/slug"
+        }
+      ]
+    },
+    "errors_object": {
+      "description": "post errors object",
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "object",
+          "properties": {
+            "content": {
+              "type": "array"
+            },
+            "title": {
+              "type": "array"
+            },
+            "slug": {
+              "type": "array"
+            }
+          }
+        }
+      }
+    },
+    "created_at": {
+      "description": "when post was created",
+      "format": "date-time",
+      "type": [
+        "string"
+      ]
+    },
+    "updated_at": {
+      "description": "when post was updated",
+      "format": "date-time",
+      "type": [
+        "string"
+      ]
+    }
+  },
+  "links": [
+    {
+      "description": "Create a new post.",
+      "href": "/posts",
+      "method": "POST",
+      "rel": "create",
+      "targetSchema": {
+        "$ref": "/schemata/post#/definitions/response_only_object"
+      },
+      "schema": {
+        "$ref": "/schemata/post#/definitions/request_object_default"
+      },
+      "title": "Create"
+    },
+    {
+      "description": "Follow post.",
+      "href": "/posts/{(%2Fschemata%2Fpost%23%2Fdefinitions%2Fidentity)}/follow",
+      "method": "POST",
+      "rel": "update",
+      "targetSchema": {
+        "$ref": "/schemata/post#/definitions/response_only_object"
+      },
+      "title": "Follow"
+    },
+    {
+      "description": "Unfollow post.",
+      "href": "/posts/{(%2Fschemata%2Fpost%23%2Fdefinitions%2Fidentity)}/unfollow",
+      "method": "POST",
+      "rel": "update",
+      "targetSchema": {
+        "$ref": "/schemata/post#/definitions/response_only_object"
+      },
+      "title": "Unfollow"
+    },
+    {
+      "description": "Publish post.",
+      "href": "/posts/{(%2Fschemata%2Fpost%23%2Fdefinitions%2Fidentity)}/publish",
+      "method": "POST",
+      "rel": "update",
+      "targetSchema": {
+        "$ref": "/schemata/post#/definitions/response_only_object"
+      },
+      "title": "Publish"
+    },
+    {
+      "description": "Unpublish post.",
+      "href": "/posts/{(%2Fschemata%2Fpost%23%2Fdefinitions%2Fidentity)}/unpublish",
+      "method": "POST",
+      "rel": "update",
+      "targetSchema": {
+        "$ref": "/schemata/post#/definitions/response_only_object"
+      },
+      "title": "Unpublish"
+    },
+    {
+      "description": "Delete an existing post.",
+      "href": "/posts/{(%2Fschemata%2Fpost%23%2Fdefinitions%2Fidentity)}",
+      "method": "DELETE",
+      "rel": "destroy",
+      "title": "Delete",
+      "targetSchema": {
+        "$ref": "/schemata/shared#/definitions/default_success_boolean"
+      }
+    },
+    {
+      "description": "Info for existing post.",
+      "href": "/posts/{(%2Fschemata%2Fpost%23%2Fdefinitions%2Fidentity)}",
+      "method": "GET",
+      "rel": "self",
+      "title": "Info",
+      "targetSchema": {
+        "$ref": "/schemata/post#/definitions/response_with_single"
+      }
+    },
+    {
+      "description": "List existing posts.",
+      "href": "/posts",
+      "method": "GET",
+      "rel": "instances",
+      "title": "List",
+      "targetSchema": {
+        "$ref": "/schemata/post#/definitions/response_with_list"
+      },
+      "schema": {
+        "$ref": "/schemata/shared#/definitions/request_object_lite"
+      }
+    },
+    {
+      "description": "Update an existing post.",
+      "href": "/posts/{(%2Fschemata%2Fpost%23%2Fdefinitions%2Fidentity)}",
+      "method": "PUT",
+      "rel": "update",
+      "targetSchema": {
+        "$ref": "/schemata/post#/definitions/response_only_object"
+      },
+      "schema": {
+        "$ref": "/schemata/post#/definitions/request_object_default"
+      },
+      "title": "Update"
+    }
+  ],
+  "properties": {
+    "id": {
+      "$ref": "/schemata/post#/definitions/id"
+    },
+    "title": {
+      "$ref": "/schemata/post#/definitions/title"
+    },
+    "slug": {
+      "$ref": "/schemata/post#/definitions/slug"
+    },
+    "status": {
+      "$ref": "/schemata/post#/definitions/status"
+    },
+    "content": {
+      "$ref": "/schemata/post#/definitions/content"
+    },
+    "meta_keywords": {
+      "$ref": "/schemata/post#/definitions/meta_keywords"
+    },
+    "meta_desc": {
+      "$ref": "/schemata/post#/definitions/meta_desc"
+    }
+  },
+  "id": "/schemata/post"
+}

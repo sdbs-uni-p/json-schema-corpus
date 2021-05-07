@@ -1,0 +1,108 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "title": "Testsuite metadata",
+  "type": "object",
+  "required": [
+    "testsuite",
+    "tests"
+  ],
+  "properties": {
+    "testsuite": {
+      "type": "string",
+      "description": "Testsuite full name"
+    },
+    "testsuite_short": {
+      "type": "string",
+      "description": "Abbreviated testsuite name"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "Testsuite website URL"
+    },
+    "scm_url_base": {
+      "type": "string",
+      "format": "uri",
+      "description": "Base URL to test source code"
+    },
+    "version": {
+      "type": "string",
+      "description": "Testsuite version"
+    },
+    "timeout": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Default timeout for testcases"
+    },
+    "tests": {
+      "type": "object",
+      "patternProperties": {
+        "": {
+          "type": "object",
+          "required": [
+            "fname"
+          ],
+          "properties": {
+            "timeout": {
+              "type": "integer",
+              "minimum": -1,
+              "description": "Test timeout, overrides global timeout, -1 means timeout is disabled"
+            },
+            "min_kver": {
+              "type": "string",
+              "description": "Minimal kernel version required for the test"
+            },
+            "needs_root": {
+              "description": "If present test needs root priviledges"
+            },
+            "needs_tmpdir": {
+              "description": "If present test needs temporary directory"
+            },
+            "fname": {
+              "type": "string",
+              "description": "Path to the test source in the source tree"
+            },
+            "tags": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minItems": 2,
+                  "maxItems": 2
+                }
+              }
+            },
+            "doc": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Test documentation"
+            },
+            "needs_kconfigs": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "List of kernel config options needed for the test"
+            },
+            "needs_drivers": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "List of kernel module mames required for the test"
+            },
+            "options": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "type": "array",
+  "description": "A jcard holding personal details, as per https://tools.ietf.org/html/rfc7095"
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Output list",
+  "description": "A list of outputs to be created from a round of voting pool outBailment consensus",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "outBailmentID": {
+        "$ref": "https://raw.githubusercontent.com/Open-Transactions/rfc/draft/json/schema/outbailmentid-01.json",
+        "description": "the identifier of the originating nym's outBailment message"
+      },
+      "address": {
+        "type": "string",
+        "description": "the destination address for the outBailment"
+      },
+      "amount": {
+        "type": "number",
+        "description": "the monetary value of the outBailment, in fundamental units (satoshis for Bitcoin)",
+        "minimum": 0,
+        "exclusiveMinimum": true
+      }
+    },
+    "required": [
+      "outBailmentID",
+      "address",
+      "amount"
+    ]
+  },
+  "minItems": 1,
+  "uniqueItems": true
+}

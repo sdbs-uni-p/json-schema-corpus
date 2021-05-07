@@ -1,0 +1,48 @@
+{
+  "type": "array",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://jsonschema.net",
+  "required": false,
+  "items": {
+    "title": "Languages",
+    "type": "object",
+    "properties": {
+      "language": {
+        "type": "String"
+      },
+      "total": {
+        "type": "Object",
+        "properties": {
+          "total": {
+            "type": "Number"
+          },
+          "logged_in": {
+            "type": "Number"
+          }
+        }
+      },
+      "blind": {
+        "type": "Object",
+        "properties": {
+          "total": {
+            "type": "Number"
+          },
+          "logged_in": {
+            "type": "Number"
+          }
+        }
+      },
+      "helpers": {
+        "type": "Object",
+        "properties": {
+          "total": {
+            "type": "Number"
+          },
+          "logged_in": {
+            "type": "Number"
+          }
+        }
+      }
+    }
+  }
+}

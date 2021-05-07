@@ -1,0 +1,295 @@
+{
+  "id": "http://schemas.gdbots.io/json-schema/gdbots/ncr/event/node-unpublished/1-0-0.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "_schema": {
+      "type": "string",
+      "pattern": "^pbj:([a-z0-9-]+):([a-z0-9\\.-]+):([a-z0-9-]+)?:([a-z0-9-]+):([0-9]+-[0-9]+-[0-9]+)$",
+      "default": "pbj:gdbots:ncr:event:node-unpublished:1-0-0"
+    },
+    "event_id": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+    },
+    "occurred_at": {
+      "type": "string",
+      "pattern": "^[1-9]{1}[0-9]{12,15}$"
+    },
+    "ctx_tenant_id": {
+      "type": "string",
+      "pattern": "^[\\w\\/\\.:-]+$",
+      "description": "Multi-tenant apps can use this field to track the tenant id."
+    },
+    "ctx_causator_ref": {
+      "type": "object",
+      "properties": {
+        "curie": {
+          "type": "string",
+          "pattern": "^([a-z0-9-]+):([a-z0-9\\.-]+):([a-z0-9-]+)?:([a-z0-9-]+)$",
+          "minLength": 0,
+          "maxLength": 146
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9:_\\-]+$",
+          "minLength": 0,
+          "maxLength": 255
+        },
+        "tag": {
+          "type": "string",
+          "pattern": "^([\\w\\/-]|[\\w-][\\w\\/-]*[\\w-])$",
+          "minLength": 0,
+          "maxLength": 255
+        }
+      },
+      "required": [
+        "curie",
+        "id"
+      ],
+      "additionalProperties": false
+    },
+    "ctx_correlator_ref": {
+      "type": "object",
+      "properties": {
+        "curie": {
+          "type": "string",
+          "pattern": "^([a-z0-9-]+):([a-z0-9\\.-]+):([a-z0-9-]+)?:([a-z0-9-]+)$",
+          "minLength": 0,
+          "maxLength": 146
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9:_\\-]+$",
+          "minLength": 0,
+          "maxLength": 255
+        },
+        "tag": {
+          "type": "string",
+          "pattern": "^([\\w\\/-]|[\\w-][\\w\\/-]*[\\w-])$",
+          "minLength": 0,
+          "maxLength": 255
+        }
+      },
+      "required": [
+        "curie",
+        "id"
+      ],
+      "additionalProperties": false
+    },
+    "ctx_user_ref": {
+      "type": "object",
+      "properties": {
+        "curie": {
+          "type": "string",
+          "pattern": "^([a-z0-9-]+):([a-z0-9\\.-]+):([a-z0-9-]+)?:([a-z0-9-]+)$",
+          "minLength": 0,
+          "maxLength": 146
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9:_\\-]+$",
+          "minLength": 0,
+          "maxLength": 255
+        },
+        "tag": {
+          "type": "string",
+          "pattern": "^([\\w\\/-]|[\\w-][\\w\\/-]*[\\w-])$",
+          "minLength": 0,
+          "maxLength": 255
+        }
+      },
+      "required": [
+        "curie",
+        "id"
+      ],
+      "additionalProperties": false
+    },
+    "ctx_app": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "#/definitions/app"
+        }
+      ],
+      "description": "The \"ctx_app\" refers to the application used to send the command which in turn resulted in this event being published."
+    },
+    "ctx_cloud": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "#/definitions/cloud"
+        }
+      ],
+      "description": "The \"ctx_cloud\" is usually copied from the command that resulted in this event being published. This means the value most likely refers to the cloud that received the command originally, not the machine processing the event."
+    },
+    "ctx_ip": {
+      "type": "string",
+      "format": "ipv4"
+    },
+    "ctx_ipv6": {
+      "type": "string",
+      "format": "ipv6"
+    },
+    "ctx_ua": {
+      "type": "string",
+      "minLength": 0,
+      "maxLength": 65535
+    },
+    "ctx_msg": {
+      "type": "string",
+      "minLength": 0,
+      "maxLength": 65535,
+      "description": "An optional message/reason for the event being created. Consider this like a git commit message."
+    },
+    "tags": {
+      "type": "object",
+      "patternProperties": {
+        "^[a-zA-Z_]{1}[\\w\\.:-]+$": {
+          "type": "string",
+          "pattern": "^[\\w\\/\\.:-]+$"
+        }
+      },
+      "additionalProperties": false,
+      "description": "Tags is a map that categorizes data or tracks references in external systems. The tags names should be consistent and descriptive, e.g. fb_user_id:123, salesforce_customer_id:456."
+    },
+    "ctx_ip_geo": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "#/definitions/address"
+        }
+      ]
+    },
+    "month_of_year": {
+      "type": "integer",
+      "default": 0,
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    "day_of_month": {
+      "type": "integer",
+      "default": 0,
+      "minimum": 0,
+      "maximum": 31
+    },
+    "day_of_week": {
+      "type": "integer",
+      "default": 0,
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    "is_weekend": {
+      "type": "boolean"
+    },
+    "hour_of_day": {
+      "type": "integer",
+      "default": 0,
+      "minimum": 0,
+      "maximum": 23
+    },
+    "ts_ymdh": {
+      "type": "integer",
+      "default": 0,
+      "minimum": 0,
+      "maximum": 4294967295
+    },
+    "ts_ymd": {
+      "type": "integer",
+      "default": 0,
+      "minimum": 0,
+      "maximum": 4294967295
+    },
+    "ts_ym": {
+      "type": "integer",
+      "default": 0,
+      "minimum": 0,
+      "maximum": 16777215
+    },
+    "ctx_ua_parsed": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "#/definitions/user-agent"
+        }
+      ]
+    },
+    "node_ref": {
+      "type": "string",
+      "pattern": "^[\\w\\/\\.:-]+$"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^([\\w\\/-]|[\\w-][\\w\\/-]*[\\w-])$",
+      "minLength": 0,
+      "maxLength": 255
+    }
+  },
+  "required": [
+    "_schema",
+    "event_id",
+    "node_ref"
+  ],
+  "definitions": {
+    "app": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "http://schemas.gdbots.io/json-schema/gdbots/contexts/app/1-0-0.json#"
+        }
+      ]
+    },
+    "cloud": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "http://schemas.gdbots.io/json-schema/gdbots/contexts/cloud/1-0-0.json#"
+        }
+      ]
+    },
+    "address": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "http://schemas.gdbots.io/json-schema/gdbots/geo/address/1-0-0.json#"
+        },
+        {
+          "$ref": "http://schemas.gdbots.io/json-schema/gdbots/geo/address/1-0-1.json#"
+        },
+        {
+          "$ref": "http://schemas.gdbots.io/json-schema/gdbots/geo/address/1-0-2.json#"
+        }
+      ]
+    },
+    "user-agent": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "http://schemas.gdbots.io/json-schema/gdbots/contexts/user-agent/1-0-0.json#"
+        }
+      ]
+    }
+  },
+  "additionalProperties": false
+}

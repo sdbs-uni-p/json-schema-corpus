@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "properties": {
+    "report_id": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "report_id"
+  ],
+  "title": "Webtrends Reports Collector Query",
+  "type": "object",
+  "additionalProperties": false
+}

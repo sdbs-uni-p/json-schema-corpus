@@ -1,0 +1,104 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "description": "Schema for an S3 event notification for Lambda. Incomplete.",
+  "definitions": {
+    "s3": {
+      "description": "The s3 element contains the bucket & key data",
+      "type": "object",
+      "required": [
+        "bucket",
+        "object"
+      ],
+      "properties": {
+        "awsRegion": {
+          "type": "string"
+        },
+        "bucket": {
+          "type": "object",
+          "required": [
+            "name"
+          ],
+          "properties": {
+            "arn": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            }
+          }
+        },
+        "eventSource": {
+          "type": "string"
+        },
+        "eventName": {
+          "type": "string"
+        },
+        "eventTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "object": {
+          "type": "object",
+          "required": [
+            "key"
+          ],
+          "properties": {
+            "eTag": {
+              "type": "string"
+            },
+            "key": {
+              "type": "string"
+            },
+            "sequencer": {
+              "type": "string"
+            },
+            "size": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    },
+    "s3event": {
+      "description": "The s3 event",
+      "type": "object",
+      "required": [
+        "awsRegion",
+        "eventSource",
+        "eventName",
+        "eventTime",
+        "s3"
+      ],
+      "properties": {
+        "awsRegion": {
+          "type": "string"
+        },
+        "eventSource": {
+          "type": "string"
+        },
+        "eventName": {
+          "type": "string"
+        },
+        "eventTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "s3": {
+          "$ref": "#/definitions/s3"
+        }
+      }
+    }
+  },
+  "type": "object",
+  "required": [
+    "Records"
+  ],
+  "properties": {
+    "Records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/s3event"
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "description": "Schemata for go-jsonschema.",
+  "links": [
+    {
+      "href": "https://api.example.com",
+      "rel": "self"
+    }
+  ],
+  "title": "Example Schemata",
+  "type": "object"
+}

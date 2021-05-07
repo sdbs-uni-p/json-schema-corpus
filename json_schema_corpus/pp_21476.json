@@ -1,0 +1,7 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "properties": {},
+  "title": "Google Analytics Realtime Collector Options",
+  "type": "object",
+  "additionalProperties": false
+}

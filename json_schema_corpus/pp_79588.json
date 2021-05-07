@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "type": "object",
+  "properties": {
+    "testFlag": {
+      "type": "boolean",
+      "description": "true if this set is to be applied as a dry run - i.e. no changes should be made to the jobs at the target"
+    },
+    "allInclusiveFlag": {
+      "type": "boolean",
+      "description": "true if all nodes are present in the request (i.e. any nodes in the database but not in the request should be deactivated)"
+    },
+    "jobs": {
+      "$ref": "jobsRead.json"
+    }
+  },
+  "required": [
+    "testFlag",
+    "allInclusiveFlag",
+    "jobs"
+  ],
+  "additionalProperties": false
+}

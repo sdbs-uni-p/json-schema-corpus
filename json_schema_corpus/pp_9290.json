@@ -1,0 +1,148 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "PRONAC": {
+        "type": "string",
+        "format": "int64",
+        "required": true
+      },
+      "ano_projeto": {
+        "type": "string",
+        "required": true
+      },
+      "nome": {
+        "type": "string",
+        "required": true
+      },
+      "cgccpf": {
+        "type": "string",
+        "format": "int64",
+        "required": true
+      },
+      "proponente": {
+        "type": "string",
+        "required": true
+      },
+      "segmento": {
+        "type": "string",
+        "required": true
+      },
+      "area": {
+        "type": "string",
+        "required": true
+      },
+      "UF": {
+        "type": "string",
+        "required": true
+      },
+      "municipio": {
+        "type": "string",
+        "required": true
+      },
+      "data_inicio": {
+        "type": "string",
+        "format": "date",
+        "required": true
+      },
+      "data_termino": {
+        "type": "string",
+        "format": "date",
+        "required": true
+      },
+      "situacao": {
+        "type": "string",
+        "required": true
+      },
+      "mecanismo": {
+        "type": "string",
+        "required": true
+      },
+      "enquadramento": {
+        "type": "string",
+        "required": true
+      },
+      "valor_projeto": {
+        "type": "number",
+        "format": "double",
+        "required": true
+      },
+      "outras_fontes": {
+        "type": "number",
+        "format": "double",
+        "required": true
+      },
+      "valor_captado": {
+        "type": "number",
+        "format": "double",
+        "required": true
+      },
+      "valor_proposta": {
+        "type": "number",
+        "format": "double",
+        "required": true
+      },
+      "valor_solicitado": {
+        "type": "number",
+        "format": "double",
+        "required": true
+      },
+      "valor_aprovado": {
+        "type": "number",
+        "format": "double",
+        "required": true
+      },
+      "acessibilidade": {
+        "type": "string",
+        "required": true
+      },
+      "objetivos": {
+        "type": "string",
+        "required": true
+      },
+      "justificativa": {
+        "type": "string",
+        "required": true
+      },
+      "etapa": {
+        "type": "string",
+        "required": true
+      },
+      "ficha_tecnica": {
+        "type": "string",
+        "required": true
+      },
+      "impacto_ambiental": {
+        "type": "string",
+        "required": true
+      },
+      "especificacao_tecnica": {
+        "type": "string",
+        "required": true
+      },
+      "estrategia_execucao": {
+        "type": "string",
+        "required": true
+      },
+      "providencia": {
+        "type": "string",
+        "required": true
+      },
+      "democratizacao": {
+        "type": "string",
+        "required": true
+      },
+      "sinopse": {
+        "type": "string",
+        "required": true
+      },
+      "resumo": {
+        "type": "string",
+        "required": true
+      }
+    },
+    "additionalProperties": false
+  }
+}

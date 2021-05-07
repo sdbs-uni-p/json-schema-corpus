@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://flynn.io/schema/controller/release#",
+  "title": "Release",
+  "description": "",
+  "sortIndex": 11,
+  "type": "object",
+  "examples": [
+    "schema/examples/controller/app_initial_release_get#",
+    "schema/examples/controller/app_release_set#",
+    "schema/examples/controller/app_release_get#",
+    "schema/examples/controller/release_create#",
+    "schema/examples/controller/release_list#",
+    "schema/examples/controller/app_release_list#"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "$ref": "/schema/controller/common#/definitions/id"
+    },
+    "app_id": {
+      "$ref": "/schema/controller/common#/definitions/id"
+    },
+    "artifact": {
+      "description": "DEPRECATED: legacy artifact ID",
+      "$ref": "/schema/controller/common#/definitions/id"
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "$ref": "/schema/controller/common#/definitions/id"
+      }
+    },
+    "meta": {
+      "$ref": "/schema/controller/common#/definitions/meta"
+    },
+    "env": {
+      "$ref": "/schema/controller/common#/definitions/env"
+    },
+    "processes": {
+      "type": "object"
+    },
+    "created_at": {
+      "$ref": "/schema/controller/common#/definitions/created_at"
+    }
+  }
+}

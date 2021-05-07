@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "title": "com.xcitestudios.schema.Logging.LogMessage",
+  "description": "Minimum required output for a LogMessage",
+  "type": "object",
+  "properties": {
+    "severity": {
+      "type": "string",
+      "description": "The severity of this log message.",
+      "enum": [
+        "emergency",
+        "alert",
+        "critical",
+        "error",
+        "warning",
+        "notice",
+        "informational",
+        "debug"
+      ]
+    },
+    "datetime": {
+      "type": "string",
+      "description": "The datetime this log event occured (ISO8601 combined date/time format (including timezone) for storage).",
+      "format": "date-time"
+    },
+    "source": {
+      "type": "string",
+      "description": "The identifier of the machine the log came from (IP, DNS name etc, any unique identifier).",
+      "minLength": 1
+    },
+    "application": {
+      "type": "string",
+      "description": "Application that raised the log.",
+      "minLength": 1
+    },
+    "module": {
+      "type": "string",
+      "description": "Optional module in the application that raised the log."
+    },
+    "message": {
+      "type": "string",
+      "description": "Message for the log but use printf standard for arguments where required.",
+      "minLength": 1
+    },
+    "messageArgs": {
+      "type": "array",
+      "description": "Arguments to format into Message.",
+      "minItems": 0,
+      "uniqueItems": false
+    },
+    "extra": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Any extra data to store alongside the log entry."
+    }
+  },
+  "required": [
+    "severity",
+    "datetime",
+    "source",
+    "application",
+    "message"
+  ]
+}

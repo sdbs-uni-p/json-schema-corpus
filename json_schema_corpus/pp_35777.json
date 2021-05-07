@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema-location": "Relationship-Schema-v2.json",
+  "name": "Provide-Relationship",
+  "version": "1",
+  "author": "denis",
+  "description": "The \"Provide\" relationship between a Charm and an Interface",
+  "associated-tool": "Juju-CLI",
+  "type": "object",
+  "participating-entity-schema": [
+    {
+      "name": "Charm-Schema",
+      "version": "1",
+      "role": "provide",
+      "cardinality": {
+        "min-value": "0",
+        "max-value": "INF"
+      }
+    },
+    {
+      "name": "Interface-Schema",
+      "version": "1",
+      "role": "provided by",
+      "cardinality": {
+        "min-value": "1",
+        "max-value": "INF"
+      }
+    }
+  ],
+  "properties": {
+    "$schema-location": {
+      "type": {
+        "enum": [
+          "ADD YOUR SCHEMA LOCATION HERE"
+        ]
+      }
+    },
+    "author": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "participating-entities": {
+      "items": {
+        "maxItems": "2",
+        "minItems": "2",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          }
+        },
+        "required": true,
+        "type": "object"
+      },
+      "required": true,
+      "type": "array"
+    }
+  }
+}

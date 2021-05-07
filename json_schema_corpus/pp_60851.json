@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/mimmi20/ua-result/master/schema/device.json",
+  "definitions": {
+    "device": {
+      "type": "object",
+      "properties": {
+        "deviceName": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "marketingName": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "manufacturer": {
+          "type": "string"
+        },
+        "brand": {
+          "type": "string"
+        },
+        "display": {
+          "$ref": "display.json#/definitions/display"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "deviceName",
+        "marketingName",
+        "manufacturer",
+        "brand",
+        "display",
+        "type"
+      ]
+    }
+  },
+  "$ref": "#/definitions/device"
+}

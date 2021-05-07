@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "properties": {
+    "serviceType": {
+      "description": "The name of the service-type along which to segment the count",
+      "type": "string"
+    },
+    "count": {
+      "description": "The count of the number of events",
+      "type": "integer",
+      "minimum": 0
+    },
+    "consulate": {
+      "description": "The consular level for the number of events",
+      "type": "string"
+    },
+    "period": {
+      "description": "The period described by each data point",
+      "enum": [
+        "second",
+        "minute",
+        "hour",
+        "day",
+        "week",
+        "month",
+        "year"
+      ]
+    }
+  },
+  "required": [
+    "count",
+    "serviceType",
+    "consulate",
+    "period"
+  ],
+  "title": "Appointments by service type and consulate",
+  "type": "object"
+}

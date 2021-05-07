@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "feature",
+  "description": "A Karst Feature",
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "The unique identifier for the feature",
+      "type": "string"
+    },
+    "name": {
+      "description": "The feature name",
+      "type": "string"
+    },
+    "code": {
+      "description": "Local survey code. Optional",
+      "type": "string"
+    },
+    "length": {
+      "description": "feature total horizontal length",
+      "type": "integer",
+      "minimum": 1
+    },
+    "depth": {
+      "description": "feature total vertical depth",
+      "type": "integer",
+      "minimum": 1
+    },
+    "narrative": {
+      "description": "Cave narrative",
+      "type": "string"
+    },
+    "entrances": {
+      "type": "array",
+      "description": "entrances",
+      "$ref": "http://schemas.karst.io/schemas/v1/entrance"
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "entrances"
+  ]
+}

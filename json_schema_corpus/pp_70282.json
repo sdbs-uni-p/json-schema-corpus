@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "nap",
+  "description": "(N)ame (A)ddress (P)hone number for the data marshal system",
+  "type": "object",
+  "properties": {
+    "name": {
+      "$ref": "/schema/name"
+    },
+    "address": {
+      "$ref": "/schema/address"
+    },
+    "phone": {
+      "$ref": "/schema/phone"
+    }
+  },
+  "required": [
+    "name",
+    "address",
+    "phone"
+  ]
+}

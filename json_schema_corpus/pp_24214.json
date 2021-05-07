@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Snapshot Schema",
+  "type": "object",
+  "properties": {
+    "jobExecutionId": {
+      "description": "Corresponding jobExecution id",
+      "type": "string"
+    },
+    "status": {
+      "description": "Current status",
+      "type": "string",
+      "$ref": "../mod-source-record-manager/status.json"
+    },
+    "metadata": {
+      "description": "Metadata provided by the server",
+      "type": "object",
+      "$ref": "../../raml-util/schemas/metadata.schema",
+      "readonly": true
+    }
+  },
+  "required": [
+    "jobExecutionId",
+    "status"
+  ]
+}

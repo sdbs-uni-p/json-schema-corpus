@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9:]+$"
+    },
+    "metrics": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "dimensions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "sort": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "filters": {
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "type": "string"
+        }
+      ]
+    },
+    "maxResults": {
+      "type": "integer"
+    },
+    "frequency": {
+      "type": "string"
+    },
+    "segment": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "metrics"
+  ],
+  "title": "Google Analytics Collector Query",
+  "type": "object",
+  "additionalProperties": false
+}

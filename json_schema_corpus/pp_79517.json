@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "description": "details of a single test",
+  "properties": {
+    "success": {
+      "type": "boolean",
+      "description": "True if all the tests passed correctly, otherwise false due to an api test or multiple api test failures"
+    },
+    "message": {
+      "type": "string",
+      "description": "Details about the series of api tests completed. Also includes any exceptions"
+    },
+    "tests": {
+      "$ref": "apiTest.json"
+    },
+    "runTime": {
+      "type": "integer",
+      "description": "Duration taken to run all the tests, displayed in seconds"
+    }
+  }
+}

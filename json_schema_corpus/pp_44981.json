@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "name": "Entry",
+  "properties": {
+    "@id": {
+      "type": "string"
+    },
+    "nif:isString": {
+      "description": "String contained in this Context. Alternative: nif:isString",
+      "type": "string"
+    },
+    "marl:hasOpinion": {
+      "type": "array",
+      "items": {
+        "$ref": "sentiment.json"
+      }
+    },
+    "onyx:hasEmotionSet": {
+      "type": "array",
+      "items": {
+        "$ref": "emotionSet.json"
+      }
+    }
+  },
+  "required": [
+    "nif:isString"
+  ]
+}

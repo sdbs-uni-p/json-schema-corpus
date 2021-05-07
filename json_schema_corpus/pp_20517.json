@@ -1,0 +1,139 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Audio Lecture Schema",
+  "description": "The Audio Lecture Archetype - Essential properties that define an audio lecture",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "title, author, primary_audio_archetype"
+  ],
+  "properties": {
+    "_id": {
+      "type": "string",
+      "description": "Unique identifier for this archetype record",
+      "maxLength": 50,
+      "default": ""
+    },
+    "draft": {
+      "type": "boolean",
+      "description": "Indicates this archetype record is a draft and is not published",
+      "default": false
+    },
+    "created": {
+      "type": "string",
+      "description": "Date and time this archetype record was created in ISO 8601 date standard e.g. YYYY-MM-DDThh:mm:ss.sTZD",
+      "format": "date-time",
+      "default": ""
+    },
+    "updated": {
+      "type": "string",
+      "description": "Date and time this archetype record was updated in ISO 8601 date standard e.g. YYYY-MM-DDThh:mm:ss.sTZD",
+      "format": "date-time",
+      "default": ""
+    },
+    "title": {
+      "type": "string",
+      "description": "Title of the lecture",
+      "maxLength": 250,
+      "default": ""
+    },
+    "author": {
+      "type": "string",
+      "description": "author of the lecture",
+      "maxLength": 140,
+      "default": ""
+    },
+    "primary_audio_archetype": {
+      "$ref": "audio_archetype_schema.json",
+      "description": "Audio Archetype ID to use as the primary audio file of this audio book"
+    },
+    "primary_speaker": {
+      "type": "string",
+      "description": "Person who delivers the lecture",
+      "maxLength": 140,
+      "default": ""
+    },
+    "additional_speaker": {
+      "type": "array",
+      "description": "Additional people who assist in giving the lecture e.g. guest lecturers",
+      "maxItems": 6,
+      "uniqueItems": true,
+      "default": [],
+      "items": {
+        "type": "string",
+        "maxLength": 140,
+        "default": ""
+      }
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the lecture",
+      "maxLength": 5000,
+      "default": ""
+    },
+    "institution": {
+      "type": "string",
+      "description": "Institution where the lecture was given e.g. Harvard",
+      "maxLength": 140,
+      "default": ""
+    },
+    "department": {
+      "type": "string",
+      "description": "Department the lecture belongs to e.g. Material Engineering",
+      "maxLength": 140,
+      "default": ""
+    },
+    "course": {
+      "type": "string",
+      "description": "The specific course during which the lecture was given e.g. Principles of Nanotechnology",
+      "maxLength": 140,
+      "default": ""
+    },
+    "course_number": {
+      "type": "string",
+      "description": "The specfic number of the course in which the lecture was delivered",
+      "maxLength": 140,
+      "default": ""
+    },
+    "lecture_date": {
+      "type": "string",
+      "description": "Date and time the lecture was given in ISO 8601 date standard e.g. YYYY-MM-DDThh:mm:ss.sTZD",
+      "format": "date-time",
+      "default": ""
+    },
+    "level": {
+      "enum": [
+        "Undergraduate",
+        "Graduate",
+        "Beginner",
+        "Intermediate",
+        "Advanced"
+      ],
+      "description": "The level of knowledge required for the material discussed within the lecture",
+      "default": "Undergraduate"
+    },
+    "category": {
+      "type": "string",
+      "description": "General category of the song, e.g. EDM",
+      "maxLength": 40,
+      "default": ""
+    },
+    "subcategory": {
+      "type": "string",
+      "description": "Specific category of the song, e.g. Trance",
+      "maxLength": 40,
+      "default": ""
+    },
+    "tags": {
+      "type": "array",
+      "description": "Array of Tag Archetypes that are used to help categorize this Archetype record",
+      "maxItems": 6,
+      "uniqueItems": true,
+      "additionalItems": false,
+      "default": [],
+      "items": {
+        "$ref": "tag_archetype_schema.json"
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "validation": {
+      "type": "boolean"
+    },
+    "school_id": {
+      "type": "string"
+    },
+    "color": {
+      "type": "string"
+    },
+    "extendcolor": {
+      "type": "boolean"
+    },
+    "slotprofile": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "name",
+    "validation",
+    "color"
+  ]
+}

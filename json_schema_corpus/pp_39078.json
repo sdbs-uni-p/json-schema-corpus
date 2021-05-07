@@ -1,0 +1,95 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "https://github.com/empirefox/node-private-tools/blob/master/src/schemas/city-mobile-sections.json#",
+  "title": "city-mobile-sections Config",
+  "description": "Generate phone number list",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "$tool": {
+      "type": "string",
+      "description": "Must be set to city-mobile-sections",
+      "const": "city-mobile-sections"
+    },
+    "column": {
+      "description": "Column name.",
+      "enum": [
+        "province",
+        "city"
+      ]
+    },
+    "value": {
+      "description": "Column value.",
+      "type": "string"
+    },
+    "dist": {
+      "description": "The output path (relative to the pwd).",
+      "type": "string"
+    },
+    "driver": {
+      "description": "Typeorm driver.",
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "Database type, sync with typeorm.DriverType",
+          "type": "string",
+          "enum": [
+            "mysql",
+            "postgres",
+            "mariadb",
+            "sqlite",
+            "oracle",
+            "mssql",
+            "websql"
+          ],
+          "default": "postgres"
+        },
+        "host": {
+          "description": "Database host",
+          "type": "string",
+          "default": "localhost"
+        },
+        "port": {
+          "description": "Database port",
+          "type": "integer",
+          "default": 5432
+        },
+        "username": {
+          "description": "Database username",
+          "type": "string",
+          "default": "postgres"
+        },
+        "password": {
+          "description": "Database password",
+          "type": "string",
+          "default": "postgres"
+        },
+        "database": {
+          "description": "Database name to connect to",
+          "type": "string",
+          "default": "phone"
+        }
+      },
+      "default": {},
+      "required": [
+        "type",
+        "host",
+        "port",
+        "username",
+        "password",
+        "database"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "$tool",
+    "dist",
+    "column",
+    "value",
+    "driver"
+  ],
+  "additionalProperties": false
+}

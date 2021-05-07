@@ -1,0 +1,20 @@
+{
+  "id": "http://schema.org/Comment",
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "extends": {
+    "$ref": "CreativeWork.json"
+  },
+  "description": "A comment on an item - for example, a comment on a blog post. The comment's content is expressed via the 'text' property, and its topic via 'about', properties shared with all CreativeWorks. Schema.org: http://schema.org/Comment",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "downvoteCount": {
+      "description": "The number of downvotes this question has received from the community.",
+      "type": "integer"
+    },
+    "upvoteCount": {
+      "description": "The number of upvotes this question has received from the community.",
+      "type": "integer"
+    }
+  }
+}

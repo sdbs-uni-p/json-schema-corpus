@@ -1,0 +1,172 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "required": [
+    "title",
+    "description",
+    "publisher",
+    "superTheme",
+    "distribution",
+    "accrualPeriodicity",
+    "issued",
+    "identifier"
+  ],
+  "properties": {
+    "publisher": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "mixed-types.json#nonEmptyString"
+        },
+        "mbox": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[ ]*[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*[ ]*$"
+            },
+            {
+              "$ref": "mixed-types.json#emptyValue"
+            }
+          ]
+        }
+      }
+    },
+    "distribution": {
+      "type": "array",
+      "items": {
+        "$ref": "distribution.json"
+      }
+    },
+    "title": {
+      "allOf": [
+        {
+          "$ref": "mixed-types.json#nonEmptyString"
+        },
+        {
+          "maxLength": 100
+        }
+      ]
+    },
+    "description": {
+      "$ref": "mixed-types.json#nonEmptyString"
+    },
+    "issued": {
+      "$ref": "mixed-types.json#dateOrDatetimeString"
+    },
+    "superTheme": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "mixed-types.json#superTheme"
+      }
+    },
+    "accrualPeriodicity": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^R/P\\d+(\\.\\d+)?[Y|M|W|D]$"
+        },
+        {
+          "type": "string",
+          "pattern": "^R/PT\\d+(\\.\\d+)?[H|M|S]$"
+        },
+        {
+          "type": "string",
+          "pattern": "^eventual$"
+        },
+        {
+          "type": "string",
+          "pattern": "^EVENTUAL$"
+        }
+      ]
+    },
+    "contactPoint": {
+      "type": "object",
+      "properties": {
+        "fn": {
+          "$ref": "mixed-types.json#stringOrNull"
+        },
+        "hasEmail": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[ ]*[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*[ ]*$"
+            },
+            {
+              "$ref": "mixed-types.json#emptyValue"
+            }
+          ]
+        }
+      }
+    },
+    "theme": {
+      "$ref": "mixed-types.json#arrayOrNull"
+    },
+    "keyword": {
+      "allOf": [
+        {
+          "$ref": "mixed-types.json#arrayOrNull"
+        },
+        {
+          "anyOf": [
+            {
+              "not": {
+                "type": "array"
+              }
+            },
+            {
+              "items": {
+                "pattern": "^[ 0-9a-z\u00e1-\u017a\u00c1-\u0179A-Z\u00f1\u00d1._-]+$"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "modified": {
+      "$ref": "mixed-types.json#dateOrDatetimeStringOrNull"
+    },
+    "identifier": {
+      "$ref": "mixed-types.json#nonEmptyString"
+    },
+    "language": {
+      "$ref": "mixed-types.json#arrayOrNull"
+    },
+    "spatial": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "temporal": {
+      "$ref": "mixed-types.json#temporalOrNull"
+    },
+    "landingPage": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "$ref": "mixed-types.json#emptyValue"
+        }
+      ]
+    },
+    "license": {
+      "$ref": "mixed-types.json#stringOrNull"
+    },
+    "source": {
+      "$ref": "mixed-types.json#stringOrNull"
+    }
+  }
+}

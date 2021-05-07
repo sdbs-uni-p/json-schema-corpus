@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "items": {
+    "type": [
+      "object",
+      "null"
+    ],
+    "properties": {
+      "value": {
+        "title": "URL",
+        "type": "string",
+        "format": "url"
+      },
+      "description": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "title": "Description from 8564_y field"
+      }
+    },
+    "title": "URL"
+  },
+  "type": "array",
+  "title": "URLs"
+}

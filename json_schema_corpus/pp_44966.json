@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Senpy analysis",
+  "type": "object",
+  "properties": {
+    "@id": {
+      "type": "string"
+    },
+    "@type": {
+      "type": "string",
+      "description": "Type of the analysis. e.g. marl:SentimentAnalysis"
+    },
+    "prov:wasAssociatedWith": {
+      "@type": "string",
+      "description": "Algorithm/plugin that was used"
+    },
+    "prov:used": {
+      "description": "Parameters of the algorithm",
+      "@type": "array",
+      "type": "array",
+      "items": {
+        "$ref": "parameter.json"
+      }
+    }
+  },
+  "required": [
+    "@type",
+    "prov:wasAssociatedWith"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://schemas.massisframework.com/jme3/BoundingBox.json",
+  "javaType": "com.jme3.bounding.BoundingBox",
+  "title": "BoundingBox",
+  "description": "Describes a bounding volume as an axis-aligned box.",
+  "type": "object",
+  "properties": {
+    "center": {
+      "$ref": "http://schemas.massisframework.com/jme3/Vector3f.json"
+    },
+    "xExtent": {
+      "type": "number"
+    },
+    "yExtent": {
+      "type": "number"
+    },
+    "zExtent": {
+      "type": "number"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "activity",
+  "id": "activity",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "A unique ID for the activity."
+    },
+    "link": {
+      "$ref": "link",
+      "description": "A self referencing link to the activity."
+    },
+    "targetResource": {
+      "$ref": "resourceReference",
+      "description": "A reference to the resource affected by the activity."
+    },
+    "relatedResources": {
+      "type": "array",
+      "items": {
+        "$ref": "resourceReference"
+      },
+      "description": "An array of references to resources also related to this activity."
+    },
+    "action": {
+      "type": "string",
+      "description": "The action being performed in the activity (e.g. CREATED, UPDATED, DELETED, ARCHIVED, etc.)."
+    },
+    "actionTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date and time the action took place."
+    },
+    "responsibleParty": {
+      "type": "string",
+      "description": "A reference to the party that performed the action on the resource. This could be the username of the User who performed the action. This could also be a reference to the party (e.g. Organization) that accessed the API endpoint to perform the action on the resource."
+    },
+    "message": {
+      "type": "string",
+      "description": "An activity message which may be used to supply addition information regarding the activity."
+    }
+  }
+}

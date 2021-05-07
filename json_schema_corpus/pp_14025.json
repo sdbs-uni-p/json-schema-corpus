@@ -1,0 +1,42 @@
+{
+  "type": "object",
+  "title": "Artist schema",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "properties": {
+    "id": {
+      "required": true,
+      "type": "id_field",
+      "args": {
+        "primary_key": true
+      }
+    },
+    "name": {
+      "required": true,
+      "type": "string"
+    },
+    "description": {
+      "required": false,
+      "type": "text"
+    },
+    "tracks": {
+      "required": false,
+      "type": "relationship",
+      "args": {
+        "document": "Track",
+        "ondelete": "NULLIFY",
+        "backref_name": "artist",
+        "backref_ondelete": "NULLIFY"
+      }
+    },
+    "events": {
+      "required": false,
+      "type": "relationship",
+      "args": {
+        "document": "Event",
+        "ondelete": "NULLIFY",
+        "backref_name": "artist",
+        "backref_ondelete": "NULLIFY"
+      }
+    }
+  }
+}

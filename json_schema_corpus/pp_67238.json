@@ -1,0 +1,265 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://apothesource.com/rxnorm/rxnorm-responses",
+  "type": "object",
+  "definitions": {
+    "relatedGroup": {
+      "type": "object",
+      "javaType": "com.apothesource.pillfill.rxnorm.datamodel.RelatedGroup",
+      "properties": {
+        "rxcui": {
+          "type": "string"
+        },
+        "rela": {
+          "type": "array",
+          "items": {
+            "$ref": "rxnorm-core.json#/definitions/relationship"
+          }
+        },
+        "termType": {
+          "type": "array",
+          "items": {
+            "$ref": "rxnorm-core.json#/definitions/tty"
+          }
+        },
+        "conceptGroup": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "tty": {
+                "$ref": "rxnorm-core.json#/definitions/tty"
+              },
+              "conceptProperties": {
+                "$ref": "rxnorm-core.json#/definitions/conceptProperties"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "properties": {
+    "idGroupResponse": {
+      "type": "object",
+      "javaType": "com.apothesource.pillfill.rxnorm.datamodel.IdGroupResponse",
+      "properties": {
+        "idGroup": {
+          "javaType": "com.apothesource.pillfill.rxnorm.datamodel.IdGroup",
+          "type": "object",
+          "properties": {
+            "idType": {
+              "javaType": "com.apothesource.pillfill.rxnorm.datamodel.IdTypeNames",
+              "type": "string",
+              "enum": [
+                "AMPID",
+                "ANDA",
+                "ATC",
+                "GCN_SEQNO",
+                "GFC",
+                "GPPC",
+                "HIC_SEQN",
+                "LISTING_SEQ_NO",
+                "MESH",
+                "MMSL_CODE",
+                "NDA",
+                "NDC",
+                "NUI",
+                "SNOMEDCT",
+                "SPL_SET_ID",
+                "UMLSCUI",
+                "UNII_CODE",
+                "VUID"
+              ]
+            },
+            "id": {
+              "type": "string"
+            },
+            "rxnormId": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "ndcGroupResponse": {
+      "type": "object",
+      "javaType": "com.apothesource.pillfill.rxnorm.datamodel.NdcsGroupResponse",
+      "properties": {
+        "ndcGroup": {
+          "id": "ndcGroup",
+          "type": "object",
+          "properties": {
+            "rxcui": {
+              "id": "rxcui",
+              "type": "string"
+            },
+            "ndcList": {
+              "id": "ndcList",
+              "type": "object",
+              "properties": {
+                "ndc": {
+                  "id": "ndc",
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "propertyGroupResponse": {
+      "type": "object",
+      "javaType": "com.apothesource.pillfill.rxnorm.datamodel.PropertiesGroupResponse",
+      "properties": {
+        "propConceptGroup": {
+          "type": "object",
+          "properties": {
+            "propConcept": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "propCategory": {
+                    "javaType": "com.apothesource.pillfill.rxnorm.datamodel.PropCategoryNames",
+                    "enum": [
+                      "ATTRIBUTES",
+                      "CODES",
+                      "NAMES",
+                      "SOURCES"
+                    ],
+                    "type": "string"
+                  },
+                  "propName": {
+                    "type": "string"
+                  },
+                  "propValue": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "allRelatedGroupResponse": {
+      "type": "object",
+      "id": "http://apothesource.com/rxnorm/allrelated",
+      "javaType": "com.apothesource.pillfill.rxnorm.datamodel.AllRelatedGroupResponse",
+      "properties": {
+        "allRelatedGroup": {
+          "$ref": "#/definitions/relatedGroup"
+        }
+      }
+    },
+    "relatedGroupResponse": {
+      "type": "object",
+      "id": "http://apothesource.com/rxnorm/related",
+      "javaType": "com.apothesource.pillfill.rxnorm.datamodel.RelatedGroupResponse",
+      "properties": {
+        "relatedGroup": {
+          "$ref": "#/definitions/relatedGroup"
+        }
+      }
+    },
+    "approximateGroupResponse": {
+      "type": "object",
+      "javaType": "com.apothesource.pillfill.rxnorm.datamodel.ApproximateGroupResponse",
+      "properties": {
+        "approximateGroup": {
+          "type": "object",
+          "properties": {
+            "inputTerm": {
+              "type": "string"
+            },
+            "comment": {
+              "type": "string"
+            },
+            "maxEntries": {
+              "type": "string"
+            },
+            "candidate": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "javaType": "com.apothesource.pillfill.rxnorm.datamodel.ApproximateCandidate",
+                  "rank": {
+                    "type": "string"
+                  },
+                  "rxaui": {
+                    "type": "string"
+                  },
+                  "rxcui": {
+                    "type": "string"
+                  },
+                  "score": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "brandGroupResponse": {
+      "type": "object",
+      "javaType": "com.apothesource.pillfill.rxnorm.datamodel.BrandGroupResponse",
+      "properties": {
+        "brandGroup": {
+          "type": "object",
+          "properties": {
+            "ingredientList": {
+              "type": "object",
+              "properties": {
+                "rxnormId": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "conceptProperties": {
+              "$ref": "rxnorm-core.json#/definitions/conceptProperties"
+            }
+          }
+        }
+      }
+    },
+    "suggestionGroupResponse": {
+      "type": "object",
+      "javaType": "com.apothesource.pillfill.rxnorm.datamodel.SuggestionGroupResponse",
+      "properties": {
+        "suggestionGroup": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "suggestionList": {
+              "javaType": "com.apothesource.pillfill.rxnorm.datamodel.SuggestionList",
+              "type": "object",
+              "properties": {
+                "suggestion": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

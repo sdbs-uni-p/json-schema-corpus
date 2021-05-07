@@ -1,0 +1,46 @@
+{
+  "description": "Hypercharge RecurringSchedule create request",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "additionalProperties": false,
+  "properties": {
+    "payment_transaction_unique_id": {
+      "description": "The Transaction to create the RecurringSchedule for. The Transaction type must be init_recurring_authorize, init_recurring_sale, init_recurring_debit_sale or init_recurring_debit_authorize",
+      "required": true,
+      "extends": "types.json#/unique_id"
+    },
+    "amount": {
+      "description": "Amount of the payment in cents, must be > 0",
+      "required": true,
+      "extends": "types.json#/amount"
+    },
+    "start_date": {
+      "description": "Start date to begin with scheduling transactions",
+      "required": true,
+      "extends": "types.json#/date"
+    },
+    "end_date": {
+      "description": "End date to stop with scheduling transactions",
+      "extends": "types.json#/date"
+    },
+    "interval": {
+      "required": true,
+      "extends": "types.json#/recurring_schedule/properties/interval"
+    },
+    "max_retries": {
+      "extends": "types.json#/recurring_schedule/properties/max_retries"
+    },
+    "expiring_notification_time": {
+      "description": "hypercharge sends merchant a notification x Days before end_date",
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 100,
+      "exclusiveMinimum": false,
+      "exclusiveMaximum": false
+    },
+    "active": {
+      "description": "true: Scheduler is on. false: Scheduler is turned off but still visible.",
+      "extends": "types.json#/boolean"
+    }
+  }
+}

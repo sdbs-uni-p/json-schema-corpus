@@ -1,0 +1,770 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "@context": {
+    "cmd": "http://resources.usgin.org/uri-gin/cinergi/schema/metadataobjectschema",
+    "@vocab": "http://json-schema.org/draft-04/schema",
+    "@base": "http://resources.usgin.org/uri-gin/cinergi/schema/metadataobjectschema",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "dct": "http://purl.org/dc/terms/",
+    "skos": "http://www.w3.org/2004/02/skos/core#"
+  },
+  "description": "JSON schema for use in a MongoDb for metadata management. Includes metadata elements as well as some management models. The root object is an input metadata record, that has a sourceID",
+  "id": "http://resources.usgin.org/uri-gin/cinergi/metadataobjectschema/json",
+  "cmd:CINERGI_MetadataObject": {
+    "id": "#CINERGIobject",
+    "description": "root element; consists of wrapper for archived JSONized version of the initally harvested record and for the metadata content using the CINERGI metadata Object model, along with some data management overhead",
+    "type": "object",
+    "required": [
+      "cmd:CINERGI_ID",
+      "cmd:metadataProperties",
+      "cmd:resourceDescription"
+    ],
+    "properties": {
+      "cmd:CINERGI_ID": {
+        "description": "primaryKey from Burak's original wrapper implementation. CINERGI_ID, a UUID generated using a UUID v5 hash based on the identifier for the harvestSource (sourceID), and some harvest-endpoint specific content extracted from the harvested record. Each harvest configuration needs to specify what content in the metadata record is used to generate the CINERGI_ID",
+        "type": "string"
+      },
+      "cmd:harvestInformation": {
+        "type": "object",
+        "properties": {
+          "cmd:version": {
+            "description": "integer, starts at 1 when a new record is brought into the db; increment when the record is updated by harvesting a newer version from the source",
+            "type": "integer"
+          },
+          "cmd:crawlDate": {
+            "description": "date and time that the record was acquired or most recently updated",
+            "type": "",
+            "format": "ISO8601"
+          },
+          "cmd:indexDate": {
+            "description": "data of most recent indexing run executed on this record",
+            "type": "string",
+            "format": "ISO8601"
+          },
+          "cmd:originalFileIdentifier": {
+            "type": "string"
+          },
+          "cmd:originalFormat": {
+            "type": "string"
+          },
+          "cmd:harvestURL": {
+            "type": "string"
+          },
+          "cmd:sourceInfo": {
+            "description": "Information to identify the harvest configuration information, including where the record came from-- either a harvest source, single record upload, or form- based editor",
+            "type": "object",
+            "properties": {
+              "cmd:harvestSourceID": {
+                "description": "<nif-id of the source>",
+                "type": "string"
+              },
+              "cmd:viewID": {
+                "description": "",
+                "type": ""
+              },
+              "cmd:harvestSourceName": {
+                "description": "<source-name> name in Burak's original implementaiton. A text label to identify this source for people",
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "cmd:originalHarvestedDoc": {
+        "description": "<original doc as JSON>. A JSON blob will get added, we don't know what the schema for that will be--its an open world",
+        "type": "object",
+        "properties": {}
+      },
+      "cmd:processingStatus": {
+        "description": "flag used to track the next process in the enhancement workflow for a record; <process-status used to guide message oriented document processors>",
+        "type": "string"
+      },
+      "cmd:metadataProperties": {
+        "type": "object",
+        "description": "properties for the metadata record content, should be obtained from the harvest source",
+        "required": [
+          "cmd:metadataUpdateDate"
+        ],
+        "properties": {
+          "cmd:metadataContact": {
+            "description": "contact information to report problems with the resource description content",
+            "type": "object",
+            "properties": {
+              "$ref": "definitions/#RelatedAgent"
+            }
+          },
+          "cmd:metadataUpdateDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "exactly 1. This is time stamp for most recent change to metadata content in this record. Update history should be in metadataLineage; this is a convienence property"
+          },
+          "cmd:metadataRecordHistory": {
+            "description": "summary statements for processing steps in the document ingestion and processing; detailed provenance history will be recorded in the provenance database; a link is provided to access this history",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "cmd:stepSequenceNo": {
+                  "type": "integer"
+                },
+                "cmd:processStepStatement": {
+                  "type": "string"
+                },
+                "cmd:batchId": {
+                  "description": "identifier for a particular source metadata record ID harvested as part of a particular harvest batch run. If a new harvest completely replaces the existing harvested record, the processing steps should logically be imported as part of the harvest to replace the existing sequence of steps, starting the version sequence again",
+                  "type": "string"
+                },
+                "cmd:provenanceLink": {
+                  "description": "a URL that will retrieve the complete provenance trace for this record from the PROV service",
+                  "$ref": "#/definitions/Link"
+                }
+              }
+            }
+          }
+        }
+      },
+      "cmd:resourceDescription": {
+        "description": "This is the container for the CINERGI metadata object content; was 'data' in Burak's original implementation.  properties used to describe the resource. A profile of the USGIN schema",
+        "type": "object",
+        "required": [
+          "cmd:resourceAccessOptions"
+        ],
+        "properties": {
+          "cmd:resourceTitle": {
+            "description": "Title that identifies the resource for human users. Ideally the title would be unique to the described resource.",
+            "type": "string"
+          },
+          "cmd:resourceDescription": {
+            "description": "Free text description of the resource. May summarize intellectual content, as well as describe various metadata aspects such as lineage, quality, use constraints, maintenance.",
+            "type": "string"
+          },
+          "cmd:resourceURI": {
+            "description": "Unique identifier conforming to IETF URI syntax (RFC 3986). Resource may have multiple identifiers; the identifier in this element is the preferred identifier recommended by the resource steward. The resourceURI is intended to identify the resource at the FRBR work level. Identifier may be a sinle URI or an array of scoped identifiers with an optional authority associated with each identifier",
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "URI"
+              },
+              {
+                "description": "scoped Identifier(s) for the resource, e.g. ISBN, ISSN, Dewey Decimal system numbers, or other URIs determined by the publishing authority",
+                "type": "array",
+                "required": [
+                  "cmd:citationIdentifier"
+                ],
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "cmd:citationIdentifier": {
+                      "description": "Note citation is to a particular manifestation or expression of the resource; the citationIdentifier is bound to that resource. The resourceURI is intended to identify the resource at the work level.",
+                      "type": "string"
+                    },
+                    "cmd:scopedIdentifierAuthority": {
+                      "description": "an identifier for the authority or identifier scheme within which the citationIdentifier is defined.",
+                      "type": "object",
+                      "required": [
+                        "cmd:authorityLabel"
+                      ],
+                      "properties": {
+                        "cmd:authorityURI": {
+                          "description": "string to uniquely indentify the authority for interperability",
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "cmd:authorityLabel": {
+                          "type": "string",
+                          "description": "string that users will understand to present role"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "cmd:citedSourceAgents": {
+            "description": "intellectual originator and contributors of the resource that metadata record describes.",
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/RelatedAgent"
+            }
+          },
+          "cmd:citationDates": {
+            "description": "Each date should scope a different origin event",
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/EventDate"
+            }
+          },
+          "cmd:recommendedCitation": {
+            "description": "a suggested full text citation to use when citing the resource; include standard bibliographic content like edition, publisher, series title, series issue, page numbers, other information appropriate to the described resource",
+            "type": "string"
+          },
+          "cmd:resourceContacts": {
+            "description": "link to party to contact for additional information about the resource. Each relatedAgent has an associated role; various parties may be associated with the resource in different roles.",
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/RelatedAgent"
+            }
+          },
+          "cmd:resourceAccessOptions": {
+            "description": "describes how to access the resource described by the metadata. Corresponds to ISO19115 distribution. Each object in the accessOptions array contains the offerings from a particular distributor",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "cmd:accessLinks"
+              ],
+              "properties": {
+                "cmd:distributor": {
+                  "description": "agent responsible for making the resources accessible at the associated URLs or offline locations",
+                  "$ref": "#/definitions/RelatedAgent"
+                },
+                "cmd:accessLinks": {
+                  "description": "online location that provides some kind of access to the described resource. The link properties are used to characterize the nature of the resource at the specified location",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Link"
+                  },
+                  "minItems": 1
+                }
+              }
+            }
+          },
+          "cmd:geographicExtent": {
+            "description": "schema for documenting geographic footprint of a described resource. Constraint: at least one of extentReference, boundingBoxWGS84, extentGeometry or verticalExtent MUST have a valid value.",
+            "id": "#Extent",
+            "type": "object",
+            "properties": {
+              "cmd:extentLabel": {
+                "type": "string",
+                "description": "string to label this extent in UI"
+              },
+              "cmd:extentStatement": {
+                "type": "string",
+                "description": "free text description of extent"
+              },
+              "anyOf": [
+                {
+                  "cmd:extentReference": {
+                    "description": "extent could be referenced, but only useful in a system that could follow links to access the actual geometry, or for which the URI is sufficient to match locations.",
+                    "type": "object",
+                    "required": [
+                      "cmd:referencedExtentLabel"
+                    ],
+                    "properties": {
+                      "cmd:referencedExtentLabel": {
+                        "description": "label to identify the date type in a user interface",
+                        "type": "string"
+                      },
+                      "cmd:referencedExtentURI": {
+                        "description": "identifier for referenced extent",
+                        "type": "string",
+                        "format": "uri"
+                      },
+                      "cmd:extentVocabularyURI": {
+                        "description": "identifier for the containing vocabulary (thesaurus, ontology...). Analogous to codelist in ISO19115 or codespace in GML.",
+                        "type": "string",
+                        "format": "URI"
+                      }
+                    }
+                  }
+                },
+                {
+                  "cmd:boundingBoxWGS84": {
+                    "description": "simplest representation of geographic extent using latitude and longitude coordinates. Points are represented as degenerate boxes (east = west, north = south bound). Mandate WGS 84 for interoperability. For boxes in polar regions, recommend using geometry property, which allows specification of other SRS appropriate to polar region.",
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "cmd:northBoundLatitude": {
+                          "type": "number",
+                          "minimum": -90,
+                          "maximum": 90
+                        },
+                        "cmd:southBoundLatitude": {
+                          "type": "number",
+                          "minimum": -90,
+                          "maximum": 90
+                        },
+                        "cmd:eastBoundLongitude": {
+                          "type": "number",
+                          "minimum": -180,
+                          "maximum": 180
+                        },
+                        "cmd:westBoundLongitude": {
+                          "type": "number",
+                          "minimum": -180,
+                          "maximum": 180
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "cmd:geoJSONgeometry": {
+                    "cmd:extentGeometryType": {
+                      "description": "category concept to specify the relationship of the extent to the geographic footprint of the resource, use to distinguish whether the geometry encompasses an area covered by the data or an area where data is not present, or if a point location is provided whether that is a centroid or actual resource location",
+                      "type": "object",
+                      "properties": {
+                        "cmd:geometrytypeLabel": {
+                          "description": "label to identify the geometry type in a user interface",
+                          "type": "string"
+                        },
+                        "cmd:geometrytypeURI": {
+                          "description": "identifier for referenced resource",
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "cmd:geometrytypeVocabularyURI": {
+                          "description": "identifier for the containing vocabulary (thesaurus, ontology...). Analogous to codelist in ISO19115 or codespace in GML.",
+                          "type": "string",
+                          "format": "URI"
+                        }
+                      },
+                      "cmd:extentGeometry": {
+                        "description": "allow arbitrary geometry object to specify extent. Use GeoJSON encoding. Schema by fge on Github",
+                        "type": "array",
+                        "items": {
+                          "$ref": "https://raw.githubusercontent.com/fge/sample-json-schemas/master/geojson/geojson.json"
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "cmd:verticalExtent": {
+                    "description": "Maximum and Minimum Elevations are relative to a datum elevation (based on vertical CRS), which will typically be the Earth surface at the location of the resource or sea level. Datum Elevation must be reported relative to mean sea level (MSL) in meters using EPSG::5714 geodetic parameters (WGS 84). Datum type must be a controlled vocabulary (Earth surface, MSL, Kelly bushing, etc.). The maximum is always numerically greater than the minimum elevation. For boreholes with datum at the earth surface, depth below surface is reported as a negative number.  *Vertical extent may be reported relative to different datum (e.g. sea level, Earth surface) in the same record.  Example: core from borehole at depths between 100 and 470 feet, borehole collar at 4787 feet above sea level.",
+                    "type": "object",
+                    "properties": {
+                      "cmd:verticalExtentMinimum": {
+                        "type": "number"
+                      },
+                      "cmd:verticalExtentMaximum": {
+                        "type": "number"
+                      },
+                      "cmd:verticalExtentCRS": {
+                        "type": "object",
+                        "properties": {
+                          "cmd:verticalCRSLabel": {
+                            "description": "label to identify the date type in a user interface",
+                            "type": "string"
+                          },
+                          "cmd:verticalCRS-URI": {
+                            "description": "identifier for referenced resource",
+                            "type": "string",
+                            "format": "uri"
+                          },
+                          "cmd:verticalCRSVocabularyURI": {
+                            "description": "identifier for the containing vocabulary (thesaurus, ontology...). Analogous to codelist in ISO19115 or codespace in GML.",
+                            "type": "string",
+                            "format": "URI"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "cmd:resourceTemporalExtent": {
+            "description": "This is the time instant or interval to which the resource content applies. Extent using named time ordinal eras (e.g. geologic time) should be specified using temporal keywords (vocabulary is a time scale). use ISO8601 encoding begin and end are 8601 dateTime strings. see http://en.wikipedia.org/wiki/ISO_8601",
+            "type": "array",
+            "items": {
+              "temporalExtentBegin": {
+                "type": "string",
+                "format": "ISO-8601"
+              },
+              "temporalExtentEnd": {
+                "type": "string",
+                "format": "ISO-8601"
+              }
+            }
+          },
+          "cmd:resourceUsageConstraints": {
+            "description": "properties for specifying legal, technical or security restrictions on the usage or distribution of a resource. Use for DPLA rights properties.",
+            "id": "#UsageConstraint",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "cmd:constraintsStatement": {
+                    "description": "free text description of legal, technical, and security-related constraint on access to or use of a resource",
+                    "type": "string"
+                  }
+                },
+                {
+                  "cmd:constraintTerms": {
+                    "description": "list of all constraints on usage, each categorized by type (security, legal, technical) and specific instance of that constraint type using a controlled vocabulary. Any necessary text elucidation of the constraints should be in the constraintsStatement element",
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "type": "object",
+                      "description": "array of category of constraint e.g.security, access, technical, usage. The controlled concept might",
+                      "required": [
+                        "cmd:constrainttypeLabel",
+                        "cmd:constraintTerm"
+                      ],
+                      "properties": {
+                        "cmd:constrainttypeLabel": {
+                          "description": "label to identify the constraint type in a user interface",
+                          "type": "string"
+                        },
+                        "cmd:constrainttypeURI": {
+                          "description": "identifier for referenced resource",
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "cmd:constrainttypeVocabularyURI": {
+                          "description": "identifier for the containing vocabulary (thesaurus, ontology...). Analogous to codelist in ISO19115 or codespace in GML.",
+                          "type": "string",
+                          "format": "URI"
+                        },
+                        "cmd:constraintTerm": {
+                          "description": "label to identify the constraint specific value in a user interface",
+                          "type": "string"
+                        },
+                        "cmd:constraintURI": {
+                          "description": "identifier for the particular constraint of constraintType",
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "cmd:constraintVocabularyURI": {
+                          "description": "identifier for the containing vocabulary (thesaurus, ontology...). Analogous to codelist in ISO19115 or codespace in GML.",
+                          "type": "string",
+                          "format": "URI"
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "cmd:license": {
+                    "description": "specification of one or more licenses that applies to the resource. Complete statement of license should be put in the constraintsStatement key if it is desired to include in the metadata",
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "cmd:licenseURI": {
+                        "description": "identifier for the license. should derfenrnce to some kind of statement of license",
+                        "type": "string",
+                        "format": "URI"
+                      },
+                      "cmd:licenseName": {
+                        "description": "Name used to identify the license to users",
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "cmd:resourceBrowseGraphic": {
+            "description": "Reference that specifies a graphic resource that provides a visualization of the resource, as well as a URL link that should access the graphic.",
+            "type": "object",
+            "required": [
+              "cmd:url"
+            ],
+            "properties": {
+              "cmd:url": {
+                "description": "a web-derferencable identifier that locates the link target; typically an HTTP URI. URI syntax specifies that the identifier string includes a prefix that specifies the base protocol for the identifier",
+                "type": "string",
+                "format": "uri"
+              },
+              "cmd:linkRelation": {
+                "type": "array",
+                "description": "Term from IANA rel vocabulary for consistency with IETF5988. Specifies relationship between resources and or ",
+                "items": {
+                  "$ref": "#/definitions/Reference"
+                },
+                "minItems": 1
+              },
+              "cmd:linkTitle": {
+                "type": "string",
+                "description": "text to label this link in a UI"
+              },
+              "cmd:linkContentResourceType": {
+                "description": "File type for the actual resource content. Typically use MIME type string from IANA registry http : //www.iana.org/assignments/media-types/application/index.html",
+                "type": "string"
+              }
+            }
+          },
+          "cmd:resourceLanguage": {
+            "description": "Language of resource content. Multiple languages may be specified. Use Nil not applicable if there is no text in the resource. Use ISO three letter language code (Each language SHOULD be expressed as a language tag, as defined by RFC 3066); provide option to use a cmd:reference if need some other kind of language scoping",
+            "skos:exactMatch": "dc:language",
+            "type": "array",
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "ISO-639"
+              },
+              {
+                "$ref": "#/definitions/Reference"
+              }
+            ]
+          },
+          "cmd:resourceSpatialDescription": {
+            "description": "Properties characterizing the spatial aspects of the resource, if applicable. Allow multiple extents for non contiguous resource, e.g. map of US coasts.",
+            "type": "object",
+            "properties": {
+              "cmd:resourceSpatialRepresentationType": {
+                "description": "term specifying the nature of the geometric representation, e.g. vector, grid, tin, voxel. More complete information on spatial representation (like ISO19115 spatial representation package) is not included here; use extensions in the description details group",
+                "type": "object",
+                "properties": {
+                  "cmd:resourceSpatialRepresentationTypeLabel": {
+                    "description": "label to identify the Spatial Representation type in a user interface",
+                    "type": "string"
+                  },
+                  "cmd:resourceSpatialRepresentationTypeURI": {
+                    "description": "identifier for resource Spatial Representation type",
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "cmd:resourceSpatialRepresentationtypeVocabularyURI": {
+                    "description": "identifier for the containing vocabulary (thesaurus, ontology...). Analogous to codelist in ISO19115 or codespace in GML.",
+                    "type": "string",
+                    "format": "URI"
+                  }
+                }
+              },
+              "cmd:resourceSpatialReferenceSystem": {
+                "description": "identifier and link to definition of spatial reference system used for location information contained in the resource content",
+                "type": "object",
+                "properties": {
+                  "cmd:resourceSpatialReferenceSystemLabel": {
+                    "description": "label to identify the spaatial reference system in a user interface",
+                    "type": "string"
+                  },
+                  "cmd:resourceSpatialReferenceSystemURI": {
+                    "description": "identifier for resource spatial reference system",
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "cmd:resourceSpatialReferenceSystemVocabularyURI": {
+                    "description": "identifier for the containing vocabulary (thesaurus, ontology...). Analogous to codelist in ISO19115 or codespace in GML.",
+                    "type": "string",
+                    "format": "URI"
+                  }
+                }
+              }
+            }
+          },
+          "cmd:relatedResources": {
+            "description": "links to related resources. The relation property on the link defines the association type, and the link label provides the related resource name",
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Link"
+            }
+          }
+        }
+      },
+      "cmd:extras": {
+        "type": "object",
+        "description": "this is a wrapper element for content from source documents that does not map to the CINERGI metadata Object but that the harvest configuration designer wants to systematically include in the MongoDB records. any properties can be added here",
+        "properties": {}
+      }
+    }
+  },
+  "definitions": {
+    "cmd:relatedAgent": {
+      "description": "this needs to be updated to use FOAF agent, with an associated role; have to figure out how to do with JSON-LD in JSON schema. The scheme has been worked over to minimize nesting and simplify.",
+      "id": "#RelatedAgent",
+      "type": "object",
+      "properties": {
+        "cmd:agentRole": {
+          "description": "slightly simplified view of controlled concept element",
+          "type": "object",
+          "properties": {
+            "cmd:agentRoleURI": {
+              "description": "string to uniquely indentify the agent role for interperability",
+              "type": "string",
+              "format": "uri"
+            },
+            "cmd:agentRoleLabel": {
+              "type": "string",
+              "description": "string that users will understand to present role"
+            }
+          }
+        },
+        "anyOf": [
+          {
+            "cmd:phoneNumber": {
+              "description": "use registered tel URI scheme for encoding. See http://tools.ietf.org/html/rfc3966",
+              "type": "string"
+            }
+          },
+          {
+            "cmd:contactEmail": {
+              "description": "map to foaf:mbox",
+              "type": "string",
+              "format": "email"
+            }
+          }
+        ],
+        "cmd:organizationURI": {
+          "description": "unique identifier for organization",
+          "type": "string",
+          "format": "uri"
+        },
+        "cmd:contactAddress": {
+          "type": "string",
+          "description": "postal address,ideally formatted appropriate to the target country. One field because there is no clear reason to disaggregate the address into street, city, country, postal code, etc..."
+        }
+      }
+    },
+    "cmd:LinkObject": {
+      "id": "#Link",
+      "description": "used for situations that need a link (hypermedia affordance) to an online resource, typically for navigating linked data space.  The link is a locator--an identifier for a location that can provide a digital object.",
+      "type": "object",
+      "required": [
+        "cmd:url"
+      ],
+      "properties": {
+        "cmd:url": {
+          "description": "a web-derferencable identifier that locates the link target; typically an HTTP URI. URI syntax specifies that the identifier string includes a prefix that specifies the base protocol for the identifier",
+          "type": "string",
+          "format": "uri"
+        },
+        "cmd:linkRelation": {
+          "type": "array",
+          "description": "Term from IANA rel vocabulary for consistency with IETF5988. Specifies relationship between resources",
+          "required": [
+            "cmd:relLabel"
+          ],
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "properties": {
+              "cmd:relLabel": {
+                "description": "text to identify the reference in a UI",
+                "type": "string"
+              },
+              "cmd:relURI": {
+                "description": "identifier for referenced resource",
+                "type": "string",
+                "format": "uri"
+              }
+            }
+          }
+        },
+        "cmd:linkTitle": {
+          "type": "string",
+          "description": "text to label this link in a UI"
+        },
+        "cmd:linkTargetResourceType": {
+          "type": "string",
+          "description": "typically use MIME type string from IANA registry http : //www.iana.org/assignments/media-types/application/index.html. This is the type of the file that will be accessed directly by the link URL; if this is a container file (e.g. zip archive), the innerResourceType property is used to specify the type of file with actual resource content."
+        },
+        "cmd:linkContentResourceType": {
+          "description": "File type for the actual resource content. Typically use MIME type string from IANA registry http : //www.iana.org/assignments/media-types/application/index.html",
+          "type": "string"
+        },
+        "cmd:linkOverlayAPI": {
+          "description": "Reference that identifies the API for messages tunneled to a component on the target server.  Optional, provide if such scheme or protocol is necessary to utilize the link. The URI should be defined by the service specification for the protocol or service type; version information should be included if applicable.  E.g. OGC WMS, WS-services. This property is typically used for services that encode remote procedure calls using identifiers dereferenced using standard HTTP methods (GET, POST).",
+          "type": "object",
+          "required": [
+            "cmd:APILabel"
+          ],
+          "properties": {
+            "cmd:APILabel": {
+              "description": "text to identify the overlay API in a UI",
+              "type": "string"
+            },
+            "cmd:API-URI": {
+              "description": "identifier for overly API",
+              "type": "string",
+              "format": "uri"
+            }
+          }
+        },
+        "cmd:linkProfile": {
+          "description": "Identifier for profile of specifications identified by type, overlayAPI, and template attributes. Optional, provide if additional conventions are necessary for content contained in messages through this link. Note that the same output scheme might be encoded using different types. Profiles typically add usage conventions when the interchange scheme offers alternate approaches, restrict cardinality for elements in the interchange format, or specify usage of particular vocabularies.",
+          "required": [
+            "cmd:profileLabel"
+          ],
+          "properties": {
+            "cmd:profileLabel": {
+              "description": "text to identify the profile in a UI",
+              "type": "string"
+            },
+            "cmd:profileURI": {
+              "description": "identifier for the profile",
+              "type": "string",
+              "format": "uri"
+            }
+          }
+        },
+        "cmd:linkParameters": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "cmd:linkParameterLabel",
+              "cmd:linkParameterValue"
+            ],
+            "properties": {
+              "cmd:linkParameterLabel": {
+                "type": "string",
+                "description": "string to display, and identifier to link parameter to registry"
+              },
+              "cmd:linkParameterURI": {
+                "description": "identifier for the parameter from a controlled vocabulary",
+                "type": "string",
+                "format": "uri"
+              },
+              "cmd:linkParameterValue": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cmd:linkDescription": {
+          "type": "string",
+          "description": "free text description of the target to help UI"
+        },
+        "cmd:linkTransferSize": {
+          "type": "integer",
+          "description": "advisory length of the linked content in octets"
+        }
+      }
+    },
+    "cmd:EventDateObject": {
+      "id": "#EventDate",
+      "type": "object",
+      "required": [
+        "cmd:dateTime"
+      ],
+      "properties": {
+        "cmd:eventType": {
+          "description": "0..N  event may be categorized in various ways...",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "cmd:datetypeLabel": {
+                "description": "label to identify the date type in a user interface",
+                "type": "string"
+              },
+              "cmd:datetypeURI": {
+                "description": "identifier for referenced resource",
+                "type": "string",
+                "format": "uri"
+              },
+              "cmd:datetypeVocabularyURI": {
+                "description": "identifier for the containing vocabulary (thesaurus, ontology...). Analogous to codelist in ISO19115 or codespace in GML.",
+                "type": "string",
+                "format": "URI"
+              }
+            }
+          }
+        },
+        "cmd:dateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Use ISO 8601: 2011-10-11T14:30"
+        }
+      }
+    }
+  }
+}

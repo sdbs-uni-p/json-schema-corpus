@@ -1,0 +1,32 @@
+{
+  "id": "https://raw.githubusercontent.com/eviratec/schema/master/v1/person.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "schema for a person",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "name",
+    "date_added"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "name": {
+      "$ref": "https://raw.githubusercontent.com/eviratec/schema/master/v1/person/name.json#"
+    },
+    "contact_details": {
+      "type": "array",
+      "items": {
+        "$ref": "https://raw.githubusercontent.com/eviratec/schema/master/v1/contact/detail.json#"
+      },
+      "uniqueItems": true
+    },
+    "date_added": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

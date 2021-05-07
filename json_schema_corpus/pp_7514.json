@@ -1,0 +1,1133 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "definitions": {
+    "calendar_event": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "Calendar Event Resource",
+      "description": "API for getting calendar events",
+      "type": [
+        "object"
+      ],
+      "definitions": {
+        "uid": {
+          "description": "unique identifier of calendar event",
+          "example": "0123456789abcdef0123456789abcdef",
+          "format": "uuid",
+          "type": [
+            "string"
+          ]
+        },
+        "identity": {
+          "$ref": "#/definitions/calendar_event/definitions/uid"
+        },
+        "start_time": {
+          "description": "The start time of the calendar event",
+          "example": "2012-01-01T12:00:00Z",
+          "format": "date-time",
+          "type": [
+            "string"
+          ]
+        },
+        "end_time": {
+          "description": "The end time of the calendar event",
+          "example": "2012-01-01T13:00:00Z",
+          "format": "date-time",
+          "type": [
+            "string"
+          ]
+        },
+        "status": {
+          "description": "The status of the calendar event",
+          "example": "confirmed",
+          "type": [
+            "string"
+          ],
+          "enum": [
+            "confirmed",
+            "cancelled"
+          ]
+        },
+        "calendar_event_type": {
+          "description": "The type of the calendar event",
+          "example": "meeting",
+          "type": [
+            "string"
+          ],
+          "enum": [
+            "block",
+            "meeting",
+            "appointment"
+          ]
+        },
+        "update_type": {
+          "description": "Used when updating to distinguish whether you want to update a single calendar event or all future calendar events in a series",
+          "example": "single_event",
+          "type": [
+            "string"
+          ],
+          "enum": [
+            "single_event",
+            "going_forward"
+          ]
+        },
+        "title": {
+          "description": "The title of the calendar event",
+          "example": "Overabundance of meetings meeting",
+          "type": [
+            "string"
+          ]
+        },
+        "description": {
+          "description": "A descripion of what the calendar event is about",
+          "example": "Let's meet to figure out how to reduce our meetings",
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "cancelled_at": {
+          "description": "The time at which the calendar event was cancelled",
+          "example": "2012-01-01T12:00:00Z",
+          "format": "date-time",
+          "type": [
+            "string"
+          ]
+        },
+        "cancellation_reason": {
+          "description": "The reason for the cancellation",
+          "example": "Patient cancelled before appointment time",
+          "type": [
+            "string"
+          ]
+        },
+        "location": {
+          "description": "The location",
+          "properties": {
+            "type": {
+              "description": "The type of location",
+              "example": "practice_location",
+              "type": [
+                "string"
+              ],
+              "enum": [
+                "practice_location"
+              ]
+            },
+            "id": {
+              "description": "The type-specific id of the location",
+              "example": "0123456789abcdef0123456789abcdef",
+              "type": [
+                "string"
+              ]
+            }
+          },
+          "type": [
+            "object"
+          ],
+          "required": [
+            "id",
+            "type"
+          ]
+        },
+        "attendees": {
+          "type": [
+            "array"
+          ],
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "description": "The id of the attendee record",
+                "example": "12",
+                "type": [
+                  "integer"
+                ]
+              },
+              "type": {
+                "description": "The type of the attendee",
+                "example": "practice_user",
+                "type": [
+                  "string"
+                ],
+                "enum": [
+                  "patient",
+                  "practice_user"
+                ]
+              },
+              "identifier": {
+                "description": "The type-specific identifier of the attendee",
+                "example": "0123456789abcdef0123456789abcdef",
+                "type": [
+                  "string"
+                ]
+              }
+            },
+            "required": [
+              "type",
+              "identifier"
+            ]
+          }
+        },
+        "categories": {
+          "type": [
+            "array"
+          ],
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "description": "The id of the category record",
+                "example": "12",
+                "type": [
+                  "integer"
+                ]
+              },
+              "name": {
+                "description": "The name of the category",
+                "example": "phone",
+                "type": [
+                  "string"
+                ]
+              },
+              "type": {
+                "description": "The type of the category",
+                "example": "appointment_mode",
+                "type": [
+                  "string"
+                ],
+                "enum": [
+                  "appointment_mode"
+                ]
+              },
+              "description": {
+                "description": "a description of what the category is",
+                "example": "THe phone appointment mode",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "name",
+              "type"
+            ]
+          }
+        },
+        "calendar_event_payload": {
+          "description": "Expected calendar event content needed to create a calendar event",
+          "type": [
+            "object"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "start_time": {
+              "$ref": "#/definitions/calendar_event/definitions/start_time"
+            },
+            "end_time": {
+              "$ref": "#/definitions/calendar_event/definitions/end_time"
+            },
+            "status": {
+              "$ref": "#/definitions/calendar_event/definitions/status"
+            },
+            "event_type": {
+              "$ref": "#/definitions/calendar_event/definitions/calendar_event_type"
+            },
+            "title": {
+              "$ref": "#/definitions/calendar_event/definitions/title"
+            },
+            "description": {
+              "$ref": "#/definitions/calendar_event/definitions/description"
+            },
+            "attendees": {
+              "$ref": "#/definitions/calendar_event/definitions/attendees"
+            },
+            "categories": {
+              "$ref": "#/definitions/calendar_event/definitions/categories"
+            },
+            "location": {
+              "$ref": "#/definitions/calendar_event/definitions/location"
+            }
+          },
+          "required": [
+            "start_time",
+            "end_time",
+            "status",
+            "event_type",
+            "title",
+            "attendees",
+            "location"
+          ]
+        },
+        "cancel_payload": {
+          "description": "Expected payload needed to cancel a calendar event",
+          "type": [
+            "object"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "cancellation_reason": {
+              "$ref": "#/definitions/calendar_event/definitions/cancellation_reason"
+            }
+          },
+          "required": [
+            "cancellation_reason"
+          ]
+        },
+        "create_payload": {
+          "description": "Expected payload needed to create a calendar event",
+          "type": [
+            "object"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "calendar_event": {
+              "$ref": "#/definitions/calendar_event/definitions/calendar_event_payload"
+            }
+          },
+          "required": [
+            "calendar_event"
+          ]
+        },
+        "update_payload": {
+          "description": "Expected payload needed to update a calendar event",
+          "type": [
+            "object"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "calendar_event": {
+              "$ref": "#/definitions/calendar_event/definitions/calendar_event_payload"
+            }
+          },
+          "required": [
+            "calendar_event"
+          ]
+        },
+        "show_response": {
+          "oneOf": [
+            {
+              "description": "A successful response.",
+              "type": [
+                "object"
+              ],
+              "properties": {
+                "calendar_event": {
+                  "$ref": "#/definitions/calendar_event"
+                }
+              },
+              "required": [
+                "calendar_event"
+              ]
+            },
+            {
+              "$ref": "#/definitions/calendar_event/definitions/error_response"
+            }
+          ]
+        },
+        "cancel_response": {
+          "$ref": "#/definitions/calendar_event/definitions/show_response"
+        },
+        "calendar_events_query": {
+          "additionalProperties": false,
+          "properties": {
+            "start_time": {
+              "$ref": "#/definitions/calendar_event/definitions/start_time"
+            },
+            "end_time": {
+              "$ref": "#/definitions/calendar_event/definitions/end_time"
+            },
+            "location_uids": {
+              "description": "An array of unique identifiers for events' locations",
+              "example": [
+                "0123456789abcdef0123456789abcdef"
+              ],
+              "type": [
+                "array"
+              ],
+              "items": {
+                "type": [
+                  "string"
+                ]
+              }
+            },
+            "attendee_type": {
+              "description": "The type of attendee",
+              "example": "practice_location",
+              "type": [
+                "string"
+              ],
+              "enum": [
+                "practice_location",
+                "patient",
+                "practice_user"
+              ]
+            },
+            "attendee_ids": {
+              "description": "An array of ids for the attendees",
+              "example": [
+                "0123456789abcdef0123456789abcdef"
+              ],
+              "type": [
+                "array"
+              ],
+              "minItems": 1,
+              "items": {
+                "type": [
+                  "string"
+                ]
+              }
+            },
+            "practice_user_uids": {
+              "description": "An array of ids for the practice users",
+              "example": [
+                "0123456789abcdef0123456789abcdef"
+              ],
+              "type": [
+                "array"
+              ],
+              "minItems": 1,
+              "items": {
+                "type": [
+                  "string"
+                ]
+              }
+            },
+            "patient_uids": {
+              "description": "An array of ids for the patients",
+              "example": [
+                "0123456789abcdef0123456789abcdef"
+              ],
+              "type": [
+                "array"
+              ],
+              "minItems": 1,
+              "items": {
+                "type": [
+                  "string"
+                ]
+              }
+            },
+            "updated_since": {
+              "description": "A time after which the events must have been updated",
+              "example": "2012-01-01T12:00:00Z",
+              "format": "date-time",
+              "type": [
+                "string"
+              ]
+            }
+          }
+        },
+        "index_response": {
+          "oneOf": [
+            {
+              "properties": {
+                "calendar_events": {
+                  "type": [
+                    "array"
+                  ],
+                  "items": {
+                    "$ref": "#/definitions/calendar_event"
+                  }
+                }
+              },
+              "required": [
+                "calendar_events"
+              ]
+            },
+            {
+              "$ref": "#/definitions/calendar_event/definitions/error_response"
+            }
+          ]
+        },
+        "error_response": {
+          "properties": {
+            "errors": {
+              "type": [
+                "array"
+              ],
+              "items": {
+                "type": [
+                  "string"
+                ]
+              }
+            }
+          },
+          "required": [
+            "errors"
+          ]
+        }
+      },
+      "properties": {
+        "uid": {
+          "$ref": "#/definitions/calendar_event/definitions/uid"
+        },
+        "start_time": {
+          "$ref": "#/definitions/calendar_event/definitions/start_time"
+        },
+        "end_time": {
+          "$ref": "#/definitions/calendar_event/definitions/end_time"
+        },
+        "status": {
+          "$ref": "#/definitions/calendar_event/definitions/status"
+        },
+        "event_type": {
+          "$ref": "#/definitions/calendar_event/definitions/calendar_event_type"
+        },
+        "title": {
+          "$ref": "#/definitions/calendar_event/definitions/title"
+        },
+        "description": {
+          "$ref": "#/definitions/calendar_event/definitions/description"
+        },
+        "attendees": {
+          "$ref": "#/definitions/calendar_event/definitions/attendees"
+        },
+        "categories": {
+          "$ref": "#/definitions/calendar_event/definitions/categories"
+        },
+        "location": {
+          "$ref": "#/definitions/calendar_event/definitions/location"
+        }
+      },
+      "required": [
+        "uid",
+        "start_time",
+        "end_time",
+        "status",
+        "event_type",
+        "title",
+        "attendees",
+        "location"
+      ],
+      "links": [
+        {
+          "description": "List existing calendar events.",
+          "href": "/calendar_events",
+          "method": "GET",
+          "rel": "instances",
+          "title": "List",
+          "schema": {
+            "$ref": "#/definitions/calendar_event/definitions/calendar_events_query"
+          },
+          "target_schema": {
+            "$ref": "#/definitions/calendar_event/definitions/index_response"
+          }
+        },
+        {
+          "description": "Create calendar events.",
+          "href": "/calendar_events",
+          "method": "POST",
+          "rel": "create",
+          "title": "Create",
+          "schema": {
+            "$ref": "#/definitions/calendar_event/definitions/create_payload"
+          },
+          "target_schema": {
+            "$ref": "#/definitions/calendar_event/definitions/show_response"
+          }
+        },
+        {
+          "description": "Cancel calendar events.",
+          "href": "/calendar_events/{(%23%2Fdefinitions%2Fcalendar_event%2Fdefinitions%2Fidentity)}/cancel",
+          "method": "PUT",
+          "rel": "update",
+          "title": "Cancel",
+          "schema": {
+            "$ref": "#/definitions/calendar_event/definitions/cancel_payload"
+          },
+          "target_schema": {
+            "$ref": "#/definitions/calendar_event/definitions/cancel_response"
+          }
+        },
+        {
+          "description": "Update calendar events.",
+          "href": "/calendar_events/{(%23%2Fdefinitions%2Fcalendar_event%2Fdefinitions%2Fidentity)}",
+          "method": "PUT",
+          "rel": "update",
+          "title": "Update",
+          "schema": {
+            "$ref": "#/definitions/calendar_event/definitions/update_payload"
+          },
+          "target_schema": {
+            "$ref": "#/definitions/calendar_event/definitions/show_response"
+          }
+        }
+      ]
+    },
+    "event": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "Event Resource",
+      "description": "API for getting events",
+      "type": [
+        "object"
+      ],
+      "definitions": {
+        "uid": {
+          "description": "unique identifier of event",
+          "example": "0123456789abcdef0123456789abcdef",
+          "format": "uuid",
+          "type": [
+            "string"
+          ]
+        },
+        "identity": {
+          "$ref": "#/definitions/event/definitions/uid"
+        },
+        "start_time": {
+          "description": "The start time of the event",
+          "example": "2012-01-01T12:00:00Z",
+          "format": "date-time",
+          "type": [
+            "string"
+          ]
+        },
+        "end_time": {
+          "description": "The end time of the event",
+          "example": "2012-01-01T13:00:00Z",
+          "format": "date-time",
+          "type": [
+            "string"
+          ]
+        },
+        "status": {
+          "description": "The status of the event",
+          "example": "confirmed",
+          "type": [
+            "string"
+          ],
+          "enum": [
+            "confirmed",
+            "cancelled"
+          ]
+        },
+        "event_type": {
+          "description": "The type of event",
+          "example": "meeting",
+          "type": [
+            "string"
+          ],
+          "enum": [
+            "block",
+            "meeting",
+            "appointment"
+          ]
+        },
+        "update_type": {
+          "description": "Used when updating to distinguish whether you want to update a single event or all future events in a series",
+          "example": "single_event",
+          "type": [
+            "string"
+          ],
+          "enum": [
+            "single_event",
+            "going_forward"
+          ]
+        },
+        "title": {
+          "description": "The title of the event",
+          "example": "Overabundance of meetings meeting",
+          "type": [
+            "string"
+          ]
+        },
+        "description": {
+          "description": "A descripion of what the event is about",
+          "example": "Let's meet to figure out how to reduce our meetings",
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "cancelled_at": {
+          "description": "The time at which the event was cancelled",
+          "example": "2012-01-01T12:00:00Z",
+          "format": "date-time",
+          "type": [
+            "string"
+          ]
+        },
+        "cancellation_reason": {
+          "description": "The reason for the cancellation",
+          "example": "Patient cancelled before appointment time",
+          "type": [
+            "string"
+          ]
+        },
+        "location": {
+          "description": "The location",
+          "properties": {
+            "type": {
+              "description": "The type of location",
+              "example": "practice_location",
+              "type": [
+                "string"
+              ],
+              "enum": [
+                "practice_location"
+              ]
+            },
+            "id": {
+              "description": "The type-specific id of the location",
+              "example": "0123456789abcdef0123456789abcdef",
+              "type": [
+                "string"
+              ]
+            }
+          },
+          "type": [
+            "object"
+          ],
+          "required": [
+            "id",
+            "type"
+          ]
+        },
+        "attendees": {
+          "type": [
+            "array"
+          ],
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "description": "The id of the attendee record",
+                "example": "12",
+                "type": [
+                  "integer"
+                ]
+              },
+              "type": {
+                "description": "The type of the attendee",
+                "example": "practice_user",
+                "type": [
+                  "string"
+                ],
+                "enum": [
+                  "patient",
+                  "practice_user"
+                ]
+              },
+              "identifier": {
+                "description": "The type-specific identifier of the attendee",
+                "example": "0123456789abcdef0123456789abcdef",
+                "type": [
+                  "string"
+                ]
+              }
+            },
+            "required": [
+              "type",
+              "identifier"
+            ]
+          }
+        },
+        "categories": {
+          "type": [
+            "array"
+          ],
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "description": "The id of the category record",
+                "example": "12",
+                "type": [
+                  "integer"
+                ]
+              },
+              "name": {
+                "description": "The name of the category",
+                "example": "phone",
+                "type": [
+                  "string"
+                ]
+              },
+              "type": {
+                "description": "The type of the category",
+                "example": "appointment_mode",
+                "type": [
+                  "string"
+                ],
+                "enum": [
+                  "appointment_mode"
+                ]
+              },
+              "description": {
+                "description": "a description of what the category is",
+                "example": "THe phone appointment mode",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "name",
+              "type"
+            ]
+          }
+        },
+        "event_payload": {
+          "description": "Expected event content needed to create an event",
+          "type": [
+            "object"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "start_time": {
+              "$ref": "#/definitions/event/definitions/start_time"
+            },
+            "end_time": {
+              "$ref": "#/definitions/event/definitions/end_time"
+            },
+            "status": {
+              "$ref": "#/definitions/event/definitions/status"
+            },
+            "event_type": {
+              "$ref": "#/definitions/event/definitions/event_type"
+            },
+            "title": {
+              "$ref": "#/definitions/event/definitions/title"
+            },
+            "description": {
+              "$ref": "#/definitions/event/definitions/description"
+            },
+            "attendees": {
+              "$ref": "#/definitions/event/definitions/attendees"
+            },
+            "categories": {
+              "$ref": "#/definitions/event/definitions/categories"
+            },
+            "location": {
+              "$ref": "#/definitions/event/definitions/location"
+            }
+          },
+          "required": [
+            "start_time",
+            "end_time",
+            "status",
+            "event_type",
+            "title",
+            "attendees",
+            "location"
+          ]
+        },
+        "cancel_payload": {
+          "description": "Expected payload needed to cancel an event",
+          "type": [
+            "object"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "reason": {
+              "$ref": "#/definitions/event/definitions/cancellation_reason"
+            }
+          },
+          "required": [
+            "reason"
+          ]
+        },
+        "create_payload": {
+          "description": "Expected payload needed to create an event",
+          "type": [
+            "object"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "event": {
+              "$ref": "#/definitions/event/definitions/event_payload"
+            }
+          },
+          "required": [
+            "event"
+          ]
+        },
+        "update_payload": {
+          "description": "Expected payload needed to update an event",
+          "type": [
+            "object"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "event": {
+              "$ref": "#/definitions/event/definitions/event_payload"
+            }
+          },
+          "required": [
+            "event"
+          ]
+        },
+        "show_response": {
+          "oneOf": [
+            {
+              "description": "A successful response.",
+              "type": [
+                "object"
+              ],
+              "properties": {
+                "event": {
+                  "$ref": "#/definitions/event"
+                }
+              },
+              "required": [
+                "event"
+              ]
+            },
+            {
+              "$ref": "#/definitions/event/definitions/error_response"
+            }
+          ]
+        },
+        "cancel_response": {
+          "$ref": "#/definitions/event/definitions/show_response"
+        },
+        "events_query": {
+          "additionalProperties": false,
+          "properties": {
+            "start_time": {
+              "$ref": "#/definitions/event/definitions/start_time"
+            },
+            "end_time": {
+              "$ref": "#/definitions/event/definitions/end_time"
+            },
+            "location_uids": {
+              "description": "An array of unique identifiers for events' locations",
+              "example": [
+                "0123456789abcdef0123456789abcdef"
+              ],
+              "type": [
+                "array"
+              ],
+              "items": {
+                "type": [
+                  "string"
+                ]
+              }
+            },
+            "attendee_type": {
+              "description": "The type of attendee",
+              "example": "practice_location",
+              "type": [
+                "string"
+              ],
+              "enum": [
+                "practice_location",
+                "patient",
+                "practice_user"
+              ]
+            },
+            "attendee_ids": {
+              "description": "An array of ids for the attendees",
+              "example": [
+                "0123456789abcdef0123456789abcdef"
+              ],
+              "type": [
+                "array"
+              ],
+              "minItems": 1,
+              "items": {
+                "type": [
+                  "string"
+                ]
+              }
+            },
+            "practice_user_uids": {
+              "description": "An array of ids for the practice users",
+              "example": [
+                "0123456789abcdef0123456789abcdef"
+              ],
+              "type": [
+                "array"
+              ],
+              "minItems": 1,
+              "items": {
+                "type": [
+                  "string"
+                ]
+              }
+            },
+            "patient_uids": {
+              "description": "An array of ids for the patients",
+              "example": [
+                "0123456789abcdef0123456789abcdef"
+              ],
+              "type": [
+                "array"
+              ],
+              "minItems": 1,
+              "items": {
+                "type": [
+                  "string"
+                ]
+              }
+            },
+            "updated_since": {
+              "description": "A time after which the events must have been updated",
+              "example": "2012-01-01T12:00:00Z",
+              "format": "date-time",
+              "type": [
+                "string"
+              ]
+            }
+          }
+        },
+        "index_response": {
+          "oneOf": [
+            {
+              "properties": {
+                "events": {
+                  "type": [
+                    "array"
+                  ],
+                  "items": {
+                    "$ref": "#/definitions/event"
+                  }
+                }
+              },
+              "required": [
+                "events"
+              ]
+            },
+            {
+              "$ref": "#/definitions/event/definitions/error_response"
+            }
+          ]
+        },
+        "error_response": {
+          "properties": {
+            "errors": {
+              "type": [
+                "array"
+              ],
+              "items": {
+                "type": [
+                  "string"
+                ]
+              }
+            }
+          },
+          "required": [
+            "errors"
+          ]
+        }
+      },
+      "properties": {
+        "uid": {
+          "$ref": "#/definitions/event/definitions/uid"
+        },
+        "start_time": {
+          "$ref": "#/definitions/event/definitions/start_time"
+        },
+        "end_time": {
+          "$ref": "#/definitions/event/definitions/end_time"
+        },
+        "status": {
+          "$ref": "#/definitions/event/definitions/status"
+        },
+        "event_type": {
+          "$ref": "#/definitions/event/definitions/event_type"
+        },
+        "title": {
+          "$ref": "#/definitions/event/definitions/title"
+        },
+        "description": {
+          "$ref": "#/definitions/event/definitions/description"
+        },
+        "attendees": {
+          "$ref": "#/definitions/event/definitions/attendees"
+        },
+        "categories": {
+          "$ref": "#/definitions/event/definitions/categories"
+        },
+        "location": {
+          "$ref": "#/definitions/event/definitions/location"
+        }
+      },
+      "required": [
+        "uid",
+        "start_time",
+        "end_time",
+        "status",
+        "event_type",
+        "title",
+        "attendees",
+        "location"
+      ],
+      "links": [
+        {
+          "description": "List existing events.",
+          "href": "/events",
+          "method": "GET",
+          "rel": "instances",
+          "title": "List",
+          "schema": {
+            "$ref": "#/definitions/event/definitions/events_query"
+          },
+          "target_schema": {
+            "$ref": "#/definitions/event/definitions/index_response"
+          }
+        },
+        {
+          "description": "Create events.",
+          "href": "/events",
+          "method": "POST",
+          "rel": "create",
+          "title": "Create",
+          "schema": {
+            "$ref": "#/definitions/event/definitions/create_payload"
+          },
+          "target_schema": {
+            "$ref": "#/definitions/event/definitions/show_response"
+          }
+        },
+        {
+          "description": "Cancel events.",
+          "href": "/events/{(%23%2Fdefinitions%2Fevent%2Fdefinitions%2Fidentity)}/cancel",
+          "method": "PUT",
+          "rel": "update",
+          "title": "Cancel",
+          "schema": {
+            "$ref": "#/definitions/event/definitions/cancel_payload"
+          },
+          "target_schema": {
+            "$ref": "#/definitions/event/definitions/cancel_response"
+          }
+        },
+        {
+          "description": "Update events.",
+          "href": "/events/{(%23%2Fdefinitions%2Fevent%2Fdefinitions%2Fidentity)}",
+          "method": "PUT",
+          "rel": "update",
+          "title": "Update",
+          "schema": {
+            "$ref": "#/definitions/event/definitions/update_payload"
+          },
+          "target_schema": {
+            "$ref": "#/definitions/event/definitions/show_response"
+          }
+        }
+      ]
+    }
+  },
+  "properties": {
+    "calendar_event": {
+      "$ref": "#/definitions/calendar_event"
+    },
+    "event": {
+      "$ref": "#/definitions/event"
+    }
+  },
+  "type": [
+    "object"
+  ],
+  "description": "Events API V1",
+  "id": "events-v1",
+  "links": [
+    {
+      "href": "https://production.icisapp.com/api/v1",
+      "rel": "self"
+    }
+  ],
+  "title": "Events API V1"
+}

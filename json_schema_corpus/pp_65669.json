@@ -1,0 +1,200 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "native-schema_response_v1_0",
+  "description": "json schema for a Native v1.0 response",
+  "type": "object",
+  "required": [
+    "native"
+  ],
+  "properties": {
+    "native": {
+      "$ref": "#/definitions/native"
+    }
+  },
+  "definitions": {
+    "native": {
+      "type": "object",
+      "required": [
+        "assets",
+        "link"
+      ],
+      "properties": {
+        "ver": {
+          "$ref": "#/definitions/positive_int"
+        },
+        "assets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/asset"
+          }
+        },
+        "link": {
+          "$ref": "#/definitions/link"
+        },
+        "imptrackers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "jstracker": {
+          "type": "string"
+        },
+        "ext": {
+          "type": "object"
+        }
+      }
+    },
+    "asset": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "oneOf": [
+        {
+          "required": [
+            "title"
+          ]
+        },
+        {
+          "required": [
+            "img"
+          ]
+        },
+        {
+          "required": [
+            "video"
+          ]
+        },
+        {
+          "required": [
+            "data"
+          ]
+        }
+      ],
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "required": {
+          "$ref": "#/definitions/boolean_int"
+        },
+        "title": {
+          "$ref": "#/definitions/title"
+        },
+        "img": {
+          "$ref": "#/definitions/image"
+        },
+        "video": {
+          "$ref": "#/definitions/video"
+        },
+        "data": {
+          "$ref": "#/definitions/data"
+        },
+        "link": {
+          "$ref": "#/definitions/link"
+        },
+        "ext": {
+          "type": "object"
+        }
+      }
+    },
+    "title": {
+      "type": "object",
+      "required": [
+        "text"
+      ],
+      "properties": {
+        "text": {
+          "type": "string"
+        },
+        "ext": {
+          "type": "object"
+        }
+      }
+    },
+    "image": {
+      "type": "object",
+      "required": [
+        "url"
+      ],
+      "properties": {
+        "url": {
+          "type": "string"
+        },
+        "w": {
+          "$ref": "#/definitions/positive_int"
+        },
+        "h": {
+          "$ref": "#/definitions/positive_int"
+        },
+        "ext": {
+          "type": "object"
+        }
+      }
+    },
+    "data": {
+      "type": "object",
+      "required": [
+        "value"
+      ],
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        },
+        "ext": {
+          "type": "object"
+        }
+      }
+    },
+    "video": {
+      "type": "object",
+      "required": [
+        "vasttag"
+      ],
+      "properties": {
+        "vasttag": {
+          "type": "string"
+        }
+      }
+    },
+    "link": {
+      "type": "object",
+      "required": [
+        "url"
+      ],
+      "properties": {
+        "url": {
+          "type": "string"
+        },
+        "clicktrackers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "fallback": {
+          "type": "string"
+        },
+        "ext": {
+          "type": "object"
+        }
+      }
+    },
+    "data_asset_type": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "image_asset_type": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "positive_int": {
+      "type": "integer",
+      "minimum": 0
+    }
+  }
+}

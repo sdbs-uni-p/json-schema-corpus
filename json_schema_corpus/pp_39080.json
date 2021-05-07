@@ -1,0 +1,92 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "https://github.com/empirefox/node-private-tools/blob/master/src/schemas/go-const-ts.json#",
+  "title": "go-const-ts Config",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "$tool": {
+      "type": "string",
+      "description": "Must be set to go-const-ts.",
+      "const": "go-const-ts"
+    },
+    "src": {
+      "description": "Input go files(Glob), expand with env first.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "preproccess": "env"
+      }
+    },
+    "dist": {
+      "description": "The output root path (relative to the pwd).",
+      "type": "string"
+    },
+    "langs": {
+      "description": "Langs to exrtact. Field name will be used if lang not set in go const.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z]{2}(-[A-Z]{2})?$"
+      }
+    },
+    "includeTypes": {
+      "description": "Include const types only, ignore others.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "excludeTypes": {
+      "description": "Exclude const types.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "prettiesRoots": {
+      "description": "Dirs that contains the translated jsons which will overwrite the go const types.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "preproccess": "env"
+      }
+    },
+    "pretties": {
+      "description": "Dirs that contains the translated jsons which will overwrite the go const types.",
+      "type": "object",
+      "patternProperties": {
+        "^[a-z]{2}(-[A-Z]{2})?$": {
+          "description": "Lang from langs.",
+          "type": "object",
+          "patternProperties": {
+            "^[A-Z].*$": {
+              "description": "Struct translates filepath that will overwrite all other translates.",
+              "type": "string",
+              "preproccess": "env"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "pipePrefix": {
+      "description": "Prefix to pipe name, pipe name is used as file name.",
+      "type": "string",
+      "default": ""
+    }
+  },
+  "required": [
+    "$tool",
+    "src",
+    "dist",
+    "langs",
+    "pipePrefix"
+  ],
+  "additionalProperties": false
+}

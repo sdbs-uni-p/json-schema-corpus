@@ -1,0 +1,93 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://mcda.drugis.org/absoluteEntry.json#",
+  "title": "MCDA performance table entry for absolute data",
+  "type": "object",
+  "required": [
+    "criterion",
+    "dataSource",
+    "alternative",
+    "performance"
+  ],
+  "properties": {
+    "alternative": {
+      "type": "string"
+    },
+    "criterion": {
+      "type": "string"
+    },
+    "dataSource": {
+      "type": "string"
+    },
+    "performance": {
+      "type": "object",
+      "properties": {
+        "effect": {
+          "oneOf": [
+            {
+              "$ref": "emptyPerformance.json#"
+            },
+            {
+              "$ref": "valueEffect.json#"
+            },
+            {
+              "$ref": "valueSEEffect.json#"
+            },
+            {
+              "$ref": "valueCIEffect.json#"
+            },
+            {
+              "$ref": "valueSampleSizeEffect.json#"
+            },
+            {
+              "$ref": "eventsSampleSizeEffect.json#"
+            },
+            {
+              "$ref": "rangeEffect.json"
+            }
+          ]
+        },
+        "distribution": {
+          "oneOf": [
+            {
+              "$ref": "emptyPerformance.json"
+            },
+            {
+              "$ref": "valueEffect.json#"
+            },
+            {
+              "$ref": "valueSEEffect.json#"
+            },
+            {
+              "$ref": "valueCIEffect.json#"
+            },
+            {
+              "$ref": "valueSampleSizeEffect.json#"
+            },
+            {
+              "$ref": "eventsSampleSizeEffect.json#"
+            },
+            {
+              "$ref": "normalDistribution.json"
+            },
+            {
+              "$ref": "betaDistribution.json"
+            },
+            {
+              "$ref": "gammaDistribution.json"
+            },
+            {
+              "$ref": "tDistribution.json"
+            },
+            {
+              "$ref": "survivalDistribution.json"
+            },
+            {
+              "$ref": "rangeDistribution.json"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

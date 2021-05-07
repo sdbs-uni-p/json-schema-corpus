@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "prop1": {
+      "enum": [
+        "\u00e6ndring",
+        "test"
+      ],
+      "type": "string"
+    },
+    "prop2": {
+      "$ref": "refSchema.json"
+    }
+  }
+}

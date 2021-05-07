@@ -1,0 +1,7 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Last Seen Date",
+  "description": "The date we last observed an upsert for this user (user.customFields.lastSeenDate).",
+  "type": "integer",
+  "format": "timestamp"
+}

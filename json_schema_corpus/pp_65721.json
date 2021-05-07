@@ -1,0 +1,10 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Capacity plans",
+  "type": "array",
+  "items": [
+    {
+      "$ref": "capacity-plan.json"
+    }
+  ]
+}

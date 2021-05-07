@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema/",
+  "title": "event",
+  "description": "The standard message event for Data Marshalling System",
+  "type": "object",
+  "properties": {
+    "schema_url": {
+      "$ref": "/schema/url"
+    },
+    "event_id": {
+      "$ref": "/schema/uuid"
+    },
+    "timestamp": {
+      "$ref": "/schema/timestamp"
+    },
+    "action": {
+      "$ref": "/schema/event/action"
+    },
+    "payload_type": {
+      "$ref": "/schema/event/payloadtype"
+    },
+    "payload": {
+      "$ref": "/schema/location"
+    }
+  },
+  "required": [
+    "schema_url",
+    "event_id",
+    "timestamp",
+    "payload_type",
+    "payload"
+  ]
+}

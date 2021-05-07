@@ -1,0 +1,307 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "definitions": {
+    "import": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "Import",
+      "definitions": {
+        "created_at": {
+          "description": "when import was created",
+          "example": "2012-01-01T12:00:00Z",
+          "format": "date-time",
+          "type": [
+            "string"
+          ]
+        },
+        "id": {
+          "description": "unique identifier of import",
+          "example": "01234567-89ab-cdef-0123-456789abcdef",
+          "format": "uuid",
+          "type": [
+            "string"
+          ]
+        },
+        "identity": {
+          "$ref": "#/definitions/import/definitions/id"
+        },
+        "updated_at": {
+          "description": "when import was updated",
+          "example": "2012-01-01T12:00:00Z",
+          "format": "date-time",
+          "type": [
+            "string"
+          ]
+        },
+        "playlists": {
+          "description": "information about collection of playlists",
+          "example": "",
+          "type": [
+            "object"
+          ],
+          "properties": {
+            "total": {
+              "type": [
+                "integer"
+              ]
+            },
+            "added": {
+              "type": [
+                "integer"
+              ]
+            },
+            "processed": {
+              "type": [
+                "integer"
+              ]
+            },
+            "items": {
+              "type": [
+                "array"
+              ]
+            }
+          }
+        },
+        "error": {
+          "description": "error message of call",
+          "example": "Forbidden",
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "description": "FIXME",
+      "links": [
+        {
+          "description": "Create a new Spotify import.",
+          "href": "/imports/spotify",
+          "method": "POST",
+          "rel": "create",
+          "schema": {
+            "properties": {},
+            "type": [
+              "object"
+            ]
+          },
+          "title": "Create"
+        },
+        {
+          "description": "Delete an existing Spotify import.",
+          "href": "/imports/spotify/{(%23%2Fdefinitions%2Fimport%2Fdefinitions%2Fidentity)}",
+          "method": "DELETE",
+          "rel": "destroy",
+          "title": "Delete"
+        },
+        {
+          "description": "Info for existing Spotify import.",
+          "href": "/imports/spotify/{(%23%2Fdefinitions%2Fimport%2Fdefinitions%2Fidentity)}",
+          "method": "GET",
+          "rel": "self",
+          "title": "Info"
+        },
+        {
+          "description": "List existing Spotify imports.",
+          "href": "/imports/spotify",
+          "method": "GET",
+          "rel": "instances",
+          "title": "List"
+        },
+        {
+          "description": "Update an existing Spotify import.",
+          "href": "/imports/spotify/{(%23%2Fdefinitions%2Fimport%2Fdefinitions%2Fidentity)}",
+          "method": "PATCH",
+          "rel": "update",
+          "schema": {
+            "properties": {},
+            "type": [
+              "object"
+            ]
+          },
+          "title": "Update"
+        }
+      ],
+      "properties": {
+        "created_at": {
+          "$ref": "#/definitions/import/definitions/created_at"
+        },
+        "id": {
+          "$ref": "#/definitions/import/definitions/id"
+        },
+        "updated_at": {
+          "$ref": "#/definitions/import/definitions/updated_at"
+        },
+        "playlists": {
+          "$ref": "#/definitions/import/definitions/playlists"
+        }
+      },
+      "type": [
+        "object"
+      ]
+    },
+    "playlist": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "Playlist",
+      "definitions": {
+        "created_at": {
+          "description": "when playlist was created",
+          "example": "2012-01-01T12:00:00Z",
+          "format": "date-time",
+          "type": [
+            "string"
+          ]
+        },
+        "id": {
+          "description": "unique identifier of playlist",
+          "example": "p11814546",
+          "type": [
+            "string"
+          ]
+        },
+        "identity": {
+          "$ref": "#/definitions/playlist/definitions/id"
+        },
+        "updated_at": {
+          "description": "when playlist was updated",
+          "example": "2012-01-01T12:00:00Z",
+          "format": "date-time",
+          "type": [
+            "string"
+          ]
+        },
+        "name": {
+          "description": "name of playlist (no unique constraint)",
+          "example": "Dinner with Friends",
+          "type": [
+            "string"
+          ]
+        },
+        "description": {
+          "description": "description of playlist",
+          "example": "Having friends over for dinner? Here\u00b4s the perfect playlist.",
+          "type": [
+            "string"
+          ]
+        },
+        "type": {
+          "description": "type of the object -- 'playlist'",
+          "example": "playlist",
+          "type": [
+            "string"
+          ]
+        },
+        "tracks": {
+          "description": "information about collection of playlist tracks",
+          "example": "{ \"total\": 30, \"items\": [ { \"track\": { \"album\": { \"id\": $id, \"type\": \"album\", \"name\": \"Pablo Honey\" }, \"artists\": [ { \"id\": $id, \"type\": \"artist\", \"name\": \"Radiohead\" } ], \"name\": \"Creep\" } }, ...] }",
+          "type": [
+            "object"
+          ],
+          "properties": {
+            "total": {
+              "type": [
+                "integer"
+              ]
+            },
+            "matched": {
+              "type": [
+                "integer"
+              ]
+            },
+            "processed": {
+              "type": [
+                "integer"
+              ]
+            },
+            "items": {
+              "type": [
+                "array"
+              ]
+            }
+          }
+        },
+        "error": {
+          "description": "error message of call",
+          "example": "Forbidden",
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "description": "Playlist for any provider (e.g. Rdio) in Spotify format",
+      "links": [
+        {
+          "description": "Info for cached Rdio playlist.",
+          "href": "/playlists/rdio/{(%23%2Fdefinitions%2Fplaylist%2Fdefinitions%2Fidentity)}",
+          "method": "GET",
+          "rel": "self",
+          "title": "Info"
+        },
+        {
+          "description": "List cached Rdio playlists.",
+          "href": "/playlists/rdio",
+          "method": "GET",
+          "rel": "instances",
+          "title": "List"
+        },
+        {
+          "description": "Info for cached Spotify playlist.",
+          "href": "/playlists/spotify/{(%23%2Fdefinitions%2Fplaylist%2Fdefinitions%2Fidentity)}",
+          "method": "GET",
+          "rel": "self",
+          "title": "Info"
+        },
+        {
+          "description": "List cached Spotify playlists.",
+          "href": "/playlists/spotify",
+          "method": "GET",
+          "rel": "instances",
+          "title": "List"
+        }
+      ],
+      "properties": {
+        "created_at": {
+          "$ref": "#/definitions/playlist/definitions/created_at"
+        },
+        "id": {
+          "$ref": "#/definitions/playlist/definitions/id"
+        },
+        "updated_at": {
+          "$ref": "#/definitions/playlist/definitions/updated_at"
+        },
+        "name": {
+          "$ref": "#/definitions/playlist/definitions/name"
+        },
+        "description": {
+          "$ref": "#/definitions/playlist/definitions/description"
+        },
+        "type": {
+          "$ref": "#/definitions/playlist/definitions/type"
+        },
+        "tracks": {
+          "$ref": "#/definitions/playlist/definitions/tracks"
+        }
+      },
+      "type": [
+        "object"
+      ]
+    }
+  },
+  "properties": {
+    "import": {
+      "$ref": "#/definitions/import"
+    },
+    "playlist": {
+      "$ref": "#/definitions/playlist"
+    }
+  },
+  "type": [
+    "object"
+  ],
+  "description": "A simple API template provided by the Pliny project.",
+  "id": "pliny-template-api",
+  "links": [
+    {
+      "href": "https://api.example.com",
+      "rel": "self"
+    }
+  ],
+  "title": "Pliny Template API"
+}

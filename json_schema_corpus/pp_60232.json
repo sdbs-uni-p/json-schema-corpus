@@ -1,0 +1,115 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://jsonschema.net",
+  "required": false,
+  "properties": {
+    "coresPerProcessor": {
+      "type": "string",
+      "id": "http://jsonschema.net/coresPerProcessor",
+      "required": false
+    },
+    "country": {
+      "type": "string",
+      "id": "http://jsonschema.net/country",
+      "required": false
+    },
+    "jobScheduler": {
+      "type": "string",
+      "id": "http://jsonschema.net/jobScheduler",
+      "required": false
+    },
+    "loginHost": {
+      "type": "string",
+      "id": "http://jsonschema.net/loginHost",
+      "required": false
+    },
+    "manufacturer": {
+      "type": "string",
+      "id": "http://jsonschema.net/manufacturer",
+      "required": false
+    },
+    "memoryPerNode": {
+      "type": "string",
+      "id": "http://jsonschema.net/memoryPerNode",
+      "required": false
+    },
+    "nationalFlag": {
+      "type": "string",
+      "id": "http://jsonschema.net/nationalFlag",
+      "required": false
+    },
+    "nodesPerSystem": {
+      "type": "string",
+      "id": "http://jsonschema.net/nodesPerSystem",
+      "required": false
+    },
+    "processorsPerNode": {
+      "type": "string",
+      "id": "http://jsonschema.net/processorsPerNode",
+      "required": false
+    },
+    "queues": {
+      "type": "array",
+      "id": "http://jsonschema.net/queues",
+      "required": false,
+      "items": {
+        "type": "object",
+        "id": "http://jsonschema.net/queues/0",
+        "required": false,
+        "properties": {
+          "maxMemory": {
+            "type": "string",
+            "id": "http://jsonschema.net/queues/0/maxMemory",
+            "required": false
+          },
+          "maxNodes": {
+            "type": "string",
+            "id": "http://jsonschema.net/queues/0/maxNodes",
+            "required": false
+          },
+          "maxTime": {
+            "type": "string",
+            "id": "http://jsonschema.net/queues/0/maxTime",
+            "required": false
+          },
+          "minNodes": {
+            "type": "string",
+            "id": "http://jsonschema.net/queues/0/minNodes",
+            "required": false
+          },
+          "notes": {
+            "type": "string",
+            "id": "http://jsonschema.net/queues/0/notes",
+            "required": false
+          },
+          "queueName": {
+            "type": "string",
+            "id": "http://jsonschema.net/queues/0/queueName",
+            "required": false
+          }
+        }
+      }
+    },
+    "siteLogo": {
+      "type": "string",
+      "id": "http://jsonschema.net/siteLogo",
+      "required": false
+    },
+    "site": {
+      "type": "string",
+      "id": "http://jsonschema.net/site",
+      "required": false
+    },
+    "systemLogo": {
+      "type": "string",
+      "id": "http://jsonschema.net/systemLogo",
+      "required": false
+    },
+    "system": {
+      "type": "string",
+      "id": "http://jsonschema.net/system",
+      "required": false
+    }
+  }
+}

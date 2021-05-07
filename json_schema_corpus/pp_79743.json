@@ -1,0 +1,297 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "BioJSON",
+  "type": "object",
+  "properties": {
+    "seqs": {
+      "id": "seqs",
+      "type": "array",
+      "items": {
+        "id": "seqs",
+        "type": "object",
+        "properties": {
+          "name": {
+            "id": "seqs/name",
+            "type": "string",
+            "description": "Sequence name"
+          },
+          "start": {
+            "id": "seqs/start",
+            "type": "integer",
+            "description": "The index of the sequence\u2019s first residue in it\u2019s source database"
+          },
+          "end": {
+            "id": "seqs/end",
+            "type": "integer",
+            "description": "The index of the sequence\u2019s last residue in it\u2019s source database"
+          },
+          "order": {
+            "id": "seqs/order",
+            "type": "integer",
+            "description": "The order/position of a sequence in the alignment space"
+          },
+          "id": {
+            "id": "seqs/id",
+            "type": "string",
+            "description": "Unique identifier for a given Sequence"
+          },
+          "seq": {
+            "id": "seqs/seq",
+            "type": "string",
+            "description": "Sequence Residues"
+          },
+          "svid": {
+            "id": "seqs/svid",
+            "type": "string",
+            "description": "Serial version identifier for the <b>seqs</b> object model"
+          }
+        },
+        "required": [
+          "name",
+          "start",
+          "svid",
+          "end",
+          "id",
+          "seq"
+        ]
+      },
+      "required": [
+        "0"
+      ],
+      "description": "An array of Sequences which makes up the Alignment",
+      "minItems": "1",
+      "maxItems": "*"
+    },
+    "seqGroups": {
+      "id": "seqGroups",
+      "type": "array",
+      "items": [
+        {
+          "id": "seqGroups",
+          "type": "object",
+          "properties": {
+            "groupName": {
+              "id": "seqGroups/groupName",
+              "type": "string",
+              "description": "The name assigned to the seqGroup"
+            },
+            "startRes": {
+              "id": "seqGroups/startRes",
+              "type": "integer",
+              "description": "The index of the group\u2019s first residue in the alignment space"
+            },
+            "endRes": {
+              "id": "seqGroups/endRes",
+              "type": "integer",
+              "description": "The index of the group\u2019s last residue in the alignment space"
+            },
+            "svid": {
+              "id": "seqGroups/svid",
+              "type": "string",
+              "description": "Serial version identifier for the <b>seqGroup</b> object model"
+            },
+            "colourScheme": {
+              "id": "seqGroups/colourScheme",
+              "type": "string",
+              "description": "The Colour Scheme applied to the Sequence Group"
+            },
+            "displayBoxes": {
+              "id": "seqGroups/displayBoxes",
+              "type": "boolean",
+              "description": "Determines if the seqGroup border should be visible or not"
+            },
+            "showNonconserved": {
+              "id": "seqGroups/showNonconserved",
+              "type": "boolean",
+              "description": "Determines if non conserved regions of a group is shown or not"
+            },
+            "colourText": {
+              "id": "seqGroups/colourText",
+              "type": "boolean",
+              "description": "Determines if the Residues text for the group is coloured"
+            },
+            "displayText": {
+              "id": "seqGroups/displayText",
+              "type": "boolean",
+              "description": "Determines if the texts of the group is displayed or not"
+            },
+            "seqsHash": {
+              "id": "seqGroups/seqsHash",
+              "type": "array",
+              "items": [],
+              "minItems": "0",
+              "maxItems": "*",
+              "description": "An array of the unique id's for the sequences belonging to the group"
+            }
+          }
+        }
+      ],
+      "description": "Sequence groups in the Alignment",
+      "minItems": "0",
+      "maxItems": "*"
+    },
+    "alignAnnotation": {
+      "id": "alignAnnotation",
+      "type": "array",
+      "items": {
+        "id": "alignAnnotation",
+        "type": "object",
+        "properties": {
+          "svid": {
+            "id": "alignAnnotation/svid",
+            "type": "string",
+            "description": "Serial version id for the <b>alignAnnotation</b> object model"
+          },
+          "description": {
+            "id": "alignAnnotation/description",
+            "type": "string",
+            "description": "Description for the Alignment Annotation"
+          },
+          "label": {
+            "id": "alignAnnotation/label",
+            "type": "string",
+            "description": "Label for the Alignment Annotation"
+          },
+          "annotations": {
+            "id": "alignAnnotation/annotations",
+            "type": "array",
+            "items": [
+              {
+                "id": "alignAnnotation/annotations",
+                "type": "object",
+                "properties": {
+                  "displayCharacter": {
+                    "id": "alignAnnotation/annotations/displayCharacter",
+                    "type": "string",
+                    "description": "Display character which denotes the given annotation"
+                  },
+                  "secondaryStructure": {
+                    "id": "alignAnnotation/annotations/secondaryStructure",
+                    "type": "string",
+                    "description": "Secondary structure symbol for the given annotation"
+                  },
+                  "value": {
+                    "id": "alignAnnotation/annotations/value",
+                    "type": "integer",
+                    "description": "Value of the annotation"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      "description": "Alignment Annotations",
+      "minItems": "0",
+      "maxItems": "*"
+    },
+    "seqFeatures": {
+      "id": "seqFeatures",
+      "type": "array",
+      "items": {
+        "id": "seqFeatures",
+        "type": "object",
+        "properties": {
+          "type": {
+            "id": "seqFeatures/type",
+            "type": "string",
+            "description": "The name of the SequenceFeature"
+          },
+          "fillColor": {
+            "id": "seqFeatures/fillColor",
+            "type": "string",
+            "description": "Fill colour"
+          },
+          "sequenceRef": {
+            "id": "seqFeatures/sequenceRef",
+            "type": "string",
+            "description": "Reference to the Sequence in the alignment (More like a foreign key)"
+          },
+          "featureGroup": {
+            "id": "seqFeatures/featureGroup",
+            "type": "string",
+            "description": "Feature Group"
+          },
+          "svid": {
+            "id": "seqFeatures/svid",
+            "type": "string",
+            "description": "Serial version id for the <b>SeqFeature</b> object"
+          },
+          "description": {
+            "id": "seqFeatures/description",
+            "type": "string",
+            "description": "Description of Feature"
+          },
+          "xStart": {
+            "id": "seqFeatures/xStart",
+            "type": "integer",
+            "description": "Start residue position for the sequence feature"
+          },
+          "xEnd": {
+            "id": "seqFeatures/xEnd",
+            "type": "integer",
+            "description": "End residue position for the sequence feature"
+          },
+          "score": {
+            "id": "seqFeatures/score",
+            "type": "integer",
+            "description": "Score"
+          }
+        }
+      },
+      "minItems": "0",
+      "maxItems": "*",
+      "description": "Sequence Features within the alignment"
+    },
+    "appSettings": {
+      "id": "appSettings",
+      "type": "object",
+      "properties": {
+        "globalColorScheme": {
+          "id": "appSettings/globalColorScheme",
+          "type": "string",
+          "description": "The Global colour scheme applied to all the sequences within the alignment"
+        },
+        "webStartUrl": {
+          "id": "appSettings/webStartUrl",
+          "type": "string",
+          "description": "Jalview specific setting which points to the url for launching Jalview"
+        },
+        "application": {
+          "id": "appSettings/application",
+          "type": "string",
+          "description": "The name of the application which generated the Json"
+        },
+        "showSeqFeatures": {
+          "id": "appSettings/showSeqFeatures",
+          "type": "string",
+          "description": "Determines if sequence features are visible or not"
+        },
+        "version": {
+          "id": "appSettings/version",
+          "type": "string",
+          "description": "Version of the application which generated the JSON"
+        },
+        "hiddenCols": {
+          "id": "appSettings/hiddenCols",
+          "type": "string",
+          "description": "Hidden alignment column ranges in comma delimited string i.e [2-5, 9-9, 11-12]"
+        }
+      },
+      "description": "This is for custom application specific settings in a hashmap structure (key/value) pairs."
+    },
+    "svid": {
+      "id": "svid",
+      "type": "string",
+      "description": "Serial version identifier for <b>BioJSON</b> model"
+    }
+  },
+  "required": [
+    "seqs",
+    "appSettings",
+    "seqGroups",
+    "alignAnnotation",
+    "svid",
+    "seqFeatures"
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "fw_core",
+  "description": "For spatial search and finding that interesting one",
+  "type": "object",
+  "properties": {
+    "category": {
+      "title": "Category",
+      "description": "A descriptive tag for narrowing the search: cafe, museum, etc.",
+      "type": "string"
+    },
+    "location": {
+      "title": "Location",
+      "description": "Location of the POI",
+      "$ref": "location.json"
+    },
+    "geometry": {
+      "title": "Geometrical form of the POI",
+      "description": "Format: Open Geospatial Consortium's 'Well-known text' ISO/IEC 13249-3:2011",
+      "type": "string"
+    },
+    "short_name": {
+      "title": "Short name",
+      "description": "Short name (max. 31 chars) to be shown on the map or in a narrow list",
+      "$ref": "string.json#/intl_string_31"
+    },
+    "name": {
+      "title": "Name",
+      "description": "Descriptive name",
+      "$ref": "string.json#/intl_string"
+    },
+    "label": {
+      "title": "Label",
+      "description": "More info to complement the name, if enough space",
+      "$ref": "string.json#/intl_string_127"
+    },
+    "description": {
+      "title": "Description",
+      "description": "Text to facilitate decision to be interested or not",
+      "$ref": "string.json#/intl_string"
+    },
+    "thumbnail": {
+      "title": "Thumbnail",
+      "description": "Link to a small picture to be shown on a list, scene or map. Preferably max. 256x256 pixels, e.g. 120x160.",
+      "type": "string",
+      "format": "uri"
+    },
+    "url": {
+      "title": "Web address",
+      "description": "URL to get more info, preferably official website of the POI",
+      "$ref": "uri.json#/intl_uri"
+    },
+    "source": {
+      "title": "Source of information",
+      "$ref": "source.json"
+    },
+    "last_update": {
+      "title": "Last update",
+      "description": "DO NOT EDIT! Information to identify the version of the data component.",
+      "$ref": "update_stamp.json"
+    }
+  },
+  "required": [
+    "category",
+    "location"
+  ],
+  "additionalProperties": false
+}

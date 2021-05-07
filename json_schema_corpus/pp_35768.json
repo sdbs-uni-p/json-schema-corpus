@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "name": "Image-Schema",
+  "version": "1.0.0",
+  "author": "denis",
+  "description": "represent a Docker Image",
+  "associated-tool": "Docker-Rest-API",
+  "properties": [
+    {
+      "name": "id",
+      "type": "string",
+      "default-value": "",
+      "required": "yes",
+      "description": "id of the Docker Image"
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "default-value": "",
+      "required": "yes",
+      "description": "name of the Docker Image"
+    },
+    {
+      "name": "author",
+      "type": "string",
+      "default-value": "",
+      "required": "yes",
+      "description": "author of the Docker Image"
+    },
+    {
+      "name": "version",
+      "type": "integer",
+      "default-value": "",
+      "required": "no",
+      "description": "Version of the Docker Image"
+    },
+    {
+      "name": "script",
+      "type": "string",
+      "default-value": "",
+      "required": "no",
+      "description": "Customization script for Docker Image"
+    }
+  ]
+}

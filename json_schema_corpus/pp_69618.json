@@ -1,0 +1,32 @@
+{
+  "id": "http://schema.org/ImageObject",
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "extends": {
+    "$ref": "MediaObject.json"
+  },
+  "description": "An image file. Schema.org: http://schema.org/ImageObject",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "caption": {
+      "description": "The caption for this object.",
+      "type": "string"
+    },
+    "exifData": {
+      "description": "exif data for this object.",
+      "type": "string"
+    },
+    "representativeOfPage": {
+      "description": "Indicates whether this image is representative of the content of the page.",
+      "type": "boolean"
+    },
+    "thumbnail": {
+      "description": "Thumbnail image for an image or video.",
+      "type": "object",
+      "$ref": "ImageObject.json"
+    }
+  },
+  "required": [
+    "thumbnail"
+  ]
+}

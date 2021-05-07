@@ -1,0 +1,11 @@
+{
+  "id": "http://schema.hyperrest.com/iso/2108_isbn_10.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "ISBN-10",
+  "description": "ISO 2108 ISBN 10",
+  "type": "string",
+  "minLength": "10",
+  "maxLength": "10",
+  "pattern": "/^[0-9]{9}[0-9X]$/",
+  "example": "020530902X"
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "extendedProperty",
+  "id": "extendedProperty",
+  "description": "An extended property in the form of a name-value pair.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the property."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the property (eg. Ethernet Speed)."
+    },
+    "value": {
+      "type": "string",
+      "description": "The value of the property (eg. 1 Gbit/s)."
+    },
+    "description": {
+      "type:": "string",
+      "description": "The description of the property."
+    }
+  }
+}

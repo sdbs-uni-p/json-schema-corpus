@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "badge_url": {
+      "id": "badge_url",
+      "type": "string"
+    },
+    "branch": {
+      "id": "branch",
+      "type": "string"
+    },
+    "committer_name": {
+      "id": "committer_name",
+      "type": "string"
+    },
+    "repo_name": {
+      "id": "repo_name",
+      "type": "string"
+    },
+    "commit_sha": {
+      "id": "commit_sha",
+      "type": "string"
+    },
+    "committer_email": {
+      "id": "committer_email",
+      "type": "string"
+    },
+    "covered_percent": {
+      "id": "covered_percent",
+      "type": "number"
+    },
+    "commit_message": {
+      "id": "commit_message",
+      "type": "string"
+    },
+    "coverage_change": {
+      "id": "coverage_change",
+      "type": "number"
+    },
+    "url": {
+      "id": "url",
+      "type": "string"
+    }
+  },
+  "additionalProperties": true,
+  "required": [
+    "badge_url",
+    "branch",
+    "committer_name",
+    "repo_name",
+    "commit_sha",
+    "committer_email",
+    "covered_percent",
+    "commit_message",
+    "coverage_change",
+    "url"
+  ]
+}

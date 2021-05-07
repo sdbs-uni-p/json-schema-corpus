@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "MySubObject": {
+      "type": "object"
+    }
+  },
+  "properties": {
+    "externalRef": {
+      "$ref": "http://my-schema.org"
+    },
+    "externalRefOverride": {
+      "$ref": "http://my-schema.org"
+    }
+  },
+  "required": [
+    "externalRef",
+    "externalRefOverride"
+  ],
+  "type": "object"
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "title": "An Array of Notifications",
+  "type": "object",
+  "properties": {
+    "notifications": {
+      "type": "array",
+      "items": {
+        "$ref": "notification-schema.json#"
+      }
+    }
+  }
+}

@@ -1,0 +1,686 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://xray.com/somedomain/course/123/discussionEndogenicPlagiarism",
+  "title": "discussionEndogenicPlagiarism report",
+  "description": "X-Ray web service discussionEndogenicPlagiarism method schema",
+  "oneOf": [
+    {
+      "$ref": "base_schema_ref.json#/definitions/base_response"
+    },
+    {
+      "id": "http://xray.com/somedomain/course/123/discussionEndogenicPlagiarism/okresponse",
+      "required": [
+        "reportdate",
+        "scheduleid",
+        "forumid",
+        "datapoints_plain",
+        "attachments",
+        "subtype",
+        "courseid",
+        "datecreated",
+        "notifications",
+        "elements",
+        "oldid",
+        "datapoints",
+        "date",
+        "type",
+        "id",
+        "participantid"
+      ],
+      "type": "object",
+      "properties": {
+        "reportdate": {
+          "type": "string"
+        },
+        "scheduleid": {
+          "type": "number"
+        },
+        "forumid": {
+          "type": "number"
+        },
+        "datapoints_plain": {
+          "type": "array"
+        },
+        "attachments": {
+          "type": "array"
+        },
+        "notifications": {
+          "required": [
+            "attributes",
+            "type",
+            "value"
+          ],
+          "type": "object",
+          "properties": {
+            "attributes": {
+              "required": [
+                "class",
+                "names",
+                "row.names"
+              ],
+              "type": "object",
+              "properties": {
+                "row.names": {
+                  "required": [
+                    "attributes",
+                    "type",
+                    "value"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "attributes": {
+                      "type": "object"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "items": {
+                        "type": "number"
+                      },
+                      "type": "array"
+                    }
+                  }
+                },
+                "class": {
+                  "required": [
+                    "attributes",
+                    "type",
+                    "value"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "attributes": {
+                      "type": "object"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    }
+                  }
+                },
+                "names": {
+                  "required": [
+                    "attributes",
+                    "type",
+                    "value"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "attributes": {
+                      "type": "object"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    }
+                  }
+                }
+              }
+            },
+            "type": {
+              "type": "string"
+            },
+            "value": {
+              "items": {
+                "required": [
+                  "attributes",
+                  "type",
+                  "value"
+                ],
+                "type": "object",
+                "properties": {
+                  "attributes": {
+                    "type": "object"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "items": {
+                      "type": [
+                        "string",
+                        "number",
+                        "boolean",
+                        "null"
+                      ]
+                    },
+                    "type": "array"
+                  }
+                }
+              },
+              "type": "array"
+            }
+          }
+        },
+        "courseid": {
+          "type": "number"
+        },
+        "datecreated": {
+          "type": "string"
+        },
+        "subtype": {
+          "type": "string"
+        },
+        "elements": {
+          "required": [
+            "element1",
+            "endogenicPlagiarismHeatmap",
+            "plagiarismSummary",
+            "endogenicPlagiarismStudentsHeatmap"
+          ],
+          "type": "object",
+          "properties": {
+            "element1": {
+              "required": [
+                "sectionLevel",
+                "elementName",
+                "title",
+                "courseName",
+                "instructors",
+                "date",
+                "elementType"
+              ],
+              "type": "object",
+              "properties": {
+                "sectionLevel": {
+                  "type": "number"
+                },
+                "elementName": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "courseName": {
+                  "type": "string"
+                },
+                "instructors": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "date": {
+                  "type": "string"
+                },
+                "elementType": {
+                  "type": "string"
+                }
+              }
+            },
+            "endogenicPlagiarismStudentsHeatmap": {
+              "required": [
+                "elementName",
+                "dimensions",
+                "reportId",
+                "title",
+                "contexts",
+                "customData",
+                "mapping",
+                "tooltip",
+                "filename",
+                "plotType",
+                "elementType",
+                "legend",
+                "uuid"
+              ],
+              "type": "object",
+              "properties": {
+                "elementName": {
+                  "type": "string"
+                },
+                "dimensions": {
+                  "required": [
+                    "width",
+                    "height"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "width": {
+                      "type": "number"
+                    },
+                    "height": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "title": {
+                  "type": "string"
+                },
+                "contexts": {
+                  "required": [
+                    "courseContext",
+                    "forumContext",
+                    "timeMachine",
+                    "participantContext"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "courseContext": {
+                      "type": "string"
+                    },
+                    "forumContext": {
+                      "type": "string"
+                    },
+                    "timeMachine": {
+                      "type": "string"
+                    },
+                    "participantContext": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "customData": {
+                  "type": [
+                    "array",
+                    "null"
+                  ]
+                },
+                "mapping": {
+                  "type": "array"
+                },
+                "tooltip": {
+                  "type": "string"
+                },
+                "filename": {
+                  "type": "string"
+                },
+                "reportId": {
+                  "type": "array"
+                },
+                "uuid": {
+                  "type": "string"
+                },
+                "elementType": {
+                  "type": "string"
+                },
+                "legend": {
+                  "type": "string"
+                },
+                "plotType": {
+                  "type": "string"
+                }
+              }
+            },
+            "plagiarismSummary": {
+              "required": [
+                "comment",
+                "elementName",
+                "enableGraph",
+                "uuid",
+                "title",
+                "columnOrder",
+                "legend",
+                "inverted",
+                "dataFormat",
+                "colorCodesSpecs",
+                "elementType",
+                "data",
+                "columnHeaders"
+              ],
+              "type": "object",
+              "properties": {
+                "comment": {
+                  "type": "array"
+                },
+                "elementName": {
+                  "type": "string"
+                },
+                "enableGraph": {
+                  "type": "boolean"
+                },
+                "uuid": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "columnOrder": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "inverted": {
+                  "type": "boolean"
+                },
+                "dataFormat": {
+                  "type": "array"
+                },
+                "colorCodesSpecs": {
+                  "type": "array"
+                },
+                "columnHeaders": {
+                  "required": [
+                    "plagiarized",
+                    "lastname",
+                    "firstname",
+                    "endogenic_plagiarism",
+                    "self_plagiarism"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "plagiarized": {
+                      "type": "string"
+                    },
+                    "self_plagiarism": {
+                      "type": "string"
+                    },
+                    "endogenic_plagiarism": {
+                      "type": "string"
+                    },
+                    "firstname": {
+                      "type": "string"
+                    },
+                    "lastname": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "elementType": {
+                  "type": "string"
+                },
+                "data": {
+                  "items": {
+                    "required": [
+                      "plagiarized",
+                      "lastname",
+                      "firstname",
+                      "endogenic_plagiarism",
+                      "self_plagiarism"
+                    ],
+                    "type": "object",
+                    "properties": {
+                      "plagiarized": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "type": [
+                              "object",
+                              "integer"
+                            ]
+                          }
+                        }
+                      },
+                      "self_plagiarism": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "type": [
+                              "object",
+                              "integer"
+                            ]
+                          }
+                        }
+                      },
+                      "endogenic_plagiarism": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "type": [
+                              "object",
+                              "integer"
+                            ]
+                          }
+                        }
+                      },
+                      "firstname": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "type": [
+                              "object",
+                              "string"
+                            ]
+                          }
+                        }
+                      },
+                      "lastname": {
+                        "required": [
+                          "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "type": [
+                              "object",
+                              "string"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "type": "array"
+                },
+                "legend": {
+                  "type": "string"
+                }
+              }
+            },
+            "endogenicPlagiarismHeatmap": {
+              "required": [
+                "elementName",
+                "dimensions",
+                "reportId",
+                "title",
+                "contexts",
+                "customData",
+                "mapping",
+                "tooltip",
+                "filename",
+                "plotType",
+                "elementType",
+                "legend",
+                "uuid"
+              ],
+              "type": "object",
+              "properties": {
+                "elementName": {
+                  "type": "string"
+                },
+                "dimensions": {
+                  "required": [
+                    "width",
+                    "height"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "width": {
+                      "type": "number"
+                    },
+                    "height": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "title": {
+                  "type": "string"
+                },
+                "contexts": {
+                  "required": [
+                    "courseContext",
+                    "forumContext",
+                    "timeMachine",
+                    "participantContext"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "courseContext": {
+                      "type": "string"
+                    },
+                    "forumContext": {
+                      "type": "string"
+                    },
+                    "timeMachine": {
+                      "type": "string"
+                    },
+                    "participantContext": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "customData": {
+                  "required": [
+                    "participants",
+                    "mat2",
+                    "mat"
+                  ],
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "participants": {
+                      "type": "array"
+                    },
+                    "mat2": {
+                      "type": "array"
+                    },
+                    "mat": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "mapping": {
+                  "type": "array"
+                },
+                "tooltip": {
+                  "type": "string"
+                },
+                "filename": {
+                  "type": "string"
+                },
+                "reportId": {
+                  "type": "array"
+                },
+                "uuid": {
+                  "type": "string"
+                },
+                "elementType": {
+                  "type": "string"
+                },
+                "legend": {
+                  "type": "string"
+                },
+                "plotType": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "oldid": {
+          "type": "null"
+        },
+        "datapoints": {
+          "required": [
+            "attributes",
+            "type",
+            "value"
+          ],
+          "type": "object",
+          "properties": {
+            "attributes": {
+              "required": [
+                "names"
+              ],
+              "type": "object",
+              "properties": {
+                "names": {
+                  "required": [
+                    "attributes",
+                    "type",
+                    "value"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "attributes": {
+                      "type": "object"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    }
+                  }
+                }
+              }
+            },
+            "type": {
+              "type": "string"
+            },
+            "value": {
+              "items": {
+                "required": [
+                  "attributes",
+                  "type",
+                  "value"
+                ],
+                "type": "object",
+                "properties": {
+                  "attributes": {
+                    "type": "object"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "oneOf": [
+                      {
+                        "type": "object"
+                      },
+                      {
+                        "type": "array"
+                      }
+                    ]
+                  }
+                }
+              },
+              "type": "array"
+            }
+          }
+        },
+        "date": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "id": {
+          "type": "number"
+        },
+        "participantid": {
+          "type": "number"
+        }
+      }
+    }
+  ]
+}

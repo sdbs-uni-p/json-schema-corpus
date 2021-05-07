@@ -1,0 +1,311 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "title": "Classic User Created Webhook Schema",
+  "description": "Sent whenever a new user is created in SaaSquatch program where the classic program is enabled.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "title": "User Id",
+      "description": "The user's unique identifier"
+    },
+    "accountId": {
+      "type": "string",
+      "title": "Account Id",
+      "description": "The user's unique account identifier"
+    },
+    "email": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Email",
+      "description": "The user's email address"
+    },
+    "firstName": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "First Name",
+      "description": "The user's first name"
+    },
+    "lastName": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Last Name",
+      "description": "The user's last name"
+    },
+    "lastInitial": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Last Initial",
+      "description": "The initial of the user's last name"
+    },
+    "referralCode": {
+      "type": "string",
+      "title": "Referral Code",
+      "description": "The referral code this user will share to refer others"
+    },
+    "imageUrl": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Image Url",
+      "description": "The URL to an image of this user"
+    },
+    "firstSeenIP": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "First Seen IP",
+      "description": "The IP address of this user when they were first seen by SaaSquatch"
+    },
+    "lastSeenIP": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Last Seen IP",
+      "description": "The IP address of this user when they were most recently seen by SaaSquatch"
+    },
+    "dateCreated": {
+      "type": "integer",
+      "title": "Date Created",
+      "description": "A timestamp of the date this user was created"
+    },
+    "emailHash": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Email Hash",
+      "description": "An MD5 has of this user's email address"
+    },
+    "referralSource": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Referral Source",
+      "description": "The source of the referral as defined by referral cookie (deprecated)"
+    },
+    "locale": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Locale",
+      "description": "This user's unique locale"
+    },
+    "referralCodes": {
+      "$ref": "../ReferralCodes.schema.json#"
+    },
+    "cookieId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Anonymous Cookie User Id",
+      "description": "The anonymous cookie user identifier associated with this user if applicable (see anonymous users)"
+    },
+    "paymentProviderId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Payment Provider Id",
+      "description": "Unique user identifier for tenants using a v1 payment provider integration (e.g. Stripe/Recurly)"
+    },
+    "referable": {
+      "type": "boolean",
+      "title": "Referable",
+      "description": "True if this user can be referred in a program by other users"
+    },
+    "dateBlocked": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Date Blocked",
+      "description": "The date the referral was blocked"
+    },
+    "shareLinks": {
+      "$ref": "#/definitions/classicShareLinks"
+    },
+    "referredByCodes": {
+      "type": "array",
+      "title": "Referred By Codes",
+      "description": "Any codes used to refer this user",
+      "items": {
+        "type": "string"
+      }
+    },
+    "customFields": {
+      "title": "Custom Fields",
+      "description": "Any custom fields set for this user",
+      "$ref": "../UserCustomFields.schema.json#"
+    },
+    "segments": {
+      "type": "array",
+      "title": "User Segments",
+      "description": "Any segments this user belongs to",
+      "items": {
+        "type": "string"
+      }
+    },
+    "programShareLinks": {
+      "$ref": "../ProgramShareLinks.schema.json#"
+    }
+  },
+  "required": [
+    "id",
+    "accountId",
+    "referralCode",
+    "dateCreated",
+    "referralCodes",
+    "referable",
+    "shareLinks"
+  ],
+  "additionalProperties": false,
+  "definitions": {
+    "classicShareLinks": {
+      "type": "object",
+      "title": "Share Links",
+      "description": "Links this user can share to make referrals",
+      "properties": {
+        "shareLink": {
+          "type": "string",
+          "title": "Direct Share Link",
+          "description": "The share link tracked with DIRECT share medium and UNKNOWN engagement medium"
+        },
+        "facebookShareLink": {
+          "type": "string",
+          "title": "Facebook Share Link",
+          "description": "The share link tracked with FACEBOOK share medium and UNKNOWN engagement medium"
+        },
+        "twitterShareLink": {
+          "type": "string",
+          "title": "Twitter Share Link",
+          "description": "The share link tracked with TWITTER share medium and UNKNOWN engagement medium"
+        },
+        "emailShareLink": {
+          "type": "string",
+          "title": "Email Share Link",
+          "description": "The share link tracked with EMAIL share medium and UNKNOWN engagement medium"
+        },
+        "linkedinShareLink": {
+          "type": "string",
+          "title": "LinkedIn Share Link",
+          "description": "The share link tracked with LINKEDIN share medium and UNKNOWN engagement medium"
+        },
+        "mobileShareLink": {
+          "type": "string",
+          "title": "Mobile Direct Share Link",
+          "description": "The share link tracked with DIRECT share medium and MOBILE engagement medium"
+        },
+        "mobileFacebookShareLink": {
+          "type": "string",
+          "title": "Mobile Facebook Share Link",
+          "description": "The share link tracked with FACEBOOK share medium and MOBILE engagement medium"
+        },
+        "mobileTwitterShareLink": {
+          "type": "string",
+          "title": "Mobile Twitter Share Link",
+          "description": "The share link tracked with TWITTER share medium and MOBILE engagement medium"
+        },
+        "mobileEmailShareLink": {
+          "type": "string",
+          "title": "Mobile Email Share Link",
+          "description": "The share link tracked with EMAIL share medium and MOBILE engagement medium"
+        },
+        "EMBED": {
+          "title": "Embedded Widget Share Links",
+          "description": "A list of share links associated with the EMBED engagement medium",
+          "$ref": "#/definitions/subClassicShareLinks"
+        },
+        "POPUP": {
+          "title": "Popup Widget Share Links",
+          "description": "A list of share links associated with the POPUP engagement medium",
+          "$ref": "#/definitions/subClassicShareLinks"
+        },
+        "HOSTED": {
+          "title": "Hosted Widget Share Links",
+          "description": "A list of share links associated with the HOSTED engagement medium",
+          "$ref": "#/definitions/subClassicShareLinks"
+        },
+        "MOBILE": {
+          "title": "Mobile Widget Share Links",
+          "description": "A list of share links associated with the MOBILE engagement medium",
+          "$ref": "#/definitions/subClassicShareLinks"
+        },
+        "EMAIL": {
+          "title": "Email Widget Share Links",
+          "description": "A list of share links associated with the EMAIL engagement medium",
+          "$ref": "#/definitions/subClassicShareLinks"
+        }
+      },
+      "required": [
+        "shareLink",
+        "facebookShareLink",
+        "twitterShareLink",
+        "emailShareLink",
+        "linkedinShareLink",
+        "mobileShareLink",
+        "mobileFacebookShareLink",
+        "mobileTwitterShareLink",
+        "mobileEmailShareLink",
+        "EMBED",
+        "POPUP",
+        "HOSTED",
+        "MOBILE",
+        "EMAIL"
+      ],
+      "additionalProperties": false
+    },
+    "subClassicShareLinks": {
+      "type": "object",
+      "properties": {
+        "shareLink": {
+          "type": "string",
+          "title": "Direct Share Link",
+          "description": "The share link tracked with DIRECT share medium"
+        },
+        "facebookShareLink": {
+          "type": "string",
+          "title": "Facebook Share Link",
+          "description": "The share link tracked with FACEBOOK share medium"
+        },
+        "twitterShareLink": {
+          "type": "string",
+          "title": "Twitter Share Link",
+          "description": "The share link tracked with TWITTER share medium"
+        },
+        "emailShareLink": {
+          "type": "string",
+          "title": "Email Share Link",
+          "description": "The share link tracked with EMAIL share medium"
+        },
+        "linkedinShareLink": {
+          "type": "string",
+          "title": "LinkedIn Share Link",
+          "description": "The share link tracked with LINKEDIN share medium"
+        }
+      },
+      "required": [
+        "shareLink",
+        "facebookShareLink",
+        "twitterShareLink",
+        "emailShareLink",
+        "linkedinShareLink"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

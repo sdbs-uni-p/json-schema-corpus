@@ -1,0 +1,78 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "ethernetServiceDetailItemRequest",
+  "id": "ethernetServiceDetailItemRequest",
+  "description": "Details of an ethernet service. These details are used for Serviceability Requests.",
+  "type": "object",
+  "required": [
+    "objectType"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "required": true,
+      "description": "Unique identifier for the Ethernet Service Detail."
+    },
+    "bandwidth": {
+      "$ref": "informationRateQuantity.json#",
+      "description": "The service's bandwidth (e.g., 10Mbps, 100Mbps, 1Gbps, 10Gbps)."
+    },
+    "maxPortSpeed": {
+      "$ref": "informationRateQuantity.json#",
+      "description": "The service's maximum port speed (e.g., 10Mbps, 100Mbps, 1Gbps, 10Gbps)."
+    },
+    "interfaceType": {
+      "type": "string",
+      "description": "The type of interface the service being detailed should be delivered over (e.g., Optical, Electrical).",
+      "enum": [
+        "Electrical",
+        "Optical"
+      ]
+    },
+    "accessMedium": {
+      "type": "string",
+      "description": "The type of media the service being detailed should delivered over (e.g. FIBER, COAX, TWISTED_PAIR).",
+      "enum": [
+        "FIBER",
+        "COAX",
+        "TWISTED_PAIR"
+      ]
+    },
+    "classOfService": {
+      "type": "string",
+      "description": "The desired Class of Service, as defined by MEF 23.1.",
+      "enum": [
+        "High",
+        "Medium",
+        "Low"
+      ]
+    },
+    "pricingTerm": {
+      "$ref": "quantity.json#",
+      "description": "The length of the service contract in months "
+    },
+    "activationDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The desired activation date for the service."
+    },
+    "objectType": {
+      "type": "string",
+      "required": true,
+      "description": "Identifies the specific type of object being represented. In this case, ethernetServiceDetailItemRequest.",
+      "default": "ethernetServiceDetailItemRequest"
+    },
+    "enniRequired": {
+      "type": "boolean",
+      "description": "Indicates if a new NNI needs to be established for this service."
+    },
+    "enniRef": {
+      "type": "string",
+      "description": "A reference to the NNI that will be utilized for this service. This will generally be a Circuit ID. The circuit identifier that the buyer uses to refer to the existing ENNI that is to be used to support this service."
+    },
+    "enniLocation": {
+      "$ref": "enniLocation.json#",
+      "description": "Location/address of the NNI that will be utilized for this service."
+    }
+  }
+}

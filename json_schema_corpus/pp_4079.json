@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Replica",
+  "description": "Databook replica",
+  "type": "object",
+  "javaType": "databook.persistence.rule.rdf.ruleset.Replica",
+  "extends": {
+    "$ref": "IndividualObject.json"
+  },
+  "properties": {
+    "resource": {
+      "$ref": "Resource.json"
+    },
+    "replicaNumber": {
+      "type": "integer"
+    },
+    "filePath": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://schema.org/ListItem",
+  "required": [],
+  "title": "ListItem",
+  "name": "ListItem",
+  "description": "An list item, e.g. a step in a checklist or how-to description.",
+  "type": "object",
+  "properties": {
+    "item": {
+      "id": "http://schema.org/item",
+      "title": "item",
+      "description": "An entity represented by an entry in a list (e.g. an 'artist' in a list of 'artists')\u2019.",
+      "type": "object",
+      "properties": {
+        "item": {
+          "$ref": "Thing.json#/properties"
+        }
+      }
+    },
+    "nextItem": {
+      "id": "http://schema.org/nextItem",
+      "title": "nextItem",
+      "description": "A link to the ListItem that follows the current one.",
+      "type": "object",
+      "properties": {
+        "nextItem": {
+          "$ref": "ListItem.json#/properties"
+        }
+      }
+    },
+    "position": {
+      "id": "http://schema.org/position",
+      "title": "position",
+      "description": "The position of an item in a series or sequence of items.",
+      "type": "number"
+    },
+    "previousItem": {
+      "id": "http://schema.org/previousItem",
+      "title": "previousItem",
+      "description": "A link to the ListItem that preceeds the current one.",
+      "type": "object",
+      "properties": {
+        "previousItem": {
+          "$ref": "ListItem.json#/properties"
+        }
+      }
+    },
+    "": {
+      "title": "",
+      "description": "",
+      "type": null
+    },
+    "additionalType": {
+      "id": "http://schema.org/additionalType",
+      "title": "additionalType",
+      "description": "An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.",
+      "type": "string",
+      "format": "uri"
+    },
+    "alternateName": {
+      "id": "http://schema.org/alternateName",
+      "title": "alternateName",
+      "description": "An alias for the item.",
+      "type": "string"
+    },
+    "description": {
+      "id": "http://schema.org/description",
+      "title": "description",
+      "description": "A short description of the item.",
+      "type": "string"
+    },
+    "image": {
+      "id": "http://schema.org/image",
+      "title": "image",
+      "description": "An image of the item. This can be a URL or a fully described ImageObject.",
+      "type": "string",
+      "format": "uri"
+    },
+    "name": {
+      "id": "http://schema.org/name",
+      "title": "name",
+      "description": "The name of the item.",
+      "type": "string"
+    },
+    "potentialAction": {
+      "id": "http://schema.org/potentialAction",
+      "title": "potentialAction",
+      "description": "Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.",
+      "type": "object",
+      "properties": {
+        "potentialAction": {
+          "$ref": "Action.json#/properties"
+        }
+      }
+    },
+    "sameAs": {
+      "id": "http://schema.org/sameAs",
+      "title": "sameAs",
+      "description": "URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.",
+      "type": "string",
+      "format": "uri"
+    },
+    "url": {
+      "id": "http://schema.org/url",
+      "title": "url",
+      "description": "URL of the item.",
+      "type": "string",
+      "format": "uri"
+    }
+  }
+}

@@ -1,0 +1,155 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Microservices deployment stage",
+  "localized-struct": {
+    "$ref": "deploy-localized-struct.json"
+  },
+  "description": "Personality Insights Stage Schema",
+  "longDescription": "The Delivery Pipeline automates continuous deployment.",
+  "type": "object",
+  "properties": {
+    "dev-region": {
+      "description": "The bluemix region",
+      "type": "string"
+    },
+    "dev-organization": {
+      "description": "The bluemix org",
+      "type": "string"
+    },
+    "dev-space": {
+      "description": "The bluemix space",
+      "type": "string"
+    },
+    "qa-region": {
+      "description": "The bluemix region",
+      "type": "string"
+    },
+    "qa-organization": {
+      "description": "The bluemix org",
+      "type": "string"
+    },
+    "qa-space": {
+      "description": "The bluemix space",
+      "type": "string"
+    },
+    "prod-region": {
+      "description": "The bluemix region",
+      "type": "string"
+    },
+    "prod-organization": {
+      "description": "The bluemix org",
+      "type": "string"
+    },
+    "prod-space": {
+      "description": "The bluemix space",
+      "type": "string"
+    },
+    "PersonalityInsights-Java-app-name": {
+      "description": "The name of the Personality Insights app.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "dev-region",
+    "dev-organization",
+    "dev-space",
+    "qa-region",
+    "qa-organization",
+    "qa-space",
+    "prod-region",
+    "prod-organization",
+    "prod-space",
+    "PersonalityInsights-Java-app-name"
+  ],
+  "form": [
+    {
+      "type": "validator",
+      "url": "/devops/setup/bm-helper/helper.html"
+    },
+    {
+      "type": "text",
+      "readonly": false,
+      "title": "Personality Insights app name",
+      "key": "PersonalityInsights-Java-app-name"
+    },
+    {
+      "type": "table",
+      "columnCount": 4,
+      "widths": [
+        "15%",
+        "28%",
+        "28%",
+        "28%"
+      ],
+      "items": [
+        {
+          "type": "label",
+          "title": ""
+        },
+        {
+          "type": "label",
+          "title": "Region"
+        },
+        {
+          "type": "label",
+          "title": "Organization"
+        },
+        {
+          "type": "label",
+          "title": "Space"
+        },
+        {
+          "type": "label",
+          "title": "Development stage"
+        },
+        {
+          "type": "select",
+          "key": "dev-region"
+        },
+        {
+          "type": "select",
+          "key": "dev-organization"
+        },
+        {
+          "type": "select",
+          "key": "dev-space",
+          "readonly": false
+        },
+        {
+          "type": "label",
+          "title": "Test stage"
+        },
+        {
+          "type": "select",
+          "key": "qa-region"
+        },
+        {
+          "type": "select",
+          "key": "qa-organization"
+        },
+        {
+          "type": "select",
+          "key": "qa-space",
+          "readonly": false
+        },
+        {
+          "type": "label",
+          "title": "Production stage"
+        },
+        {
+          "type": "select",
+          "key": "prod-region"
+        },
+        {
+          "type": "select",
+          "key": "prod-organization"
+        },
+        {
+          "type": "select",
+          "key": "prod-space",
+          "readonly": false
+        }
+      ]
+    }
+  ]
+}

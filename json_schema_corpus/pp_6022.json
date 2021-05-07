@@ -1,0 +1,54 @@
+{
+  "id": "http://framespaces.com/schema/state.json",
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "properties": {
+    "time": {
+      "type": "integer",
+      "description": "millis per Date.getTime"
+    },
+    "tool": {
+      "type": "string",
+      "enum": [
+        "Pen",
+        "Hand",
+        "Eraser"
+      ]
+    },
+    "active": {
+      "type": "boolean",
+      "description": "e.g. mouse button is down"
+    },
+    "x": {
+      "type": "number",
+      "description": "in SVG coordinates"
+    },
+    "y": {
+      "type": "number",
+      "description": "in SVG coordinates"
+    },
+    "char": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "string",
+          "maxLength": 20
+        }
+      ],
+      "description": "keycode"
+    },
+    "element": {
+      "type": "string",
+      "pattern": "^[a-f][a-f0-9]{31}$",
+      "description": "id attribute"
+    }
+  },
+  "required": [
+    "time",
+    "tool",
+    "active"
+  ],
+  "additionalProperties": false
+}

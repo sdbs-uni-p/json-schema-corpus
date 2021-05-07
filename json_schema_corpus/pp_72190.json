@@ -1,0 +1,385 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Program Template Builder",
+  "description": "Build your program using the magic of magic!",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "title": "ID",
+      "description": "The unique contentful ID associated with this program template"
+    },
+    "name": {
+      "type": "string",
+      "title": "Program Name",
+      "description": "A human-readable name for the program. Dispayed in the SaaSquatch Portal during Program setup."
+    },
+    "summary": {
+      "type": "string",
+      "title": "Program Summary",
+      "description": "A human-readable summary of the program. Dispayed in the SaaSquatch Portal during Program setup."
+    },
+    "longDescription": {
+      "type": "string",
+      "options": {
+        "expand_height": true
+      },
+      "title": "Program Long Description",
+      "description": "A long-form article that sells the benefits of this program. Dispayed in the SaaSquatch Portal during Program setup."
+    },
+    "installGuide": {
+      "type": "string",
+      "title": "Program Install Guide",
+      "description": "This describes how to setup the current program and may update depending on how you've configured your program rules"
+    },
+    "rewards": {
+      "type": "array",
+      "title": "Rewards",
+      "description": "A list of all the possible types of rewards this program will give. Your business logic will trigger these based on key",
+      "items": {
+        "headerTemplate": "{{ self.name }}",
+        "$ref": "#/definitions/RewardType"
+      }
+    },
+    "emails": {
+      "type": "array",
+      "title": "Emails",
+      "description": "A list of all the possible types of emails this program will send. Your business logic will trigger these based on key",
+      "items": {
+        "headerTemplate": "{{ self.name }}",
+        "$ref": "#/definitions/EmailType"
+      }
+    },
+    "logo": {
+      "type": "string",
+      "title": "Logo URL",
+      "description": "The URL for the logo associated with this program"
+    },
+    "widgets": {
+      "type": "array",
+      "title": "Widgets",
+      "description": "A list of all the possible types of widgets this program will send. Your business logic will trigger these based on key",
+      "items": {
+        "$ref": "#/definitions/EmailType"
+      }
+    },
+    "globallyInstallable": {
+      "type": "boolean",
+      "title": "Globally Installable",
+      "description": "Indicates whether this program can be installed by any tenant that support GA"
+    },
+    "installableByTenants": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "title": "Installable by Tenants",
+      "description": "The tenants that can install this program if it's not globally installable",
+      "items": {
+        "type": "string",
+        "title": "Tenant Alias",
+        "description": "The tenant alias for a tenant that can install this program"
+      }
+    },
+    "rules": {
+      "title": "Business Rule Variables",
+      "description": "The business rule variables define a JSON schema of the possible configuration points in the business logic.",
+      "type": "object",
+      "options": {
+        "hidden": true
+      }
+    },
+    "sharing": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "title": "Sharing",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "title": "Sharing Enabled",
+          "description": "When sharing is enabled the program will create/support referral share links"
+        },
+        "linksConfig": {
+          "type": "object",
+          "title": "Links Configuration",
+          "description": "Message links configuration (default share text/content for Open Graph/Twitter/etc)",
+          "properties": {
+            "defaults": {
+              "$ref": "ProgramMessages.schema.json#"
+            }
+          }
+        }
+      }
+    },
+    "schedule": {
+      "title": "Recurring schedule",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "userFilter": {
+          "type": "object",
+          "title": "User Filter",
+          "description": "This should be a GraphQL-compatible query json object"
+        },
+        "periodInHours": {
+          "type": "number",
+          "description": "Your program logic will be run on this schedule."
+        }
+      }
+    },
+    "schedules": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "title": "Program Schedules",
+      "description": "The backend schedules that will run at a specified interval and trigger the program for specified users",
+      "items": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "title": "Schedule Type",
+            "description": "The type of schedule to run",
+            "enum": [
+              "USER",
+              "REWARD"
+            ]
+          },
+          "key": {
+            "type": "string",
+            "title": "Schedule Key",
+            "description": "A unique identifier for this specific schedule"
+          },
+          "periodInHours": {
+            "type": "integer",
+            "title": "Period in Hours",
+            "description": "The interval by which this schedule will run (e.g. every x hours)"
+          },
+          "filter": {
+            "type": "object",
+            "title": "Filter",
+            "description": "The filter used to determine which users are evaluated when the schedule is run"
+          },
+          "query": {
+            "type": "string",
+            "title": "Query",
+            "description": "The query used to create the program context when a user is evaluated by the schedule"
+          }
+        }
+      }
+    },
+    "settings": {
+      "type": "object",
+      "properties": {
+        "referrals": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "description": "Whether this program supports referrals"
+            }
+          }
+        }
+      }
+    },
+    "rulesUISchema": {
+      "type": "object",
+      "title": "Rules UI Schema",
+      "description": "Defines how the rules will be shown via schema form"
+    },
+    "requirements": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "title": "Program Requirements",
+      "description": "All of these conditions should be satisfied to confirm the program is working",
+      "items": {
+        "$ref": "#/definitions/Requirement"
+      }
+    },
+    "userMetrics": {
+      "type": "array",
+      "title": "Program User Metrics",
+      "description": "Custom metrics defined by this program that will only be activated when the program is live",
+      "items": {
+        "$ref": "UserMetric.schema.json#"
+      }
+    },
+    "url": {
+      "type": "string",
+      "title": "Webtask URL",
+      "description": "The URL that will be requested for this program when triggered"
+    },
+    "trigger": {
+      "type": "object",
+      "title": "Program Triggers",
+      "description": "Defines specific triggers for this program",
+      "properties": {
+        "eventKeys": {
+          "type": "array",
+          "title": "Event Keys",
+          "description": "A list of events that can trigger this program",
+          "items": {
+            "type": "string",
+            "title": "Event Key",
+            "description": "When an event with this key is received this program will be triggered"
+          }
+        }
+      }
+    },
+    "rulesMigrationScript": {
+      "type": "string",
+      "title": "Rules Migration Script",
+      "description": "A JSONata script that transforms program rules JSON to be compatible with the most recently published schema version"
+    }
+  },
+  "additionalProperties": false,
+  "definitions": {
+    "EmailType": {
+      "title": "Email Type",
+      "description": "A type of email that is given by this program.",
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "title": "Key",
+          "description": "A unique key to identify this email type. Only numbers and latin characers are allowed. Email types must be unique within the scope of a program. e.g. `RewardCreatedEmail`",
+          "pattern": "[a-zA-Z0-9]+",
+          "default": "rewardCreatedEmail"
+        },
+        "name": {
+          "type": "string",
+          "title": "Name",
+          "description": "A human-readable name for the email type that gets displayed in the SaaSquatch portal during program setup. e.g. `Reward Created Email`",
+          "default": "Reward Created Email"
+        },
+        "description": {
+          "type": "string",
+          "title": "Description",
+          "description": "A human-readable description that explains this email type. Displayed in the SaaSquatch portal during program setup. e.g. `This email is sent when a new reward is created by this program`",
+          "default": "We send this email when a new reward is created by this program"
+        },
+        "defaults": {
+          "oneOf": [
+            {
+              "type": "string",
+              "title": "Default Template Id"
+            },
+            {
+              "$ref": "SimpleEmail.schema.json#"
+            },
+            {
+              "$ref": "HtmlEmail.schema.json#"
+            }
+          ]
+        }
+      }
+    },
+    "WidgetType": {
+      "title": "Widget Type",
+      "description": "A type of widget that is displayed by this program.",
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "title": "Key",
+          "description": "A unique key to identify this widget type. Only numbers and latin characers are allowed. Widget types must be unique within the scope of a program. e.g. `ReferrerWidget`",
+          "pattern": "[a-zA-Z0-9]+"
+        },
+        "name": {
+          "type": "string",
+          "title": "Name",
+          "description": "A human-readable name for the widget type that gets displayed in the SaaSquatch portal during program setup. e.g. `Referrer Widget`"
+        },
+        "description": {
+          "type": "string",
+          "title": "Description",
+          "description": "A human-readable description that explains this widget type. Displayed in the SaaSquatch portal during program setup. e.g. `This widget is sent when a new reward is created by this program`",
+          "default": "We send this widget when a new reward is created by this program"
+        },
+        "defaults": {
+          "$ref": "HtmlWidget.schema.json"
+        }
+      }
+    },
+    "RewardType": {
+      "title": "Reward Type",
+      "description": "A type of reward that is given by this program.",
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "title": "Key",
+          "description": "A unique key to identify this reward type. Only numbers and latin characers are allowed. Reward types must be unique within the scope of a program. e.g. `FirstPurchaseReward`",
+          "pattern": "[a-zA-Z0-9]+",
+          "default": "firstPurchaseReward"
+        },
+        "name": {
+          "type": "string",
+          "title": "Name",
+          "description": "A human-readable name for the reward type that gets displayed in the SaaSquatch portal during program setup. e.g. `First Purchase Reward`",
+          "default": "First Purchase Reward"
+        },
+        "description": {
+          "type": "string",
+          "title": "Description",
+          "description": "A human-readable description that explains this reward type. Displayed in the SaaSquatch portal during program setup. e.g. `This reward is given to people when they make their first purchase.`",
+          "default": "This reward is given to people when they make their first purchase."
+        }
+      }
+    },
+    "Requirement": {
+      "title": "Program Requirement",
+      "description": "A condition that should be satified to confirm this program is working",
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "title": "Key",
+          "description": "A unique identifier used to validate this requirement"
+        },
+        "name": {
+          "type": "string",
+          "title": "Name",
+          "description": "The human-friendly name of this requirement"
+        },
+        "description": {
+          "type": "string",
+          "title": "Description",
+          "description": "A description of how this requirement can be satisfied"
+        },
+        "longDescription": {
+          "type": "string",
+          "title": "Long Description",
+          "description": "Rich content regarding the implementation and other details relevant to this requirement"
+        },
+        "query": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "GraphQL Query",
+          "description": "The results of this query will be used to validate this requirement has been satisfied"
+        },
+        "queryVariables": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "title": "GraphQL Query Variables",
+          "description": "These are passed in as parameters to the query"
+        }
+      },
+      "required": [
+        "key",
+        "name",
+        "description"
+      ]
+    }
+  }
+}

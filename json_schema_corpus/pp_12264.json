@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "id_eleve": {
+      "type": "string"
+    },
+    "id_enscpl": {
+      "type": "number"
+    },
+    "niveau": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "id_eleve",
+    "id_enscpl",
+    "niveau"
+  ]
+}

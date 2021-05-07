@@ -1,0 +1,271 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "javaType": "com.tas.api.docs.Docs",
+  "properties": {
+    "action": {
+      "$ref": "../schemas/action.json"
+    },
+    "actionProductionsForApps": {
+      "$ref": "../schemas/actionProductionsForApps.json"
+    },
+    "actionProductions": {
+      "$ref": "../schemas/actionProductions.json"
+    },
+    "actionSetupPageDetail": {
+      "$ref": "../schemas/actionSetupPageDetail.json"
+    },
+    "actionsForApp": {
+      "$ref": "../schemas/actionsForApp.json"
+    },
+    "actionsForApps": {
+      "$ref": "../schemas/actionsForApps.json"
+    },
+    "actions": {
+      "$ref": "../schemas/actions.json"
+    },
+    "apiResult": {
+      "$ref": "../schemas/apiResult.json"
+    },
+    "apiTest": {
+      "$ref": "../schemas/apiTest.json"
+    },
+    "applicationRead": {
+      "$ref": "../schemas/applicationRead.json"
+    },
+    "applicationsRead": {
+      "$ref": "../schemas/applicationsRead.json"
+    },
+    "applicationViewType": {
+      "$ref": "../schemas/applicationViewType.json"
+    },
+    "applicationViewTypes": {
+      "$ref": "../schemas/applicationViewTypes.json"
+    },
+    "appStatus": {
+      "$ref": "../schemas/appStatus.json"
+    },
+    "assessmentMeta": {
+      "$ref": "../schemas/assessmentMeta.json"
+    },
+    "assessmentRead": {
+      "$ref": "../schemas/assessmentRead.json"
+    },
+    "assessmentReadWithHRXMLStructures": {
+      "$ref": "../schemas/assessmentReadWithHRXMLStructures.json"
+    },
+    "assessmentStrip": {
+      "$ref": "../schemas/assessmentStrip.json"
+    },
+    "assessmentStrips": {
+      "$ref": "../schemas/assessmentStrips.json"
+    },
+    "assessmentType": {
+      "$ref": "../schemas/assessmentType.json"
+    },
+    "assessmentTypesForApp": {
+      "$ref": "../schemas/assessmentTypesForApp.json"
+    },
+    "assessmentTypes": {
+      "$ref": "../schemas/assessmentTypes.json"
+    },
+    "assessmentWriteByApp": {
+      "$ref": "../schemas/assessmentWriteByApp.json"
+    },
+    "assessmentWriteByTenant": {
+      "$ref": "../schemas/assessmentWriteByTenant.json"
+    },
+    "bucket": {
+      "$ref": "../schemas/bucket.json"
+    },
+    "buckets": {
+      "$ref": "../schemas/buckets.json"
+    },
+    "canApply": {
+      "$ref": "../schemas/canApply.json"
+    },
+    "candidateDetails": {
+      "$ref": "../schemas/candidateDetails.json"
+    },
+    "candidateEdit": {
+      "$ref": "../schemas/candidateEdit.json"
+    },
+    "candidateEditSpec": {
+      "$ref": "../schemas/candidateEditSpec.json"
+    },
+    "candidateRead": {
+      "$ref": "../schemas/candidateRead.json"
+    },
+    "candidates": {
+      "$ref": "../schemas/candidates.json"
+    },
+    "candidateWorkflow": {
+      "$ref": "../schemas/candidateWorkflow.json"
+    },
+    "candidateWorkflows": {
+      "$ref": "../schemas/candidateWorkflows.json"
+    },
+    "careerSite": {
+      "$ref": "../schemas/careerSite.json"
+    },
+    "careerSitesForApps": {
+      "$ref": "../schemas/careerSitesForApps.json"
+    },
+    "careerSites": {
+      "$ref": "../schemas/careerSites.json"
+    },
+    "categoriesActualAndWorkflows": {
+      "$ref": "../schemas/categoriesActualAndWorkflows.json"
+    },
+    "categoriesActual": {
+      "$ref": "../schemas/categoriesActual.json"
+    },
+    "categories": {
+      "$ref": "../schemas/categories.json"
+    },
+    "category": {
+      "$ref": "../schemas/category.json"
+    },
+    "categoryValues": {
+      "$ref": "../schemas/categoryValues.json"
+    },
+    "categoryValuesUpload": {
+      "$ref": "../schemas/categoryValuesUpload.json"
+    },
+    "deltaPing": {
+      "$ref": "../schemas/deltaPing.json"
+    },
+    "fileDownload": {
+      "$ref": "../schemas/fileDownload.json"
+    },
+    "fileUpload": {
+      "$ref": "../schemas/fileUpload.json"
+    },
+    "homePage": {
+      "$ref": "../schemas/homePage.json"
+    },
+    "intent": {
+      "$ref": "../schemas/intent.json"
+    },
+    "item": {
+      "$ref": "../schemas/item.json"
+    },
+    "itemMeta": {
+      "$ref": "../schemas/itemMeta.json"
+    },
+    "itemPackageRead": {
+      "$ref": "../schemas/itemPackageRead.json"
+    },
+    "itemPackagesRead": {
+      "$ref": "../schemas/itemPackagesRead.json"
+    },
+    "itemRead": {
+      "$ref": "../schemas/itemRead.json"
+    },
+    "items": {
+      "$ref": "../schemas/items.json"
+    },
+    "itemsWrite": {
+      "$ref": "../schemas/itemsWrite.json"
+    },
+    "itemWrite": {
+      "$ref": "../schemas/itemWrite.json"
+    },
+    "jcard": {
+      "$ref": "../schemas/jcard.json"
+    },
+    "jobAdSet": {
+      "$ref": "../schemas/jobAdSet.json"
+    },
+    "jobBoard": {
+      "$ref": "../schemas/jobBoard.json"
+    },
+    "jobBoardsForApps": {
+      "$ref": "../schemas/jobBoardsForApps.json"
+    },
+    "jobBoards": {
+      "$ref": "../schemas/jobBoards.json"
+    },
+    "jobFeedDetails": {
+      "$ref": "../schemas/jobFeedDetails.json"
+    },
+    "jobRead": {
+      "$ref": "../schemas/jobRead.json"
+    },
+    "jobSetJob": {
+      "$ref": "../schemas/jobSetJob.json"
+    },
+    "jobSetJobs": {
+      "$ref": "../schemas/jobSetJobs.json"
+    },
+    "jobsRead": {
+      "$ref": "../schemas/jobsRead.json"
+    },
+    "jobsUpload": {
+      "$ref": "../schemas/jobsUpload.json"
+    },
+    "jobWrite": {
+      "$ref": "../schemas/jobWrite.json"
+    },
+    "jsonSchemaSchema": {
+      "$ref": "../schemas/jsonSchemaSchema.json"
+    },
+    "landingPage": {
+      "$ref": "../schemas/landingPage.json"
+    },
+    "login": {
+      "$ref": "../schemas/login.json"
+    },
+    "logins": {
+      "$ref": "../schemas/logins.json"
+    },
+    "meta": {
+      "$ref": "../schemas/meta.json"
+    },
+    "panelForApp": {
+      "$ref": "../schemas/panelForApp.json"
+    },
+    "panel": {
+      "$ref": "../schemas/panel.json"
+    },
+    "panelsForApps": {
+      "$ref": "../schemas/panelsForApps.json"
+    },
+    "person": {
+      "$ref": "../schemas/person.json"
+    },
+    "socialNetworks": {
+      "$ref": "../schemas/socialNetworks.json"
+    },
+    "tracker": {
+      "$ref": "../schemas/tracker.json"
+    },
+    "trackers": {
+      "$ref": "../schemas/trackers.json"
+    },
+    "uploadLaunch": {
+      "$ref": "../schemas/uploadLaunch.json"
+    },
+    "uploadStatus": {
+      "$ref": "../schemas/uploadStatus.json"
+    },
+    "userArea": {
+      "$ref": "../schemas/userArea.json"
+    },
+    "userRead": {
+      "$ref": "../schemas/userRead.json"
+    },
+    "usersRead": {
+      "$ref": "../schemas/usersRead.json"
+    },
+    "usersUpload": {
+      "$ref": "../schemas/usersUpload.json"
+    },
+    "userWrite": {
+      "$ref": "../schemas/userWrite.json"
+    },
+    "viewMeta": {
+      "$ref": "../schemas/viewMeta.json"
+    }
+  }
+}

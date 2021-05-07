@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema-location": "Entity-Schema.json",
+  "name": "Machine-Schema",
+  "version": "1",
+  "author": "denis",
+  "description": "Represent a Virtual Machine where the service is going to be deployed",
+  "associated-tool": "Juju-CLI",
+  "properties": {
+    "$schema-location": {
+      "type": {
+        "enum": [
+          "Machine-Schema.json"
+        ]
+      }
+    },
+    "id": {
+      "type": "string",
+      "required": true
+    },
+    "arch": {
+      "type": "string",
+      "default-value": "",
+      "required": false,
+      "description": ""
+    },
+    "cpu-cores": {
+      "type": "string",
+      "default-value": "",
+      "required": false,
+      "description": ""
+    },
+    "memory": {
+      "type": "string",
+      "default-value": "",
+      "required": false,
+      "description": ""
+    }
+  }
+}

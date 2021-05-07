@@ -1,0 +1,555 @@
+{
+  "title": "Visualize Specification Language",
+  "type": "object",
+  "definitions": {
+    "size": {
+      "oneOf": [
+        {
+          "type": "number",
+          "description": "size in pixels",
+          "minimum": 0
+        },
+        {
+          "type": "string",
+          "description": "Size as a percentage"
+        }
+      ]
+    },
+    "visual": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/data"
+        },
+        "render": {
+          "type": "string",
+          "enum": [
+            "canvas",
+            "svg"
+          ],
+          "default": "svg"
+        },
+        "width": {
+          "description": "Width of the visual",
+          "$refs": "#/definitions/size"
+        },
+        "height": {
+          "description": "Height of the visual",
+          "$refs": "#/definitions/size",
+          "default": "70%"
+        }
+      }
+    },
+    "data": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/dataSource"
+      }
+    },
+    "dataSource": {
+      "oneOf": [
+        {
+          "type": "object",
+          "description": "array of data",
+          "properties": {
+            "data": {
+              "type": "array",
+              "description": "array of data"
+            },
+            "transforms": {
+              "$ref": "#/definitions/transforms"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "description": "Remote data resource",
+          "properties": {
+            "url": {
+              "type": "string",
+              "description": "url for fetching data"
+            },
+            "transforms": {
+              "$ref": "#/definitions/transforms"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "description": "Composite data source for combining data together",
+          "properties": {
+            "source": {
+              "type": "array",
+              "description": "Array of data sources keys",
+              "item": {
+                "type": "string"
+              }
+            },
+            "expression": {
+              "type": "string",
+              "description": "expression to evaluate, must return a data frame or a Promise"
+            },
+            "transforms": {
+              "$ref": "#/definitions/transforms"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "description": "Expression to evaluate by the data store",
+          "properties": {
+            "expression": {
+              "type": "string",
+              "description": "expression to evaluate, must return a data frame or a Promise"
+            },
+            "transforms": {
+              "$ref": "#/definitions/transforms"
+            }
+          }
+        }
+      ]
+    },
+    "curve": {
+      "type": "string",
+      "description": "curve type for line and area charts",
+      "default": "natural",
+      "enum": [
+        "basis",
+        "basisClosed",
+        "basisOpen",
+        "bundle",
+        "cardinal",
+        "cardinalClosed",
+        "cardinalOpen",
+        "catmullRom",
+        "catmullRomClosed",
+        "catmullRomOpen",
+        "linear",
+        "linearClosed",
+        "monotoneX",
+        "monotoneY",
+        "natural",
+        "step",
+        "stepAfter",
+        "stepBefore"
+      ]
+    },
+    "stack": {
+      "type": "object",
+      "properties": {
+        "order": {
+          "type": "string",
+          "enum": [
+            "ascending",
+            "descending",
+            "insideOut",
+            "none",
+            "reverse"
+          ],
+          "default": "none"
+        },
+        "offset": {
+          "type": "string",
+          "enum": [
+            "diverging",
+            "expand",
+            "none",
+            "silhouette",
+            "wiggle"
+          ],
+          "default": "none"
+        }
+      }
+    },
+    "barchart": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/data"
+        },
+        "x": {
+          "type": "string",
+          "description": "data accessor for the x coordinate",
+          "default": "x"
+        },
+        "y": {
+          "type": "string",
+          "description": "data accessor for the y coordinate",
+          "default": "y"
+        },
+        "orientation": {
+          "type": "string",
+          "enum": [
+            "vertical",
+            "orizontal"
+          ],
+          "default": "vertical"
+        },
+        "groupby": {
+          "type": "string",
+          "description": "Group data by a given dimension"
+        },
+        "stack": {
+          "$ref": "#/definitions/stack"
+        },
+        "waffle": {
+          "type": "boolean",
+          "description": "ability to draw a waffle chart"
+        },
+        "normalize": {
+          "type": "boolean"
+        },
+        "lineWidth": {
+          "type": "number",
+          "default": 1
+        },
+        "cornerRadius": {
+          "type": "number",
+          "default": 0,
+          "minimum": 0,
+          "description": "corner radius in pixels"
+        },
+        "axisX": {
+          "type": "boolean",
+          "description": "draw x axis",
+          "default": false
+        },
+        "axisY": {
+          "type": "boolean",
+          "description": "draw y axis",
+          "default": false
+        },
+        "scaleY": {
+          "type": "string",
+          "description": "scale for the y coordinate",
+          "enum": [
+            "linear",
+            "log",
+            "time"
+          ],
+          "default": "linear"
+        },
+        "sortby": {
+          "type": "string",
+          "enum": [
+            "x",
+            "y"
+          ]
+        },
+        "label": {
+          "type": "string",
+          "description": "expression for label text"
+        },
+        "scaleX": {
+          "type": "object",
+          "default": {
+            "type": "band",
+            "padding": 0.2
+          },
+          "properties": {
+            "type": {
+              "type": "string"
+            },
+            "padding": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    },
+    "linechart": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/data"
+        },
+        "lineWidth": {
+          "type": "number",
+          "default": 1
+        },
+        "curve": {
+          "$ref": "#/definitions/curve"
+        },
+        "x": {
+          "type": "string",
+          "description": "data accessor for the x coordinate",
+          "default": "x"
+        },
+        "y": {
+          "type": "string",
+          "description": "data accessor for the y coordinate",
+          "default": "y"
+        },
+        "scaleX": {
+          "type": "string",
+          "description": "scale for the x coordinate",
+          "enum": [
+            "linear",
+            "log",
+            "time"
+          ],
+          "default": "linear"
+        },
+        "scaleY": {
+          "type": "string",
+          "description": "scale for the y coordinate",
+          "enum": [
+            "linear",
+            "log",
+            "time"
+          ],
+          "default": "linear"
+        },
+        "groupby": {
+          "type": "string",
+          "description": "Group data by a given dimension"
+        },
+        "axisX": {
+          "type": "boolean",
+          "description": "draw x axis",
+          "default": false
+        },
+        "axisY": {
+          "type": "boolean",
+          "description": "draw y axis",
+          "default": false
+        }
+      }
+    },
+    "areachart": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/data"
+        },
+        "lineWidth": {
+          "type": "number",
+          "default": 1
+        },
+        "curve": {
+          "$ref": "#/definitions/curve"
+        },
+        "x": {
+          "type": "string",
+          "description": "data accessor for the x coordinate",
+          "default": "x"
+        },
+        "y": {
+          "type": "string",
+          "description": "data accessor for the y coordinate",
+          "default": "y"
+        },
+        "scaleX": {
+          "type": "string",
+          "description": "scale for the x coordinate",
+          "enum": [
+            "linear",
+            "log",
+            "time"
+          ],
+          "default": "linear"
+        },
+        "scaleY": {
+          "type": "string",
+          "description": "scale for the y coordinate",
+          "enum": [
+            "linear",
+            "log",
+            "time"
+          ],
+          "default": "linear"
+        },
+        "groupby": {
+          "type": "string",
+          "description": "Group data by a given dimension"
+        },
+        "axisX": {
+          "type": "boolean",
+          "description": "draw x axis",
+          "default": false
+        },
+        "axisY": {
+          "type": "boolean",
+          "description": "draw y axis",
+          "default": false
+        },
+        "stack": {
+          "$ref": "#/definitions/stack"
+        },
+        "gradient": {
+          "type": "boolean",
+          "description": "Gradient to zero opacity",
+          "default": false
+        },
+        "lineDarken": {
+          "type": "number",
+          "description": "Darken line color",
+          "minimum": 0,
+          "maximum": 1,
+          "default": 0.2
+        }
+      }
+    },
+    "piechart": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/data"
+        },
+        "field": {
+          "type": "string",
+          "default": "data"
+        },
+        "label": {
+          "type": "string",
+          "default": "label"
+        },
+        "startAngle": {
+          "description": "Overall start angle of the pie in degree",
+          "default": 0,
+          "type": "number"
+        },
+        "endAngle": {
+          "description": "Overall end angle of the pie in degree",
+          "default": 360,
+          "type": "number"
+        },
+        "sort": {
+          "type": "string",
+          "description": "sort data before visualizing",
+          "enum": [
+            "none",
+            "ascending",
+            "descending"
+          ],
+          "default": "none"
+        },
+        "innerRadius": {
+          "description": "Inner radius for donuts",
+          "default": 0,
+          "oneOf": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "padAngle": {
+          "description": "Angular separation between each adjacent arcs in degree",
+          "default": 0,
+          "type": "number",
+          "minimum": 0
+        },
+        "cornerRadius": {
+          "type": "number",
+          "default": 0,
+          "minimum": 0,
+          "description": "corner radius in pixels"
+        },
+        "lineWidth": {
+          "type": "number",
+          "default": 1
+        },
+        "center": {
+          "type": "string",
+          "description": "Expression which display information in the center of the pie chart. Should be used with innerRadius greater than 0"
+        },
+        "centerFont": {
+          "description": "Center text font size and family",
+          "$ref": "#/definitions/font"
+        }
+      }
+    },
+    "geochart": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/data"
+        },
+        "geometry": {
+          "type": "string",
+          "description": "The geometry to visualize from the topojson geometry objects",
+          "default": "countries"
+        },
+        "geoKey": {
+          "type": "string",
+          "default": "id"
+        },
+        "dataKey": {
+          "type": "string",
+          "default": "id"
+        },
+        "dataLabelKey": {
+          "type": "string",
+          "default": "label"
+        },
+        "dataValueKey": {
+          "type": "string",
+          "default": "value"
+        },
+        "neighbors": {
+          "type": "boolean",
+          "default": false
+        },
+        "buckets": {
+          "type": "number",
+          "default": 10
+        },
+        "choroplethScale": {
+          "type": "string",
+          "default": "quantile"
+        },
+        "boundGeometry": {
+          "type": "string"
+        },
+        "boundScaleFactor": {
+          "type": "number",
+          "default": 0.9
+        },
+        "projection": {
+          "type": "string",
+          "default": "kavrayskiy7"
+        },
+        "graticule": {
+          "type": "boolean",
+          "default": false
+        },
+        "leaflet": {
+          "type": "boolean",
+          "default": false
+        },
+        "scale": {
+          "type": "number",
+          "default": 200
+        }
+      }
+    },
+    "tabular": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/data"
+        },
+        "columns": {
+          "type": "array"
+        },
+        "tableClass": {
+          "type": "string",
+          "default": "table"
+        },
+        "tableHeadClass": {
+          "type": "string",
+          "default": "head"
+        },
+        "tableBodyClass": {
+          "type": "string",
+          "default": "body"
+        }
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

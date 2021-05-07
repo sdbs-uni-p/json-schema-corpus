@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "id_personnel": {
+      "type": "string"
+    },
+    "id_cours": {
+      "type": "integer"
+    },
+    "id": {
+      "type": "integer"
+    },
+    "id_justificatif": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "id_personnel",
+    "id_cours",
+    "id_etat"
+  ]
+}

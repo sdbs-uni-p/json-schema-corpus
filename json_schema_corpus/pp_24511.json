@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://atomicbits.io/raml10/zoo.json",
+  "type": "object",
+  "description": "a zoo",
+  "properties": {
+    "name": {
+      "required": true,
+      "type": "string"
+    },
+    "animals": {
+      "type": "array",
+      "items": {
+        "$ref": "animal.json"
+      }
+    },
+    "lunchtime": {
+      "type": "time-only",
+      "example": "12:30:00"
+    },
+    "fireworks": {
+      "type": "datetime-only",
+      "example": "2015-07-04T21:00:00"
+    },
+    "created": {
+      "type": "datetime",
+      "format": "rfc3339",
+      "example": "2016-02-28T16:41:41.090Z"
+    },
+    "If-Modified-Since": {
+      "type": "datetime",
+      "format": "rfc2616",
+      "example": "Sun, 28 Feb 2016 16:41:41 GMT",
+      "required": false
+    },
+    "visitors": {
+      "$ref": "http://atomicbits.io/raml10/paged-list.json#",
+      "genericTypes": [
+        {
+          "$ref": "http://atomicbits.io/raml10/user.json"
+        },
+        {
+          "type": "integer"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Event source",
+  "type": "object",
+  "properties": {
+    "name": {
+      "description": "A name to identify the event source.",
+      "type": "string"
+    },
+    "organizationId": {
+      "description": "The organization.",
+      "type": "integer"
+    },
+    "eventSourceTemplateId": {
+      "description": "The event source template to instantiate.",
+      "type": "integer"
+    },
+    "public": {
+      "description": "Make the event source available to everybody.",
+      "type": "boolean"
+    },
+    "description": {
+      "description": "A human description of the event source.",
+      "type": "string"
+    },
+    "configuration": {
+      "description": "A valid JSON object.",
+      "type": "json"
+    }
+  },
+  "required": [
+    "name",
+    "organizationId",
+    "eventSourceTemplateId",
+    "configuration"
+  ]
+}

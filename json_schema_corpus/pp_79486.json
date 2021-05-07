@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "consumingAppInstalls": {
+      "type": "array",
+      "items": {
+        "$ref": "routeBase.json#/definitions/installDetail"
+      }
+    },
+    "consumedApi": {
+      "$ref": "routeBase.json#/definitions/consumedApi"
+    },
+    "producingAppInstall": {
+      "$ref": "routeBase.json#/definitions/installDetail"
+    }
+  }
+}

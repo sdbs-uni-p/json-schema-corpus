@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/hyper-schema#",
+  "$id": "",
+  "title": "Response to Scheduling Block instance DELETE request",
+  "type": "object",
+  "definitions": {},
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "message"
+  ],
+  "links": [
+    {
+      "description": "link to the List of Scheduling Block instances",
+      "rel": "self",
+      "href": "scheduling_blocks"
+    }
+  ]
+}

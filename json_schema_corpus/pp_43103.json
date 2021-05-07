@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "request_post_user_account_1",
+  "type": "object",
+  "properties": {
+    "login": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "login",
+    "email"
+  ],
+  "additionalProperties": false
+}

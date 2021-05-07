@@ -1,0 +1,67 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/Enfernuz/quik-lua-rpc/json/schema/getCandlesByIndex.result.scheme.json",
+  "title": "\u0420\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442 \u043f\u0440\u043e\u0446\u0435\u0434\u0443\u0440\u044b getCandlesByIndex",
+  "description": "\u0421\u0445\u0435\u043c\u0430 \u043e\u0431\u044a\u0435\u043a\u0442\u0430 \u0440\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442\u0430 \u0443\u0434\u0430\u043b\u0451\u043d\u043d\u043e\u0433\u043e \u0432\u044b\u0437\u043e\u0432\u0430 \u043f\u0440\u043e\u0446\u0435\u0434\u0443\u0440\u044b getCandlesByIndex",
+  "type": "object",
+  "properties": {
+    "t": {
+      "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 t",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "open": {
+            "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 open",
+            "type": "string"
+          },
+          "close": {
+            "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 close",
+            "type": "string"
+          },
+          "high": {
+            "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 high",
+            "type": "string"
+          },
+          "low": {
+            "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 low",
+            "type": "string"
+          },
+          "volume": {
+            "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 volume",
+            "type": "string"
+          },
+          "datetime": {
+            "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 datetime",
+            "$ref": "https://github.com/Enfernuz/quik-lua-rpc/json/schema/QluaStructures.scheme.json#/definitions/DateTimeEntry"
+          },
+          "does_exist": {
+            "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 does_exist",
+            "type": "number"
+          }
+        },
+        "required": [
+          "open",
+          "close",
+          "high",
+          "low",
+          "volume"
+        ]
+      }
+    },
+    "n": {
+      "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 n",
+      "type": "number"
+    },
+    "l": {
+      "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 l",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "t",
+    "n",
+    "l"
+  ]
+}

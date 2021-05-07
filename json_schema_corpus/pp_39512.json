@@ -1,0 +1,39 @@
+{
+  "id": "https://raw.githubusercontent.com/eviratec/schema/master/v1/service/group.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "schema for a service group",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "label",
+    "members",
+    "date_created"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "label": {
+      "type": "string",
+      "description": "E.g: WordPress Development"
+    },
+    "tag_line": {
+      "type": "string",
+      "description": "E.g: Plugins, themes, and cloud"
+    },
+    "members": {
+      "type": "array",
+      "items": {
+        "$ref": "https://raw.githubusercontent.com/eviratec/schema/master/v1/service.json#"
+      },
+      "description": "Array of services in the group",
+      "uniqueItems": true
+    },
+    "date_created": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

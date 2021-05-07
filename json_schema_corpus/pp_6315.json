@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "endpoint": "/sequence",
+  "description": "testing the sending of params",
+  "methods": [
+    "get"
+  ],
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "awesome": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "name",
+    "awesome"
+  ]
+}

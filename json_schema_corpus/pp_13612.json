@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "#context",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "registration": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "instructor": {
+      "oneOf": [
+        {
+          "$ref": "#agent"
+        },
+        {
+          "$ref": "#group"
+        }
+      ]
+    },
+    "team": {
+      "allOf": [
+        {
+          "$ref": "#group"
+        }
+      ]
+    },
+    "contextActivities": {
+      "$ref": "#contextactivities"
+    },
+    "revision": {
+      "type": "string"
+    },
+    "platform": {
+      "type": "string"
+    },
+    "language": {
+      "type": "string",
+      "format": "langtag"
+    },
+    "statement": {
+      "$ref": "#statementref"
+    },
+    "extensions": {
+      "$ref": "#extensions"
+    }
+  }
+}

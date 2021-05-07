@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "custom_format_object",
+  "description": "custom format test object",
+  "id": "custom_format_object.json",
+  "type": "object",
+  "required": [
+    "custom_format_string"
+  ],
+  "properties": {
+    "custom_format_string": {
+      "$ref": "custom_format_string.json"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "status",
+  "description": "Status Information",
+  "type": "object",
+  "properties": {
+    "status": {
+      "description": "Is the App running?",
+      "type": "string"
+    }
+  },
+  "required": [
+    "status"
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "select-object-path/select/out",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "licence": {
+      "type": "string",
+      "description": "licence code"
+    },
+    "donate": {
+      "type": "array",
+      "description": "donate urls",
+      "minItems": 2,
+      "maxItems": 2,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "https://pledgie.com/campaigns/28037",
+          "https://gratipay.com/aminassian"
+        ]
+      }
+    },
+    "path": {
+      "type": "array",
+      "description": "path result",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "licence",
+    "donate",
+    "path"
+  ]
+}

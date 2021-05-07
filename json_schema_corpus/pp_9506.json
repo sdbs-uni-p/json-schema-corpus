@@ -1,0 +1,142 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "id": "/schemata/custom_field_answer_number",
+  "title": "Custom Field Answer (Number)",
+  "description": "A **custom field answer** stores arbitrary data about an applicant, answering the question posed by a **custom field**.",
+  "links": [
+    {
+      "description": "Display an existing custom field answer.",
+      "href": "/api/v1/user_identities/:user_identity_id/programs/:program_id/applicants_by_cas_id/:applicant_cas_id/custom_field_answers/:custom_field_id",
+      "method": "GET",
+      "rel": "self",
+      "title": "Show",
+      "http_header": {
+        "x-api-key": "0123456789abcdef0123456789abcdef"
+      }
+    },
+    {
+      "description": "Store a **custom field** value.  If a value has not previously been stored, this *creates* an answer.  Otherwise, this *updates* an existing answer.",
+      "href": "/api/v1/user_identities/:user_identity_id/programs/:program_id/applicants_by_cas_id/:applicant_cas_id/custom_field_answers/:custom_field_id",
+      "method": "PUT",
+      "rel": "update",
+      "title": "Store",
+      "http_header": {
+        "x-api-key": "0123456789abcdef0123456789abcdef"
+      },
+      "schema": {
+        "type": "object",
+        "properties": {
+          "custom_field_answer": {
+            "type": "object",
+            "required": [
+              "field_type",
+              "value"
+            ],
+            "properties": {
+              "field_type": {
+                "type": "string",
+                "description": "Type of data that the **custom field** stores.",
+                "enum": [
+                  "number"
+                ],
+                "example": "number"
+              },
+              "value": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "description": "The numeric value to be stored as an answer to the **custom field**.",
+                "example": 11.0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "description": "Clear an existing custom field answer.  (Same semantics as `PUT` with `\"value\": null`.)  This is a \"soft delete\" that tracks who made the change.",
+      "href": "/api/v1/user_identities/:user_identity_id/programs/:program_id/applicants_by_cas_id/:applicant_cas_id/custom_field_answers/:custom_field_id",
+      "method": "DELETE",
+      "rel": "destroy",
+      "title": "Destroy",
+      "http_header": {
+        "x-api-key": "0123456789abcdef0123456789abcdef"
+      },
+      "targetSchema": {
+        "type": "object",
+        "properties": {
+          "custom_field_answer": {
+            "type": "object",
+            "properties": {
+              "href": {
+                "type": "string",
+                "pattern": "/api/v1/user_identities/\\d+/programs/\\d+/applicants_by_cas_id/\\d+/custom_field_answers/\\d+",
+                "example": "/api/v1/user_identities/1/programs/42023191739237/applicants_by_cas_id/3/custom_field_answers/4"
+              },
+              "custom_field_id": {
+                "type": "integer",
+                "example": 4
+              },
+              "label": {
+                "type": "string",
+                "example": "Age at admittance"
+              },
+              "field_type": {
+                "type": "string",
+                "enum": [
+                  "number"
+                ],
+                "example": "number"
+              },
+              "value": {
+                "type": "null",
+                "example": null
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "type": "object",
+  "properties": {
+    "custom_field_answer": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "Hypertext reference to this resource.",
+          "pattern": "/api/v1/user_identities/\\d+/programs/\\d+/applicants_by_cas_id/\\d+/custom_field_answers/\\d+",
+          "example": "/api/v1/user_identities/1/programs/42023191739237/applicants_by_cas_id/3/custom_field_answers/4"
+        },
+        "custom_field_id": {
+          "type": "integer",
+          "description": "Unique identifier of the **custom field** that this answers.",
+          "example": 4
+        },
+        "label": {
+          "type": "string",
+          "description": "Human-readable label of the **custom field** that this answers.",
+          "example": "Age at admittance"
+        },
+        "field_type": {
+          "type": "string",
+          "description": "Type of data that the **custom field** stores.",
+          "enum": [
+            "number"
+          ],
+          "example": "number"
+        },
+        "value": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "The numeric value stored as an answer to the **custom field**.",
+          "example": 11.0
+        }
+      }
+    }
+  }
+}

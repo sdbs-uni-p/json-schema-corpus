@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Schema for the data returned by the users endpoint",
+  "type": "object",
+  "properties": {
+    "username": {
+      "type": "string"
+    },
+    "projects": {
+      "type": "array",
+      "items": {
+        "$ref": "#/schemas/project.json"
+      }
+    },
+    "files": {
+      "type": "array",
+      "items": {
+        "$ref": "#/schemas/file.json"
+      }
+    }
+  },
+  "required": [
+    "username"
+  ]
+}

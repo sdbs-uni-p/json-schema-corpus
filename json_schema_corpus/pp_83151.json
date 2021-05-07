@@ -1,0 +1,189 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "dockerfile_reference_schema.json",
+  "type": "object",
+  "patternProperties": {
+    "^from": {
+      "$ref": "#/definitions/from"
+    }
+  },
+  "properties": {
+    "#": {
+      "description": "File comment.",
+      "type": "string"
+    },
+    "run": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "cmd": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "labels": {
+      "$ref": "#/definitions/labels"
+    },
+    "expose": {
+      "type": "array",
+      "items": {
+        "type": [
+          "string",
+          "number"
+        ],
+        "format": "expose"
+      },
+      "uniqueItems": true
+    },
+    "env": {
+      "$ref": "#/definitions/list_or_dict"
+    },
+    "add": {
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "type": "object"
+        }
+      ]
+    },
+    "copy": {
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "type": "object"
+        }
+      ]
+    },
+    "entrypoint": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "volumes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "user": {
+      "type": "string"
+    },
+    "working_dir": {
+      "type": "string"
+    },
+    "args": {
+      "$ref": "#/definitions/list_or_dict"
+    },
+    "stopsignal": {
+      "type": "string"
+    },
+    "shell": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "comment": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "from"
+  ],
+  "definitions": {
+    "from": {
+      "type": "object",
+      "properties": {
+        "baseImage": {
+          "type": "string"
+        },
+        "alias": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "baseImage"
+      ]
+    },
+    "labels": {
+      "oneOf": [
+        {
+          "type": "object",
+          "patternProperties": {
+            ".+": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      ]
+    },
+    "list_or_dict": {
+      "oneOf": [
+        {
+          "type": "object",
+          "patternProperties": {
+            ".+": {
+              "type": [
+                "string",
+                "number",
+                "null"
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      ]
+    }
+  }
+}

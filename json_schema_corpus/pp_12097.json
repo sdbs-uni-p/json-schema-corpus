@@ -1,0 +1,84 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {},
+  "id": "http://example.com/example.json",
+  "properties": {
+    "headerInformation": {
+      "properties": {
+        "constructionTypes": {
+          "description": "Names of constructions on which wage determination applied ",
+          "type": "string"
+        },
+        "counties": {
+          "description": "Names of counties in which wage determination applicable",
+          "type": "string"
+        },
+        "state": {
+          "description": "State in which wages are applied ",
+          "type": "string"
+        },
+        "wageDeterminationCode": {
+          "description": "Defines code which is combination of effective year and State code",
+          "pattern": "",
+          "type": "string"
+        }
+      },
+      "required": [
+        "state",
+        "constructionTypes",
+        "counties",
+        "wageDeterminationCode"
+      ],
+      "type": "object"
+    },
+    "modifications": {
+      "items": {
+        "description": "List of modifications of the current wage determination. ",
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "wageGroups": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "occupations": {
+            "items": {
+              "properties": {
+                "fringe": {
+                  "description": "Fringe of the occupation ",
+                  "type": "string"
+                },
+                "isGroup": {
+                  "description": "Defines if the current occupation contains sub occupations ",
+                  "type": "boolean"
+                },
+                "rate": {
+                  "description": "Rate of the occupation",
+                  "type": "string"
+                },
+                "title": {
+                  "description": "Name of the occupation ",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "wageGroupCode": {
+            "description": "Unique wage group which is combination of effective date of the wage.",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "modifications",
+    "headerInformation"
+  ],
+  "type": "object"
+}

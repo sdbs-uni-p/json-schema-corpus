@@ -1,0 +1,734 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "id": "http://schema.cardwirth.org/item_card#",
+  "required": true,
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "integer",
+      "minimum": 0,
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    },
+    "image": {
+      "type": "string",
+      "format": "uri",
+      "required": true
+    },
+    "abilityAptitude": {
+      "required": true,
+      "enum": [
+        "dex",
+        "agl",
+        "int",
+        "str",
+        "vit",
+        "min"
+      ]
+    },
+    "personalAptitude": {
+      "required": true,
+      "enum": [
+        "aggressiveness",
+        "gentleness",
+        "cheerfulness",
+        "depressiveness",
+        "braveness",
+        "timidness",
+        "carefulness",
+        "boldness",
+        "craftiness",
+        "truthfulness"
+      ]
+    },
+    "ignoreSilence": {
+      "type": "boolean",
+      "required": true
+    },
+    "targetAll": {
+      "type": "boolean",
+      "required": true
+    },
+    "target": {
+      "required": true,
+      "enum": [
+        "none",
+        "user",
+        "party",
+        "enemies",
+        "partyAndEnemies"
+      ]
+    },
+    "phenomenonType": {
+      "required": true,
+      "enum": [
+        "physical",
+        "magical",
+        "magicalPhysical",
+        "physicalMagical",
+        "non"
+      ]
+    },
+    "reactionType": {
+      "required": true,
+      "enum": [
+        "evasion",
+        "resistance",
+        "ineluctability"
+      ]
+    },
+    "successRate": {
+      "type": "integer",
+      "maximum": 5,
+      "minimum": -5,
+      "required": true
+    },
+    "animationType": {
+      "required": true,
+      "enum": [
+        "none",
+        "turnover",
+        "lateralVibration",
+        "longitudinalVibration"
+      ]
+    },
+    "evasionBonus": {
+      "type": "integer",
+      "maximum": 10,
+      "minimum": -10,
+      "required": true
+    },
+    "resistanceBonus": {
+      "type": "integer",
+      "maximum": 10,
+      "minimum": -10,
+      "required": true
+    },
+    "defenseBonus": {
+      "type": "integer",
+      "maximum": 10,
+      "minimum": -10,
+      "required": true
+    },
+    "soundBefore": {
+      "type": "string",
+      "format": "uri",
+      "required": true
+    },
+    "soundAfter": {
+      "type": "string",
+      "format": "uri",
+      "required": true
+    },
+    "keycodes": {
+      "type": "array",
+      "required": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "rarity": {
+      "required": true,
+      "enum": [
+        "common",
+        "rare",
+        "premium"
+      ]
+    },
+    "scenario": {
+      "type": "string",
+      "required": true
+    },
+    "author": {
+      "type": "string",
+      "required": true
+    },
+    "reserved": {
+      "type": "boolean",
+      "required": true
+    },
+    "effects": {
+      "type": "array",
+      "required": true,
+      "additionalItems": false,
+      "items": {
+        "type": "object",
+        "id": "#effect",
+        "required": true,
+        "additionalProperties": false,
+        "properties": {
+          "element": {
+            "required": true,
+            "enum": [
+              "non",
+              "body",
+              "mind",
+              "holy",
+              "spell",
+              "fire",
+              "cold"
+            ]
+          },
+          "type": {
+            "required": true,
+            "enum": [
+              "heal",
+              "damage",
+              "absorb",
+              "paralyze",
+              "disParalyze",
+              "poison",
+              "disPoison",
+              "recoverSkillPoint",
+              "loseSkillPoint",
+              "sleep",
+              "confuse",
+              "overheat",
+              "encourage",
+              "panic",
+              "relaxMind",
+              "bind",
+              "disBind",
+              "silence",
+              "disSilence",
+              "reveal",
+              "conceal",
+              "enableMagicproof",
+              "disableMagicproof",
+              "enhanceActionLevel",
+              "enhanceEvasion",
+              "enhanceResistance",
+              "enhanceDefense",
+              "vanishTarget",
+              "vanishCards",
+              "vanishBeasts",
+              "dealAttackCard",
+              "dealPowerfulAttackCard",
+              "dealCriticalAttackCard",
+              "dealFeintCard",
+              "dealDefenseCard",
+              "dealDistanceCard",
+              "dealConfuseCard",
+              "dealSkillCard",
+              "summonBeast"
+            ]
+          },
+          "damageType": {
+            "id": "#damageType",
+            "enum": [
+              "levelRatio",
+              "default",
+              "max"
+            ]
+          },
+          "value": {
+            "type": "integer"
+          },
+          "duration": {
+            "type": "integer"
+          },
+          "beastCards": {
+            "type": "array",
+            "additionalItems": false,
+            "items": {
+              "$ref": "http://schema.cardwirth.org/beast_card"
+            }
+          }
+        }
+      }
+    },
+    "events": {
+      "type": "array",
+      "required": true,
+      "additionalItems": false,
+      "items": {
+        "type": "object",
+        "id": "#simple_event",
+        "required": true,
+        "additionalProperties": false,
+        "properties": {
+          "children": {
+            "type": "array",
+            "required": true,
+            "additionalItems": false,
+            "items": {
+              "id": "#event_element",
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "type": {
+                  "required": true,
+                  "enum": [
+                    "start",
+                    "startLink",
+                    "battle",
+                    "scenarioEnd",
+                    "gameOver",
+                    "scene",
+                    "message",
+                    "music",
+                    "background",
+                    "sound",
+                    "wait",
+                    "effect",
+                    "branchByMemberSelect",
+                    "branchByAbility",
+                    "branchByRandom",
+                    "branchByFlag",
+                    "flag",
+                    "branchBySteps",
+                    "steps",
+                    "branchByFriend",
+                    "branchByItem",
+                    "branchBySkill",
+                    "branchByInformation",
+                    "branchByBeast",
+                    "branchByMoney",
+                    "branchByAchievement",
+                    "friend",
+                    "item",
+                    "skill",
+                    "information",
+                    "beast",
+                    "money",
+                    "achievement",
+                    "friendLoss",
+                    "itemLoss",
+                    "skillLoss",
+                    "informationLoss",
+                    "beastLoss",
+                    "moneyLoss",
+                    "achievementLoss",
+                    "characterMessage",
+                    "stepUp",
+                    "stepDown",
+                    "flagReverse",
+                    "branchByCurrentStep",
+                    "timePassage",
+                    "branchByLevel",
+                    "branchByCharacterState",
+                    "branchByPartyNumber",
+                    "partyShow",
+                    "partyHide",
+                    "effectBreak",
+                    "startCall",
+                    "packageLink",
+                    "packageCall",
+                    "branchByScene",
+                    "branchByBattle",
+                    "branchByCompletedStamp",
+                    "completedStamp",
+                    "completedStampLoss",
+                    "branchByGossip",
+                    "gossip",
+                    "gossipLoss",
+                    "branchByBattleNow",
+                    "backgroundRebuild",
+                    "flagCheck"
+                  ]
+                },
+                "label": {
+                  "type": "string",
+                  "required": true
+                },
+                "children": {
+                  "type": "array",
+                  "required": true,
+                  "additionalItems": false,
+                  "items": {
+                    "$ref": "#event_element"
+                  }
+                },
+                "ref": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "startLabel": {
+                  "type": "string"
+                },
+                "completed": {
+                  "type": "boolean"
+                },
+                "music": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "sound": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "backgrounds": {
+                  "type": "array",
+                  "additionalItems": false,
+                  "items": {
+                    "type": "object",
+                    "id": "#background_image",
+                    "required": true,
+                    "additionalProperties": false,
+                    "properties": {
+                      "top": {
+                        "type": "integer",
+                        "required": true
+                      },
+                      "left": {
+                        "type": "integer",
+                        "required": true
+                      },
+                      "width": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "required": true
+                      },
+                      "height": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "required": true
+                      },
+                      "image": {
+                        "type": "string",
+                        "format": "uri",
+                        "required": true
+                      },
+                      "mask": {
+                        "type": "boolean",
+                        "required": true
+                      },
+                      "flagName": {
+                        "type": "string",
+                        "required": true
+                      }
+                    }
+                  }
+                },
+                "money": {
+                  "type": "integer",
+                  "maximum": 30000,
+                  "minimum": 0
+                },
+                "duration": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "flagName": {
+                  "type": "string"
+                },
+                "flag": {
+                  "type": "boolean"
+                },
+                "stepsName": {
+                  "type": "string"
+                },
+                "step": {
+                  "type": "integer",
+                  "maximum": 9,
+                  "minimum": 0
+                },
+                "completedStamp": {
+                  "type": "string"
+                },
+                "gossip": {
+                  "type": "string"
+                },
+                "achievement": {
+                  "type": "string"
+                },
+                "achievementScore": {
+                  "type": "integer"
+                },
+                "number": {
+                  "type": "integer"
+                },
+                "targetScope": {
+                  "required": false,
+                  "enum": [
+                    "selected",
+                    "random",
+                    "party",
+                    "inventory",
+                    "partyAndInventory",
+                    "all"
+                  ]
+                },
+                "image": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "message": {
+                  "type": "string"
+                },
+                "messages": {
+                  "type": "array",
+                  "additionalItems": false,
+                  "items": {
+                    "type": "object",
+                    "required": true,
+                    "properties": {
+                      "achievements": {
+                        "type": "array",
+                        "required": true,
+                        "additionalItems": false,
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "message": {
+                        "type": "string",
+                        "required": true
+                      }
+                    }
+                  }
+                },
+                "probability": {
+                  "type": "integer",
+                  "maximum": 99,
+                  "minimum": 1
+                },
+                "useAverage": {
+                  "type": "boolean"
+                },
+                "characterState": {
+                  "required": false,
+                  "enum": [
+                    "active",
+                    "inactive",
+                    "alive",
+                    "dead",
+                    "fine",
+                    "injured",
+                    "heavyInjured",
+                    "unconscious",
+                    "poison",
+                    "sleep",
+                    "bind",
+                    "paralyzed"
+                  ]
+                },
+                "targetAll": {
+                  "type": "boolean"
+                },
+                "random": {
+                  "type": "boolean"
+                },
+                "value": {
+                  "type": "integer"
+                },
+                "abilityAptitude": {
+                  "required": false,
+                  "enum": [
+                    "dex",
+                    "agl",
+                    "int",
+                    "str",
+                    "vit",
+                    "min"
+                  ]
+                },
+                "personalAptitude": {
+                  "required": false,
+                  "enum": [
+                    "aggressiveness",
+                    "gentleness",
+                    "cheerfulness",
+                    "depressiveness",
+                    "braveness",
+                    "timidness",
+                    "carefulness",
+                    "boldness",
+                    "craftiness",
+                    "truthfulness"
+                  ]
+                },
+                "level": {
+                  "type": "integer"
+                },
+                "target": {
+                  "required": false,
+                  "enum": [
+                    "selected",
+                    "random",
+                    "unselected",
+                    "selectedIgnoreSleep",
+                    "randomIgnoreSleep",
+                    "partyIgnoreSleep",
+                    "party"
+                  ]
+                },
+                "phenomenonType": {
+                  "required": false,
+                  "enum": [
+                    "physical",
+                    "magical",
+                    "magicalPhysical",
+                    "physicalMagical",
+                    "non"
+                  ]
+                },
+                "reactionType": {
+                  "required": false,
+                  "enum": [
+                    "evasion",
+                    "resistance",
+                    "ineluctability"
+                  ]
+                },
+                "successRate": {
+                  "type": "integer",
+                  "maximum": 5,
+                  "minimum": -5
+                },
+                "animationType": {
+                  "required": false,
+                  "enum": [
+                    "none",
+                    "turnover",
+                    "lateralVibration",
+                    "longitudinalVibration"
+                  ]
+                },
+                "effects": {
+                  "type": "array",
+                  "additionalItems": false,
+                  "items": {
+                    "type": "object",
+                    "id": "#effect",
+                    "required": true,
+                    "additionalProperties": false,
+                    "properties": {
+                      "element": {
+                        "required": true,
+                        "enum": [
+                          "non",
+                          "body",
+                          "mind",
+                          "holy",
+                          "spell",
+                          "fire",
+                          "cold"
+                        ]
+                      },
+                      "type": {
+                        "required": true,
+                        "enum": [
+                          "heal",
+                          "damage",
+                          "absorb",
+                          "paralyze",
+                          "disParalyze",
+                          "poison",
+                          "disPoison",
+                          "recoverSkillPoint",
+                          "loseSkillPoint",
+                          "sleep",
+                          "confuse",
+                          "overheat",
+                          "encourage",
+                          "panic",
+                          "relaxMind",
+                          "bind",
+                          "disBind",
+                          "silence",
+                          "disSilence",
+                          "reveal",
+                          "conceal",
+                          "enableMagicproof",
+                          "disableMagicproof",
+                          "enhanceActionLevel",
+                          "enhanceEvasion",
+                          "enhanceResistance",
+                          "enhanceDefense",
+                          "vanishTarget",
+                          "vanishCards",
+                          "vanishBeasts",
+                          "dealAttackCard",
+                          "dealPowerfulAttackCard",
+                          "dealCriticalAttackCard",
+                          "dealFeintCard",
+                          "dealDefenseCard",
+                          "dealDistanceCard",
+                          "dealConfuseCard",
+                          "dealSkillCard",
+                          "summonBeast"
+                        ]
+                      },
+                      "damageType": {
+                        "id": "#damageType",
+                        "enum": [
+                          "levelRatio",
+                          "default",
+                          "max"
+                        ]
+                      },
+                      "value": {
+                        "type": "integer"
+                      },
+                      "duration": {
+                        "type": "integer"
+                      },
+                      "beastCards": {
+                        "type": "array",
+                        "additionalItems": false,
+                        "items": {
+                          "$ref": "http://schema.cardwirth.org/beast_card"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "type": {
+      "enum": [
+        "itemCard"
+      ],
+      "required": true
+    },
+    "usageLimit": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 10,
+      "required": true
+    },
+    "usageLimitMax": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 10,
+      "required": true
+    },
+    "price": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 30000,
+      "required": true
+    },
+    "evasionBonusAlways": {
+      "type": "integer",
+      "maximum": 10,
+      "minimum": -10,
+      "required": true
+    },
+    "resistanceBonusAlways": {
+      "type": "integer",
+      "maximum": 10,
+      "minimum": -10,
+      "required": true
+    },
+    "defenseBonusAlways": {
+      "type": "integer",
+      "maximum": 10,
+      "minimum": -10,
+      "required": true
+    }
+  }
+}

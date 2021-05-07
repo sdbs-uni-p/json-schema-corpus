@@ -1,0 +1,9 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "uuid",
+  "description": "uuid",
+  "type": "string",
+  "format": "uuid",
+  "minLength": 36,
+  "maxLength": 36
+}

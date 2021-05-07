@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "description": "Holy bible.",
+  "$linkedData": {
+    "books": {
+      "schema": "book",
+      "type": "collection",
+      "path": [
+        "/bibles",
+        "/{bibleId}",
+        "/books"
+      ]
+    }
+  },
+  "properties": {
+    "bibleId": {
+      "type": "integer",
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "language": {
+      "type": "string",
+      "required": true
+    },
+    "url": {
+      "type": "string",
+      "required": false
+    },
+    "edition": {
+      "type": "string",
+      "required": false
+    },
+    "printedSource": {
+      "type": "string",
+      "required": true
+    },
+    "eletronicTranscriptionSource": {
+      "type": "string",
+      "required": false
+    },
+    "eletronicTranscriptionSourceUrl": {
+      "type": "string",
+      "required": false
+    },
+    "copyright": {
+      "type": "string",
+      "required": false
+    }
+  }
+}

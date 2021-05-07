@@ -1,0 +1,42 @@
+{
+  "title": "Cfollow Client Logging JSON Schema",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "properties": {
+    "apiKey": {
+      "description": "API key used by the cfollow client",
+      "type": "string",
+      "required": true
+    },
+    "log": {
+      "description": "An array of log messages",
+      "type": "array",
+      "required": false,
+      "items": {
+        "date": {
+          "description": "ISO-8601 date of event",
+          "type": "string",
+          "required": true
+        },
+        "level": {
+          "description": "Logger level",
+          "type": {
+            "enum": [
+              "DEBUG",
+              "INFO",
+              "WARNING",
+              "ERROR",
+              "CRITICAL"
+            ]
+          },
+          "required": true
+        },
+        "message": {
+          "description": "Event message",
+          "type": "string",
+          "required": true
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "url": {
+      "type": "string",
+      "format": "url",
+      "description": "url of the setup page, if one exists at this level (global, workflow or job)"
+    },
+    "setupRequiredFlag": {
+      "type": "boolean",
+      "description": "true if setup is currently required *and can be performed* at this level (global, workflow or job)"
+    }
+  },
+  "required": [
+    "url",
+    "setupRequiredFlag"
+  ]
+}

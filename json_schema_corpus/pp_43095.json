@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "common_privateCert",
+  "type": "object",
+  "properties": {
+    "modulus": {
+      "$ref": "common_base64"
+    },
+    "exponent": {
+      "$ref": "common_base64"
+    }
+  },
+  "required": [
+    "modulus",
+    "exponent"
+  ],
+  "additionalProperties": false
+}

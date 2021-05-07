@@ -1,0 +1,19 @@
+{
+  "id": "User authentication",
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "emailAddress": {
+      "type": "string",
+      "pattern": "^[^@^\\s]+@[^@^\\.^\\s]+(\\.[^@^\\.^\\s]+)+$"
+    },
+    "password": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "emailAddress",
+    "password"
+  ]
+}

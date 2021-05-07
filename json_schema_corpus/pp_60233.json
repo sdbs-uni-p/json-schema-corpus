@@ -1,0 +1,83 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://jsonschema.net",
+  "required": false,
+  "properties": {
+    "elapse": {
+      "type": "string",
+      "id": "http://jsonschema.net/elapse",
+      "required": false
+    },
+    "err2stdout": {
+      "type": "string",
+      "id": "http://jsonschema.net/err2stdout",
+      "required": false
+    },
+    "exec": {
+      "type": "string",
+      "id": "http://jsonschema.net/exec",
+      "required": false
+    },
+    "group": {
+      "type": "string",
+      "id": "http://jsonschema.net/group",
+      "required": false
+    },
+    "jobDelete": {
+      "type": "string",
+      "id": "http://jsonschema.net/jobDelete",
+      "required": false
+    },
+    "jobScheduler": {
+      "type": "string",
+      "id": "http://jsonschema.net/jobScheduler",
+      "required": false
+    },
+    "jobStatus": {
+      "type": "string",
+      "id": "http://jsonschema.net/jobStatus",
+      "required": false
+    },
+    "jobSubmit": {
+      "type": "string",
+      "id": "http://jsonschema.net/jobSubmit",
+      "required": false
+    },
+    "memory": {
+      "type": "string",
+      "id": "http://jsonschema.net/memory",
+      "required": false
+    },
+    "mpiexec": {
+      "type": "string",
+      "id": "http://jsonschema.net/mpiexec",
+      "required": false
+    },
+    "node": {
+      "type": "string",
+      "id": "http://jsonschema.net/node",
+      "required": false
+    },
+    "prefix": {
+      "type": "string",
+      "id": "http://jsonschema.net/prefix",
+      "required": false
+    },
+    "process": {
+      "type": "string",
+      "id": "http://jsonschema.net/process",
+      "required": false
+    },
+    "queue": {
+      "type": "string",
+      "id": "http://jsonschema.net/queue",
+      "required": false
+    },
+    "thread": {
+      "type": "string",
+      "id": "http://jsonschema.net/thread",
+      "required": false
+    }
+  }
+}

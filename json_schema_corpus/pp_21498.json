@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "properties": {
+    "for_url": {
+      "type": "string",
+      "description": "url parameter indicating the monitored page"
+    },
+    "unique_visitors": {
+      "type": "integer",
+      "description": "number of unique_visitors at this time"
+    }
+  },
+  "title": "Realtime",
+  "type": "object",
+  "required": [
+    "for_url",
+    "unique_visitors"
+  ]
+}

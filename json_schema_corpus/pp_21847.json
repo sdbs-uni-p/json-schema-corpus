@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "required": [
+    "lastTagId",
+    "ids",
+    "dictionary"
+  ],
+  "properties": {
+    "lastTagId": {
+      "type": "integer",
+      "minimum": -1
+    },
+    "ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "dictionary": {
+      "type": "object",
+      "patternProperties": {
+        "^\\d*$": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "mealsserved",
+  "description": "Meals Served",
+  "type": "string",
+  "enum": [
+    "Breakfast",
+    "Brunch",
+    "Dinner",
+    "Late Night",
+    "Lunch"
+  ]
+}

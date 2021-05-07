@@ -1,0 +1,159 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "title": "Group",
+  "description": "Working with MMS Groups",
+  "type": "object",
+  "definitions": {
+    "id": {
+      "description": "Unique identifier",
+      "example": "5196d3628d022db4cbc26d9e",
+      "type": "string"
+    },
+    "name": {
+      "description": "Display name for the group",
+      "example": "My Group",
+      "type": "string"
+    },
+    "hostsCounts": {
+      "description": "The total number of hosts by type. The embedded fields should be self-explanatory.",
+      "type": "object",
+      "properties": {
+        "arbiter": {
+          "example": 1,
+          "type": "integer"
+        },
+        "config": {
+          "example": 1,
+          "type": "integer"
+        },
+        "primary": {
+          "example": 1,
+          "type": "integer"
+        },
+        "secondary": {
+          "example": 1,
+          "type": "integer"
+        },
+        "mongos": {
+          "example": 1,
+          "type": "integer"
+        },
+        "master": {
+          "example": 1,
+          "type": "integer"
+        },
+        "slave": {
+          "example": 1,
+          "type": "integer"
+        }
+      }
+    },
+    "lastActiveAgent": {
+      "description": "Date that a ping was last received from one of the group's monitoring agents.",
+      "example": "2012-01-01T12:00:00Z",
+      "format": "date-time",
+      "type": "string"
+    },
+    "activeAgentCount": {
+      "description": "Number of monitoring agents sending regular pings to MMS.",
+      "example": "1",
+      "type": "integer"
+    },
+    "replicaSetCount": {
+      "description": "Total number of replica sets for this group.",
+      "example": "1",
+      "type": "integer"
+    },
+    "shardCount": {
+      "description": "Total number of shards for this group.",
+      "example": "1",
+      "type": "integer"
+    },
+    "publicApiEnabled": {
+      "description": "Is the Public API enabled for this group? This is a read-only field that will always be true for groups created with the API. Note that for groups created in the MMS UI, the only way to set this flag to true is by enabling the Public API for the group in the Settings tab.",
+      "example": true,
+      "type": "boolean"
+    }
+  },
+  "links": [
+    {
+      "description": "Create a new group.",
+      "href": "/groups",
+      "method": "POST",
+      "rel": "create",
+      "schema": {
+        "$ref": "/schemata/group"
+      },
+      "targetSchema": {
+        "$ref": "/schemata/group"
+      },
+      "title": "Create"
+    },
+    {
+      "description": "Delete an existing group.",
+      "href": "/groups/{(%2Fschemata%2Fgroup%23%2Fdefinitions%2Fid)}",
+      "method": "DELETE",
+      "rel": "destroy",
+      "title": "Delete"
+    },
+    {
+      "description": "Info for existing groups.",
+      "href": "/groups/{(%2Fschemata%2Fgroup%23%2Fdefinitions%2Fid)}",
+      "method": "GET",
+      "rel": "self",
+      "targetSchema": {
+        "$ref": "/schemata/group"
+      },
+      "title": "Info"
+    },
+    {
+      "description": "List existing groups.",
+      "href": "/groups",
+      "method": "GET",
+      "rel": "instances",
+      "targetSchema": {
+        "type": "object",
+        "properties": {
+          "totalCount": {
+            "example": 1,
+            "type": "integer"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "/schemata/group"
+            }
+          }
+        }
+      },
+      "title": "List"
+    }
+  ],
+  "properties": {
+    "id": {
+      "$ref": "/schemata/group#/definitions/id"
+    },
+    "name": {
+      "$ref": "/schemata/group#/definitions/name"
+    },
+    "hostsCounts": {
+      "$ref": "/schemata/group#/definitions/hostsCounts"
+    },
+    "lastActiveAgent": {
+      "$ref": "/schemata/group#/definitions/lastActiveAgent"
+    },
+    "activeAgentCount": {
+      "$ref": "/schemata/group#/definitions/activeAgentCount"
+    },
+    "replicaSetCount": {
+      "$ref": "/schemata/group#/definitions/replicaSetCount"
+    },
+    "shardCount": {
+      "$ref": "/schemata/group#/definitions/shardCount"
+    },
+    "publicApiEnabled": {
+      "$ref": "/schemata/group#/definitions/publicApiEnabled"
+    }
+  },
+  "id": "schemata/group"
+}

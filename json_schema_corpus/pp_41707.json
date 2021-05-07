@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "http://reference.focusnet.eu/schemas/focus-data-sample/v1.0",
+  "title": "FOCUS data sample container",
+  "description": "This object defines the basic structure for storing a flat data array.",
+  "allOf": [
+    {
+      "$ref": "http://reference.focusnet.eu/schemas/focus-object/v1.0#/definitions/metadata"
+    },
+    {
+      "$ref": "#/definitions/content"
+    }
+  ],
+  "definitions": {
+    "content": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "object",
+          "patternProperties": {
+            "^[a-z][a-zA-Z0-9_-]+$": {
+              "$ref": "http://reference.focusnet.eu/schemas/focus-object/v1.0#/definitions/types/any"
+            }
+          },
+          "minProperties": 1,
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "data"
+      ]
+    }
+  }
+}

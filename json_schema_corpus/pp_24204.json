@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "description": "Collection of upload definitions",
+  "properties": {
+    "uploadDefinitions": {
+      "description": "Array of upload definitions",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "uploadDefinition.json"
+      }
+    },
+    "totalRecords": {
+      "description": "Total records in collection",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "uploadDefinitions",
+    "totalRecords"
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "routeEntry": {
+      "id": "#routeEntry",
+      "type": "object",
+      "properties": {
+        "from": {
+          "$ref": "#fromEntry"
+        },
+        "via": {
+          "title": "A list of waypoints that must be visited",
+          "description": "The order of the waypoints will be optimized according to the rules.",
+          "type": "array",
+          "items": {
+            "$ref": "#travelEntry"
+          }
+        },
+        "to": {
+          "title": "The fixed destination for the route",
+          "description": "If given, this destination will always be the last of the route.",
+          "$ref": "#travelEntry"
+        },
+        "avoid": {
+          "title": "Things to avoid when finding a path",
+          "$ref": "#avoidEntry"
+        }
+      },
+      "required": [
+        "from"
+      ]
+    },
+    "fromEntry": {
+      "title": "The start of the route",
+      "description": "This will always be the first step of a route.",
+      "id": "#fromEntry",
+      "type": "object",
+      "properties": {
+        "solarSystems": {
+          "title": "A list of possible solar systems",
+          "description": "Should contain at least one entry.",
+          "$ref": "types.json#solarSystemIdList"
+        }
+      }
+    },
+    "travelEntry": {
+      "id": "#travelEntry",
+      "type": "object",
+      "properties": {
+        "solarSystem": {
+          "title": "A fixed solar system",
+          "$ref": "types.json#solarSystemId"
+        }
+      }
+    },
+    "avoidEntry": {
+      "id": "#avoidEntry",
+      "type": "object",
+      "properties": {
+        "solarSystems": {
+          "title": "A list of solar systems to avoid",
+          "description": "If provided, any solar system listed here will not be used as transit system.",
+          "$ref": "types.json#solarSystemIdList"
+        }
+      }
+    }
+  },
+  "title": "Route Request",
+  "description": "A request for finding a route across the EVE Online universe.",
+  "type": "object",
+  "properties": {
+    "route": {
+      "$ref": "#routeEntry"
+    },
+    "capabilities": {
+      "$ref": "TravelCapabilities.json"
+    },
+    "rules": {
+      "$ref": "TravelRuleset.json"
+    }
+  },
+  "required": [
+    "route",
+    "capabilities"
+  ]
+}

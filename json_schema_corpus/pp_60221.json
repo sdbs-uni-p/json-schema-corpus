@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "A node for cluster process information.",
+  "type": "object",
+  "properties": {
+    "assignedTo": {
+      "type": "string"
+    },
+    "configuration": {
+      "javaType": "com.fasterxml.jackson.databind.JsonNode",
+      "type": "object"
+    }
+  }
+}

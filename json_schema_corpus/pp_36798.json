@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "knx-item": {
+      "type": "object",
+      "properties": {
+        "read": {
+          "type": "string",
+          "pattern": "^\\\\d+/\\\\d+/\\\\d+$"
+        },
+        "write": {
+          "type": "string",
+          "pattern": "^\\\\d+/\\\\d+/\\\\d+$"
+        }
+      },
+      "required": [
+        "read",
+        "write"
+      ]
+    }
+  },
+  "type": "object",
+  "properties": {
+    "uuid": {
+      "type": "string",
+      "pattern": "^[A-F0-9]{8}-[A-F0-9]{4}-[A-F0-9]{4}-[A-F0-9]{12}$"
+    },
+    "knx": {
+      "type": "object",
+      "properties": {
+        "up-down": {
+          "$ref": "#/definitions/knx-item"
+        },
+        "stop": {
+          "$ref": "#/definitions/knx-item"
+        },
+        "position": {
+          "$ref": "#/definitions/knx-item"
+        },
+        "fully-down": {
+          "$ref": "#/definitions/knx-item"
+        },
+        "fully-up": {
+          "$ref": "#/definitions/knx-item"
+        },
+        "direction": {
+          "$ref": "#/definitions/knx-item"
+        }
+      },
+      "required": [
+        "up-down",
+        "stop",
+        "position",
+        "fully-down",
+        "fully-up",
+        "direction"
+      ]
+    }
+  },
+  "required": [
+    "uuid",
+    "knx"
+  ]
+}

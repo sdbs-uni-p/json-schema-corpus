@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Redirect urls",
+  "description": "PayPal redirect urls json schema",
+  "type": "object",
+  "properties": {
+    "return_url": {
+      "description": "The payer is redirected to this URL after approving the payment.",
+      "type": "string",
+      "format": "uri"
+    },
+    "cancel_url": {
+      "description": "The payer is redirected to this URL after canceling the payment.",
+      "type": "string",
+      "format": "uri"
+    }
+  },
+  "required": [
+    "return_url",
+    "cancel_url"
+  ]
+}

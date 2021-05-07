@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Defines the JSON schema used to desribe binary-formatted data",
+  "sample": {
+    "content-type": "image/png",
+    "rest-of-schema": "..."
+  },
+  "allOf": [
+    {
+      "properties": {
+        "content-type": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9-_]+/[a-zA-Z0-9-_]+$"
+        }
+      },
+      "required": []
+    },
+    {
+      "$ref": "http://json-schema.org/draft-04/schema#"
+    }
+  ]
+}

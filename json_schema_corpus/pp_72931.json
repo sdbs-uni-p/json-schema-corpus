@@ -1,0 +1,122 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://judkins.house/apis/k2/v1/awsProviderConfig.json",
+  "$$target": "awsProviderConfig.json",
+  "title": "AWS Provider Configuration",
+  "description": "Describes AWS specific provider configuration.",
+  "properties": {
+    "name": {
+      "description": "The name of the configuration, for use within k2 configurations.",
+      "type": "string"
+    },
+    "kind": {
+      "description": "The type of configuration this object it.",
+      "enum": [
+        "provider"
+      ],
+      "type": "string"
+    },
+    "provider": {
+      "description": "The name of the provider for this provider setting.",
+      "enum": [
+        "aws"
+      ],
+      "type": "string"
+    },
+    "type": {
+      "description": "Type of machine image deployment. For AWS, only cloudinit is supported.",
+      "enum": [
+        "cloudinit"
+      ],
+      "type": "string"
+    },
+    "networkTopology": {
+      "description": "Type of network topology to create, care must be taken as you need pairs of subnets in a private topology.",
+      "enum": [
+        "public",
+        "private"
+      ],
+      "type": "string",
+      "default": "public"
+    },
+    "resourcePrefix": {
+      "description": "Any prefix that should be prepended to resources in AWS to make them easier to identify.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "vpc": {
+      "description": "CIDR for the VPC for the cluster.",
+      "format": "cidr",
+      "type": "string",
+      "default": "10.0.0.0/16"
+    },
+    "existing_vpc": {
+      "$ref": "awsVpcConfig.json"
+    },
+    "region": {
+      "description": "Region to create resources in (us-east-1, us-west-2, etc.).",
+      "type": "string",
+      "default": "us-east-1"
+    },
+    "subnet": {
+      "description": "List of subnets to use within a region for the cluster.  Should be omitted and will be ignored if existing_vpc hash is specified.",
+      "items": {
+        "$ref": "awsSubnetConfig.json"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "egressAcl": {
+      "description": "List of egress ACLs to create for the VPC.",
+      "items": {
+        "$ref": "awsAclConfig.json"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "ingressAcl": {
+      "description": "List of ingress ACLs to create for the VPC.",
+      "items": {
+        "$ref": "awsAclConfig.json"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "ingressSecurity": {
+      "description": "List of ingress security rules to create for the VPC.  This section is ignored when modifying an existing cluster.",
+      "items": {
+        "$ref": "awsSecurityConfig.json"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "egressSecurity": {
+      "description": "List of egress security rules to create for the VPC.  This section is ignored when modifying an existing cluster.",
+      "items": {
+        "$ref": "awsSecurityConfig.json"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "authentication": {
+      "$ref": "awsAuthenticationConfig.json"
+    }
+  },
+  "required": [
+    "name",
+    "provider",
+    "type",
+    "resourcePrefix",
+    "vpc",
+    "region",
+    "egressAcl",
+    "ingressAcl",
+    "egressSecurity",
+    "ingressSecurity",
+    "authentication"
+  ],
+  "additionalProperties": false,
+  "type": "object"
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "endpoint": "/404",
+  "description": "Fetching data file for a missing network",
+  "methods": [
+    "get"
+  ],
+  "status": 404,
+  "type": "object",
+  "properties": {
+    "error": {
+      "$ref": "http://localhost:9667/definitions.json#/error"
+    }
+  },
+  "required": [
+    "error"
+  ]
+}

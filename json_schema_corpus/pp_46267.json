@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Xfer Info",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "xferAccountId": {
+      "type": "integer"
+    },
+    "xferTransactionId": {
+      "type": "integer"
+    }
+  }
+}

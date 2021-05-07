@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "FacilityRound",
+  "description": "TODO /cc @jofomah",
+  "type": "object",
+  "properties": {
+    "doc_type": {
+      "type": "string",
+      "pattern": "^facilityRound$"
+    },
+    "version": {
+      "type": "string",
+      "format": "semver"
+    },
+    "orderID": {
+      "type": "string"
+    },
+    "facility": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "note": {
+      "type": "string"
+    },
+    "deliveryPeriod": {
+      "type": "string"
+    },
+    "departedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "arrivedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "pickedProducts": {
+      "type": "array"
+    },
+    "survey": {
+      "type": "array"
+    }
+  },
+  "required": [
+    "doc_type",
+    "version",
+    "orderID",
+    "departedAt",
+    "arrivedAt",
+    "pickedProducts"
+  ]
+}

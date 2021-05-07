@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema-location": "Entity-Schema.json",
+  "name": "Charm-Schema",
+  "version": "1",
+  "author": "denis",
+  "description": "Represent a Juju Charm",
+  "associated-tool": "Juju-CLI",
+  "type": "object",
+  "properties": {
+    "$schema-location": {
+      "type": {
+        "enum": [
+          "Charm-Schema.json"
+        ]
+      }
+    },
+    "id": {
+      "type": "string",
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "default-value": "",
+      "required": true,
+      "description": "name of the Charm"
+    },
+    "summary": {
+      "type": "string",
+      "default-value": "",
+      "required": false,
+      "description": "summarised description of the Charm"
+    },
+    "description": {
+      "type": "string",
+      "default-value": "",
+      "required": false,
+      "description": "human readable description of the charm"
+    },
+    "maintainer": {
+      "type": "string",
+      "default-value": "",
+      "required": true,
+      "description": "maintainer of the Charm"
+    },
+    "category": {
+      "type": "string",
+      "default-value": "",
+      "required": true,
+      "description": ""
+    },
+    "repository": {
+      "type": "string",
+      "default-value": "local",
+      "required": true,
+      "description": ""
+    }
+  }
+}

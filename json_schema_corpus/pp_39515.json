@@ -1,0 +1,27 @@
+{
+  "id": "https://raw.githubusercontent.com/eviratec/schema/master/v1/vendor/app.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "schema for a vendor app",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "vendor_id",
+    "name"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "vendor_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "name": {
+      "type": "string",
+      "description": "The public app name, e.g. Eviratec CRM",
+      "maxLength": 64
+    }
+  }
+}

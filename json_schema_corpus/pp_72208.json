@@ -1,0 +1,7 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "First Purchase Date",
+  "description": "The date we first recorded a purchase for this user (user.customFields.firstPurchaseDate).",
+  "type": "integer",
+  "format": "timestamp"
+}

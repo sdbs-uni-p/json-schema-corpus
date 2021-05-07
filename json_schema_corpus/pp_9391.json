@@ -1,0 +1,56 @@
+{
+  "name": "laxar-developer-tools-widget",
+  "description": "Provides developer tools to inspect the event bus and the application log, and the grid-alignment of widgets",
+  "integration": {
+    "technology": "plain",
+    "type": "widget"
+  },
+  "features": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "open": {
+        "type": "object",
+        "properties": {
+          "onActions": {
+            "type": "array",
+            "default": [],
+            "items": {
+              "type": "string",
+              "format": "topic"
+            }
+          },
+          "onGlobalMethod": {
+            "type": "string",
+            "description": "method on the global object (window) which may be called to show the developer tools, for example from a bookmark",
+            "default": "laxarShowDeveloperTools"
+          }
+        }
+      },
+      "button": {
+        "type": "object",
+        "description": "allows to render a button that opens the popup",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "default": true
+          },
+          "htmlLabel": {
+            "type": "string",
+            "default": "<i class='fa fa-cube'></i> DeveloperTools"
+          }
+        }
+      },
+      "develop": {
+        "type": "object",
+        "description": "allows to use the development version (debug.html) of the developer tools",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "default": false
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "description": "collection JSON schema",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "properties": {
+    "_links": {
+      "type": "object",
+      "required": true,
+      "properties": {
+        "first": {
+          "type": "object",
+          "properties": {
+            "href": {
+              "type": "string"
+            }
+          }
+        },
+        "last": {
+          "type": "object",
+          "properties": {
+            "href": {
+              "type": "string"
+            }
+          }
+        },
+        "next": {
+          "type": "object",
+          "properties": {
+            "href": {
+              "type": "string"
+            }
+          }
+        },
+        "self": {
+          "type": "object",
+          "required": true,
+          "properties": {
+            "href": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "count": {
+      "type": "number",
+      "required": true
+    },
+    "results": {
+      "type": "array",
+      "required": true
+    },
+    "total_count": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "additionalProperties": false,
+  "type": "object"
+}

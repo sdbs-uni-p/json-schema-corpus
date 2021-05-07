@@ -1,0 +1,8 @@
+{
+  "id": "urn:test-invalid-type.schema.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "A test schema with an invalid (misspelled) type field.",
+  "name": "test-invalid-type",
+  "type": "sting",
+  "pattern": "^[\\da-f]{8}-[\\da-f]{4}-[\\da-f]{4}-[\\da-f]{4}-[\\da-f]{12}$"
+}

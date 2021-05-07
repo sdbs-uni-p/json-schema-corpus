@@ -1,0 +1,106 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "array",
+  "items": {
+    "id": "1",
+    "type": "object",
+    "properties": {
+      "data": {
+        "id": "data",
+        "type": "object",
+        "properties": {
+          "coordinates": {
+            "id": "coordinates",
+            "type": "object",
+            "properties": {
+              "latitude": {
+                "id": "latitude",
+                "type": "string"
+              },
+              "longitude": {
+                "id": "longitude",
+                "type": "string"
+              }
+            },
+            "required": [
+              "latitude",
+              "longitude"
+            ]
+          },
+          "runway": {
+            "id": "runway",
+            "type": "array",
+            "items": {
+              "id": "0",
+              "type": "object",
+              "properties": {
+                "Direction": {
+                  "id": "Direction",
+                  "type": "string"
+                },
+                "m": {
+                  "id": "m",
+                  "type": "string"
+                },
+                "ft": {
+                  "id": "ft",
+                  "type": "string"
+                },
+                "Surface": {
+                  "id": "Surface",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "name": {
+            "id": "name",
+            "type": "string"
+          },
+          "nickname": {
+            "id": "nickname",
+            "type": "string"
+          },
+          "website": {
+            "id": "website",
+            "type": "string"
+          },
+          "iata": {
+            "id": "iata",
+            "type": "string"
+          },
+          "icao": {
+            "id": "icao",
+            "type": "string"
+          }
+        },
+        "required": [
+          "coordinates",
+          "runway",
+          "name",
+          "nickname",
+          "website",
+          "iata",
+          "icao"
+        ]
+      },
+      "url": {
+        "id": "url",
+        "type": "string"
+      },
+      "baseDir": {
+        "id": "baseDir",
+        "type": "string"
+      }
+    },
+    "required": [
+      "data",
+      "url",
+      "baseDir"
+    ]
+  },
+  "required": [
+    "1"
+  ]
+}

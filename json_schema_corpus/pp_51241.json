@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "kill-chain-phase",
+  "description": "A single phase in a cyber kill chain",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "../common/describable.json"
+    },
+    {
+      "$ref": "../common/referenceable.json"
+    },
+    {
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The ID of this kill chain phase"
+        }
+      }
+    }
+  ],
+  "relationships": {
+    "related": [
+      "asset",
+      "attack-pattern",
+      "campaign",
+      "configuration",
+      "course-of-action",
+      "identity",
+      "incident",
+      "indicator",
+      "kill-chain",
+      "kill-chain-phase",
+      "malicious-infrastructure",
+      "malicious-tool",
+      "malware",
+      "observation",
+      "threat-actor",
+      "tool",
+      "victim-targeting",
+      "vulnerability",
+      "weakness"
+    ],
+    "duplicate-of": [
+      "kill-chain-phase"
+    ],
+    "suggested-update": [
+      "kill-chain-phase"
+    ],
+    "derived-from": [
+      "kill-chain-phase"
+    ]
+  },
+  "tlo": false
+}

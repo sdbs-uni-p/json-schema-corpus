@@ -1,0 +1,45 @@
+{
+  "name": "release-history-widget",
+  "description": "Display releases",
+  "integration": {
+    "technology": "angular",
+    "type": "widget"
+  },
+  "controls": [
+    "laxar-color-scale-control"
+  ],
+  "features": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "tags": {
+        "type": "object",
+        "description": "",
+        "required": [
+          "resource"
+        ],
+        "properties": {
+          "resource": {
+            "type": "string",
+            "description": "",
+            "format": "topic"
+          }
+        }
+      },
+      "log": {
+        "type": "object",
+        "description": "A resource providing commit data to display.",
+        "required": [
+          "resource"
+        ],
+        "properties": {
+          "resource": {
+            "type": "string",
+            "description": "",
+            "format": "topic"
+          }
+        }
+      }
+    }
+  }
+}

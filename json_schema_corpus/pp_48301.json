@@ -1,0 +1,49 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "required": true,
+  "properties": {
+    "body": {
+      "type": "string",
+      "required": true
+    },
+    "headers": {
+      "type": "object",
+      "required": true,
+      "properties": {
+        "ACCEPT": {
+          "type": "string",
+          "required": true
+        },
+        "CONTENT_TYPE": {
+          "type": "string",
+          "required": true
+        },
+        "HOST": {
+          "type": "string",
+          "required": true
+        },
+        "USER_AGENT": {
+          "type": "string",
+          "required": true
+        },
+        "VERSION": {
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    "protcol": {
+      "type": "string",
+      "required": true
+    },
+    "uri": {
+      "type": "string",
+      "required": true
+    },
+    "verb": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

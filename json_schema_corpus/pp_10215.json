@@ -1,0 +1,93 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "name": "marlincdm_json_request_message",
+  "description": "Marlin Content Decryption Module json request message for EME case",
+  "type": "object",
+  "properties": {
+    "httpRequest": {
+      "descripion": "http request message. this property is required if message_type is httpRequest",
+      "type": "object",
+      "properties": {
+        "method": {
+          "description": "either GET or POST to indicate the HTTP request method",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "GET",
+            "POST"
+          ]
+        },
+        "url": {
+          "description": "server url. this property is required for Android case.",
+          "type": "string",
+          "required": false
+        },
+        "headers": {
+          "description": "http header parameters. an array of one or more JSON objects",
+          "type": "array",
+          "required": true,
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": "string specifying the HTTP header name",
+                "type": "string",
+                "example": "Content-type"
+              },
+              "value": {
+                "description": "string specifying the HTTP header value",
+                "type": "string",
+                "example": "text/xml"
+              }
+            }
+          }
+        },
+        "body": {
+          "description": "base64-encoded string containing the HTTP message body",
+          "type": "string",
+          "required": true,
+          "example": "PGhlbGxvLz4K"
+        }
+      }
+    },
+    "queryRequest": {
+      "description": "queryRequest message. this property is required if message_type is queryRequest",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "The name to query a Marlin property",
+          "type": "string",
+          "required": "true",
+          "example": "urn:marlin:eme:query-request:device-unique-id"
+        }
+      }
+    },
+    "completeNotification": {
+      "descripion": "completeNotification message. this property is required if message_type is completeNotification. If this property exist, httpRequest property doesn't exist hence no http requesting to server shuold not happen",
+      "type": "object",
+      "properties": {
+        "resultCode": {
+          "descripion": "result code whose value specifing action results",
+          "type": "integer",
+          "required": true
+        },
+        "reason": {
+          "descripion": "http request message. this property may be present if the resultCode is not 0",
+          "type": "object",
+          "properties": {
+            "actionName": {
+              "description": "string specifying action name",
+              "type": "string",
+              "example": "LicenseAcquisition"
+            },
+            "code": {
+              "description": "integer specifing reason code",
+              "type": "integer",
+              "example": "1"
+            }
+          }
+        }
+      }
+    }
+  }
+}

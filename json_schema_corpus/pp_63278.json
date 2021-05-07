@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "type": "object",
+  "description": "Pickup",
+  "properties": {
+    "description": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "start": {
+      "type": "string",
+      "format": "rfc3339"
+    },
+    "end": {
+      "type": "string",
+      "format": "rfc3339"
+    }
+  }
+}

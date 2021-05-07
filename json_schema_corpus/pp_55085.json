@@ -1,0 +1,48 @@
+{
+  "$id": "http://foo.bar/basic.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Example Schema",
+  "type": "object",
+  "properties": {
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "age": {
+      "description": "Age in years",
+      "type": "integer",
+      "minimum": 0
+    },
+    "uuid": {
+      "$ref": "#/examples/uuid.json"
+    },
+    "another_uuid": {
+      "$ref": "#/examples/uuid.json"
+    },
+    "venue": {
+      "$ref": "#/definitions/venue"
+    }
+  },
+  "required": [
+    "firstName",
+    "lastName",
+    "uuid"
+  ],
+  "definitions": {
+    "venue": {
+      "required": [
+        "name",
+        "location"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "maxLength": 500,
+          "description": "name of the venue"
+        }
+      }
+    }
+  }
+}

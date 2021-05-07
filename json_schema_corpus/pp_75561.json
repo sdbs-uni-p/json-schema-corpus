@@ -1,0 +1,99 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "carrier": {
+      "type": "string",
+      "enum": [
+        "ups",
+        "dpd",
+        "hermes",
+        "gls"
+      ],
+      "description": "acronym of the carrier you want to use"
+    },
+    "pickup_time": {
+      "type": "object",
+      "properties": {
+        "earliest": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "latest": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "description": "defines a time window in which the carrier should pickup shipments",
+      "required": [
+        "earliest",
+        "latest"
+      ],
+      "additionalProperties": false
+    },
+    "pickup_address": {
+      "type": "object",
+      "description": "address where the carrier should pick up shipments",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "identifier of a previously created address"
+        },
+        "company": {
+          "type": "string"
+        },
+        "first_name": {
+          "type": "string"
+        },
+        "last_name": {
+          "type": "string"
+        },
+        "care_of": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        },
+        "street_no": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "zip_code": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string",
+          "description": "Country as uppercase ISO 3166-1 alpha-2 code"
+        },
+        "phone": {
+          "type": "string",
+          "description": "telephone number (mandatory when using UPS and the following terms apply: service is one_day or one_day_early or ship to country is different than ship from country)"
+        }
+      },
+      "required": [
+        "last_name",
+        "street",
+        "street_no",
+        "city",
+        "zip_code",
+        "country"
+      ],
+      "additionalProperties": false
+    },
+    "pickup_date": {
+      "type": "string",
+      "pattern": "^[0-9]{4}/[0-9]{2}/[0-9]{2}$",
+      "description": "deprecated: please use pickup_time instead."
+    }
+  },
+  "required": [
+    "carrier",
+    "pickup_time"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,168 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "title": "/order_cancel_v1",
+  "description": "order_cancel_v1",
+  "stability": "draft",
+  "additionalProperties": true,
+  "type": "object",
+  "definitions": {},
+  "links": [
+    {
+      "description": "order_cancel_v1",
+      "href": "/order_cancel_v1",
+      "method": "post",
+      "rel": "instances",
+      "schema": {
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "action",
+              "version",
+              "client_id",
+              "channel_info"
+            ],
+            "properties": {
+              "integration_auth_token": {
+                "type": "string",
+                "description": "Randomly generated authorization token, for authenticating genuine RetailOps- originated requests.",
+                "example": "2KuxqV9rsAtAM78i47CITMvtnflUapNmgGJAvWiHqgUrk1xkeDNWlM3EsrmJEtmV"
+              },
+              "action": {
+                "type": "string",
+                "description": "Action Name name",
+                "example": "catalog_get_config"
+              },
+              "version": {
+                "type": "integer",
+                "description": "Action Version",
+                "example": 1
+              },
+              "client_id": {
+                "description": "RetailOPS client id",
+                "type": "integer",
+                "example": 497
+              },
+              "channel_info": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "description": "channel id",
+                    "example": 21
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "properties": {
+              "order": {
+                "type": "object",
+                "properties": {
+                  "retailops_order_id": {
+                    "type": "integer",
+                    "description": "RetailOps Order ID"
+                  },
+                  "channel_order_refnum": {
+                    "type": "string",
+                    "description": "channel reference number for order",
+                    "example": "496"
+                  }
+                }
+              }
+            },
+            "required": [
+              "order"
+            ]
+          }
+        ]
+      },
+      "targetSchema": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "Success or fail status of the cancel action. Details should be conveyed in the events data",
+            "enum": [
+              "success",
+              "fail"
+            ]
+          },
+          "events": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": "object",
+              "description": "event returned in action response",
+              "properties": {
+                "event_type": {
+                  "type": "string",
+                  "description": "event type",
+                  "enum": [
+                    "error",
+                    "warning",
+                    "info"
+                  ],
+                  "example": "error"
+                },
+                "code": {
+                  "type": "string",
+                  "description": "error/warning code",
+                  "example": "ERR1234"
+                },
+                "message": {
+                  "type": "string",
+                  "description": "descriptive error/warning message",
+                  "example": "Example error message"
+                },
+                "diagnostic_data": {
+                  "type": "string",
+                  "description": ""
+                },
+                "associations": {
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "description": "",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "identifier_type": {
+                        "type": "string",
+                        "description": "Type of identifier being provided",
+                        "enum": [
+                          "order_id",
+                          "order_refnum",
+                          "orderitem_id",
+                          "orderitem_refnum",
+                          "shipment_id",
+                          "shipmentitem_id",
+                          "product_id",
+                          "sku_number"
+                        ],
+                        "example": "sku_number"
+                      },
+                      "identifier": {
+                        "type": "string",
+                        "description": "identify value corresponding to the type",
+                        "example": "S1234"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "title": "/order_cancel_v1"
+    }
+  ],
+  "properties": {},
+  "id": "/order_cancel_v1"
+}

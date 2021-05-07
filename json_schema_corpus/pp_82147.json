@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema#",
+  "type": "object",
+  "title": "HyperSchema for root API",
+  "id": "#root-v1",
+  "properties": {
+    "version": {
+      "type": "string"
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "${base_url}",
+      "mediaType": "application/vnd.deployer.root-v1+json",
+      "method": "GET"
+    },
+    {
+      "rel": "app-version-create",
+      "title": "Deploy new application version",
+      "href": "/apps",
+      "mediaType": "application/vnd.deployer.task.v1+json, application/vnd.deployer.app.version.v1+json",
+      "method": "POST"
+    },
+    {
+      "rel": "app-list",
+      "title": "Lists deployed applications",
+      "href": "/apps",
+      "mediaType": "application/vnd.deployer.app.version-list.v1+json",
+      "method": "POST"
+    },
+    {
+      "rel": "health",
+      "title": "Healthcheck for deployer",
+      "href": "/health",
+      "mediaType": "application/vnd.deployer.health-v1+json",
+      "method": "GET"
+    },
+    {
+      "rel": "tasks",
+      "title": "Gets task status and results",
+      "href": "/tasks/{task_id}",
+      "mediaType": "application/vnd.deployer.task.v1+json",
+      "method": "GET"
+    },
+    {
+      "rel": "recovery",
+      "title": "Provides API for bulk recovery of deployments",
+      "href": "/recovery",
+      "mediaType": "application/vnd.deployer.health-v1+json",
+      "method": "post"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "contact",
+  "id": "contact",
+  "description": "Represents a contact.",
+  "type": "object",
+  "required": [
+    "objectType"
+  ],
+  "properties": {
+    "objectType": {
+      "type": "string",
+      "enum": [
+        "contact"
+      ],
+      "description": "The type of the object, contact."
+    },
+    "name": {
+      "type": "string",
+      "description": "Identifies the name of the person at the specific site location that is the local contact. This contact will primarily be used for gaining access to the site.",
+      "maxLength": 15
+    },
+    "telephoneNumber": {
+      "type": "string",
+      "description": "Identifies the telephone number (excluding extension) of the Contact.",
+      "maxLength": 15
+    },
+    "telephoneNumberExt": {
+      "type": "string",
+      "description": "Identifies the telephone number extension of the Contact.",
+      "maxLength": 6
+    },
+    "email": {
+      "type": "string",
+      "description": "Identifies the electronic mail address of the Contact.",
+      "maxLength": 60
+    }
+  }
+}

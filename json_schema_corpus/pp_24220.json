@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Search result in marc text",
+  "type": "object",
+  "description": "search metadata and result list",
+  "additionalProperties": false,
+  "properties": {
+    "searchingView": {
+      "description": "Type of record inside the result list. 1 for Bibliographic records, -1 for authority",
+      "type": "integer"
+    },
+    "displayQuery": {
+      "description": "query that produced result list",
+      "type": "string"
+    },
+    "from": {
+      "description": "Specifies an offset into a query\u2019s result set to begin displaying results from this offset",
+      "type": "integer"
+    },
+    "to": {
+      "description": "Pagination properties. Specifies the end of offset into a query\u2019s result set to stop displaying results",
+      "type": "integer"
+    },
+    "numFound": {
+      "description": "count of result founded",
+      "type": "integer"
+    },
+    "docs": {
+      "description": "result list",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "recordView": {
+            "description": "record type. 1 for Bibliographic records, -1 for authority",
+            "type": "integer",
+            "pattern": "/[1,-1]{1}/"
+          },
+          "countDoc": {
+            "description": "count of bibliographic records associated to the current record",
+            "type": "integer"
+          },
+          "queryForAssociatedDoc": {
+            "description": "query to retrieve records associated to the current one",
+            "type": "string"
+          }
+        },
+        "tagHighlighted": {
+          "description": "list of tag in which query terms are present",
+          "type": "string"
+        },
+        "data": {
+          "description": "marc record in text form",
+          "type": "string"
+        }
+      }
+    }
+  },
+  "metadata": {
+    "description": "Metadata about creation and changes to marc record, provided by the server (client should not provide)",
+    "type": "object",
+    "$ref": "../raml-storage/raml-util/schemas/metadata.schema"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://www.ortolang.fr/schemas/1/thumb#",
+  "type": "object",
+  "description": "Schema for ORTOLANG objects thumbnail"
+}

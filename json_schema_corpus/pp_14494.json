@@ -1,0 +1,129 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Rule",
+  "type": "object",
+  "properties": {
+    "name": {
+      "description": "A name to identify the rule.",
+      "type": "string"
+    },
+    "active": {
+      "description": "Enable/Disable a rule. When disabled, the rule is not evaluated on events received.",
+      "type": "boolean"
+    },
+    "organizationId": {
+      "description": "The organization for which the rule is configured.",
+      "type": "integer"
+    },
+    "conditions": {
+      "description": "List of condition to evaluate against events received.",
+      "type": "array",
+      "items": {
+        "description": "Condition to evaluate, **MUST** define at least one of the three condition criteria: `eventSourceId`, `eventTypeId` or `fn`.",
+        "type": "object",
+        "properties": {
+          "description": {
+            "description": "Human friendly text to let the possibility to explain what the condition evaluates.",
+            "type": "string"
+          },
+          "eventSourceId": {
+            "description": "The event source to match on event received. If not present, joker `*` will be used.",
+            "type": "integer"
+          },
+          "eventTypeId": {
+            "description": "The event type to match on event received. If not present, joker `*` will be used.",
+            "type": "integer"
+          },
+          "fn": {
+            "description": "Javascript expression to be evaluated. If not present, only `event source` and `event type` will be evaluated.",
+            "type": "object",
+            "properties": {
+              "expression": {
+                "description": "Javascript expression to let more complex condition matching. **MUST** be a valid javascript expression",
+                "type": "string"
+              },
+              "sampleEvent": {
+                "description": "A valid event that will be evaluated to true with the expression.",
+                "type": "object"
+              }
+            },
+            "required": [
+              "expression",
+              "sample"
+            ]
+          }
+        }
+      },
+      "minItems": 1
+    },
+    "transformations": {
+      "description": "List of transformations to apply to an event once the conditions matched.",
+      "type": "array",
+      "items": {
+        "description": "Transformation to apply.",
+        "type": "object",
+        "properties": {
+          "description": {
+            "description": "Human friendly text to let the possibility to explain what the transformation does.",
+            "type": "string"
+          },
+          "actionTargetId": {
+            "description": "The action target to send the event transformed.",
+            "type": "integer"
+          },
+          "actionTypeId": {
+            "description": "The action type.",
+            "type": "integer"
+          },
+          "fn": {
+            "description": "Javascript expression to transform the events. If not present, event is not transformed and passed as it is received.",
+            "type": "object",
+            "properties": {
+              "expression": {
+                "description": "Javascript expression to let more complex transformation. **MUST** be a valid javascript expression",
+                "type": "string"
+              },
+              "sample": {
+                "description": "A valid sample to validate the transformation expression.",
+                "type": "object",
+                "properties": {
+                  "event": {
+                    "description": "A valid event for the transformation expression validation.",
+                    "type": "object"
+                  },
+                  "eventSourceTemplateId": {
+                    "description": "If the transformation use data from event source template, you **must** provide the event source template id there. If not given, the validation will not use it. This will most probably result in an expression evaluation error.",
+                    "type": "integer"
+                  },
+                  "eventTypeId": {
+                    "description": "If the transformation use data from the event type, you **must** provide an event type there. If not given, the validation will **not** use the event type id, if present, configured in the transformation.",
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "event"
+                ]
+              }
+            },
+            "required": [
+              "expression",
+              "sample"
+            ]
+          }
+        },
+        "required": [
+          "actionTargetId",
+          "actionTypeId"
+        ]
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "name",
+    "active",
+    "organizationId",
+    "conditions",
+    "transformations"
+  ]
+}

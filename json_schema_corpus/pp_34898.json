@@ -1,0 +1,93 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "properties": {
+    "service": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Name for this Restreamer application",
+          "type": "string",
+          "default": "restreamer"
+        },
+        "instances": {
+          "description": "Number of instances to run.",
+          "type": "integer",
+          "default": 1,
+          "minimum": 1
+        },
+        "cpus": {
+          "description": "CPU shares to allocate to each Restreamer instance.",
+          "type": "number",
+          "default": 1,
+          "minimum": 1
+        },
+        "mem": {
+          "description": "Memory (MB) to allocate to each Restreamer task.",
+          "type": "number",
+          "default": 1024.0,
+          "minimum": 256.0
+        },
+        "minimumHealthCapacity": {
+          "description": "Minimum health capacity.",
+          "type": "number",
+          "default": 0.5,
+          "minimum": 0
+        },
+        "maximumOverCapacity": {
+          "description": "Maximum over capacity.",
+          "type": "number",
+          "default": 0.2,
+          "minimum": 0
+        },
+        "role": {
+          "description": "Deploy Restreamer only on nodes with this role.",
+          "type": "string",
+          "default": "*"
+        },
+        "bridge": {
+          "description": "Whether to use BRIDGE networking mode for Docker container. By default, this is false and HOST mode networking is used.",
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "required": [
+        "name",
+        "instances",
+        "cpus",
+        "mem"
+      ]
+    },
+    "restreamer": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "description": "Username",
+          "type": "string",
+          "default": "admin"
+        },
+        "password": {
+          "description": "Password",
+          "type": "string",
+          "default": "datarhei"
+        },
+        "logger_level": {
+          "description": "Logger Level",
+          "type": "integer",
+          "default": 3
+        },
+        "snapshot_refresh_interval": {
+          "description": "Interval to create a new Snapshot (in seconds)",
+          "type": "integer",
+          "default": 60
+        }
+      },
+      "required": [
+        "username",
+        "password",
+        "logger_level",
+        "snapshot_refresh_interval"
+      ]
+    }
+  },
+  "type": "object"
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "title": "Completion Collection",
+  "description": "A collection of BEL expression completions.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "completion_collection"
+  ],
+  "properties": {
+    "completion_collection": {
+      "type": "array",
+      "minItems": 0,
+      "title": "",
+      "description": "",
+      "items": {
+        "$ref": "http://next.belframework.org/schemas/completion_resource.schema.json#/properties/completion"
+      }
+    }
+  }
+}

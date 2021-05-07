@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "description": "Available Holy Bible collection.",
+  "properties": {
+    "size": {
+      "type": "integer",
+      "required": true
+    },
+    "bibles": {
+      "type": "array",
+      "items": {
+        "$ref": "bible"
+      }
+    }
+  }
+}

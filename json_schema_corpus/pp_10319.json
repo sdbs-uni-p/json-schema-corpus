@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "id": "message.json",
+  "type": "object",
+  "properties": {
+    "message": {
+      "type": "string"
+    },
+    "_links": {
+      "$ref": "link-collection.json"
+    }
+  },
+  "required": [
+    "message"
+  ]
+}

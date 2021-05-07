@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema-location": "Relationship-Schema.json",
+  "name": "Description-Schema",
+  "version": "1",
+  "author": "denis",
+  "description": "The relationship between Charm and Service",
+  "associated-tool": "Juju-CLI",
+  "type": "object",
+  "participating-entities": [
+    {
+      "name": "Charm-Schema",
+      "version": "1",
+      "role": "describe",
+      "cardinality": {
+        "min-value": "1",
+        "max-value": "1"
+      }
+    },
+    {
+      "name": "Service-Schema",
+      "version": "1",
+      "role": "described by",
+      "cardinality": {
+        "min-value": "1",
+        "max-value": "1"
+      }
+    }
+  ],
+  "properties": {
+    "$schema-location": {
+      "type": {
+        "enum": [
+          "ADD YOUR SCHEMA LOCATION HERE"
+        ]
+      }
+    },
+    "author": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "participating-entities": {
+      "items": {
+        "maxItems": "2",
+        "minItems": "2",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          }
+        },
+        "required": true,
+        "type": "object"
+      },
+      "required": true,
+      "type": "array"
+    }
+  }
+}

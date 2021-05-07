@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "Schema for importing GeoJSON.",
+  "description": "Specifies how to import GeoJSON files as namespaces.",
+  "properties": {
+    "path": {
+      "type": "string",
+      "title": "Path schema.",
+      "description": "Relative or absolute path to the GeoJSON file.",
+      "id": "path"
+    },
+    "referenceId": {
+      "type": "string",
+      "title": "ReferenceId schema.",
+      "description": "Specifies which of the feature properties in the GeoJSON file should be used as ID.",
+      "id": "referenceId"
+    }
+  },
+  "id": "/",
+  "required": [
+    "path",
+    "referenceId"
+  ]
+}

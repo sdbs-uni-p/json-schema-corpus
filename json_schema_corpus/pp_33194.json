@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": {
+    "type": "integer",
+    "description": "The ID is created and returned by the Create User API. It is ignored during POST operations."
+  },
+  "email": {
+    "type": "string"
+  },
+  "password": {
+    "description": "This field should only be used as part of the request payload when creating a new User, or for changing a User's password.",
+    "type": "string"
+  },
+  "roles": {
+    "type": "array",
+    "items": {
+      "type": "string",
+      "description": "Defines the permissions granted to the User. 'New User' and 'SiteCoordinatorInactive' have none, 'Admin' has all, and 'SiteCoordinator' has permission to update the Sites he is in charge of.",
+      "enum": [
+        "New User",
+        "SiteCoordinator",
+        "Admin",
+        "SiteCoordinatorInactive"
+      ]
+    }
+  },
+  "sites": {
+    "type": "string",
+    "description": "Indicates which Site or Sites this User is Site Coordinator for. If they have the SiteCoordinator Role, they will have the ability to update the status of their site. Values here must be valid Site identifiers (the slug)"
+  }
+}

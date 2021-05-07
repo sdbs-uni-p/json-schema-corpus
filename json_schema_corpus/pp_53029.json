@@ -1,0 +1,187 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "References",
+  "description": "Specifications of data of references",
+  "obj_ref": {
+    "type": "object",
+    "title": "Object Reference",
+    "description": "Description of a object reference",
+    "properties": {
+      "obj_id": {
+        "$ref": "common.json#/obj_id"
+      },
+      "quantity": {
+        "type": "integer",
+        "description": "Number of instances of this object",
+        "default": 1
+      },
+      "optional": {
+        "type": "boolean",
+        "description": "Indicates if this object is strictly required",
+        "default": false
+      },
+      "created": {
+        "type": "boolean",
+        "description": "Indicates if object is created instead of consumed",
+        "default": false
+      }
+    },
+    "required": [
+      "obj_id"
+    ],
+    "additionalProperties": false
+  },
+  "bom_ref": {
+    "type": "object",
+    "title": "BOM Reference",
+    "description": "Description of a Bill of Material reference",
+    "properties": {
+      "obj_id": {
+        "$ref": "common.json#/obj_id"
+      },
+      "quantity": {
+        "type": "integer",
+        "description": "Number of mandatory instances of this object"
+      },
+      "optional": {
+        "type": "integer",
+        "description": "Number of optional instances of this object"
+      }
+    },
+    "required": [
+      "obj_id",
+      "quantity",
+      "optional"
+    ],
+    "additionalProperties": false
+  },
+  "graph_step": {
+    "type": "object",
+    "title": "Graph Step",
+    "description": "Description of a step reference for graphs",
+    "properties": {
+      "step_id": {
+        "$ref": "common.json#/step_id"
+      },
+      "requires": {
+        "type": "array",
+        "description": "step_alias of prerequisite steps",
+        "items": {
+          "$ref": "common.json#/step_id"
+        },
+        "default": []
+      }
+    },
+    "required": [
+      "step_id"
+    ],
+    "additionalProperties": false
+  },
+  "schedule_step": {
+    "type": "object",
+    "title": "Schedule Step",
+    "description": "Description of a step reference for schedules",
+    "properties": {
+      "step_id": {
+        "$ref": "common.json#/step_id"
+      },
+      "step_idx": {
+        "type": "integer",
+        "description": "Index of this step, starting from zero"
+      },
+      "start": {
+        "$ref": "common.json#/timedelta",
+        "description": "Start time for this step"
+      },
+      "stop": {
+        "$ref": "common.json#/timedelta",
+        "description": "Stop time for this step"
+      },
+      "waiting": {
+        "$ref": "common.json#/timedelta",
+        "description": "Stop time of waiting for this step"
+      }
+    },
+    "required": [
+      "step_id",
+      "step_idx"
+    ],
+    "additionalProperties": false
+  },
+  "source_file_ref": {
+    "type": "object",
+    "title": "Source File Reference",
+    "description": "Reference to a file from which others are generated.",
+    "properties": {
+      "blob_id": {
+        "$ref": "common.json#/blob_id"
+      },
+      "filename": {
+        "type": "string",
+        "description": "Filename of the file"
+      }
+    },
+    "required": [
+      "blob_id",
+      "filename"
+    ],
+    "additionalProperties": false
+  },
+  "file_ref": {
+    "type": "object",
+    "title": "File Reference",
+    "description": "Description of a file. ",
+    "properties": {
+      "blob_id": {
+        "$ref": "common.json#/blob_id"
+      },
+      "sourcefiles": {
+        "type": "array",
+        "items": {
+          "$ref": "references.json#/source_file_ref"
+        },
+        "default": []
+      },
+      "filename": {
+        "type": "string",
+        "description": "Filename of the file"
+      }
+    },
+    "required": [
+      "blob_id",
+      "filename"
+    ],
+    "additionalProperties": false
+  },
+  "img_ref": {
+    "type": "object",
+    "title": "Image Reference",
+    "description": "Description of a reference to an image",
+    "properties": {
+      "blob_id": {
+        "$ref": "common.json#/blob_id"
+      },
+      "sourcefiles": {
+        "type": "array",
+        "items": {
+          "$ref": "references.json#/source_file_ref"
+        },
+        "default": []
+      },
+      "extension": {
+        "type": "string",
+        "description": "Extension of the image file."
+      },
+      "alt": {
+        "type": "string",
+        "description": "Alternative description of the image."
+      }
+    },
+    "required": [
+      "blob_id",
+      "extension",
+      "alt"
+    ],
+    "additionalProperties": false
+  }
+}

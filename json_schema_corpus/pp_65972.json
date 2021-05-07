@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Payment request",
+  "description": "PayPal payment request json schema",
+  "type": "object",
+  "properties": {
+    "intent": {
+      "description": "Payment intent. Must be set to sale for immediate payment, authorize to authorize a payment for capture later, or order to create an order.",
+      "type": "string",
+      "enum": [
+        "sale",
+        "authorize",
+        "order"
+      ]
+    },
+    "payer": {
+      "$ref": "payer.json"
+    },
+    "transactions": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "transaction.json"
+          }
+        ]
+      }
+    },
+    "redirect_urls": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "redirect_urls.json"
+        }
+      ]
+    }
+  },
+  "required": [
+    "intent",
+    "payer",
+    "transactions"
+  ]
+}

@@ -1,0 +1,183 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "title": "Authentication Configuration",
+  "id": "http://qcif.edu.au",
+  "required": false,
+  "properties": {
+    "authentication": {
+      "type": "object",
+      "id": "http://qcif.edu.au/authentication",
+      "required": false,
+      "properties": {
+        "internal": {
+          "type": "object",
+          "id": "http://qcif.edu.au/authentication/internal",
+          "required": false,
+          "properties": {
+            "path": {
+              "type": "string",
+              "id": "http://qcif.edu.au/authentication/internal/path",
+              "required": false
+            }
+          }
+        },
+        "ldap": {
+          "type": "object",
+          "id": "http://qcif.edu.au/authentication/ldap",
+          "required": false,
+          "properties": {
+            "baseDN": {
+              "type": "string",
+              "id": "http://qcif.edu.au/authentication/ldap/baseDN",
+              "required": false
+            },
+            "baseURL": {
+              "type": "string",
+              "id": "http://qcif.edu.au/authentication/ldap/baseURL",
+              "required": false
+            },
+            "idAttribute": {
+              "type": "string",
+              "id": "http://qcif.edu.au/authentication/ldap/idAttribute",
+              "required": false
+            },
+            "ldapRoleAttribute": {
+              "type": "string",
+              "id": "http://qcif.edu.au/authentication/ldap/ldapRoleAttribute",
+              "required": false
+            }
+          }
+        },
+        "plugins": {
+          "type": "array",
+          "id": "http://qcif.edu.au/authentication/plugins",
+          "required": false,
+          "items": {
+            "type": "string",
+            "id": "http://qcif.edu.au/authentication/plugins/0",
+            "required": false,
+            "enum": [
+              "internal",
+              "ldap"
+            ]
+          }
+        }
+      }
+    },
+    "rapidAafSso": {
+      "type": "object",
+      "id": "http://qcif.edu.au/rapidAafSso",
+      "required": false,
+      "properties": {
+        "attrParentField": {
+          "type": "string",
+          "id": "http://qcif.edu.au/rapidAafSso/attrParentField",
+          "required": false
+        },
+        "aud": {
+          "type": "string",
+          "id": "http://qcif.edu.au/rapidAafSso/aud",
+          "required": false
+        },
+        "iss": {
+          "type": "string",
+          "id": "http://qcif.edu.au/rapidAafSso/iss",
+          "required": false
+        },
+        "sharedKey": {
+          "type": "string",
+          "id": "http://qcif.edu.au/rapidAafSso/sharedKey",
+          "required": false
+        },
+        "source": {
+          "type": "string",
+          "id": "http://qcif.edu.au/rapidAafSso/source",
+          "required": false
+        },
+        "url": {
+          "type": "string",
+          "id": "http://qcif.edu.au/rapidAafSso/url",
+          "required": false
+        },
+        "userFields": {
+          "type": "array",
+          "id": "http://qcif.edu.au/rapidAafSso/userFields",
+          "required": false,
+          "items": {
+            "type": "string",
+            "id": "http://qcif.edu.au/rapidAafSso/userFields/0",
+            "required": false
+          }
+        },
+        "usernameField": {
+          "type": "string",
+          "id": "http://qcif.edu.au/rapidAafSso/usernameField",
+          "required": false
+        }
+      }
+    },
+    "sso": {
+      "type": "object",
+      "id": "http://qcif.edu.au/sso",
+      "required": false,
+      "properties": {
+        "plugins": {
+          "type": "array",
+          "id": "http://qcif.edu.au/sso/plugins",
+          "required": false,
+          "items": {
+            "type": "string",
+            "id": "http://qcif.edu.au/sso/plugins/0",
+            "required": false,
+            "enum": [
+              "rapidAafSso"
+            ]
+          }
+        },
+        "trustTokens": {
+          "type": "object",
+          "id": "http://qcif.edu.au/sso/trustTokens",
+          "required": false
+        },
+        "urlExclusions": {
+          "type": "object",
+          "id": "http://qcif.edu.au/sso/urlExclusions",
+          "required": false,
+          "properties": {
+            "endsWith": {
+              "type": "array",
+              "id": "http://qcif.edu.au/sso/urlExclusions/endsWith",
+              "required": false,
+              "items": {
+                "type": "string",
+                "id": "http://qcif.edu.au/sso/urlExclusions/endsWith/0",
+                "required": false
+              }
+            },
+            "equals": {
+              "type": "array",
+              "id": "http://qcif.edu.au/sso/urlExclusions/equals",
+              "required": false,
+              "items": {
+                "type": "string",
+                "id": "http://qcif.edu.au/sso/urlExclusions/equals/0",
+                "required": false
+              }
+            },
+            "startsWith": {
+              "type": "array",
+              "id": "http://qcif.edu.au/sso/urlExclusions/startsWith",
+              "required": false,
+              "items": {
+                "type": "string",
+                "id": "http://qcif.edu.au/sso/urlExclusions/startsWith/0",
+                "required": false
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

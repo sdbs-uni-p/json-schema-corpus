@@ -1,0 +1,241 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "Message",
+  "type": "object",
+  "required": [
+    "id",
+    "from",
+    "to",
+    "type"
+  ],
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "from": {
+      "type": "string"
+    },
+    "to": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "type": {
+      "enum": [
+        "create",
+        "update",
+        "delete",
+        "read",
+        "subscribe",
+        "unsubscribe",
+        "response",
+        "forward",
+        "execute"
+      ]
+    },
+    "body": {
+      "$ref": "#/MessageBody"
+    }
+  },
+  "MessageBody": {
+    "type": "object",
+    "anyOf": [
+      {
+        "$ref": "#/CreateMessageBody"
+      },
+      {
+        "$ref": "#/UpdateMessageBody"
+      },
+      {
+        "$ref": "#/ResponseMessageBody"
+      },
+      {
+        "$ref": "#/SubscribeMessageBody"
+      },
+      {
+        "$ref": "#/UnsubscribeMessageBody"
+      },
+      {
+        "$ref": "#/DeleteMessageBody"
+      },
+      {
+        "$ref": "#/ReadMessageBody"
+      },
+      {
+        "$ref": "#/FowardMessageBody"
+      },
+      {
+        "$ref": "#/ExecuteMessageBody"
+      }
+    ],
+    "properties": {
+      "resource": {
+        "type": "string"
+      },
+      "childrenResources": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "schema": {
+        "type": "string"
+      },
+      "idToken": {
+        "$ref": "Identity.json#/JWT"
+      },
+      "accessToken": {
+        "$ref": "Identity.json#/JWT"
+      },
+      "identity": {
+        "$ref": "Identity.json#/Identity"
+      },
+      "assertedIdentity": {
+        "type": "boolean"
+      },
+      "via": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "source": {
+        "type": "string"
+      },
+      "auth": {
+        "type": "boolean"
+      }
+    }
+  },
+  "CreateMessageBody": {
+    "type": "object",
+    "required": [
+      "value"
+    ],
+    "properties": {
+      "policy": {
+        "type": "string"
+      },
+      "authorise": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "value": {
+        "type": "string"
+      }
+    }
+  },
+  "UpdateMessageBody": {
+    "type": "object",
+    "required": [
+      "value"
+    ],
+    "properties": {
+      "value": {
+        "type": "string"
+      },
+      "attribute": {
+        "type": "string"
+      },
+      "attributeType": {
+        "type": "string"
+      },
+      "operation": {
+        "type": "string"
+      }
+    }
+  },
+  "ResponseCode": {
+    "type": "object",
+    "properties": {}
+  },
+  "ResponseMessageBody": {
+    "type": "object",
+    "required": [
+      "code"
+    ],
+    "properties": {
+      "code": {
+        "$ref": "#/ResponseCode"
+      },
+      "description": {
+        "type": "string"
+      },
+      "value": {
+        "type": "string"
+      }
+    }
+  },
+  "DeleteMessageBody": {
+    "type": "object",
+    "properties": {
+      "attribute": {
+        "type": "string"
+      }
+    }
+  },
+  "ReadMessageBody": {
+    "type": "object",
+    "properties": {
+      "attribute": {
+        "type": "string"
+      },
+      "criteriaSyntax": {
+        "type": "string"
+      },
+      "criteria": {
+        "type": "string"
+      }
+    }
+  },
+  "SubscribeMessageBody": {
+    "type": "object",
+    "properties": {
+      "subscribe": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "UnsubscribeMessageBody": {
+    "type": "object",
+    "properties": {
+      "unsubscribe": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "FowardMessageBody": {
+    "type": "object",
+    "properties": {
+      "message": {
+        "$ref": "#/Message"
+      }
+    }
+  },
+  "ExecuteMessageBody": {
+    "type": "object",
+    "required": [
+      "method"
+    ],
+    "properties": {
+      "method": {
+        "type": "string"
+      },
+      "params": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

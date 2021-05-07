@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "pricing",
+  "id": "pricing",
+  "description": "A representation of details of a Pricing.",
+  "type": "object",
+  "required": [
+    "objectType"
+  ],
+  "properties": {
+    "objectType": {
+      "type": "string",
+      "enum": [
+        "pricing"
+      ],
+      "description": "The type of the object, pricing."
+    },
+    "pricingTerm": {
+      "$ref": "quantity.json#",
+      "description": "The length of the service contract in months."
+    },
+    "oneTimeCharges": {
+      "type": "array",
+      "items": {
+        "$ref": "oneTimeCharge.json#"
+      },
+      "description": "An array of One Time Charge on Pricing."
+    },
+    "recurringCharges": {
+      "type": "array",
+      "items": {
+        "$ref": "recurringCharge.json#"
+      },
+      "description": "An array of Recurring Charge on Pricing."
+    }
+  }
+}

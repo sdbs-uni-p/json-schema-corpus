@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema-location": "Entity-Schema.json",
+  "name": "Service-Schema",
+  "version": "1",
+  "author": "denis",
+  "description": "Represent the deployed service from a Charm",
+  "associated-tool": "Juju-CLI",
+  "type": "object",
+  "properties": {
+    "$schema-location": {
+      "type": {
+        "enum": [
+          "Service-Schema.json"
+        ]
+      }
+    },
+    "id": {
+      "type": "string",
+      "required": true
+    },
+    "exposed": {
+      "type": "boolean",
+      "default-value": "false",
+      "required": true,
+      "description": "whether the service is exposed to outside world or not"
+    }
+  }
+}

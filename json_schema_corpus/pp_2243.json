@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://localhost:9999/schemas/badgeRequest.json",
+  "type": "object",
+  "properties": {
+    "explain": {
+      "id": "explain",
+      "type": "string"
+    },
+    "badge": {
+      "$ref": "badge.json"
+    },
+    "contact": {
+      "id": "contact",
+      "type": "string"
+    }
+  },
+  "required": [
+    "request",
+    "badge",
+    "contact"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "id": "http://schema.org/Article",
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "extends": {
+    "$ref": "CreativeWork.json"
+  },
+  "description": "An article, such as a news article or piece of investigative report. Newspapers and magazines have articles of many different types and this is intended to cover them all. Schema.org: http://schema.org/Article",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "articleBody": {
+      "description": "The actual body of the article.",
+      "type": "string"
+    },
+    "articleSection": {
+      "description": "Articles may belong to one or more 'sections' in a magazine or newspaper, such as Sports, Lifestyle, etc.",
+      "type": "string"
+    },
+    "pageEnd": {
+      "description": "The page on which the work ends; for example '138' or 'xvi'.",
+      "type": "integer"
+    },
+    "pageStart": {
+      "description": "The page on which the work starts; for example '138' or 'xvi'.",
+      "type": "integer"
+    },
+    "pagination": {
+      "description": "Any description of pages that is not separated into pageStart and pageEnd; for example, '1-6, 9, 55' or '10-12, 46-49'.",
+      "type": "string"
+    },
+    "wordCount": {
+      "description": "The number of words in the text of the Article.",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "articleBody",
+    "articleSection",
+    "wordCount"
+  ]
+}

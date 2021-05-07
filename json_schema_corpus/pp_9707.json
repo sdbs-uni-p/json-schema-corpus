@@ -1,0 +1,239 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "schema for importing user profiles",
+  "title": "User Schema",
+  "type": "object",
+  "required": [
+    "display_name",
+    "id"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "display_name": {
+      "$ref": "#/definitions/display_name"
+    },
+    "autofollow_conversations": {
+      "type": "boolean"
+    },
+    "bio": {
+      "type": "string"
+    },
+    "name": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "first": {
+          "type": "string"
+        },
+        "last": {
+          "type": "string"
+        },
+        "formatted": {
+          "type": "string"
+        },
+        "middle": {
+          "type": "string"
+        }
+      }
+    },
+    "email": {
+      "$ref": "#/definitions/email"
+    },
+    "location": {
+      "type": "string"
+    },
+    "profile_url": {
+      "$ref": "#/definitions/url"
+    },
+    "settings_url": {
+      "$ref": "#/definitions/url"
+    },
+    "created": {
+      "$ref": "#/definitions/date"
+    },
+    "tags": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "email_notifications": {
+      "required": [
+        "comments",
+        "likes",
+        "replies",
+        "moderator_comments",
+        "moderator_flags"
+      ],
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "comments": {
+          "$ref": "#/definitions/notification_frequency"
+        },
+        "likes": {
+          "$ref": "#/definitions/notification_frequency"
+        },
+        "parent_id": {
+          "$ref": "#/definitions/notification_frequency"
+        },
+        "replies": {
+          "$ref": "#/definitions/notification_frequency"
+        },
+        "moderator_comments": {
+          "$ref": "#/definitions/notification_frequency"
+        },
+        "moderator_flags": {
+          "$ref": "#/definitions/notification_frequency"
+        }
+      }
+    },
+    "connections": {
+      "type": "array",
+      "items": {
+        "required": [
+          "provider",
+          "credentials"
+        ],
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "provider": {
+            "enum": [
+              "Facebook",
+              "Twitter"
+            ]
+          },
+          "uid": {
+            "type": "string"
+          },
+          "parent_id": {
+            "type": "string"
+          },
+          "profile": {
+            "anyOf": [
+              {
+                "$ref": "#/definitions/fb_profile"
+              },
+              {
+                "$ref": "#/definitions/tw_profile"
+              }
+            ]
+          },
+          "credentials": {
+            "anyOf": [
+              {
+                "$ref": "#/definitions/fb_credentials"
+              },
+              {
+                "$ref": "#/definitions/tw_credentials"
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "url": {
+      "type": "string",
+      "pattern": "^https?\\://[a-zA-Z0-9\\-\\.]+\\.[a-zA-Z]{2,3}(/\\S*)?$"
+    },
+    "email": {
+      "type": "string",
+      "pattern": "^[\\w.%+-]+@[A-z0-9.-]+\\.[A-z]{2,4}$"
+    },
+    "display_name": {
+      "type": "string",
+      "pattern": "^((?!&\\w+;).)*$",
+      "minLength": 1,
+      "maxLength": 150
+    },
+    "notification_frequency": {
+      "enum": [
+        "never",
+        "often",
+        "immediately"
+      ]
+    },
+    "fb_profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "displayName": {
+          "type": "string"
+        },
+        "url": {
+          "$ref": "#/definitions/url"
+        },
+        "photo": {
+          "$ref": "#/definitions/url"
+        }
+      }
+    },
+    "fb_credentials": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "accessToken"
+      ],
+      "properties": {
+        "type": {
+          "enum": [
+            "Facebook"
+          ]
+        },
+        "accessToken": {
+          "type": "string"
+        }
+      }
+    },
+    "tw_profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "preferredUsername": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "url": {
+          "$ref": "#/definitions/url"
+        },
+        "photo": {
+          "$ref": "#/definitions/url"
+        }
+      }
+    },
+    "tw_credentials": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "oauth_token_secret",
+        "oauth_token"
+      ],
+      "properties": {
+        "type": {
+          "enum": [
+            "OAuth"
+          ]
+        },
+        "oauth_token_secret": {
+          "type": "string"
+        },
+        "oauth_token": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

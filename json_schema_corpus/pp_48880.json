@@ -1,0 +1,115 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://github.com/jebeck/nefelion/schemas/food.json",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "amount": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1000,
+      "exclusiveMinimum": true
+    },
+    "calories": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1000,
+      "exclusiveMinimum": true
+    },
+    "description": {
+      "type": "string"
+    },
+    "dietaryFiber": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 25,
+      "exclusiveMinimum": true
+    },
+    "fat": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "exclusiveMinimum": true
+    },
+    "id": {
+      "$ref": "definitions.json#/definitions/id"
+    },
+    "netCarbs": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "exclusiveMinimum": true
+    },
+    "notes": {
+      "type": "string"
+    },
+    "protein": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "exclusiveMinimum": true
+    },
+    "recurring": {
+      "type": "boolean"
+    },
+    "time": {
+      "$ref": "definitions.json#/definitions/time"
+    },
+    "timezoneName": {
+      "$ref": "definitions.json#/definitions/timezoneName"
+    },
+    "timezoneOffset": {
+      "$ref": "definitions.json#/definitions/timezoneOffset"
+    },
+    "totalCarbs": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "exclusiveMinimum": true
+    },
+    "trackedTime": {
+      "$ref": "definitions.json#/definitions/trackedTime"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "food"
+      ]
+    },
+    "units": {
+      "type": "string",
+      "enum": [
+        "egg(s)",
+        "grams",
+        "ounces",
+        "piece(s)",
+        "slice(s)",
+        "whole"
+      ]
+    },
+    "vendor": {
+      "type": "string",
+      "enum": [
+        "Trader Joe's",
+        "Whole Foods"
+      ]
+    }
+  },
+  "required": [
+    "amount",
+    "calories",
+    "description",
+    "fat",
+    "id",
+    "netCarbs",
+    "protein",
+    "recurring",
+    "time",
+    "timezoneName",
+    "timezoneOffset",
+    "totalCarbs",
+    "trackedTime",
+    "type",
+    "units"
+  ]
+}

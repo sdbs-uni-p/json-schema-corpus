@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "definitions": {
+    "key": {
+      "type": "string"
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time",
+      "description": "when the view was created"
+    }
+  },
+  "type": "object",
+  "properties": {
+    "key": {
+      "$ref": "#/definitions/key"
+    },
+    "created": {
+      "$ref": "#/definitions/created"
+    }
+  },
+  "required": [
+    "key",
+    "created"
+  ],
+  "additionalProperties": false
+}

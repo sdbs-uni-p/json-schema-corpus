@@ -1,0 +1,173 @@
+{
+  "$id": "phovea_product",
+  "type": "array",
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "items": {
+    "$id": "phovea_product/items",
+    "type": "object",
+    "required": [
+      "type",
+      "repo"
+    ],
+    "properties": {
+      "type": {
+        "$id": "phovea_product/items/properties/type",
+        "type": "string",
+        "title": "the type of product to build",
+        "default": "",
+        "examples": [
+          "web",
+          "service",
+          "api"
+        ]
+      },
+      "name": {
+        "$id": "phovea_product/items/properties/name",
+        "type": "string",
+        "title": "name of the repo",
+        "default": "guesses from the repository",
+        "examples": [
+          "ordino",
+          "server"
+        ]
+      },
+      "label": {
+        "$id": "phovea_product/items/properties/label",
+        "type": "string",
+        "title": "product label and docker image label",
+        "default": "=name",
+        "examples": [
+          "ordino",
+          "server"
+        ]
+      },
+      "repo": {
+        "$id": "phovea_product/items/properties/repo",
+        "type": "string",
+        "title": "repository to use",
+        "description": "either a full git url or in the form <GithubAccount>/<repo>",
+        "default": "",
+        "examples": [
+          "Caleydo/ordino"
+        ]
+      },
+      "symlink": {
+        "$id": "phovea_product/items/properties/symlink",
+        "type": "string",
+        "title": "location relative to the product directory which contains the clone repository",
+        "description": "Note symbolic links will be created to ensure the proper structure",
+        "default": "",
+        "examples": [
+          "../myclone"
+        ]
+      },
+      "branch": {
+        "$id": "phovea_product/items/properties/branch",
+        "type": "string",
+        "title": "the branch, tag, or sha1 commit to use",
+        "default": "master",
+        "examples": [
+          "master",
+          "v1.2.3",
+          "dc7486a472a987a2f6a38cd18b9b069487f1a4c8",
+          "develop"
+        ]
+      },
+      "additional": {
+        "$id": "phovea_product/items/properties/additional",
+        "type": "array",
+        "description": "additional repositories that should be included in the build",
+        "items": {
+          "$id": "phovea_product/items/properties/additional/items",
+          "type": "object",
+          "required": [
+            "nane",
+            "repo"
+          ],
+          "properties": {
+            "name": {
+              "$id": "phovea_product/items/properties/additional/items/properties/name",
+              "type": "string",
+              "title": "name of the repo",
+              "default": "",
+              "examples": [
+                "phovea_core"
+              ]
+            },
+            "repo": {
+              "$id": "phovea_product/items/properties/additional/items/properties/repo",
+              "type": "string",
+              "title": "repository to use",
+              "description": "either a full git url or in the form <GithubAccount>/<repo>",
+              "default": "",
+              "examples": [
+                "Caleydo/ordino"
+              ]
+            },
+            "symlink": {
+              "$id": "phovea_product/items/properties/symlink",
+              "type": "string",
+              "title": "location relative to the product directory which contains the clone repository",
+              "description": "Note symbolic links will be created to ensure the proper structure",
+              "default": "",
+              "examples": [
+                "../myclone"
+              ]
+            },
+            "branch": {
+              "$id": "phovea_product/items/properties/additional/items/properties/branch",
+              "type": "string",
+              "title": "the branch, tag, or sha1 commit to use",
+              "default": "master",
+              "examples": [
+                "master",
+                "v1.2.3",
+                "dc7486a472a987a2f6a38cd18b9b069487f1a4c8",
+                "develop"
+              ]
+            }
+          }
+        }
+      },
+      "data": {
+        "$id": "phovea_product/items/properties/data",
+        "type": "array",
+        "description": "a list of data files that should be included in /phovea/_data of the server build",
+        "items": {
+          "$id": "phovea_product/items/properties/data/items",
+          "type": "object",
+          "properties": {
+            "name": {
+              "$id": "phovea_product/items/properties/data/items/properties/name",
+              "type": "string",
+              "title": "name to store the file as",
+              "default": "derived from url or repo"
+            },
+            "url": {
+              "$id": "phovea_product/items/properties/data/items/properties/url",
+              "type": "string",
+              "title": "url to a file to download",
+              "description": "if the file doesn't start with http... it is assumed that the file is relative to https://s3.eu-central-1.amazonaws.com/phovea-data-packages/",
+              "default": "",
+              "examples": [
+                "test.h5",
+                "https://test.com/test.txt"
+              ]
+            },
+            "repo": {
+              "$id": "phovea_product/items/properties/data/items/properties/repo",
+              "type": "string",
+              "title": "repository to clone that contains a data directory, the /data directory is cloned to /phovea/_data/<reponame>",
+              "description": "either a full git url or in the form <GithubAccount>/<repo>",
+              "default": "",
+              "examples": [
+                "Caleydo/ordino"
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

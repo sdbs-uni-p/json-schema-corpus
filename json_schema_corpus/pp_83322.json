@@ -1,0 +1,133 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "array",
+  "items": {
+    "id": "0",
+    "type": "object",
+    "properties": {
+      "question-set": {
+        "id": "question-set",
+        "type": "object",
+        "properties": {
+          "passage": {
+            "id": "passage",
+            "type": "string"
+          },
+          "questions": {
+            "id": "questions",
+            "type": "array",
+            "items": {
+              "id": "0",
+              "type": "object",
+              "properties": {
+                "question": {
+                  "id": "question",
+                  "type": "object",
+                  "properties": {
+                    "text": {
+                      "id": "text",
+                      "type": "string"
+                    },
+                    "question-type": {
+                      "id": "question-type",
+                      "type": "string"
+                    },
+                    "answer-candidates": {
+                      "id": "answer-candidates",
+                      "type": "array",
+                      "items": [
+                        {
+                          "id": "0",
+                          "type": "object",
+                          "properties": {
+                            "label": {
+                              "id": "label",
+                              "type": "string"
+                            },
+                            "text": {
+                              "id": "text",
+                              "type": "string"
+                            },
+                            "correct": {
+                              "id": "correct",
+                              "type": "boolean"
+                            }
+                          }
+                        },
+                        {
+                          "id": "1",
+                          "type": "object",
+                          "properties": {
+                            "label": {
+                              "id": "label",
+                              "type": "string"
+                            },
+                            "text": {
+                              "id": "text",
+                              "type": "string"
+                            },
+                            "correct": {
+                              "id": "correct",
+                              "type": "boolean"
+                            }
+                          }
+                        },
+                        {
+                          "id": "2",
+                          "type": "object",
+                          "properties": {
+                            "label": {
+                              "id": "label",
+                              "type": "string"
+                            },
+                            "text": {
+                              "id": "text",
+                              "type": "string"
+                            },
+                            "correct": {
+                              "id": "correct",
+                              "type": "boolean"
+                            }
+                          }
+                        },
+                        {
+                          "id": "3",
+                          "type": "object",
+                          "properties": {
+                            "label": {
+                              "id": "label",
+                              "type": "string"
+                            },
+                            "text": {
+                              "id": "text",
+                              "type": "string"
+                            },
+                            "correct": {
+                              "id": "correct",
+                              "type": "boolean"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "required": [
+          "passage",
+          "questions"
+        ]
+      }
+    },
+    "required": [
+      "question-set"
+    ]
+  },
+  "required": [
+    "0"
+  ]
+}

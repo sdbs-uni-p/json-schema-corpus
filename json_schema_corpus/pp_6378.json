@@ -1,0 +1,58 @@
+{
+  "type": "object",
+  "anyOf": [
+    {
+      "$ref": "#/definitions/TestStruct"
+    }
+  ],
+  "$schema": "http://json-schema-org/draft-07/schema#",
+  "definitions": {
+    "TestStruct": {
+      "required": [
+        "reqField",
+        "reqField3"
+      ],
+      "properties": {
+        "field1": {
+          "type": "string",
+          "description": "should be the first field",
+          "x-intellij-html-description": "should be the first field"
+        },
+        "field2": {
+          "type": "string",
+          "description": "should be the second field. Valid modes are `a`: first letter `b` (default): second letter",
+          "x-intellij-html-description": "should be the second field. Valid modes are <code>a</code>: first letter <code>b</code> (default): second letter",
+          "enum": [
+            "a",
+            "b"
+          ]
+        },
+        "field4": {
+          "type": "string",
+          "description": "should be listed last in `preferredOrder`",
+          "x-intellij-html-description": "should be listed last in <code>preferredOrder</code>"
+        },
+        "reqField": {
+          "type": "string",
+          "description": "should be required",
+          "x-intellij-html-description": "should be required"
+        },
+        "reqField3": {
+          "type": "string",
+          "description": "Field3 should be the third field and listed in required",
+          "x-intellij-html-description": "Field3 should be the third field and listed in required"
+        }
+      },
+      "preferredOrder": [
+        "reqField",
+        "field1",
+        "field2",
+        "reqField3",
+        "field4"
+      ],
+      "additionalProperties": false,
+      "description": "for testing the schema generator.",
+      "x-intellij-html-description": "for testing the schema generator."
+    }
+  }
+}

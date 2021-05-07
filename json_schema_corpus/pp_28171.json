@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "organization",
+  "id": "organization",
+  "description": "A representation / view of an Organization resource.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the Organization."
+    },
+    "link": {
+      "$ref": "link.json#",
+      "description": "A self referencing link to the Organization."
+    },
+    "name": {
+      "type": "string",
+      "description": "The Organization's name."
+    },
+    "orgType": {
+      "type": "string",
+      "enum": [
+        "Provider",
+        "Customer"
+      ],
+      "description": "The Organization's type (e.g. Provider, Customer)."
+    },
+    "status": {
+      "type": "string",
+      "description": "The Organization's status (e.g. Active, Inactive)."
+    },
+    "apiUrls": {
+      "type": "array",
+      "items": {
+        "$ref": "link.json#"
+      },
+      "description": "An array for all API urls (buy, sell, backup, etc...)."
+    },
+    "prefix": {
+      "type": "string",
+      "description": "Prefix used for ID generation."
+    },
+    "externalSytemId": {
+      "$ref": "externalSystemReference",
+      "description": "Id to an external system."
+    },
+    "extendedProperties": {
+      "type": "array",
+      "description": "A list of extendedProperties.",
+      "items": {
+        "$ref": "extendedProperty"
+      }
+    }
+  }
+}

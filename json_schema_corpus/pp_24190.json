@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "description": "Request to initialize JobExecution entities",
+  "additionalProperties": false,
+  "properties": {
+    "files": {
+      "description": "Information about files to upload",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "fileDto.json"
+      }
+    },
+    "userId": {
+      "description": "ID of the user initializing JobExecutions",
+      "type": "string"
+    }
+  },
+  "required": [
+    "files",
+    "userId"
+  ]
+}

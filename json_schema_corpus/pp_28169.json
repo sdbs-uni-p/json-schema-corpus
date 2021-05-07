@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "externalSystemReference",
+  "id": "externalSystemReference",
+  "version": "2.0.0",
+  "required": [
+    "id",
+    "link",
+    "systemName"
+  ],
+  "description": "Entity used to provide reference to an external system.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "An unique identifier for the externalSystemReference."
+    },
+    "link": {
+      "$ref": "link.json#",
+      "description": "A self referencing link to the externalSystemReference resource."
+    },
+    "referenceId": {
+      "type": "string",
+      "description": "The external reference ID from the external system."
+    },
+    "referenceType": {
+      "type": "string",
+      "description": "The type of reference ID (e.g., Service Code)."
+    },
+    "systemName": {
+      "type": "string",
+      "description": "The name of the external system providing the reference."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the actual externalSystemReference."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the actual ExternalSystemReference."
+    }
+  }
+}

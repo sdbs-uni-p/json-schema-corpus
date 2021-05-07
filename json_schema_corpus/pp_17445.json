@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "Period",
+  "properties": {
+    "id": {
+      "title": "ID",
+      "description": "Unique identifier",
+      "type": "string"
+    },
+    "from": {
+      "description": "The start date of this update period",
+      "title": "From date",
+      "type": "string",
+      "format": "date"
+    },
+    "to": {
+      "description": "The end date of this update period",
+      "title": "To date",
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "required": [
+    "from",
+    "to"
+  ],
+  "additionalProperties": false
+}

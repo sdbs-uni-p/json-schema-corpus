@@ -1,0 +1,92 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "sampleObject": {
+      "type": "object",
+      "properties": {
+        "unit": {
+          "type": "string",
+          "enum": [
+            "nanosecond",
+            "microsecond",
+            "millisecond",
+            "second",
+            "minute",
+            "hour",
+            "day",
+            "week",
+            "bit",
+            "byte",
+            "kilobit",
+            "kilobyte",
+            "megabit",
+            "megabyte",
+            "gigabit",
+            "gigabyte",
+            "terabyte",
+            "petabyte"
+          ]
+        },
+        "value": {
+          "type": "number"
+        }
+      }
+    },
+    "dataElement": {
+      "type": "object",
+      "properties": {
+        "values": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/sampleObject"
+          }
+        }
+      }
+    },
+    "metricsList": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/dataElement"
+      }
+    }
+  },
+  "title": "Query Log",
+  "description": "log file entry for ingestion by tsd aggregator",
+  "type": "object",
+  "properties": {
+    "annotations": {
+      "type": "object",
+      "properties": {
+        "finalTimestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "initTimestamp": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "initTimestamp",
+        "finalTimestamp"
+      ]
+    },
+    "counters": {
+      "$ref": "#/definitions/metricsList"
+    },
+    "gauges": {
+      "$ref": "#/definitions/metricsList"
+    },
+    "timers": {
+      "$ref": "#/definitions/metricsList"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^2d$"
+    }
+  },
+  "required": [
+    "annotations",
+    "version"
+  ]
+}

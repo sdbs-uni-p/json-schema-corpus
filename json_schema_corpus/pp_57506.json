@@ -1,0 +1,74 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://iot.ee.surrey.ac.uk/fiware/schemas/ngsi9",
+  "type": "object",
+  "properties": {
+    "entities": {
+      "id": "http://iot.ee.surrey.ac.uk/fiware/schemas/ngsi9/entities",
+      "type": "array",
+      "items": {
+        "id": "http://iot.ee.surrey.ac.uk/fiware/schemas/ngsi9/entities/0",
+        "type": "object",
+        "properties": {
+          "type": {
+            "id": "http://iot.ee.surrey.ac.uk/fiware/schemas/ngsi9/entities/0/type",
+            "type": "string"
+          },
+          "isPattern": {
+            "id": "http://iot.ee.surrey.ac.uk/fiware/schemas/ngsi9/entities/0/isPattern",
+            "type": "string"
+          },
+          "id": {
+            "id": "http://iot.ee.surrey.ac.uk/fiware/schemas/ngsi9/entities/0/id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "isPattern",
+          "id"
+        ]
+      },
+      "required": [
+        "0"
+      ]
+    },
+    "attributes": {
+      "id": "http://iot.ee.surrey.ac.uk/fiware/schemas/ngsi9/attributes",
+      "type": "array",
+      "items": {
+        "id": "http://iot.ee.surrey.ac.uk/fiware/schemas/ngsi9/attributes/0",
+        "type": "string"
+      }
+    },
+    "restriction": {
+      "id": "http://iot.ee.surrey.ac.uk/fiware/schemas/ngsi9/restriction",
+      "type": "object",
+      "properties": {
+        "scopes": {
+          "id": "http://iot.ee.surrey.ac.uk/fiware/schemas/ngsi9/restriction/scopes",
+          "type": "array",
+          "items": {
+            "id": "http://iot.ee.surrey.ac.uk/fiware/schemas/ngsi9/restriction/scopes/0",
+            "type": "object",
+            "properties": {
+              "type": {
+                "id": "http://iot.ee.surrey.ac.uk/fiware/schemas/ngsi9/restriction/scopes/0/type",
+                "type": "string"
+              },
+              "value": {
+                "id": "http://iot.ee.surrey.ac.uk/fiware/schemas/ngsi9/restriction/scopes/0/value",
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "entities",
+    "attributes",
+    "restriction"
+  ]
+}

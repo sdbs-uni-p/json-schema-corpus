@@ -1,0 +1,235 @@
+{
+  "id": "https://opendesk.cc/schemata/fileset.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Winnow Fileset",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "https://opendesk.cc/schemata/base/value.json#"
+    },
+    {
+      "$ref": "https://opendesk.cc/schemata/base/options.json#"
+    },
+    {
+      "$ref": "https://opendesk.cc/schemata/base/canonical.json#"
+    },
+    {
+      "properties": {
+        "name": {},
+        "description": {},
+        "long_description": {},
+        "schema": {},
+        "images": {},
+        "source": {},
+        "path": {},
+        "product_version": {
+          "type": "string"
+        },
+        "aliases": {},
+        "base": {},
+        "version": {},
+        "changes": {},
+        "costs": {},
+        "options": {},
+        "shortcode": {},
+        "type": {
+          "type": "string",
+          "pattern": "fileset"
+        },
+        "category": {
+          "type": "string"
+        },
+        "licenses": {},
+        "manufacturing": {
+          "type": "object",
+          "properties": {
+            "strategies": {
+              "type": "object",
+              "patternProperties": {
+                "^[_a-zA-Z-]{1,}$": {
+                  "allOf": [
+                    {
+                      "$ref": "https://opendesk.cc/schemata/base/options.json#"
+                    },
+                    {
+                      "$ref": "https://opendesk.cc/schemata/base/value.json#"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string"
+                        },
+                        "options": {
+                          "type": "object",
+                          "properties": {
+                            "^[_a-zA-Z-]{1,}$": {
+                              "$ref": "#/definitions/sheet"
+                            }
+                          }
+                        },
+                        "value": {}
+                      },
+                      "required": [
+                        "type",
+                        "value",
+                        "options"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                }
+              }
+            },
+            "unit": {},
+            "cutting": {}
+          },
+          "required": [
+            "strategies"
+          ]
+        },
+        "files": {
+          "oneOf": [
+            {
+              "type": "object",
+              "patternProperties": {
+                "^[_a-zA-Z-]{1,}$": {
+                  "type": "object",
+                  "properties": {
+                    "asset": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "slug": {
+                      "type": "string"
+                    },
+                    "linear_metres": {
+                      "type": "number"
+                    },
+                    "num_components": {
+                      "type": "number"
+                    },
+                    "num_sheets": {
+                      "type": "number"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "asset": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "asset"
+                ],
+                "additionalProperties": false
+              }
+            }
+          ]
+        },
+        "injects": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "pattern": "inject"
+              },
+              "name": {
+                "type": "string"
+              },
+              "category": {
+                "type": "string"
+              },
+              "file": {
+                "properties": {
+                  "asset": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "asset"
+                ]
+              }
+            }
+          }
+        },
+        "is_default": {},
+        "is_public": {}
+      },
+      "additionalProperties": false,
+      "required": [
+        "category",
+        "files",
+        "changes",
+        "name"
+      ]
+    }
+  ],
+  "definitions": {
+    "sheet": {
+      "allOf": [
+        {
+          "$ref": "https://opendesk.cc/schemata/base/options.json#"
+        },
+        {
+          "$ref": "https://opendesk.cc/schemata/base/value.json#"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string"
+            },
+            "options": {
+              "type": "object",
+              "properties": {
+                "material": {
+                  "allOf": [
+                    {
+                      "$ref": "https://opendesk.cc/schemata/base/reference.json#"
+                    },
+                    {
+                      "properties": {
+                        "options": {
+                          "properties": {
+                            "size": {}
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            "value": {},
+            "sheet": {}
+          },
+          "required": [
+            "type",
+            "options",
+            "value",
+            "sheet"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    }
+  }
+}

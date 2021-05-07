@@ -1,0 +1,26 @@
+{
+  "id": "/List",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "label-attr": {
+      "type": "string",
+      "required": true
+    },
+    "label-regex": {
+      "type": "string",
+      "required": true
+    },
+    "link-attr": {
+      "type": "string",
+      "required": true
+    },
+    "classes": {
+      "type": [
+        "array",
+        "string"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/draft-03/schema#"
+}

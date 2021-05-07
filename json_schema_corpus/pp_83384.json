@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "date": {
+    "type": "string",
+    "format": "date-time"
+  },
+  "date_range": {
+    "type": "object",
+    "properties": {
+      "start_date": {
+        "$ref": "#/date"
+      },
+      "end_date": {
+        "$ref": "#/date"
+      }
+    },
+    "additionalProperties": false
+  }
+}

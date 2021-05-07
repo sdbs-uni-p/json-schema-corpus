@@ -1,0 +1,52 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "basal-temp.json",
+  "name": "basal-temp",
+  "title": "Basal temp",
+  "description": "A temporary basal rate delivered over a span of time.",
+  "additionalProperties": false,
+  "properties": {
+    "delivered": {
+      "type": "number",
+      "id": "http://jsonschema.net/basal/temp/delivered",
+      "required": true
+    },
+    "deliveryType": {
+      "enum": [
+        "temp"
+      ],
+      "required": true
+    },
+    "end": {
+      "type": "string",
+      "id": "http://jsonschema.net/basal/temp/end",
+      "required": true
+    },
+    "id": {
+      "type": "string",
+      "id": "http://jsonschema.net/basal/temp/id",
+      "required": false
+    },
+    "inferred": {
+      "type": "boolean",
+      "id": "http://jsonschema.net/basal/temp/inferred",
+      "required": false
+    },
+    "start": {
+      "type": "string",
+      "id": "http://jsonschema.net/basal/temp/start",
+      "required": true
+    },
+    "type": {
+      "type": "string",
+      "id": "http://jsonschema.net/basal/temp/type",
+      "required": true
+    },
+    "value": {
+      "type": "number",
+      "id": "http://jsonschema.net/basal/temp/value",
+      "required": true
+    }
+  }
+}

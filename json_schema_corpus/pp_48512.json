@@ -1,0 +1,211 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "version": "0.01",
+  "type": "object",
+  "required": [
+    "Datasets"
+  ],
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "Datasets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Root": {
+            "type": "string"
+          },
+          "Nodes": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "required": [
+                "GlobalID",
+                "VersionID",
+                "Locked",
+                "Parents",
+                "Children",
+                "Created"
+              ],
+              "properties": {
+                "GlobalID": {
+                  "type": "string"
+                },
+                "VersionID": {
+                  "type": "number"
+                },
+                "Locked": {
+                  "type": "boolean"
+                },
+                "Parents": {
+                  "type": [
+                    "array",
+                    "null"
+                  ]
+                },
+                "Children": {
+                  "type": [
+                    "array",
+                    "null"
+                  ]
+                },
+                "Created": {
+                  "type": "string"
+                },
+                "Updated": {
+                  "type": "string"
+                },
+                "Avail": {}
+              }
+            }
+          },
+          "VersionMap": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "number"
+            }
+          },
+          "NewVersonID": {
+            "type": "number"
+          },
+          "NewDataID": {
+            "type": "number"
+          },
+          "Alias": {
+            "type": "string"
+          },
+          "DatasetID": {
+            "type": "number"
+          },
+          "DataMap": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "required": [
+                "Name"
+              ],
+              "properties": {
+                "Name": {
+                  "type": "string"
+                },
+                "ID": {
+                  "type": "number"
+                },
+                "DsetID": {
+                  "type": "number"
+                },
+                "TypeService": {
+                  "type": "object",
+                  "properties": {
+                    "Name": {
+                      "type": "string"
+                    },
+                    "Url": {
+                      "type": "string"
+                    },
+                    "Version": {
+                      "type": "string"
+                    },
+                    "Requirements": {
+                      "type": "object",
+                      "properties": {
+                        "BulkIniter": {
+                          "type": "boolean"
+                        },
+                        "BulkWriter": {
+                          "type": "boolean"
+                        },
+                        "Batcher": {
+                          "type": "boolean"
+                        }
+                      }
+                    }
+                  }
+                },
+                "Unversioned": {
+                  "type": "boolean"
+                },
+                "Values": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "DataType": {
+                        "type": "string"
+                      },
+                      "Label": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "Interpolable": {
+                  "type": "boolean"
+                },
+                "BlockSize": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  }
+                },
+                "ByteOrder": {
+                  "type": "object"
+                },
+                "VoxelSize": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  }
+                },
+                "VoxelUnits": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "MinPoint": {
+                  "type": [
+                    "null",
+                    "array"
+                  ],
+                  "items": {
+                    "type": "number"
+                  }
+                },
+                "MaxPoint": {
+                  "type": [
+                    "null",
+                    "array"
+                  ],
+                  "items": {
+                    "type": "number"
+                  }
+                },
+                "MinIndex": {
+                  "type": [
+                    "null",
+                    "array"
+                  ],
+                  "items": {
+                    "type": "number"
+                  }
+                },
+                "MaxIndex": {
+                  "type": [
+                    "null",
+                    "array"
+                  ],
+                  "items": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

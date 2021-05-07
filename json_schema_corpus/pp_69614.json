@@ -1,0 +1,10 @@
+{
+  "id": "http://schema.org/Country",
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "extends": {
+    "$ref": "AdministrativeArea.json"
+  },
+  "description": "A country. Schema.org: http://schema.org/Country",
+  "type": "object",
+  "additionalProperties": true
+}

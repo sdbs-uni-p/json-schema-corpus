@@ -1,0 +1,75 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "TinyText Schema",
+  "description": "The TinyText Archetype - Essential properties that define Tiny Text",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "body"
+  ],
+  "properties": {
+    "_id": {
+      "type": "string",
+      "description": "Unique identifier for this archetype record",
+      "maxLength": 50,
+      "default": ""
+    },
+    "_sid": {
+      "type": "string",
+      "description": "Unique short identifier for this archetype record",
+      "maxLength": 50,
+      "default": ""
+    },
+    "servant_id": {
+      "type": "string",
+      "description": "The servant to whom this record belongs",
+      "maxLength": 50,
+      "default": ""
+    },
+    "state": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "public",
+        "private",
+        "deleted"
+      ],
+      "description": "Indicates this archetype record's state",
+      "default": "draft"
+    },
+    "created": {
+      "type": "string",
+      "description": "Date and time this archetype record was created in ISO 8601 date standard e.g. YYYY-MM-DDThh:mm:ss.sTZD",
+      "format": "date-time",
+      "default": ""
+    },
+    "updated": {
+      "type": "string",
+      "description": "Date and time this archetype record was updated in ISO 8601 date standard e.g. YYYY-MM-DDThh:mm:ss.sTZD",
+      "format": "date-time",
+      "default": ""
+    },
+    "body": {
+      "type": "string",
+      "description": "The main text of the TinyText entry",
+      "maxLength": 140,
+      "default": ""
+    },
+    "image": {
+      "$ref": "image_archetype_schema.json",
+      "default": "",
+      "description": "Include an Image Archetype to use with this Tiny Text"
+    },
+    "tags": {
+      "type": "array",
+      "description": "Array of Tag Archetypes that are used to help categorize this Archetype record",
+      "maxItems": 30,
+      "uniqueItems": true,
+      "additionalItems": false,
+      "default": [],
+      "items": {
+        "$ref": "tag_archetype_schema.json"
+      }
+    }
+  }
+}

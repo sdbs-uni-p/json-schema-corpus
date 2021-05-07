@@ -1,0 +1,184 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "order-create-update",
+  "id": "order-create-update",
+  "description": "A representation of an Order, used only for creating and updating an Order.",
+  "type": "object",
+  "required": [
+    "objectType",
+    "buyerId",
+    "sellerId",
+    "buyerPurchaseOrderNumber",
+    "buyerOrderVersion",
+    "orderDate",
+    "orderActivity",
+    "desiredResponses",
+    "requestedCompletionDate",
+    "billingInfo",
+    "buyerOrderContact",
+    "orderType",
+    "orderItems"
+  ],
+  "properties": {
+    "objectType": {
+      "type": "string",
+      "enum": [
+        "order-create-update"
+      ],
+      "description": "The type of the object, order-create-update."
+    },
+    "buyerId": {
+      "type": "string",
+      "description": "A Party Role played by an Individual or an Organization that buys products and services from a Seller. Specifically, the ID of the Service Provider (Buyer) organization placing the order.",
+      "maxLength": 25
+    },
+    "sellerId": {
+      "type": "string",
+      "description": "services to a buyer. Specifically, the ID of the Partner/Access Provider (Seller) organization receiving the order.",
+      "maxLength": 25
+    },
+    "buyerPurchaseOrderNumber": {
+      "type": "string",
+      "description": "A number that uniquely identifies a order within the buyer's enterprise.",
+      "maxLength": 16
+    },
+    "buyerOrderVersion": {
+      "type": "string",
+      "description": "The version number that the Buyer uses to refer to this particular version of the order.",
+      "maxLength": 2
+    },
+    "orderDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date when the order was created."
+    },
+    "orderActivity": {
+      "type": "string",
+      "enum": [
+        "INSTALL",
+        "CHANGE",
+        "DISCONNECT"
+      ],
+      "description": "The type of order, as defined by the business (e.g.,install, change, disconnect)."
+    },
+    "orderStatus": {
+      "type": "string",
+      "enum": [
+        "ACKNOWLEDGED",
+        "IN_PROGRESS",
+        "CANCELLED",
+        "COMPLETED",
+        "REJECTED",
+        "PENDING",
+        "HELD",
+        "FAILED",
+        "PARTIAL"
+      ],
+      "description": "The status of the order."
+    },
+    "desiredResponses": {
+      "type": "string",
+      "enum": [
+        "NONE",
+        "CONFIRMATION_ONLY",
+        "CONFIRMATION_AND_ENGINEERING_DESIGN"
+      ],
+      "description": "The type of order responses that the buyer wishes to receive from the seller."
+    },
+    "projectId": {
+      "type": "string",
+      "description": "An identifier that is used to group Orders that represent a unit of functionality that is important to a Buyer. A Project can be used to relate multiple Orders together.",
+      "maxLength": 16
+    },
+    "requestedCompletionDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Identifies the buyer's desired due date (requested delivery date) formatted as  YYYY-MM-DD (eg 1997-07-16) or YYYY-MM-DDThh:mmTZD (eg 1997-07-16T19:20+01:00)."
+    },
+    "requestedStartDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "If specified, identifies the buyer's desired  date for order processing to start.  Formatted as  YYYY-MM-DD (eg 1997-07-16) or YYYY-MM-DDThh:mmTZD (eg 1997-07-16T19:20+01:00)."
+    },
+    "restorationPriority": {
+      "type": "string",
+      "description": "Within the United States, indicates the provisioning and restoration priority as defined under the TSP Service Vendor Handbook",
+      "maxlength": 12
+    },
+    "priority": {
+      "type": "integer",
+      "description": "Indicates that expedited treatment is requested and any charges generated in provisioning this request (e.g., additional engineering charges or labor charges if applicable) will be accepted; optional, can be used to indicate the assigned priority of this order relative to other orders in the Order Management system.",
+      "minimum": 0,
+      "maximum": 4
+    },
+    "billingInfo": {
+      "$ref": "billingInformation.json#",
+      "description": "An existing billing information to set up a new billing account."
+    },
+    "buyerOrderContact": {
+      "$ref": "contact.json#",
+      "description": "The contact information for the buyer of this order."
+    },
+    "buyerImplementationContact": {
+      "$ref": "contact.json#",
+      "description": "The contact information for the implementation of this order."
+    },
+    "buyerTechnicalContact": {
+      "$ref": "contact.json#",
+      "description": "The technical contact information for this order."
+    },
+    "pricingMethod": {
+      "type": "string",
+      "enum": [
+        "CONTRACT",
+        "TARIFF",
+        "ICB",
+        "OTHER"
+      ],
+      "description": "The pricing authority to be used to price the products on this order. Choice of Tariff, Contract, Individual Case Basis (ICB), Other."
+    },
+    "pricingReference": {
+      "type": "string",
+      "description": "The value associated with the Pricing Method selected (e.g. a contract or tariff id).",
+      "maxLength": 25
+    },
+    "pricingTerm": {
+      "type": "integer",
+      "description": "The length of the service contract in months. Example: 12, 60, 120.",
+      "minimum": 0,
+      "maximum": 999
+    },
+    "promotionId": {
+      "type": "string",
+      "description": "A set of characters identifying a promotion. Company specific.",
+      "maxLength": 18
+    },
+    "orderType": {
+      "type": "string",
+      "enum": [
+        "UNI",
+        "ACCESS_E_LINE"
+      ],
+      "description": "Identifies the type of MEF service or service component that is being ordered."
+    },
+    "notes": {
+      "type": "string",
+      "description": "Free form text used to clarify or explain the Order.",
+      "maxLength": 300
+    },
+    "serviceabilityResponse": {
+      "$ref": "resourceReference.json#",
+      "description": "Value that associates this order with a previously assigned serviceability response."
+    },
+    "orderItems": {
+      "type": "array",
+      "items": {
+        "$ref": "orderItem.json#"
+      },
+      "minItems": 1,
+      "maxitems": 20,
+      "uniqueItems": true,
+      "description": "An array of order items for this order."
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "id": "sprites.json",
+  "title": "sprites",
+  "description": "Schema definition of a set of sprites for a pokemon",
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "properties": {
+    "back_shiny_female": {
+      "type": "string",
+      "format": "url"
+    },
+    "back_female": {
+      "type": "string",
+      "format": "url"
+    },
+    "back_default": {
+      "type": "string",
+      "format": "url"
+    },
+    "front_female": {
+      "type": "string",
+      "format": "url"
+    },
+    "front_shiny_female": {
+      "type": "string",
+      "format": "url"
+    },
+    "back_shiny": {
+      "type": "string",
+      "format": "url"
+    },
+    "front_default": {
+      "type": "string",
+      "format": "url"
+    },
+    "front_shiny": {
+      "type": "string",
+      "format": "url"
+    }
+  },
+  "required": []
+}

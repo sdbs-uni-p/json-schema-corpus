@@ -1,0 +1,73 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "",
+  "description": "",
+  "definitions": {
+    "ActivitySpecification": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "properties": {
+          "$ref": "properties.json#/definitions/PropertySpecification"
+        }
+      }
+    },
+    "ScheduleDescription": {
+      "type": "object",
+      "properties": {
+        "startDateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "startLocation": {
+          "$ref": "#/definitions/LocationDescription"
+        },
+        "endDateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "endLocation": {
+          "$ref": "#/definitions/LocationDescription"
+        },
+        "activities": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "options": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/ActivityDescription"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "ActivityDescription": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "LocationDescription": {
+      "type": "object",
+      "properties": {
+        "latitude": {
+          "type": "number"
+        },
+        "longitude": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}

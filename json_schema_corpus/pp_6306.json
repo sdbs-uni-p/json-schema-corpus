@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "endpoint": "/params",
+  "description": "testing the sending of params",
+  "methods": [
+    "get",
+    "post",
+    "put",
+    "delete"
+  ],
+  "params": {
+    "username": "mugo",
+    "email": "mugo@forfuture.co.ke"
+  },
+  "type": "object",
+  "properties": {
+    "username": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    }
+  },
+  "required": [
+    "username",
+    "email"
+  ]
+}

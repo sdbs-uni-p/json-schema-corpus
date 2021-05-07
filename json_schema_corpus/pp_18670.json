@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Blog Post Schema",
+  "id": "BlogPost",
+  "properties": {
+    "IsPublished": {
+      "type": "boolean"
+    },
+    "Year": {
+      "type": "string"
+    },
+    "Month": {
+      "type": "string"
+    },
+    "Day": {
+      "type": "string"
+    },
+    "PublishedDateTime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "Title": {
+      "type": "string"
+    },
+    "Subtitle": {
+      "type": "string"
+    },
+    "Body": {
+      "type": "string"
+    },
+    "Tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "csharp",
+          "nodejs",
+          "typescript"
+        ]
+      }
+    }
+  },
+  "required": [
+    "IsPublished",
+    "Year",
+    "Month",
+    "Day",
+    "PublishedDateTime",
+    "Title",
+    "Body",
+    "Tags"
+  ],
+  "title": "Blog Post",
+  "type": "object"
+}

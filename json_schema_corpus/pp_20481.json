@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "content-type": "application/x-www-form-urlencoded",
+  "endpoint": "/token",
+  "id": "http://localhost:3000/schemas/token-client-credentials-grant-request.json#",
+  "method": "POST",
+  "properties": {
+    "grant_type": {
+      "description": "Must be set to client_credentials.",
+      "enum": [
+        "client_credentials"
+      ],
+      "type": "string"
+    },
+    "scope": {
+      "description": "Optional requested scope values for the access token.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "grant_type"
+  ],
+  "title": "Token client credentials grant request",
+  "type": "object"
+}

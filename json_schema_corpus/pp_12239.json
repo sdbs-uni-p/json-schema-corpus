@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "query": {
+      "type": "array"
+    },
+    "indicator": {
+      "type": "string"
+    },
+    "startDate": {
+      "type": "integer"
+    },
+    "endDate": {
+      "type": "integer"
+    },
+    "module": {
+      "type": "string"
+    },
+    "device": {
+      "type": "string"
+    }
+  }
+}

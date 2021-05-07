@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Collection of log data transfer objects",
+  "type": "object",
+  "properties": {
+    "logDtos": {
+      "description": "List of log data transfer objects",
+      "type": "array",
+      "id": "logList",
+      "items": {
+        "type": "object",
+        "$ref": "logDto.json"
+      }
+    },
+    "totalRecords": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "logDtos",
+    "totalRecords"
+  ]
+}

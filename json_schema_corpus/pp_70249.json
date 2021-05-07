@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "address",
+  "description": "address",
+  "type": "object",
+  "properties": {
+    "address1": {
+      "$ref": "/schema/addressline"
+    },
+    "address2": {
+      "$ref": "/schema/addressline"
+    },
+    "city": {
+      "$ref": "/schema/city"
+    },
+    "state": {
+      "$ref": "/schema/state"
+    },
+    "zipcode": {
+      "$ref": "/schema/zipcode"
+    },
+    "country": {
+      "$ref": "/schema/country"
+    },
+    "geolocation": {
+      "$ref": "/schema/geolocation"
+    },
+    "neighborhood": {
+      "$ref": "/schema/name"
+    },
+    "cross_street": {
+      "$ref": "/schema/addressline"
+    },
+    "directions": {
+      "$ref": "/schema/directions"
+    }
+  },
+  "required": [
+    "address1",
+    "city",
+    "state",
+    "zipcode"
+  ]
+}

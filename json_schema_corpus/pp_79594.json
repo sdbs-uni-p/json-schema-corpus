@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "type": "object",
+  "properties": {
+    "app": {
+      "type": "string",
+      "description": "the app that produced this panel"
+    },
+    "panel": {
+      "$ref": "panel.json"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "app",
+    "panel"
+  ]
+}

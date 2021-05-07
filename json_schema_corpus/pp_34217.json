@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://jsonschema.net",
+  "properties": {
+    "cats": {
+      "id": "http://jsonschema.net/cats",
+      "required": false,
+      "type": "number"
+    },
+    "created": {
+      "id": "http://jsonschema.net/created",
+      "required": false,
+      "type": "string"
+    },
+    "dogs": {
+      "id": "http://jsonschema.net/dogs",
+      "required": false,
+      "type": "number"
+    },
+    "id": {
+      "id": "http://jsonschema.net/id",
+      "required": false,
+      "type": "string"
+    },
+    "shelterId": {
+      "id": "http://jsonschema.net/shelterId",
+      "required": false,
+      "type": "string"
+    }
+  },
+  "required": false,
+  "type": "object"
+}

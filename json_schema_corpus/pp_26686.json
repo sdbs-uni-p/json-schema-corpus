@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "title": "arguments",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": [
+      {
+        "name": {
+          "type": "string",
+          "required": true
+        },
+        "type": {
+          "type": "string",
+          "required": true
+        },
+        "description": {
+          "type": "string"
+        },
+        "required": {
+          "type": "boolean",
+          "default": true
+        },
+        "repeating": {
+          "type": "boolean"
+        },
+        "default": {}
+      }
+    ]
+  }
+}

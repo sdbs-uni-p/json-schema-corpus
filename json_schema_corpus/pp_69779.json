@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "HypertyResource",
+  "type": "object",
+  "required": [
+    "type"
+  ],
+  "properties": {
+    "type": {
+      "enum": [
+        "chat",
+        "audio",
+        "video",
+        "av",
+        "screen",
+        "file",
+        "midi",
+        "activity_context",
+        "availability_context",
+        "location_context",
+        "heart_rate_context",
+        "user_steps_context",
+        "battery_context",
+        "sleep_context",
+        "light_context",
+        "humidity_context",
+        "power",
+        "user_activity_context",
+        "user_communication_context"
+      ]
+    },
+    "direction": {
+      "enum": [
+        "in",
+        "out",
+        "inout"
+      ]
+    },
+    "author": {
+      "type": "string"
+    },
+    "content": {
+      "type": "object"
+    },
+    "contentUrl": {
+      "type": "string"
+    },
+    "player": {
+      "type": "string"
+    }
+  }
+}

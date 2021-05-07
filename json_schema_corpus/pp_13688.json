@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/hyper-schema#",
+  "$id": "",
+  "title": "Response to Scheduling Block instance GET request",
+  "type": "object",
+  "definitions": {},
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "message"
+  ],
+  "links": [
+    {
+      "description": "link to the Scheduling Block instance",
+      "method": [
+        "GET",
+        "DELETE"
+      ],
+      "rel": "self",
+      "href": "scheduling_block/{id}"
+    },
+    {
+      "description": "link to the List of Scheduling Block instances",
+      "rel": "self",
+      "href": "scheduling_blocks"
+    }
+  ]
+}

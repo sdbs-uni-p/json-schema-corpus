@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "https://github.com/empirefox/node-private-tools/blob/master/src/schemas/kuaidi100.json#",
+  "title": "kuaidi100 Config",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "$tool": {
+      "type": "string",
+      "description": "Must be set to kuaidi100.",
+      "const": "kuaidi100"
+    },
+    "dist": {
+      "description": "The output file path (relative to the pwd), support .ts .js .json.",
+      "type": "string"
+    },
+    "url": {
+      "description": "Target source of raw companys info.",
+      "type": "string",
+      "default": "https://gitcdn.xyz/repo/simman/Kuaidi100/master/companys.json"
+    }
+  },
+  "required": [
+    "$tool",
+    "dist",
+    "url"
+  ],
+  "additionalProperties": false
+}

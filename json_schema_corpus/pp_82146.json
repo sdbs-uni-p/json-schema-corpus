@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "Schema for recovering cluster",
+  "id": "#recovery-v1",
+  "properties": {
+    "name": {
+      "description": "Optional Application name that needs to be recovered. If not specified, all apps are recovered.",
+      "$ref": "${base_url}/schemas/app-version-v1#/definitions/deployment/properties/name"
+    },
+    "version": {
+      "description": "Optional Application version that needs to be recovered. If not specified all app versions are recovered",
+      "$ref": "${base_url}/schemas/app-version-v1#/definitions/deployment/properties/version"
+    },
+    "exclude-names": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "state": {
+      "$ref": "${base_url}/schemas/app-version-v1#/properties/state"
+    }
+  },
+  "additionalProperties": false
+}

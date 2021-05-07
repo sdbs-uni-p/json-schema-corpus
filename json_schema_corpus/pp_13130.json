@@ -1,0 +1,79 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Calendar JSON Schema to translate ORM Entity to ObjectType instance",
+  "type": "object",
+  "definitions": {
+    "field": {
+      "type": "object",
+      "oneOf": [
+        {
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "callback"
+              ]
+            },
+            "value": {
+              "type": "string"
+            },
+            "options": {
+              "type": "object"
+            }
+          }
+        },
+        {
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "field",
+                "value"
+              ]
+            },
+            "value": {
+              "type": [
+                "string",
+                "null",
+                "boolean",
+                "number"
+              ]
+            },
+            "options": {
+              "type": "object"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "properties": {
+    "name": {
+      "$ref": "definitions.json#/field"
+    },
+    "color": {
+      "$ref": "definitions.json#/field"
+    },
+    "icon": {
+      "$ref": "definitions.json#/field"
+    },
+    "source_id": {
+      "$ref": "definitions.json#/field"
+    },
+    "source": {
+      "$ref": "definitions.json#/field"
+    },
+    "calendar_type": {
+      "$ref": "definitions.json#/field"
+    },
+    "active": {
+      "$ref": "definitions.json#/field"
+    },
+    "is_public": {
+      "$ref": "definitions.json#/field"
+    },
+    "editable": {
+      "$ref": "definitions.json#/field"
+    }
+  }
+}

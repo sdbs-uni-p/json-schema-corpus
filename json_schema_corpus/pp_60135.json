@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "The value returned by POST /{db}/_purge",
+  "properties": {
+    "purge_seq": {
+      "type": "number"
+    },
+    "purged": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "purge_seq",
+    "purged"
+  ],
+  "title": "CouchDB db _purge",
+  "type": "object"
+}

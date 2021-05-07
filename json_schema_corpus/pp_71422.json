@@ -1,0 +1,174 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {},
+  "id": "http://example.com/example.json",
+  "properties": {
+    "breachCharacteristics": {
+      "id": "/properties/breachCharacteristics",
+      "properties": {
+        "averageSideSlopes": {
+          "id": "/properties/breachCharacteristics/properties/averageSideSlopes",
+          "type": "integer"
+        },
+        "averageWidth": {
+          "id": "/properties/breachCharacteristics/properties/averageWidth",
+          "type": "integer"
+        },
+        "bottomWidth": {
+          "id": "/properties/breachCharacteristics/properties/bottomWidth",
+          "type": "integer"
+        },
+        "breachShape": {
+          "id": "/properties/breachCharacteristics/properties/breachShape",
+          "type": "integer"
+        },
+        "erodedVolume": {
+          "id": "/properties/breachCharacteristics/properties/erodedVolume",
+          "type": "integer"
+        },
+        "height": {
+          "id": "/properties/breachCharacteristics/properties/height",
+          "type": "integer"
+        },
+        "topWidth": {
+          "id": "/properties/breachCharacteristics/properties/topWidth",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "damInformation": {
+      "id": "/properties/damInformation",
+      "properties": {
+        "damUid": {
+          "id": "/properties/damInformation/properties/damUid",
+          "type": "integer"
+        },
+        "dam": {
+          "id": "/properties/damInformation/properties/dam",
+          "type": "string"
+        },
+        "built": {
+          "id": "/properties/damInformation/properties/built",
+          "type": "integer"
+        },
+        "failed": {
+          "id": "/properties/damInformation/properties/failed",
+          "type": "integer"
+        },
+        "failureMode": {
+          "id": "/properties/damInformation/properties/failureMode",
+          "type": "string"
+        },
+        "construction": {
+          "id": "/properties/damInformation/properties/construction",
+          "type": "string"
+        },
+        "damType": {
+          "id": "/properties/damInformation/properties/damType",
+          "type": "string"
+        },
+        "damEnrodibility": {
+          "id": "/properties/damInformation/properties/damEnrodibility",
+          "type": "string"
+        },
+        "reference": {
+          "id": "/properties/damInformation/properties/reference",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "embankmentDimensions": {
+      "id": "/properties/embankmentDimensions",
+      "properties": {
+        "averageWidth": {
+          "id": "/properties/embankmentDimensions/properties/averageWidth",
+          "type": "integer"
+        },
+        "baseWidth": {
+          "id": "/properties/embankmentDimensions/properties/baseWidth",
+          "type": "integer"
+        },
+        "crestWidth": {
+          "id": "/properties/embankmentDimensions/properties/crestWidth",
+          "type": "integer"
+        },
+        "damHeight": {
+          "id": "/properties/embankmentDimensions/properties/damHeight",
+          "type": "integer"
+        },
+        "downstreamSlope": {
+          "id": "/properties/embankmentDimensions/properties/downstreamSlope",
+          "type": "integer"
+        },
+        "length": {
+          "id": "/properties/embankmentDimensions/properties/length",
+          "type": "integer"
+        },
+        "peakOutflow": {
+          "id": "/properties/embankmentDimensions/properties/peakOutflow",
+          "type": "integer"
+        },
+        "upstreamSlope": {
+          "id": "/properties/embankmentDimensions/properties/upstreamSlope",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "hydraulicCharacteristics": {
+      "id": "/properties/hydraulicCharacteristics",
+      "properties": {
+        "breachFormationFactor": {
+          "id": "/properties/hydraulicCharacteristics/properties/breachFormationFactor",
+          "type": "integer"
+        },
+        "depthAboveBreach": {
+          "id": "/properties/hydraulicCharacteristics/properties/depthAboveBreach",
+          "type": "integer"
+        },
+        "determinantMethod": {
+          "id": "/properties/hydraulicCharacteristics/properties/determinantMethod",
+          "type": "string"
+        },
+        "reservoirStorage": {
+          "id": "/properties/hydraulicCharacteristics/properties/reservoirStorage",
+          "type": "integer"
+        },
+        "surfaceArea": {
+          "id": "/properties/hydraulicCharacteristics/properties/surfaceArea",
+          "type": "integer"
+        },
+        "volAboveBreachInvert": {
+          "id": "/properties/hydraulicCharacteristics/properties/volAboveBreachInvert",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "timeParameters": {
+      "id": "/properties/timeParameters",
+      "properties": {
+        "breachAndEmptyTime": {
+          "id": "/properties/timeParameters/properties/breachAndEmptyTime",
+          "type": "integer"
+        },
+        "developmentTime": {
+          "id": "/properties/timeParameters/properties/developmentTime",
+          "type": "integer"
+        },
+        "failureTime": {
+          "id": "/properties/timeParameters/properties/failureTime",
+          "type": "integer"
+        },
+        "formationTime": {
+          "id": "/properties/timeParameters/properties/formationTime",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "type": "object"
+}

@@ -1,0 +1,92 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "id": {
+      "id": "/id",
+      "type": "string"
+    },
+    "instanceID": {
+      "id": "/instanceID",
+      "type": "string"
+    },
+    "submissionDate": {
+      "id": "/submissionDate",
+      "type": "string"
+    },
+    "isComplete": {
+      "id": "/isComplete",
+      "type": "string"
+    },
+    "markedAsCompleteDate": {
+      "id": "/markedAsCompleteDate",
+      "type": "string"
+    },
+    "event_name": {
+      "id": "/event_name",
+      "type": "string"
+    },
+    "start_date": {
+      "id": "/start_date",
+      "type": "string"
+    },
+    "boats": {
+      "id": "/boats",
+      "type": "array",
+      "items": {
+        "id": "/boats/0",
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "boat_name": {
+            "id": "/boats/0/boat_name",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "cars": {
+      "id": "/cars",
+      "type": [
+        "object",
+        "array"
+      ],
+      "items": {
+        "id": "/cars/0",
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "car_name": {
+            "id": "/cars/0/car_name",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "meta": {
+      "id": "/meta",
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "instanceID": {
+          "id": "/meta/instanceID",
+          "type": "string"
+        }
+      }
+    }
+  },
+  "required": [
+    "id",
+    "instanceID",
+    "submissionDate",
+    "isComplete",
+    "markedAsCompleteDate",
+    "event_name",
+    "start_date",
+    "boats",
+    "cars",
+    "meta"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "data": {
+      "$ref": "_definitions.json#/definitions/responseDataGroups"
+    }
+  },
+  "required": [
+    "data"
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

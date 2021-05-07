@@ -1,0 +1,176 @@
+{
+  "title": "Oceanography measurement point Schema",
+  "description": "Schema for Oceanography measurement point documents",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://api.npolar.no/schema/oceanography_point-1.0.0",
+  "type": "object",
+  "properties": {
+    "collection": {
+      "type": "string",
+      "enum": [
+        "cast",
+        "mooring"
+      ],
+      "description": "Collection type"
+    },
+    "comments": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Comments"
+    },
+    "cruise": {
+      "type": "string",
+      "description": "Cruise identifier"
+    },
+    "depth": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "description": "Measurement depth"
+    },
+    "direction_of_sea_water_velocity": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 360,
+      "description": "Degrees from north"
+    },
+    "eastward_sea_water_velocity": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": -10,
+      "maximum": 10,
+      "description": "Eastward sea water velocity in m/s"
+    },
+    "id": {
+      "type": "string",
+      "description": "UUID of this doc"
+    },
+    "instrument_type": {
+      "type": "string",
+      "description": "Instrument type"
+    },
+    "latitude": {
+      "type": "number",
+      "minimum": -90,
+      "maximum": 90,
+      "description": "Location latitude in WGS-84"
+    },
+    "longitude": {
+      "type": "number",
+      "minimum": -180,
+      "maximum": 180,
+      "description": "Location longitude in WGS-84"
+    },
+    "measured": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date and time of measurement serie"
+    },
+    "mooring": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Mooring id"
+    },
+    "northward_sea_water_velocity": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": -10,
+      "maximum": 10,
+      "description": "Northward sea water velocity in m/s"
+    },
+    "original_station": {
+      "type": "string",
+      "description": "Station identifier"
+    },
+    "platform": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Platform from which the instrument was deployed. Example: RV Lance, sea-ice"
+    },
+    "sea_floor_depth_below_sea_surface": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "description": "Sea depth"
+    },
+    "sea_water_electrical_conductivity": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 10,
+      "description": "Conductivity in Siemens per meter (S/m)"
+    },
+    "sea_water_pressure": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 5000,
+      "description": "Pressure in decibar"
+    },
+    "sea_water_salinity": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 45,
+      "description": "Salinity in particle salinity units (PSU) PPS-78"
+    },
+    "sea_water_temperature": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": -5,
+      "maximum": 50,
+      "description": "Temperature in degrees Celsius ITS-90"
+    },
+    "serial_number": {
+      "type": "string",
+      "description": "Instrument serial number"
+    },
+    "station": {
+      "type": "string",
+      "description": "Station identifier"
+    },
+    "tilt": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 360,
+      "description": "Instrument tilt in degrees"
+    },
+    "schema": {
+      "type": "string",
+      "format": "uri",
+      "description": "Oceanography json schema uri"
+    }
+  },
+  "required": [
+    "collection",
+    "longitude",
+    "latitude",
+    "id",
+    "measured",
+    "schema"
+  ],
+  "additionalProperties": true
+}

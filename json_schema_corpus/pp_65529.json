@@ -1,0 +1,158 @@
+{
+  "id": "https://opendesk.cc/schemata/product.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Winnow Product",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "https://opendesk.cc/schemata/base/value.json#"
+    },
+    {
+      "$ref": "https://opendesk.cc/schemata/base/options.json#"
+    },
+    {
+      "$ref": "https://opendesk.cc/schemata/base/canonical.json#"
+    },
+    {
+      "properties": {
+        "name": {},
+        "description": {},
+        "long_description": {},
+        "schema": {},
+        "images": {},
+        "source": {},
+        "path": {},
+        "aliases": {},
+        "base": {},
+        "version": {},
+        "changes": {},
+        "costs": {},
+        "shortcode": {},
+        "instructions_doc": {
+          "properties": {
+            "asset": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "asset"
+          ]
+        },
+        "params": {
+          "type": "object",
+          "properties": {
+            "config": {
+              "properties": {
+                "asset": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "asset"
+              ]
+            },
+            "obj": {
+              "properties": {
+                "asset": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "asset"
+              ]
+            }
+          },
+          "required": [
+            "config",
+            "obj"
+          ]
+        },
+        "injects": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "pattern": "inject"
+              },
+              "name": {
+                "type": "string"
+              },
+              "category": {
+                "type": "string"
+              },
+              "file": {
+                "properties": {
+                  "asset": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "asset"
+                ]
+              }
+            }
+          }
+        },
+        "estimated_cost": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number"
+            },
+            "type": {
+              "currency": "string"
+            }
+          },
+          "required": [
+            "value"
+          ]
+        },
+        "components": {},
+        "type": {
+          "type": "string",
+          "pattern": "product"
+        },
+        "options": {
+          "type": "object"
+        },
+        "errors": {},
+        "upstream": {
+          "type": "string"
+        },
+        "upstream_at": {
+          "type": "string"
+        },
+        "licenses": {},
+        "is_default": {},
+        "is_public": {},
+        "definitions": {}
+      },
+      "additionalProperties": false,
+      "requiredProperties": [
+        "name",
+        "description",
+        "schema",
+        "type",
+        "images",
+        "source",
+        "path",
+        "version",
+        "changes"
+      ]
+    }
+  ]
+}

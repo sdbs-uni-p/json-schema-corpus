@@ -1,0 +1,55 @@
+{
+  "id": "board.json",
+  "title": "board",
+  "extends": {
+    "$ref": "model.json"
+  },
+  "description": "Schema definition of Pinterest Board",
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "creator_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "description": {
+      "type": "string"
+    },
+    "creator": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "contributors": {
+      "type": "array",
+      "unique": "true",
+      "items": {
+        "$ref": "user.json"
+      }
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer"
+      }
+    },
+    "image": {
+      "$ref": "image.json"
+    }
+  },
+  "required": [
+    "image"
+  ]
+}

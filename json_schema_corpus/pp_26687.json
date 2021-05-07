@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "title": "class",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "type": {
+      "enum": [
+        "class"
+      ]
+    },
+    "extends": {
+      "type": "string"
+    },
+    "mixins": {
+      "type": [
+        "string",
+        "array"
+      ],
+      "items": {
+        "type": "string"
+      }
+    },
+    "deprecated": {
+      "type": "boolean"
+    },
+    "global": {
+      "type": "boolean"
+    },
+    "description": {
+      "type": "string"
+    },
+    "arguments": {
+      "$ref": "arguments.json"
+    },
+    "properties": {
+      "$ref": "properties.json"
+    }
+  }
+}

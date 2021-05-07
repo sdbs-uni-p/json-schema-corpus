@@ -1,0 +1,67 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Root Object",
+  "description": "Obligation",
+  "type": "object",
+  "required": [
+    "obligations"
+  ],
+  "properties": {
+    "obligations": {
+      "title": "Obligations",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "title": "Items Schema",
+        "required": [
+          "start",
+          "end",
+          "due",
+          "status"
+        ],
+        "properties": {
+          "start": {
+            "title": "Start date",
+            "description": "The start date of this obligation period",
+            "$ref": "FullDate.json"
+          },
+          "end": {
+            "title": "End date",
+            "description": "The end date of this obligation period",
+            "$ref": "FullDate.json"
+          },
+          "due": {
+            "title": "Due date",
+            "description": "The due date for this obligation period",
+            "$ref": "FullDate.json"
+          },
+          "processed": {
+            "title": "Processed date",
+            "description": "Date the crystallisation submission was processed by HMRC. Populated only when status has value `Fulfilled`",
+            "$ref": "FullDate.json"
+          },
+          "status": {
+            "title": "Status",
+            "description": "The status of the obligation.",
+            "type": "string",
+            "oneOf": [
+              {
+                "enum": [
+                  "Open"
+                ],
+                "description": "The obligation is open or has not been fulfilled"
+              },
+              {
+                "enum": [
+                  "Fulfilled"
+                ],
+                "description": "The obligation has been Fulfilled"
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

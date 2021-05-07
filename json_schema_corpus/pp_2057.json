@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://github.com/B-Stefan/Sofia/blob/master/common-schemas/Commit.json",
+  "type": "object",
+  "properties": {
+    "project": {
+      "$ref": "./Project.json"
+    },
+    "repositoryUrl": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "text",
+    "repositoryUrl"
+  ]
+}

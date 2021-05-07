@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Scenario Reasoner input for scenarios.evaluate method",
+  "type": "object",
+  "properties": {
+    "method": {
+      "description": "The method of the scenario reasoner being called",
+      "type": "string",
+      "enum": [
+        "evaluate"
+      ]
+    },
+    "params": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1,
+      "items": {
+        "$ref": "state.schema.json#"
+      }
+    },
+    "id": {
+      "description": "A value identifying this request"
+    },
+    "encoding": {
+      "description": "The encoding of the data",
+      "type": "string",
+      "enum": [
+        "json"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "method",
+    "params",
+    "encoding"
+  ]
+}

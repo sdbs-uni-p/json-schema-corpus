@@ -1,0 +1,18 @@
+{
+  "title": "Basal use",
+  "name": "Basal",
+  "description": "basal usage",
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "id": "http://tidepool-org.github.io/data-model/schemas/diabetes/basal/index.json",
+  "type": "object",
+  "properties": {
+    "anyOf": [
+      {
+        "$ref": "./segment.json"
+      },
+      {
+        "$ref": "./temp.json"
+      }
+    ]
+  }
+}

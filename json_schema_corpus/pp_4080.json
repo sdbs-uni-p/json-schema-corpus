@@ -1,0 +1,10 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Resource",
+  "description": "Databook resource",
+  "type": "object",
+  "javaType": "databook.persistence.rule.rdf.ruleset.Resource",
+  "extends": {
+    "$ref": "DataEntity.json"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "uri://registries/company#",
+  "new": {
+    "$ref": "uri://registries/organization#"
+  },
+  "view": {
+    "$ref": "uri://registries/organization#"
+  },
+  "search": {
+    "$ref": "uri://registries/organization#"
+  }
+}

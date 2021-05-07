@@ -1,0 +1,105 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": [
+    "_id",
+    "password_scheme",
+    "iterations",
+    "name",
+    "roles",
+    "type",
+    "derived_key",
+    "salt"
+  ],
+  "properties": {
+    "_id": {
+      "$id": "#/properties/_id",
+      "type": "string",
+      "title": "The _id Schema",
+      "default": "",
+      "examples": [
+        "org.couchdb.user:user1"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "password_scheme": {
+      "$id": "#/properties/password_scheme",
+      "type": "string",
+      "title": "The Password_scheme Schema",
+      "default": "",
+      "examples": [
+        "pbkdf2"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "iterations": {
+      "$id": "#/properties/iterations",
+      "type": "integer",
+      "title": "The Iterations Schema",
+      "default": 0,
+      "examples": [
+        10
+      ]
+    },
+    "name": {
+      "$id": "#/properties/name",
+      "type": "string",
+      "title": "The Name Schema",
+      "default": "",
+      "examples": [
+        "user1"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "roles": {
+      "$id": "#/properties/roles",
+      "type": "array",
+      "title": "The Roles Schema",
+      "items": {
+        "$id": "#/properties/roles/items",
+        "type": "string",
+        "title": "The Items Schema",
+        "default": "",
+        "examples": [
+          "abstractor",
+          "form_designer",
+          "user_admin"
+        ],
+        "pattern": "^(.*)$"
+      }
+    },
+    "type": {
+      "$id": "#/properties/type",
+      "type": "string",
+      "title": "The Type Schema",
+      "default": "",
+      "examples": [
+        "user"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "derived_key": {
+      "$id": "#/properties/derived_key",
+      "type": "string",
+      "title": "The Derived_key Schema",
+      "default": "",
+      "examples": [
+        "1e3ce523e927775812b51c76918c93b62bde4b4c"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "salt": {
+      "$id": "#/properties/salt",
+      "type": "string",
+      "title": "The Salt Schema",
+      "default": "",
+      "examples": [
+        "143c420b868e430cb929bd779b581a82"
+      ],
+      "pattern": "^(.*)$"
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "id": "https://opendesk.cc/schemata/base/set_resource.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Winnow Set",
+  "oneOf": [
+    {
+      "$ref": "#/values"
+    },
+    {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://opendesk.cc/schemata/base/option.json#"
+        },
+        {
+          "properties": {
+            "values": {
+              "$ref": "#/values"
+            }
+          },
+          "required": [
+            "values"
+          ],
+          "oneOf": [
+            {
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "pattern": "set::resource"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "set_value": {
+    "oneOf": [
+      {
+        "$ref": "https://opendesk.cc/schemata/base/reference.json#"
+      },
+      {
+        "$ref": "https://opendesk.cc/schemata/resource.json#"
+      }
+    ]
+  },
+  "values": {
+    "oneOf": [
+      {
+        "$ref": "#/set_value"
+      },
+      {
+        "type": "array",
+        "items": {
+          "$ref": "#/set_value"
+        }
+      }
+    ]
+  }
+}

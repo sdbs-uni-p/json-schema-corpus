@@ -1,0 +1,74 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "title": "Properties list",
+  "type": "array",
+  "items": {
+    "title": "Property",
+    "type": "object",
+    "properties": {
+      "propertyId": {
+        "type": "string",
+        "description": "A unique identifier for the Property/Hotel",
+        "required": true
+      },
+      "name": {
+        "type": "string",
+        "description": "Property/Hotel full name as identified by the brand",
+        "required": true
+      },
+      "url": {
+        "type": "string",
+        "description": "Property/Hotel detail page (website URL)",
+        "required": true
+      },
+      "category": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "Category used for rewards (points exchanges)"
+      },
+      "address": {
+        "type": "string",
+        "description": "Full address",
+        "required": true
+      },
+      "city": {
+        "type": "string",
+        "required": true
+      },
+      "state": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "State or Province, when available"
+      },
+      "country": {
+        "type": "string",
+        "required": true
+      },
+      "zip": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "Zip code or postal code",
+        "required": true
+      },
+      "phone": {
+        "type": "string",
+        "description": "Phone number",
+        "required": true
+      },
+      "latitude": {
+        "type": "number",
+        "required": true
+      },
+      "longitude": {
+        "type": "number",
+        "required": true
+      }
+    }
+  }
+}

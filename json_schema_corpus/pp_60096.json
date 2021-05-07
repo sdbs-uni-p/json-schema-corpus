@@ -1,0 +1,277 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "works": {
+      "id": "works",
+      "type": "array",
+      "items": [
+        {
+          "id": "0",
+          "type": "object",
+          "properties": {
+            "id": {
+              "id": "id",
+              "type": "integer"
+            },
+            "title": {
+              "id": "title",
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "id",
+            "title",
+            "name",
+            "category",
+            "votes",
+            "preference",
+            "work"
+          ]
+        },
+        {
+          "id": "1",
+          "type": "object",
+          "properties": {
+            "id": {
+              "id": "id",
+              "type": "integer"
+            },
+            "title": {
+              "id": "title",
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "id": "2",
+          "type": "object",
+          "properties": {
+            "id": {
+              "id": "id",
+              "type": "integer"
+            },
+            "title": {
+              "id": "title",
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "id": "3",
+          "type": "object",
+          "properties": {
+            "id": {
+              "id": "id",
+              "type": "integer"
+            },
+            "title": {
+              "id": "title",
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        }
+      ],
+      "required": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    "categories": {
+      "id": "categories",
+      "type": "array",
+      "items": [
+        {
+          "id": "0",
+          "type": "object",
+          "properties": {
+            "id": {
+              "id": "id",
+              "type": "integer"
+            },
+            "name": {
+              "id": "name",
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "id": "1",
+          "type": "object",
+          "properties": {
+            "id": {
+              "id": "id",
+              "type": "integer"
+            },
+            "name": {
+              "id": "name",
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "ballots": {
+      "id": "ballots",
+      "type": "array",
+      "items": [
+        {
+          "id": "0",
+          "type": "object",
+          "properties": {
+            "category": {
+              "id": "category",
+              "type": "integer"
+            },
+            "votes": {
+              "id": "votes",
+              "type": "array",
+              "items": [
+                {
+                  "id": "0",
+                  "type": "object",
+                  "properties": {
+                    "preference": {
+                      "id": "preference",
+                      "type": "integer"
+                    },
+                    "work": {
+                      "id": "work",
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                {
+                  "id": "1",
+                  "type": "object",
+                  "properties": {
+                    "preference": {
+                      "id": "preference",
+                      "type": "integer"
+                    },
+                    "work": {
+                      "id": "work",
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "id": "1",
+          "type": "object",
+          "properties": {
+            "category": {
+              "id": "category",
+              "type": "integer"
+            },
+            "votes": {
+              "id": "votes",
+              "type": "array",
+              "items": [
+                {
+                  "id": "0",
+                  "type": "object",
+                  "properties": {
+                    "preference": {
+                      "id": "preference",
+                      "type": "integer"
+                    },
+                    "work": {
+                      "id": "work",
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                {
+                  "id": "1",
+                  "type": "object",
+                  "properties": {
+                    "preference": {
+                      "id": "preference",
+                      "type": "integer"
+                    },
+                    "work": {
+                      "id": "work",
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "id": "2",
+          "type": "object",
+          "properties": {
+            "category": {
+              "id": "category",
+              "type": "integer"
+            },
+            "votes": {
+              "id": "votes",
+              "type": "array",
+              "items": [
+                {
+                  "id": "0",
+                  "type": "object",
+                  "properties": {
+                    "preference": {
+                      "id": "preference",
+                      "type": "integer"
+                    },
+                    "work": {
+                      "id": "work",
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                {
+                  "id": "1",
+                  "type": "object",
+                  "properties": {
+                    "preference": {
+                      "id": "preference",
+                      "type": "integer"
+                    },
+                    "work": {
+                      "id": "work",
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              ]
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "works",
+    "categories",
+    "ballots"
+  ]
+}

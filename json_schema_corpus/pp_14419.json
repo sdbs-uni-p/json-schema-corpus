@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "PlantillaBasicSensor Schema",
+  "type": "object",
+  "required": [
+    "BasicSensor"
+  ],
+  "properties": {
+    "BasicSensor": {
+      "type": "string",
+      "$ref": "#/datos"
+    }
+  },
+  "datos": {
+    "description": "Info Sensor Basico",
+    "type": "object",
+    "required": [
+      "timestamp",
+      "assetId",
+      "measure"
+    ],
+    "properties": {
+      "timestamp": {
+        "type": "object",
+        "required": [
+          "$date"
+        ],
+        "properties": {
+          "$date": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "assetId": {
+        "type": "string"
+      },
+      "measure": {
+        "type": "number"
+      },
+      "unit": {
+        "type": "string"
+      },
+      "groupId": {
+        "type": "string"
+      }
+    }
+  }
+}

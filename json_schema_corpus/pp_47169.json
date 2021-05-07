@@ -1,0 +1,70 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "https://raw.githubusercontent.com/evoldoers/machineboss/master/schema/seqpair.json",
+  "description": "MachineBoss sequence-pair schema",
+  "type": "object",
+  "oneOf": [
+    {
+      "required": [
+        "input",
+        "output"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "input": {
+          "$ref": "https://raw.githubusercontent.com/evoldoers/machineboss/master/schema/namedsequence.json"
+        },
+        "output": {
+          "$ref": "https://raw.githubusercontent.com/evoldoers/machineboss/master/schema/namedsequence.json"
+        },
+        "meta": {}
+      }
+    },
+    {
+      "required": [
+        "alignment"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "input": {
+          "$ref": "#/definitions/nameWithOptionalSequence"
+        },
+        "output": {
+          "$ref": "#/definitions/nameWithOptionalSequence"
+        },
+        "alignment": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {
+              "type": "string"
+            }
+          },
+          "meta": {}
+        }
+      }
+    }
+  ],
+  "definitions": {
+    "nameWithOptionalSequence": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "sequence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

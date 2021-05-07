@@ -1,0 +1,50 @@
+{
+  "id": "https://raw.githubusercontent.com/eviratec/schema/master/v1/currency.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "schema for a currency",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "code",
+    "label",
+    "separator"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "code": {
+      "type": "string",
+      "maxLength": 4
+    },
+    "label": {
+      "type": "string",
+      "maxLength": 64
+    },
+    "prefix": {
+      "type": "string",
+      "maxLength": 1
+    },
+    "separator": {
+      "type": "object",
+      "required": [
+        "thousands",
+        "decimal"
+      ],
+      "properties": {
+        "thousands": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1
+        },
+        "decimal": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1
+        }
+      }
+    }
+  }
+}

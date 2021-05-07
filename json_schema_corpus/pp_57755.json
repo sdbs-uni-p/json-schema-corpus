@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Start Login Information",
+  "type": "object",
+  "properties": {
+    "forwarder_domain": {
+      "description": "The forwarder domain.",
+      "type": "string"
+    },
+    "login_session_token": {
+      "description": "The B64 encoded login session token.",
+      "type": "string"
+    },
+    "tag_key": {
+      "description": "The B64 encoded key used to encrypt the Tag.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "forwarder_domain",
+    "login_session_token",
+    "tag_key"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://tidepool-org.github.io/data-model/schemas/message.json",
+  "title": "Messages",
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": "http://jsonschema.net/message/id",
+      "required": false
+    },
+    "messageText": {
+      "type": "string",
+      "id": "http://jsonschema.net/messageText",
+      "required": true
+    },
+    "parentMessage": {
+      "type": "string",
+      "id": "http://jsonschema.net/parentMessage",
+      "required": true
+    },
+    "type": {
+      "enum": [
+        "message"
+      ],
+      "required": true
+    },
+    "utcTime": {
+      "type": "string",
+      "format": "date-time",
+      "id": "http://jsonschema.net/utcTime",
+      "required": true
+    }
+  }
+}

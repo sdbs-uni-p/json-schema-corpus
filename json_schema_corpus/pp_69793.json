@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "List": {
+    "type": "object",
+    "properties": {}
+  },
+  "ListElement": {
+    "type": "object",
+    "properties": {}
+  }
+}

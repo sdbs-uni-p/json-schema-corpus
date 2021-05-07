@@ -1,0 +1,153 @@
+{
+  "type": "object",
+  "title": "User schema",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "auth_fields": [
+    "id",
+    "username",
+    "first_name",
+    "last_name",
+    "stories"
+  ],
+  "public_fields": [
+    "username"
+  ],
+  "nested_relationships": [
+    "profile"
+  ],
+  "auth_model": true,
+  "properties": {
+    "id": {
+      "required": false,
+      "type": "id_field"
+    },
+    "created_at": {
+      "required": false,
+      "type": "datetime",
+      "args": {
+        "default": "{{datetime.datetime.utcnow}}"
+      }
+    },
+    "updated_at": {
+      "required": false,
+      "type": "datetime",
+      "args": {
+        "onupdate": "{{datetime.datetime.utcnow}}"
+      }
+    },
+    "profile": {
+      "required": false,
+      "type": "relationship",
+      "args": {
+        "document": "Profile",
+        "backref_name": "user",
+        "uselist": false
+      }
+    },
+    "stories": {
+      "required": false,
+      "type": "relationship",
+      "args": {
+        "document": "Story",
+        "ondelete": "NULLIFY",
+        "backref_name": "owner",
+        "backref_ondelete": "NULLIFY",
+        "foreign_keys": "Story.owner_id"
+      }
+    },
+    "assigned_stories": {
+      "required": false,
+      "type": "relationship",
+      "args": {
+        "document": "Story",
+        "ondelete": "NULLIFY",
+        "backref_name": "assignee",
+        "backref_ondelete": "NULLIFY",
+        "foreign_keys": "Story.assignee_id"
+      }
+    },
+    "username": {
+      "required": true,
+      "type": "string",
+      "args": {
+        "min_length": 1,
+        "max_length": 50,
+        "unique": true,
+        "primary_key": true,
+        "before_validation": [
+          "lower_strip_processor"
+        ]
+      }
+    },
+    "email": {
+      "required": true,
+      "type": "string",
+      "args": {
+        "unique": true,
+        "before_validation": [
+          "lower_strip_processor"
+        ]
+      }
+    },
+    "password": {
+      "required": true,
+      "type": "string",
+      "args": {
+        "min_length": 3,
+        "after_validation": [
+          "crypt_processor"
+        ]
+      }
+    },
+    "first_name": {
+      "required": false,
+      "type": "string",
+      "args": {
+        "max_length": 50,
+        "default": ""
+      }
+    },
+    "last_name": {
+      "required": false,
+      "type": "string",
+      "args": {
+        "max_length": 50,
+        "default": ""
+      }
+    },
+    "last_login": {
+      "required": false,
+      "type": "datetime"
+    },
+    "groups": {
+      "required": false,
+      "type": "list",
+      "args": {
+        "choices": [
+          "admin",
+          "user"
+        ],
+        "default": [
+          "user"
+        ],
+        "item_type": "string"
+      }
+    },
+    "status": {
+      "required": false,
+      "type": "choice",
+      "args": {
+        "choices": [
+          "active",
+          "inactive",
+          "blocked"
+        ],
+        "default": "active"
+      }
+    },
+    "settings": {
+      "required": false,
+      "type": "dict"
+    }
+  }
+}

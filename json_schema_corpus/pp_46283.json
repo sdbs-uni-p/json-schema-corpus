@@ -1,0 +1,734 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Fast Stream Data Export",
+  "type": "object",
+  "properties": {
+    "token": {
+      "type": "string",
+      "format": "uuid",
+      "minLength": 36,
+      "maxLength": 36
+    },
+    "application": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "format": "uuid",
+          "minLength": 36,
+          "maxLength": 36
+        },
+        "applicationId": {
+          "type": "string",
+          "format": "uuid",
+          "minLength": 36,
+          "maxLength": 36
+        },
+        "contact-details": {
+          "type": "object",
+          "properties": {
+            "outsideUk": {
+              "type": "boolean"
+            },
+            "country": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "address": {
+              "type": "object",
+              "properties": {
+                "line1": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 100
+                },
+                "line2": {
+                  "type": "string",
+                  "maxLength": 100
+                },
+                "line3": {
+                  "type": "string",
+                  "maxLength": 100
+                },
+                "line4": {
+                  "type": "string",
+                  "maxLength": 100
+                }
+              },
+              "required": [
+                "line1"
+              ]
+            },
+            "email": {
+              "type": "string",
+              "format": "email",
+              "minLength": 1,
+              "maxLength": 128
+            },
+            "phone": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 20
+            },
+            "postCode": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 10
+            }
+          },
+          "required": [
+            "outsideUk",
+            "address",
+            "email",
+            "phone"
+          ]
+        },
+        "frameworkId": {
+          "type": "string",
+          "minLength": 15,
+          "maxLength": 15
+        },
+        "personal-details": {
+          "type": "object",
+          "properties": {
+            "firstName": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "lastName": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "preferredName": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "dateOfBirth": {
+              "type": "string",
+              "format": "date",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "firstName",
+            "lastName",
+            "preferredName",
+            "dateOfBirth"
+          ]
+        },
+        "civil-service-experience-details": {
+          "type": "object",
+          "properties": {
+            "applicable": {
+              "type": "boolean"
+            },
+            "civilServiceExperienceType": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100,
+              "enum": [
+                "CivilServant",
+                "CivilServantViaFastTrack",
+                "DiversityInternship"
+              ]
+            },
+            "internshipTypes": {
+              "type": "array",
+              "uniqueItems": true,
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 100,
+                "enum": [
+                  "EDIP",
+                  "SDIPPreviousYear",
+                  "SDIPCurrentYear"
+                ]
+              }
+            },
+            "fastPassReceived": {
+              "type": "boolean"
+            },
+            "certificateNumber": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 7
+            }
+          },
+          "required": [
+            "applicable"
+          ]
+        },
+        "media": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 100
+        },
+        "scheme-preferences": {
+          "type": "object",
+          "properties": {
+            "schemes": {
+              "type": "array",
+              "uniqueItems": true,
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64,
+                "enum": [
+                  "Generalist",
+                  "Commercial",
+                  "DigitalAndTechnology",
+                  "DiplomaticService",
+                  "DiplomaticServiceEconomics",
+                  "DiplomaticServiceEuropean",
+                  "European",
+                  "Finance",
+                  "GovernmentCommunicationService",
+                  "GovernmentEconomicsService",
+                  "GovernmentOperationalResearchService",
+                  "GovernmentSocialResearchService",
+                  "GovernmentStatisticalService",
+                  "HousesOfParliament",
+                  "HumanResources",
+                  "ProjectDelivery",
+                  "ScienceAndEngineering",
+                  "Edip",
+                  "Sdip"
+                ]
+              }
+            },
+            "orderAgreed": {
+              "type": "boolean"
+            },
+            "eligible": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "schemes",
+            "orderAgreed",
+            "eligible"
+          ]
+        },
+        "assistance-details": {
+          "type": "object",
+          "properties": {
+            "hasDisability": {
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 35
+            },
+            "needsSupportForOnlineAssessment": {
+              "type": "boolean"
+            },
+            "needsSupportAtVenue": {
+              "type": "boolean"
+            },
+            "needsSupportAtVenueDescription": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "needsSupportForOnlineAssessmentDescription": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "guaranteedInterview": {
+              "type": "boolean"
+            },
+            "hasDisabilityDescription": {
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 200
+            },
+            "etray": {
+              "type": "object",
+              "properties": {
+                "timeNeeded": {
+                  "type": "integer"
+                },
+                "invigilatedInfo": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 256
+                },
+                "otherInfo": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 256
+                }
+              }
+            },
+            "video": {
+              "type": "object",
+              "properties": {
+                "timeNeeded": {
+                  "type": "integer"
+                },
+                "invigilatedInfo": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 256
+                },
+                "otherInfo": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 256
+                }
+              }
+            }
+          },
+          "required": [
+            "hasDisability",
+            "needsSupportForOnlineAssessment",
+            "needsSupportAtVenue",
+            "guaranteedInterview"
+          ]
+        },
+        "diversity-questionnaire": {
+          "type": "object",
+          "properties": {
+            "questions": {
+              "type": "object",
+              "properties": {
+                "I understand this won't affect my application": {
+                  "type": "object",
+                  "properties": {
+                    "answer": {
+                      "type": "string",
+                      "enum": [
+                        "Yes",
+                        "No"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "answer"
+                  ]
+                },
+                "What is your gender identity?": {
+                  "type": "object",
+                  "properties": {
+                    "answer": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 256
+                    },
+                    "otherDetails": {
+                      "type": "string",
+                      "minLength": 0,
+                      "maxLength": 256
+                    },
+                    "unknown": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "What is your sexual orientation?": {
+                  "type": "object",
+                  "properties": {
+                    "answer": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 256
+                    },
+                    "otherDetails": {
+                      "type": "string",
+                      "minLength": 0,
+                      "maxLength": 256
+                    },
+                    "unknown": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "What is your ethnic group?": {
+                  "type": "object",
+                  "properties": {
+                    "answer": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 256
+                    },
+                    "otherDetails": {
+                      "type": "string",
+                      "minLength": 0,
+                      "maxLength": 256
+                    },
+                    "unknown": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "Did you live in the UK between the ages of 14 and 18?": {
+                  "type": "object",
+                  "properties": {
+                    "answer": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 256
+                    },
+                    "otherDetails": {
+                      "type": "string",
+                      "minLength": 0,
+                      "maxLength": 256
+                    },
+                    "unknown": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "What was your home postcode when you were 14?": {
+                  "type": "object",
+                  "properties": {
+                    "answer": {
+                      "type": "string",
+                      "minLength": 0,
+                      "maxLength": 256
+                    },
+                    "otherDetails": {
+                      "type": "string",
+                      "minLength": 0,
+                      "maxLength": 256
+                    },
+                    "unknown": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "Between the ages of 11 to 16, in which school did you spend most of your education?": {
+                  "type": "object",
+                  "properties": {
+                    "answer": {
+                      "type": "string",
+                      "minLength": 0,
+                      "maxLength": 256
+                    },
+                    "otherDetails": {
+                      "type": "string",
+                      "minLength": 0,
+                      "maxLength": 256
+                    },
+                    "unknown": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "Between the ages of 16 to 18, in which school did you spend most of your education?": {
+                  "type": "object",
+                  "properties": {
+                    "answer": {
+                      "type": "string",
+                      "minLength": 0,
+                      "maxLength": 256
+                    },
+                    "otherDetails": {
+                      "type": "string",
+                      "minLength": 0,
+                      "maxLength": 256
+                    },
+                    "unknown": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "What is the name of the university you received your degree from?": {
+                  "type": "object",
+                  "properties": {
+                    "answer": {
+                      "type": "string",
+                      "minLength": 0,
+                      "maxLength": 256
+                    },
+                    "otherDetails": {
+                      "type": "string",
+                      "minLength": 0,
+                      "maxLength": 256
+                    },
+                    "unknown": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "What is the name of your current university?": {
+                  "type": "object",
+                  "properties": {
+                    "answer": {
+                      "type": "string",
+                      "minLength": 0,
+                      "maxLength": 256
+                    },
+                    "otherDetails": {
+                      "type": "string",
+                      "minLength": 0,
+                      "maxLength": 256
+                    },
+                    "unknown": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "Which category best describes your degree?": {
+                  "type": "object",
+                  "properties": {
+                    "answer": {
+                      "type": "string",
+                      "enum": [
+                        "(J)",
+                        "(5)",
+                        "(A)",
+                        "(3)",
+                        "(D)",
+                        "(H)",
+                        "(8)",
+                        "(I)",
+                        "(9)",
+                        "(G)",
+                        "(F)",
+                        "(C)",
+                        "(E)",
+                        "(7)",
+                        "(1)",
+                        "(2)",
+                        "(6)",
+                        "(B)",
+                        "(4)"
+                      ]
+                    },
+                    "unknown": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "Were you at any time eligible for free school meals?": {
+                  "type": "object",
+                  "properties": {
+                    "answer": {
+                      "type": "string",
+                      "minLength": 0,
+                      "maxLength": 256
+                    },
+                    "otherDetails": {
+                      "type": "string",
+                      "minLength": 0,
+                      "maxLength": 256
+                    },
+                    "unknown": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "Do you have a parent or guardian that has completed a university degree course or equivalent?": {
+                  "type": "object",
+                  "properties": {
+                    "answer": {
+                      "type": "string",
+                      "minLength": 0,
+                      "maxLength": 256
+                    },
+                    "otherDetails": {
+                      "type": "string",
+                      "minLength": 0,
+                      "maxLength": 256
+                    },
+                    "unknown": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "When you were 14, what kind of work did your highest-earning parent or guardian do?": {
+                  "type": "object",
+                  "properties": {
+                    "answer": {
+                      "type": "string",
+                      "minLength": 0,
+                      "maxLength": 256
+                    },
+                    "otherDetails": {
+                      "type": "string",
+                      "minLength": 0,
+                      "maxLength": 256
+                    },
+                    "unknown": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "Did they work as an employee or were they self-employed?": {
+                  "type": "object",
+                  "properties": {
+                    "answer": {
+                      "type": "string",
+                      "minLength": 0,
+                      "maxLength": 256
+                    },
+                    "otherDetails": {
+                      "type": "string",
+                      "minLength": 0,
+                      "maxLength": 256
+                    },
+                    "unknown": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "Which size would best describe their place of work?": {
+                  "type": "object",
+                  "properties": {
+                    "answer": {
+                      "type": "string",
+                      "minLength": 0,
+                      "maxLength": 256
+                    },
+                    "otherDetails": {
+                      "type": "string",
+                      "minLength": 0,
+                      "maxLength": 256
+                    },
+                    "unknown": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "Did they supervise employees?": {
+                  "type": "object",
+                  "properties": {
+                    "answer": {
+                      "type": "string",
+                      "minLength": 0,
+                      "maxLength": 256
+                    },
+                    "otherDetails": {
+                      "type": "string",
+                      "minLength": 0,
+                      "maxLength": 256
+                    },
+                    "unknown": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              },
+              "required": [
+                "I understand this won't affect my application",
+                "What is your gender identity?",
+                "What is your sexual orientation?",
+                "What is your ethnic group?",
+                "Did you live in the UK between the ages of 14 and 18?"
+              ]
+            },
+            "scoring": {
+              "type": "object",
+              "properties": {
+                "ses": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "ses"
+              ]
+            }
+          },
+          "required": [
+            "questions",
+            "scoring"
+          ]
+        },
+        "results": {
+          "type": "object",
+          "properties": {
+            "passed-schemes": {
+              "type": "array",
+              "uniqueItems": true,
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64,
+                "enum": [
+                  "Generalist",
+                  "Commercial",
+                  "DigitalAndTechnology",
+                  "DiplomaticService",
+                  "DiplomaticServiceEconomics",
+                  "DiplomaticServiceEuropean",
+                  "European",
+                  "Finance",
+                  "GovernmentCommunicationService",
+                  "GovernmentEconomicsService",
+                  "GovernmentOperationalResearchService",
+                  "GovernmentSocialResearchService",
+                  "GovernmentStatisticalService",
+                  "HousesOfParliament",
+                  "HumanResources",
+                  "ProjectDelivery",
+                  "ScienceAndEngineering",
+                  "Edip",
+                  "Sdip"
+                ]
+              }
+            }
+          },
+          "required": [
+            "passed-schemes"
+          ]
+        },
+        "withdraw": {
+          "type": "object",
+          "properties": {
+            "reason": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 64
+            },
+            "otherReason": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 300
+            },
+            "withdrawer": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 36
+            }
+          },
+          "required": [
+            "reason",
+            "withdrawer"
+          ]
+        },
+        "assessment-location": {
+          "type": "string",
+          "enum": [
+            "London",
+            "Newcastle"
+          ]
+        }
+      },
+      "required": [
+        "userId",
+        "applicationId",
+        "contact-details",
+        "frameworkId",
+        "personal-details",
+        "civil-service-experience-details",
+        "scheme-preferences",
+        "assistance-details",
+        "diversity-questionnaire",
+        "assessment-location",
+        "results"
+      ]
+    }
+  },
+  "required": [
+    "application",
+    "token"
+  ]
+}

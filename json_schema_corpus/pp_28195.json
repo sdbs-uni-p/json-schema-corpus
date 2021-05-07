@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "layer2ControlProtocol",
+  "id": "layer2ControlProtocol",
+  "description": "An identification of a specific Layer 2 Control Protocol.",
+  "type": "object",
+  "required": [
+    "objectType",
+    "destinationAddress",
+    "protocolIdentifier"
+  ],
+  "properties": {
+    "objectType": {
+      "type": "string",
+      "enum": [
+        "layer2ControlProtocol"
+      ],
+      "description": "The type of the object, layer2ControlProtocol."
+    },
+    "destinationAddress": {
+      "type": "string",
+      "description": "The MAC Address used for the Layer 2 Control Protocol.",
+      "maxLength": 17
+    },
+    "etherType": {
+      "type": "string",
+      "description": "A two-octet field in an Ethernet frame used to indicate which protocol is encapsulated in the payload of the frame.",
+      "maxLength": 6
+    },
+    "subtype": {
+      "type": "string",
+      "description": "Subtype for Slow Protocols, in hexadecimal format.",
+      "maxLength": 6
+    },
+    "linkId": {
+      "type": "string",
+      "description": "Link Identifier",
+      "maxLength": 45
+    }
+  }
+}

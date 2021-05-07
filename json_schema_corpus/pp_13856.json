@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "lighttextwidget.json",
+  "allOf": [
+    {
+      "$ref": "widget.json"
+    },
+    {
+      "$ref": "textcontainer.json"
+    }
+  ]
+}

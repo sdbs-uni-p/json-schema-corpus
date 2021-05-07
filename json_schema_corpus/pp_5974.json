@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "infrastructure": {
+      "id": "infrastructure",
+      "type": "object",
+      "properties": {
+        "name": {
+          "id": "name",
+          "type": "string"
+        },
+        "keystone_url": {
+          "id": "keystone_url",
+          "type": "string"
+        },
+        "username": {
+          "id": "username",
+          "type": "string"
+        },
+        "password": {
+          "id": "password",
+          "type": "string"
+        },
+        "tenant_name": {
+          "id": "tenant_name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "keystone_url",
+        "username",
+        "password",
+        "tenant"
+      ]
+    }
+  },
+  "required": [
+    "infrastructure"
+  ]
+}

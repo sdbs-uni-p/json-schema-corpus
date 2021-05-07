@@ -1,0 +1,117 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "passedFlag": {
+      "title": "Pass?",
+      "type": "boolean"
+    },
+    "status": {
+      "description": "The current disposition of an assessment",
+      "enum": [
+        "Started",
+        "In progress",
+        "Complete",
+        "Cancelled",
+        "Opted out",
+        "Error"
+      ]
+    },
+    "userInteractionUri": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uri",
+      "description": "when present, a uri, with all query parameters urlencoded, of a small, iframe-able web page that the user (e.g. the recruiter) uses to interact with/view the assessment"
+    },
+    "userInteractionMessage": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "when present, a markdown formatted string that will be displayed to the user in the assessent popup. Any links open inside a new tab/window."
+    },
+    "interactionUris": {
+      "type": "object",
+      "properties": {
+        "candidateInteractionUri": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri",
+          "description": "when present, a uri, with all query parameters urlencoded, that the candidate must follow to complete some part of the assessment"
+        },
+        "userInteractionUri": {
+          "$ref": "#/definitions/userInteractionUri"
+        },
+        "userInteractionMessage": {
+          "$ref": "#/definitions/userInteractionMessage"
+        },
+        "userAttentionRequired": {
+          "type": "boolean",
+          "description": "Signals that the assessment cannot proceed until the user provides some input. Can only be true when either userInteractionUri or userInteractionUri are non-null."
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "candidateInteractionUri",
+        "userInteractionUri",
+        "userAttentionRequired"
+      ]
+    },
+    "imageUrl": {
+      "description": "url of an image that will be loaded from an  app into the assessment hub to represent an assessment's status or an unstarted assessment type",
+      "type": "string",
+      "format": "url"
+    },
+    "raisers": {
+      "description": "a list of every user who raised this assessment (this may be more than one, i.e. via linkages). Does not include linkages raised by the system, e.g. an assessment started because a candidate dropped into a bucket",
+      "type": "array",
+      "items": {
+        "$ref": "person.json"
+      }
+    }
+  },
+  "type": "object",
+  "properties": {
+    "meta": {
+      "$ref": "assessmentMeta.json"
+    },
+    "assessmentType": {
+      "type": "integer"
+    },
+    "assessmentTypeKey": {
+      "$ref": "assessmentType.json#/definitions/key"
+    },
+    "status": {
+      "$ref": "#/definitions/status"
+    },
+    "view": {
+      "type": "string",
+      "description": "the key of the view instance that will give more details about the subject of this assessment (name, email address, job ID, etc.)"
+    },
+    "passedFlag": {
+      "$ref": "#/definitions/passedFlag"
+    },
+    "interactionUris": {
+      "$ref": "#/definitions/interactionUris"
+    },
+    "image": {
+      "$ref": "#/definitions/imageUrl"
+    },
+    "raisers": {
+      "$ref": "#/definitions/raisers"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "meta",
+    "assessmentType",
+    "assessmentTypeKey",
+    "status",
+    "view",
+    "interactionUris",
+    "raisers"
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "id": "http://framespaces.com/schema/action.json",
+  "$schema": "http://json-schema.org/schema#",
+  "definitions": {
+    "guid": {
+      "type": "string",
+      "pattern": "^[a-f][a-f0-9]{31}$"
+    },
+    "shape": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "enum": [
+            "text",
+            "tspan",
+            "polygon",
+            "polyline",
+            "line",
+            "rect",
+            "ellipse",
+            "circle",
+            "path"
+          ]
+        },
+        "attr": {
+          "type": "object",
+          "maxProperties": 100,
+          "additionalProperties": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
+          }
+        },
+        "text": {
+          "type": "string",
+          "maxLength": 1000
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/shape"
+          }
+        },
+        "bbox": {
+          "type": "object",
+          "properties": {
+            "x": {
+              "type": "number"
+            },
+            "y": {
+              "type": "number"
+            },
+            "width": {
+              "type": "number"
+            },
+            "height": {
+              "type": "number"
+            }
+          }
+        }
+      },
+      "required": [
+        "name",
+        "attr"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "properties": {
+    "id": {
+      "$ref": "#/definitions/guid"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "addition",
+        "removal",
+        "replacement",
+        "mutation"
+      ]
+    },
+    "from": {
+      "$ref": "#/definitions/shape"
+    },
+    "to": {
+      "$ref": "#/definitions/shape"
+    },
+    "undoOf": {
+      "$ref": "#/definitions/guid"
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ],
+  "additionalProperties": false
+}

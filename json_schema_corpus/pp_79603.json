@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "type": "object",
+  "description": "the result of successfully launching a job set upload",
+  "properties": {
+    "uploadID": {
+      "type": "integer",
+      "description": "the ID of the successfully launched upload"
+    }
+  },
+  "required": [
+    "uploadID"
+  ],
+  "additionalProperties": false
+}

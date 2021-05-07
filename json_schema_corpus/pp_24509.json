@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://atomicbits.io/raml10/tree.json",
+  "type": "object",
+  "description": "a tree structure",
+  "properties": {
+    "value": {
+      "required": true,
+      "type": "string"
+    },
+    "children": {
+      "required": true,
+      "type": "array",
+      "items": {
+        "$ref": "tree.json"
+      }
+    }
+  }
+}

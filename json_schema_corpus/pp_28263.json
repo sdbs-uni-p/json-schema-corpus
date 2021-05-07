@@ -1,0 +1,20 @@
+{
+  "title": "money",
+  "id": "https://rawgit.com/camshaft/shenu/master/schemas/money.json#",
+  "description": "",
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "required": [
+    "amount"
+  ],
+  "properties": {
+    "currency": {
+      "type": "string",
+      "default": "USD"
+    },
+    "amount": {
+      "type": "number"
+    }
+  },
+  "additionalProperties": false
+}

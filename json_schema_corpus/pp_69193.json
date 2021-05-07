@@ -1,0 +1,1902 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "version": {
+      "id": "version",
+      "type": "string"
+    },
+    "environments": {
+      "id": "environments",
+      "type": "array",
+      "items": {
+        "id": "0",
+        "type": "object",
+        "properties": {
+          "name": {
+            "id": "name",
+            "type": "string"
+          },
+          "endpoint": {
+            "id": "endpoint",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "documents": {
+      "id": "documents",
+      "type": "array",
+      "items": [
+        {
+          "id": "0",
+          "type": "object",
+          "properties": {
+            "httpMethod": {
+              "id": "httpMethod",
+              "type": "string"
+            },
+            "name": {
+              "id": "name",
+              "type": "string"
+            },
+            "path": {
+              "id": "path",
+              "type": "string"
+            },
+            "description": {
+              "id": "description",
+              "type": "string"
+            },
+            "consumes": {
+              "id": "consumes",
+              "type": "array",
+              "items": {
+                "id": "0",
+                "type": "string"
+              }
+            },
+            "produces": {
+              "id": "produces",
+              "type": "array",
+              "items": {
+                "id": "0",
+                "type": "string"
+              }
+            },
+            "parameters": {
+              "id": "parameters",
+              "type": "object",
+              "properties": {
+                "path": {
+                  "id": "path",
+                  "type": "array",
+                  "items": []
+                },
+                "form": {
+                  "id": "form",
+                  "type": "array",
+                  "items": []
+                },
+                "query": {
+                  "id": "query",
+                  "type": "array",
+                  "items": []
+                },
+                "header": {
+                  "id": "header",
+                  "type": "array",
+                  "items": []
+                }
+              }
+            },
+            "payloads": {
+              "id": "payloads",
+              "type": "object",
+              "properties": {
+                "request": {
+                  "id": "request",
+                  "type": "array",
+                  "items": {
+                    "id": "0",
+                    "type": "object",
+                    "properties": {
+                      "nullable": {
+                        "id": "nullable",
+                        "type": "boolean"
+                      },
+                      "constraints": {
+                        "id": "constraints",
+                        "type": "array",
+                        "items": {
+                          "id": "0",
+                          "type": "object",
+                          "properties": {
+                            "constraint": {
+                              "id": "constraint",
+                              "type": "string"
+                            },
+                            "type": {
+                              "id": "type",
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "type": {
+                        "id": "type",
+                        "type": "string"
+                      },
+                      "collection": {
+                        "id": "collection",
+                        "type": "boolean"
+                      },
+                      "properties": {
+                        "id": "properties",
+                        "type": "array",
+                        "items": [
+                          {
+                            "id": "0",
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "id": "name",
+                                "type": "string"
+                              },
+                              "nullable": {
+                                "id": "nullable",
+                                "type": "boolean"
+                              },
+                              "type": {
+                                "id": "type",
+                                "type": "string"
+                              }
+                            }
+                          },
+                          {
+                            "id": "1",
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "id": "name",
+                                "type": "string"
+                              },
+                              "nullable": {
+                                "id": "nullable",
+                                "type": "boolean"
+                              },
+                              "type": {
+                                "id": "type",
+                                "type": "string"
+                              }
+                            }
+                          },
+                          {
+                            "id": "2",
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "id": "name",
+                                "type": "string"
+                              },
+                              "nullable": {
+                                "id": "nullable",
+                                "type": "boolean"
+                              },
+                              "type": {
+                                "id": "type",
+                                "type": "string"
+                              }
+                            }
+                          },
+                          {
+                            "id": "3",
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "id": "name",
+                                "type": "string"
+                              },
+                              "nullable": {
+                                "id": "nullable",
+                                "type": "boolean"
+                              },
+                              "type": {
+                                "id": "type",
+                                "type": "string"
+                              }
+                            }
+                          },
+                          {
+                            "id": "4",
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "id": "name",
+                                "type": "string"
+                              },
+                              "nullable": {
+                                "id": "nullable",
+                                "type": "boolean"
+                              },
+                              "type": {
+                                "id": "type",
+                                "type": "string"
+                              }
+                            }
+                          },
+                          {
+                            "id": "5",
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "id": "name",
+                                "type": "string"
+                              },
+                              "nullable": {
+                                "id": "nullable",
+                                "type": "boolean"
+                              },
+                              "type": {
+                                "id": "type",
+                                "type": "string"
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                "response": {
+                  "id": "response",
+                  "type": "array",
+                  "items": {
+                    "id": "0",
+                    "type": "object",
+                    "properties": {
+                      "nullable": {
+                        "id": "nullable",
+                        "type": "boolean"
+                      },
+                      "type": {
+                        "id": "type",
+                        "type": "string"
+                      },
+                      "collection": {
+                        "id": "collection",
+                        "type": "boolean"
+                      },
+                      "properties": {
+                        "id": "properties",
+                        "type": "array",
+                        "items": [
+                          {
+                            "id": "0",
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "id": "name",
+                                "type": "string"
+                              },
+                              "nullable": {
+                                "id": "nullable",
+                                "type": "boolean"
+                              },
+                              "type": {
+                                "id": "type",
+                                "type": "string"
+                              }
+                            }
+                          },
+                          {
+                            "id": "1",
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "id": "name",
+                                "type": "string"
+                              },
+                              "nullable": {
+                                "id": "nullable",
+                                "type": "boolean"
+                              },
+                              "type": {
+                                "id": "type",
+                                "type": "string"
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "messages": {
+              "id": "messages",
+              "type": "array",
+              "items": [
+                {
+                  "id": "0",
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "id": "status",
+                      "type": "integer"
+                    },
+                    "message": {
+                      "id": "message",
+                      "type": "string"
+                    },
+                    "success": {
+                      "id": "success",
+                      "type": "boolean"
+                    }
+                  }
+                },
+                {
+                  "id": "1",
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "id": "status",
+                      "type": "integer"
+                    },
+                    "message": {
+                      "id": "message",
+                      "type": "string"
+                    },
+                    "success": {
+                      "id": "success",
+                      "type": "boolean"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "1",
+          "type": "object",
+          "properties": {
+            "httpMethod": {
+              "id": "httpMethod",
+              "type": "string"
+            },
+            "name": {
+              "id": "name",
+              "type": "string"
+            },
+            "path": {
+              "id": "path",
+              "type": "string"
+            },
+            "description": {
+              "id": "description",
+              "type": "string"
+            },
+            "produces": {
+              "id": "produces",
+              "type": "array",
+              "items": {
+                "id": "0",
+                "type": "string"
+              }
+            },
+            "parameters": {
+              "id": "parameters",
+              "type": "object",
+              "properties": {
+                "path": {
+                  "id": "path",
+                  "type": "array",
+                  "items": [
+                    {
+                      "id": "0",
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "id": "name",
+                          "type": "string"
+                        },
+                        "nullable": {
+                          "id": "nullable",
+                          "type": "boolean"
+                        },
+                        "constraints": {
+                          "id": "constraints",
+                          "type": "array",
+                          "items": {
+                            "id": "0",
+                            "type": "object",
+                            "properties": {
+                              "constraint": {
+                                "id": "constraint",
+                                "type": "string"
+                              },
+                              "type": {
+                                "id": "type",
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "type": {
+                          "id": "type",
+                          "type": "string"
+                        }
+                      }
+                    },
+                    {
+                      "id": "1",
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "id": "name",
+                          "type": "string"
+                        },
+                        "nullable": {
+                          "id": "nullable",
+                          "type": "boolean"
+                        },
+                        "constraints": {
+                          "id": "constraints",
+                          "type": "array",
+                          "items": {
+                            "id": "0",
+                            "type": "object",
+                            "properties": {
+                              "constraint": {
+                                "id": "constraint",
+                                "type": "string"
+                              },
+                              "type": {
+                                "id": "type",
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "type": {
+                          "id": "type",
+                          "type": "string"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "form": {
+                  "id": "form",
+                  "type": "array",
+                  "items": []
+                },
+                "query": {
+                  "id": "query",
+                  "type": "array",
+                  "items": []
+                },
+                "header": {
+                  "id": "header",
+                  "type": "array",
+                  "items": []
+                }
+              }
+            },
+            "payloads": {
+              "id": "payloads",
+              "type": "object",
+              "properties": {
+                "request": {
+                  "id": "request",
+                  "type": "array",
+                  "items": []
+                },
+                "response": {
+                  "id": "response",
+                  "type": "array",
+                  "items": {
+                    "id": "0",
+                    "type": "object",
+                    "properties": {
+                      "nullable": {
+                        "id": "nullable",
+                        "type": "boolean"
+                      },
+                      "type": {
+                        "id": "type",
+                        "type": "string"
+                      },
+                      "collection": {
+                        "id": "collection",
+                        "type": "boolean"
+                      },
+                      "properties": {
+                        "id": "properties",
+                        "type": "array",
+                        "items": [
+                          {
+                            "id": "0",
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "id": "name",
+                                "type": "string"
+                              },
+                              "nullable": {
+                                "id": "nullable",
+                                "type": "boolean"
+                              },
+                              "type": {
+                                "id": "type",
+                                "type": "string"
+                              }
+                            }
+                          },
+                          {
+                            "id": "1",
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "id": "name",
+                                "type": "string"
+                              },
+                              "nullable": {
+                                "id": "nullable",
+                                "type": "boolean"
+                              },
+                              "type": {
+                                "id": "type",
+                                "type": "string"
+                              }
+                            }
+                          },
+                          {
+                            "id": "2",
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "id": "name",
+                                "type": "string"
+                              },
+                              "nullable": {
+                                "id": "nullable",
+                                "type": "boolean"
+                              },
+                              "type": {
+                                "id": "type",
+                                "type": "string"
+                              }
+                            }
+                          },
+                          {
+                            "id": "3",
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "id": "name",
+                                "type": "string"
+                              },
+                              "nullable": {
+                                "id": "nullable",
+                                "type": "boolean"
+                              },
+                              "type": {
+                                "id": "type",
+                                "type": "string"
+                              }
+                            }
+                          },
+                          {
+                            "id": "4",
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "id": "name",
+                                "type": "string"
+                              },
+                              "nullable": {
+                                "id": "nullable",
+                                "type": "boolean"
+                              },
+                              "type": {
+                                "id": "type",
+                                "type": "string"
+                              }
+                            }
+                          },
+                          {
+                            "id": "5",
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "id": "name",
+                                "type": "string"
+                              },
+                              "nullable": {
+                                "id": "nullable",
+                                "type": "boolean"
+                              },
+                              "type": {
+                                "id": "type",
+                                "type": "string"
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "messages": {
+              "id": "messages",
+              "type": "array",
+              "items": [
+                {
+                  "id": "0",
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "id": "status",
+                      "type": "integer"
+                    },
+                    "message": {
+                      "id": "message",
+                      "type": "string"
+                    },
+                    "success": {
+                      "id": "success",
+                      "type": "boolean"
+                    }
+                  }
+                },
+                {
+                  "id": "1",
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "id": "status",
+                      "type": "integer"
+                    },
+                    "message": {
+                      "id": "message",
+                      "type": "string"
+                    },
+                    "success": {
+                      "id": "success",
+                      "type": "boolean"
+                    }
+                  }
+                },
+                {
+                  "id": "2",
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "id": "status",
+                      "type": "integer"
+                    },
+                    "message": {
+                      "id": "message",
+                      "type": "string"
+                    },
+                    "success": {
+                      "id": "success",
+                      "type": "boolean"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "2",
+          "type": "object",
+          "properties": {
+            "httpMethod": {
+              "id": "httpMethod",
+              "type": "string"
+            },
+            "name": {
+              "id": "name",
+              "type": "string"
+            },
+            "path": {
+              "id": "path",
+              "type": "string"
+            },
+            "description": {
+              "id": "description",
+              "type": "string"
+            },
+            "produces": {
+              "id": "produces",
+              "type": "array",
+              "items": {
+                "id": "0",
+                "type": "string"
+              }
+            },
+            "parameters": {
+              "id": "parameters",
+              "type": "object",
+              "properties": {
+                "path": {
+                  "id": "path",
+                  "type": "array",
+                  "items": {
+                    "id": "0",
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "id": "name",
+                        "type": "string"
+                      },
+                      "nullable": {
+                        "id": "nullable",
+                        "type": "boolean"
+                      },
+                      "constraints": {
+                        "id": "constraints",
+                        "type": "array",
+                        "items": {
+                          "id": "0",
+                          "type": "object",
+                          "properties": {
+                            "constraint": {
+                              "id": "constraint",
+                              "type": "string"
+                            },
+                            "type": {
+                              "id": "type",
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "type": {
+                        "id": "type",
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "form": {
+                  "id": "form",
+                  "type": "array",
+                  "items": []
+                },
+                "query": {
+                  "id": "query",
+                  "type": "array",
+                  "items": []
+                },
+                "header": {
+                  "id": "header",
+                  "type": "array",
+                  "items": []
+                }
+              }
+            },
+            "payloads": {
+              "id": "payloads",
+              "type": "object",
+              "properties": {
+                "request": {
+                  "id": "request",
+                  "type": "array",
+                  "items": []
+                },
+                "response": {
+                  "id": "response",
+                  "type": "array",
+                  "items": {
+                    "id": "0",
+                    "type": "object",
+                    "properties": {
+                      "nullable": {
+                        "id": "nullable",
+                        "type": "boolean"
+                      },
+                      "type": {
+                        "id": "type",
+                        "type": "string"
+                      },
+                      "collection": {
+                        "id": "collection",
+                        "type": "boolean"
+                      },
+                      "properties": {
+                        "id": "properties",
+                        "type": "array",
+                        "items": [
+                          {
+                            "id": "0",
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "id": "name",
+                                "type": "string"
+                              },
+                              "nullable": {
+                                "id": "nullable",
+                                "type": "boolean"
+                              },
+                              "type": {
+                                "id": "type",
+                                "type": "string"
+                              }
+                            }
+                          },
+                          {
+                            "id": "1",
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "id": "name",
+                                "type": "string"
+                              },
+                              "nullable": {
+                                "id": "nullable",
+                                "type": "boolean"
+                              },
+                              "type": {
+                                "id": "type",
+                                "type": "string"
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "messages": {
+              "id": "messages",
+              "type": "array",
+              "items": [
+                {
+                  "id": "0",
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "id": "status",
+                      "type": "integer"
+                    },
+                    "message": {
+                      "id": "message",
+                      "type": "string"
+                    },
+                    "success": {
+                      "id": "success",
+                      "type": "boolean"
+                    }
+                  }
+                },
+                {
+                  "id": "1",
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "id": "status",
+                      "type": "integer"
+                    },
+                    "message": {
+                      "id": "message",
+                      "type": "string"
+                    },
+                    "success": {
+                      "id": "success",
+                      "type": "boolean"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "3",
+          "type": "object",
+          "properties": {
+            "httpMethod": {
+              "id": "httpMethod",
+              "type": "string"
+            },
+            "name": {
+              "id": "name",
+              "type": "string"
+            },
+            "path": {
+              "id": "path",
+              "type": "string"
+            },
+            "description": {
+              "id": "description",
+              "type": "string"
+            },
+            "produces": {
+              "id": "produces",
+              "type": "array",
+              "items": {
+                "id": "0",
+                "type": "string"
+              }
+            },
+            "parameters": {
+              "id": "parameters",
+              "type": "object",
+              "properties": {
+                "path": {
+                  "id": "path",
+                  "type": "array",
+                  "items": [
+                    {
+                      "id": "0",
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "id": "name",
+                          "type": "string"
+                        },
+                        "nullable": {
+                          "id": "nullable",
+                          "type": "boolean"
+                        },
+                        "constraints": {
+                          "id": "constraints",
+                          "type": "array",
+                          "items": {
+                            "id": "0",
+                            "type": "object",
+                            "properties": {
+                              "constraint": {
+                                "id": "constraint",
+                                "type": "string"
+                              },
+                              "type": {
+                                "id": "type",
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "type": {
+                          "id": "type",
+                          "type": "string"
+                        }
+                      }
+                    },
+                    {
+                      "id": "1",
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "id": "name",
+                          "type": "string"
+                        },
+                        "nullable": {
+                          "id": "nullable",
+                          "type": "boolean"
+                        },
+                        "constraints": {
+                          "id": "constraints",
+                          "type": "array",
+                          "items": {
+                            "id": "0",
+                            "type": "object",
+                            "properties": {
+                              "constraint": {
+                                "id": "constraint",
+                                "type": "string"
+                              },
+                              "type": {
+                                "id": "type",
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "type": {
+                          "id": "type",
+                          "type": "string"
+                        }
+                      }
+                    },
+                    {
+                      "id": "2",
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "id": "name",
+                          "type": "string"
+                        },
+                        "nullable": {
+                          "id": "nullable",
+                          "type": "boolean"
+                        },
+                        "constraints": {
+                          "id": "constraints",
+                          "type": "array",
+                          "items": {
+                            "id": "0",
+                            "type": "object",
+                            "properties": {
+                              "constraint": {
+                                "id": "constraint",
+                                "type": "string"
+                              },
+                              "type": {
+                                "id": "type",
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "type": {
+                          "id": "type",
+                          "type": "string"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "form": {
+                  "id": "form",
+                  "type": "array",
+                  "items": []
+                },
+                "query": {
+                  "id": "query",
+                  "type": "array",
+                  "items": []
+                },
+                "header": {
+                  "id": "header",
+                  "type": "array",
+                  "items": []
+                }
+              }
+            },
+            "payloads": {
+              "id": "payloads",
+              "type": "object",
+              "properties": {
+                "request": {
+                  "id": "request",
+                  "type": "array",
+                  "items": []
+                },
+                "response": {
+                  "id": "response",
+                  "type": "array",
+                  "items": {
+                    "id": "0",
+                    "type": "object",
+                    "properties": {
+                      "nullable": {
+                        "id": "nullable",
+                        "type": "boolean"
+                      },
+                      "type": {
+                        "id": "type",
+                        "type": "string"
+                      },
+                      "collection": {
+                        "id": "collection",
+                        "type": "boolean"
+                      },
+                      "properties": {
+                        "id": "properties",
+                        "type": "array",
+                        "items": [
+                          {
+                            "id": "0",
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "id": "name",
+                                "type": "string"
+                              },
+                              "nullable": {
+                                "id": "nullable",
+                                "type": "boolean"
+                              },
+                              "type": {
+                                "id": "type",
+                                "type": "string"
+                              }
+                            }
+                          },
+                          {
+                            "id": "1",
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "id": "name",
+                                "type": "string"
+                              },
+                              "nullable": {
+                                "id": "nullable",
+                                "type": "boolean"
+                              },
+                              "type": {
+                                "id": "type",
+                                "type": "string"
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "messages": {
+              "id": "messages",
+              "type": "array",
+              "items": [
+                {
+                  "id": "0",
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "id": "status",
+                      "type": "integer"
+                    },
+                    "message": {
+                      "id": "message",
+                      "type": "string"
+                    },
+                    "success": {
+                      "id": "success",
+                      "type": "boolean"
+                    }
+                  }
+                },
+                {
+                  "id": "1",
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "id": "status",
+                      "type": "integer"
+                    },
+                    "message": {
+                      "id": "message",
+                      "type": "string"
+                    },
+                    "success": {
+                      "id": "success",
+                      "type": "boolean"
+                    }
+                  }
+                },
+                {
+                  "id": "2",
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "id": "status",
+                      "type": "integer"
+                    },
+                    "message": {
+                      "id": "message",
+                      "type": "string"
+                    },
+                    "success": {
+                      "id": "success",
+                      "type": "boolean"
+                    }
+                  }
+                },
+                {
+                  "id": "3",
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "id": "status",
+                      "type": "integer"
+                    },
+                    "message": {
+                      "id": "message",
+                      "type": "string"
+                    },
+                    "success": {
+                      "id": "success",
+                      "type": "boolean"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "4",
+          "type": "object",
+          "properties": {
+            "httpMethod": {
+              "id": "httpMethod",
+              "type": "string"
+            },
+            "name": {
+              "id": "name",
+              "type": "string"
+            },
+            "path": {
+              "id": "path",
+              "type": "string"
+            },
+            "description": {
+              "id": "description",
+              "type": "string"
+            },
+            "consumes": {
+              "id": "consumes",
+              "type": "array",
+              "items": {
+                "id": "0",
+                "type": "string"
+              }
+            },
+            "produces": {
+              "id": "produces",
+              "type": "array",
+              "items": {
+                "id": "0",
+                "type": "string"
+              }
+            },
+            "parameters": {
+              "id": "parameters",
+              "type": "object",
+              "properties": {
+                "path": {
+                  "id": "path",
+                  "type": "array",
+                  "items": []
+                },
+                "form": {
+                  "id": "form",
+                  "type": "array",
+                  "items": []
+                },
+                "query": {
+                  "id": "query",
+                  "type": "array",
+                  "items": []
+                },
+                "header": {
+                  "id": "header",
+                  "type": "array",
+                  "items": []
+                }
+              }
+            },
+            "payloads": {
+              "id": "payloads",
+              "type": "object",
+              "properties": {
+                "request": {
+                  "id": "request",
+                  "type": "array",
+                  "items": {
+                    "id": "0",
+                    "type": "object",
+                    "properties": {
+                      "nullable": {
+                        "id": "nullable",
+                        "type": "boolean"
+                      },
+                      "constraints": {
+                        "id": "constraints",
+                        "type": "array",
+                        "items": {
+                          "id": "0",
+                          "type": "object",
+                          "properties": {
+                            "constraint": {
+                              "id": "constraint",
+                              "type": "string"
+                            },
+                            "type": {
+                              "id": "type",
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "type": {
+                        "id": "type",
+                        "type": "string"
+                      },
+                      "collection": {
+                        "id": "collection",
+                        "type": "boolean"
+                      },
+                      "properties": {
+                        "id": "properties",
+                        "type": "array",
+                        "items": [
+                          {
+                            "id": "0",
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "id": "name",
+                                "type": "string"
+                              },
+                              "nullable": {
+                                "id": "nullable",
+                                "type": "boolean"
+                              },
+                              "type": {
+                                "id": "type",
+                                "type": "string"
+                              }
+                            }
+                          },
+                          {
+                            "id": "1",
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "id": "name",
+                                "type": "string"
+                              },
+                              "nullable": {
+                                "id": "nullable",
+                                "type": "boolean"
+                              },
+                              "type": {
+                                "id": "type",
+                                "type": "string"
+                              }
+                            }
+                          },
+                          {
+                            "id": "2",
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "id": "name",
+                                "type": "string"
+                              },
+                              "nullable": {
+                                "id": "nullable",
+                                "type": "boolean"
+                              },
+                              "type": {
+                                "id": "type",
+                                "type": "string"
+                              }
+                            }
+                          },
+                          {
+                            "id": "3",
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "id": "name",
+                                "type": "string"
+                              },
+                              "nullable": {
+                                "id": "nullable",
+                                "type": "boolean"
+                              },
+                              "type": {
+                                "id": "type",
+                                "type": "string"
+                              }
+                            }
+                          },
+                          {
+                            "id": "4",
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "id": "name",
+                                "type": "string"
+                              },
+                              "nullable": {
+                                "id": "nullable",
+                                "type": "boolean"
+                              },
+                              "type": {
+                                "id": "type",
+                                "type": "string"
+                              }
+                            }
+                          },
+                          {
+                            "id": "5",
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "id": "name",
+                                "type": "string"
+                              },
+                              "nullable": {
+                                "id": "nullable",
+                                "type": "boolean"
+                              },
+                              "type": {
+                                "id": "type",
+                                "type": "string"
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                "response": {
+                  "id": "response",
+                  "type": "array",
+                  "items": {
+                    "id": "0",
+                    "type": "object",
+                    "properties": {
+                      "nullable": {
+                        "id": "nullable",
+                        "type": "boolean"
+                      },
+                      "type": {
+                        "id": "type",
+                        "type": "string"
+                      },
+                      "collection": {
+                        "id": "collection",
+                        "type": "boolean"
+                      },
+                      "properties": {
+                        "id": "properties",
+                        "type": "array",
+                        "items": [
+                          {
+                            "id": "0",
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "id": "name",
+                                "type": "string"
+                              },
+                              "nullable": {
+                                "id": "nullable",
+                                "type": "boolean"
+                              },
+                              "type": {
+                                "id": "type",
+                                "type": "string"
+                              }
+                            }
+                          },
+                          {
+                            "id": "1",
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "id": "name",
+                                "type": "string"
+                              },
+                              "nullable": {
+                                "id": "nullable",
+                                "type": "boolean"
+                              },
+                              "type": {
+                                "id": "type",
+                                "type": "string"
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "messages": {
+              "id": "messages",
+              "type": "array",
+              "items": [
+                {
+                  "id": "0",
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "id": "status",
+                      "type": "integer"
+                    },
+                    "message": {
+                      "id": "message",
+                      "type": "string"
+                    },
+                    "success": {
+                      "id": "success",
+                      "type": "boolean"
+                    }
+                  }
+                },
+                {
+                  "id": "1",
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "id": "status",
+                      "type": "integer"
+                    },
+                    "message": {
+                      "id": "message",
+                      "type": "string"
+                    },
+                    "success": {
+                      "id": "success",
+                      "type": "boolean"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "5",
+          "type": "object",
+          "properties": {
+            "httpMethod": {
+              "id": "httpMethod",
+              "type": "string"
+            },
+            "name": {
+              "id": "name",
+              "type": "string"
+            },
+            "path": {
+              "id": "path",
+              "type": "string"
+            },
+            "description": {
+              "id": "description",
+              "type": "string"
+            },
+            "consumes": {
+              "id": "consumes",
+              "type": "array",
+              "items": {
+                "id": "0",
+                "type": "string"
+              }
+            },
+            "produces": {
+              "id": "produces",
+              "type": "array",
+              "items": {
+                "id": "0",
+                "type": "string"
+              }
+            },
+            "parameters": {
+              "id": "parameters",
+              "type": "object",
+              "properties": {
+                "path": {
+                  "id": "path",
+                  "type": "array",
+                  "items": []
+                },
+                "form": {
+                  "id": "form",
+                  "type": "array",
+                  "items": []
+                },
+                "query": {
+                  "id": "query",
+                  "type": "array",
+                  "items": []
+                },
+                "header": {
+                  "id": "header",
+                  "type": "array",
+                  "items": []
+                }
+              }
+            },
+            "payloads": {
+              "id": "payloads",
+              "type": "object",
+              "properties": {
+                "request": {
+                  "id": "request",
+                  "type": "array",
+                  "items": {
+                    "id": "0",
+                    "type": "object",
+                    "properties": {
+                      "nullable": {
+                        "id": "nullable",
+                        "type": "boolean"
+                      },
+                      "constraints": {
+                        "id": "constraints",
+                        "type": "array",
+                        "items": {
+                          "id": "0",
+                          "type": "object",
+                          "properties": {
+                            "constraint": {
+                              "id": "constraint",
+                              "type": "string"
+                            },
+                            "type": {
+                              "id": "type",
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "type": {
+                        "id": "type",
+                        "type": "string"
+                      },
+                      "collection": {
+                        "id": "collection",
+                        "type": "boolean"
+                      },
+                      "properties": {
+                        "id": "properties",
+                        "type": "array",
+                        "items": [
+                          {
+                            "id": "0",
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "id": "name",
+                                "type": "string"
+                              },
+                              "nullable": {
+                                "id": "nullable",
+                                "type": "boolean"
+                              },
+                              "type": {
+                                "id": "type",
+                                "type": "string"
+                              }
+                            }
+                          },
+                          {
+                            "id": "1",
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "id": "name",
+                                "type": "string"
+                              },
+                              "nullable": {
+                                "id": "nullable",
+                                "type": "boolean"
+                              },
+                              "type": {
+                                "id": "type",
+                                "type": "string"
+                              }
+                            }
+                          },
+                          {
+                            "id": "2",
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "id": "name",
+                                "type": "string"
+                              },
+                              "nullable": {
+                                "id": "nullable",
+                                "type": "boolean"
+                              },
+                              "type": {
+                                "id": "type",
+                                "type": "string"
+                              }
+                            }
+                          },
+                          {
+                            "id": "3",
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "id": "name",
+                                "type": "string"
+                              },
+                              "nullable": {
+                                "id": "nullable",
+                                "type": "boolean"
+                              },
+                              "type": {
+                                "id": "type",
+                                "type": "string"
+                              }
+                            }
+                          },
+                          {
+                            "id": "4",
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "id": "name",
+                                "type": "string"
+                              },
+                              "nullable": {
+                                "id": "nullable",
+                                "type": "boolean"
+                              },
+                              "type": {
+                                "id": "type",
+                                "type": "string"
+                              }
+                            }
+                          },
+                          {
+                            "id": "5",
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "id": "name",
+                                "type": "string"
+                              },
+                              "nullable": {
+                                "id": "nullable",
+                                "type": "boolean"
+                              },
+                              "type": {
+                                "id": "type",
+                                "type": "string"
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                "response": {
+                  "id": "response",
+                  "type": "array",
+                  "items": {
+                    "id": "0",
+                    "type": "object",
+                    "properties": {
+                      "nullable": {
+                        "id": "nullable",
+                        "type": "boolean"
+                      },
+                      "type": {
+                        "id": "type",
+                        "type": "string"
+                      },
+                      "collection": {
+                        "id": "collection",
+                        "type": "boolean"
+                      },
+                      "properties": {
+                        "id": "properties",
+                        "type": "array",
+                        "items": [
+                          {
+                            "id": "0",
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "id": "name",
+                                "type": "string"
+                              },
+                              "nullable": {
+                                "id": "nullable",
+                                "type": "boolean"
+                              },
+                              "type": {
+                                "id": "type",
+                                "type": "string"
+                              }
+                            }
+                          },
+                          {
+                            "id": "1",
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "id": "name",
+                                "type": "string"
+                              },
+                              "nullable": {
+                                "id": "nullable",
+                                "type": "boolean"
+                              },
+                              "type": {
+                                "id": "type",
+                                "type": "string"
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "messages": {
+              "id": "messages",
+              "type": "array",
+              "items": [
+                {
+                  "id": "0",
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "id": "status",
+                      "type": "integer"
+                    },
+                    "message": {
+                      "id": "message",
+                      "type": "string"
+                    },
+                    "success": {
+                      "id": "success",
+                      "type": "boolean"
+                    }
+                  }
+                },
+                {
+                  "id": "1",
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "id": "status",
+                      "type": "integer"
+                    },
+                    "message": {
+                      "id": "message",
+                      "type": "string"
+                    },
+                    "success": {
+                      "id": "success",
+                      "type": "boolean"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "updateTimestamp": {
+      "id": "updateTimestamp",
+      "type": "integer"
+    },
+    "updater": {
+      "id": "updater",
+      "type": "string"
+    }
+  },
+  "required": [
+    "version",
+    "environments",
+    "documents",
+    "updateTimestamp",
+    "updater"
+  ]
+}

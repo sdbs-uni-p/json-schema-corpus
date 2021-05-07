@@ -1,0 +1,41 @@
+{
+  "id": "https://raw.githubusercontent.com/axsh/openvdc/master/schema/v1.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "OpenVDC Resource Template Schema",
+  "type": "object",
+  "required": [
+    "title",
+    "template"
+  ],
+  "properties": {
+    "_comment": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "template": {
+      "type": "object",
+      "oneOf": [
+        {
+          "$ref": "./none.json#"
+        },
+        {
+          "$ref": "./vm/lxc.json#"
+        },
+        {
+          "$ref": "./vm/esxi.json#"
+        },
+        {
+          "$ref": "./vm/null.json#"
+        },
+        {
+          "$ref": "./vm/qemu.json#"
+        }
+      ]
+    }
+  }
+}

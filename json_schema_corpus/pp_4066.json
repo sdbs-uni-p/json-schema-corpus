@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Access",
+  "description": "Databook event -- PREMIS event",
+  "extends": {
+    "$ref": "IndividualObject.json"
+  },
+  "type": "object",
+  "javaType": "databook.persistence.rule.rdf.ruleset.Access",
+  "properties": {
+    "session": {
+      "type": "array",
+      "items": {
+        "$ref": "Session.json"
+      }
+    },
+    "finished": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "linkingDataEntity": {
+      "type": "array",
+      "items": {
+        "$ref": "DataEntityLink.json"
+      }
+    },
+    "linkingUser": {
+      "type": "array",
+      "items": {
+        "$ref": "UserLink.json"
+      }
+    }
+  }
+}

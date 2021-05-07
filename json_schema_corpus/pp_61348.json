@@ -1,0 +1,157 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "https://github.com/hazelcast/hazelcast-client-protocol/blob/master/schema/custom-codec-schema.json",
+  "title": "Hazelcast Client Protocol Custom Codec Definitions",
+  "type": "object",
+  "definitions": {
+    "since": {
+      "enum": [
+        2.0
+      ],
+      "default": 2.0
+    },
+    "param": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "boolean",
+            "byte",
+            "int",
+            "long",
+            "UUID",
+            "enum",
+            "byteArray",
+            "longArray",
+            "String",
+            "Data",
+            "EntryList_Integer_UUID",
+            "EntryList_Integer_Long",
+            "EntryList_Integer_Integer",
+            "List_Integer",
+            "List_Long",
+            "List_UUID",
+            "Address",
+            "CacheEventData",
+            "DistributedObjectInfo",
+            "Member",
+            "QueryCacheEventData",
+            "RaftGroupId",
+            "ScheduledTaskHandler",
+            "SimpleEntryView",
+            "WanReplicationRef",
+            "Xid",
+            "CacheConfigHolder",
+            "CacheSimpleEntryListenerConfig",
+            "EventJournalConfig",
+            "EvictionConfigHolder",
+            "HotRestartConfig",
+            "ListenerConfigHolder",
+            "AttributeConfig",
+            "IndexConfig",
+            "MapStoreConfigHolder",
+            "MerkleTreeConfig",
+            "NearCacheConfigHolder",
+            "NearCachePreloaderConfig",
+            "PredicateConfigHolder",
+            "QueryCacheConfigHolder",
+            "QueueStoreConfigHolder",
+            "RingbufferStoreConfigHolder",
+            "TimedExpiryPolicyFactoryConfig",
+            "DurationConfig",
+            "ClientBwListEntry",
+            "EntryList_String_String",
+            "EntryList_String_byteArray",
+            "EntryList_Long_byteArray",
+            "EntryList_String_EntryList_Integer_Long",
+            "EntryList_UUID_Long",
+            "EntryList_Address_List_Integer",
+            "EntryList_UUID_Address",
+            "EntryList_Data_Data",
+            "EntryList_Member_List_ScheduledTaskHandler",
+            "List_Address",
+            "List_byteArray",
+            "List_CacheEventData",
+            "List_CacheSimpleEntryListenerConfig",
+            "List_Data",
+            "ListCN_Data",
+            "List_DistributedObjectInfo",
+            "List_ListenerConfigHolder",
+            "List_AttributeConfig",
+            "List_IndexConfig",
+            "List_MemberInfo",
+            "List_QueryCacheConfigHolder",
+            "List_QueryCacheEventData",
+            "List_ScheduledTaskHandler",
+            "List_String",
+            "List_Xid",
+            "List_StackTraceElement",
+            "List_ClientBwListEntry",
+            "List_MCEvent",
+            "Map_String_String",
+            "MergePolicyConfig",
+            "MemberVersion",
+            "MemberInfo",
+            "MCEvent",
+            "AnchorDataListHolder",
+            "PagingPredicateHolder"
+          ]
+        },
+        "nullable": {
+          "type": "boolean"
+        },
+        "since": {
+          "$ref": "#/definitions/since"
+        }
+      },
+      "required": [
+        "name",
+        "type",
+        "nullable",
+        "since"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "customTypes": {
+      "type": "array",
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the custom type"
+          },
+          "since": {
+            "$ref": "#/definitions/since"
+          },
+          "returnWithFactory": {
+            "type": "boolean",
+            "description": "True if the decode method should return with factory instead of the constructor"
+          },
+          "params": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/param"
+            },
+            "minItems": 0,
+            "uniqueItems": false
+          }
+        },
+        "required": [
+          "name",
+          "since",
+          "params"
+        ]
+      }
+    }
+  },
+  "required": [
+    "customTypes"
+  ]
+}

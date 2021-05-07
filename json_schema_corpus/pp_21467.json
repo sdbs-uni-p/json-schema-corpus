@@ -1,0 +1,81 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/common/user-satisfaction/customer-satisfaction-schema",
+  "title": "customer-satisfaction",
+  "description": "perfromance platform schema for: GOV.UK customer-satisfaction single question plus comment records. Quantitative question rated 1 to 5, 1 being the lowest, 5 being the highest",
+  "type": "object",
+  "properties": {
+    "_id": {
+      "description": "unique url-friendly base64 encoded, utf8 endoded concatenation identifier",
+      "type": "string"
+    },
+    "_timestamp": {
+      "description": "ISO8601 combined date and time in UTC e.g. '2014-12-01T00:00:00+00:00'",
+      "type": "string",
+      "format": "date-time"
+    },
+    "period": {
+      "description": "The period covered by each data point from the _timestamp",
+      "enum": [
+        "hour",
+        "day",
+        "week",
+        "month",
+        "quarter"
+      ]
+    },
+    "slug": {
+      "description": "url slug for the service",
+      "type": "string"
+    },
+    "rating_1": {
+      "description": "the number of respondents answering with the lowest ranked score",
+      "type": "integer",
+      "minimum": 0
+    },
+    "rating_2": {
+      "description": "the number of respondents answering with the second lowest ranked score",
+      "type": "integer",
+      "minimum": 0
+    },
+    "rating_3": {
+      "description": "the number of respondents answering with the middle ranked score",
+      "type": "integer",
+      "minimum": 0
+    },
+    "rating_4": {
+      "description": "the number of respondents answering with the second highest ranked score",
+      "type": "integer",
+      "minimum": 0
+    },
+    "rating_5": {
+      "description": "the number of respondents answering with the highest ranked score",
+      "type": "integer",
+      "minimum": 0
+    },
+    "comments": {
+      "description": "the number of respondents leaving a comment",
+      "type": "integer",
+      "minimum": 0
+    },
+    "total": {
+      "description": "the total number of respondents providing feedback",
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "required": [
+    "_id",
+    "_timestamp",
+    "period",
+    "slug",
+    "rating_1",
+    "rating_2",
+    "rating_3",
+    "rating_4",
+    "rating_5",
+    "comments",
+    "total"
+  ],
+  "additionalProperties": false
+}

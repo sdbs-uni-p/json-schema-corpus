@@ -1,0 +1,273 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "title": "/calculate_order_v1",
+  "description": "calculate_order_v1",
+  "stability": "draft",
+  "additionalProperties": true,
+  "type": "object",
+  "definitions": {},
+  "links": [
+    {
+      "description": "calculate_order_v1",
+      "href": "/calculate_order_v1",
+      "method": "post",
+      "rel": "instances",
+      "schema": {
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "action",
+              "version",
+              "client_id"
+            ],
+            "properties": {
+              "integration_auth_token": {
+                "type": "string",
+                "description": "Randomly generated authorization token, for authenticating genuine RetailOps- originated requests.",
+                "example": "2KuxqV9rsAtAM78i47CITMvtnflUapNmgGJAvWiHqgUrk1xkeDNWlM3EsrmJEtmV"
+              },
+              "action": {
+                "type": "string",
+                "description": "Action Name name",
+                "example": "catalog_get_config"
+              },
+              "version": {
+                "type": "integer",
+                "description": "Action Version",
+                "example": 1
+              },
+              "client_id": {
+                "description": "RetailOPS client id",
+                "type": "integer",
+                "example": 497
+              }
+            }
+          },
+          {
+            "type": "object",
+            "properties": {
+              "order": {
+                "type": "object",
+                "properties": {
+                  "retailops_order_id": {
+                    "type": "integer",
+                    "description": "RetailOps Order ID"
+                  },
+                  "effective_date": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "shipping_address": {
+                    "type": "object",
+                    "properties": {
+                      "state": {
+                        "type": "string",
+                        "description": "state",
+                        "example": "CA"
+                      },
+                      "country": {
+                        "type": "string",
+                        "description": "Country",
+                        "example": "US United States"
+                      },
+                      "last_name": {
+                        "type": "string",
+                        "description": "Last Name",
+                        "example": "Smith"
+                      },
+                      "address2": {
+                        "type": "string",
+                        "description": "Address second line",
+                        "example": "suite 100"
+                      },
+                      "city": {
+                        "type": "string",
+                        "description": "City",
+                        "example": "San Diego"
+                      },
+                      "postal_code": {
+                        "type": "string",
+                        "description": "Postal Code",
+                        "example": "92101"
+                      },
+                      "address1": {
+                        "type": "string",
+                        "description": "Address line one",
+                        "example": "123 Main St"
+                      },
+                      "company": {
+                        "type": "string",
+                        "description": "Company name",
+                        "example": "gudTECH"
+                      },
+                      "first_name": {
+                        "type": "string",
+                        "description": "First Name",
+                        "example": "John"
+                      }
+                    }
+                  },
+                  "shipping_amt": {
+                    "type": "number"
+                  },
+                  "grand_total": {
+                    "type": "number",
+                    "description": "RetailOps current order grand total"
+                  },
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "retailops_item_id": {
+                        "type": "string",
+                        "description": "RetailOps unique item identifier"
+                      },
+                      "sku": {
+                        "type": "string",
+                        "description": "SKU specified by the order item"
+                      },
+                      "product_classification": {
+                        "type": "string",
+                        "description": "Designated product classification attribute value for this module"
+                      },
+                      "quantity": {
+                        "type": "integer",
+                        "description": "quantity of the order item"
+                      },
+                      "unit_price": {
+                        "type": "number",
+                        "description": "effective unit price associated with the order item (after discounts), specified in the nexus currency (usually the same as counterparty currency)"
+                      },
+                      "discount_pct": {
+                        "type": "number"
+                      },
+                      "discount_amt": {
+                        "type": "number"
+                      },
+                      "effective_unit_price": {
+                        "type": "number",
+                        "description": "effective unit price associated with the order item (after discounts), specified in the nexus currency usually the same as counterparty currency)"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "required": [
+              "order"
+            ]
+          }
+        ]
+      },
+      "targetSchema": {
+        "type": "object",
+        "properties": {
+          "order": {
+            "type": "object",
+            "properties": {
+              "retailops_order_id": {
+                "type": "integer",
+                "description": "RetailOps Order ID"
+              },
+              "shipping_tax_amt": {
+                "type": "number"
+              },
+              "shipping_tax_pct": {
+                "type": "number"
+              },
+              "total_tax_amt": {
+                "type": "number"
+              },
+              "items": {
+                "type": "object",
+                "properties": {
+                  "retailops_item_id": {
+                    "type": "string",
+                    "description": "RetailOps unique item identifier"
+                  },
+                  "unit_tax_pct": {
+                    "type": "number"
+                  },
+                  "unit_tax_amt": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          },
+          "events": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": "object",
+              "description": "event returned in action response",
+              "properties": {
+                "event_type": {
+                  "type": "string",
+                  "description": "event type",
+                  "enum": [
+                    "error",
+                    "warning",
+                    "info"
+                  ],
+                  "example": "error"
+                },
+                "code": {
+                  "type": "string",
+                  "description": "error/warning code",
+                  "example": "ERR1234"
+                },
+                "message": {
+                  "type": "string",
+                  "description": "descriptive error/warning message",
+                  "example": "Example error message"
+                },
+                "diagnostic_data": {
+                  "type": "string",
+                  "description": ""
+                },
+                "associations": {
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "description": "",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "identifier_type": {
+                        "type": "string",
+                        "description": "Type of identifier being provided",
+                        "enum": [
+                          "order_id",
+                          "order_refnum",
+                          "orderitem_id",
+                          "orderitem_refnum",
+                          "shipment_id",
+                          "shipmentitem_id",
+                          "product_id",
+                          "sku_number"
+                        ],
+                        "example": "sku_number"
+                      },
+                      "identifier": {
+                        "type": "string",
+                        "description": "identify value corresponding to the type",
+                        "example": "S1234"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "title": "/calculate_order_v1"
+    }
+  ],
+  "properties": {},
+  "id": "/calculate_order_v1"
+}

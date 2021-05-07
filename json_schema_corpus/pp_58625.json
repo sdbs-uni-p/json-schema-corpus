@@ -1,0 +1,89 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "schema validating people and vehicles",
+  "type": "object",
+  "definitions": {
+    "MyDef": {
+      "type": "object",
+      "properties": {
+        "chocolate": {
+          "type": "string"
+        }
+      }
+    },
+    "WithRef": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/MyDef"
+        },
+        {
+          "type": "string"
+        }
+      ]
+    }
+  },
+  "properties": {
+    "oneOfRef": {
+      "$ref": "#/definitions/WithRef"
+    },
+    "thing": {
+      "type": "object",
+      "oneOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "$ref": "#/definitions/MyDef"
+        },
+        {
+          "properties": {
+            "firstName": {
+              "type": "string"
+            },
+            "lastName": {
+              "type": "string"
+            },
+            "sport": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "firstName"
+          ]
+        },
+        {
+          "properties": {
+            "vehicle": {
+              "type": "string"
+            },
+            "price": {
+              "type": "integer"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "topLevel": {
+      "$ref": "OneOf_TopLevel.json"
+    },
+    "topLevelArray": {
+      "$ref": "OneOf_TopLevel_Array.json"
+    },
+    "topLevelEnumArray": {
+      "$ref": "Enum_TopLevel_Array.json"
+    }
+  },
+  "oneOf": [
+    {
+      "required": [
+        "thing"
+      ]
+    },
+    {
+      "required": [
+        "thing"
+      ]
+    }
+  ]
+}

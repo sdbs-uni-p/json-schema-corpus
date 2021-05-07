@@ -1,0 +1,57 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://jsonschema.net",
+  "required": false,
+  "properties": {
+    "fileInfos": {
+      "type": "array",
+      "id": "http://jsonschema.net/fileInfos",
+      "required": false,
+      "items": {
+        "type": "object",
+        "id": "http://jsonschema.net/fileInfos/0",
+        "required": false,
+        "properties": {
+          "id": {
+            "type": "number",
+            "id": "http://jsonschema.net/fileInfos/0/id",
+            "required": false
+          },
+          "parsedData": {
+            "type": "object",
+            "id": "http://jsonshema.net/fileInfos/0/parsedData",
+            "required": false,
+            "properties": {
+              "pdfParseDataId": {
+                "type": "number",
+                "id": "http://jsonschema.net/fileInfos/0/parsedData/pdfParseDataId",
+                "required": false
+              },
+              "row": {
+                "type": "string",
+                "id": "http://jsonschema.net/fileInfos/0/parsedData/row",
+                "required": false
+              },
+              "seat": {
+                "type": "string",
+                "id": "http://jsonschema.net/fileInfos/0/parsedData/seat",
+                "required": false
+              },
+              "section": {
+                "type": "string",
+                "id": "http://jsonschema.net/fileInfos/0/parsedData/section",
+                "required": false
+              }
+            }
+          },
+          "parsedError": {
+            "type": "string",
+            "id": "http://jsonschema.net/fileInfos/0/parsedError",
+            "required": false
+          }
+        }
+      }
+    }
+  }
+}

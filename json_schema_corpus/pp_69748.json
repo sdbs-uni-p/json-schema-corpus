@@ -1,0 +1,53 @@
+{
+  "_comment": "This Spec is for Phase 1!! Most updated version is at https://github.com/reTHINK-project/specs/tree/master/schemas",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "RegistryDataObject",
+  "type": "object",
+  "required": [
+    "id",
+    "url",
+    "descriptor",
+    "startingTime",
+    "lastModified",
+    "expires"
+  ],
+  "anyOf": [
+    {
+      "$ref": "RegistryDataObject.HypertyInstance.json#/HypertyInstance"
+    },
+    {
+      "$ref": "RegistryDataObject.HypertyRuntimeInstance.json#/HypertyRuntimeInstance"
+    },
+    {
+      "$ref": "RegistryDataObject.HypertyDataObjectInstance.json#/HypertyDataObjectInstance"
+    }
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "descriptor": {
+      "type": "string"
+    },
+    "startingTime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastModified": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "expires": {
+      "type": "integer"
+    },
+    "stubs": {
+      "type": "string"
+    },
+    "stubsConfiguration": {
+      "$ref": "RethinkCore.CatalogueDataObject.ProtoStubDescriptor.json#/ProtostubConfiguration"
+    }
+  }
+}

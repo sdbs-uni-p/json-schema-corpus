@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "outBailment Identifier",
+  "description": "A UUID which selects a specific outBailment for tracking purposes",
+  "type": "object",
+  "properties": {
+    "pool": {
+      "type": "string",
+      "description": "The voting pool identifier for the pool in which the outBailment originated"
+    },
+    "server": {
+      "type": "string",
+      "description": "The OT server nym for the notary which issued the transaction number"
+    },
+    "transaction": {
+      "type": "number",
+      "description": "The OT transaction number associated with the outBailment",
+      "minimum": 0,
+      "exclusiveMinimum": true
+    }
+  },
+  "required": [
+    "pool",
+    "server",
+    "transaction"
+  ]
+}

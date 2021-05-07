@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "existingEnniReference",
+  "id": "existingEnniReference",
+  "description": "A reference to an existing ENNI.",
+  "type": "object",
+  "required": [
+    "objectType",
+    "sellerEnniId"
+  ],
+  "properties": {
+    "objectType": {
+      "type": "string",
+      "enum": [
+        "existingEnniReference"
+      ],
+      "description": "The type of the object, existingEnniReference."
+    },
+    "sellerEnniId": {
+      "type": "string",
+      "description": "The circuit identifier that the seller uses to refer to this ENNI.",
+      "maxLength": 45
+    },
+    "buyerEnniId": {
+      "type": "string",
+      "description": "The circuit identifier that the buyer uses to refer to this ENNI.",
+      "maxLength": 45
+    }
+  }
+}

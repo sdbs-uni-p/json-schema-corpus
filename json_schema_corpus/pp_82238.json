@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "resource:/META-INF/schema/user.json#",
+  "type": "object",
+  "title": "User",
+  "description": "User record",
+  "javaInterfaces": [
+    "java.io.Serializable"
+  ],
+  "properties": {
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "Email address of the user.  This must be unique."
+    },
+    "name": {
+      "type": "string",
+      "description": "Full name of the user"
+    },
+    "encodedPassword": {
+      "type": "string",
+      "description": "Encoded password"
+    },
+    "roles": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "venues": {
+      "type": "array",
+      "items": {
+        "$ref": "doxdb.json#doxId"
+      }
+    }
+  },
+  "required": [
+    "email",
+    "name",
+    "encodedPassword",
+    "roles"
+  ],
+  "additionalProperties": true
+}

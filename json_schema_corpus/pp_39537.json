@@ -1,0 +1,83 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "required": [
+    "mashup"
+  ],
+  "properties": {
+    "mashup": {
+      "description": "a semantic description of the desired mashup",
+      "type": [
+        {
+          "$ref": "#/definitions/rdfjson"
+        },
+        {
+          "$ref": "#/definitions/text"
+        }
+      ]
+    },
+    "minDepth": {
+      "description": "the minimum plan depth",
+      "type": "integer",
+      "minimum": 1,
+      "default": 1
+    },
+    "maxDepth": {
+      "description": "the maximum plan depth",
+      "type": "integer",
+      "minimum": 1
+    },
+    "actionComposition": {
+      "type": "object",
+      "properties": {
+        "precursorActions": {
+          "type": "string",
+          "default": "NONE",
+          "enum": [
+            "NONE",
+            "MINIMAL",
+            "EXTENDED_ATOMIC",
+            "EXTENDED_MINIMAL"
+          ]
+        },
+        "functionalityProviders": {
+          "type": "boolean",
+          "default": false
+        },
+        "propertyProviders": {
+          "type": "boolean",
+          "default": false
+        }
+      }
+    }
+  },
+  "definitions": {
+    "rdfjson": {
+      "description": "embedded RDF/JSON",
+      "type": {
+        "$ref": "rdf.schema.json"
+      }
+    },
+    "text": {
+      "description": "RDF in any textual representation",
+      "type": "object",
+      "required": [
+        "mediaType",
+        "content"
+      ],
+      "properties": {
+        "mediaType": {
+          "type": "string",
+          "enum": [
+            "application/rdf+json",
+            "application/rdf+xml",
+            "text/turtle"
+          ]
+        },
+        "content": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

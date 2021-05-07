@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "TestType",
+  "title": "Example Schema",
+  "type": "object",
+  "properties": {
+    "bigint": {
+      "description": "Sample BIGINT type",
+      "type": "integer",
+      "minimum": 0,
+      "exclusiveMinimum": true
+    },
+    "varchar": {
+      "description": "Sample VARCHAR type",
+      "type": "string",
+      "maxLength": 255
+    },
+    "decimal": {
+      "description": "Sample DECIMAL type",
+      "type": "number"
+    },
+    "datetime": {
+      "description": "Sample DATETIME type",
+      "type": "string",
+      "format": "date-time"
+    },
+    "int": {
+      "description": "Sample INTEGER type",
+      "type": "integer",
+      "minimum": 0,
+      "exclusiveMinimum": true
+    },
+    "text": {
+      "description": "Sample TEXT type",
+      "type": "string"
+    },
+    "json": {
+      "description": "Sample embedded JSON type, stored as TEXT type",
+      "type": "array"
+    },
+    "boolean": {
+      "description": "Sample boolean type, stored as TINYINT",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "bigint",
+    "varchar",
+    "decimal",
+    "datetime",
+    "int",
+    "text",
+    "json",
+    "boolean"
+  ],
+  "additionalProperties": true
+}

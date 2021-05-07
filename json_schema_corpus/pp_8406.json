@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "properties": {
+    "action_name": {
+      "type": "string"
+    },
+    "actor_name": {
+      "type": "string"
+    },
+    "key": {
+      "type": "string"
+    },
+    "service_key": {
+      "type": "string"
+    },
+    "service_name": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "action_name",
+    "actor_name",
+    "key",
+    "service_key",
+    "service_name",
+    "state"
+  ]
+}

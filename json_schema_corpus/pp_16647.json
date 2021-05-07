@@ -1,0 +1,310 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "filter.removegrain",
+  "name": "removegrain",
+  "defaults": {},
+  "groups": [
+    {
+      "class": "standard",
+      "id": "standard",
+      "properties": [
+        {
+          "id": "m0",
+          "parameter": "m0",
+          "forced": true,
+          "control": {
+            "type": "combobox",
+            "selectedIndex": 0,
+            "items": [
+              {
+                "value": "0"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "2"
+              },
+              {
+                "value": "3"
+              },
+              {
+                "value": "4"
+              },
+              {
+                "value": "5"
+              },
+              {
+                "value": "6"
+              },
+              {
+                "value": "9"
+              },
+              {
+                "value": "10"
+              },
+              {
+                "value": "11"
+              },
+              {
+                "value": "13"
+              },
+              {
+                "value": "14"
+              },
+              {
+                "value": "15"
+              },
+              {
+                "value": "16"
+              },
+              {
+                "value": "17"
+              },
+              {
+                "value": "18"
+              },
+              {
+                "value": "19"
+              },
+              {
+                "value": "20"
+              },
+              {
+                "value": "21"
+              },
+              {
+                "value": "22"
+              },
+              {
+                "value": "23"
+              }
+            ]
+          }
+        },
+        {
+          "id": "m1",
+          "parameter": "m1",
+          "forced": true,
+          "control": {
+            "type": "combobox",
+            "selectedIndex": 0,
+            "items": [
+              {
+                "value": "0"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "2"
+              },
+              {
+                "value": "3"
+              },
+              {
+                "value": "4"
+              },
+              {
+                "value": "5"
+              },
+              {
+                "value": "6"
+              },
+              {
+                "value": "9"
+              },
+              {
+                "value": "10"
+              },
+              {
+                "value": "11"
+              },
+              {
+                "value": "13"
+              },
+              {
+                "value": "14"
+              },
+              {
+                "value": "15"
+              },
+              {
+                "value": "16"
+              },
+              {
+                "value": "17"
+              },
+              {
+                "value": "18"
+              },
+              {
+                "value": "19"
+              },
+              {
+                "value": "20"
+              },
+              {
+                "value": "21"
+              },
+              {
+                "value": "22"
+              },
+              {
+                "value": "23"
+              }
+            ]
+          }
+        },
+        {
+          "id": "m2",
+          "parameter": "m2",
+          "forced": true,
+          "control": {
+            "type": "combobox",
+            "selectedIndex": 0,
+            "items": [
+              {
+                "value": "0"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "2"
+              },
+              {
+                "value": "3"
+              },
+              {
+                "value": "4"
+              },
+              {
+                "value": "5"
+              },
+              {
+                "value": "6"
+              },
+              {
+                "value": "9"
+              },
+              {
+                "value": "10"
+              },
+              {
+                "value": "11"
+              },
+              {
+                "value": "13"
+              },
+              {
+                "value": "14"
+              },
+              {
+                "value": "15"
+              },
+              {
+                "value": "16"
+              },
+              {
+                "value": "17"
+              },
+              {
+                "value": "18"
+              },
+              {
+                "value": "19"
+              },
+              {
+                "value": "20"
+              },
+              {
+                "value": "21"
+              },
+              {
+                "value": "22"
+              },
+              {
+                "value": "23"
+              }
+            ]
+          }
+        },
+        {
+          "id": "m3",
+          "parameter": "m3",
+          "forced": true,
+          "control": {
+            "type": "combobox",
+            "selectedIndex": 0,
+            "items": [
+              {
+                "value": "0"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "2"
+              },
+              {
+                "value": "3"
+              },
+              {
+                "value": "4"
+              },
+              {
+                "value": "5"
+              },
+              {
+                "value": "6"
+              },
+              {
+                "value": "9"
+              },
+              {
+                "value": "10"
+              },
+              {
+                "value": "11"
+              },
+              {
+                "value": "13"
+              },
+              {
+                "value": "14"
+              },
+              {
+                "value": "15"
+              },
+              {
+                "value": "16"
+              },
+              {
+                "value": "17"
+              },
+              {
+                "value": "18"
+              },
+              {
+                "value": "19"
+              },
+              {
+                "value": "20"
+              },
+              {
+                "value": "21"
+              },
+              {
+                "value": "22"
+              },
+              {
+                "value": "23"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

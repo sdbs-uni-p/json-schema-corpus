@@ -1,0 +1,85 @@
+{
+  "description": "Hypercharge authorize Transaction request",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "additionalProperties": false,
+  "properties": {
+    "payment_transaction": {
+      "type": "object",
+      "required": true,
+      "additionalProperties": false,
+      "properties": {
+        "transaction_type": {
+          "description": "Type of the Transaction => static 'authorize'",
+          "required": true,
+          "type": "string",
+          "pattern": "^authorize$"
+        },
+        "transaction_id": {
+          "required": false,
+          "extends": "types.json#/transaction_id"
+        },
+        "usage": {
+          "required": false,
+          "extends": "types.json#/usage"
+        },
+        "remote_ip": {
+          "required": true,
+          "extends": "types.json#/ipv4"
+        },
+        "amount": {
+          "required": true,
+          "extends": "types.json#/amount"
+        },
+        "currency": {
+          "required": true,
+          "extends": "types.json#/currency"
+        },
+        "card_holder": {
+          "required": true,
+          "extends": "types.json#/card_holder"
+        },
+        "card_number": {
+          "required": true,
+          "extends": "types.json#/card_number"
+        },
+        "cvv": {
+          "required": false,
+          "extends": "types.json#/cvv"
+        },
+        "expiration_month": {
+          "required": true,
+          "extends": "types.json#/expiration_month"
+        },
+        "expiration_year": {
+          "required": true,
+          "extends": "types.json#/expiration_year"
+        },
+        "customer_email": {
+          "required": true,
+          "extends": "types.json#/customer_email"
+        },
+        "customer_phone": {
+          "required": false,
+          "extends": "types.json#/customer_phone"
+        },
+        "billing_address": {
+          "required": true,
+          "extends": "types.json#/address"
+        },
+        "shipping_address": {
+          "required": false,
+          "extends": "types.json#/address"
+        },
+        "risk_params": {
+          "required": false,
+          "extends": "types.json#/risk_params"
+        },
+        "meta": {
+          "required": false,
+          "extends": "types.json#/meta"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Event source template",
+  "type": "object",
+  "properties": {
+    "name": {
+      "description": "A name to identify the event source template",
+      "type": "string"
+    },
+    "public": {
+      "description": "Make the event source template available to everybody.",
+      "type": "boolean"
+    },
+    "configuration": {
+      "description": "Providing a schema aims to help the WUI for configuration.",
+      "type": "object",
+      "properties": {
+        "schema": {
+          "description": "A valid JSON Schema.",
+          "type": "json"
+        },
+        "url": {
+          "description": "The configuration URL.",
+          "type": "string"
+        },
+        "token": {
+          "description": "JSON Web Token to be authenticated when contacting the configuration URL.",
+          "type": "string"
+        }
+      }
+    },
+    "configurationUi": {
+      "description": "Provide the configuration for the dynamic UI.",
+      "type": "object",
+      "properties": {
+        "schemaForm": {
+          "description": "Valid form schema accordingly to: http://schemaform.io",
+          "type": "array"
+        }
+      }
+    }
+  }
+}

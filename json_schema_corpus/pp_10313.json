@@ -1,0 +1,99 @@
+{
+  "id": "https://raw.githubusercontent.com/MailOnline/json-schema-test/master/test_file_schema.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "schema for the test file (multiple test sets)",
+  "definitions": {
+    "nonEmptyString": {
+      "id": "#nonEmptyString",
+      "type": "string",
+      "minLength": 1
+    },
+    "schema": {
+      "id": "#schema",
+      "anyOf": [
+        {
+          "$ref": "http://json-schema.org/draft-04/schema#"
+        },
+        {
+          "$ref": "https://raw.githubusercontent.com/epoberezkin/ajv/master/lib/refs/json-schema-v5.json#"
+        }
+      ]
+    }
+  },
+  "type": "array",
+  "minItems": 1,
+  "items": {
+    "description": "set of tests for one schema",
+    "type": "object",
+    "required": [
+      "description",
+      "tests"
+    ],
+    "oneOf": [
+      {
+        "required": [
+          "schema"
+        ]
+      },
+      {
+        "required": [
+          "schemas"
+        ]
+      }
+    ],
+    "properties": {
+      "description": {
+        "$ref": "#nonEmptyString"
+      },
+      "schema": {
+        "$ref": "#schema"
+      },
+      "schemas": {
+        "type": "array",
+        "minItems": 2,
+        "items": {
+          "$ref": "#schema"
+        }
+      },
+      "tests": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "description": "one test for the schema, should either have 'valid' or 'error' property but not both (error used for async validation only)",
+          "type": "object",
+          "required": [
+            "description",
+            "data"
+          ],
+          "properties": {
+            "description": {
+              "$ref": "#nonEmptyString"
+            },
+            "data": {
+              "description": "data sample, can be any type"
+            },
+            "valid": {
+              "description": "determines whether data sample should be valid according to the schema",
+              "type": "boolean"
+            },
+            "error": {
+              "$ref": "#nonEmptyString"
+            }
+          },
+          "oneOf": [
+            {
+              "required": [
+                "valid"
+              ]
+            },
+            {
+              "required": [
+                "error"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+}

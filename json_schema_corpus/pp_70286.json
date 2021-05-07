@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "phototype",
+  "description": "Photo Type",
+  "type": "string",
+  "enum": [
+    "Exterior",
+    "Interior",
+    "Logo",
+    "Product",
+    "unclassified"
+  ]
+}

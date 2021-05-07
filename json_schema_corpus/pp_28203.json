@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "orderStatusRequest",
+  "id": "orderStatusRequest",
+  "description": "A request for Order status information.",
+  "type": "object",
+  "required": [
+    "objectType",
+    "orderId",
+    "buyerPurchaseOrderNumber",
+    "buyerId",
+    "sellerId"
+  ],
+  "properties": {
+    "objectType": {
+      "type": "string",
+      "enum": [
+        "orderStatusRequest"
+      ],
+      "description": "The type of the object, orderStatusRequest."
+    },
+    "orderId": {
+      "type": "string",
+      "description": "Unique identifier for the order for which status information is being requested (if known, otherwise the buyerPurchaseOrderNumber is reauired).",
+      "maxLength": 45
+    },
+    "buyerId": {
+      "type": "string",
+      "description": "The ID of the Service Provider (Buyer) organization placing the order.",
+      "maxLength": 25
+    },
+    "sellerId": {
+      "type": "string",
+      "description": "The ID of the Partner/Access Provider (Seller) organization receiving the order.",
+      "maxLength": 25
+    },
+    "buyerPurchaseOrderNumber": {
+      "type": "string",
+      "description": "A number that uniquely identifies a order within the buyer's enterprise.",
+      "maxLength": 16
+    }
+  }
+}

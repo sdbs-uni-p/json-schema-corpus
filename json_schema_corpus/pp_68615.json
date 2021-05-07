@@ -1,0 +1,21 @@
+{
+  "id": "urn:Time.schema.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "A time of day in 24 hour format, with human readable fields.",
+  "name": "Time",
+  "type": "object",
+  "properties": {
+    "hour": {
+      "description": "The hour, an integer between 0-23.",
+      "type": "number"
+    },
+    "minute": {
+      "description": "The minutes within an hour, an integer between 0-59.",
+      "type": "number"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "hour"
+  ]
+}

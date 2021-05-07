@@ -1,0 +1,387 @@
+{
+  "id": "http://schemas.wbeme.com/json-schema/gdbots/ncr/mixin/search-nodes-request/1-0-3.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "request_id": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+      "pbj": {
+        "type": "uuid",
+        "rule": "single"
+      }
+    },
+    "occurred_at": {
+      "type": "string",
+      "pattern": "^[1-9]{1}[0-9]{12,15}$",
+      "pbj": {
+        "type": "microtime",
+        "rule": "single"
+      }
+    },
+    "ctx_retries": {
+      "type": "integer",
+      "default": 0,
+      "minimum": 0,
+      "maximum": 255,
+      "description": "The \"ctx_retries\" field is used to keep track of how many attempts were made to handle this request. In some cases, the service or transport that handles the request may be down or over capacity and is being retried.",
+      "pbj": {
+        "type": "tiny-int",
+        "rule": "single"
+      }
+    },
+    "ctx_causator_ref": {
+      "type": "object",
+      "properties": {
+        "curie": {
+          "type": "string",
+          "pattern": "^([a-z0-9-]+):([a-z0-9\\.-]+):([a-z0-9-]+)?:([a-z0-9-]+)$",
+          "minLength": 0,
+          "maxLength": 146
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9:_\\-]+$",
+          "minLength": 0,
+          "maxLength": 255
+        },
+        "tag": {
+          "type": "string",
+          "pattern": "^([\\w\\/-]|[\\w-][\\w\\/-]*[\\w-])$",
+          "minLength": 0,
+          "maxLength": 255
+        }
+      },
+      "required": [
+        "curie",
+        "id"
+      ],
+      "additionalProperties": false,
+      "pbj": {
+        "type": "message-ref",
+        "rule": "single"
+      }
+    },
+    "ctx_correlator_ref": {
+      "type": "object",
+      "properties": {
+        "curie": {
+          "type": "string",
+          "pattern": "^([a-z0-9-]+):([a-z0-9\\.-]+):([a-z0-9-]+)?:([a-z0-9-]+)$",
+          "minLength": 0,
+          "maxLength": 146
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9:_\\-]+$",
+          "minLength": 0,
+          "maxLength": 255
+        },
+        "tag": {
+          "type": "string",
+          "pattern": "^([\\w\\/-]|[\\w-][\\w\\/-]*[\\w-])$",
+          "minLength": 0,
+          "maxLength": 255
+        }
+      },
+      "required": [
+        "curie",
+        "id"
+      ],
+      "additionalProperties": false,
+      "pbj": {
+        "type": "message-ref",
+        "rule": "single"
+      }
+    },
+    "ctx_user_ref": {
+      "type": "object",
+      "properties": {
+        "curie": {
+          "type": "string",
+          "pattern": "^([a-z0-9-]+):([a-z0-9\\.-]+):([a-z0-9-]+)?:([a-z0-9-]+)$",
+          "minLength": 0,
+          "maxLength": 146
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9:_\\-]+$",
+          "minLength": 0,
+          "maxLength": 255
+        },
+        "tag": {
+          "type": "string",
+          "pattern": "^([\\w\\/-]|[\\w-][\\w\\/-]*[\\w-])$",
+          "minLength": 0,
+          "maxLength": 255
+        }
+      },
+      "required": [
+        "curie",
+        "id"
+      ],
+      "additionalProperties": false,
+      "pbj": {
+        "type": "message-ref",
+        "rule": "single"
+      }
+    },
+    "ctx_app": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "#/definitions/app"
+        }
+      ],
+      "description": "The \"ctx_app\" refers to the application used to make the request. This is different from ctx_ua (user_agent) because the agent used (Safari, Firefox) is not necessarily the app used (cms, iOS app, website)",
+      "pbj": {
+        "type": "message",
+        "rule": "single"
+      }
+    },
+    "ctx_cloud": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "#/definitions/cloud"
+        }
+      ],
+      "description": "The \"ctx_cloud\" is set by the server making the request and is generally only used internally for tracking and performance monitoring.",
+      "pbj": {
+        "type": "message",
+        "rule": "single"
+      }
+    },
+    "ctx_ip": {
+      "type": "string",
+      "format": "ipv4",
+      "pbj": {
+        "type": "string",
+        "rule": "single",
+        "format": "ipv4",
+        "overridable": true
+      }
+    },
+    "ctx_ipv6": {
+      "type": "string",
+      "format": "ipv6",
+      "pbj": {
+        "type": "string",
+        "rule": "single",
+        "format": "ipv6",
+        "overridable": true
+      }
+    },
+    "ctx_ua": {
+      "type": "string",
+      "minLength": 0,
+      "maxLength": 65535,
+      "pbj": {
+        "type": "text",
+        "rule": "single",
+        "overridable": true
+      }
+    },
+    "derefs": {
+      "type": "array",
+      "items": [
+        {
+          "type": "string",
+          "pattern": "^[\\w\\.-]+$"
+        }
+      ],
+      "uniqueItems": true,
+      "additionalProperties": false,
+      "description": "Field names to dereference, this serves as a hint to the server and is not necessarily gauranteed since authorization, availability, etc. are determined by the server not the client.",
+      "pbj": {
+        "type": "string",
+        "rule": "set"
+      }
+    },
+    "q": {
+      "type": "string",
+      "minLength": 0,
+      "maxLength": 2000,
+      "pbj": {
+        "type": "text",
+        "rule": "single"
+      }
+    },
+    "count": {
+      "type": "integer",
+      "default": 25,
+      "minimum": 0,
+      "maximum": 255,
+      "description": "The number of results to return.",
+      "pbj": {
+        "type": "tiny-int",
+        "rule": "single"
+      }
+    },
+    "page": {
+      "type": "integer",
+      "default": 1,
+      "minimum": 1,
+      "maximum": 255,
+      "pbj": {
+        "type": "tiny-int",
+        "rule": "single"
+      }
+    },
+    "autocomplete": {
+      "type": "boolean",
+      "pbj": {
+        "type": "boolean",
+        "rule": "single"
+      }
+    },
+    "cursor": {
+      "type": "string",
+      "minLength": 0,
+      "maxLength": 255,
+      "description": "A cursor is a string (normally base64 encoded) which marks a specific item in a list of data. When cursor is present it should be used instead of \"page\".",
+      "pbj": {
+        "type": "string",
+        "rule": "single"
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "unknown",
+        "published",
+        "scheduled",
+        "pending",
+        "draft",
+        "expired",
+        "archived",
+        "deleted"
+      ],
+      "description": "The status a node must be in to match the search request.",
+      "pbj": {
+        "type": "string-enum",
+        "rule": "single"
+      }
+    },
+    "statuses": {
+      "type": "array",
+      "items": [
+        {
+          "type": "string",
+          "enum": [
+            "unknown",
+            "published",
+            "scheduled",
+            "pending",
+            "draft",
+            "expired",
+            "archived",
+            "deleted"
+          ]
+        }
+      ],
+      "uniqueItems": true,
+      "additionalProperties": false,
+      "description": "A set of statuses (node must match at least one) to include in the search results.",
+      "pbj": {
+        "type": "string-enum",
+        "rule": "set"
+      }
+    },
+    "created_after": {
+      "type": "string",
+      "format": "date-time",
+      "pbj": {
+        "type": "date-time",
+        "rule": "single"
+      }
+    },
+    "created_before": {
+      "type": "string",
+      "format": "date-time",
+      "pbj": {
+        "type": "date-time",
+        "rule": "single"
+      }
+    },
+    "updated_after": {
+      "type": "string",
+      "format": "date-time",
+      "pbj": {
+        "type": "date-time",
+        "rule": "single"
+      }
+    },
+    "updated_before": {
+      "type": "string",
+      "format": "date-time",
+      "pbj": {
+        "type": "date-time",
+        "rule": "single"
+      }
+    },
+    "published_after": {
+      "type": "string",
+      "format": "date-time",
+      "pbj": {
+        "type": "date-time",
+        "rule": "single"
+      }
+    },
+    "published_before": {
+      "type": "string",
+      "format": "date-time",
+      "pbj": {
+        "type": "date-time",
+        "rule": "single"
+      }
+    },
+    "fields_used": {
+      "type": "array",
+      "items": [
+        {
+          "type": "string",
+          "pattern": "^[\\w\\.-]+$"
+        }
+      ],
+      "uniqueItems": true,
+      "additionalProperties": false,
+      "description": "The fields that are being queried as determined by parsing the \"q\" field.",
+      "pbj": {
+        "type": "string",
+        "rule": "set"
+      }
+    },
+    "parsed_query_json": {
+      "type": "string",
+      "minLength": 0,
+      "maxLength": 65535,
+      "pbj": {
+        "type": "text",
+        "rule": "single"
+      }
+    }
+  },
+  "required": [
+    "request_id"
+  ],
+  "definitions": {
+    "app": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "http://schemas.wbeme.com/json-schema/gdbots/contexts/app/1-0-0.json#"
+        }
+      ]
+    },
+    "cloud": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "http://schemas.wbeme.com/json-schema/gdbots/contexts/cloud/1-0-0.json#"
+        }
+      ]
+    }
+  },
+  "additionalProperties": true
+}

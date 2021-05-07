@@ -1,0 +1,10 @@
+{
+  "id": "http://schema.org/Brand",
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "extends": {
+    "$ref": "Intangible.json"
+  },
+  "description": "A brand is a name used by an organization or business person for labeling a product, product group, or similar. Schema.org: http://schema.org/Brand",
+  "type": "object",
+  "additionalProperties": true
+}

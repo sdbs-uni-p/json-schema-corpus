@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "downloadUrl": {
+      "type": "string",
+      "required": true
+    },
+    "logoUrl": {
+      "type": "string"
+    },
+    "appUrl": {
+      "type": "string",
+      "required": true
+    },
+    "hash": {
+      "type": "string"
+    },
+    "appName": {
+      "type": "string",
+      "required": true
+    },
+    "packageName": {
+      "type": "string",
+      "required": true
+    },
+    "summary": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "license": {
+      "type": "string"
+    },
+    "appCategory": {
+      "type": "string"
+    },
+    "webLink": {
+      "type": "string"
+    },
+    "sourceCodeLink": {
+      "type": "string"
+    },
+    "marketVersion": {
+      "type": "string"
+    },
+    "sha256hash": {
+      "type": "string",
+      "required": true
+    },
+    "sizeInBytes": {
+      "type": "number"
+    },
+    "sdkVersion": {
+      "type": "string"
+    },
+    "permissions": {
+      "type": "string"
+    },
+    "features": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#4",
+  "title": "Pump",
+  "description": "Describes information about pumps",
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "unique identifier for this pump",
+      "type": "string"
+    },
+    "stationid": {
+      "description": "unique identifier (reference) for the station where this pump is located",
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "stationid"
+  ]
+}

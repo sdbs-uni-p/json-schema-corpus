@@ -1,0 +1,186 @@
+{
+  "type": "object",
+  "id": "http://stable-odt-api.eu-gb.mybluemix.net/api/learner/$schema",
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "title": "Learner",
+  "description": "This form allows the creation of a learner within ODT",
+  "links": [
+    {
+      "href": "/examples/data/learner-data.json",
+      "rel": "instances",
+      "method": "GET"
+    }
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": "order:010_id",
+      "readonly": true,
+      "description": "System generated unique identifier"
+    },
+    "name": {
+      "type": "string",
+      "id": "order:020_name",
+      "required": true,
+      "description": "Name of learner",
+      "maxLength": 60,
+      "minLength": 1
+    },
+    "itemMarks": {
+      "type": "array",
+      "required": true,
+      "items": {
+        "type": "number",
+        "divisibleBy": 0.5
+      }
+    },
+    "learnerProfile": {
+      "type": "string",
+      "id": "order:025_learnerProfile",
+      "required": true,
+      "media": {
+        "binaryEncoding": "base64",
+        "type": "image/jpeg"
+      },
+      "title": "Learner picture"
+    },
+    "gender": {
+      "type": "string",
+      "id": "order:030_gender",
+      "required": true,
+      "description": "[M]ale, [F]emale, or [N]ot Specified",
+      "format": "list",
+      "maxLength": 1,
+      "minLength": 1,
+      "pattern": "^[MFN]$",
+      "extends": [
+        {
+          "type": "string",
+          "$ref": "data:application/schema+json;charset=UTF-8;base64,eyJ0eXBlIjpbeyJ0eXBlIjoic3RyaW5nIiwidGl0bGUiOiJNYWxlIiwiZW51bSI6WyJNIl19LHsidHlwZSI6InN0cmluZyIsInRpdGxlIjoiRmVtYWxlIiwiZW51bSI6WyJGIl19LHsidHlwZSI6InN0cmluZyIsInRpdGxlIjoiTm90IFNwZWNpZmllZCIsImVudW0iOlsiTiJdfV19"
+        }
+      ]
+    },
+    "dateOfBirth": {
+      "type": "string",
+      "id": "order:040_dateOfBirth",
+      "required": true,
+      "description": "Date of Birth one one one one one one one one one one one one one one one ",
+      "format": "birth-date"
+    },
+    "localSchoolLearnerId": {
+      "type": "string",
+      "id": "order:050_localSchoolLearnerId",
+      "description": "Optionally add a unique identifier for a learner at this school"
+    },
+    "createdDate": {
+      "type": "string",
+      "id": "order:060_createdDate",
+      "readonly": true,
+      "description": "Created Date",
+      "format": "date"
+    },
+    "lastUpdateDate": {
+      "type": "string",
+      "id": "order:070_lastUpdateDate",
+      "readonly": true,
+      "description": "Last updated date",
+      "format": "date"
+    },
+    "learnerGroups": {
+      "type": "array",
+      "id": "order:999_learnerGroups",
+      "readonly": true,
+      "description": "Learners",
+      "title": "Learner groups",
+      "items": {
+        "type": "object",
+        "id": "urn:jsonschema:ucles:weblab:learners:web:LearnerGroupResource",
+        "properties": {
+          "title": {
+            "type": "string",
+            "id": "order:020_title",
+            "required": true,
+            "description": "Name of learner group, must be unique",
+            "title": "Name"
+          },
+          "description": {
+            "type": "string",
+            "id": "order:025_description",
+            "description": "Description of the learner group",
+            "title": "Description"
+          },
+          "stage": {
+            "type": "integer",
+            "id": "order:030_stage",
+            "description": "Stage",
+            "title": "Stage",
+            "format": "list",
+            "maximum": 9.0,
+            "minimum": 1.0
+          },
+          "createdDate": {
+            "type": "string",
+            "id": "order:040_createdDate",
+            "readonly": true,
+            "description": "Created Date",
+            "title": "Created Date",
+            "format": "date"
+          },
+          "lastUpdateDate": {
+            "type": "string",
+            "id": "order:050_lastUpdateDate",
+            "readonly": true,
+            "description": "Last updated date",
+            "title": "Last Updated Date",
+            "format": "date"
+          },
+          "id": {
+            "type": "string",
+            "id": "order:060_id",
+            "readonly": true,
+            "description": "System generated unique identifier",
+            "title": "ID"
+          },
+          "learners": {
+            "type": "array",
+            "id": "order:060_learners",
+            "description": "Learners",
+            "title": "Learners",
+            "items": {
+              "type": "object",
+              "$ref": "urn:jsonschema:ucles:weblab:learners:web:LearnerResource"
+            }
+          },
+          "teachers": {
+            "type": "array",
+            "id": "order:070_teachers",
+            "description": "Teacher(s) to Learner Group",
+            "title": "Teachers",
+            "items": {
+              "type": "string",
+              "format": "uri",
+              "extends": [
+                {
+                  "type": "string",
+                  "$ref": "http://stable-odt-api.eu-gb.mybluemix.net/api/teacher/$links"
+                }
+              ]
+            }
+          },
+          "teacherUrns": {
+            "type": "array",
+            "id": "order:999_teacherUrns",
+            "readonly": true,
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "new": {
+      "type": "boolean",
+      "id": "order:999_new"
+    }
+  }
+}

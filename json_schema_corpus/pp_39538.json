@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "plans": {
+      "type": "array",
+      "itemType": {
+        "$ref": "plan.schema.json"
+      }
+    },
+    "message": {
+      "type": "string"
+    }
+  }
+}

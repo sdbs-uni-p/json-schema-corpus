@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "id": "http://example.com/raml10/connectionsInline.json#",
+  "type": "object",
+  "connection": {
+    "id": "#/connection",
+    "properties": {
+      "id": {
+        "type": "string",
+        "required": true
+      }
+    },
+    "type": "object"
+  },
+  "connectionItem": {
+    "id": "#/connectionItem",
+    "type": "object",
+    "properties": {
+      "data": {
+        "$ref": "#connection"
+      },
+      "messages": {
+        "$ref": "messages.json"
+      }
+    },
+    "connectionCollection": {
+      "id": "#/connectionCollection",
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#connection"
+          }
+        },
+        "messages": {
+          "$ref": "messages.json"
+        }
+      }
+    }
+  }
+}

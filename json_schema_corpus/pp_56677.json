@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://judkins.house/apis/k2/v1/weaveFabricContainerConfig.json",
+  "$$target": "weaveFabricContainerConfig.json",
+  "title": "Weave Fabric Containers",
+  "description": "Describes the containers which implement the Weave fabric.",
+  "properties": {
+    "version": {
+      "description": "Version of the container",
+      "type": "string"
+    },
+    "location": {
+      "description": "Container image location",
+      "type": "string"
+    }
+  },
+  "required": [
+    "version",
+    "location"
+  ],
+  "additionalProperties": false,
+  "type": "object"
+}

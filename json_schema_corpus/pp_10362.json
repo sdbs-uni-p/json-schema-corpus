@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "uri://registries/club#",
+  "new": {
+    "table": "organizations",
+    "properties": {
+      "baseData": {
+        "$ref": "uri://registries/organization#properties/baseData"
+      },
+      "additionalData": {
+        "$ref": "uri://registries/organization#properties/additionalData"
+      },
+      "logoInfo": {
+        "$ref": "uri://registries/organization#properties/logoInfo"
+      },
+      "contactInfo": {
+        "$ref": "uri://registries/organization#properties/contactInfo"
+      },
+      "bankInfo": {
+        "$ref": "uri://registries/organization#properties/bankInfo"
+      },
+      "curier": {
+        "$ref": "uri://registries/organization#properties/curier"
+      },
+      "otherInfo": {
+        "$ref": "uri://registries/organization#properties/otherInfo"
+      }
+    }
+  },
+  "view": {
+    "$ref": "uri://registries/club#new"
+  },
+  "search": {
+    "table": "organizations",
+    "title": "organiz\u00e1cia",
+    "listFields": {
+      "$ref": "uri://registries/organization#listFields"
+    },
+    "properties": {
+      "baseData": {
+        "$ref": "uri://registries/organization#properties/baseData"
+      },
+      "contactInfo": {
+        "$ref": "uri://registries/organization#properties/contactInfo"
+      },
+      "bankInfo": {
+        "$ref": "uri://registries/organization#properties/bankInfo"
+      },
+      "additionalData": {
+        "$ref": "uri://registries/organization#properties/additionalData"
+      }
+    }
+  }
+}

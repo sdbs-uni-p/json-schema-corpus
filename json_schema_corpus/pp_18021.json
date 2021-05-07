@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-05/schema#",
+  "title": "cv-item",
+  "description": "A single entry in my CV. Features place, time and identifiers for the events.",
+  "type": "object",
+  "properties": {
+    "@context": {
+      "const": "http://schema.org"
+    },
+    "@type": {
+      "const": "Event"
+    },
+    "startLabel": {
+      "type": "string"
+    },
+    "startDate": {
+      "type": "string",
+      "format": "ISO8601"
+    },
+    "endLabel": {
+      "type": "string"
+    },
+    "endDate": {
+      "type": "string",
+      "format": "ISO8601"
+    },
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "cat": {
+      "type": "string"
+    },
+    "uri": {
+      "type": "string",
+      "format": "uri"
+    },
+    "location": {
+      "type": "string",
+      "properties": {
+        "@type": {
+          "const": "Place"
+        },
+        "name": {
+          "type": "string"
+        },
+        "coord": {
+          "type": "string",
+          "format": "ISO6709"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    }
+  }
+}

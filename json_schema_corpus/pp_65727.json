@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "SetConfig",
+  "type": "object",
+  "properties": {
+    "kind": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "replicas": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "name",
+    "replicas",
+    "kind"
+  ]
+}

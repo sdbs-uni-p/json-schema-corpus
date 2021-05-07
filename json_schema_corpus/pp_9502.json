@@ -1,0 +1,239 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "id": "/schemata/batch_designations",
+  "title": "Batch Designations",
+  "description": "Update designation decisions for a set of applicants in a single API request using a batch action.\nA batch action is an asynchronous operation that can be created using a first endpoint and then have its result checked\nusing another endpoint.\nFirst the batch action is created using the __POST__ (create) endpoint by sending in the request body, the JSON describing all the\nchanges to apply. The creation endpoint validates the changes and then schedules the batch to be executed returning a batch\n**id** to check the result later on.\nThen the __GET__ (show) endpoint can be used to check the completion of the scheduled batch, using the **id** returned by the\nprevious __POST__. Once the batch has finished, the result will be included in the batch object.",
+  "links": [
+    {
+      "description": "Retrieve the status of a running/done batch action initiated with a previous POST. The **id** parameter is required. It is the id of the batch\nthat you wish to check the status of. You may continue to issue this call over a reasonable polling interval (10s) until the batch has finished.\nOnce the status of the batch becomes \"Available\", the detailed information of the modification applied will be in the \"result\" property of the\nbatch object in the response.",
+      "href": "/api/v2/user_identities/:user_identity_id/programs/:program_id/batch_designations/:id",
+      "method": "GET",
+      "rel": "self",
+      "title": "Show",
+      "http_header": {
+        "x-api-key": "0123456789abcdef0123456789abcdef"
+      },
+      "schema": {
+        "type": "object",
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "/schemata/batch_designations/definitions/id"
+          }
+        }
+      }
+    },
+    {
+      "description": "Schedule the update of multiple designations with the given applicant CAS IDs and program ID, by creating a batch.\n**WARNING:** You'll get an error when you're trying to set a decision_id to a designation which already has a local status assigned.\nIf you want to be able to force the decision_id please contact Liaison to turn on the \"Disassociate Decision Codes from Local Status\"\nfeature which will allow you to set the decision even if the local_status is present.",
+      "href": "/api/v2/user_identities/:user_identity_id/programs/:program_id/batch_designations",
+      "method": "POST",
+      "rel": "create",
+      "title": "Create",
+      "http_header": {
+        "x-api-key": "0123456789abcdef0123456789abcdef"
+      },
+      "schema": {
+        "type": "object",
+        "properties": {
+          "designations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "applicant_cas_id",
+                "decision_id"
+              ],
+              "properties": {
+                "applicant_cas_id": {
+                  "type": "string",
+                  "description": "The CAS unique identifier of the applicant.",
+                  "example": "123456789"
+                },
+                "decision_id": {
+                  "type": "integer",
+                  "description": "The unique identifier for the decision to set. If the designation is in received status and the preliminary_data_handling feature is on, the code will prevent changes to the decision code.",
+                  "example": 99
+                }
+              }
+            }
+          }
+        }
+      },
+      "targetSchema": {
+        "type": "object",
+        "properties": {
+          "href": {
+            "$ref": "/schemata/batch_designations/definitions/href"
+          },
+          "batch": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "$ref": "/schemata/batch_designations/definitions/id"
+              },
+              "status": {
+                "$ref": "/schemata/batch_designations/definitions/status",
+                "example": "Queued"
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "definitions": {
+    "id": {
+      "type": "integer",
+      "example": 74780,
+      "description": "Unique identifier of this batch."
+    },
+    "href": {
+      "type": "string",
+      "description": "Hypertext reference to the batch.",
+      "pattern": "/api/v2/user_identities/\\d+/programs/\\d+/batch_designations/\\d+",
+      "example": "/api/v2/user_identities/1/programs/42023191739237/batch_designations/74780"
+    },
+    "status": {
+      "type": "string",
+      "description": "Current status of this batch.",
+      "enum": [
+        "Queued",
+        "In Progress",
+        "Available",
+        "Success With Errors",
+        "Failed"
+      ],
+      "example": "Available"
+    },
+    "applicant_cas_id": {
+      "type": "string",
+      "description": "The CAS unique identifier of the applicant.",
+      "example": "123456789"
+    },
+    "decision_id": {
+      "type": "integer",
+      "description": "The unique identifier for the decision to set. If the designation is in received status and the preliminary_data_handling feature is on, the code will prevent changes to the decision code.",
+      "example": 99
+    }
+  },
+  "properties": {
+    "href": {
+      "$ref": "/schemata/batch_designations/definitions/href"
+    },
+    "batch": {
+      "type": "object",
+      "required": [
+        "id",
+        "href",
+        "status"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "/schemata/batch_designations/definitions/id"
+        },
+        "status": {
+          "$ref": "/schemata/batch_designations/definitions/status"
+        },
+        "results": {
+          "type": "array",
+          "description": "List of the updated designations",
+          "example": [
+            {
+              "decision": {
+                "id": 4697,
+                "name": "Matriculated"
+              },
+              "applicant_cas_id": "1595659994",
+              "errors": {
+                "creation_error": "A newer update (setting decision_id to 4698) is overriding this update"
+              }
+            },
+            {
+              "decision": {
+                "id": 420,
+                "name": "Unknown"
+              },
+              "applicant_cas_id": "1595659995",
+              "errors": {
+                "decision": "No decision found for that decision_id",
+                "applicant": "No applicant found for that applicant_cas_id"
+              }
+            },
+            {
+              "decision": {
+                "id": 4698,
+                "name": "Redirected"
+              },
+              "applicant_cas_id": "1595659994",
+              "errors": null
+            }
+          ],
+          "items": {
+            "type": "object",
+            "required": [
+              "decision",
+              "applicant_cas_id",
+              "errors"
+            ],
+            "properties": {
+              "decision": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "name"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "Human-readable name for this decision."
+                  },
+                  "id": {
+                    "$ref": "/schemata/batch_designations/definitions/decision_id"
+                  }
+                }
+              },
+              "applicant_cas_id": {
+                "$ref": "/schemata/batch_designations/definitions/applicant_cas_id"
+              },
+              "errors": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "creation_error": {
+                    "type": "string",
+                    "description": "A message explaining why a change could not be completed.",
+                    "example": "A newer update (setting decision_id to 4698) is overriding this update"
+                  },
+                  "decision": {
+                    "type": "string",
+                    "description": "An error message indicating that the decision_id provided was invalid.",
+                    "example": "No decision found for that decision_id"
+                  },
+                  "applicant": {
+                    "type": "string",
+                    "description": "An error message indicating that the applicant_cas_id provided was invalid.",
+                    "example": "No applicant found for that applicant_cas_id"
+                  },
+                  "designation": {
+                    "type": "string",
+                    "description": "An error message indicating that no designation was found for the given applicant and program.",
+                    "example": "No designation found for the given applicant and program"
+                  },
+                  "update_error": {
+                    "type": "string",
+                    "description": "An error message explaining why the update could not be applied.",
+                    "example": "ActiveRecord::ConnectionNotEstablished"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

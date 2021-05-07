@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "allOf": [
+    {
+      "$ref": "course.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "evaluations": {
+          "type": "array",
+          "items": {
+            "$ref": "evaluation_with_professor_author.json"
+          }
+        }
+      },
+      "required": [
+        "evaluations"
+      ]
+    }
+  ]
+}

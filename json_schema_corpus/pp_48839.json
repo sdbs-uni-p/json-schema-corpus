@@ -1,0 +1,13 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://qcif.edu.au",
+  "required": false,
+  "properties": {
+    "imgPath": {
+      "type": "string",
+      "id": "http://qcif.edu.au/imgPath",
+      "required": false
+    }
+  }
+}

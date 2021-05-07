@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Object schema",
+  "description": "Description of a physical object that is involved in a step. This can be a tool, a part or the result of a step.",
+  "object": {
+    "type": "object",
+    "description": "description of an object",
+    "properties": {
+      "name": {
+        "type": "string",
+        "description": "Name of the object"
+      },
+      "description": {
+        "type": "string",
+        "description": "Description of the object"
+      },
+      "quantity": {
+        "type": "number",
+        "description": "Number of instances of this object",
+        "default": 1
+      },
+      "optional": {
+        "type": "boolean",
+        "description": "If this object is strictly required",
+        "default": false
+      },
+      "images": {
+        "type": "array",
+        "description": "Images illustrating this object",
+        "items": {
+          "$ref": "image.json#/image"
+        }
+      }
+    },
+    "required": [
+      "name"
+    ],
+    "additionalProperties": false
+  },
+  "reference": {
+    "type": "object",
+    "description": "description of an object reference",
+    "properties": {
+      "ref": {
+        "type": "string",
+        "pattern": "^[a-zA-Z][0-9a-zA-Z]*.results.[a-zA-Z][0-9a-zA-Z]*$",
+        "description": "reference on a object in a different step"
+      },
+      "quantity": {
+        "type": "number",
+        "description": "Number of instances of this object"
+      }
+    },
+    "required": [
+      "ref"
+    ],
+    "additionalProperties": false
+  }
+}

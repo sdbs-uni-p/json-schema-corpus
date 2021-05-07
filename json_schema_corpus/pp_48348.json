@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://zenodo.org/schemas/records/file-v1.0.0.json",
+  "properties": {
+    "_buckets": {
+      "properties": {
+        "deposit": {
+          "description": "Deposit bucket ID.",
+          "type": "string"
+        },
+        "record": {
+          "description": "Record bucket ID.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "_files": {
+      "items": {
+        "description": "Describe information needed for files in records.",
+        "properties": {
+          "bucket": {
+            "type": "string"
+          },
+          "checksum": {
+            "type": "string"
+          },
+          "key": {
+            "type": "string"
+          },
+          "previewer": {
+            "description": "Identifier for previewer needed to preview this file.",
+            "type": "string"
+          },
+          "size": {
+            "type": "integer"
+          },
+          "type": {
+            "description": "File type extension.",
+            "type": "string"
+          },
+          "version_id": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "type": "array"
+    }
+  },
+  "title": "Zenodo Files Schema v1.0.0",
+  "type": "object"
+}

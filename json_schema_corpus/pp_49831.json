@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "$license": [
+    "http://www.apache.org/licenses/LICENSE-2.0"
+  ],
+  "type": "object",
+  "javaType": "org.apache.streams.flink.StreamsFlinkConfiguration",
+  "javaInterfaces": [
+    "java.io.Serializable"
+  ],
+  "extends": {
+    "$comment": "Absolute $ref: http://streams.apache.org/streams-config/StreamsConfiguration.json",
+    "$ref": "../../../../../../streams-config/src/main/jsonschema/StreamsConfiguration.json"
+  },
+  "additionalProperties": false,
+  "properties": {
+    "test": {
+      "type": "boolean"
+    },
+    "local": {
+      "type": "boolean"
+    }
+  }
+}

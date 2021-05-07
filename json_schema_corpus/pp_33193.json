@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "title": "ValidSite",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "street": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "zip": {
+      "type": "string"
+    },
+    "latitude": {
+      "type": "number"
+    },
+    "longitude": {
+      "type": "number"
+    },
+    "opentime": {
+      "type": "string"
+    },
+    "closetime": {
+      "type": "string"
+    },
+    "days": {
+      "type": "string"
+    },
+    "sitecoordinator": {
+      "type": "integer"
+    },
+    "sitestatus": {
+      "type": "string"
+    }
+  }
+}

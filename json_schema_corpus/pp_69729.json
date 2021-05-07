@@ -1,0 +1,80 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "WalletData",
+  "type": "object",
+  "required": [
+    "scheme",
+    "address",
+    "status",
+    "identity",
+    "created",
+    "balance",
+    "ranking",
+    "bonus-credit",
+    "transactions"
+  ],
+  "properties": {
+    "scheme": {
+      "constant": "walletData"
+    },
+    "address": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "active",
+        "deleted"
+      ]
+    },
+    "identity": {
+      "type": "object"
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "balance": {
+      "type": "integer"
+    },
+    "ranking": {
+      "type": "integer"
+    },
+    "bonus-credit": {
+      "type": "integer"
+    },
+    "transactions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/Transaction"
+      }
+    }
+  },
+  "Transaction": {
+    "type": "object",
+    "required": [
+      "recipient",
+      "source",
+      "date",
+      "value",
+      "nonce"
+    ],
+    "properties": {
+      "recipient": {
+        "type": "string"
+      },
+      "source": {
+        "type": "string"
+      },
+      "date": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "value": {
+        "type": "integer"
+      },
+      "nonce": {
+        "type": "integer"
+      }
+    }
+  }
+}

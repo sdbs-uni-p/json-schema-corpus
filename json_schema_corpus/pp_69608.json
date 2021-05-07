@@ -1,0 +1,28 @@
+{
+  "id": "http://schema.org/AggregateRating",
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "extends": {
+    "$ref": "Rating.json"
+  },
+  "description": "The average rating based on multiple ratings or reviews. Schema.org: http://schema.org/AggregateRating",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "itemReviewed": {
+      "description": "The item that is being reviewed/rated.",
+      "type": "object",
+      "$ref": "Thing.json"
+    },
+    "ratingCount": {
+      "description": "The count of total number of ratings.",
+      "type": "integer"
+    },
+    "reviewCount": {
+      "description": "The count of total number of reviews.",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "itemReviewed"
+  ]
+}

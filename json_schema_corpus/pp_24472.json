@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://atomicbits.io/raml10/empty-object-field.json",
+  "type": "object",
+  "description": "An object containing an inline anonymous object that will be generated as a JSON object",
+  "properties": {
+    "message": {
+      "type": "string",
+      "required": true
+    },
+    "data": {
+      "type": "object",
+      "required": true
+    }
+  }
+}

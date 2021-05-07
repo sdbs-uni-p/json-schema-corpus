@@ -1,0 +1,147 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "This document contains a schema for validating an record serialization",
+  "id": "neat.models.record",
+  "properties": {
+    "$meta": {
+      "id": "/properties/$meta",
+      "type": "object"
+    },
+    "coord": {
+      "id": "/properties/coord",
+      "properties": {
+        "lat": {
+          "description": "The latitude of this record's device",
+          "id": "/properties/coord/properties/lat",
+          "title": "Schema for Record coord.lat fields",
+          "type": "number"
+        },
+        "lon": {
+          "description": "The longitude of this record's device",
+          "id": "/properties/coord/properties/lon",
+          "title": "Schema for Record coord.lon fields",
+          "type": "number"
+        }
+      },
+      "type": "object",
+      "required": [
+        "lat",
+        "lon"
+      ]
+    },
+    "data": {
+      "id": "/properties/data",
+      "properties": {
+        "/": {}
+      },
+      "patternProperties": {
+        "^[0-9]+$": {
+          "properties": {
+            "name": {
+              "description": "The assigned name for the record point",
+              "title": "Schema for RecordPoint name fields",
+              "type": "string"
+            },
+            "unit": {
+              "default": "dimensionless",
+              "description": "The assigned pint units for the record point",
+              "title": "Schema for RecordPoint units fields",
+              "type": "string"
+            },
+            "value": {
+              "description": "The stat value of the record point",
+              "title": "Schema for RecordPoint value fields",
+              "type": [
+                "number",
+                "null"
+              ]
+            }
+          },
+          "type": "object",
+          "required": [
+            "name",
+            "unit",
+            "value"
+          ]
+        }
+      },
+      "type": "object",
+      "additionalProperties": false
+    },
+    "device_name": {
+      "description": "The human readable name of the record's device",
+      "id": "/properties/device_name",
+      "title": "Schema for Record device_name fields",
+      "type": "string"
+    },
+    "name": {
+      "description": "The unique reference name of the record's device",
+      "id": "/properties/name",
+      "title": "Schema for Record name fields",
+      "type": "string"
+    },
+    "parsed": {
+      "id": "/properties/parsed",
+      "properties": {
+        "/": {}
+      },
+      "patternProperties": {
+        "^[a-z_-]+$": {
+          "properties": {
+            "unit": {
+              "description": "The assigned pint units of the record's parsed record point",
+              "title": "Schema for parsed RecordPoint units fields",
+              "type": "string"
+            },
+            "value": {
+              "description": "The assigned value of the record's parsed record point",
+              "title": "Schema for parsed RecordPoint value fields",
+              "type": [
+                "number",
+                "null"
+              ]
+            }
+          },
+          "type": "object",
+          "required": [
+            "unit",
+            "value"
+          ]
+        }
+      },
+      "type": "object",
+      "additionalProperties": false
+    },
+    "timestamp": {
+      "description": "Time that the record was created",
+      "id": "/properties/timestamp",
+      "title": "Schema for Record timestamp fields",
+      "type": "number"
+    },
+    "ttl": {
+      "description": "The time for a record to stay alive",
+      "id": "/properties/ttl",
+      "title": "Schema for Record TTL fields",
+      "type": "number"
+    },
+    "type": {
+      "default": "UNKNOWN",
+      "description": "Must be one of the supported devices types, by name",
+      "id": "/properties/type",
+      "title": "Schema for Record type fields",
+      "type": "string"
+    }
+  },
+  "required": [
+    "name",
+    "device_name",
+    "data",
+    "parsed",
+    "coord",
+    "timestamp",
+    "ttl",
+    "type"
+  ],
+  "title": "Schema for Records.",
+  "type": "object"
+}

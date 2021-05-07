@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "request_delete_user_account_1",
+  "type": "object",
+  "properties": {
+    "confirmToken": {
+      "$ref": "common_uuid"
+    },
+    "password1": {
+      "type": "string"
+    },
+    "password2": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "confirmToken",
+    "password1",
+    "password2"
+  ],
+  "additionalProperties": false
+}

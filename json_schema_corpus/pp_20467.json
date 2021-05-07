@@ -1,0 +1,8 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://localhost:3000/schemas/get-device-response.json#",
+  "title": "Device",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {}
+}

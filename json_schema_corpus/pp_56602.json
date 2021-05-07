@@ -1,0 +1,293 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "title": "AlertConfig",
+  "description": "Working with MMS Alert Configurations",
+  "type": "object",
+  "definitions": {
+    "id": {
+      "description": "Unique identifier.",
+      "example": "533dc40ae4b00835ff81eaee",
+      "type": "string"
+    },
+    "groupId": {
+      "description": "ID of the group that owns this alert configuration.",
+      "example": "5196d3628d022db4cbc26d9e",
+      "type": "string"
+    },
+    "created": {
+      "description": "When this alert configuration was created.",
+      "example": "2012-01-01T12:00:00Z",
+      "format": "date-time",
+      "type": "string"
+    },
+    "updated": {
+      "description": "When this alert configuration was last updated.",
+      "example": "2012-01-01T12:00:00Z",
+      "format": "date-time",
+      "type": "string"
+    },
+    "enabled": {
+      "description": "Is this alert configuration enabled?",
+      "example": true,
+      "type": "boolean"
+    },
+    "matcher": {
+      "description": "Rules to apply when matching an object against this alert configuration. Only entities that match all these rules will be checked for an alert condition.",
+      "type": "object",
+      "properties": {
+        "fieldName": {
+          "description": "The name of the field in the target object to match on. The available fields depend on the typeName.",
+          "example": "hostnameAndPort",
+          "type": "string"
+        },
+        "operator": {
+          "description": "The operator to test the field's value.",
+          "example": "EQUALS",
+          "type": "string",
+          "enum": [
+            "EQUALS",
+            "NOT_EQUALS",
+            "CONTAINS",
+            "NOT_CONTAINS",
+            "STARTS_WITH",
+            "ENDS_WITH",
+            "REGEX"
+          ]
+        },
+        "value": {
+          "description": "The value to test with the specified operator. When matching on the TYPE_NAME field for a HOST or HOST_METRIC alert, the possible typeName values are: PRIMARY SECONDARY STANDALONE CONFIG MONGOS",
+          "example": "mongo.babypearfoo.com:27017",
+          "type": "string"
+        }
+      }
+    },
+    "notification": {
+      "description": "Notifications to send when an alert condition is detected.",
+      "type": "object",
+      "properties": {
+        "typeName": {
+          "description": "The type of alert notification. Note that SNMP notifications are not available in the cloud version of MMS. This feature is only available to On Premise installations.",
+          "example": "SMS",
+          "type": "string",
+          "enum": [
+            "GROUP",
+            "USER",
+            "SMS",
+            "EMAIL",
+            "PAGER_DUTY",
+            "HIPCHAT",
+            "SNMP"
+          ]
+        },
+        "delayMin": {
+          "description": "The number of minutes to wait after an alert condition is detected before sending out the first notification.",
+          "example": 5,
+          "type": "integer"
+        },
+        "intervalMin": {
+          "description": "The number of minutes to wait between succcessive notifications for unacknowledged alerts that are not resolved.",
+          "example": 0,
+          "type": "integer"
+        },
+        "emailAddress": {
+          "description": "The email address to which to send notification. Only present for notifications of type EMAIL.",
+          "example": "jane.doe@gmail.com",
+          "type": "string"
+        },
+        "notificationToken": {
+          "description": "A HipChat API token. Only present for notifications of type HIP_CHAT.",
+          "example": "123456abcdef",
+          "type": "string"
+        },
+        "roomName": {
+          "description": "HipChat room name. Only present for notifications of type HIP_CHAT.",
+          "example": "Test Chat Room",
+          "type": "string"
+        },
+        "emailEnabled": {
+          "description": "Should email notifications be sent? Only present for notifications of type GROUP and USER.",
+          "example": true,
+          "type": "boolean"
+        },
+        "smsEnabled": {
+          "description": "Should SMS notifications be sent? Only present for notifications of type GROUP and USER.",
+          "example": true,
+          "type": "boolean"
+        },
+        "username": {
+          "description": "The name of an MMS user to which to send notifications. Only a user in the group that owns the alert configuration is allowed here.",
+          "example": "jane.doe@gmail.com",
+          "type": "string"
+        },
+        "mobileNumber": {
+          "description": "Mobile number to send SMS messages to. Only present for notifications of type SMS.",
+          "example": "(212) 212-1212",
+          "type": "string"
+        },
+        "snmpAddress": {
+          "description": "Hostname and port to send SNMP traps to. Note that SNMP is only supported for On Premise MMS; also, at this time MMS is only able to send SNMP traps to the standard SNMP port (161).",
+          "example": "somedomain.com:161",
+          "type": "string"
+        },
+        "serviceKey": {
+          "description": "PagerDuty service key.",
+          "example": "123456abcdef",
+          "type": "string"
+        }
+      }
+    },
+    "metricThreshold": {
+      "type": "object",
+      "properties": {
+        "metricName": {
+          "$ref": "/schemata/metric#/definitions/metricName"
+        },
+        "operator": {
+          "description": "The operator to apply when checking the current metric value against the threshold value.",
+          "example": "GREATER_THAN",
+          "type": "string",
+          "enum": [
+            "GREATER_THAN",
+            "LESS_THAN"
+          ]
+        },
+        "threshold": {
+          "description": "The threshold value outside of which an alert will be triggered.",
+          "example": 7,
+          "type": "integer"
+        },
+        "units": {
+          "$ref": "/schemata/metric#/definitions/units"
+        },
+        "mode": {
+          "description": "The mode to use when computing the current metric value.",
+          "example": "TOTAL",
+          "type": "string",
+          "enum": [
+            "AVERAGE",
+            "TOTAL"
+          ]
+        }
+      }
+    }
+  },
+  "links": [
+    {
+      "description": "Create a new alertConfig.",
+      "href": "/groups/{(%2Fschemata%2Fgroup%23%2Fdefinitions%2Fid)}/alertConfigs",
+      "method": "POST",
+      "rel": "create",
+      "schema": {
+        "$ref": "/schemata/alertConfig"
+      },
+      "targetSchema": {
+        "$ref": "/schemata/alertConfig"
+      },
+      "title": "Create"
+    },
+    {
+      "description": "Delete an existing alertConfig.",
+      "href": "/groups/{(%2Fschemata%2Fgroup%23%2Fdefinitions%2Fid)}/alertConfigs/{(%2Fschemata%2FalertConfig%23%2Fdefinitions%2Fid)}",
+      "method": "DELETE",
+      "rel": "destroy",
+      "title": "Delete"
+    },
+    {
+      "description": "Info for existing alertConfig.",
+      "href": "/groups/{(%2Fschemata%2Fgroup%23%2Fdefinitions%2Fid)}/alertConfigs/{(%2Fschemata%2FalertConfig%23%2Fdefinitions%2Fid)}",
+      "method": "GET",
+      "rel": "self",
+      "targetSchema": {
+        "$ref": "/schemata/alertConfig"
+      },
+      "title": "Info"
+    },
+    {
+      "description": "List existing alertConfigs.",
+      "href": "/groups/{(%2Fschemata%2Fgroup%23%2Fdefinitions%2Fid)}/alertConfigs",
+      "method": "GET",
+      "rel": "instances",
+      "targetSchema": {
+        "type": "object",
+        "properties": {
+          "totalCount": {
+            "example": 1,
+            "type": "integer"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "/schemata/alertConfig"
+            }
+          }
+        }
+      },
+      "title": "List"
+    },
+    {
+      "description": "Replace an existing alertConfig.",
+      "href": "/groups/{(%2Fschemata%2Fgroup%23%2Fdefinitions%2Fid)}/alertConfigs/{(%2Fschemata%2FalertConfig%23%2Fdefinitions%2Fid)}",
+      "method": "PUT",
+      "rel": "update",
+      "schema": {
+        "$ref": "/schemata/alertConfig"
+      },
+      "targetSchema": {
+        "$ref": "/schemata/alertConfig"
+      },
+      "title": "Replace"
+    },
+    {
+      "description": "Update an existing alertConfig.",
+      "href": "/groups/{(%2Fschemata%2Fgroup%23%2Fdefinitions%2Fid)}/alertConfigs/{(%2Fschemata%2FalertConfig%23%2Fdefinitions%2Fid)}",
+      "method": "PATCH",
+      "rel": "update",
+      "schema": {
+        "$ref": "/schemata/alertConfig"
+      },
+      "targetSchema": {
+        "$ref": "/schemata/alertConfig"
+      },
+      "title": "Update"
+    }
+  ],
+  "properties": {
+    "id": {
+      "$ref": "/schemata/alertConfig#/definitions/id"
+    },
+    "groupId": {
+      "$ref": "/schemata/alertConfig#/definitions/groupId"
+    },
+    "typeName": {
+      "$ref": "/schemata/alert#/definitions/typeName"
+    },
+    "eventTypeName": {
+      "$ref": "/schemata/alert#/definitions/eventTypeName"
+    },
+    "created": {
+      "$ref": "/schemata/alertConfig#/definitions/created"
+    },
+    "updated": {
+      "$ref": "/schemata/alertConfig#/definitions/updated"
+    },
+    "enabled": {
+      "$ref": "/schemata/alertConfig#/definitions/enabled"
+    },
+    "matchers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/alertConfig/definitions/matcher"
+      }
+    },
+    "notifications": {
+      "type": "array",
+      "items": {
+        "$ref": "#/alertConfig/definitions/notification"
+      }
+    },
+    "metricThreshold": {
+      "$ref": "/schemata/alertConfig#/definitions/metricThreshold"
+    }
+  },
+  "id": "schemata/alertConfig"
+}

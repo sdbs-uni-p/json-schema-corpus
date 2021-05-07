@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "description": "Collection of instances",
+  "properties": {
+    "instances": {
+      "type": "array",
+      "description": "Collection of instances",
+      "items": {
+        "type": "object",
+        "$ref": "instance.json"
+      }
+    },
+    "resultInfo": {
+      "$ref": "../resultInfo.schema"
+    }
+  },
+  "required": [
+    "instances",
+    "resultInfo"
+  ]
+}

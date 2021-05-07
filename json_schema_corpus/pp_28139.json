@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "quantity",
+  "id": "quantity",
+  "description": "A quantity that specifies an amount and units.",
+  "type": "object",
+  "required": [
+    "objectType",
+    "amount",
+    "units"
+  ],
+  "properties": {
+    "objectType": {
+      "type": "string",
+      "enum": [
+        "informationRateQuantity"
+      ],
+      "description": "The type of the object, bandwidthProfile."
+    },
+    "amount": {
+      "type": "number",
+      "description": "A quantity of something. Typically size, value, extent, or money."
+    },
+    "units": {
+      "type": "string",
+      "description": "The unit of measure for the quantity."
+    }
+  }
+}

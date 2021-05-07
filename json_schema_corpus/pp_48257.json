@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "http://ardimedia.com/schemas/devxschema.json",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "entities": {
+      "type": "object",
+      "properties": {
+        "group": {
+          "type": "string"
+        },
+        "items": {
+          "type": "array",
+          "properties": {
+            "name": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "name",
+    "entities"
+  ]
+}

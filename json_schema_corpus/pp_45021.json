@@ -1,0 +1,208 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "title": "/inventory_push_v1",
+  "description": "inventory_push_v1",
+  "stability": "draft",
+  "additionalProperties": true,
+  "type": "object",
+  "definitions": {},
+  "links": [
+    {
+      "description": "inventory_push_v1",
+      "href": "/inventory_push_v1",
+      "method": "post",
+      "rel": "instances",
+      "schema": {
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "action",
+              "version",
+              "client_id",
+              "channel_info"
+            ],
+            "properties": {
+              "integration_auth_token": {
+                "type": "string",
+                "description": "Randomly generated authorization token, for authenticating genuine RetailOps- originated requests.",
+                "example": "2KuxqV9rsAtAM78i47CITMvtnflUapNmgGJAvWiHqgUrk1xkeDNWlM3EsrmJEtmV"
+              },
+              "action": {
+                "type": "string",
+                "description": "Action Name name",
+                "example": "catalog_get_config"
+              },
+              "version": {
+                "type": "integer",
+                "description": "Action Version",
+                "example": 1
+              },
+              "client_id": {
+                "description": "RetailOPS client id",
+                "type": "integer",
+                "example": 497
+              },
+              "channel_info": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "description": "channel id",
+                    "example": 21
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inventory_updates": {
+                "type": "array",
+                "description": "List of inventory item updates",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "sku": {
+                      "type": "string",
+                      "description": "sku number",
+                      "example": "S12345"
+                    },
+                    "quantity_available": {
+                      "type": "integer",
+                      "description": "quantity available",
+                      "example": 24
+                    },
+                    "quantity_detail": {
+                      "type": "array",
+                      "description": "Detailed breakdown of inventory quantities contributing to the top-line numbers",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "quantity_type": {
+                            "type": "string",
+                            "description": "Type of quantity for this item",
+                            "enum": [
+                              "internal",
+                              "external",
+                              "inflight"
+                            ]
+                          },
+                          "estimated_availability_date": {
+                            "type": "string",
+                            "description": "estimated availability date for one unit"
+                          },
+                          "available_quantity": {
+                            "type": "integer",
+                            "description": "Quantity which is presently available for sale"
+                          },
+                          "total_quantity": {
+                            "type": "integer",
+                            "description": "Total quantity, irrespective of sellability or availability"
+                          },
+                          "vendor_name": {
+                            "type": "string",
+                            "description": "Vendor Name"
+                          },
+                          "po": {
+                            "type": "string",
+                            "description": "PO number corresponding to inflight quantity considered to be available"
+                          },
+                          "po_destination": {
+                            "type": "string",
+                            "description": "PO destinatination"
+                          },
+                          "facility_name": {
+                            "type": "string",
+                            "description": "RetailOps Facility Name"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "targetSchema": {
+        "type": "object",
+        "properties": {
+          "events": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": "object",
+              "description": "event returned in action response",
+              "properties": {
+                "event_type": {
+                  "type": "string",
+                  "description": "event type",
+                  "enum": [
+                    "error",
+                    "warning",
+                    "info"
+                  ],
+                  "example": "error"
+                },
+                "code": {
+                  "type": "string",
+                  "description": "error/warning code",
+                  "example": "ERR1234"
+                },
+                "message": {
+                  "type": "string",
+                  "description": "descriptive error/warning message",
+                  "example": "Example error message"
+                },
+                "diagnostic_data": {
+                  "type": "string",
+                  "description": ""
+                },
+                "associations": {
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "description": "",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "identifier_type": {
+                        "type": "string",
+                        "description": "Type of identifier being provided",
+                        "enum": [
+                          "order_id",
+                          "order_refnum",
+                          "orderitem_id",
+                          "orderitem_refnum",
+                          "shipment_id",
+                          "shipmentitem_id",
+                          "product_id",
+                          "sku_number"
+                        ],
+                        "example": "sku_number"
+                      },
+                      "identifier": {
+                        "type": "string",
+                        "description": "identify value corresponding to the type",
+                        "example": "S1234"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "title": "/inventory_push_v1"
+    }
+  ],
+  "properties": {},
+  "id": "/inventory_push_v1"
+}

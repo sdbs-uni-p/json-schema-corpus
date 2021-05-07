@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "definitions": {
+    "jobBoardForApp": {
+      "type": "object",
+      "properties": {
+        "app": {
+          "type": "string",
+          "description": "the app that is hosting this job board"
+        },
+        "jobBoard": {
+          "$ref": "jobBoard.json"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "app",
+        "jobBoard"
+      ]
+    }
+  },
+  "type": "array",
+  "items": {
+    "$ref": "#/definitions/jobBoardForApp"
+  },
+  "description": "An array of job boards with the apps that producing them"
+}

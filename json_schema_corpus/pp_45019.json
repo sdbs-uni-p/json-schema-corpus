@@ -1,0 +1,79 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "title": "/catalog_get_config_v1",
+  "description": "catalog_get_config_v1",
+  "stability": "draft",
+  "additionalProperties": true,
+  "type": "object",
+  "definitions": {},
+  "links": [
+    {
+      "description": "catalog_get_config_v1",
+      "href": "/catalog_get_config_v1",
+      "method": "post",
+      "rel": "instances",
+      "schema": {
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "action",
+              "version",
+              "client_id",
+              "channel_info"
+            ],
+            "properties": {
+              "integration_auth_token": {
+                "type": "string",
+                "description": "Randomly generated authorization token, for authenticating genuine RetailOps- originated requests.",
+                "example": "2KuxqV9rsAtAM78i47CITMvtnflUapNmgGJAvWiHqgUrk1xkeDNWlM3EsrmJEtmV"
+              },
+              "action": {
+                "type": "string",
+                "description": "Action Name name",
+                "example": "catalog_get_config"
+              },
+              "version": {
+                "type": "integer",
+                "description": "Action Version",
+                "example": 1
+              },
+              "client_id": {
+                "description": "RetailOPS client id",
+                "type": "integer",
+                "example": 497
+              },
+              "channel_info": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "description": "channel id",
+                    "example": 21
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "targetSchema": {
+        "type": "object",
+        "properties": {
+          "sku_fanout": {
+            "type": "string",
+            "enum": [
+              "related_skus",
+              "no_fanout"
+            ],
+            "description": "channel fanout configuration",
+            "example": "no_fanout"
+          }
+        }
+      },
+      "title": "/catalog_get_config_v1"
+    }
+  ],
+  "properties": {},
+  "id": "/catalog_get_config_v1"
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "urn:revapi:reporter:text:0.1",
+  "type": "object",
+  "properties": {
+    "minSeverity": {
+      "enum": [
+        "NON_BREAKING",
+        "POTENTIALLY_BREAKING",
+        "BREAKING"
+      ],
+      "default": "POTENTIALLY_BREAKING"
+    },
+    "output": {
+      "type": "string",
+      "default": "out"
+    },
+    "template": {
+      "type": "string"
+    },
+    "append": {
+      "description": "Whether to append to the output or whether to overwrite it.",
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

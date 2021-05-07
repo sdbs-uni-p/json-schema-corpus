@@ -1,0 +1,26 @@
+{
+  "id": "urn:Person.schema.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "A descriptor for a person.",
+  "name": "Person",
+  "type": "object",
+  "properties": {
+    "email": {
+      "description": "The person's email address.",
+      "$ref": "urn:EmailAddress.schema.json#"
+    },
+    "name": {
+      "description": "The person's name.",
+      "$ref": "urn:PersonName.schema.json#"
+    },
+    "anniversary": {
+      "description": "The person's anniversary.",
+      "$ref": "urn:DateTime.schema.json#"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "email"
+  ]
+}

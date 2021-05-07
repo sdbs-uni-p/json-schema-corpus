@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Heartbeat parameters provided by a CBSD",
+  "type": "object",
+  "required": [
+    "cbsdId",
+    "grantId",
+    "operationState"
+  ],
+  "properties": {
+    "cbsdId": {
+      "type": "string",
+      "description": "Unique designator for the CBSD as returned from the registration procedure."
+    },
+    "grantId": {
+      "type": "string",
+      "description": "Unique designator for the grant as returned from the spectrum grant procedure."
+    },
+    "grantRenew": {
+      "type": "boolean",
+      "description": "If set to true, the CBSD is asking for a renewal of the grant."
+    },
+    "operationState": {
+      "enum": [
+        "AUTHORIZED",
+        "GRANTED"
+      ],
+      "description": "Represents the current state of operation of the CBSD."
+    },
+    "measReport": {
+      "$ref": "file:MeasReport.schema.json"
+    }
+  }
+}

@@ -1,0 +1,309 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "https://raw.githubusercontent.com/pschanely/wildflower/master/module.schema.json",
+  "title": "Module",
+  "type": "object",
+  "required": [
+    "wf_version",
+    "dependencies",
+    "functions"
+  ],
+  "properties": {
+    "wf_version": {
+      "type": "string",
+      "enum": [
+        "0.1"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the module.  This is a just a user-friendly label, and need not be unique"
+    },
+    "dependencies": {
+      "description": "A list of modules on which this module depends.",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/externalModule"
+      }
+    },
+    "override_order": {
+      "type": "number",
+      "description": "A (floating point) preference for when the overrides for this module occur.  Overrides with higher values here will wrap implementations in modules with lower values. If omitted, the default value of 0.0 is assumed."
+    },
+    "properties": {
+      "description": "Arbitrary key-value pairs for organization purposes. These do not influence the runtime directly.",
+      "type": "object"
+    },
+    "functions": {
+      "type": "object",
+      "description": "Functions provided by this module. This object is keyed by arbitrary strings that are unique within the module. Note that module-level constants are not permitted; you must use a zero-argument function instead (this ensures everything in a module is overrideable)",
+      "additionalProperties": {
+        "$ref": "#/definitions/function"
+      }
+    },
+    "assertions": {
+      "type": "object",
+      "description": "Assertions made by this module, keyed by arbitrary, unique strings.",
+      "additionalProperties": {
+        "$ref": "#/definition/assertion"
+      }
+    },
+    "justifications": {
+      "type": "object",
+      "description": "Proofs or other evidence that assertions are valid.",
+      "additionalProperties": {
+        "$ref": "#/definition/justification"
+      }
+    },
+    "forked_from": {
+      "description": "A reference to the codebase from which this module is derived. Because all Wildflower code is immutable, this is the mechanism by which developers can find updated versions of your module.",
+      "required": [
+        "ref",
+        "date"
+      ],
+      "properties": {
+        "ref": {
+          "$ref": "#/definitions/externalModule"
+        },
+        "date": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "definitions": {
+    "assertion": {
+      "description": "Assertions represent test cases or more generally, invariant expectations of the code. This contains a function that should return true for every possible input.",
+      "properties": {
+        "function": {
+          "$ref": "#/definitions/function"
+        },
+        "properties": {
+          "description": "Various classifications for this assertion, in the form of key-value pairs; platforms and verifiers may implement conventions with these (for example, to indicate that an assertion should be used for rewriting).",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false
+    },
+    "justification": {
+      "description": "Justification that an assertion is valid, if its antecendents are valid. The exact nature of this object depends on the 'type' field.",
+      "type": "object",
+      "required": [
+        "consequent",
+        "type"
+      ],
+      "properties": {
+        "type": {
+          "description": "Determines the type of assertion. An assertion of type 'open-theory' contains an OpenTheory proof object in its contents field.",
+          "type": "string"
+        },
+        "consequent": {
+          "description": "The identifier of an assertion to be justified.",
+          "$ref": "#/definitions/reference"
+        },
+        "antecedents": {
+          "description": "Identifiers of assertions on which this assertion depends.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/reference"
+          }
+        },
+        "contents": {
+          "description": "Data that is specific to this type of justification.",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false
+    },
+    "parameter": {
+      "description": "Represents a parameter of a function.",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "description": "This idenifier of this parameter. It can be any string that is unique within the module.",
+          "type": "string"
+        },
+        "name": {
+          "description": "A short description of this parameter. The name is ignored by the runtime.",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "externalModule": {
+      "description": "Refers to other modules by URL.",
+      "required": [
+        "url",
+        "size",
+        "hash"
+      ],
+      "properties": {
+        "url": {
+          "type": "string",
+          "description": "A permalink to the module's contents.  This should be a publicly accessible link."
+        },
+        "size": {
+          "type": "integer",
+          "description": "Size of the file, in bytes.",
+          "minimum": 0
+        },
+        "hash": {
+          "type": "string",
+          "description": "SHA-256 hash of the file referred to.  Used to confirm that the source has not changed."
+        }
+      },
+      "additionalProperties": false
+    },
+    "reference": {
+      "description": "Refers to a function, assertion, justification, or parameter, either in this module or externally.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "The identifier of a function or parameter.",
+          "type": "string"
+        },
+        "module": {
+          "description": "The identifier of the module to load from; omit this value when the reference is within this module.",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "function": {
+      "description": "A Wildflower function",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "A short description of this function. It can be any name, need not be unique, and is ignored by the runtime.",
+          "type": "string"
+        },
+        "parameters": {
+          "description": "A list of identifiers for parameters required by this function.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/parameter"
+          }
+        },
+        "code": {
+          "$ref": "#/definitions/codeExpr"
+        },
+        "overrides": {
+          "description": "If specified, this is the identifier of another function to override.",
+          "$ref": "#/definitions/reference"
+        },
+        "native_code": {
+          "description": "Maps Wildflower platform ids to values that represent native code.  The nature of the value depends on the platform.",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false
+    },
+    "codeExpr": {
+      "type": "object",
+      "required": [
+        "op"
+      ],
+      "properties": {
+        "comment": {
+          "type": "string"
+        },
+        "llid": {
+          "type": "string",
+          "description": "A long-lived uuid that may be used to track this bit of code over time."
+        }
+      },
+      "oneOf": [
+        {
+          "$ref": "#/definitions/literalOp"
+        },
+        {
+          "$ref": "#/definitions/lambdaOp"
+        },
+        {
+          "$ref": "#/definitions/loadOp"
+        },
+        {
+          "$ref": "#/definitions/callOp"
+        }
+      ]
+    },
+    "callOp": {
+      "description": "Calls a function and supplies arguments.",
+      "required": [
+        "fn",
+        "args"
+      ],
+      "properties": {
+        "op": {
+          "enum": [
+            "call"
+          ]
+        },
+        "fn": {
+          "description": "An expression which evaluates to a function.",
+          "$ref": "#/definitions/codeExpr"
+        },
+        "args": {
+          "description": "An object keyed by parameter ids, mapped to expressions that yield values for each parameter.",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/codeExpr"
+          }
+        }
+      }
+    },
+    "literalOp": {
+      "description": "Evaluates to a Wildflower value that corresponds to a literal json value. The interpretation of this can depend on the platform.",
+      "required": [
+        "val"
+      ],
+      "properties": {
+        "op": {
+          "enum": [
+            "literal"
+          ]
+        },
+        "val": {
+          "description": "The value to be produced."
+        }
+      }
+    },
+    "lambdaOp": {
+      "description": "Yields a local function which may reference parameters in its lexical scope (it is a closure). The function cannot be native, nor an override of another function.",
+      "properties": {
+        "op": {
+          "enum": [
+            "lambda"
+          ]
+        }
+      },
+      "$ref": "#/definitions/function"
+    },
+    "loadOp": {
+      "description": "Loads a value; this may be a function in this module or elsewhere, or it may reference a parameter id. The parameter must be visible in the current lexical scope).",
+      "properties": {
+        "op": {
+          "enum": [
+            "load"
+          ]
+        },
+        "ref": {
+          "description": "The identifier of the function or parameter.",
+          "$ref": "#/definitions/reference"
+        },
+        "super": {
+          "description": "If present, load a reference to the next lower version of this function in the override stack. This can only be used in a function that overrides another function. The 'ref' field should not be present when using super.",
+          "type": "boolean",
+          "enum": [
+            true
+          ]
+        }
+      }
+    }
+  }
+}

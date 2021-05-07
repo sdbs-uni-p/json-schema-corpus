@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "type": "object",
+  "properties": {
+    "testFlag": {
+      "type": "boolean",
+      "description": "true if this set is to be applied as a dry run - i.e. no changes should be made to the category values at the target"
+    },
+    "categoryValues": {
+      "$ref": "categoryValues.json"
+    }
+  },
+  "required": [
+    "testFlag",
+    "categoryValues"
+  ],
+  "additionalProperties": false
+}

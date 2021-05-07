@@ -1,0 +1,58 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "basal-segment.json",
+  "name": "basal-segment",
+  "title": "Basal segment",
+  "description": "Basal segment - basal rate delivered over a time span.",
+  "additionalProperties": true,
+  "properties": {
+    "delivered": {
+      "type": "number",
+      "id": "http://jsonschema.net/basal/segment/delivered",
+      "required": true
+    },
+    "deliveryType": {
+      "enum": [
+        "scheduled",
+        "delivered"
+      ],
+      "required": true
+    },
+    "end": {
+      "type": "string",
+      "id": "http://jsonschema.net/basal/segment/end",
+      "required": true
+    },
+    "inferred": {
+      "enum": [
+        true,
+        false
+      ],
+      "id": "http://jsonschema.net/segment/inferred",
+      "required": false
+    },
+    "id": {
+      "type": "string",
+      "id": "http://jsonschema.net/basal/segment/id",
+      "required": false
+    },
+    "start": {
+      "type": "string",
+      "id": "http://jsonschema.net//basal/segment/start",
+      "required": true
+    },
+    "type": {
+      "enum": [
+        "basal-rate-segment",
+        "basal-rate-change"
+      ],
+      "required": true
+    },
+    "value": {
+      "type": "number",
+      "id": "http://jsonschema.net//basal/segment/value",
+      "required": true
+    }
+  }
+}

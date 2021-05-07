@@ -1,0 +1,278 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "/",
+  "required": false,
+  "properties": {
+    "restaurants": {
+      "type": "array",
+      "id": "/restaurants",
+      "required": false,
+      "items": {
+        "type": "object",
+        "id": "/restaurants/0",
+        "required": false,
+        "properties": {
+          "access": {
+            "type": "string",
+            "id": "/restaurants/0/access",
+            "required": false
+          },
+          "accessibility": {
+            "type": "boolean",
+            "id": "/restaurants/0/accessibility",
+            "required": false
+          },
+          "wifi": {
+            "type": "boolean",
+            "id": "/restaurants/0/wifi",
+            "required": false
+          },
+          "capacity": {
+            "type": "integer",
+            "id": "/restaurants/0/capacity",
+            "required": false
+          },
+          "address": {
+            "type": "string",
+            "id": "/restaurants/0/address",
+            "required": false
+          },
+          "area": {
+            "type": "string",
+            "id": "/restaurants/0/area",
+            "required": true
+          },
+          "closing": {
+            "type": "string",
+            "id": "/restaurants/0/closing",
+            "required": false
+          },
+          "contact": {
+            "type": "object",
+            "id": "/restaurants/0/contact",
+            "required": false,
+            "properties": {
+              "email": {
+                "type": "string",
+                "id": "/restaurants/0/contact/email",
+                "required": false
+              },
+              "tel": {
+                "type": "string",
+                "id": "/restaurants/0/contact/tel",
+                "required": false
+              }
+            }
+          },
+          "description": {
+            "type": "string",
+            "id": "/restaurants/0/description",
+            "required": false
+          },
+          "id": {
+            "type": "integer",
+            "id": "/restaurants/0/id",
+            "required": true
+          },
+          "lat": {
+            "type": "number",
+            "id": "/restaurants/0/lat",
+            "required": false
+          },
+          "lon": {
+            "type": "number",
+            "id": "/restaurants/0/lon",
+            "required": false
+          },
+          "payment": {
+            "type": "array",
+            "id": "/restaurants/0/payment",
+            "required": false,
+            "items": {
+              "type": "object",
+              "id": "/restaurants/0/payment/0",
+              "required": false,
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "id": "/restaurants/0/payment/0/name",
+                  "required": false
+                }
+              }
+            }
+          },
+          "extras": {
+            "type": "array",
+            "id": "/restaurants/0/extras",
+            "required": false,
+            "items": {
+              "type": "object",
+              "id": "/restaurants/0/extras/0",
+              "required": false,
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "id": "/restaurants/0/extras/0/name",
+                  "required": true
+                },
+                "value": {
+                  "type": "string",
+                  "id": "/restaurants/0/extras/0/value",
+                  "required": true
+                }
+              }
+            }
+          },
+          "menus": {
+            "type": "array",
+            "id": "/restaurants/0/menus",
+            "required": false,
+            "items": {
+              "type": "object",
+              "id": "/restaurants/0/menus/0",
+              "required": false,
+              "properties": {
+                "date": {
+                  "type": "string",
+                  "id": "/restaurants/0/menus/0/date",
+                  "required": false
+                },
+                "meal": {
+                  "type": "array",
+                  "id": "/restaurants/0/menus/0/meal",
+                  "required": false,
+                  "items": {
+                    "type": "object",
+                    "id": "/restaurants/0/menus/0/meal/0",
+                    "required": false,
+                    "properties": {
+                      "foodcategory": {
+                        "type": "array",
+                        "id": "/restaurants/0/menus/0/meal/0/foodcategory",
+                        "required": false,
+                        "items": {
+                          "type": "object",
+                          "id": "/restaurants/0/menus/0/meal/0/foodcategory/0",
+                          "required": false,
+                          "properties": {
+                            "dishes": {
+                              "type": "array",
+                              "id": "/restaurants/0/menus/0/meal/0/foodcategory/0/dishes",
+                              "required": false,
+                              "items": {
+                                "type": "object",
+                                "id": "/restaurants/0/menus/0/meal/0/foodcategory/0/dishes/0",
+                                "required": false,
+                                "properties": {
+                                  "code": {
+                                    "type": "array",
+                                    "id": "/restaurants/0/menus/0/meal/0/foodcategory/0/dishes/0/code",
+                                    "required": false,
+                                    "items": {
+                                      "type": "integer",
+                                      "id": "/restaurants/0/menus/0/meal/0/foodcategory/0/dishes/0/code/0",
+                                      "required": false
+                                    }
+                                  },
+                                  "ingredients": {
+                                    "type": "string",
+                                    "id": "/restaurants/0/menus/0/meal/0/foodcategory/0/dishes/0/ingredients",
+                                    "required": false
+                                  },
+                                  "name": {
+                                    "type": "string",
+                                    "id": "/restaurants/0/menus/0/meal/0/foodcategory/0/dishes/0/name",
+                                    "required": false
+                                  },
+                                  "nutritionitems": {
+                                    "type": "array",
+                                    "id": "/restaurants/0/menus/0/meal/0/foodcategory/0/dishes/0/nutritionitems",
+                                    "required": false,
+                                    "items": {
+                                      "type": "object",
+                                      "id": "/restaurants/0/menus/0/meal/0/foodcategory/0/dishes/0/nutritionitems/0",
+                                      "required": false,
+                                      "properties": {
+                                        "name": {
+                                          "type": "string",
+                                          "id": "/restaurants/0/menus/0/meal/0/foodcategory/0/dishes/0/nutritionitems/0/name",
+                                          "required": false
+                                        },
+                                        "value": {
+                                          "type": "number",
+                                          "id": "/restaurants/0/menus/0/meal/0/foodcategory/0/dishes/0/nutritionitems/0/value",
+                                          "required": false
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            "name": {
+                              "type": "string",
+                              "id": "/restaurants/0/menus/0/meal/0/foodcategory/0/name",
+                              "required": false
+                            }
+                          }
+                        }
+                      },
+                      "name": {
+                        "type": "string",
+                        "id": "/restaurants/0/menus/0/meal/0/name",
+                        "required": false
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "opening": {
+            "type": "string",
+            "id": "/restaurants/0/opening",
+            "required": false
+          },
+          "operationalhours": {
+            "type": "string",
+            "id": "/restaurants/0/operationalhours",
+            "required": false
+          },
+          "photo": {
+            "type": "object",
+            "id": "/restaurants/0/photo",
+            "required": false,
+            "properties": {
+              "alt": {
+                "type": "string",
+                "id": "/restaurants/0/photo/alt",
+                "required": false
+              },
+              "src": {
+                "type": "string",
+                "id": "/restaurants/0/photo/src",
+                "required": false
+              }
+            }
+          },
+          "shortdesc": {
+            "type": "string",
+            "id": "/restaurants/0/shortdesc",
+            "required": false
+          },
+          "title": {
+            "type": "string",
+            "id": "/restaurants/0/title",
+            "required": true
+          },
+          "type": {
+            "type": "string",
+            "id": "/restaurants/0/type",
+            "required": false
+          }
+        }
+      }
+    }
+  }
+}

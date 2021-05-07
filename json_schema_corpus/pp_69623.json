@@ -1,0 +1,32 @@
+{
+  "id": "http://schema.org/NewsArticle",
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "extends": {
+    "$ref": "Article.json"
+  },
+  "description": "A news article. Schema.org: http://schema.org/NewsArticle",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "dateline": {
+      "description": "The location where the NewsArticle was produced.",
+      "type": "string"
+    },
+    "printColumn": {
+      "description": "The number of the column in which the NewsArticle appears in the print edition.",
+      "type": "string"
+    },
+    "printEdition": {
+      "description": "The edition of the print product in which the NewsArticle appears.",
+      "type": "string"
+    },
+    "printPage": {
+      "description": "If this NewsArticle appears in print, this field indicates the name of the page on which the article is found. Please note that this field is intended for the exact page name (e.g. A5, B18).",
+      "type": "string"
+    },
+    "printSection": {
+      "description": "If this NewsArticle appears in print, this field indicates the print section in which the article appeared.",
+      "type": "string"
+    }
+  }
+}

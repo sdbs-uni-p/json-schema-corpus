@@ -1,0 +1,278 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://jsonschema.net",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "identifier": {
+      "id": "http://www.ortolang.fr/schema/oai_dc#identifier",
+      "type": "array",
+      "items": {
+        "id": "http://www.ortolang.fr/schema/oai_dc#identifier/item",
+        "type": "object",
+        "properties": {
+          "lang": {
+            "id": "http://www.ortolang.fr/schema/oai_dc#identifier/item/lang",
+            "type": "string"
+          },
+          "value": {
+            "id": "http://www.ortolang.fr/schema/oai_dc#identifier/item/value",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "title": {
+      "id": "http://www.ortolang.fr/schema/oai_dc#title",
+      "type": "array",
+      "items": {
+        "id": "http://www.ortolang.fr/schema/oai_dc#title/item",
+        "type": "object",
+        "properties": {
+          "lang": {
+            "id": "http://www.ortolang.fr/schema/oai_dc#title/item/lang",
+            "type": "string"
+          },
+          "value": {
+            "id": "http://www.ortolang.fr/schema/oai_dc#title/item/value",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "creator": {
+      "id": "http://www.ortolang.fr/schema/oai_dc#creator",
+      "type": "array",
+      "items": {
+        "id": "http://www.ortolang.fr/schema/oai_dc#creator/item",
+        "type": "object",
+        "properties": {
+          "lang": {
+            "id": "http://www.ortolang.fr/schema/oai_dc#creator/item/lang",
+            "type": "string"
+          },
+          "value": {
+            "id": "http://www.ortolang.fr/schema/oai_dc#creator/item/value",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "subject": {
+      "id": "http://www.ortolang.fr/schema/oai_dc#subject",
+      "type": "array",
+      "items": {
+        "id": "http://www.ortolang.fr/schema/oai_dc#subject/item",
+        "type": "object",
+        "properties": {
+          "lang": {
+            "id": "http://www.ortolang.fr/schema/oai_dc#subject/item/lang",
+            "type": "string"
+          },
+          "value": {
+            "id": "http://www.ortolang.fr/schema/oai_dc#subject/item/value",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "description": {
+      "id": "http://www.ortolang.fr/schema/oai_dc#description",
+      "type": "array",
+      "items": {
+        "id": "http://www.ortolang.fr/schema/oai_dc#description/item",
+        "type": "object",
+        "properties": {
+          "lang": {
+            "id": "http://www.ortolang.fr/schema/oai_dc#description/item/lang",
+            "type": "string"
+          },
+          "value": {
+            "id": "http://www.ortolang.fr/schema/oai_dc#description/item/value",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "publisher": {
+      "id": "http://www.ortolang.fr/schema/oai_dc#publisher",
+      "type": "array",
+      "items": {
+        "id": "http://www.ortolang.fr/schema/oai_dc#publisher/item",
+        "type": "object",
+        "properties": {
+          "lang": {
+            "id": "http://www.ortolang.fr/schema/oai_dc#publisher/item/lang",
+            "type": "string"
+          },
+          "value": {
+            "id": "http://www.ortolang.fr/schema/oai_dc#publisher/item/value",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "contributor": {
+      "id": "http://www.ortolang.fr/schema/oai_dc#contributor",
+      "type": "array",
+      "items": {
+        "id": "http://www.ortolang.fr/schema/oai_dc#contributor/item",
+        "type": "object",
+        "properties": {
+          "lang": {
+            "id": "http://www.ortolang.fr/schema/oai_dc#contributor/item/lang",
+            "type": "string"
+          },
+          "value": {
+            "id": "http://www.ortolang.fr/schema/oai_dc#contributor/item/value",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "date": {
+      "id": "http://www.ortolang.fr/schema/oai_dc#date",
+      "type": "array",
+      "items": {
+        "id": "http://www.ortolang.fr/schema/oai_dc#date/item",
+        "type": "object",
+        "properties": {
+          "lang": {
+            "id": "http://www.ortolang.fr/schema/oai_dc#date/item/lang",
+            "type": "string"
+          },
+          "value": {
+            "id": "http://www.ortolang.fr/schema/oai_dc#date/item/value",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "type": {
+      "id": "http://www.ortolang.fr/schema/oai_dc#type",
+      "type": "array",
+      "items": {
+        "id": "http://www.ortolang.fr/schema/oai_dc#type/item",
+        "type": "object",
+        "properties": {
+          "lang": {
+            "id": "http://www.ortolang.fr/schema/oai_dc#type/item/lang",
+            "type": "string"
+          },
+          "value": {
+            "id": "http://www.ortolang.fr/schema/oai_dc#type/item/value",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "format": {
+      "id": "http://www.ortolang.fr/schema/oai_dc#format",
+      "type": "array",
+      "items": {
+        "id": "http://www.ortolang.fr/schema/oai_dc#format/item",
+        "type": "object",
+        "properties": {
+          "lang": {
+            "id": "http://www.ortolang.fr/schema/oai_dc#format/item/lang",
+            "type": "string"
+          },
+          "value": {
+            "id": "http://www.ortolang.fr/schema/oai_dc#format/item/value",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "source": {
+      "id": "http://www.ortolang.fr/schema/oai_dc#source",
+      "type": "array",
+      "items": {
+        "id": "http://www.ortolang.fr/schema/oai_dc#source/item",
+        "type": "object",
+        "properties": {
+          "lang": {
+            "id": "http://www.ortolang.fr/schema/oai_dc#source/item/lang",
+            "type": "string"
+          },
+          "value": {
+            "id": "http://www.ortolang.fr/schema/oai_dc#source/item/value",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "language": {
+      "id": "http://www.ortolang.fr/schema/oai_dc#language",
+      "type": "array",
+      "items": {
+        "id": "http://www.ortolang.fr/schema/oai_dc#language/item",
+        "type": "object",
+        "properties": {
+          "lang": {
+            "id": "http://www.ortolang.fr/schema/oai_dc#language/item/lang",
+            "type": "string"
+          },
+          "value": {
+            "id": "http://www.ortolang.fr/schema/oai_dc#language/item/value",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "relation": {
+      "id": "http://www.ortolang.fr/schema/oai_dc#relation",
+      "type": "array",
+      "items": {
+        "id": "http://www.ortolang.fr/schema/oai_dc#relation/item",
+        "type": "object",
+        "properties": {
+          "lang": {
+            "id": "http://www.ortolang.fr/schema/oai_dc#relation/item/lang",
+            "type": "string"
+          },
+          "value": {
+            "id": "http://www.ortolang.fr/schema/oai_dc#relation/item/value",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "coverage": {
+      "id": "http://www.ortolang.fr/schema/oai_dc#coverage",
+      "type": "array",
+      "items": {
+        "id": "http://www.ortolang.fr/schema/oai_dc#coverage/item",
+        "type": "object",
+        "properties": {
+          "lang": {
+            "id": "http://www.ortolang.fr/schema/oai_dc#coverage/item/lang",
+            "type": "string"
+          },
+          "value": {
+            "id": "http://www.ortolang.fr/schema/oai_dc#coverage/item/value",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "rights": {
+      "id": "http://www.ortolang.fr/schema/oai_dc#rights",
+      "type": "array",
+      "items": {
+        "id": "http://www.ortolang.fr/schema/oai_dc#rights/item",
+        "type": "object",
+        "properties": {
+          "lang": {
+            "id": "http://www.ortolang.fr/schema/oai_dc#rights/item/lang",
+            "type": "string"
+          },
+          "value": {
+            "id": "http://www.ortolang.fr/schema/oai_dc#rights/item/value",
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

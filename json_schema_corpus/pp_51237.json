@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "exploit",
+  "description": "Action or process to achieve an attack",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "../stix/ttp-base.json"
+    },
+    {
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "exploit"
+          ]
+        }
+      }
+    }
+  ],
+  "relationships": {
+    "kill-chain-phases": [
+      "kill-chain-phase"
+    ],
+    "exploits": [
+      "exploit-target"
+    ],
+    "related": [
+      "asset",
+      "attack-pattern",
+      "campaign",
+      "configuration",
+      "course-of-action",
+      "identity",
+      "incident",
+      "indicator",
+      "kill-chain",
+      "kill-chain-phase",
+      "malicious-infrastructure",
+      "malicious-tool",
+      "malware",
+      "observation",
+      "threat-actor",
+      "tool",
+      "victim-targeting",
+      "vulnerability",
+      "weakness"
+    ],
+    "duplicate-of": [
+      "exploit"
+    ],
+    "suggested-update": [
+      "exploit"
+    ],
+    "derived-from": [
+      "exploit"
+    ]
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Personality Insights Java deployment stage",
+  "localized-struct": {
+    "$ref": "github-localized-struct.json"
+  },
+  "description": "PersonalityInsights-Java GitHub Schema",
+  "longDescription": "With GitHub, you can store your source code in a new or an existing GitHub repository.",
+  "type": "object",
+  "properties": {
+    "PersonalityInsights-Java-repo_name": {
+      "type": "string"
+    },
+    "PersonalityInsights-Java-repo_url": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "PersonalityInsights-Java-repo_name",
+    "PersonalityInsights-Java-repo_url"
+  ],
+  "form": [
+    {
+      "type": "validator",
+      "url": "/devops/setup/bm-helper/custom_github_helper.html"
+    },
+    {
+      "type": "table",
+      "columnCount": 3,
+      "widths": [
+        "47%",
+        "6%",
+        "47%"
+      ],
+      "items": [
+        {
+          "type": "label",
+          "title": "Source Repository"
+        },
+        {
+          "type": "label",
+          "title": ""
+        },
+        {
+          "type": "label",
+          "title": "Target Repository"
+        },
+        {
+          "type": "text",
+          "key": "PersonalityInsights-Java-repo_url"
+        },
+        {
+          "type": "icon",
+          "iconType": "right_arrow"
+        },
+        {
+          "type": "text",
+          "key": "PersonalityInsights-Java-repo_name"
+        }
+      ]
+    }
+  ]
+}

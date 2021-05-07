@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "type": "object",
+  "description": "Supplier",
+  "properties": {
+    "description": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string",
+      "example": "My Supplier"
+    },
+    "customerId": {
+      "type": "string"
+    }
+  }
+}

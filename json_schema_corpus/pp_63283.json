@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "type": "object",
+  "description": "Supplier Order",
+  "properties": {
+    "supplier": {
+      "required": true,
+      "oneOf": [
+        {
+          "type": "string",
+          "descripiton": "supplier id"
+        },
+        {
+          "type": "object"
+        }
+      ]
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "Stock object",
+        "properties": {
+          "product": {
+            "required": true,
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "object"
+              }
+            ]
+          },
+          "quantity": {
+            "type": "integer",
+            "required": true
+          },
+          "purchasePaid": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "stockOrderId": {
+      "type": "string",
+      "required": true
+    },
+    "deliveryAddress": {
+      "type": "string",
+      "required": true
+    },
+    "deliveryMessage": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

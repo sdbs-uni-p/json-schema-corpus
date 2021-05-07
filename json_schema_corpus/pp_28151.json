@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "serviceabilityResponseList",
+  "id": "serviceabilityResponseList",
+  "description": "A list of Serviceability Response resources with additional meta information.",
+  "type": "object",
+  "required": [
+    "available",
+    "returned"
+  ],
+  "properties": {
+    "available": {
+      "type": "number",
+      "description": "The number of items available for this collection."
+    },
+    "returned": {
+      "type": "number",
+      "description": "The number of items returned for this collection."
+    },
+    "link": {
+      "$ref": "link.json#",
+      "description": "A self referencing link to the collection."
+    },
+    "serviceabilityResponses": {
+      "type": "array",
+      "items": {
+        "$ref": "serviceabilityResponse.json#"
+      },
+      "description": "An array for Serviceability Response items."
+    }
+  }
+}

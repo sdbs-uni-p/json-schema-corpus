@@ -1,0 +1,194 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "plugin",
+  "$async": true,
+  "type": "object",
+  "title": "Plugin",
+  "description": "Plugin schema",
+  "required": [
+    "manifest"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The ID of the plugin."
+    },
+    "version": {
+      "type": "string",
+      "format": "semver",
+      "description": "Plugin Version must be parseable by node-semver."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the plugin."
+    },
+    "description": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The plugin description."
+    },
+    "homepage": {
+      "type": "string",
+      "format": "uri",
+      "description": "A Web link to the plugin homepage."
+    },
+    "author": {
+      "$ref": "#/definitions/Person",
+      "description": "Original author of the plugin."
+    },
+    "license": {
+      "type": "string",
+      "description": "Specify a license for your package so that people know how they are permitted to use it, and any restrictions you're placing on it"
+    },
+    "settings": {
+      "$ref": "#/definitions/Settings",
+      "description": "Plugin settings"
+    },
+    "manifest": {
+      "$ref": "#/definitions/Manifest",
+      "description": "Plugin manifest"
+    }
+  },
+  "definitions": {
+    "Settings": {
+      "type": "object",
+      "required": [
+        "updater"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "updater": {
+          "$ref": "#/definitions/Updater",
+          "description": "Plugin updater options"
+        }
+      }
+    },
+    "Manifest": {
+      "type": "object",
+      "required": [
+        "kind",
+        "target"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "source",
+            "customization",
+            "development",
+            "theme"
+          ],
+          "description": "Plugin kind"
+        },
+        "target": {
+          "type": "string",
+          "enum": [
+            "main",
+            "renderer"
+          ],
+          "default": "renderer",
+          "description": "Plugin process target"
+        },
+        "icons": {
+          "type": "object",
+          "description": "Links to 16x16 and 32x32 icons representing the Plugin.",
+          "properties": {
+            "x16": {
+              "type": "string",
+              "format": "url",
+              "description": "The URL of the 16x16 icon."
+            },
+            "x32": {
+              "type": "string",
+              "format": "url",
+              "description": "The URL of the 32x32 icon."
+            }
+          }
+        },
+        "languages": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "uniqueItems": true,
+            "pattern": "^[A-Za-z]{1,8}(-[A-Za-z0-9]{1,8})*$"
+          },
+          "description": "List of supported languages"
+        }
+      }
+    },
+    "Person": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "[a-zA-Z]"
+        },
+        {
+          "type": "object",
+          "required": [
+            "name"
+          ],
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Person's mame"
+            },
+            "email": {
+              "type": "string",
+              "format": "email",
+              "description": "Person's email address"
+            },
+            "url": {
+              "type": "string",
+              "format": "url",
+              "description": "Person's homepage"
+            }
+          }
+        }
+      ],
+      "description": "Person type definition"
+    },
+    "Updater": {
+      "type": "object",
+      "required": [
+        "checkForUpdates",
+        "interval",
+        "force"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "checkForUpdates": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically check for newer versions"
+        },
+        "interval": {
+          "type": "number",
+          "default": 18000000,
+          "minimum": 3600000,
+          "maximum": 86400000,
+          "description": "Plugin update interval"
+        },
+        "force": {
+          "type": "boolean",
+          "default": false,
+          "description": "Force application reload"
+        }
+      }
+    }
+  },
+  "formatters": {
+    "PlaylistItem": {
+      "type": "string",
+      "default": "$.($AccName:=function(){$.contentDetails.duration};$.{'id':id,'title':snippet.title,'name':snippet.title,'artists':[{'id':'sfasdf','name':'nook'}],'description':snippet.description,'thumbnails':snippet.thumbnails,'duration':$parseDuration(contentDetails.duration)})",
+      "description": "PlaylistItem formatter"
+    },
+    "MetaInfo": {
+      "type": "string",
+      "default": "$.($.{'status':status,'id':video_id,'filename':$toFilename(title),'title':title,'description':description,'related_videos':related_videos,'keywords':keywords,'rating':avg_rating,'views':view_count,'author':author})",
+      "description": "ytdl-core MetaInfo formatter"
+    }
+  }
+}

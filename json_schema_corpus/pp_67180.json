@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "http://comrade.forma-pro.com/schemas/date.json",
+  "type": "object",
+  "properties": {
+    "iso": {
+      "type": "string"
+    },
+    "unix": {
+      "$ref": "timestamp.json"
+    }
+  },
+  "required": []
+}

@@ -1,0 +1,26 @@
+{
+  "id": "https://raw.githubusercontent.com/eviratec/schema/master/v1/organisation/customer.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "schema for an organisation customer",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "organisation_id",
+    "customer_id"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "organisation_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "customer_id": {
+      "type": "string",
+      "format": "uuid"
+    }
+  }
+}

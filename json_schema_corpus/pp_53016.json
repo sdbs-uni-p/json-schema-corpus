@@ -1,0 +1,50 @@
+{
+  "id": "pokemon.json",
+  "title": "pokemon",
+  "description": "Schema definition of a Pokemon",
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "name": {
+      "type": "string"
+    },
+    "base_experience": {
+      "type": "integer"
+    },
+    "height": {
+      "type": "integer"
+    },
+    "is_default": {
+      "type": "boolean"
+    },
+    "order": {
+      "type": "integer"
+    },
+    "weight": {
+      "type": "integer"
+    },
+    "types": {
+      "type": "array",
+      "items": {
+        "$ref": "type.json"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "stats": {
+      "type": "array",
+      "items": {
+        "$ref": "stat.json"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "sprites": {
+      "$ref": "sprites.json"
+    }
+  },
+  "required": []
+}

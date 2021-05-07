@@ -1,0 +1,84 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://jsonschema.net",
+  "required": false,
+  "properties": {
+    "relations": {
+      "type": "array",
+      "id": "http://jsonschema.net/relations",
+      "required": true,
+      "items": {
+        "type": "object",
+        "id": "http://jsonschema.net/relations/0",
+        "required": true,
+        "properties": {
+          "dst": {
+            "type": "number",
+            "id": "http://jsonschema.net/relations/0/dst",
+            "required": true
+          },
+          "src": {
+            "type": "number",
+            "id": "http://jsonschema.net/relations/0/src",
+            "required": true
+          }
+        }
+      }
+    },
+    "types": {
+      "type": "array",
+      "id": "http://jsonschema.net/types",
+      "required": true,
+      "items": {
+        "type": "object",
+        "id": "http://jsonschema.net/types/0",
+        "required": true,
+        "properties": {
+          "icon": {
+            "type": "string",
+            "id": "http://jsonschema.net/types/0/icon",
+            "required": true
+          },
+          "name": {
+            "type": "string",
+            "id": "http://jsonschema.net/types/0/name",
+            "required": true
+          },
+          "nodes": {
+            "type": "array",
+            "id": "http://jsonschema.net/types/0/nodes",
+            "required": true,
+            "items": {
+              "type": "object",
+              "id": "http://jsonschema.net/types/0/nodes/0",
+              "required": true,
+              "properties": {
+                "id": {
+                  "type": "number",
+                  "id": "http://jsonschema.net/types/0/nodes/0/id",
+                  "required": true
+                },
+                "name": {
+                  "type": "string",
+                  "id": "http://jsonschema.net/types/0/nodes/0/name",
+                  "required": true
+                },
+                "x": {
+                  "type": "string",
+                  "id": "http://jsonschema.net/types/0/nodes/0/x",
+                  "required": false
+                },
+                "y": {
+                  "type": "string",
+                  "id": "http://jsonschema.net/types/0/nodes/0/y",
+                  "required": false
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "url": {
+      "type": "string"
+    },
+    "method": {
+      "type": "string"
+    },
+    "headers": {
+      "type": "object"
+    },
+    "body": {
+      "type": "object"
+    },
+    "params": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "url",
+    "method",
+    "headers",
+    "body",
+    "params"
+  ]
+}

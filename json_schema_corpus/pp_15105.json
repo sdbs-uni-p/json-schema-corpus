@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "Subscriber schema.",
+  "description": "Specifies how to describe an external source.",
+  "properties": {
+    "type": {
+      "enum": [
+        "REST"
+      ],
+      "title": "Type schema.",
+      "description": "Specify the subscriber to use.",
+      "id": "type"
+    },
+    "path": {
+      "type": "string",
+      "title": "Path schema.",
+      "description": "Full path to the source (may include port number)",
+      "id": "path"
+    },
+    "referenceId": {
+      "type": "string",
+      "title": "ReferenceId schema.",
+      "description": "Which property should we use to name the feature.",
+      "id": "referenceId"
+    },
+    "refreshIntervalMSec": {
+      "type": "integer",
+      "title": "RefreshIntervalMSec schema.",
+      "description": "Interval in milliseconds to refresh the source.",
+      "id": "refreshIntervalMSec"
+    }
+  },
+  "id": "/",
+  "required": [
+    "type",
+    "path",
+    "referenceId",
+    "refreshIntervalMSec"
+  ],
+  "additionalProperties": false
+}

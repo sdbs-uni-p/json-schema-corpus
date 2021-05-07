@@ -1,0 +1,8 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "custom_format_string",
+  "description": "custom format string test",
+  "id": "custom_format_string.json",
+  "type": "string",
+  "format": "custom_format_string"
+}

@@ -1,0 +1,358 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://jsonschema.net",
+  "required": false,
+  "properties": {
+    "host": {
+      "type": "string",
+      "id": "http://jsonschema.net/host",
+      "required": false
+    },
+    "id": {
+      "type": "string",
+      "id": "http://jsonschema.net/id",
+      "required": false
+    },
+    "project": {
+      "type": "string",
+      "id": "http://jsonschema.net/project",
+      "required": false
+    },
+    "referenceId": {
+      "type": "string",
+      "id": "http://jsonschema.net/referenceId",
+      "required": false
+    },
+    "requestMethod": {
+      "type": "string",
+      "id": "http://jsonschema.net/requestMethod",
+      "required": false
+    },
+    "requestPath": {
+      "type": "string",
+      "id": "http://jsonschema.net/requestPath",
+      "required": false
+    },
+    "request": {
+      "type": "object",
+      "id": "http://jsonschema.net/request",
+      "required": false,
+      "properties": {
+        "body": {
+          "type": "string",
+          "id": "http://jsonschema.net/request/body",
+          "required": false
+        },
+        "headers": {
+          "type": "object",
+          "id": "http://jsonschema.net/request/headers",
+          "required": false,
+          "properties": {
+            "Accept-Encoding": {
+              "type": "string",
+              "id": "http://jsonschema.net/request/headers/Accept-Encoding",
+              "required": false
+            },
+            "Accept-Language": {
+              "type": "string",
+              "id": "http://jsonschema.net/request/headers/Accept-Language",
+              "required": false
+            },
+            "Accept": {
+              "type": "string",
+              "id": "http://jsonschema.net/request/headers/Accept",
+              "required": false
+            },
+            "Connection": {
+              "type": "string",
+              "id": "http://jsonschema.net/request/headers/Connection",
+              "required": false
+            },
+            "Cookie": {
+              "type": "string",
+              "id": "http://jsonschema.net/request/headers/Cookie",
+              "required": false
+            },
+            "DNT": {
+              "type": "string",
+              "id": "http://jsonschema.net/request/headers/DNT",
+              "required": false
+            },
+            "Host": {
+              "type": "string",
+              "id": "http://jsonschema.net/request/headers/Host",
+              "required": false
+            },
+            "Referer": {
+              "type": "string",
+              "id": "http://jsonschema.net/request/headers/Referer",
+              "required": false
+            },
+            "User-Agent": {
+              "type": "string",
+              "id": "http://jsonschema.net/request/headers/User-Agent",
+              "required": false
+            },
+            "X-Client-Data": {
+              "type": "string",
+              "id": "http://jsonschema.net/request/headers/X-Client-Data",
+              "required": false
+            }
+          }
+        },
+        "host": {
+          "type": "string",
+          "id": "http://jsonschema.net/request/host",
+          "required": false
+        },
+        "httpVersion": {
+          "type": "string",
+          "id": "http://jsonschema.net/request/httpVersion",
+          "required": false
+        },
+        "id": {
+          "type": "string",
+          "id": "http://jsonschema.net/request/id",
+          "required": false
+        },
+        "inScope": {
+          "type": "boolean",
+          "id": "http://jsonschema.net/request/inScope",
+          "required": false
+        },
+        "messageType": {
+          "type": "string",
+          "id": "http://jsonschema.net/request/messageType",
+          "required": false
+        },
+        "method": {
+          "type": "string",
+          "id": "http://jsonschema.net/request/method",
+          "required": false
+        },
+        "path": {
+          "type": "string",
+          "id": "http://jsonschema.net/request/path",
+          "required": false
+        },
+        "port": {
+          "type": "number",
+          "id": "http://jsonschema.net/request/port",
+          "required": false
+        },
+        "protocol": {
+          "type": "string",
+          "id": "http://jsonschema.net/request/protocol",
+          "required": false
+        },
+        "rawText": {
+          "type": "string",
+          "id": "http://jsonschema.net/request/rawText",
+          "required": false
+        },
+        "referenceID": {
+          "type": "string",
+          "id": "http://jsonschema.net/request/referenceID",
+          "required": false
+        },
+        "toolFlag": {
+          "type": "number",
+          "id": "http://jsonschema.net/request/toolFlag",
+          "required": false
+        },
+        "url": {
+          "type": "string",
+          "id": "http://jsonschema.net/request/url",
+          "required": false
+        },
+        "vTime": {
+          "type": "number",
+          "id": "http://jsonschema.net/request/vTime",
+          "required": false
+        }
+      }
+    },
+    "responseCode": {
+      "type": "string",
+      "id": "http://jsonschema.net/responseCode",
+      "required": false
+    },
+    "responseLengthText": {
+      "type": "string",
+      "id": "http://jsonschema.net/responseLengthText",
+      "required": false
+    },
+    "responseLength": {
+      "type": "number",
+      "id": "http://jsonschema.net/responseLength",
+      "required": false
+    },
+    "responseTimeText": {
+      "type": "string",
+      "id": "http://jsonschema.net/responseTimeText",
+      "required": false
+    },
+    "responseTime": {
+      "type": "number",
+      "id": "http://jsonschema.net/responseTime",
+      "required": false
+    },
+    "response": {
+      "type": "object",
+      "id": "http://jsonschema.net/response",
+      "required": false,
+      "properties": {
+        "body": {
+          "type": "string",
+          "id": "http://jsonschema.net/response/body",
+          "required": false
+        },
+        "cookies": {
+          "type": "array",
+          "id": "http://jsonschema.net/response/cookies",
+          "required": false,
+          "items": {
+            "type": "object",
+            "id": "http://jsonschema.net/response/cookies/0",
+            "required": false,
+            "properties": {
+              "domain": {
+                "type": "string",
+                "id": "http://jsonschema.net/response/cookies/0/domain",
+                "required": false
+              },
+              "expiration": {
+                "type": "string",
+                "id": "http://jsonschema.net/response/cookies/0/expiration",
+                "required": false
+              },
+              "name": {
+                "type": "string",
+                "id": "http://jsonschema.net/response/cookies/0/name",
+                "required": false
+              },
+              "value": {
+                "type": "string",
+                "id": "http://jsonschema.net/response/cookies/0/value",
+                "required": false
+              }
+            }
+          }
+        },
+        "headers": {
+          "type": "object",
+          "id": "http://jsonschema.net/response/headers",
+          "required": false,
+          "properties": {
+            "Alternate-Protocol": {
+              "type": "string",
+              "id": "http://jsonschema.net/response/headers/Alternate-Protocol",
+              "required": false
+            },
+            "Connection": {
+              "type": "string",
+              "id": "http://jsonschema.net/response/headers/Connection",
+              "required": false
+            },
+            "Content-Length": {
+              "type": "string",
+              "id": "http://jsonschema.net/response/headers/Content-Length",
+              "required": false
+            },
+            "Content-Type": {
+              "type": "string",
+              "id": "http://jsonschema.net/response/headers/Content-Type",
+              "required": false
+            },
+            "Date": {
+              "type": "string",
+              "id": "http://jsonschema.net/response/headers/Date",
+              "required": false
+            },
+            "Server": {
+              "type": "string",
+              "id": "http://jsonschema.net/response/headers/Server",
+              "required": false
+            },
+            "Set-Cookie": {
+              "type": "string",
+              "id": "http://jsonschema.net/response/headers/Set-Cookie",
+              "required": false
+            },
+            "X-Frame-Options": {
+              "type": "string",
+              "id": "http://jsonschema.net/response/headers/X-Frame-Options",
+              "required": false
+            },
+            "X-XSS-Protection": {
+              "type": "string",
+              "id": "http://jsonschema.net/response/headers/X-XSS-Protection",
+              "required": false
+            }
+          }
+        },
+        "host": {
+          "type": "string",
+          "id": "http://jsonschema.net/response/host",
+          "required": false
+        },
+        "id": {
+          "type": "string",
+          "id": "http://jsonschema.net/response/id",
+          "required": false
+        },
+        "inScope": {
+          "type": "boolean",
+          "id": "http://jsonschema.net/response/inScope",
+          "required": false
+        },
+        "messageType": {
+          "type": "string",
+          "id": "http://jsonschema.net/response/messageType",
+          "required": false
+        },
+        "mimeType": {
+          "type": "string",
+          "id": "http://jsonschema.net/response/mimeType",
+          "required": false
+        },
+        "port": {
+          "type": "number",
+          "id": "http://jsonschema.net/response/port",
+          "required": false
+        },
+        "protocol": {
+          "type": "string",
+          "id": "http://jsonschema.net/response/protocol",
+          "required": false
+        },
+        "rawText": {
+          "type": "string",
+          "id": "http://jsonschema.net/response/rawText",
+          "required": false
+        },
+        "statusCode": {
+          "type": "number",
+          "id": "http://jsonschema.net/response/statusCode",
+          "required": false
+        },
+        "toolFlag": {
+          "type": "number",
+          "id": "http://jsonschema.net/response/toolFlag",
+          "required": false
+        },
+        "vTime": {
+          "type": "number",
+          "id": "http://jsonschema.net/response/vTime",
+          "required": false
+        }
+      }
+    },
+    "savedAt": {
+      "type": "string",
+      "id": "http://jsonschema.net/savedAt",
+      "required": false
+    }
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "formattedAddress",
+  "id": "formattedAddress",
+  "description": "A structured textual way of describing how to find an address, using unformatted strings for the street address.",
+  "type": "object",
+  "required": [
+    "objectType",
+    "formattedAddressLine1",
+    "stateOrProvince",
+    "postcode",
+    "country"
+  ],
+  "properties": {
+    "objectType": {
+      "type": "string",
+      "enum": [
+        "formattedAddress"
+      ],
+      "description": "The type of the object, formattedAddress."
+    },
+    "formattedAddressLine1": {
+      "type": "string",
+      "description": "A formatted address line that contains a non-fielded street address.",
+      "maxLength": 60
+    },
+    "formattedAddressLine2": {
+      "type": "string",
+      "description": "A formatted address line that contains a non-fielded street address, sub-address (e.g. Suite number), etc.",
+      "maxLength": 60
+    },
+    "locality": {
+      "type": "string",
+      "description": "A bounded locality within a city, town or shire principally of urban character.",
+      "maxLength": 50
+    },
+    "city": {
+      "type": "string",
+      "description": "City that the address is in.",
+      "maxLength": 50
+    },
+    "stateOrProvince": {
+      "type": "string",
+      "description": "The state or province that the address is in.",
+      "maxLength": 50
+    },
+    "postcode": {
+      "type": "string",
+      "description": "A descriptor for a postal delivery area, used to speed and simplify the delivery of mail.",
+      "maxLength": 6
+    },
+    "postcodeExtension": {
+      "type": "string",
+      "description": "The four-digit extension on an American postal code, what comes after the hyphen when specified.",
+      "maxLength": 4
+    },
+    "country": {
+      "type": "string",
+      "description": "The country that the address is in.",
+      "maxLength": 50
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Action target",
+  "type": "object",
+  "properties": {
+    "name": {
+      "description": "A name to identify the action target. **Remark**: The name is unique against the action target template and organization.",
+      "type": "string"
+    },
+    "public": {
+      "description": "Make the action target available to everybody.",
+      "type": "boolean"
+    },
+    "configuration": {
+      "description": "A valid JSON Schema.",
+      "type": "json"
+    }
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Review Schema",
+  "description": "The Review Archetype - Essential properties that define a review",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "title, body"
+  ],
+  "properties": {
+    "_id": {
+      "type": "string",
+      "description": "Unique identifier for this archetype record",
+      "maxLength": 50,
+      "default": ""
+    },
+    "draft": {
+      "type": "boolean",
+      "description": "Indicates this archetype record is a draft and is not published",
+      "default": false
+    },
+    "created": {
+      "type": "string",
+      "description": "Date and time this archetype record was created in ISO 8601 date standard e.g. YYYY-MM-DDThh:mm:ss.sTZD",
+      "format": "date-time",
+      "default": ""
+    },
+    "updated": {
+      "type": "string",
+      "description": "Date and time this archetype record was updated in ISO 8601 date standard e.g. YYYY-MM-DDThh:mm:ss.sTZD",
+      "format": "date-time",
+      "default": ""
+    },
+    "title": {
+      "type": "string",
+      "description": "Title of the review",
+      "maxLength": 140,
+      "default": ""
+    },
+    "body": {
+      "type": "string",
+      "description": "The main text of the review",
+      "maxLength": 10000,
+      "default": ""
+    },
+    "rating": {
+      "type": "integer",
+      "description": "Numerical rating of the reviewed object",
+      "minimum": 0,
+      "maximum": 99999999999999,
+      "default": 0
+    },
+    "blurb": {
+      "type": "array",
+      "description": "Array of short text statements",
+      "uniqueItems": true,
+      "additionalItems": false,
+      "default": [],
+      "maxItems": 15,
+      "items": {
+        "type": "string",
+        "maxLength": 140,
+        "default": ""
+      }
+    },
+    "author": {
+      "type": "string",
+      "description": "Name of the author",
+      "maxLength": 140,
+      "default": ""
+    },
+    "author_info": {
+      "type": "string",
+      "description": "Link to the author's profile",
+      "format": "uri",
+      "default": ""
+    },
+    "category": {
+      "type": "string",
+      "description": "General category of the review, e.g. Music",
+      "maxLength": 40,
+      "default": ""
+    },
+    "subcategory": {
+      "type": "string",
+      "description": "Specific category of the review, e.g. Headphones",
+      "maxLength": 40,
+      "default": ""
+    },
+    "tags": {
+      "type": "array",
+      "description": "Array of Tag Archetypes that are used to help categorize this Archetype record",
+      "maxItems": 6,
+      "uniqueItems": true,
+      "additionalItems": false,
+      "default": [],
+      "items": {
+        "$ref": "tag_archetype_schema.json"
+      }
+    },
+    "primary_image_archetype": {
+      "$ref": "image_archetype_schema.json",
+      "description": "Image Archetype ID to use as the primary image of this review"
+    },
+    "image_archetypes": {
+      "type": "array",
+      "description": "Array of Image Archetype IDs",
+      "uniqueItems": true,
+      "additionalItems": false,
+      "default": [],
+      "maxItems": 15,
+      "items": {
+        "$ref": "image_archetype_schema.json"
+      }
+    },
+    "audio_archtypes": {
+      "type": "array",
+      "description": "Array of Audio Archetype IDs",
+      "uniqueItems": true,
+      "additionalItems": false,
+      "default": [],
+      "maxItems": 15,
+      "items": {
+        "$ref": "audio_archetype_schema.json"
+      }
+    },
+    "video_archtypes": {
+      "type": "array",
+      "description": "Array of Video Archetype IDs",
+      "uniqueItems": true,
+      "additionalItems": false,
+      "default": [],
+      "maxItems": 15,
+      "items": {
+        "$ref": "video_archetype_schema.json"
+      }
+    }
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "required": false,
+  "properties": {
+    "exception": {
+      "type": "object",
+      "required": false,
+      "properties": {
+        "exception": {
+          "type": "string",
+          "required": false
+        },
+        "message": {
+          "type": "string",
+          "required": false
+        },
+        "stack": {
+          "type": "array",
+          "required": false,
+          "items": {
+            "type": "object",
+            "required": false,
+            "properties": {
+              "class": {
+                "type": "string",
+                "required": false
+              },
+              "file": {
+                "type": "string",
+                "required": false
+              },
+              "line": {
+                "type": "number",
+                "required": false
+              },
+              "method": {
+                "type": "string",
+                "required": false
+              },
+              "signatures": {
+                "type": "array",
+                "required": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "states": {
+      "type": "array",
+      "required": false,
+      "items": {
+        "type": "object",
+        "required": false,
+        "properties": {
+          "mods": {
+            "type": "array",
+            "required": false
+          },
+          "signature": {
+            "type": "string",
+            "required": false
+          }
+        }
+      }
+    },
+    "timestamp": {
+      "type": "number",
+      "required": false
+    },
+    "type": {
+      "type": "string",
+      "required": false
+    },
+    "tags": {
+      "type": "array",
+      "required": false,
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "required": true
+      }
+    },
+    "javaVersion": {
+      "type": "string",
+      "required": false
+    }
+  }
+}

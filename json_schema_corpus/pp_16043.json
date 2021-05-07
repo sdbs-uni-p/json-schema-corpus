@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Scenario Reasoner output for scenarios.examples method",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1,
+      "items": {
+        "type": "array",
+        "minItems": 2,
+        "maxItems": 2,
+        "items": [
+          {
+            "difficulty": {
+              "type": "string",
+              "minLength": 1,
+              "title": "Difficulty of scenario",
+              "description": "Indicates the scenario difficulty",
+              "default": "medium"
+            }
+          },
+          {
+            "$ref": "scenariostate.schema.json#"
+          }
+        ],
+        "additionalItems": false
+      },
+      "additionalItems": false
+    },
+    "id": {
+      "description": "A value identifying this response, equal to the id of the request or null"
+    },
+    "error": {
+      "type": "null"
+    },
+    "version": {
+      "type": "string",
+      "description": "The version of Ideas",
+      "example": "1.4 (8775)"
+    }
+  },
+  "required": [
+    "result",
+    "error",
+    "id",
+    "version"
+  ],
+  "additionalProperties": false
+}

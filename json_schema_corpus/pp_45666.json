@@ -1,0 +1,15 @@
+{
+  "type": "object",
+  "properties": {
+    "data": {
+      "$ref": "_definitions.json#/definitions/responseData"
+    },
+    "link": {
+      "$ref": "_definitions.json#/definitions/resourceLink"
+    }
+  },
+  "required": [
+    "data"
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

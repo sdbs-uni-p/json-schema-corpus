@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Simple Schema",
+  "description": "An example of a schema with no inheritance",
+  "type": "object",
+  "properties": {
+    "foo": {
+      "description": "Fooing",
+      "type": "string",
+      "example": "Foo"
+    },
+    "bar": {
+      "description": "A place to get a drink",
+      "type": "object"
+    }
+  }
+}

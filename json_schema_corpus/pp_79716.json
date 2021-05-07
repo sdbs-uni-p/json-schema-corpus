@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "erstelltDurch": {
+      "type": "string"
+    },
+    "aenderungsGrund": {
+      "type": "string"
+    },
+    "pruefsumme": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "version",
+    "erstelltDurch",
+    "aenderungsGrund",
+    "pruefsumme"
+  ]
+}

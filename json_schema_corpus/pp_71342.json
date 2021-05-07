@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "agents/Profile",
+  "title": "Profile",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Id referencing profile"
+    },
+    "agentId": {
+      "type": "integer",
+      "description": "Id referencing agent"
+    },
+    "name": {
+      "type": "string",
+      "faker": "name.findName",
+      "description": "An agent name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Agent biography"
+    },
+    "avatar": {
+      "type": "string",
+      "faker": "internet.avatar",
+      "format": "uri",
+      "description": "Agent avatar image link"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "Agent email address"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Agent phone number"
+    },
+    "website": {
+      "type": "string",
+      "format": "uri",
+      "description": "Agent website link"
+    },
+    "address": {
+      "type": "string",
+      "description": "Agent physical address"
+    }
+  },
+  "required": [
+    "id",
+    "agentId"
+  ]
+}

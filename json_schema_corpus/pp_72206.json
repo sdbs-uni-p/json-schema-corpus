@@ -1,0 +1,90 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "type": "object",
+  "title": "User Import Line",
+  "description": "Represents the schema for a single line of the user import JSONL file",
+  "properties": {
+    "id": {
+      "type": "string",
+      "title": "User Identifier"
+    },
+    "accountId": {
+      "type": "string",
+      "title": "Account Identifier"
+    },
+    "paymentProviderId": {
+      "type": "string",
+      "title": "Payment Provider Identifier (Classic-Only)"
+    },
+    "firstName": {
+      "type": "string",
+      "title": "First Name"
+    },
+    "lastName": {
+      "type": "string",
+      "title": "Last Name"
+    },
+    "customFields": {
+      "type": "object",
+      "properties": {
+        "timeZone": {
+          "type": "string",
+          "title": "Time Zone"
+        }
+      }
+    },
+    "referable": {
+      "type": "boolean",
+      "title": "User Is Referable"
+    },
+    "referralCode": {
+      "type": "string",
+      "title": "Referral Code (Classic-Only)"
+    },
+    "referralCodes": {
+      "type": "object",
+      "title": "Referral Codes",
+      "$ref": "../ReferralCodes.schema.json#"
+    },
+    "referredBy": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "title": "Code"
+        },
+        "isConverted": {
+          "type": "string",
+          "title": "Is Converted (Classic-Only)"
+        }
+      }
+    },
+    "referredByCodes": {
+      "type": "array",
+      "title": "Referred By Codes",
+      "items": {
+        "type": "string"
+      }
+    },
+    "imageUrl": {
+      "type": "null",
+      "title": "Image URL"
+    },
+    "locale": {
+      "type": "string",
+      "title": "Locale"
+    },
+    "email": {
+      "type": "string",
+      "title": "Email"
+    },
+    "dateCreated": {
+      "type": "integer",
+      "title": "Date Created"
+    }
+  },
+  "required": [
+    "id",
+    "accountId"
+  ]
+}

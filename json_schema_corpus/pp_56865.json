@@ -1,0 +1,211 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "@type": "Offer",
+  "@context": "http://schema.org/",
+  "description": "Schema.org Offer",
+  "type": "object",
+  "definitions": {
+    "Thing": {
+      "@type": "Thing",
+      "type": "object",
+      "properties": {
+        "additionalType": {
+          "description": "An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.",
+          "type": "string",
+          "format": "uri"
+        },
+        "description": {
+          "description": "A short description of the item.",
+          "type": "string"
+        },
+        "image": {
+          "description": "URL of an image of the item.",
+          "type": "string",
+          "format": "uri"
+        },
+        "name": {
+          "description": "The name of the item.",
+          "type": "string"
+        },
+        "url": {
+          "description": "URL of the item.",
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "Offer": {
+      "@type": "Offer",
+      "type": "object",
+      "properties": {
+        "acceptedPaymentMethod": {
+          "description": "The payment method(s) accepted by seller for this offer.",
+          "$ref": "PaymentMethod.json"
+        },
+        "addOn": {
+          "description": "An additional offer that can only be obtained in combination with the first base offer (e.g. supplements and extensions that are available for a surcharge).",
+          "$ref": "Offer.json"
+        },
+        "advanceBookingRequirement": {
+          "description": "The amount of time that is required between accepting the offer and the actual usage of the resource or service.",
+          "$ref": "QuantitativeValue.json"
+        },
+        "aggregateRating": {
+          "description": "The overall rating, based on a collection of reviews or ratings, of the item.",
+          "$ref": "AggregateRating.json"
+        },
+        "availability": {
+          "description": "The availability of this item\u2014for example In stock, Out of stock, Pre-order, etc.",
+          "$ref": "ItemAvailability.json"
+        },
+        "availabilityEnds": {
+          "description": "The end of the availability of the product or service included in the offer.",
+          "$ref": "DateTime.json"
+        },
+        "availabilityStarts": {
+          "description": "The beginning of the availability of the product or service included in the offer.",
+          "$ref": "DateTime.json"
+        },
+        "availableAtOrFrom": {
+          "description": "The place(s) from which the offer can be obtained (e.g. store locations).",
+          "$ref": "Place.json"
+        },
+        "availableDeliveryMethod": {
+          "description": "The delivery method(s) available for this offer.",
+          "$ref": "DeliveryMethod.json"
+        },
+        "businessFunction": {
+          "description": "The business function (e.g. sell, lease, repair, dispose) of the offer or component of a bundle (TypeAndQuantityNode). The default is http://purl.org/goodrelations/v1#Sell.",
+          "$ref": "BusinessFunction.json"
+        },
+        "category": {
+          "description": "A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.",
+          "anyOf": [
+            {
+              "$ref": "PhysicalActivityCategory.json"
+            },
+            {
+              "$ref": "Thing.json"
+            }
+          ]
+        },
+        "deliveryLeadTime": {
+          "description": "The typical delay between the receipt of the order and the goods leaving the warehouse.",
+          "$ref": "QuantitativeValue.json"
+        },
+        "eligibleCustomerType": {
+          "description": "The type(s) of customers for which the given offer is valid.",
+          "$ref": "BusinessEntityType.json"
+        },
+        "eligibleDuration": {
+          "description": "The duration for which the given offer is valid.",
+          "$ref": "QuantitativeValue.json"
+        },
+        "eligibleQuantity": {
+          "description": "The interval and unit of measurement of ordering quantities for which the offer or price specification is valid. This allows e.g. specifying that a certain freight charge is valid only for a certain quantity.",
+          "$ref": "QuantitativeValue.json"
+        },
+        "eligibleRegion": {
+          "description": "The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is valid.",
+          "$ref": "GeoShape.json"
+        },
+        "eligibleTransactionVolume": {
+          "description": "The transaction volume, in a monetary unit, for which the offer or price specification is valid, e.g. for indicating a minimal purchasing volume, to express free shipping above a certain order volume, or to limit the acceptance of credit cards to purchases to a certain minimal amount.",
+          "$ref": "PriceSpecification.json"
+        },
+        "gtin13": {
+          "description": "The GTIN-13 code of the product, or the product to which the offer refers. This is equivalent to 13-digit ISBN codes and EAN UCC-13. Former 12-digit UPC codes can be converted into a GTIN-13 code by simply adding a preceeding zero.",
+          "type": "string"
+        },
+        "gtin14": {
+          "description": "The GTIN-14 code of the product, or the product to which the offer refers.",
+          "type": "string"
+        },
+        "gtin8": {
+          "description": "The GTIN-8 code of the product, or the product to which the offer refers. This code is also known as EAN/UCC-8 or 8-digit EAN.",
+          "type": "string"
+        },
+        "includesObject": {
+          "description": "This links to a node or nodes indicating the exact quantity of the products included in the offer.",
+          "$ref": "TypeAndQuantityNode.json"
+        },
+        "inventoryLevel": {
+          "description": "The current approximate inventory level for the item or items.",
+          "$ref": "QuantitativeValue.json"
+        },
+        "itemCondition": {
+          "description": "A predefined value from OfferItemCondition or a textual description of the condition of the product or service, or the products or services included in the offer.",
+          "$ref": "OfferItemCondition.json"
+        },
+        "itemOffered": {
+          "description": "The item being sold.",
+          "$ref": "Product.json"
+        },
+        "mpn": {
+          "description": "The Manufacturer Part Number (MPN) of the product, or the product to which the offer refers.",
+          "type": "string"
+        },
+        "price": {
+          "description": "The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.",
+          "$ref": "NumberorText.json"
+        },
+        "priceCurrency": {
+          "description": "The currency (in 3-letter ISO 4217 format) of the offer price or a price component, when attached to PriceSpecification and its subtypes.",
+          "type": "string"
+        },
+        "priceSpecification": {
+          "description": "One or more detailed price specifications, indicating the unit price and delivery or payment charges.",
+          "$ref": "PriceSpecification.json"
+        },
+        "priceValidUntil": {
+          "description": "The date after which the price is no longer available.",
+          "type": "string",
+          "format": "date"
+        },
+        "review": {
+          "description": "A review of the item.",
+          "$ref": "Review.json"
+        },
+        "reviews": {
+          "description": "Review of the item (legacy spelling; see singular form, review).",
+          "$ref": "Review.json"
+        },
+        "seller": {
+          "description": "The seller.",
+          "anyOf": [
+            {
+              "$ref": "Organization.json"
+            },
+            {
+              "$ref": "Person.json"
+            }
+          ]
+        },
+        "serialNumber": {
+          "description": "The serial number or any alphanumeric identifier of a particular product. When attached to an offer, it is a shortcut for the serial number of the product included in the offer.",
+          "type": "string"
+        },
+        "sku": {
+          "description": "The Stock Keeping Unit (SKU), i.e. a merchant-specific identifier for a product or service, or the product to which the offer refers.",
+          "type": "string"
+        },
+        "validFrom": {
+          "description": "The beginning of the validity of offer, price specification, or opening hours data.",
+          "$ref": "DateTime.json"
+        },
+        "validThrough": {
+          "description": "The end of the validity of offer, price specification, or opening hours data.",
+          "$ref": "DateTime.json"
+        },
+        "warranty": {
+          "description": "The warranty promise(s) included in the offer.",
+          "$ref": "WarrantyPromise.json"
+        }
+      }
+    }
+  },
+  "allOf": [
+    "#definitions/Thing",
+    "#definitions/Offer"
+  ]
+}

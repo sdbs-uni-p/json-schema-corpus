@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "valor": {
+        "type": "number",
+        "format": "double",
+        "required": true
+      },
+      "data_recibo": {
+        "type": "string",
+        "format": "date",
+        "required": true
+      },
+      "nome_doador": {
+        "type": "string",
+        "required": true
+      },
+      "cgccpf": {
+        "type": "string",
+        "format": "int64",
+        "required": true
+      }
+    },
+    "additionalProperties": false
+  }
+}

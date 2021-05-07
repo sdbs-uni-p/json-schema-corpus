@@ -1,0 +1,14 @@
+{
+  "id": "/Realtime",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "classes": {
+      "type": [
+        "array",
+        "string"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/draft-03/schema#"
+}

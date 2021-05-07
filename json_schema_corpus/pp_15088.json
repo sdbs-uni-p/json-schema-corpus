@@ -1,0 +1,171 @@
+{
+  "title": "Treatment",
+  "id": "/profiles/treatment.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "required": [
+    "treatment_term_name",
+    "treatment_type"
+  ],
+  "identifyingProperties": [
+    "uuid",
+    "aliases"
+  ],
+  "additionalProperties": false,
+  "mixinProperties": [
+    {
+      "$ref": "mixins.json#/schema_version"
+    },
+    {
+      "$ref": "mixins.json#/uuid"
+    },
+    {
+      "$ref": "mixins.json#/aliases"
+    },
+    {
+      "$ref": "mixins.json#/shared_status"
+    },
+    {
+      "$ref": "mixins.json#/submitted"
+    },
+    {
+      "$ref": "mixins.json#/notes"
+    },
+    {
+      "$ref": "mixins.json#/treatment_classification"
+    },
+    {
+      "$ref": "mixins.json#/documents"
+    }
+  ],
+  "dependencies": {
+    "temperature": [
+      "temperature_units"
+    ],
+    "temperature_units": [
+      "temperature"
+    ],
+    "amount": [
+      "amount_units"
+    ],
+    "amount_units": [
+      "amount"
+    ],
+    "duration": [
+      "duration_units"
+    ],
+    "duration_units": [
+      "duration"
+    ]
+  },
+  "properties": {
+    "schema_version": {
+      "default": "7"
+    },
+    "lab": {
+      "title": "Lab",
+      "description": "Lab associated with the submission.",
+      "comment": "See lab.json for list of available identifiers.",
+      "type": "string",
+      "linkTo": "Lab"
+    },
+    "documents": {
+      "description": "Documents that describe the treatment protocol."
+    },
+    "dbxrefs": {
+      "@type": "@id",
+      "rdfs:subPropertyOf": "rdfs:seeAlso",
+      "title": "External identifiers",
+      "description": "Unique identifiers from external resources.",
+      "type": "array",
+      "uniqueItems": true,
+      "default": [],
+      "items": {
+        "title": "External identifier",
+        "description": "A unique identifier from external resource.",
+        "type": "string",
+        "pattern": "^(UCSC-ENCODE-cv:[\\S\\s\\d\\-\\(\\)\\+]+)$"
+      }
+    },
+    "amount": {
+      "title": "Amount of treatment applied",
+      "type": "number"
+    },
+    "amount_units": {
+      "title": "Amount units",
+      "type": "string",
+      "enum": [
+        "pM",
+        "nM",
+        "\u03bcM",
+        "\u03bcg/mL",
+        "mM",
+        "mg/mL",
+        "ng/mL",
+        "M",
+        "percent",
+        "units",
+        "U/mL",
+        "pfu",
+        "rad",
+        "\u03bcg",
+        "mg"
+      ]
+    },
+    "duration": {
+      "title": "Duration",
+      "type": "number"
+    },
+    "duration_units": {
+      "title": "Duration units",
+      "type": "string",
+      "enum": [
+        "second",
+        "minute",
+        "hour",
+        "day"
+      ]
+    },
+    "temperature": {
+      "title": "Temperature",
+      "type": "number"
+    },
+    "temperature_units": {
+      "title": "Temperature units",
+      "type": "string",
+      "enum": [
+        "Celsius",
+        "Fahrenheit",
+        "Kelvin"
+      ]
+    },
+    "biosamples_used": {
+      "title": "Biosamples used in this treatment.",
+      "description": "Biosamples used in this treatment.",
+      "type": "array",
+      "default": [],
+      "uniqueItems": true,
+      "items": {
+        "title": "Treatment biosample",
+        "description": "Biosample used in this treatment.",
+        "comment": "See biosample.json for available identifiers.",
+        "type": "string",
+        "linkTo": "Biosample"
+      }
+    },
+    "antibodies_used": {
+      "title": "Treatment antibodies",
+      "description": "Antibodies used in this treatment.",
+      "type": "array",
+      "default": [],
+      "uniqueItems": true,
+      "items": {
+        "title": "Treatment antibody",
+        "description": "Antibody used in this treatment.",
+        "comment": "See antibody_lot.json for available identifiers.",
+        "type": "string",
+        "linkTo": "AntibodyLot"
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Kaa Protocol error response",
+  "type": "object",
+  "properties": {
+    "statusCode": {
+      "type": "integer",
+      "description": "HTTP status code of the request processing"
+    },
+    "reasonPhrase": {
+      "type": "string",
+      "description": "Human-readable status reason phrase"
+    }
+  },
+  "required": [
+    "statusCode",
+    "reasonPhrase"
+  ],
+  "additionalProperties": false
+}

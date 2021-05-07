@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "type": "object",
+  "description": "The information, data, and meta-information for the specified item.",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "The unique title of the item. Should be human readable and meaningful.",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "description": "A few sentences about what the item is representing.",
+      "required": true
+    },
+    "data": {
+      "json": {
+        "type": "object",
+        "patternProperties": {
+          "^\\w$": {
+            "type": "array",
+            "items": {
+              "type": [
+                "integer",
+                "string"
+              ]
+            }
+          }
+        },
+        "uniqueItems": true,
+        "required": true
+      }
+    },
+    "meta": {
+      "type": "object",
+      "description": "The meta-information about the item.",
+      "additionalProperties": true,
+      "required": false
+    }
+  }
+}

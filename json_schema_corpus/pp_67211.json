@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "http://comrade.forma-pro.com/schemas/trigger/Trigger.json",
+  "type": "object",
+  "properties": {
+    "templateId": {
+      "$ref": "../uuid4.json"
+    }
+  },
+  "required": [
+    "templateId"
+  ]
+}

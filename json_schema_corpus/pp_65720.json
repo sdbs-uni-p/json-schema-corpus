@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Capacity plan",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "is_auto": {
+      "type": "boolean"
+    },
+    "demand_profile_id": {
+      "type": "integer"
+    },
+    "SetConfigs": {
+      "type": "array",
+      "items": [
+        {
+          "$ref": "setconfig.json"
+        }
+      ]
+    },
+    "phase": {
+      "type": "string",
+      "enum": [
+        "CREATED",
+        "STARTED",
+        "IN_PROGRESS",
+        "VALIDATING",
+        "COMPLETED"
+      ]
+    },
+    "message": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "title": "time",
+  "id": "https://rawgit.com/camshaft/shenu/master/schemas/time.json#",
+  "description": "",
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "properties": {
+    "second": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 59
+    },
+    "minute": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 59
+    },
+    "hour": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "additionalProperties": false
+}

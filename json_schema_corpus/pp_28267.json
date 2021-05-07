@@ -1,0 +1,7 @@
+{
+  "title": "text",
+  "id": "https://rawgit.com/camshaft/shenu/master/schemas/text.json#",
+  "description": "",
+  "$schema": "http://json-schema.org/schema#",
+  "type": "string"
+}

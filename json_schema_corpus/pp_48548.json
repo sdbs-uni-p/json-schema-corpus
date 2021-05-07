@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "required": [
+    "kdf",
+    "kdfparams"
+  ],
+  "properties": {
+    "kdf": {
+      "type": "string",
+      "enum": [
+        "scrypt"
+      ]
+    },
+    "kdfparams": {
+      "type": "object",
+      "required": [
+        "r",
+        "p",
+        "n",
+        "dklen",
+        "salt"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "r": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "p": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "n": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "dklen": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "salt": {
+          "type": "string",
+          "pattern": "^(([0-9]|[a-f]){2}){0,32}$"
+        }
+      }
+    }
+  }
+}

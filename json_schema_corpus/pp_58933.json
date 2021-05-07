@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "id": "schemata/move",
+  "title": "Move",
+  "description": "A move/the moves in a game.",
+  "stability": "prototype",
+  "strictProperties": true,
+  "type": "object",
+  "definitions": {
+    "identity": {
+      "$ref": "/schemata/move#/definitions/move"
+    },
+    "move": {
+      "description": "The move",
+      "readOnly": true,
+      "type": "string",
+      "example": "e4"
+    }
+  },
+  "properties": {
+    "move": {
+      "$ref": "/schemata/move#/definitions/move"
+    }
+  },
+  "links": [
+    {
+      "title": "Add",
+      "description": "Make a move.",
+      "href": "/games/{(%2Fschemata%2Fgame%23%2Fdefinitions%2Fidentity)}/moves",
+      "method": "POST",
+      "rel": "create",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "move": {
+            "$ref": "/schemata/move#/definitions/move"
+          },
+          "access_token": {
+            "$ref": "/schemata/game#/definitions/access_token"
+          }
+        },
+        "required": [
+          "move",
+          "access_token"
+        ]
+      }
+    },
+    {
+      "title": "List",
+      "description": "List existing moves (the access token is not required).",
+      "href": "/games/{(%2Fschemata%2Fgame%23%2Fdefinitions%2Fidentity)}/moves",
+      "method": "GET",
+      "rel": "instances"
+    }
+  ]
+}

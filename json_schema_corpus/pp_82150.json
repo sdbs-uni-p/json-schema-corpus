@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema#",
+  "type": "object",
+  "title": "HyperSchema for health API",
+  "id": "#health-v1",
+  "properties": {
+    "etcd": {
+      "$ref": "#/definitions/service-health"
+    },
+    "elasticsearch": {
+      "type": "#/definitions/service-health"
+    }
+  },
+  "definitions": {
+    "service-health": {
+      "properties": {
+        "details": {
+          "type": "object",
+          "description": "Object describing entity health or error."
+        },
+        "status": {
+          "enum": [
+            "ok",
+            "failed"
+          ]
+        }
+      }
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "${base_url}",
+      "mediaType": "application/vnd.orch.health-v1+json",
+      "method": "GET"
+    },
+    {
+      "rel": "root",
+      "href": "/",
+      "mediaType": "application/vnd.orch.root-v1+json",
+      "method": "GET"
+    }
+  ]
+}

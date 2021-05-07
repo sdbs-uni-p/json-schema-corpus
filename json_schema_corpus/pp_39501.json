@@ -1,0 +1,19 @@
+{
+  "id": "https://raw.githubusercontent.com/eviratec/schema/master/v1/currency/amount.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "schema for a currency amount",
+  "type": "object",
+  "required": [
+    "currency",
+    "units"
+  ],
+  "properties": {
+    "currency": {
+      "$ref": "https://raw.githubusercontent.com/eviratec/schema/master/v1/currency.json#"
+    },
+    "units": {
+      "type": "number",
+      "minimum": 0
+    }
+  }
+}

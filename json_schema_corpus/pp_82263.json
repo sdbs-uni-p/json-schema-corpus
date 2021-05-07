@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "AVAILABLE",
+        "NOT_AVAILABLE"
+      ]
+    },
+    "Package": {
+      "$ref": "file://%%PATH%%/json/schemas/output/package.schema.json"
+    }
+  },
+  "required": [
+    "status",
+    "Package"
+  ]
+}

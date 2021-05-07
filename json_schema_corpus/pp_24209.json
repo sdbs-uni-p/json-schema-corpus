@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "JobExecution UI status Enum",
+  "type": "string",
+  "enum": [
+    "PARENT",
+    "INITIALIZATION",
+    "PREPARING_FOR_PREVIEW",
+    "READY_FOR_PREVIEW",
+    "RUNNING",
+    "RUNNING_COMPLETE",
+    "ERROR",
+    "DISCARDED"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "http://schema.org/MediaObject",
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "extends": {
+    "$ref": "CreativeWork.json"
+  },
+  "description": "An image, video, or audio object embedded in a web page. Note that a creative work may have many media objects associated with it on the same web page. For example, a page about a single song (MusicRecording) may have a music video (VideoObject), and a high and low bandwidth audio stream (2 AudioObject's). Schema.org: http://schema.org/MediaObject",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "downvoteCount": {
+      "description": "The number of downvotes this question has received from the community.",
+      "type": "integer"
+    },
+    "upvoteCount": {
+      "description": "The number of upvotes this question has received from the community.",
+      "type": "integer"
+    }
+  }
+}

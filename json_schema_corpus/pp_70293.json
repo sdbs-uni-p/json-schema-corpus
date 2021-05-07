@@ -1,0 +1,215 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "location",
+  "description": "Location structure for the data marshaling system",
+  "type": "object",
+  "properties": {
+    "id": {
+      "$ref": "/schema/id"
+    },
+    "aliases": {
+      "type": "array",
+      "items": {
+        "$ref": "/schema/name"
+      }
+    },
+    "name": {
+      "$ref": "/schema/name"
+    },
+    "has_photos": {
+      "type": "integer"
+    },
+    "description": {
+      "anyOf": [
+        {
+          "$ref": "/schema/description"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "business_type": {
+      "$ref": "/schema/businesstype"
+    },
+    "out_of_business": {
+      "type": "boolean"
+    },
+    "parent_business": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "/schema/id"
+        },
+        "name": {
+          "$ref": "/schema/name"
+        }
+      }
+    },
+    "is_published": {
+      "type": "boolean"
+    },
+    "published_at": {
+      "$ref": "/schema/timestamp"
+    },
+    "is_owner_verified": {
+      "type": "boolean"
+    },
+    "phone": {
+      "$ref": "/schema/phone"
+    },
+    "email": {
+      "$ref": "/schema/email"
+    },
+    "website": {
+      "$ref": "/schema/url"
+    },
+    "time_zone": {
+      "$ref": "/schema/timezone"
+    },
+    "created": {
+      "$ref": "/schema/timestamp"
+    },
+    "updated": {
+      "$ref": "/schema/timestamp"
+    },
+    "location": {
+      "type": "object",
+      "properties": {
+        "address1": {
+          "$ref": "/schema/addressline"
+        },
+        "address2": {
+          "anyOf": [
+            {
+              "$ref": "/schema/addressline"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "city": {
+          "$ref": "/schema/city"
+        },
+        "state": {
+          "$ref": "/schema/state"
+        },
+        "country": {
+          "$ref": "/schema/country"
+        },
+        "postal_code": {
+          "$ref": "/schema/zipcode"
+        },
+        "longitude": {
+          "anyOf": [
+            {
+              "$ref": "/schema/geopoint"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "lattitude": {
+          "anyOf": [
+            {
+              "$ref": "/schema/geopoint"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "neighborhood": {
+          "anyOf": [
+            {
+              "$ref": "/schema/description"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "cross_street": {
+          "anyOf": [
+            {
+              "$ref": "/schema/addressline"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "directions": {
+          "anyOf": [
+            {
+              "$ref": "/schema/directions"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "address",
+        "city",
+        "state",
+        "zipcode"
+      ]
+    },
+    "attributes": {
+      "type": "object",
+      "properties": {
+        "payment_types_accepted": {
+          "type": "array",
+          "items": {
+            "$ref": "/schema/paymenttype"
+          }
+        },
+        "cuisine": {
+          "type": "array",
+          "items": {
+            "$ref": "/schema/cuisine"
+          }
+        },
+        "meals_served": {
+          "type": "array",
+          "items": {
+            "$ref": "/schema/meals"
+          }
+        }
+      }
+    },
+    "hours": {
+      "type": "array",
+      "items": {
+        "$ref": "/schema/hours"
+      }
+    },
+    "foreign_ids": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "/schema/idtype"
+          },
+          "value": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "value"
+        ]
+      }
+    }
+  },
+  "required": [
+    "location_id",
+    "name",
+    "location"
+  ]
+}

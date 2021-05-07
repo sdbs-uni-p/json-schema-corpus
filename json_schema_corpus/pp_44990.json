@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "name": "Entry",
+  "allOf": [
+    {
+      "$ref": "response.json"
+    },
+    {
+      "title": "Results",
+      "description": "The results of an analysis",
+      "type": "object",
+      "properties": {
+        "@context": {
+          "$ref": "context.json"
+        },
+        "@id": {
+          "description": "ID of the analysis",
+          "type": "string"
+        },
+        "activities": {
+          "type": "array",
+          "items": {
+            "$ref": "analysis.json"
+          }
+        },
+        "entries": {
+          "type": "array",
+          "items": {
+            "$ref": "entry.json"
+          }
+        }
+      },
+      "required": [
+        "@id",
+        "activities",
+        "entries"
+      ]
+    }
+  ]
+}

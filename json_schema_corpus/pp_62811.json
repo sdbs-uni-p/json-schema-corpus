@@ -1,0 +1,167 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "id": "urn:x-jubatus:api:stat",
+  "definitions": {},
+  "title": "stat",
+  "properties": {
+    "push": {
+      "title": "push",
+      "description": "Adds value val to the attribute key.",
+      "properties": {
+        "return": {
+          "type": "boolean"
+        },
+        "arguments": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": [
+            {
+              "title": "key",
+              "type": "string"
+            },
+            {
+              "title": "value",
+              "type": "number"
+            }
+          ],
+          "additionalItems": false
+        }
+      }
+    },
+    "sum": {
+      "title": "sum",
+      "description": "Returns the sum of values in the attribute key.",
+      "properties": {
+        "return": {
+          "type": "number"
+        },
+        "arguments": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1,
+          "items": [
+            {
+              "title": "key",
+              "type": "string"
+            }
+          ],
+          "additionalItems": false
+        }
+      }
+    },
+    "stddev": {
+      "title": "stddev",
+      "description": "Returns the standard deviation of values in the attribute key.",
+      "properties": {
+        "return": {
+          "type": "number"
+        },
+        "arguments": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1,
+          "items": [
+            {
+              "title": "key",
+              "type": "string"
+            }
+          ],
+          "additionalItems": false
+        }
+      }
+    },
+    "max": {
+      "title": "max",
+      "description": "Returns the maximum value of values in the attribute key.",
+      "properties": {
+        "return": {
+          "type": "number"
+        },
+        "arguments": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1,
+          "items": [
+            {
+              "title": "key",
+              "type": "string"
+            }
+          ],
+          "additionalItems": false
+        }
+      }
+    },
+    "min": {
+      "title": "min",
+      "description": "Returns the minimum value of values in the attribute key.",
+      "properties": {
+        "return": {
+          "type": "number"
+        },
+        "arguments": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1,
+          "items": [
+            {
+              "title": "key",
+              "type": "string"
+            }
+          ],
+          "additionalItems": false
+        }
+      }
+    },
+    "entropy": {
+      "title": "entropy",
+      "description": "Returns the entropy of values in the attribute key.",
+      "properties": {
+        "return": {
+          "type": "number"
+        },
+        "arguments": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1,
+          "items": [
+            {
+              "title": "key",
+              "type": "string"
+            }
+          ],
+          "additionalItems": false
+        }
+      }
+    },
+    "moment": {
+      "title": "moment",
+      "description": "Returns the degree-th moment about center of values in the attribute key.",
+      "properties": {
+        "return": {
+          "type": "number"
+        },
+        "arguments": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": [
+            {
+              "title": "key",
+              "type": "string"
+            },
+            {
+              "title": "degree",
+              "type": "integer"
+            },
+            {
+              "title": "center",
+              "type": "number"
+            }
+          ],
+          "additionalItems": false
+        }
+      }
+    }
+  }
+}

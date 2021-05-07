@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "message-base",
+  "description": "The basis of all TWIGS messages",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "ID for this message"
+    },
+    "created_at": {
+      "type": "string",
+      "description": "The time at which this message was produced"
+    },
+    "producer_ref": {
+      "$ref": "../common/id.json",
+      "description": "The ID number of the producer of this message"
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "$ref": "../common/information-source.json"
+      }
+    },
+    "data_markings": {
+      "type": "array",
+      "items": {
+        "$ref": "../common/data-marking.json"
+      }
+    }
+  }
+}

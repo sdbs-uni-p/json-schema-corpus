@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "ProtoStubInstance",
+  "type": "object",
+  "required": [
+    "runtime"
+  ],
+  "properties": {
+    "runtime": {
+      "type": "string"
+    }
+  }
+}

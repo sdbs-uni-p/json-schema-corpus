@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://mcda.drugis.org/valueSampleSizeEffect.json#",
+  "title": "MCDA value, sample size effect for the performance table entry of absolute data",
+  "type": "object",
+  "required": [
+    "type",
+    "value",
+    "input"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "exact"
+      ]
+    },
+    "value": {
+      "type": "number"
+    },
+    "input": {
+      "type": "object",
+      "required": [
+        "value",
+        "sampleSize"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "type": "number"
+        },
+        "sampleSize": {
+          "type": "number"
+        },
+        "scale": {
+          "type": "string",
+          "enum": [
+            "percentage",
+            "decimal"
+          ]
+        }
+      }
+    }
+  }
+}

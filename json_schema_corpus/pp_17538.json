@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "windowWidth": {
+      "type": "string"
+    },
+    "windowHeight": {
+      "type": "string"
+    },
+    "defaultPreview": {
+      "type": "string"
+    },
+    "startScene": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "name",
+    "windowWidth",
+    "windowHeight",
+    "defaultPreview",
+    "startScene"
+  ]
+}

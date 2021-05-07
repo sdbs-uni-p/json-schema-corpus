@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Job Execution data transfer object Schema",
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "Unique identifier",
+      "type": "string"
+    },
+    "hrId": {
+      "description": "Human readable id",
+      "type": "string"
+    },
+    "jobProfileName": {
+      "description": "Name of applied job profile",
+      "type": "string"
+    },
+    "fileName": {
+      "description": "File name with extension",
+      "type": "string"
+    },
+    "runBy": {
+      "description": "First and last name of the user that triggered the job execution",
+      "type": "object",
+      "properties": {
+        "firstName": {
+          "description": "First name",
+          "type": "string"
+        },
+        "lastName": {
+          "description": "Last name",
+          "type": "string"
+        }
+      }
+    },
+    "progress": {
+      "description": "Execution progress of the job",
+      "type": "object",
+      "properties": {
+        "current": {
+          "description": "Currently processing record",
+          "type": "integer"
+        },
+        "total": {
+          "description": "Total number of records to be processed",
+          "type": "integer"
+        }
+      }
+    },
+    "startedDate": {
+      "description": "Date and time when the job execution started",
+      "type": "string",
+      "format": "date-time"
+    },
+    "completedDate": {
+      "description": "Date and time when the job execution completed",
+      "type": "string",
+      "format": "date-time"
+    },
+    "status": {
+      "description": "Current status of the job execution",
+      "type": "string",
+      "$ref": "../mod-source-record-manager/status.json"
+    },
+    "uiStatus": {
+      "description": "Status that is rendered on UI",
+      "type": "string",
+      "$ref": "../mod-source-record-manager/uiStatus.json"
+    }
+  },
+  "required": [
+    "jobProfileName",
+    "fileName",
+    "status"
+  ]
+}

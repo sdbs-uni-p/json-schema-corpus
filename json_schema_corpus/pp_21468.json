@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/common/user-satisfaction/user-satisfaction-multi-question-schema",
+  "title": "user-satisfaction-multi-question",
+  "description": "perfromance platform schema for: user-satisfaction multiple quantitative based question plus comment records. Quantitative question rated 1 to 5, 1 being the lowest, 5 being the highest. the comment is the last question. Schema shows 6 questions plus one comments question (question 7)",
+  "type": "object",
+  "properties": {
+    "_id": {
+      "description": "unique url-friendly base64 encoded, utf8 endoded concatenation identifier",
+      "type": "string"
+    },
+    "_timestamp": {
+      "description": "ISO8601 combined date and time in UTC e.g. '2014-12-01T00:00:00+00:00'",
+      "type": "string",
+      "format": "date-time"
+    },
+    "period": {
+      "description": "The period covered by each data point from the _timestamp",
+      "enum": [
+        "hour",
+        "day",
+        "week",
+        "month",
+        "quarter"
+      ]
+    },
+    "question": {
+      "description": "the identifier for the question",
+      "type": "string"
+    },
+    "rating_1": {
+      "description": "the number of respondents answering with the lowest ranked score",
+      "type": "integer",
+      "minimum": 0
+    },
+    "rating_2": {
+      "description": "the number of respondents answering with the second lowest ranked score",
+      "type": "integer",
+      "minimum": 0
+    },
+    "rating_3": {
+      "description": "the number of respondents answering with the middle ranked score",
+      "type": "integer",
+      "minimum": 0
+    },
+    "rating_4": {
+      "description": "the number of respondents answering with the second highest ranked score",
+      "type": "integer",
+      "minimum": 0
+    },
+    "rating_5": {
+      "description": "the number of respondents answering with the highest ranked score",
+      "type": "integer",
+      "minimum": 0
+    },
+    "respondents": {
+      "description": "the number of respondents responding the specific question - respondents may choose not to answer all survey questions",
+      "type": "integer",
+      "minimum": 0
+    },
+    "total_respondents": {
+      "description": "the total number of respondents undertaking the user-satisfaction questionnaire",
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "required": [
+    "_id",
+    "_timestamp",
+    "period",
+    "question",
+    "respondents",
+    "total_respondents"
+  ],
+  "additionalProperties": false
+}

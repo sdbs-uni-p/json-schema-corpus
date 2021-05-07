@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://blog.axross.org/schemas/User.schema.json#",
+  "title": "User",
+  "type": "object",
+  "required": [
+    "id",
+    "key",
+    "email",
+    "name",
+    "imageUrl",
+    "bio"
+  ],
+  "properties": {
+    "id": {
+      "oneOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "key": {
+      "type": "string",
+      "maxLength": 128
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "name": {
+      "type": "string",
+      "maxLength": 64
+    },
+    "imageUrl": {
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "uri",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "bio": {
+      "oneOf": [
+        {
+          "type": "string",
+          "maxLength": 2000
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  }
+}

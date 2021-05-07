@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "title": "Character Set",
+  "type": "array",
+  "encoding": "utf-8",
+  "items": {
+    "title": "Character",
+    "type": "object",
+    "properties": {
+      "id": {
+        "description": "Unicode identifier for character",
+        "type": "string"
+      },
+      "character": {
+        "description": "Actual typed initial character",
+        "type": "string"
+      },
+      "name": {
+        "description": "The character value itself",
+        "type": "string"
+      },
+      "transliteration": {
+        "description": "Romanization of language",
+        "type": "string"
+      },
+      "contextualforms": {
+        "type": "array",
+        "form": {
+          "isolated": {
+            "type": "string"
+          },
+          "initial": {
+            "type": "string"
+          },
+          "medial": {
+            "type": "string"
+          },
+          "final": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "standalone"
+        ]
+      },
+      "tags": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "minItems": 0,
+        "uniqueItems": true
+      }
+    },
+    "required": [
+      "id",
+      "name",
+      "character"
+    ]
+  },
+  "required": [
+    "title"
+  ]
+}

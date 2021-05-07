@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "recurring": {
+      "$ref": "ActionRecurring_schema.json"
+    },
+    "state": {
+      "type": "string",
+      "enum": [
+        "new",
+        "changed",
+        "ok",
+        "scheduled",
+        "disabled",
+        "error",
+        "running"
+      ]
+    }
+  },
+  "required": [
+    "code",
+    "name",
+    "recurring",
+    "state"
+  ]
+}

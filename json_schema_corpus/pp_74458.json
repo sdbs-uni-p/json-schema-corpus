@@ -1,0 +1,79 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://jsonschema.net",
+  "required": false,
+  "properties": {
+    "current_level": {
+      "type": "object",
+      "id": "http://jsonschema.net/current_level",
+      "required": false,
+      "properties": {
+        "threshold": {
+          "type": "number",
+          "id": "http://jsonschema.net/current_level/threshold",
+          "required": false
+        },
+        "title": {
+          "type": "string",
+          "id": "http://jsonschema.net/current_level/title",
+          "required": false
+        }
+      }
+    },
+    "events": {
+      "type": "array",
+      "id": "http://jsonschema.net/events",
+      "required": false,
+      "items": {
+        "type": "object",
+        "id": "http://jsonschema.net/events/0",
+        "required": false,
+        "properties": {
+          "date": {
+            "type": "string",
+            "id": "http://jsonschema.net/events/0/date",
+            "required": false
+          },
+          "point": {
+            "type": "number",
+            "id": "http://jsonschema.net/events/0/point",
+            "required": false
+          },
+          "event": {
+            "type": "string",
+            "id": "http://jsonschema.net/events/0/event",
+            "required": false
+          }
+        }
+      }
+    },
+    "next_level": {
+      "type": "object",
+      "id": "http://jsonschema.net/next_level",
+      "required": false,
+      "properties": {
+        "threshold": {
+          "type": "number",
+          "id": "http://jsonschema.net/next_level/threshold",
+          "required": false
+        },
+        "title": {
+          "type": "string",
+          "id": "http://jsonschema.net/next_level/title",
+          "required": false
+        }
+      }
+    },
+    "no_helped": {
+      "type": "number",
+      "id": "http://jsonschema.net/no_helped",
+      "required": false
+    },
+    "total_points": {
+      "type": "number",
+      "id": "http://jsonschema.net/total_points",
+      "required": false
+    }
+  }
+}

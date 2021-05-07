@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "User",
+  "description": "Databook user -- PREMIS agent",
+  "type": "object",
+  "javaType": "databook.persistence.rule.rdf.ruleset.User",
+  "extends": {
+    "$ref": "IndividualObject.json"
+  },
+  "properties": {
+    "like": {
+      "$ref": "DataEntity.json"
+    },
+    "dislike": {
+      "$ref": "DataEntity.json"
+    },
+    "own": {
+      "$ref": "DataEntity.json"
+    },
+    "contributeTo": {
+      "$ref": "DataEntity.json"
+    }
+  }
+}

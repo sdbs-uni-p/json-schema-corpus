@@ -1,0 +1,74 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "filter.nlmeans",
+  "name": "nlmeans",
+  "defaults": {},
+  "groups": [
+    {
+      "class": "standard",
+      "id": "standard",
+      "properties": [
+        {
+          "id": "s",
+          "parameter": "s",
+          "forced": true,
+          "control": {
+            "type": "float",
+            "maximum": 30.0,
+            "minimum": 1.0,
+            "singleStep": 1.0,
+            "value": 1.0
+          }
+        },
+        {
+          "id": "p",
+          "parameter": "p",
+          "forced": true,
+          "control": {
+            "type": "integer",
+            "maximum": 99,
+            "minimum": 0,
+            "singleStep": 1,
+            "value": 7
+          }
+        },
+        {
+          "id": "pc",
+          "parameter": "pc",
+          "forced": true,
+          "control": {
+            "type": "integer",
+            "maximum": 99,
+            "minimum": 0,
+            "singleStep": 1,
+            "value": 0
+          }
+        },
+        {
+          "id": "r",
+          "parameter": "r",
+          "forced": true,
+          "control": {
+            "type": "integer",
+            "maximum": 99,
+            "minimum": 0,
+            "singleStep": 1,
+            "value": 15
+          }
+        },
+        {
+          "id": "rc",
+          "parameter": "rc",
+          "forced": true,
+          "control": {
+            "type": "integer",
+            "maximum": 99,
+            "minimum": 0,
+            "singleStep": 1,
+            "value": 0
+          }
+        }
+      ]
+    }
+  ]
+}

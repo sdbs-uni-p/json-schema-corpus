@@ -1,0 +1,26 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://qcif.edu.au",
+  "required": false,
+  "properties": {
+    "@banner-background-colour": {
+      "type": "string",
+      "id": "http://qcif.edu.au/@banner-background-colour",
+      "required": false,
+      "format": "color"
+    },
+    "@title-background-colour": {
+      "type": "string",
+      "id": "http://qcif.edu.au/@title-background-colour",
+      "required": false,
+      "format": "color"
+    },
+    "@menu-background-colour": {
+      "type": "string",
+      "id": "http://qcif.edu.au/@menu-background-colour",
+      "required": false,
+      "format": "color"
+    }
+  }
+}

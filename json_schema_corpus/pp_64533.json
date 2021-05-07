@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Service 001 : POST /users/create",
+  "description": "The id of the created user",
+  "type": "integer"
+}

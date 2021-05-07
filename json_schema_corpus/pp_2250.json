@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://localhost:9999/schemas/part.json",
+  "type": "object",
+  "properties": {
+    "id": {
+      "id": "id",
+      "type": "integer"
+    },
+    "creation": {
+      "id": "creation",
+      "$ref": "iso8601.json"
+    },
+    "part": {
+      "id": "part",
+      "type": "array",
+      "items": {
+        "$ref": "singlePart.json"
+      }
+    },
+    "partecipants": {
+      "id": "partecipants",
+      "type": "array",
+      "items": {
+        "type": "integer"
+      }
+    },
+    "badges": {
+      "id": "badges",
+      "type": "array",
+      "items": {
+        "type": "integer"
+      }
+    },
+    "points": {
+      "id": "points",
+      "type": "integer"
+    },
+    "present": {
+      "id": "present",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "id",
+    "creation",
+    "partecipants",
+    "points",
+    "badges",
+    "present"
+  ]
+}

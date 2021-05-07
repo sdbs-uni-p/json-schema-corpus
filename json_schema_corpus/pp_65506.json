@@ -1,0 +1,25 @@
+{
+  "id": "https://opendesk.cc/schemata/base/boolean.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Winnow Boolean",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "https://opendesk.cc/schemata/base/option.json#"
+    },
+    {
+      "properties": {
+        "type": {
+          "type": "string",
+          "pattern": "boolean"
+        },
+        "value": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "value"
+      ]
+    }
+  ]
+}

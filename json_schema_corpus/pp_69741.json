@@ -1,0 +1,150 @@
+{
+  "_comment": "This Spec is for Phase 1!! Most updated version is at https://github.com/reTHINK-project/specs/tree/master/schemas",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "HypertyDomain",
+  "type": "object",
+  "required": [
+    "identifier",
+    "name"
+  ],
+  "properties": {
+    "identifier": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    }
+  },
+  "Infrastructure": {
+    "type": "object",
+    "required": [
+      "catalogue",
+      "registry",
+      "registryStubURL"
+    ],
+    "properties": {
+      "hypertyReferential": {
+        "type": "string"
+      },
+      "catalogue": {
+        "type": "string"
+      },
+      "registry": {
+        "type": "string"
+      },
+      "registryStubURL": {
+        "type": "string"
+      },
+      "messageServerStubURL": {
+        "type": "string"
+      },
+      "interDomainMessageServerStubURL": {
+        "type": "string"
+      },
+      "networkPlatformStubURL": {
+        "type": "string"
+      },
+      "stunServer": {
+        "type": "string"
+      },
+      "turnServer": {
+        "type": "string"
+      }
+    }
+  },
+  "Governance": {
+    "type": "object",
+    "required": [
+      "domainDataSchemas",
+      "partnershipLifeCycle",
+      "partnershipPolicies",
+      "hypertyLifeCycle",
+      "hypertyPolicies"
+    ],
+    "properties": {
+      "domainDataSchemas": {
+        "$ref": "#/DomainDataSchemas"
+      },
+      "partnershipLifeCycle": {
+        "type": "null"
+      },
+      "partnershipPolicies": {
+        "type": "null"
+      },
+      "hypertyLifeCycle": {
+        "$ref": "#/HypertyLifecycle"
+      },
+      "hypertyPolicies": {
+        "$ref": "#/HypertyPolicies"
+      }
+    }
+  },
+  "DomainDataSchemas": {
+    "type": "object",
+    "required": [
+      "hypertyDescriptorSchema",
+      "hypertyInstanceSchema",
+      "hypertyRuntimeSchema",
+      "addressSchema",
+      "messageSchema",
+      "userHypertyAccountSchema",
+      "userIdentitySchema"
+    ],
+    "properties": {
+      "hypertyDescriptorSchema": {
+        "type": "string"
+      },
+      "hypertyInstanceSchema": {
+        "type": "string"
+      },
+      "hypertyRuntimeSchema": {
+        "type": "string"
+      },
+      "addressSchema": {
+        "type": "string"
+      },
+      "messageSchema": {
+        "type": "string"
+      },
+      "userHypertyAccountSchema": {
+        "type": "string"
+      },
+      "userIdentitySchema": {
+        "type": "string"
+      }
+    }
+  },
+  "HypertyLifecycle": {
+    "type": "object",
+    "required": [
+      "businessProcess"
+    ],
+    "properties": {
+      "businessProcess": {
+        "type": "string"
+      }
+    }
+  },
+  "HypertyPolicies": {
+    "type": "object",
+    "required": [
+      "management",
+      "aaa",
+      "qos"
+    ],
+    "properties": {
+      "management": {
+        "type": "null"
+      },
+      "aaa": {
+        "type": "null"
+      },
+      "qos": {
+        "type": "null"
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "id": "https://inowas.com/schema/",
+  "properties": {
+    "n_x": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "n_y": {
+      "type": "integer",
+      "minimum": 1
+    }
+  },
+  "required": [
+    "n_x",
+    "n_y"
+  ]
+}
