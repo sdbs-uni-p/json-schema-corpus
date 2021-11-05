@@ -413,4 +413,252 @@
         },
         "classmap": {
           "type": "array",
-          "description": "This is an array of dir                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+          "description": "This is an array of directories that contain classes to be included in the class-map generation process."
+        },
+        "files": {
+          "type": "array",
+          "description": "This is an array of files that are always required on every request."
+        }
+      }
+    },
+    "archive": {
+      "type": [
+        "object"
+      ],
+      "description": "Options for creating package archives for distribution.",
+      "properties": {
+        "exclude": {
+          "type": "array",
+          "description": "A list of patterns for paths to exclude or include if prefixed with an exclamation mark."
+        }
+      }
+    },
+    "repositories": {
+      "type": [
+        "object",
+        "array"
+      ],
+      "description": "A set of additional repositories where packages can be found.",
+      "additionalProperties": true
+    },
+    "minimum-stability": {
+      "type": [
+        "string"
+      ],
+      "description": "The minimum stability the packages must have to be install-able. Possible values are: dev, alpha, beta, RC, stable.",
+      "pattern": "^dev|alpha|beta|rc|RC|stable$"
+    },
+    "prefer-stable": {
+      "type": [
+        "boolean"
+      ],
+      "description": "If set to true, stable packages will be preferred to dev packages when possible, even if the minimum-stability allows unstable packages."
+    },
+    "bin": {
+      "type": [
+        "array"
+      ],
+      "description": "A set of files that should be treated as binaries and symlinked into bin-dir (from config).",
+      "items": {
+        "type": "string"
+      }
+    },
+    "include-path": {
+      "type": [
+        "array"
+      ],
+      "description": "DEPRECATED: A list of directories which should get added to PHP's include path. This is only present to support legacy projects, and all new code should preferably use autoloading.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "scripts": {
+      "type": [
+        "object"
+      ],
+      "description": "Scripts listeners that will be executed before/after some events.",
+      "properties": {
+        "pre-install-cmd": {
+          "type": [
+            "array",
+            "string"
+          ],
+          "description": "Occurs before the install command is executed, contains one or more Class::method callables or shell commands."
+        },
+        "post-install-cmd": {
+          "type": [
+            "array",
+            "string"
+          ],
+          "description": "Occurs after the install command is executed, contains one or more Class::method callables or shell commands."
+        },
+        "pre-update-cmd": {
+          "type": [
+            "array",
+            "string"
+          ],
+          "description": "Occurs before the update command is executed, contains one or more Class::method callables or shell commands."
+        },
+        "post-update-cmd": {
+          "type": [
+            "array",
+            "string"
+          ],
+          "description": "Occurs after the update command is executed, contains one or more Class::method callables or shell commands."
+        },
+        "pre-status-cmd": {
+          "type": [
+            "array",
+            "string"
+          ],
+          "description": "Occurs before the status command is executed, contains one or more Class::method callables or shell commands."
+        },
+        "post-status-cmd": {
+          "type": [
+            "array",
+            "string"
+          ],
+          "description": "Occurs after the status command is executed, contains one or more Class::method callables or shell commands."
+        },
+        "pre-package-install": {
+          "type": [
+            "array",
+            "string"
+          ],
+          "description": "Occurs before a package is installed, contains one or more Class::method callables or shell commands."
+        },
+        "post-package-install": {
+          "type": [
+            "array",
+            "string"
+          ],
+          "description": "Occurs after a package is installed, contains one or more Class::method callables or shell commands."
+        },
+        "pre-package-update": {
+          "type": [
+            "array",
+            "string"
+          ],
+          "description": "Occurs before a package is updated, contains one or more Class::method callables or shell commands."
+        },
+        "post-package-update": {
+          "type": [
+            "array",
+            "string"
+          ],
+          "description": "Occurs after a package is updated, contains one or more Class::method callables or shell commands."
+        },
+        "pre-package-uninstall": {
+          "type": [
+            "array",
+            "string"
+          ],
+          "description": "Occurs before a package has been uninstalled, contains one or more Class::method callables or shell commands."
+        },
+        "post-package-uninstall": {
+          "type": [
+            "array",
+            "string"
+          ],
+          "description": "Occurs after a package has been uninstalled, contains one or more Class::method callables or shell commands."
+        },
+        "pre-autoload-dump": {
+          "type": [
+            "array",
+            "string"
+          ],
+          "description": "Occurs before the autoloader is dumped, contains one or more Class::method callables or shell commands."
+        },
+        "post-autoload-dump": {
+          "type": [
+            "array",
+            "string"
+          ],
+          "description": "Occurs after the autoloader is dumped, contains one or more Class::method callables or shell commands."
+        },
+        "post-root-package-install": {
+          "type": [
+            "array",
+            "string"
+          ],
+          "description": "Occurs after the root-package is installed, contains one or more Class::method callables or shell commands."
+        },
+        "post-create-project-cmd": {
+          "type": [
+            "array",
+            "string"
+          ],
+          "description": "Occurs after the create-project command is executed, contains one or more Class::method callables or shell commands."
+        }
+      }
+    },
+    "support": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "Email address for support.",
+          "format": "email"
+        },
+        "issues": {
+          "type": "string",
+          "description": "URL to the issue tracker.",
+          "format": "uri"
+        },
+        "forum": {
+          "type": "string",
+          "description": "URL to the forum.",
+          "format": "uri"
+        },
+        "wiki": {
+          "type": "string",
+          "description": "URL to the wiki.",
+          "format": "uri"
+        },
+        "irc": {
+          "type": "string",
+          "description": "IRC channel for support, as irc://server/channel.",
+          "format": "uri"
+        },
+        "source": {
+          "type": "string",
+          "description": "URL to browse or download the sources.",
+          "format": "uri"
+        },
+        "docs": {
+          "type": "string",
+          "description": "URL to the documentation.",
+          "format": "uri"
+        },
+        "rss": {
+          "type": "string",
+          "description": "URL to the RSS feed.",
+          "format": "uri"
+        }
+      }
+    },
+    "non-feature-branches": {
+      "type": [
+        "array"
+      ],
+      "description": "A set of string or regex patterns for non-numeric branch names that will not be handled as feature branches.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "abandoned": {
+      "type": [
+        "boolean",
+        "string"
+      ],
+      "description": "Indicates whether this package has been abandoned, it can be boolean or a package name/URL pointing to a recommended alternative. Defaults to false."
+    },
+    "_comment": {
+      "type": [
+        "array",
+        "string"
+      ],
+      "description": "A key to store comments in"
+    }
+  }
+}
